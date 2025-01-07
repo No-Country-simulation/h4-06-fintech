@@ -39,15 +39,22 @@
 
 ## Metodología de gestión de proyectos 
 
-## Etapas del proyecto
+## Cronograma y fechas clave del proyecto
 
+|               Semana          | Actividad   |   Fechas                    |                                     
+| ----------------------------- | -------- | ---------------------- | 
+| **Semana 0** (07/01/2025 - 10/01/2025)| **Kickoff Inicial** | Martes 07/01/2025 | 
+| **Semana 1** (13/01/2025 - 17/01/2025)| - | - |
+| **Semana 2** (20/01/2025 - 24/01/2025| - | -|  
+| **Semana 3** (27/01/2025 - 31/01/2025)| **Entrega de vídeo** | Jueves 30/01/2025 |  
+| **Semana 4** (Entrega Final)| **Demo Day** | 03/02/2025 a 06/02/2025, a coordinar con el cliente |     
+                  
 
+## Enlaces del proyecto
 
-## Contenido del proyecto 
-
-- 🤖 **Deploy:** Modelo de Machine Learning. [Deploy]()
-- 📂 **Datasets:** Acceso al dataset utilizado para el MVP. Enlace al dataset. [Datasets](./Dataset)
-- 📑 **Presentación:** Presentación del proyecto en PowerPoint. Enlace a la presentación. [Presentación](./Presentación)
+- **Deploy:**
+- **Figma:**
+- **Documentación:**  
 
 ## Integrantes del equipo.
 
