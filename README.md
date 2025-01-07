@@ -66,7 +66,7 @@
 |                               |
 | <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Data Scientist |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/)                         |
 |                               |
-| <img width="60" height="60" src="./Imagenes/woman.png" alt="Nombre" /> | Nombre y Apellido | Rol |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/)                         |
+| <img width="60" height="60" src="https://github.com/Everjr18.png" alt="Everjr18" /> | Ever Rojas | frontend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
 |                               |
 | <img width="60" height="60" src="https://github.com/Mathiroldan.png" alt="Mathiroldan" /> | Mathias Roldán | Data Analyst |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Mathiroldan) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/mathias-roldan)                         |
 |                               |
