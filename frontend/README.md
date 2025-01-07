@@ -34,10 +34,12 @@ frontend/
 - **Styling**: Tailwind CSS
 - **Language**: TypeScript
 - **Font**: we haven't defined it yet
+- **data validation**: zod
 - **Development Tools**:
   - ESLint for code linting
   - PostCSS for CSS processing
   - Turbopack for development
+
 |
 
 
