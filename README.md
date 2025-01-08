@@ -60,13 +60,13 @@
 
 |                         | Nombre   |   Rol                    | GitHub & LinkedIn                                                                                                                                                                                          |
 | ----------------------------- | -------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Rol | [![Github](https://skillicons.dev/icons?i=github)]() [![Linkedin](https://skillicons.dev/icons?i=linkedin)]()                         |
+| <img width="60" height="60" src="https://github.com/damianfe.png" alt="Damian Fernandez" /> | Damian Fernandez|Backend Developer | [![Github](https://skillicons.dev/icons?i=github)](https://github.com/damianfe) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/damian-r-fernandez/)                         |
 |                               |
 | <img width="60" height="60" src="https://github.com/Martin-Valdes.png" alt="Martin" /> | Fernando Valdes | Backend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Martin-Valdes) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/fernandomartinvaldes/)                         |  
 |                               |
 | <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Data Scientist |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/)                         |
 |                               |
-| <img width="60" height="60" src="https://github.com/Everjr18.png" alt="Everjr18" /> | Ever Rojas | frontend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
+| <img width="60" height="60" src="[https://github.com/Everjr18.png](https://avatars.githubusercontent.com/u/90562495?v=4)" alt="Everjr18" /> | Ever Rojas | frontend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
 |                               |
 | <img width="60" height="60" src="https://github.com/Mathiroldan.png" alt="Mathiroldan" /> | Mathias Roldán | Data Analyst |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Mathiroldan) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/mathias-roldan)                         |
 |                               |
