@@ -14,6 +14,47 @@
 
 ## Descripción del proyecto
 
+## 📉 Introducción
+
+En un contexto económico incierto, donde la inestabilidad y la desigualdad financiera afectan a millones de personas, surge una oportunidad para revolucionar la forma en que se abordan las finanzas personales.
+
+Pero, ¿cómo podemos tomar decisiones informadas sobre nuestras finanzas cuando el sistema financiero parece complejo y abrumador?
+
+Es por eso que creamos **iUPi**, una aplicación financiera innovadora diseñada para empoderar a los usuarios en la gestión y crecimiento de su patrimonio. Fomentamos la cultura del ahorro e inversión responsable en Argentina, proporcionando un espacio accesible, seguro y personalizado.
+
+Con **iUPi**, podrás tomar el control de tus finanzas, alcanzar objetivos y descubrir un nuevo mundo de posibilidades financieras.
+
+## 📈 Problema
+
+En Argentina, la inestabilidad económica y la falta de educación financiera dificultan que las personas tomen control de sus finanzas y logren sus objetivos.
+
+La escasez de herramientas financieras accesibles, pensadas para distintos niveles de experiencia, edades, y para personas con una educación financiera básica o intermedia intensifica este problema.
+
+Las herramientas existentes suelen estar destinadas a personas con mayores ingresos y educación, excluyendo a aquellos que necesitan apoyo.
+
+
+
+## 🎯 Objetivo
+
+Crear una aplicación financiera inclusiva y accesible que brinde herramientas de ahorro e inversión personalizadas, educación financiera y recomendaciones inteligentes que ayuden a los usuarios a crecer financieramente, cumplir sus objetivos y adaptarse a los desafíos de un entorno económico incierto.
+
+
+
+## ✅ Solución
+
+**iUPi** está diseñada para brindar a los usuarios una experiencia personalizada y accesible para gestionar sus finanzas.
+
+Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos financieros, monitorear sus gastos y tomar decisiones informadas sobre sus inversiones. Nuestro enfoque es empoderar a los usuarios sin importar su nivel de educación financiera o experiencia.
+
+### Con **iUPi**, los usuarios pueden:
+
+⭐ **Definir objetivos personales** y recibir recomendaciones de inversión personalizadas.  
+⭐ **Acceder a un portafolio de inversiones** personalizado, adaptado al perfil del usuario y las dinámicas del mercado.  
+⭐ **Recomendaciones de inversión** precisas y alineadas a sus metas.  
+⭐ **Formar parte de una comunidad** en la cual miles de usuarios comparten recursos e información sobre el sistema financiero actual.  
+⭐ **Monitorear y controlar sus finanzas** de manera segura y eficiente.
+
+
 # MVP 
 
 ## Alcance del proyecto
