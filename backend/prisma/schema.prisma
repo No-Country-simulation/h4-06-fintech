@@ -5,10 +5,35 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id                          String     @id @default(cuid())
+  nombre                      String
+  email                       String
+  password                    String
+  edad                        Int
+  nivelEducativo              String
+  nivelConocimientoFinanciero String
+  preferenciasDeRiesgo        String
+  isActive                    Boolean
+  Objetivo                    Objetivo[]
+}
+
+model Objetivo {
+  id            String   @id @default(cuid())
+  nombre        String
+  descripcion   String
+  progreso      String
+  montoObjetivo Int
+  fechaObjetivo DateTime
+  usuarioId     String
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
 }
