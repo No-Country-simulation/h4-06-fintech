@@ -52,9 +52,10 @@
 
 ## Enlaces del proyecto
 
-- **Deploy:**
-- **Figma:**
-- **Documentación:**  
+- **Deploy:** (Pendiente de agregar enlace si aún no está disponible)
+- **Figma:** [Diseño en Figma](https://www.figma.com/design/WqqLuwDkulV4o8vh0i37eZ/IUPI-Ahorros-e-inversiones?node-id=1-7&t=glc6uS4u56haGFwW-1)
+- **Documentación:** (Pendiente de agregar enlace si aún no está disponible)
+ 
 
 ## Integrantes del equipo.
 
