@@ -15,9 +15,9 @@ datasource db {
 }
 
 model Usuario {
-  id                          String     @id @default(cuid())
+  id                          String                  @id @default(cuid())
   nombre                      String
-  email                       String
+  email                       String                  @unique
   password                    String
   edad                        Int
   nivelEducativo              String
@@ -25,6 +25,11 @@ model Usuario {
   preferenciasDeRiesgo        String
   isActive                    Boolean
   Objetivo                    Objetivo[]
+  RdiografiaFinanciera        RdiografiaFinanciera[]
+  PortafolioDeInversion       PortafolioDeInversion[]
+  Comentario                  Comentario[]
+  wallet                      wallet[]
+  Soporte                     Soporte[]
 }
 
 model Objetivo {
@@ -36,4 +41,91 @@ model Objetivo {
   fechaObjetivo DateTime
   usuarioId     String
   usuario       Usuario  @relation(fields: [usuarioId], references: [id])
+}
+
+model RdiografiaFinanciera {
+  id                String  @id @default(cuid())
+  ingresosMensuales Int
+  gastosMensuales   Int
+  deudas            Int
+  ahorros           Int
+  capitalFinanciado String
+  usuarioId         String
+  usuario           Usuario @relation(fields: [usuarioId], references: [id])
+}
+
+model PortafolioDeInversion {
+  id                String      @id @default(cuid())
+  perfilRiesgo      String
+  rendimientoActual String
+  moneda            String
+  usuarioId         String
+  usuario           Usuario     @relation(fields: [usuarioId], references: [id])
+  Inversion         Inversion[]
+}
+
+model InstrumentoFinanciero {
+  id          String      @id @default(cuid())
+  nombre      String
+  tipo        String
+  rendimiento String
+  nivelRiesgo String
+  plazo       String
+  Inversion   Inversion[]
+}
+
+model Inversion {
+  id             String                @id @default(cuid())
+  montoInvertido Int
+  rendimiento    String
+  fechaInversion DateTime
+  portafolioId   String
+  instrumentoId  String
+  portafolio     PortafolioDeInversion @relation(fields: [portafolioId], references: [id])
+  instrumento    InstrumentoFinanciero @relation(fields: [instrumentoId], references: [id])
+}
+
+model Noticia {
+  id           String       @id @default(cuid())
+  titulo       String
+  contenido    String
+  fuente       String
+  fechaNoticia DateTime
+  categoria    String
+  Comentario   Comentario[]
+}
+
+model Comentario {
+  id              String   @id @default(cuid())
+  contenido       String
+  fechaComentario DateTime
+  usuarioId       String
+  noticiaId       String
+  usuario         Usuario  @relation(fields: [usuarioId], references: [id])
+  noticia         Noticia  @relation(fields: [noticiaId], references: [id])
+}
+
+model wallet {
+  id           String  @id @default(cuid())
+  usuarioId    String
+  saldoPesos   Int
+  saldoDolares Int
+  usuario      Usuario @relation(fields: [usuarioId], references: [id])
+}
+
+model Administrador {
+  id       String @id @default(cuid())
+  nombre   String
+  email    String @unique
+  password String
+  rol      String
+}
+
+model Soporte {
+  id        String  @id @default(cuid())
+  usuarioId String
+  asunto    String
+  mensaje   String
+  estado    String
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
 }
