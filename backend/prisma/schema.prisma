@@ -8,6 +8,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+}
+
+enum CurrencyType {
+  PESOS
+  DOLLARS
+}
+
 model User {
   id                      String                 @id @default(cuid())
   name                    String
@@ -51,9 +62,9 @@ model FinancialRadiography {
 
 model InvestmentPortfolio {
   id                 String       @id @default(cuid())
-  profileRisk        String
-  performanceCurrent String
-  coin               String
+  profileRisk        Int // Nivel de riesgo (1-5)
+  performanceCurrent Float // Rendimiento actual en porcentaje
+  coin               String // Moneda principal ("PESOS" | "DOLLARS")
   userId             String
   investment         Investment[]
   user               User         @relation(fields: [userId], references: [id])
@@ -62,10 +73,12 @@ model InvestmentPortfolio {
 model FinancialInstrument {
   id          String       @id @default(cuid())
   name        String
-  typw        String
-  performance String
-  levelRisk   String
-  deadline    String
+  type        String
+  category    String
+  performance Float
+  levelRisk   Int
+  deadline    Int
+  currency    CurrencyType
   Investment  Investment[]
 }
 
@@ -101,11 +114,24 @@ model Comment {
 }
 
 model wallet {
-  id             String @id @default(cuid())
-  balanceDollars Int
-  balancePesos   Int
+  id             String              @id @default(cuid())
   userId         String
-  user           User   @relation(fields: [userId], references: [id])
+  balanceDollars Int
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  user           User                @relation(fields: [userId], references: [id])
+  transactions   WalletTransaction[]
+}
+
+model WalletTransaction {
+  id          String          @id @default(cuid())
+  walletId    String
+  type        TransactionType
+  amount      Float
+  currency    CurrencyType
+  description String?
+  createdAt   DateTime        @default(now())
+  wallet      wallet          @relation(fields: [walletId], references: [id])
 }
 
 model Administrador {

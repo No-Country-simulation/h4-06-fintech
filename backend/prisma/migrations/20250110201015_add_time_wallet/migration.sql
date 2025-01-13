@@ -1,91 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the column `nombre` on the `Administrador` table. All the data in the column will be lost.
-  - You are about to drop the column `saldoDolares` on the `wallet` table. All the data in the column will be lost.
-  - You are about to drop the column `saldoPesos` on the `wallet` table. All the data in the column will be lost.
-  - You are about to drop the column `usuarioId` on the `wallet` table. All the data in the column will be lost.
-  - You are about to drop the `Comentario` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `InstrumentoFinanciero` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Inversion` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Noticia` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Objetivo` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `PortafolioDeInversion` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `RdiografiaFinanciera` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Soporte` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Usuario` table. If the table is not empty, all the data it contains will be lost.
-  - Added the required column `name` to the `Administrador` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `balanceDollars` to the `wallet` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `balancePesos` to the `wallet` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `userId` to the `wallet` table without a default value. This is not possible if the table is not empty.
-
-*/
--- DropForeignKey
-ALTER TABLE "Comentario" DROP CONSTRAINT "Comentario_noticiaId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Comentario" DROP CONSTRAINT "Comentario_usuarioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Inversion" DROP CONSTRAINT "Inversion_instrumentoId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Inversion" DROP CONSTRAINT "Inversion_portafolioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Objetivo" DROP CONSTRAINT "Objetivo_usuarioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "PortafolioDeInversion" DROP CONSTRAINT "PortafolioDeInversion_usuarioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "RdiografiaFinanciera" DROP CONSTRAINT "RdiografiaFinanciera_usuarioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Soporte" DROP CONSTRAINT "Soporte_usuarioId_fkey";
-
--- DropForeignKey
-ALTER TABLE "wallet" DROP CONSTRAINT "wallet_usuarioId_fkey";
-
--- AlterTable
-ALTER TABLE "Administrador" DROP COLUMN "nombre",
-ADD COLUMN     "name" TEXT NOT NULL;
-
--- AlterTable
-ALTER TABLE "wallet" DROP COLUMN "saldoDolares",
-DROP COLUMN "saldoPesos",
-DROP COLUMN "usuarioId",
-ADD COLUMN     "balanceDollars" INTEGER NOT NULL,
-ADD COLUMN     "balancePesos" INTEGER NOT NULL,
-ADD COLUMN     "userId" TEXT NOT NULL;
-
--- DropTable
-DROP TABLE "Comentario";
-
--- DropTable
-DROP TABLE "InstrumentoFinanciero";
-
--- DropTable
-DROP TABLE "Inversion";
-
--- DropTable
-DROP TABLE "Noticia";
-
--- DropTable
-DROP TABLE "Objetivo";
-
--- DropTable
-DROP TABLE "PortafolioDeInversion";
-
--- DropTable
-DROP TABLE "RdiografiaFinanciera";
-
--- DropTable
-DROP TABLE "Soporte";
-
--- DropTable
-DROP TABLE "Usuario";
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -186,6 +98,29 @@ CREATE TABLE "Comment" (
 );
 
 -- CreateTable
+CREATE TABLE "wallet" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "balancePesos" INTEGER NOT NULL,
+    "balanceDollars" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "wallet_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Administrador" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "rol" TEXT NOT NULL,
+
+    CONSTRAINT "Administrador_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Support" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
@@ -198,6 +133,9 @@ CREATE TABLE "Support" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 
 -- AddForeignKey
 ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
