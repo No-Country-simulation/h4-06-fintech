@@ -62,7 +62,7 @@
 | ----------------------------- | -------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Rol | [![Github](https://skillicons.dev/icons?i=github)]() [![Linkedin](https://skillicons.dev/icons?i=linkedin)]()                         |
 |                               |
-| <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Rol |  [![Github](https://skillicons.dev/icons?i=github)]() [![Linkedin](https://skillicons.dev/icons?i=linkedin)]()                         |  
+| <img width="60" height="60" src="https://github.com/Martin-Valdes.png" alt="Martin" /> | Fernando Valdes | Backend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Martin-Valdes) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/fernandomartinvaldes/)                         |  
 |                               |
 | <img width="60" height="60" src="./Imagenes/men.png" alt="Nombre" /> | Nombre y Apellido | Data Scientist |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/)                         |
 |                               |
