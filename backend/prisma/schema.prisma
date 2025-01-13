@@ -19,26 +19,30 @@ enum TransactionType {
   WITHDRAWAL
   TRANSFER
 }
+
 enum CurrencyType {
   PESOS
   DOLLARS
 }
+
 model User {
-  id                      String                 @id @default(cuid())
-  name                    String
-  email                   String                 @unique
+  id                      String  @id @unique @default(cuid())
+  name                    String  @unique
+  email                   String  @unique
   password                String
   age                     Int
   educationLevel          String
   levelKnowledgeFinancial String
   riskPreferences         String
   isActive                Boolean
-  target                  Target[]
-  financialRadiography    FinancialRadiography[]
-  investmentPortfolio     InvestmentPortfolio[]
-  comment                 Comment[]
-  wallet                  wallet[]
-  support                 Support[]
+  // target                  Target[]
+  // financialRadiography    FinancialRadiography[]
+  // investmentPortfolio     InvestmentPortfolio[]
+  // comment                 Comment[]
+  // wallet                  wallet[]
+  // support                 Support[]
+  // wallet                  wallet[]
+  // Support                 Support[]
 }
 
 model Target {
@@ -49,7 +53,7 @@ model Target {
   montoTarget Int
   dateTarget  DateTime
   userId      String
-  user        User     @relation(fields: [userId], references: [id])
+  // user        User     @relation(fields: [userId], references: [id])
 }
 
 model FinancialRadiography {
@@ -60,31 +64,30 @@ model FinancialRadiography {
   savings         Int
   capitalFinanced String
   userId          String
-  user            User   @relation(fields: [userId], references: [id])
+  // user            User   @relation(fields: [userId], references: [id])
 }
 
 model InvestmentPortfolio {
   id                 String       @id @default(cuid())
-  profileRisk        Int          // Nivel de riesgo (1-5)
-  performanceCurrent Float        // Rendimiento actual en porcentaje
-  coin               String       // Moneda principal ("PESOS" | "DOLLARS")
+  profileRisk        Int // Nivel de riesgo (1-5)
+  performanceCurrent Float // Rendimiento actual en porcentaje
+  coin               String // Moneda principal ("PESOS" | "DOLLARS")
   userId             String
-  user               User         @relation(fields: [userId], references: [id])
+  // user               User         @relation(fields: [userId], references: [id])
   investment         Investment[]
 }
 
 model FinancialInstrument {
   id          String       @id @default(cuid())
   name        String
-  type        String       
-  category    String       
-  performance Float        
-  levelRisk   Int          
-  deadline    Int          
-  currency    CurrencyType      
+  type        String
+  category    String
+  performance Float
+  levelRisk   Int
+  deadline    Int
+  currency    CurrencyType
   Investment  Investment[]
 }
-
 
 model Investment {
   id             String              @id @default(cuid())
@@ -113,30 +116,30 @@ model Comment {
   dateComment DateTime
   userId      String
   newsId      String
-  user        User     @relation(fields: [userId], references: [id])
+  // user        User     @relation(fields: [userId], references: [id])
   news        News     @relation(fields: [newsId], references: [id])
 }
 
 model wallet {
-  id             String @id @default(cuid())
+  id             String              @id @default(cuid())
   userId         String
   balancePesos   Int
   balanceDollars Int
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  user           User   @relation(fields: [userId], references: [id])
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  // user           User                @relation(fields: [userId], references: [id])
   transactions   WalletTransaction[]
 }
 
 model WalletTransaction {
-  id           String  @id @default(cuid())
-  walletId     String
-  type         TransactionType
-  amount       Float
-  currency     CurrencyType
-  description  String?
-  createdAt    DateTime @default(now())
-  wallet       wallet  @relation(fields: [walletId], references: [id])
+  id          String          @id @default(cuid())
+  walletId    String
+  type        TransactionType
+  amount      Float
+  currency    CurrencyType
+  description String?
+  createdAt   DateTime        @default(now())
+  wallet      wallet          @relation(fields: [walletId], references: [id])
 }
 
 model Administrador {
@@ -153,5 +156,5 @@ model Support {
   subject String
   message String
   state   String
-  user    User   @relation(fields: [userId], references: [id])
+  // user    User   @relation(fields: [userId], references: [id])
 }
