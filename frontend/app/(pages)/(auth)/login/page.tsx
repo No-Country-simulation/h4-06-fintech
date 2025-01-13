@@ -11,7 +11,7 @@ export default function IniciarSesionPage() {
           Aún no tenes una cuenta?{' '}
           <Link
             className='underline'
-            href={'/register'}
+            href={'/signup'}
           >
             Haz click aqui!
           </Link>
