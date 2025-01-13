@@ -24,7 +24,7 @@ test.describe('Signup flow', () => {
 
     await signUpPage.signup(validInputs);
 
-    await expect(page).toHaveURL('/logign', { timeout });
+    await expect(page).toHaveURL('/login', { timeout });
   });
 
   test('Should throw error invalid input', async () => {
