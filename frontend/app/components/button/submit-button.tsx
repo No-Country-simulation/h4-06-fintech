@@ -1,5 +1,5 @@
-
-interface SubmitButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface SubmitButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   variant?: 'primary' | 'secondary';
   pending: boolean;
@@ -12,8 +12,6 @@ export default function SubmitButton({
   className,
   ...props
 }: SubmitButtonProps) {
-  
-
   const baseStyles = `
     w-full py-2 px-4 rounded-md
     font-medium transition-colors
@@ -22,22 +20,17 @@ export default function SubmitButton({
 
   const variantStyles = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
   };
- 
 
   return (
     <button
-      type="submit"
+      type='submit'
       disabled={pending}
-      className={`
-        ${baseStyles}
-        ${variantStyles[variant]}
-        ${className || ''}
-      `.trim()}
+      className={` ${baseStyles} ${variantStyles[variant]} ${className || ''} `.trim()}
       {...props}
     >
       {pending ? 'Submitting...' : label}
     </button>
   );
-} 
+}

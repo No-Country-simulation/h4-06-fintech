@@ -7,6 +7,3 @@
 - [Deployment](./docs/deployment.md) - Deployment instructions
 - [Environment setup](./docs/environment.md) - Environment variables
 <!-- - [Contributing](./docs/contributing.md) - Guidelines for contributors -->
-
-
-
