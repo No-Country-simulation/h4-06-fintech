@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import LoginForm from './_components/login';
+import SignUpForm from './_components/signup-form';
 
-export default function IniciarSesionPage() {
+export default function RegisterPage() {
   return (
     <section className='flex flex-col gap-4 rounded-md bg-secondary p-6 shadow-lg'>
-      <h1>Iniciar Sesión</h1>
-      <LoginForm />
+      <h1>Crear nueva cuenta</h1>
+      <SignUpForm />
       <footer className='flex justify-center'>
         <p>
-          Aún no tenes una cuenta?{' '}
+          Ya tenes una cuenta?{' '}
           <Link
             className='underline'
-            href={'/register'}
+            href={'/login'}
           >
             Haz click aqui!
           </Link>
