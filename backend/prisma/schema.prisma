@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native"]
@@ -24,12 +18,13 @@ model User {
   levelKnowledgeFinancial String
   riskPreferences         String
   isActive                Boolean
-  target                  Target[]
+  comment                 Comment[]
   financialRadiography    FinancialRadiography[]
   investmentPortfolio     InvestmentPortfolio[]
-  comment                 Comment[]
-  wallet                  wallet[]
+  Profile                 Profile?
   support                 Support[]
+  target                  Target[]
+  wallet                  wallet[]
 }
 
 model Target {
@@ -60,8 +55,8 @@ model InvestmentPortfolio {
   performanceCurrent String
   coin               String
   userId             String
-  user               User         @relation(fields: [userId], references: [id])
   investment         Investment[]
+  user               User         @relation(fields: [userId], references: [id])
 }
 
 model FinancialInstrument {
@@ -81,8 +76,8 @@ model Investment {
   dateInvestment DateTime
   portfolioId    String
   instrumentId   String
-  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id])
   instrument     FinancialInstrument @relation(fields: [instrumentId], references: [id])
+  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id])
 }
 
 model News {
@@ -101,24 +96,24 @@ model Comment {
   dateComment DateTime
   userId      String
   newsId      String
-  user        User     @relation(fields: [userId], references: [id])
   news        News     @relation(fields: [newsId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model wallet {
   id             String @id @default(cuid())
-  userId         String
-  balancePesos   Int
   balanceDollars Int
+  balancePesos   Int
+  userId         String
   user           User   @relation(fields: [userId], references: [id])
 }
 
 model Administrador {
   id       String @id @default(cuid())
-  name     String
   email    String @unique
   password String
   rol      String
+  name     String
 }
 
 model Support {
@@ -128,4 +123,53 @@ model Support {
   message String
   state   String
   user    User   @relation(fields: [userId], references: [id])
+}
+
+model Profile {
+  id                String            @id @default(cuid())
+  userId            String            @unique
+  financialGoal     FinancialGoal
+  investmentHorizon InvestmentHorizon
+  knowledgeLevel    KnowledgeLevel
+  riskTolerance     RiskTolerance
+  monthlyAllocation Float?
+  specificPurpose   String?
+  instrumentsUsed   String[]
+  hasDebts          Boolean
+  reactionToLoss    ReactionToLoss
+  user              User              @relation(fields: [userId], references: [id])
+}
+
+enum FinancialGoal {
+  SAVINGS
+  INVESTMENT
+  RETIREMENT
+  EDUCATION
+  EMERGENCY_FUND
+  PASSIVE_INCOME
+  OTHER
+}
+
+enum InvestmentHorizon {
+  SHORT_TERM
+  MEDIUM_TERM
+  LONG_TERM
+}
+
+enum KnowledgeLevel {
+  BASIC
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum RiskTolerance {
+  CONSERVATIVE
+  MODERATE
+  AGGRESSIVE
+}
+
+enum ReactionToLoss {
+  WITHDRAW_IMMEDIATELY
+  WAIT_RECOVERY
+  INVEST_MORE
 }
