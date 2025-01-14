@@ -7,6 +7,8 @@ const loginSchema = zod.object({
   password: zod.string().min(8, { message: 'contraseña no es valida' }),
 });
 
+export type LoginSchema = zod.infer<typeof loginSchema>;
+
 export type LoginState = {
   message?: {
     email?: string[];
