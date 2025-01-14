@@ -34,3 +34,21 @@
 .investments {
   grid-area: iv;
 }
+
+@media screen and (max-width: 640px) {
+  .bento {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 8em;
+    gap: 1.5em;
+    grid-template-areas:
+      'bl'
+      're'
+      'in'
+      'in'
+      'gr'
+      'gr'
+      'iv';
+  }
+}
