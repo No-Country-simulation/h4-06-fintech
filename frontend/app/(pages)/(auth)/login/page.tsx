@@ -1,23 +1,19 @@
-import { AuthProviderButton } from '@/components/button/auth-provider-button';
 import Link from 'next/link';
 import {
   AuthCard,
   AuthCardFooter,
   AuthCardHeader,
 } from '../_components/auth-card';
+import { AuthProvidersSection } from '../_components/auth-providers-section';
 import LoginForm from './_components/login';
 
 export default function IniciarSesionPage() {
   return (
     <AuthCard>
       <AuthCardHeader>Iniciar Sesión</AuthCardHeader>
-      <section className='flex flex-col gap-4'>
+      <AuthProvidersSection>
         <LoginForm />
-        <footer className='flex flex-col gap-1 border-t pt-4'>
-          <AuthProviderButton provider='Google' />
-          <AuthProviderButton provider='Apple' />
-        </footer>
-      </section>
+      </AuthProvidersSection>
       <AuthCardFooter>
         Aún no tenes una cuenta?{' '}
         <Link
