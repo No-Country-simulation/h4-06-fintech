@@ -1,0 +1,31 @@
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export function Header() {
+  return (
+    <header className='fixed top-0 w-full border-b border-border'>
+      <div className='mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4'>
+        <section className='flex items-center gap-2'>
+          <div className='relative size-10 rounded-lg bg-blue-600'>
+            <Image
+              src='/images/iupi-logo.png'
+              alt='iupi logo'
+              className='h-full w-full'
+              fill
+            />
+          </div>
+          <h3 className='text-xs uppercase'>Ahorro & inversiones</h3>
+        </section>
+        <nav className='flex gap-2'>
+          <Link href={'/login'}>
+            <Button>Iniciar sesión</Button>
+          </Link>
+          <Link href={'/signup'}>
+            <Button variant={'outline'}>Crear cuenta</Button>
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
