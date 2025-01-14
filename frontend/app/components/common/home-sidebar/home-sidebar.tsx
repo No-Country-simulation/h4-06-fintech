@@ -16,16 +16,21 @@ export function HomeSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>Username</SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className=''>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className=''>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    asChild
+                    className='h-auto'
+                  >
                     <a href={item.url}>
-                      <item.icon />
+                      <span className='flex aspect-square items-center justify-center rounded-xl bg-blue-600 p-2 text-blue-200'>
+                        <item.icon />
+                      </span>
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>

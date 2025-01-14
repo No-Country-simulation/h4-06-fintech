@@ -1,4 +1,10 @@
-import { Home } from 'lucide-react';
+import {
+  ChartAreaIcon,
+  GanttChartIcon,
+  Home,
+  SettingsIcon,
+  Wallet2Icon,
+} from 'lucide-react';
 
 export const items = [
   {
@@ -9,21 +15,21 @@ export const items = [
   {
     title: 'Wallet',
     url: '#',
-    icon: Home,
+    icon: Wallet2Icon,
   },
   {
     title: 'Portfolio',
     url: '#',
-    icon: Home,
+    icon: GanttChartIcon,
   },
   {
     title: 'Gestion de inversiones',
     url: '#',
-    icon: Home,
+    icon: ChartAreaIcon,
   },
   {
     title: 'Configuracion',
     url: '#',
-    icon: Home,
+    icon: SettingsIcon,
   },
 ];
