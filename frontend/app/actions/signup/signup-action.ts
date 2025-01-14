@@ -1,6 +1,6 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
+import { backend } from '@api';
 import zod from 'zod';
 
 const signUpSchema = zod
@@ -42,14 +42,13 @@ export type SignUpState = {
     confirmPassword?: string[];
   };
   success?: boolean;
+  actionErrorMessage?: string;
 };
 
 export async function signUpAction(
   prevState: SignUpState,
   formData: FormData,
 ): Promise<SignUpState> {
-  console.log({ formData });
-
   const email = formData.get('email');
   const password = formData.get('password');
   const confirmPassword = formData.get('confirmPassword');
@@ -64,9 +63,12 @@ export async function signUpAction(
     };
   }
 
-  // TODO - Hacer llamado a la api para crear un nuevo usuario en la base de datos
-  console.log('Usuario registrado');
-
-  revalidatePath('/login', 'page');
-  return { success: true };
+  try {
+    await backend.authApi.signup(result.data);
+    return { success: true };
+  } catch (e) {
+    const errorMessage =
+      e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
+    return { success: false, actionErrorMessage: errorMessage };
+  }
 }

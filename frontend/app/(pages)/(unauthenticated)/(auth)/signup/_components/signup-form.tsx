@@ -14,6 +14,7 @@ const initialState = {
     confirmPassword: [],
   },
   success: false,
+  actionErrorMessage: '',
 };
 
 export default function SignUpForm() {
@@ -24,10 +25,14 @@ export default function SignUpForm() {
   // Mostrar el toast cuando se crea la cuenta correctamente
   useEffect(() => {
     if (state.success) {
-      toast('Cuenta creada con éxito! 🎉');
+      toast.success('Cuenta creada con éxito! 🎉');
       router.replace('/login');
     }
-  }, [state.success, router]);
+
+    if (state.actionErrorMessage) {
+      toast.error(state.actionErrorMessage, {});
+    }
+  }, [state, router]);
 
   return (
     <div className='flex flex-col gap-4'>
