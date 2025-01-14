@@ -116,6 +116,7 @@ model Comment {
 model wallet {
   id             String              @id @default(cuid())
   userId         String
+  balancePesos   Int
   balanceDollars Int
   createdAt      DateTime            @default(now())
   updatedAt      DateTime            @updatedAt
