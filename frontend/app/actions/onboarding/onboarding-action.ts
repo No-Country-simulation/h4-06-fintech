@@ -1,5 +1,5 @@
 'use server';
-import { redirect } from 'next/navigation';
+
 import zod from 'zod';
 
 const onboardingSchema = zod.object({
@@ -24,8 +24,9 @@ export async function onboardingAction(state: OnboardingState, formData: FormDat
             success: false,
         };
     }
-    redirect('/onboarding/1');
+    
     return {
         success: true,
+        redirect: '/onboarding/1',
     };
 }
