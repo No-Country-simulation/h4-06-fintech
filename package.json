@@ -1,0 +1,12 @@
+{
+  "name": "fintech",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "be": "pnpm --filter @fintech/backend",
+    "fe": "pnpm --filter @fintech/frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
