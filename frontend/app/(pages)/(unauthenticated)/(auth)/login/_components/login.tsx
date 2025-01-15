@@ -12,6 +12,7 @@ const initialState = {
     password: [],
   },
   success: false,
+  actionErrorMessage: '',
 };
 
 export default function LoginForm() {
@@ -26,7 +27,11 @@ export default function LoginForm() {
       // TODO - redirigir a la ruta del dashboard (CU-002)
       router.replace('/');
     }
-  }, [state.success, router]);
+
+    if (state.actionErrorMessage) {
+      toast.error(state.actionErrorMessage);
+    }
+  }, [state, router]);
 
   return (
     <div className='flex flex-col gap-4'>

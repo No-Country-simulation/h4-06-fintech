@@ -30,7 +30,7 @@ export default function SignUpForm() {
     }
 
     if (state.actionErrorMessage) {
-      toast.error(state.actionErrorMessage, {});
+      toast.error(state.actionErrorMessage);
     }
   }, [state, router]);
 
