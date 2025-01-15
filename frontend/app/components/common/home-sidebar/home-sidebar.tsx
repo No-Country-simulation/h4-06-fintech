@@ -1,3 +1,4 @@
+import { logout } from '@/actions/logout/logout-action';
 import {
   Sidebar,
   SidebarContent,
@@ -40,7 +41,15 @@ export function HomeSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>Cerrar sesión</SidebarFooter>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <form action={logout}>
+              <SidebarMenuButton>Cerrar sesión</SidebarMenuButton>
+            </form>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
