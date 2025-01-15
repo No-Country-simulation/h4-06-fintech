@@ -6,17 +6,17 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { HomeSidebarHeader } from './home-sidebar-header';
 import { items } from './home-sidebar-items';
 
 export function HomeSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader>Username</SidebarHeader>
+      <HomeSidebarHeader />
       <SidebarContent className=''>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

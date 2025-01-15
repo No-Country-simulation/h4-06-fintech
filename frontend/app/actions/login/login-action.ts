@@ -38,7 +38,7 @@ export async function loginAction(
   }
 
   try {
-    const { access_token } = await backend.authApi.loginWithPassword({
+    const { accessToken } = await backend.authApi.loginWithPassword({
       email: result.data.email,
       password: result.data.password,
     });
@@ -46,9 +46,11 @@ export async function loginAction(
     const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes in milliseconds
     const cookieStore = await cookies();
 
-    cookieStore.set('access_token', access_token, {
+    cookieStore.set('access_token', accessToken, {
       expires,
       httpOnly: true,
+      path: '/',
+      secure: process.env.NODE_ENV === 'production',
     });
 
     return { success: true };
