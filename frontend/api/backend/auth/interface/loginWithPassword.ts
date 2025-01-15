@@ -4,7 +4,5 @@ export type LoginWithPasswordParams = {
 };
 
 export type LoginWithPasswordResponse = {
-  user: {
-    email: string;
-  };
+  access_token: string;
 };
