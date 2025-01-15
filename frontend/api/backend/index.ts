@@ -1,7 +1,9 @@
 import { authApi } from './auth/auth.api';
+import { isActive } from './ping';
 
 export const backend = {
   authApi,
+  isActive,
 };
 
 // Exporta un objecto que tiene mas objectos con funciones, para usarlos seria algo asi
