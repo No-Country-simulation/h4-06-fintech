@@ -5,11 +5,13 @@ import zod from 'zod';
 const onboardingSchema = zod.object({
     financialGoal: zod.string().min(1, { message: 'Objetivo financiero es requerido' }),
     knowledgeLevel: zod.string().min(1, { message: 'Nivel de conocimiento es requerido' }),
+    riskLevel: zod.string().min(1, { message: 'Nivel de riesgo es requerido' })
 })
 export type OnboardingState = {
     message?: {
         financialGoal?: string[];
         knowledgeLevel?: string[];
+        riskLevel?: string[];
     };
     success?: boolean;
 };

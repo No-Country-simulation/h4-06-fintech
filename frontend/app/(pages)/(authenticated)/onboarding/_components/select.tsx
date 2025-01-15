@@ -5,14 +5,15 @@ interface SelectComponentProps {
   formData: {
     financialGoal: string;
     knowledgeLevel: string;
+    riskLevel: string;
   };
-  handleSelectChange: (field: 'financialGoal' | 'knowledgeLevel', value: string) => void;
+  handleSelectChange: (field: 'financialGoal' | 'knowledgeLevel' | 'riskLevel', value: string) => void;
   state: OnboardingState;
 }
 
 export function SelectComponent({ formData, handleSelectChange, state }: SelectComponentProps) {
   return (
-    <>
+    <div className="space-y-3">
       <Select
           name="financialGoal"
           value={formData.financialGoal || undefined}
@@ -30,7 +31,7 @@ export function SelectComponent({ formData, handleSelectChange, state }: SelectC
             </SelectGroup>
           </SelectContent>
         </Select>
-        <p className="text-red-500 text-sm my-2 ml-2">{state.message?.financialGoal?.[0]}</p>
+        <p className="text-red-500 text-sm ">{state.message?.financialGoal?.[0]}</p>
         
         <Select
           name='knowledgeLevel'
@@ -49,7 +50,25 @@ export function SelectComponent({ formData, handleSelectChange, state }: SelectC
             </SelectGroup>
           </SelectContent>
         </Select>
-        <p className="text-red-500 text-sm my-2 ml-2">{state.message?.knowledgeLevel?.[0]}</p>
-    </>
+        <p className="text-red-500 text-sm ">{state.message?.knowledgeLevel?.[0]}</p>
+        <Select
+        name='riskLevel'
+        value={formData.riskLevel || undefined}
+        onValueChange={(value) => handleSelectChange('riskLevel', value)}
+        >
+          <SelectTrigger className='w-full'>
+            <SelectValue placeholder='Selecciona tu nivel de riesgo' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Nivel de riesgo</SelectLabel>
+              <SelectItem value='Bajo'>Bajo</SelectItem>
+              <SelectItem value='Medio'>Medio</SelectItem>
+              <SelectItem value='Alto'>Alto</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <p className="text-red-500 text-sm ">{state.message?.riskLevel?.[0]}</p>
+    </div>
   );
 }

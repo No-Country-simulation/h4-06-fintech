@@ -6,11 +6,14 @@ import { useFormPersistence } from "@/hooks/use-form-persistence";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { SelectComponent } from "./select";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 const initialState = {
   message: {
     financialGoal: [],
     knowledgeLevel: [],
+    riskLevel: [],
   },
   success: false,
 };
@@ -18,6 +21,7 @@ const initialState = {
 const initialFormData = {
   financialGoal: '',
   knowledgeLevel: '',
+  riskLevel: '',
 };
 
 export default function OnboardingForm() {
@@ -35,7 +39,11 @@ export default function OnboardingForm() {
       setFormData(initialFormData);
       router.push('/onboarding/1');
     }
-  }, [state.success, router, setFormData]);
+    
+    if(state?.message?.financialGoal?.[0] || state?.message?.knowledgeLevel?.[0] || state?.message?.riskLevel?.[0]) {
+      toast.warning('Por favor, completa todos los campos requeridos.');
+    }
+  }, [state.success, state.message, router, setFormData]);
 
   // Don't render until client-side hydration is complete
   if (!hasMounted) {
@@ -50,15 +58,29 @@ export default function OnboardingForm() {
   };
 
   return (
-    <section className='mx-auto max-w-lg'>
+    <section className='mt-6'>
       <form action={action}>
-        <SelectComponent formData={formData} handleSelectChange={(field, value) => handleSelectChange(field, value)} state={state} />
-        
+        <SelectComponent
+          formData={formData}
+          handleSelectChange={(field, value) =>
+            handleSelectChange(field, value)
+          }
+          state={state}
+        />
+
         <SubmitButton
-          label='Siguiente'
+          label='Ver resumen'
           pending={pending}
+          className='mt-3'
         />
       </form>
+      <Button
+        type='button'
+        onClick={() => router.push('/')}
+        className='mt-3 bg-red-500 hover:bg-red-600 text-white w-full text-base'
+      >
+        Cancelar
+      </Button>
     </section>
   );
 }
