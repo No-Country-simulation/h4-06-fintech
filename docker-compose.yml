@@ -6,7 +6,7 @@ services:
     container_name: fintech-db
     restart: always
     environment:
-      POSTGRES_USER: root
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: rootpass
       POSTGRES_DB: IUPI
     ports:
