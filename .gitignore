@@ -1,2 +1,4 @@
 bin/
 .secrets
+node_modules
+.env

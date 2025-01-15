@@ -4,9 +4,13 @@
   "description": "",
   "scripts": {
     "be": "pnpm --filter @fintech/backend",
-    "fe": "pnpm --filter @fintech/frontend"
+    "fe": "pnpm --filter @fintech/frontend",
+    "dev": "concurrently \"docker compose up -d\" \"pnpm fe dev\" \"pnpm be start:dev\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "9.1.2"
+  }
 }
