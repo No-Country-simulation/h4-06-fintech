@@ -64,7 +64,10 @@ export async function signUpAction(
   }
 
   try {
-    await backend.authApi.signup(result.data);
+    await backend.authApi.signup({
+      email: result.data.email,
+      password: result.data.password,
+    });
     return { success: true };
   } catch (e) {
     const errorMessage =
