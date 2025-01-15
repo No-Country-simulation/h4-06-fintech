@@ -1,73 +1,82 @@
 'use client';
-import { onboardingAction } from "@/actions/onboarding/onboarding-action";
-import SubmitButton from "@/components/button/submit-button";
-import { useHasMounted } from "@/hooks/use-hasmounted";
-import { useFormPersistence } from "@/hooks/use-form-persistence";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect } from "react";
-import { SelectComponent } from "./select";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { onboardingAction } from '@/actions/onboarding/onboarding-action';
+import SubmitButton from '@/components/button/submit-button';
+import { useHasMounted } from '@/hooks/use-hasmounted';
+import { useFormPersistence } from '@/hooks/use-form-persistence';
+import { useRouter } from 'next/navigation';
+import { useActionState, useEffect } from 'react';
+import { SelectComponent } from './select';
+import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
 
 const initialState = {
-  message: {
-    financialGoal: [],
-    knowledgeLevel: [],
-    riskLevel: [],
-  },
+  message: {},
   success: false,
 };
 
 const initialFormData = {
-  financialGoal: '',
-  knowledgeLevel: '',
-  riskLevel: '',
+  question_1: '',
+  question_2: '',
+  question_3: '',
+  question_4: '',
+  question_5: '',
+  question_6: '',
+  question_7: '',
+  question_8: ''
 };
 
 export default function OnboardingForm() {
   const hasMounted = useHasMounted();
-  const [state, action, pending] = useActionState(onboardingAction, initialState);
+  const [state, action, pending] = useActionState(
+    onboardingAction,
+    initialState,
+  );
   const router = useRouter();
   
-  // Use the form persistence hook
-  const [formData, setFormData] = useFormPersistence('onboarding-form', initialFormData);
+  const [formData, setFormData] = useFormPersistence(
+    'onboarding-form',
+    initialFormData,
+  );
 
-  // Clear the form data when successfully submitted
   useEffect(() => {
-    if (state.success) {
-      // Clear persisted data
+    if (state.success && state.redirect) {
       setFormData(initialFormData);
-      router.push('/onboarding/1');
+      router.push(state.redirect);
     }
-    
-    if(state?.message?.financialGoal?.[0] || state?.message?.knowledgeLevel?.[0] || state?.message?.riskLevel?.[0]) {
+
+    if (state.message && Object.keys(state.message).length > 0) {
       toast.warning('Por favor, completa todos los campos requeridos.');
     }
-  }, [state.success, state.message, router, setFormData]);
+  }, [state, router, setFormData]);
 
-  // Don't render until client-side hydration is complete
   if (!hasMounted) {
     return null;
   }
 
-  const handleSelectChange = (field: keyof typeof formData, value: string) => {
-    setFormData(prev => ({
+  const handleSelectChange = (field: string, value: string) => {
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
+  };
+
+  const formAction = async (formData: FormData) => {
+    // Add all form values from state to the FormData
+    Object.entries(formData).forEach(([key, value]) => {
+      formData.set(key, value);
+    });
+    await action(formData);
   };
 
   return (
     <section className='mt-6'>
-      <form action={action}>
+      <form action={formAction}>
         <SelectComponent
           formData={formData}
-          handleSelectChange={(field, value) =>
-            handleSelectChange(field, value)
-          }
+          handleSelectChange={handleSelectChange}
           state={state}
         />
-
+        <input type="hidden" name="formData" value={JSON.stringify(formData)} />
         <SubmitButton
           label='Ver resumen'
           pending={pending}
@@ -77,7 +86,7 @@ export default function OnboardingForm() {
       <Button
         type='button'
         onClick={() => router.push('/')}
-        className='mt-3 bg-red-500 hover:bg-red-600 text-white w-full text-base'
+        className='mt-3 w-full bg-red-500 text-base text-white hover:bg-red-600'
       >
         Cancelar
       </Button>

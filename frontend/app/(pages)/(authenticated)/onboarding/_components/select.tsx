@@ -1,74 +1,64 @@
 import { OnboardingState } from "@/actions/onboarding/onboarding-action";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import questionsData from "../_data/data.json";
+
+// Define types for the questions data
+type Question = {
+  id: number;
+  question: string;
+  options: string[];
+}
 
 interface SelectComponentProps {
   formData: {
-    financialGoal: string;
-    knowledgeLevel: string;
-    riskLevel: string;
+    [key: string]: string; // Make it dynamic to accept any string key
   };
-  handleSelectChange: (field: 'financialGoal' | 'knowledgeLevel' | 'riskLevel', value: string) => void;
+  handleSelectChange: (field: string, value: string) => void;
   state: OnboardingState;
 }
 
 export function SelectComponent({ formData, handleSelectChange, state }: SelectComponentProps) {
+  const questions: Question[] = questionsData.questions;
+
   return (
-    <div className="space-y-3">
-      <Select
-          name="financialGoal"
-          value={formData.financialGoal || undefined}
-          onValueChange={(value) => handleSelectChange('financialGoal', value)}
-        >
-          <SelectTrigger className='w-full'>
-            <SelectValue placeholder='Selecciona un objetivo financiero' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Objetivos financieros</SelectLabel>
-              <SelectItem value='Ahorro'>Ahorro</SelectItem>
-              <SelectItem value='Inversion'>Inversion</SelectItem>
-              <SelectItem value='Retiro'>Retiro</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <p className="text-red-500 text-sm ">{state.message?.financialGoal?.[0]}</p>
-        
-        <Select
-          name='knowledgeLevel'
-          value={formData.knowledgeLevel || undefined}
-          onValueChange={(value) => handleSelectChange('knowledgeLevel', value)}
-        >
-          <SelectTrigger className='w-full'>
-            <SelectValue placeholder='Selecciona tu nivel' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Nivel de conocimiento</SelectLabel>
-              <SelectItem value='Básico'>Básico</SelectItem>
-              <SelectItem value='Intermedio'>Intermedio</SelectItem>
-              <SelectItem value='Avanzado'>Avanzado</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <p className="text-red-500 text-sm ">{state.message?.knowledgeLevel?.[0]}</p>
-        <Select
-        name='riskLevel'
-        value={formData.riskLevel || undefined}
-        onValueChange={(value) => handleSelectChange('riskLevel', value)}
-        >
-          <SelectTrigger className='w-full'>
-            <SelectValue placeholder='Selecciona tu nivel de riesgo' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Nivel de riesgo</SelectLabel>
-              <SelectItem value='Bajo'>Bajo</SelectItem>
-              <SelectItem value='Medio'>Medio</SelectItem>
-              <SelectItem value='Alto'>Alto</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <p className="text-red-500 text-sm ">{state.message?.riskLevel?.[0]}</p>
+    <div className="space-y-6 w-full max-w-3xl mx-auto">
+      {questions.map((question) => (
+        <div key={question.id} className="space-y-2">
+          {/* Question Label */}
+          <h3 className="font-medium text-sm sm:text-base text-foreground/90">
+            {question.question}
+          </h3>
+          
+          {/* Select Component */}
+          <Select
+            name={`question_${question.id}`}
+            value={formData[`question_${question.id}`] || undefined}
+            onValueChange={(value) => handleSelectChange(`question_${question.id}`, value)}
+          >
+            <SelectTrigger className="w-full min-h-[2.5rem] text-sm sm:text-base">
+              <SelectValue placeholder="Selecciona una opción" />
+            </SelectTrigger>
+            <SelectContent className="max-h-[300px] overflow-y-auto">
+                {question.options.map((option, index) => (
+                  <SelectItem 
+                    key={index} 
+                    value={option}
+                    className="text-sm sm:text-base py-2.5 cursor-pointer"
+                  >
+                    {option}
+                  </SelectItem>
+                ))}
+            </SelectContent>
+          </Select>
+
+          {/* Error Message */}
+          {state.message?.[`question_${question.id}`]?.[0] && (
+            <p className="text-xs sm:text-sm text-red-500">
+              {state.message[`question_${question.id}`][0]}
+            </p>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
