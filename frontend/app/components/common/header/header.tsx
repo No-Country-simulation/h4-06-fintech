@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HeaderNav } from './header-nav';
 
 export function Header() {
   return (
@@ -19,14 +19,7 @@ export function Header() {
             <h3 className='text-xs uppercase'>Ahorro & inversiones</h3>
           </section>
         </Link>
-        <nav className='flex gap-2'>
-          <Link href={'/login'}>
-            <Button>Iniciar sesión</Button>
-          </Link>
-          <Link href={'/signup'}>
-            <Button variant={'outline'}>Crear cuenta</Button>
-          </Link>
-        </nav>
+        <HeaderNav />
       </div>
     </header>
   );
