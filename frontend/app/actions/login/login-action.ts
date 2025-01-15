@@ -1,6 +1,7 @@
 'use server';
 
 import { backend } from '@api';
+import { cookies } from 'next/headers';
 import zod from 'zod';
 
 const loginSchema = zod.object({
@@ -37,10 +38,19 @@ export async function loginAction(
   }
 
   try {
-    await backend.authApi.loginWithPassword({
+    const { access_token } = await backend.authApi.loginWithPassword({
       email: result.data.email,
       password: result.data.password,
     });
+
+    const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes in milliseconds
+    const cookieStore = await cookies();
+
+    cookieStore.set('access_token', access_token, {
+      expires,
+      httpOnly: true,
+    });
+
     return { success: true };
   } catch (e) {
     const errorMessage =
