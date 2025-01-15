@@ -1,3 +1,4 @@
+import { GetProfileResponse } from './getProfile';
 import {
   LoginWithPasswordParams,
   LoginWithPasswordResponse,
@@ -9,4 +10,5 @@ export interface AuthAPI {
   loginWithPassword: (
     params: LoginWithPasswordParams,
   ) => Promise<LoginWithPasswordResponse>;
+  getProfile: () => Promise<GetProfileResponse>;
 }
