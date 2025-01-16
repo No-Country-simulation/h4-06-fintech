@@ -19,13 +19,10 @@ export default function LoginForm() {
   const [state, action, pending] = useActionState(loginAction, initialState);
   const router = useRouter();
 
-  // TODO - ver si se puede evitar hacer uso de useEffect para
-  // Mostrar el toast cuando se inicia sesion correctamente
   useEffect(() => {
     if (state.success) {
       toast('Sesion iniciada correctamente');
-      // TODO - redirigir a la ruta del dashboard (CU-002)
-      router.replace('/');
+      router.replace('/home');
     }
 
     if (state.actionErrorMessage) {

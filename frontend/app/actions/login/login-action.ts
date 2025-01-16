@@ -1,8 +1,8 @@
 'use server';
 
 import { backend } from '@api';
-import { cookies } from 'next/headers';
 import zod from 'zod';
+import { setAccessToken } from '../../../lib/setAccessToken';
 
 const loginSchema = zod.object({
   email: zod.string().email({ message: 'correo no es valido' }),
@@ -43,16 +43,7 @@ export async function loginAction(
       password: result.data.password,
     });
 
-    const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes in milliseconds
-    const cookieStore = await cookies();
-
-    cookieStore.set('access_token', accessToken, {
-      expires,
-      httpOnly: true,
-      path: '/',
-      secure: process.env.NODE_ENV === 'production',
-    });
-
+    await setAccessToken(accessToken);
     return { success: true };
   } catch (e) {
     const errorMessage =

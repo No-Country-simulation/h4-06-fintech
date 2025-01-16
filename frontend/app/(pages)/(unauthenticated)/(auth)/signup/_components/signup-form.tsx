@@ -21,12 +21,10 @@ export default function SignUpForm() {
   const [state, action, pending] = useActionState(signUpAction, initialState);
   const router = useRouter();
 
-  // TODO - ver si se puede evitar hacer uso de useEffect para
-  // Mostrar el toast cuando se crea la cuenta correctamente
   useEffect(() => {
     if (state.success) {
       toast.success('Cuenta creada con éxito! 🎉');
-      router.replace('/login');
+      router.replace('/onboarding');
     }
 
     if (state.actionErrorMessage) {
