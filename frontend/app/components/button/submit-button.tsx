@@ -19,7 +19,7 @@ export default function SubmitButton({
   `;
 
   const variantStyles = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    primary: 'bg-primary text-white hover:bg-blue-700',
     secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
   };
 
