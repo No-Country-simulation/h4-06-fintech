@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "name" DROP NOT NULL,
+ALTER COLUMN "age" DROP NOT NULL,
+ALTER COLUMN "educationLevel" DROP NOT NULL,
+ALTER COLUMN "levelKnowledgeFinancial" DROP NOT NULL,
+ALTER COLUMN "riskPreferences" DROP NOT NULL,
+ALTER COLUMN "isActive" SET DEFAULT true;
