@@ -5,14 +5,13 @@ import { MailerService } from '@nestjs-modules/mailer';
 export class LoginMailsService {
   constructor(private mailerService: MailerService) {}
 
-  async sendUserConfirmationEmail(user: string, email: string) {
+  async sendUserConfirmationEmail(email: string) {
     const url = 'https://www.youtube.com/watch?v=YjzWhuCxwek';
     await this.mailerService.sendMail({
       to: email,
       subject: 'User Confirmation',
       template: './welcome',
       context: {
-        name: user,
         url,
       },
     });

@@ -32,9 +32,9 @@ export class UsersService {
       roundOfHashing,
     );
 
-    const { name, email } = createUserDto;
+    const { email } = createUserDto;
     createUserDto.password = hashedPassword;
-    await this.loginMailService.sendUserConfirmationEmail(name, email);
+    await this.loginMailService.sendUserConfirmationEmail(email);
 
     const user = await this.prismaService.user.create({
       data: {
