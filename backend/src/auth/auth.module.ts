@@ -7,6 +7,7 @@ import {JwtModule} from "@nestjs/jwt";
 import {UsersModule} from "../users/users.module";
 import {JwtStrategy} from "./strategy/jwt.strategy";
 
+
 @Module({
   imports: [
     PrismaModule,
@@ -15,7 +16,7 @@ import {JwtStrategy} from "./strategy/jwt.strategy";
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '10m' },
     }),
-      UsersModule,
+      UsersModule
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
