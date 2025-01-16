@@ -1,13 +1,12 @@
 'use client';
 import { onboardingAction } from '@/actions/onboarding/onboarding-action';
 import SubmitButton from '@/components/button/submit-button';
-import { useHasMounted } from '@/hooks/use-hasmounted';
 import { useFormPersistence } from '@/hooks/use-form-persistence';
+import { useHasMounted } from '@/hooks/use-hasmounted';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
-import { SelectComponent } from './select';
 import { toast } from 'sonner';
-import { Button } from '@/components/ui/button';
+import { SelectComponent } from './select';
 
 const initialState = {
   message: {},
@@ -22,7 +21,7 @@ const initialFormData = {
   question_5: '',
   question_6: '',
   question_7: '',
-  question_8: ''
+  question_8: '',
 };
 
 export default function OnboardingForm() {
@@ -32,7 +31,7 @@ export default function OnboardingForm() {
     initialState,
   );
   const router = useRouter();
-  
+
   const [formData, setFormData] = useFormPersistence(
     'onboarding-form',
     initialFormData,
@@ -69,27 +68,24 @@ export default function OnboardingForm() {
   };
 
   return (
-    <section className='mt-6'>
-      <form action={formAction}>
-        <SelectComponent
-          formData={formData}
-          handleSelectChange={handleSelectChange}
-          state={state}
-        />
-        <input type="hidden" name="formData" value={JSON.stringify(formData)} />
-        <SubmitButton
-          label='Ver resumen'
-          pending={pending}
-          className='mt-3'
-        />
-      </form>
-      <Button
-        type='button'
-        onClick={() => router.push('/')}
-        className='mt-3 w-full bg-red-500 text-base text-white hover:bg-red-600'
-      >
-        Cancelar
-      </Button>
-    </section>
+    <form
+      action={formAction}
+      className='flex flex-col gap-8'
+    >
+      <SelectComponent
+        formData={formData}
+        handleSelectChange={handleSelectChange}
+        state={state}
+      />
+      <input
+        type='hidden'
+        name='formData'
+        value={JSON.stringify(formData)}
+      />
+      <SubmitButton
+        label='Ver resumen'
+        pending={pending}
+      />
+    </form>
   );
 }
