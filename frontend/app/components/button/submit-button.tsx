@@ -12,13 +12,15 @@ export default function SubmitButton({
   className,
   ...props
 }: SubmitButtonProps) {
+  const baseStyles = 'mx-auto w-fit';
+
   return (
     <Button
       variant='secondary'
       size='full'
       type='submit'
       disabled={pending}
-      className={className}
+      className={`${baseStyles} ${className}`}
       {...props}
     >
       {pending ? 'Submitting...' : label}

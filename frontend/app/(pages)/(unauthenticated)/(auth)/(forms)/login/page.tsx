@@ -1,28 +1,29 @@
+import { Text } from '@/components/ui/text';
 import Link from 'next/link';
-import {
-  AuthCard,
-  AuthCardFooter,
-  AuthCardHeader,
-} from '../_components/auth-card';
-import { AuthProvidersSection } from '../_components/auth-providers-section';
-import LoginForm from './_components/login';
+import LoginForm from './_components/login-form';
 
 export default function IniciarSesionPage() {
   return (
-    <AuthCard>
-      <AuthCardHeader>Iniciar Sesión</AuthCardHeader>
-      <AuthProvidersSection>
-        <LoginForm />
-      </AuthProvidersSection>
-      <AuthCardFooter>
-        Aún no tenes una cuenta?{' '}
-        <Link
-          className='underline'
-          href={'/signup'}
-        >
-          Haz click aqui!
-        </Link>
-      </AuthCardFooter>
-    </AuthCard>
+    <section className='flex flex-col items-center gap-16 px-10 pt-12'>
+      <header className='flex flex-col items-center justify-center gap-4'>
+        <Text variant='header'>Iniciar sesión</Text>
+        <p className='font-light'>
+          ¿Aún no tienes una cuenta?{' '}
+          <Link
+            className='font-semibold'
+            href={'/signup'}
+          >
+            Crear cuenta
+          </Link>
+        </p>
+      </header>
+      <LoginForm />
+      <footer>
+        <p className='font-light'>
+          ¿Olvidaste tu contraseña?{' '}
+          <strong className='font-medium'>Recuperar contraseña</strong>
+        </p>
+      </footer>
+    </section>
   );
 }
