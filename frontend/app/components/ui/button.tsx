@@ -24,7 +24,8 @@ const buttonVariants = cva(
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-9 w-9',
-        full: 'w-full py-3 px-2 text-2xl font-light font-poppins-light',
+        full: 'w-full py-3 px-12 text-2xl',
+        medium: 'h-9 px-10 py-2',
       },
     },
     defaultVariants: {
