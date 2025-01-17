@@ -17,7 +17,7 @@ export default function StartPage() {
           </section>
           <span className='text-2xl font-light'>o</span>
           <Link
-            href='/login'
+            href='/signup'
             className='w-full'
           >
             <Button
