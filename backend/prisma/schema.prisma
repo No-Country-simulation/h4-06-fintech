@@ -20,23 +20,15 @@ enum CurrencyType {
 }
 
 model User {
-  id       String @id @unique @default(cuid())
-  // name     String? @unique
-  email    String @unique
-  password String
-  // age                     Int?
-  // educationLevel          String?
-  // levelKnowledgeFinancial String?
-  // riskPreferences         String?
-  // isActive                Boolean @default(true)
-  // target                  Target[]
-  // financialRadiography    FinancialRadiography[]
-  // investmentPortfolio     InvestmentPortfolio[]
-  // comment                 Comment[]
-  // wallet                  wallet[]
-  // support                 Support[]
-  // wallet                  wallet[]
-  // Support                 Support[]
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  password  String
+  avatarUrl String?
+  role      String?   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Target {
