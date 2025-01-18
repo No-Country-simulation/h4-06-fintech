@@ -1,14 +1,29 @@
+-- CreateEnum
+CREATE TYPE "TransactionType" AS ENUM ('DEPOSIT', 'WITHDRAWAL', 'TRANSFER');
+
+-- CreateEnum
+CREATE TYPE "CurrencyType" AS ENUM ('PESOS', 'DOLLARS');
+
+-- CreateEnum
+CREATE TYPE "FinancialGoal" AS ENUM ('SAVINGS', 'INVESTMENT', 'RETIREMENT', 'EDUCATION', 'EMERGENCY_FUND', 'PASSIVE_INCOME', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "InvestmentHorizon" AS ENUM ('SHORT_TERM', 'MEDIUM_TERM', 'LONG_TERM');
+
+-- CreateEnum
+CREATE TYPE "KnowledgeLevel" AS ENUM ('BASIC', 'INTERMEDIATE', 'ADVANCED');
+
+-- CreateEnum
+CREATE TYPE "RiskTolerance" AS ENUM ('CONSERVATIVE', 'MODERATE', 'AGGRESSIVE');
+
+-- CreateEnum
+CREATE TYPE "ReactionToLoss" AS ENUM ('WITHDRAW_IMMEDIATELY', 'WAIT_RECOVERY', 'INVEST_MORE');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "age" INTEGER NOT NULL,
-    "educationLevel" TEXT NOT NULL,
-    "levelKnowledgeFinancial" TEXT NOT NULL,
-    "riskPreferences" TEXT NOT NULL,
-    "isActive" BOOLEAN NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -42,8 +57,8 @@ CREATE TABLE "FinancialRadiography" (
 -- CreateTable
 CREATE TABLE "InvestmentPortfolio" (
     "id" TEXT NOT NULL,
-    "profileRisk" TEXT NOT NULL,
-    "performanceCurrent" TEXT NOT NULL,
+    "profileRisk" INTEGER NOT NULL,
+    "performanceCurrent" DOUBLE PRECISION NOT NULL,
     "coin" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
 
@@ -54,10 +69,12 @@ CREATE TABLE "InvestmentPortfolio" (
 CREATE TABLE "FinancialInstrument" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "typw" TEXT NOT NULL,
-    "performance" TEXT NOT NULL,
-    "levelRisk" TEXT NOT NULL,
-    "deadline" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
+    "performance" DOUBLE PRECISION NOT NULL,
+    "levelRisk" INTEGER NOT NULL,
+    "deadline" INTEGER NOT NULL,
+    "currency" "CurrencyType" NOT NULL,
 
     CONSTRAINT "FinancialInstrument_pkey" PRIMARY KEY ("id")
 );
@@ -110,12 +127,25 @@ CREATE TABLE "wallet" (
 );
 
 -- CreateTable
+CREATE TABLE "WalletTransaction" (
+    "id" TEXT NOT NULL,
+    "walletId" TEXT NOT NULL,
+    "type" "TransactionType" NOT NULL,
+    "amount" DOUBLE PRECISION NOT NULL,
+    "currency" "CurrencyType" NOT NULL,
+    "description" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "WalletTransaction_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Administrador" (
     "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "rol" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
 
     CONSTRAINT "Administrador_pkey" PRIMARY KEY ("id")
 );
@@ -131,35 +161,43 @@ CREATE TABLE "Support" (
     CONSTRAINT "Support_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Profile" (
+    "id" TEXT NOT NULL,
+    "financialGoal" "FinancialGoal" NOT NULL,
+    "investmentHorizon" "InvestmentHorizon" NOT NULL,
+    "knowledgeLevel" "KnowledgeLevel" NOT NULL,
+    "riskTolerance" "RiskTolerance" NOT NULL,
+    "monthlyAllocation" DOUBLE PRECISION,
+    "specificPurpose" TEXT,
+    "instrumentsUsed" TEXT[],
+    "hasDebts" BOOLEAN NOT NULL,
+    "reactionToLoss" "ReactionToLoss" NOT NULL,
+    "userId" TEXT NOT NULL,
+
+    CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 
--- AddForeignKey
-ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "InvestmentPortfolio" ADD CONSTRAINT "InvestmentPortfolio_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- AddForeignKey
 ALTER TABLE "Investment" ADD CONSTRAINT "Investment_instrumentId_fkey" FOREIGN KEY ("instrumentId") REFERENCES "FinancialInstrument"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

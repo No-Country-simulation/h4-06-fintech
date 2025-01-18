@@ -1,12 +1,15 @@
-import { ApiProperty } from '@nestjs/swagger';
+import {ApiProperty, OmitType} from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
   IsString,
   MaxLength,
-  MinLength,
+  MinLength, ValidateNested,
 } from 'class-validator';
+import {CreateProfileDto} from "../../profile-user/dto/create-profile-user.dto";
+import {Type} from "class-transformer";
 
+export class Profile extends OmitType (CreateProfileDto, ['userId']) {}
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty({
@@ -24,4 +27,12 @@ export class CreateUserDto {
     message: 'La contraseña no puede tener más de 20 caracteres.',
   })
   password: string;
+
+  @ApiProperty({
+    type: Profile,
+    required: true
+  })
+  @ValidateNested({ each: true })
+  @Type(() => Profile)
+  profile: Profile;
 }
