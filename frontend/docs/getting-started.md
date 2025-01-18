@@ -12,7 +12,7 @@
 3. Install the dependencies: npm install
 4. Run the development server: npm run dev / yarn dev / pnpm dev / bun dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:4000](http://localhost:4000) with your browser to see the result.
 
 ## Technologies stack- **Frontend Framework**: Next.js 15.1.3
 
