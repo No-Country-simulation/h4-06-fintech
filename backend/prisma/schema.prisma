@@ -21,7 +21,6 @@ enum CurrencyType {
 
 model User {
   id       String @id @unique @default(cuid())
-  // name     String? @unique
   email    String @unique
   password String
   // age                     Int?
@@ -155,6 +154,7 @@ model Support {
 
 model Profile {
   id                String            @id @default(cuid())
+  name              String?
   financialGoal     FinancialGoal
   investmentHorizon InvestmentHorizon
   knowledgeLevel    KnowledgeLevel
