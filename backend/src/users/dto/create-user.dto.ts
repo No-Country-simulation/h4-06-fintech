@@ -27,7 +27,7 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   avatarUrl?: string;
-  
+
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo de contraseña no puede estar vacío.' })
   @IsString({ message: 'La contraseña debe ser una cadena de texto.' })

@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -41,7 +45,23 @@ export class UsersService {
         ...createUserDto,
       },
     });
-    return user;
+
+    await this.prismaService.wallet.create({
+      data: {
+        userId: user.id,
+        balancePesos: 0,
+        balanceDollars: 0,
+      },
+    });
+
+    const userWithWallet = await this.prismaService.user.findUnique({
+      where: { id: user.id },
+      include: {
+        wallet: true,
+      },
+    });
+
+    return userWithWallet;
   }
 
   async findAll() {
@@ -50,12 +70,20 @@ export class UsersService {
   }
 
   async findOne(id: string) {
-    const findOne = await this.prismaService.user.findUnique({
+    const user = await this.prismaService.user.findUnique({
       where: { id },
+      include: {
+        wallet: true,
+      },
     });
 
-    return findOne;
+    if (!user) {
+      throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
+    }
+
+    return user;
   }
+
   async findByEmail(email: string) {
     return await this.prismaService.user.findUnique({
       where: {
