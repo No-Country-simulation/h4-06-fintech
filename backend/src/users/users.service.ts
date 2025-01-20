@@ -1,9 +1,11 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { LoginMailsService } from '../login-mails/login-mails.service';
 
 export const roundOfHashing = 10;
 
@@ -12,6 +14,7 @@ export class UsersService {
   constructor(
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
+    private jwtService: JwtService,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -34,13 +37,17 @@ export class UsersService {
 
     const { email } = createUserDto;
     createUserDto.password = hashedPassword;
-    await this.loginMailService.sendUserConfirmationEmail(email);
 
     const user = await this.prismaService.user.create({
       data: {
         ...createUserDto,
       },
     });
+
+    const token = this.jwtService.sign({ id: user.id });
+    const link = `${process.env.BASE_URL}/users/confirm/${token}`;
+
+    await this.loginMailService.sendUserConfirmationEmail(email, link);
     return user;
   }
 
@@ -86,5 +93,19 @@ export class UsersService {
       message: 'User deleted successfully',
       data: remove,
     };
+  }
+
+  async confirmEmail(token: string) {
+    const payload: JwtPayload = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: payload.id,
+      },
+    });
+
+    return user;
   }
 }

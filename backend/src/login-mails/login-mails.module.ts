@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { LoginMailsService } from './login-mails.service';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { ConfigService } from '@nestjs/config';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { join } from 'path';
+import { LoginMailsService } from './login-mails.service';
 
 @Module({
   imports: [

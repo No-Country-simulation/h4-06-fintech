@@ -1,10 +1,18 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nestjs/common';
-import { UsersService } from './users.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {ApiBearerAuth, ApiTags} from "@nestjs/swagger";
-import {JwtAuthGuard} from "../auth/jwt-auth.guard";
-import {AuthGuard} from "@nestjs/passport";
+import { UsersService } from './users.service';
 
 @Controller('users')
 @ApiTags('Users')
@@ -42,5 +50,10 @@ export class UsersController {
   @ApiBearerAuth()
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
+  }
+
+  @Get('confirm/:token')
+  confirm(@Param('token') token: string) {
+    return this.usersService.confirmEmail(token);
   }
 }
