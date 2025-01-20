@@ -70,6 +70,8 @@ export default {
         'poppins-regular': ['var(--font-poppins-regular)'],
         'poppins-medium': ['var(--font-poppins-medium)'],
         'poppins-semibold': ['var(--font-poppins-semibold)'],
+        'poppins-bold': ['var(--font-poppins-bold)'],
+        'poppins-light': ['var(--font-poppins-light)'],
       },
     },
   },
