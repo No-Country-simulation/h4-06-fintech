@@ -20,7 +20,7 @@ enum CurrencyType {
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id       String   @id @unique @default(cuid())
   email     String   @unique
   firstName String?
   lastName  String?
@@ -28,6 +28,7 @@ model User {
   avatarUrl String?
   role      String?   @default("USER")
   wallet                  wallet[]
+  profile  Profile?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -147,17 +148,18 @@ model Support {
 }
 
 model Profile {
-  id                String            @id @default(cuid())
-  financialGoal     FinancialGoal
-  investmentHorizon InvestmentHorizon
-  knowledgeLevel    KnowledgeLevel
-  riskTolerance     RiskTolerance
+  id                String             @id @default(cuid())
+  financialGoal     FinancialGoal?
+  investmentHorizon InvestmentHorizon?
+  knowledgeLevel    KnowledgeLevel?
+  riskTolerance     RiskTolerance?
   monthlyAllocation Float?
   specificPurpose   String?
   instrumentsUsed   String[]
-  hasDebts          Boolean
-  reactionToLoss    ReactionToLoss
-  userId            String            @unique
+  hasDebts          Boolean?
+  reactionToLoss    ReactionToLoss?
+  userId            String             @unique
+  User              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum FinancialGoal {
