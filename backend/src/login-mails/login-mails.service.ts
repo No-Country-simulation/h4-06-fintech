@@ -7,6 +7,7 @@ export class LoginMailsService {
 
   async sendUserConfirmationEmail(email: string, link: string) {
     await this.mailerService.sendMail({
+      from: 'zapatacamilo86@gmail.com',
       to: email,
       subject: 'User Confirmation',
       template: './welcome',
