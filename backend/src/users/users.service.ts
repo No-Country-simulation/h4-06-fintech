@@ -14,18 +14,15 @@ export class UsersService {
     private loginMailService: LoginMailsService,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
-    const existingUser = await this.prismaService.user.findFirst({
-      where: {
-        email: createUserDto.email,
-      },
+  async findByEmail(email: string) {
+    const user = await this.prismaService.user.findFirst({
+      where: { email },
     });
+    return user;
+  }
 
-    if (existingUser) {
-      throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
+  async create(createUserDto: CreateUserDto) {
+    await this.findByEmail(createUserDto.email);
     try {
       const hashedPassword = await bcrypt.hash(
           createUserDto.password,
@@ -45,7 +42,22 @@ export class UsersService {
           }
         },
       });
-      return user;
+      await this.prismaService.wallet.create({
+        data: {
+          userId: user.id,
+          balancePesos: 0,
+          balanceDollars: 0,
+        },
+      });
+
+      const userWithWallet = await this.prismaService.user.findUnique({
+        where: { id: user.id },
+        include: {
+          wallet: true,
+        },
+      });
+
+      return userWithWallet;
     } catch (error) {
       new HttpException(
             'Internal server error',

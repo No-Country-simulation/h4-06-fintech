@@ -33,6 +33,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       lastName: profile.name.familyName,
       avatarUrl: profile.photos[0].value,
       password: '',
+      profile: profile.profile
     });
     return user; // Esto se retorna automáticamente al contexto de la sesión
   }

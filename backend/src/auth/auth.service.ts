@@ -54,6 +54,7 @@ export class AuthService {
           lastName: googleUser.lastName,
           password: hashedPassword,
           avatarUrl: googleUser.avatarUrl,
+          profile: googleUser.profile
         });
       }
 
