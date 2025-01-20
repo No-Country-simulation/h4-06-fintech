@@ -21,7 +21,7 @@ export async function HeaderNav() {
           <Link href={'/login'}>
             <Button>Iniciar sesión</Button>
           </Link>
-          <Link href={'/signup'}>
+          <Link href={'/start'}>
             <Button variant={'outline'}>Crear cuenta</Button>
           </Link>
         </>

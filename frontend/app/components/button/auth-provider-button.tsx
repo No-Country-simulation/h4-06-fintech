@@ -10,18 +10,22 @@ export function AuthProviderButton({ provider }: Props) {
   const iconPath =
     provider === 'Google' ? '/svg/google-icon.svg' : '/svg/apple-icon.svg';
 
-  const redirectLink = provider === 'Google' ? '/google' : '/apple';
+  const redirectLink = provider === 'Google' ? '/auth/google/login' : '/apple';
 
   return (
     <a href={envs.BACKEND_URL + redirectLink}>
-      <Button className='relative w-full bg-background text-foreground hover:bg-input'>
+      <Button
+        variant={'outline'}
+        className='relative flex h-auto w-full gap-4 hover:bg-input'
+        size='full'
+      >
         <Image
           src={iconPath}
           alt={`${provider} icon`}
           width={20}
           height={20}
         />
-        {provider}
+        Continuar con {provider}
       </Button>
     </a>
   );

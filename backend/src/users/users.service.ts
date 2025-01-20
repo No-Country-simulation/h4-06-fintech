@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
@@ -44,11 +48,27 @@ export class UsersService {
       },
     });
 
+    // Generate token with user id and send it to email template to confirm account
     const token = this.jwtService.sign({ id: user.id });
     const link = `${process.env.BASE_URL}/users/confirm/${token}`;
-
     await this.loginMailService.sendUserConfirmationEmail(email, link);
-    return user;
+
+    await this.prismaService.wallet.create({
+      data: {
+        userId: user.id,
+        balancePesos: 0,
+        balanceDollars: 0,
+      },
+    });
+
+    const userWithWallet = await this.prismaService.user.findUnique({
+      where: { id: user.id },
+      include: {
+        wallet: true,
+      },
+    });
+
+    return userWithWallet;
   }
 
   async findAll() {
@@ -57,11 +77,26 @@ export class UsersService {
   }
 
   async findOne(id: string) {
-    const findOne = await this.prismaService.user.findUnique({
+    const user = await this.prismaService.user.findUnique({
       where: { id },
+      include: {
+        wallet: true,
+      },
     });
 
-    return findOne;
+    if (!user) {
+      throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
+    }
+
+    return user;
+  }
+
+  async findByEmail(email: string) {
+    return await this.prismaService.user.findUnique({
+      where: {
+        email,
+      },
+    });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {

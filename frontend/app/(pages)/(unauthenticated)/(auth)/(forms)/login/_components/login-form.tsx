@@ -31,32 +31,31 @@ export default function LoginForm() {
   }, [state, router]);
 
   return (
-    <div className='flex flex-col gap-4'>
-      <form
-        action={action}
-        className='flex flex-col gap-4'
-      >
-        <Input
-          data-pw='email'
-          label='Correo'
-          name='email'
-          error={state.message?.email?.[0]}
-          placeholder='correo@correo.com'
-        />
-        <Input
-          data-pw='password'
-          label='Contraseña'
-          name='password'
-          type='password'
-          error={state.message?.password?.[0]}
-          placeholder='********'
-        />
-        <SubmitButton
-          data-pw='submit-button'
-          label='Iniciar sesión'
-          pending={pending}
-        />
-      </form>
-    </div>
+    <form
+      action={action}
+      className='flex w-full flex-col gap-4'
+    >
+      <Input
+        data-pw='email'
+        label='Correo'
+        name='email'
+        error={state.message?.email?.[0]}
+        placeholder='correo@correo.com'
+      />
+      <Input
+        data-pw='password'
+        label='Contraseña'
+        name='password'
+        type='password'
+        error={state.message?.password?.[0]}
+        placeholder='********'
+      />
+      <SubmitButton
+        data-pw='submit-button'
+        label='Iniciar sesión'
+        className='mt-10'
+        pending={pending}
+      />
+    </form>
   );
 }

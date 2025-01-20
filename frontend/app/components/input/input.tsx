@@ -8,10 +8,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ label, error, name, ...props }: InputProps) {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-1'>
       <Label
         htmlFor={name}
-        className='text-sm font-medium text-gray-700'
+        className='pl-4 text-sm font-light'
       >
         {label}
         {props.required && <span className='ml-1 text-red-500'>*</span>}
@@ -21,7 +21,7 @@ export default function Input({ label, error, name, ...props }: InputProps) {
         name={name}
         aria-invalid={!!error}
         aria-describedby={name || undefined}
-        className={`w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-gray-300'} ${props.className || ''} `.trim()}
+        className={`w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${props.className || ''} `.trim()}
         {...props}
       />
 

@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -15,6 +16,17 @@ export class CreateUserDto {
   @IsString({ message: 'El correo electrónico debe ser una cadena de texto.' })
   @IsEmail({}, { message: 'Debe proporcionar un correo electrónico válido.' })
   email: string;
+  @IsString()
+  @IsOptional()
+  firstName?: string;
+
+  @IsString()
+  @IsOptional()
+  lastName?: string;
+
+  @IsString()
+  @IsOptional()
+  avatarUrl?: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo de contraseña no puede estar vacío.' })
