@@ -2,7 +2,6 @@
 
 import { backend } from '@api';
 import zod from 'zod';
-import { setAccessToken } from '../../../lib/setAccessToken';
 
 const signUpSchema = zod
   .object({
@@ -70,12 +69,6 @@ export async function signUpAction(
       password: result.data.password,
     });
 
-    const { accessToken } = await backend.authApi.loginWithPassword({
-      email: result.data.email,
-      password: result.data.password,
-    });
-
-    await setAccessToken(accessToken);
     return { success: true };
   } catch (e) {
     const errorMessage =
