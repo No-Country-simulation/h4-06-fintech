@@ -6,9 +6,11 @@ import {
   Param,
   Patch,
   Post,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -53,7 +55,18 @@ export class UsersController {
   }
 
   @Get('confirm/:token')
-  confirm(@Param('token') token: string) {
-    return this.usersService.confirmEmail(token);
+  async confirm(
+    @Param('token') token: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const user = await this.usersService.confirmEmail(token);
+
+    // Generate access token and set it to response
+    const accessToken = this.usersService.generateAccessToken(user);
+
+    res.cookie('access_token', accessToken);
+
+    // Redirect to the frontend onboarding page with the access token in the header
+    res.redirect(307, `${process.env.FRONTEND_URL}/onboarding`);
   }
 }

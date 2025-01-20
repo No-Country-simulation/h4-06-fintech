@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
 import { LoginMailsService } from '../login-mails/login-mails.service';
@@ -141,6 +142,31 @@ export class UsersService {
       },
     });
 
+    if (!user) {
+      throw new BadRequestException('Este usuario no existe');
+    }
+
+    if (user.isEmailVerified) {
+      throw new BadRequestException('Esta cuenta ya esta verificada');
+    }
+
+    await this.prismaService.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        isEmailVerified: true,
+      },
+    });
+
     return user;
+  }
+
+  generateAccessToken(user: User): string {
+    const payload = { id: user.id };
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_SECRET,
+      expiresIn: '10m',
+    });
   }
 }
