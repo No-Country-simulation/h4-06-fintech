@@ -1,18 +1,29 @@
 import { DevIsland } from '@/components/dev-island/dev-island';
 import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import OfflineAlert from '../components//offlineMessage/OfflineAlert';
 import '../globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const poppinsRegular = Poppins({
   subsets: ['latin'],
+  weight: '400',
+  variable: '--font-poppins-regular',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const poppinsMedium = Poppins({
   subsets: ['latin'],
+  weight: '500',
+  variable: '--font-poppins-medium',
+  display: 'swap',
+});
+
+const poppinsSemiBold = Poppins({
+  subsets: ['latin'],
+  weight: '600',
+  variable: '--font-poppins-semibold',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppinsRegular.variable} ${poppinsMedium.variable} ${poppinsSemiBold.variable} antialiased`}
       >
         {children}
         <Toaster />

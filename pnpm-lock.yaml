@@ -53,6 +53,9 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      helmet:
+        specifier: ^8.0.0
+        version: 8.0.0
       nodemailer:
         specifier: ^6.9.16
         version: 6.9.16
@@ -3390,6 +3393,10 @@ packages:
   he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+
+  helmet@8.0.0:
+    resolution: {integrity: sha512-VyusHLEIIO5mjQPUI1wpOAEu+wl6Q0998jzTxqUYGE45xCIcAxy3MsbEK/yyJUJ3ADeMoB6MornPH6GMWAf+Pw==}
+    engines: {node: '>=18.0.0'}
 
   hexoid@2.0.0:
     resolution: {integrity: sha512-qlspKUK7IlSQv2o+5I7yhUd7TxlOG2Vr5LTa3ve2XSNVKAL/n/u/7KLvKmFNimomDIKvZFXWHv0T12mv7rT8Aw==}
@@ -9758,6 +9765,8 @@ snapshots:
 
   he@1.2.0:
     optional: true
+
+  helmet@8.0.0: {}
 
   hexoid@2.0.0: {}
 

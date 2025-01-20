@@ -66,6 +66,11 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontFamily: {
+        'poppins-regular': ['var(--font-poppins-regular)'],
+        'poppins-medium': ['var(--font-poppins-medium)'],
+        'poppins-semibold': ['var(--font-poppins-semibold)'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
