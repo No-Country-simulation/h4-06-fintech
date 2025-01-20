@@ -19,107 +19,147 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const existingUser = await this.prismaService.user.findFirst({
-      where: {
-        email: createUserDto.email,
-      },
-    });
+    try {
+      const existingUser = await this.prismaService.user.findFirst({
+        where: {
+          email: createUserDto.email,
+        },
+      });
 
-    if (existingUser) {
-      throw new BadRequestException(
-        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+      if (existingUser) {
+        throw new BadRequestException(
+          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+        );
+      }
+
+      const hashedPassword = await bcrypt.hash(
+        createUserDto.password,
+        roundOfHashing,
       );
+
+      const { email } = createUserDto;
+      createUserDto.password = hashedPassword;
+
+      // Enviar correo
+      try {
+        await this.loginMailService.sendUserConfirmationEmail(email);
+      } catch (mailError) {
+        console.error('Error enviando el correo:', mailError);
+        throw new BadRequestException('No se pudo enviar el correo de confirmación.');
+      }
+
+      const user = await this.prismaService.user.create({
+        data: {
+          ...createUserDto,
+        },
+      });
+
+      await this.prismaService.wallet.create({
+        data: {
+          userId: user.id,
+          balancePesos: 0,
+          balanceDollars: 0,
+        },
+      });
+
+      const userWithWallet = await this.prismaService.user.findUnique({
+        where: { id: user.id },
+        include: {
+          wallet: true,
+        },
+      });
+
+      return userWithWallet;
+    } catch (error) {
+      console.error('Error al crear el usuario:', error);
+      throw new BadRequestException('Error al crear el usuario: ' + error.message);
     }
-
-    const hashedPassword = await bcrypt.hash(
-      createUserDto.password,
-      roundOfHashing,
-    );
-
-    const { email } = createUserDto;
-    createUserDto.password = hashedPassword;
-    await this.loginMailService.sendUserConfirmationEmail(email);
-
-    const user = await this.prismaService.user.create({
-      data: {
-        ...createUserDto,
-      },
-    });
-
-    await this.prismaService.wallet.create({
-      data: {
-        userId: user.id,
-        balancePesos: 0,
-        balanceDollars: 0,
-      },
-    });
-
-    const userWithWallet = await this.prismaService.user.findUnique({
-      where: { id: user.id },
-      include: {
-        wallet: true,
-      },
-    });
-
-    return userWithWallet;
   }
 
   async findAll() {
-    const findAll = await this.prismaService.user.findMany();
-    return findAll;
+    try {
+      return await this.prismaService.user.findMany();
+    } catch (error) {
+      console.error('Error al obtener usuarios:', error);
+      throw new BadRequestException('Error al obtener usuarios: ' + error.message);
+    }
   }
 
   async findOne(id: string) {
-    const user = await this.prismaService.user.findUnique({
-      where: { id },
-      include: {
-        wallet: true,
-      },
-    });
+    try {
+      const user = await this.prismaService.user.findUnique({
+        where: { id },
+        include: {
+          wallet: true,
+        },
+      });
 
-    if (!user) {
-      throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
+      if (!user) {
+        throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
+      }
+
+      return user;
+    } catch (error) {
+      console.error('Error al obtener el usuario:', error);
+      throw new NotFoundException('Error al obtener el usuario: ' + error.message);
     }
-
-    return user;
   }
 
   async findByEmail(email: string) {
-    return await this.prismaService.user.findUnique({
-      where: {
-        email,
-      },
-    });
+    try {
+      return await this.prismaService.user.findUnique({
+        where: {
+          email,
+        },
+      });
+    } catch (error) {
+      console.error('Error al buscar usuario por email:', error);
+      throw new BadRequestException('Error al buscar usuario por email: ' + error.message);
+    }
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    if (updateUserDto.password) {
-      updateUserDto.password = await bcrypt.hash(
-        updateUserDto.password,
-        roundOfHashing,
+    try {
+      if (updateUserDto.password) {
+        updateUserDto.password = await bcrypt.hash(
+          updateUserDto.password,
+          roundOfHashing,
+        );
+      }
+
+      const update = await this.prismaService.user.update({
+        where: { id },
+        data: {
+          ...updateUserDto,
+        },
+      });
+
+      return {
+        message: 'User updated successfully',
+        data: update,
+      };
+    } catch (error) {
+      console.error('Error al actualizar el usuario:', error);
+      throw new NotFoundException(
+        `Error al actualizar el usuario con ID ${id}: ${error.message}`,
       );
     }
-
-    const update = await this.prismaService.user.update({
-      where: { id },
-      data: {
-        ...updateUserDto,
-      },
-    });
-
-    return {
-      message: 'User updated successfully',
-      data: update,
-    };
   }
 
   async remove(id: string) {
-    const remove = await this.prismaService.user.delete({
-      where: { id },
-    });
-    return {
-      message: 'User deleted successfully',
-      data: remove,
-    };
+    try {
+      const remove = await this.prismaService.user.delete({
+        where: { id },
+      });
+      return {
+        message: 'User deleted successfully',
+        data: remove,
+      };
+    } catch (error) {
+      console.error('Error al eliminar el usuario:', error);
+      throw new NotFoundException(
+        `Error al eliminar el usuario con ID ${id}: ${error.message}`,
+      );
+    }
   }
 }
