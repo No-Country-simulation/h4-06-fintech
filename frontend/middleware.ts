@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-const PUBLIC_ROUTES = ['/login', '/signup', '/'];
+const PUBLIC_ROUTES = ['/login', '/signup', '/start', '/'];
 
 /**
  * Middleware to check authentication based on a token stored in cookies.

@@ -13,7 +13,7 @@ export function Hero() {
             objetivos y descubrir un nuevo mundo de posibilidades financieras.
           </p>
           <Link
-            href={'/signup'}
+            href={'/start'}
             className='w-fit'
           >
             <Button>Empezar ahora</Button>
