@@ -70,7 +70,8 @@ export class UsersService {
     try {
       const findAll = await this.prismaService.user.findMany({
         include: {
-          profile: true
+          profile: true,
+          wallet: true,
         }
       });
       return findAll;
@@ -87,7 +88,8 @@ export class UsersService {
       const findOne = await this.prismaService.user.findUnique({
         where: { id },
         include: {
-          profile: true
+          profile: true,
+          wallet: true,
         }
       });
       if (!findOne) {
