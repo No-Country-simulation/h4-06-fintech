@@ -51,7 +51,7 @@ export default function FinancialTargetForm() {
         name='amount'
         type='number'
         error={state.message?.amount?.[0]}
-        placeholder='9999'
+        placeholder='$9999'
       />
       <Input
         data-pw='months'
