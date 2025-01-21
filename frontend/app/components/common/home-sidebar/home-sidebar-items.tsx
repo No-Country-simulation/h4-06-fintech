@@ -1,15 +1,9 @@
-import {
-  ChartAreaIcon,
-  GanttChartIcon,
-  Home,
-  SettingsIcon,
-  Wallet2Icon,
-} from 'lucide-react';
+import { ChartAreaIcon, GanttChartIcon, Home, Wallet2Icon } from 'lucide-react';
 
 export const items = [
   {
     title: 'Inicio',
-    url: '#',
+    url: '/home',
     icon: Home,
   },
   {
@@ -26,10 +20,5 @@ export const items = [
     title: 'Gestion de inversiones',
     url: '#',
     icon: ChartAreaIcon,
-  },
-  {
-    title: 'Configuracion',
-    url: '#',
-    icon: SettingsIcon,
   },
 ];

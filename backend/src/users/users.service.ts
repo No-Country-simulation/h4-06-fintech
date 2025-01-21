@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import {BadRequestException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -18,42 +14,34 @@ export class UsersService {
     private loginMailService: LoginMailsService,
   ) {}
 
+  async findByEmail(email: string) {
+    const user = await this.prismaService.user.findFirst({
+      where: { email },
+    });
+    return user;
+  }
+
   async create(createUserDto: CreateUserDto) {
+    await this.findByEmail(createUserDto.email);
     try {
-      const existingUser = await this.prismaService.user.findFirst({
-        where: {
-          email: createUserDto.email,
-        },
-      });
-
-      if (existingUser) {
-        throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-        );
-      }
-
       const hashedPassword = await bcrypt.hash(
-        createUserDto.password,
-        roundOfHashing,
+          createUserDto.password,
+          roundOfHashing,
       );
 
-      const { email } = createUserDto;
-      createUserDto.password = hashedPassword;
-
-      // Enviar correo
-      try {
-        await this.loginMailService.sendUserConfirmationEmail(email);
-      } catch (mailError) {
-        console.error('Error enviando el correo:', mailError);
-        throw new BadRequestException('No se pudo enviar el correo de confirmación.');
-      }
+      const { email, profile, ...rest } = createUserDto;
+      rest.password = hashedPassword;
+      await this.loginMailService.sendUserConfirmationEmail(email);
 
       const user = await this.prismaService.user.create({
         data: {
-          ...createUserDto,
+          ...rest,
+          email,
+          profile: {
+            create: profile
+          }
         },
       });
-
       await this.prismaService.wallet.create({
         data: {
           userId: user.id,
@@ -71,66 +59,76 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
-      console.error('Error al crear el usuario:', error);
-      throw new BadRequestException('Error al crear el usuario: ' + error.message);
+      new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR
+      );
     }
   }
 
   async findAll() {
     try {
-      return await this.prismaService.user.findMany();
+      const findAll = await this.prismaService.user.findMany({
+        include: {
+          profile: true,
+          wallet: true,
+        }
+      });
+      return findAll;
     } catch (error) {
-      console.error('Error al obtener usuarios:', error);
-      throw new BadRequestException('Error al obtener usuarios: ' + error.message);
+      throw new HttpException(
+          'Internal server error',
+          HttpStatus.INTERNAL_SERVER_ERROR
+      );
     }
   }
 
   async findOne(id: string) {
     try {
-      const user = await this.prismaService.user.findUnique({
+      const findOne = await this.prismaService.user.findUnique({
         where: { id },
         include: {
+          profile: true,
           wallet: true,
-        },
+        }
       });
-
-      if (!user) {
-        throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
+      if (!findOne) {
+        throw new HttpException(
+            'User not found',
+            HttpStatus.NOT_FOUND
+        );
       }
-
-      return user;
+      return findOne;
     } catch (error) {
-      console.error('Error al obtener el usuario:', error);
-      throw new NotFoundException('Error al obtener el usuario: ' + error.message);
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR
+        );
     }
-  }
 
-  async findByEmail(email: string) {
-    try {
-      return await this.prismaService.user.findUnique({
-        where: {
-          email,
-        },
-      });
-    } catch (error) {
-      console.error('Error al buscar usuario por email:', error);
-      throw new BadRequestException('Error al buscar usuario por email: ' + error.message);
-    }
+
+
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
+    await this.findOne(id);
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
-          updateUserDto.password,
-          roundOfHashing,
+            updateUserDto.password,
+            roundOfHashing,
         );
       }
+
+      const { profile, ...rest } = updateUserDto;
 
       const update = await this.prismaService.user.update({
         where: { id },
         data: {
-          ...updateUserDto,
+          ...rest,
+          profile: {
+            create: profile
+          }
         },
       });
 
@@ -139,14 +137,15 @@ export class UsersService {
         data: update,
       };
     } catch (error) {
-      console.error('Error al actualizar el usuario:', error);
-      throw new NotFoundException(
-        `Error al actualizar el usuario con ID ${id}: ${error.message}`,
-      );
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR,
+        );
     }
   }
 
   async remove(id: string) {
+    await this.findOne(id);
     try {
       const remove = await this.prismaService.user.delete({
         where: { id },
@@ -156,10 +155,10 @@ export class UsersService {
         data: remove,
       };
     } catch (error) {
-      console.error('Error al eliminar el usuario:', error);
-      throw new NotFoundException(
-        `Error al eliminar el usuario con ID ${id}: ${error.message}`,
-      );
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR,
+        );
     }
   }
 }

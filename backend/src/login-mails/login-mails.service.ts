@@ -6,8 +6,9 @@ export class LoginMailsService {
   constructor(private mailerService: MailerService) {}
 
   async sendUserConfirmationEmail(email: string) {
-    const url = 'https://www.youtube.com/watch?v=YjzWhuCxwek';
+    const url = 'http://localhost:3000/api#/Users/UsersController_create';
     await this.mailerService.sendMail({
+      from: 'zapatacamilo86@gmail.com',
       to: email,
       subject: 'User Confirmation',
       template: './welcome',
