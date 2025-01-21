@@ -18,19 +18,25 @@ enum CurrencyType {
   PESOS
   DOLLARS
 }
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
 
 model User {
-  id        String   @id @unique @default(cuid())
-  email     String   @unique
-  firstName String?
-  lastName  String?
-  password  String
-  avatarUrl String?
-  role      String?  @default("USER")
-  wallet    wallet[]
-  profile   Profile?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                     String                 @id @unique @default(cuid())
+  email                  String                 @unique
+  firstName              String?
+  lastName               String?
+  password               String
+  avatarUrl              String?
+  role                   UserRole?                @default(USER)
+  wallet                 wallet[]
+  financialRadiographies FinancialRadiography[]
+  profile                Profile?
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
 }
 
 model Target {
@@ -45,14 +51,14 @@ model Target {
 }
 
 model FinancialRadiography {
-  id              String @id @default(cuid())
-  incomeMonthly   Int
-  expensesMonthly Int
-  debts           Int
-  savings         Int
-  capitalFinanced String
+  id              String  @id @default(cuid())
+  monthlyIncome   Decimal @db.Decimal(10, 2) // Ingresos mensuales
+  monthlyExpenses Decimal @db.Decimal(10, 2) // Gastos mensuales
+  savingCapacity  Decimal @db.Decimal(10, 2) // Capacidad de ahorro
+  debts           Decimal @db.Decimal(10, 2) // Deudas
+  savings         Decimal @db.Decimal(10, 2) // Ahorros
   userId          String
-  // user            User   @relation(fields: [userId], references: [id])
+  user            User    @relation(fields: [userId], references: [id])
 }
 
 model InvestmentPortfolio {
@@ -134,7 +140,7 @@ model Administrador {
   id       String @id @default(cuid())
   email    String @unique
   password String
-  rol      String
+  role     UserRole @default(ADMIN)
   name     String
 }
 
@@ -149,15 +155,15 @@ model Support {
 
 model Profile {
   id                String             @id @default(cuid())
-  financialGoal     FinancialGoal?
-  investmentHorizon InvestmentHorizon?
-  knowledgeLevel    KnowledgeLevel?
-  riskTolerance     RiskTolerance?
-  monthlyAllocation Float?
-  specificPurpose   String?
-  instrumentsUsed   String[]
-  hasDebts          Boolean?
-  reactionToLoss    ReactionToLoss?
+  financialGoal     FinancialGoal? //meta financiera
+  investmentHorizon InvestmentHorizon? //horizonte de inversión
+  knowledgeLevel    KnowledgeLevel? //nivel de conocimiento
+  riskTolerance     RiskTolerance? //tolerancia al riesgo
+  monthlyAllocation Float? //asignación mensual
+  specificPurpose   String? //propósito específico
+  instrumentsUsed   String[] //instrumentos utilizados
+  hasDebts          Boolean? //tiene deudas
+  reactionToLoss    ReactionToLoss? //reacción a la pérdida
   userId            String             @unique
   User              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
