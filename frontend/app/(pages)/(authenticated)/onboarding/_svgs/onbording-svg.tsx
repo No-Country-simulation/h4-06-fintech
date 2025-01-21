@@ -72,3 +72,93 @@ export function OnbordingSvg() {
 		</svg>
 	);
 }
+
+export function GoBackSvg() {
+	return (
+		<svg
+			width="45"
+			height="45"
+			viewBox="0 0 45 45"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<title>go-back</title>
+			<g clipPath="url(#clip0_182_912)">
+				<g filter="url(#filter0_d_182_912)">
+					<path
+						d="M2.34375 13.5938C2.34375 7.38055 7.38055 2.34375 13.5938 2.34375L31.4062 2.34375C37.6195 2.34375 42.6563 7.38055 42.6563 13.5937L42.6563 31.4062C42.6563 37.6195 37.6195 42.6562 31.4063 42.6562L13.5938 42.6562C7.38055 42.6562 2.34375 37.6195 2.34375 31.4062L2.34375 13.5938Z"
+						fill="#FAFAFA"
+					/>
+					<path
+						d="M2.84375 13.5938C2.84375 7.65669 7.65669 2.84375 13.5938 2.84375L31.4063 2.84375C37.3433 2.84375 42.1563 7.65669 42.1563 13.5937L42.1563 31.4062C42.1563 37.3433 37.3433 42.1562 31.4063 42.1562L13.5938 42.1562C7.65669 42.1562 2.84375 37.3433 2.84375 31.4062L2.84375 13.5938Z"
+						stroke="#060404"
+						strokeOpacity="0.3"
+					/>
+					<path
+						fillRule="evenodd"
+						clipRule="evenodd"
+						d="M37.3569 22.7178C37.3569 23.4944 36.7273 24.124 35.9507 24.124L8.76318 24.124C7.98653 24.124 7.35693 23.4944 7.35693 22.7178C7.35693 21.9411 7.98653 21.3115 8.76318 21.3115L35.9507 21.3115C36.7273 21.3115 37.3569 21.9411 37.3569 22.7178Z"
+						fill="#060404"
+						stroke="#060404"
+						strokeOpacity="0.3"
+						strokeLinecap="round"
+					/>
+					<path
+						fillRule="evenodd"
+						clipRule="evenodd"
+						d="M18.1951 12.3484C18.7442 12.8976 18.7442 13.788 18.1951 14.3371L10.0419 22.4903L18.1951 30.6435C18.7442 31.1927 18.7442 32.083 18.1951 32.6322C17.6459 33.1814 16.7555 33.1814 16.2063 32.6322L7.98281 24.4087C6.92331 23.3492 6.92331 21.6314 7.98282 20.5719L16.2063 12.3484C16.7555 11.7992 17.6459 11.7992 18.1951 12.3484Z"
+						fill="#060404"
+						stroke="#060404"
+						strokeOpacity="0.3"
+						strokeLinecap="round"
+					/>
+				</g>
+			</g>
+			<defs>
+				<filter
+					id="filter0_d_182_912"
+					x="-1.65625"
+					y="2.34375"
+					width="48.3125"
+					height="48.3125"
+					filterUnits="userSpaceOnUse"
+					colorInterpolationFilters="sRGB"
+				>
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
+					<feColorMatrix
+						in="SourceAlpha"
+						type="matrix"
+						values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+						result="hardAlpha"
+					/>
+					<feOffset dy="4" />
+					<feGaussianBlur stdDeviation="2" />
+					<feComposite in2="hardAlpha" operator="out" />
+					<feColorMatrix
+						type="matrix"
+						values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+					/>
+					<feBlend
+						mode="normal"
+						in2="BackgroundImageFix"
+						result="effect1_dropShadow_182_912"
+					/>
+					<feBlend
+						mode="normal"
+						in="SourceGraphic"
+						in2="effect1_dropShadow_182_912"
+						result="shape"
+					/>
+				</filter>
+				<clipPath id="clip0_182_912">
+					<rect
+						width="45"
+						height="45"
+						fill="white"
+						transform="matrix(1 0 0 -1 0 45)"
+					/>
+				</clipPath>
+			</defs>
+		</svg>
+	);
+}

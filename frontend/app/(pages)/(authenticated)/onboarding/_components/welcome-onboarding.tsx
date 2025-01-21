@@ -1,7 +1,10 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { OnbordingSvg } from "../_svgs/onbording-svg";
+import { useRouter } from "next/navigation";
 
 export function WelcomeOnboarding() {
+	const router = useRouter();
 	return (
 		<section className="flex flex-col items-center justify-center ">
 			<h1 className="text-center text-foreground text-4xl/[3.375rem] font-poppins-semibold max-w-[1234px]">
@@ -31,7 +34,7 @@ export function WelcomeOnboarding() {
 			<p className="text-center text-foreground text-4xl/[3.375rem] font-poppins-semibold leading-relaxed">
 				¿Empezamos?
 			</p>
-			<div className="flex flex-row gap-4 w-full justify-center">
+			<div className="flex flex-row gap-x-16 w-full justify-center mt-16">
 				<Button
 					className="w-full h-[65px] max-w-[360px] rounded-lg text-2xl/9 font-poppins-medium"
 					variant={"outline"}
@@ -41,6 +44,7 @@ export function WelcomeOnboarding() {
 				<Button
 					className="w-full h-[65px] max-w-[360px] rounded-lg text-2xl/9 font-poppins-medium"
 					variant={"secondary"}
+					onClick={() => router.push("/onboarding/1")}
 				>
 					Empezar
 				</Button>
