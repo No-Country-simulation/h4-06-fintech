@@ -32,7 +32,7 @@ export default function NextButton({
 						areAllQuestionsAnswered ? "text-foreground" : "text-[#06040480]"
 					}`}
 				>
-					Ver resumen
+					Siguiente
 				</Button>
 			) : (
 				<Button
