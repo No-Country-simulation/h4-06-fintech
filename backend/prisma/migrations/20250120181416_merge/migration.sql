@@ -170,19 +170,22 @@ CREATE TABLE "Support" (
 -- CreateTable
 CREATE TABLE "Profile" (
     "id" TEXT NOT NULL,
-    "financialGoal" "FinancialGoal" NOT NULL,
-    "investmentHorizon" "InvestmentHorizon" NOT NULL,
-    "knowledgeLevel" "KnowledgeLevel" NOT NULL,
-    "riskTolerance" "RiskTolerance" NOT NULL,
+    "financialGoal" "FinancialGoal",
+    "investmentHorizon" "InvestmentHorizon",
+    "knowledgeLevel" "KnowledgeLevel",
+    "riskTolerance" "RiskTolerance",
     "monthlyAllocation" DOUBLE PRECISION,
     "specificPurpose" TEXT,
     "instrumentsUsed" TEXT[],
-    "hasDebts" BOOLEAN NOT NULL,
-    "reactionToLoss" "ReactionToLoss" NOT NULL,
+    "hasDebts" BOOLEAN,
+    "reactionToLoss" "ReactionToLoss",
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
@@ -203,4 +206,10 @@ ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KE
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

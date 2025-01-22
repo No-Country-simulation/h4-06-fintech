@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import {BadRequestException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -18,108 +14,151 @@ export class UsersService {
     private loginMailService: LoginMailsService,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
-    const existingUser = await this.prismaService.user.findFirst({
-      where: {
-        email: createUserDto.email,
-      },
+  async findByEmail(email: string) {
+    const user = await this.prismaService.user.findFirst({
+      where: { email },
     });
-
-    if (existingUser) {
-      throw new BadRequestException(
-        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
-
-    const hashedPassword = await bcrypt.hash(
-      createUserDto.password,
-      roundOfHashing,
-    );
-
-    const { email } = createUserDto;
-    createUserDto.password = hashedPassword;
-    await this.loginMailService.sendUserConfirmationEmail(email);
-
-    const user = await this.prismaService.user.create({
-      data: {
-        ...createUserDto,
-      },
-    });
-
-    await this.prismaService.wallet.create({
-      data: {
-        userId: user.id,
-        balancePesos: 0,
-        balanceDollars: 0,
-      },
-    });
-
-    const userWithWallet = await this.prismaService.user.findUnique({
-      where: { id: user.id },
-      include: {
-        wallet: true,
-      },
-    });
-
-    return userWithWallet;
-  }
-
-  async findAll() {
-    const findAll = await this.prismaService.user.findMany();
-    return findAll;
-  }
-
-  async findOne(id: string) {
-    const user = await this.prismaService.user.findUnique({
-      where: { id },
-      include: {
-        wallet: true,
-      },
-    });
-
-    if (!user) {
-      throw new NotFoundException(`No se encontró un usuario con el ID: ${id}`);
-    }
-
     return user;
   }
 
-  async findByEmail(email: string) {
-    return await this.prismaService.user.findUnique({
-      where: {
-        email,
-      },
-    });
+  async create(createUserDto: CreateUserDto) {
+    await this.findByEmail(createUserDto.email);
+    try {
+      const hashedPassword = await bcrypt.hash(
+          createUserDto.password,
+          roundOfHashing,
+      );
+
+      const { email, profile, ...rest } = createUserDto;
+      rest.password = hashedPassword;
+      await this.loginMailService.sendUserConfirmationEmail(email);
+
+      const user = await this.prismaService.user.create({
+        data: {
+          ...rest,
+          email,
+          profile: {
+            create: profile
+          }
+        },
+      });
+      await this.prismaService.wallet.create({
+        data: {
+          userId: user.id,
+          balancePesos: 0,
+          balanceDollars: 0,
+        },
+      });
+
+      const userWithWallet = await this.prismaService.user.findUnique({
+        where: { id: user.id },
+        include: {
+          wallet: true,
+        },
+      });
+
+      return userWithWallet;
+    } catch (error) {
+      new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  async findAll() {
+    try {
+      const findAll = await this.prismaService.user.findMany({
+        include: {
+          profile: true,
+          wallet: true,
+        }
+      });
+      return findAll;
+    } catch (error) {
+      throw new HttpException(
+          'Internal server error',
+          HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  async findOne(id: string) {
+    try {
+      const findOne = await this.prismaService.user.findUnique({
+        where: { id },
+        include: {
+          profile: true,
+          wallet: true,
+        }
+      });
+      if (!findOne) {
+        throw new HttpException(
+            'User not found',
+            HttpStatus.NOT_FOUND
+        );
+      }
+      return findOne;
+    } catch (error) {
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR
+        );
+    }
+
+
+
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    if (updateUserDto.password) {
-      updateUserDto.password = await bcrypt.hash(
-        updateUserDto.password,
-        roundOfHashing,
-      );
+    await this.findOne(id);
+    try {
+      if (updateUserDto.password) {
+        updateUserDto.password = await bcrypt.hash(
+            updateUserDto.password,
+            roundOfHashing,
+        );
+      }
+
+      const { profile, ...rest } = updateUserDto;
+
+      const update = await this.prismaService.user.update({
+        where: { id },
+        data: {
+          ...rest,
+          profile: {
+            create: profile
+          }
+        },
+      });
+
+      return {
+        message: 'User updated successfully',
+        data: update,
+      };
+    } catch (error) {
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR,
+        );
     }
-
-    const update = await this.prismaService.user.update({
-      where: { id },
-      data: {
-        ...updateUserDto,
-      },
-    });
-
-    return {
-      message: 'User updated successfully',
-      data: update,
-    };
   }
 
   async remove(id: string) {
-    const remove = await this.prismaService.user.delete({
-      where: { id },
-    });
-    return {
-      message: 'User deleted successfully',
-      data: remove,
-    };
+    await this.findOne(id);
+    try {
+      const remove = await this.prismaService.user.delete({
+        where: { id },
+      });
+      return {
+        message: 'User deleted successfully',
+        data: remove,
+      };
+    } catch (error) {
+        throw new HttpException(
+            'Internal server error',
+            HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+    }
   }
 }

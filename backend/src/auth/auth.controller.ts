@@ -43,6 +43,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Redirigir al flujo de OAuth de Google' })
   @ApiResponse({ status: 302, description: 'Redirección a Google OAuth' })
   googleLogin() {
+    console.log("object")
     // Este endpoint redirige al flujo de OAuth de Google
   }
 
@@ -56,7 +57,7 @@ export class AuthController {
   })
   async googleCallback(@Req() req, @Res() res) {
     const googleUser = req.user;
-
+    
     const authResponse = await this.authService.validateGoogleUser(googleUser);
 
     res.redirect(`http://localhost:4000?token=${authResponse.accessToken}`);

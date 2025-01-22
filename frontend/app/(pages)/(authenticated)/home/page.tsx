@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link';
 import { Suspense } from 'react';
 import { Balance } from './_components/balance';
 import { Income } from './_components/income';
@@ -17,7 +18,14 @@ export default function page() {
           <Income />
         </Suspense>
         <Card className='graph'>Grafico</Card>
-        <Card className='recent'>recent movements</Card>
+        <Card className='recent'>
+          <Link
+            href='/financial-target'
+            className='text-primary'
+          >
+            Agregar objetivo financiero
+          </Link>
+        </Card>
         <Card className='investments'>investments</Card>
       </section>
     </section>

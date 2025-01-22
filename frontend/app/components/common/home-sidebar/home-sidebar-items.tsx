@@ -9,7 +9,7 @@ import {
 export const items = [
   {
     title: 'Inicio',
-    url: '#',
+    url: '/home',
     icon: Home,
   },
   {
@@ -29,7 +29,7 @@ export const items = [
   },
   {
     title: 'Configuracion',
-    url: '#',
+    url: '/setting',
     icon: SettingsIcon,
   },
 ];
