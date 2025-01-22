@@ -12,7 +12,7 @@ export default function Options({
 	return (
 		<div
 			className={`
-        w-full
+        w-full 
         ${
 					isQuestionFive
 						? "grid grid-cols-1 2xl:grid-cols-2 gap-3 place-items-stretch"
@@ -45,6 +45,7 @@ export default function Options({
 								? "bg-[#D8E0F2] text-foreground hover:bg-[#D8E0F2] tex-"
 								: ""
 						}
+                        ${isQuestionSevenOrEight ? "w-full max-w-[247px]" : ""}
           `}
 				>
 					{option}

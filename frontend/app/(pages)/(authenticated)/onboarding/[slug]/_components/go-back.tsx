@@ -6,7 +6,7 @@ import { GoBackSvg } from "../../_svgs/onbording-svg";
 export function GoBack() {
 	const router = useRouter();
 	return (
-		<div className="fixed left-8 top-8 z-50">
+		<div className="absolute -left-2 top-4 md:-left-2/4 md:top-2">
 			<span
 				onKeyDown={(e) => {
 					if (e.key === "Enter") {
