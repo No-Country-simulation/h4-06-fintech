@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { LoginMailsModule } from './login-mails/login-mails.module';
 import { ConfigModule } from '@nestjs/config';
+import { NewsModule } from './news/news.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    NewsModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,9 @@
-import {BadRequestException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -25,8 +30,8 @@ export class UsersService {
     await this.findByEmail(createUserDto.email);
     try {
       const hashedPassword = await bcrypt.hash(
-          createUserDto.password,
-          roundOfHashing,
+        createUserDto.password,
+        roundOfHashing,
       );
 
       const { email, profile, ...rest } = createUserDto;
@@ -38,8 +43,8 @@ export class UsersService {
           ...rest,
           email,
           profile: {
-            create: profile
-          }
+            create: profile,
+          },
         },
       });
       await this.prismaService.wallet.create({
@@ -60,8 +65,8 @@ export class UsersService {
       return userWithWallet;
     } catch (error) {
       new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
@@ -72,13 +77,14 @@ export class UsersService {
         include: {
           profile: true,
           wallet: true,
-        }
+          comment: true,
+        },
       });
       return findAll;
     } catch (error) {
       throw new HttpException(
-          'Internal server error',
-          HttpStatus.INTERNAL_SERVER_ERROR
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
@@ -90,24 +96,16 @@ export class UsersService {
         include: {
           profile: true,
           wallet: true,
-        }
+          comment: true,
+        },
       });
       if (!findOne) {
-        throw new HttpException(
-            'User not found',
-            HttpStatus.NOT_FOUND
-        );
+        throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
       return findOne;
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR
-        );
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
-
-
-
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
@@ -115,8 +113,8 @@ export class UsersService {
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
-            updateUserDto.password,
-            roundOfHashing,
+          updateUserDto.password,
+          roundOfHashing,
         );
       }
 
@@ -127,8 +125,8 @@ export class UsersService {
         data: {
           ...rest,
           profile: {
-            create: profile
-          }
+            create: profile,
+          },
         },
       });
 
@@ -137,10 +135,10 @@ export class UsersService {
         data: update,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -155,10 +153,10 @@ export class UsersService {
         data: remove,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }
