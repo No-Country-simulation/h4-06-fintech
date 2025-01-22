@@ -1,16 +1,17 @@
-import {ApiProperty, OmitType} from '@nestjs/swagger';
+import { ApiProperty, OmitType } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
   IsOptional,
   IsString,
   MaxLength,
-  MinLength, ValidateNested,
+  MinLength,
+  ValidateNested,
 } from 'class-validator';
-import {CreateProfileDto} from "../../profile-user/dto/create-profile-user.dto";
-import {Type} from "class-transformer";
+import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
+import { Type } from 'class-transformer';
 
-export class Profile extends OmitType (CreateProfileDto, ['userId']) {}
+export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty({
@@ -42,7 +43,7 @@ export class CreateUserDto {
 
   @ApiProperty({
     type: Profile,
-    required: true
+    required: true,
   })
   @ValidateNested({ each: true })
   @Type(() => Profile)
