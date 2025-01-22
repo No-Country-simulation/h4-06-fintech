@@ -1,10 +1,11 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function OnboardingCompleted() {
 	const router = useRouter();
+	const searchParams = useSearchParams();
 
 	return (
 		<div className=" flex flex-col items-center justify-center gap-4 p-20">
@@ -25,6 +26,7 @@ export default function OnboardingCompleted() {
 					<Button
 						className="w-full max-w-[360px] h-[65px] rounded-lg"
 						variant="outline"
+						onClick={() => router.push(`/onboarding/sumary/1?${searchParams}`)}
 					>
 						Resumen
 					</Button>
