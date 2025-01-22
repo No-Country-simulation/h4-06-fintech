@@ -3,12 +3,16 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { LoginMailsService } from '../login-mails/login-mails.service';
 
 export const roundOfHashing = 10;
 
@@ -17,6 +21,7 @@ export class UsersService {
   constructor(
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
+    private jwtService: JwtService,
   ) {}
 
   async findByEmail(email: string) {
@@ -34,11 +39,12 @@ export class UsersService {
         roundOfHashing,
       );
 
-      const { email, profile, ...rest } = createUserDto;
-      rest.password = hashedPassword;
-      await this.loginMailService.sendUserConfirmationEmail(email);
+    const hashedPassword = await bcrypt.hash(
+      createUserDto.password,
+      roundOfHashing,
+    );
 
-      const user = await this.prismaService.user.create({
+    const user = await this.prismaService.user.create({
         data: {
           ...rest,
           email,
@@ -47,7 +53,8 @@ export class UsersService {
           },
         },
       });
-      await this.prismaService.wallet.create({
+      
+    await this.prismaService.wallet.create({
         data: {
           userId: user.id,
           balancePesos: 0,
@@ -55,12 +62,17 @@ export class UsersService {
         },
       });
 
-      const userWithWallet = await this.prismaService.user.findUnique({
+    const userWithWallet = await this.prismaService.user.findUnique({
         where: { id: user.id },
         include: {
           wallet: true,
         },
-      });
+    });
+      
+      // Generate token with user id and send it to email template to confirm account
+    const token = this.jwtService.sign({ id: user.id });
+    const link = `${process.env.BASE_URL}/users/confirm/${token}`;
+    await this.loginMailService.sendUserConfirmationEmail(email, link);
 
       return userWithWallet;
     } catch (error) {
@@ -158,5 +170,44 @@ export class UsersService {
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
+  }
+
+  async confirmEmail(token: string) {
+    const payload: JwtPayload = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: payload.id,
+      },
+    });
+
+    if (!user) {
+      throw new BadRequestException('Este usuario no existe');
+    }
+
+    if (user.isEmailVerified) {
+      throw new BadRequestException('Esta cuenta ya esta verificada');
+    }
+
+    await this.prismaService.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        isEmailVerified: true,
+      },
+    });
+
+    return user;
+  }
+
+  generateAccessToken(user: User): string {
+    const payload = { id: user.id };
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_SECRET,
+      expiresIn: '10m',
+    });
   }
 }
