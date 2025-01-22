@@ -1,5 +1,7 @@
 import {
   BadRequestException,
+  HttpException,
+  HttpStatus,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -22,22 +24,19 @@ export class UsersService {
     private jwtService: JwtService,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
-    const existingUser = await this.prismaService.user.findFirst({
-      where: {
-        email: createUserDto.email,
-      },
+  async findByEmail(email: string) {
+    const user = await this.prismaService.user.findFirst({
+      where: { email },
     });
+    return user;
+  }
 
-    if (existingUser) {
-      throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
+  async create(createUserDto: CreateUserDto) {
+    await this.findByEmail(createUserDto.email);
     try {
       const hashedPassword = await bcrypt.hash(
-          createUserDto.password,
-          roundOfHashing,
+        createUserDto.password,
+        roundOfHashing,
       );
 
     const hashedPassword = await bcrypt.hash(
@@ -45,50 +44,59 @@ export class UsersService {
       roundOfHashing,
     );
 
-    const { email } = createUserDto;
-    createUserDto.password = hashedPassword;
-
     const user = await this.prismaService.user.create({
-      data: {
-        ...createUserDto,
-      },
-    });
+        data: {
+          ...rest,
+          email,
+          profile: {
+            create: profile,
+          },
+        },
+      });
+      
+    await this.prismaService.wallet.create({
+        data: {
+          userId: user.id,
+          balancePesos: 0,
+          balanceDollars: 0,
+        },
+      });
 
-    // Generate token with user id and send it to email template to confirm account
+    const userWithWallet = await this.prismaService.user.findUnique({
+        where: { id: user.id },
+        include: {
+          wallet: true,
+        },
+    });
+      
+      // Generate token with user id and send it to email template to confirm account
     const token = this.jwtService.sign({ id: user.id });
     const link = `${process.env.BASE_URL}/users/confirm/${token}`;
     await this.loginMailService.sendUserConfirmationEmail(email, link);
 
-    await this.prismaService.wallet.create({
-      data: {
-        userId: user.id,
-        balancePesos: 0,
-        balanceDollars: 0,
-      },
-    });
-
-    const userWithWallet = await this.prismaService.user.findUnique({
-      where: { id: user.id },
-      include: {
-        wallet: true,
-      },
-    });
-
-    return userWithWallet;
+      return userWithWallet;
+    } catch (error) {
+      new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async findAll() {
     try {
       const findAll = await this.prismaService.user.findMany({
         include: {
-          profile: true
-        }
+          profile: true,
+          wallet: true,
+          comment: true,
+        },
       });
       return findAll;
     } catch (error) {
       throw new HttpException(
-          'Internal server error',
-          HttpStatus.INTERNAL_SERVER_ERROR
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
@@ -98,25 +106,18 @@ export class UsersService {
       const findOne = await this.prismaService.user.findUnique({
         where: { id },
         include: {
-          profile: true
-        }
+          profile: true,
+          wallet: true,
+          comment: true,
+        },
       });
       if (!findOne) {
-        throw new HttpException(
-            'User not found',
-            HttpStatus.NOT_FOUND
-        );
+        throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
       return findOne;
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR
-        );
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
-
-
-
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
@@ -124,8 +125,8 @@ export class UsersService {
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
-            updateUserDto.password,
-            roundOfHashing,
+          updateUserDto.password,
+          roundOfHashing,
         );
       }
 
@@ -136,8 +137,8 @@ export class UsersService {
         data: {
           ...rest,
           profile: {
-            create: profile
-          }
+            create: profile,
+          },
         },
       });
 
@@ -146,10 +147,10 @@ export class UsersService {
         data: update,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -164,10 +165,10 @@ export class UsersService {
         data: remove,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
