@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { HomeSidebarBlock } from './home-sidebar-block';
 import { HomeSidebarHeader } from './home-sidebar-header';
 import { items } from './home-sidebar-items';
 
@@ -20,7 +19,6 @@ export function HomeSidebar() {
       <HomeSidebarHeader />
       <SidebarContent>
         <SidebarGroup>
-          <HomeSidebarBlock />
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

@@ -48,8 +48,6 @@ const authApi: AuthAPI = {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token');
 
-    console.log({ accessToken });
-
     if (!accessToken) {
       throw new AuthError('Inicia sesion para realizar esta accion');
     }
@@ -68,7 +66,7 @@ const authApi: AuthAPI = {
         if (errorResponse.statusCode >= 500) {
           throw new InternalError();
         }
-        console.log({ errorResponse });
+        console.error({ errorResponse });
         throw new AuthError(errorResponse.message);
       }
 
