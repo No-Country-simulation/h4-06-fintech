@@ -1,39 +1,30 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { Button } from "../ui/button";
+import ErrorSvg from "@/(pages)/(authenticated)/onboarding/[slug]/_svg/error-svg";
 
 export default function OfflineAlert() {
-  const [isOffline, setIsOffline] = useState(false);
-
-  useEffect(() => {
-    // Check initial online status
-    setIsOffline(!navigator.onLine);
-
-    // Add event listeners for online/offline events
-    const handleOnline = () => setIsOffline(false);
-    const handleOffline = () => setIsOffline(true);
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    // Cleanup event listeners
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
-
-  if (!isOffline) return null;
-
-  return (
-    <div className='fixed bottom-4 right-4 flex items-center gap-2 rounded-md bg-red-500 px-4 py-2 text-white shadow-lg'>
-      <span>No hay conexión a Internet</span>
-      <button
-        onClick={() => window.location.reload()}
-        className='rounded bg-white px-2 py-1 text-sm text-red-500'
-      >
-        Reintentar
-      </button>
-    </div>
-  );
+	return (
+		<div className="w-full max-w-[1234px] flex flex-col items-center justify-center gap-4 p-20 ">
+			<h1 className="text-4xl/[54px] text-center font-poppins-regular text-foreground w-full">
+				¡Tuvimos un problema al procesar los datos de tu resumen!
+			</h1>
+			<h2 className="text-2xl/9 text-center font-poppins-regular text-foreground w-full">
+				Parece que no tienes conexión a internet, asegurate que estes conectado
+				a una red WiFi y luego haz clic en volver a intentar para cargar tus
+				datos una vez más
+			</h2>
+			<span className="w-full max-w-[250px] h-[250px] mt-10">
+				<ErrorSvg />
+			</span>
+			<Button
+				variant={"outline"}
+				type="button"
+				onClick={() => window.location.reload()}
+				className="w-full max-w-[360px] text-2xl/9 font-poppins-medium text-foreground h-[65px] rounded-lg drop-shadow-lg drop-shadow-black mt-20"
+			>
+				Volver a intentar
+			</Button>
+		</div>
+	);
 }
