@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { LoginMailsModule } from './login-mails/login-mails.module';
 import { ConfigModule } from '@nestjs/config';
+import { SupportModule } from './support/support.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ConfigModule } from '@nestjs/config';
     AuthModule,
     UsersModule,
     LoginMailsModule,
+    SupportModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
