@@ -41,8 +41,8 @@ export function OnboardingQuestion({
 			<h2 className="text-2xl font-semibold my-10">{question.question}</h2>
 
 			{/* Options */}
-			<form action={formAction} className="w-full flex flex-col items-center ">
-				<div className="w-full flex flex-col gap-4">
+			<form action={formAction} className="w-full flex flex-col items-center">
+				<div className="w-full flex flex-col gap-8">
 					<Options
 						question={question}
 						answers={answers}

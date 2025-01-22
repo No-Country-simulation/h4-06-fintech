@@ -36,7 +36,7 @@ export default function Options({
             ${
 							isQuestionFive
 								? index === question.options.length - 1
-									? "col-span-1 lg:col-span-2 w-full"
+									? "col-span-1 lg:col-span-2 w-full lg:max-w-[462px] lg:justify-self-center"
 									: "w-full"
 								: "w-full"
 						}

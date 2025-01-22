@@ -15,11 +15,11 @@ export default function NextButton({
 	);
 
 	const commonButtonClasses = `
-		fixed left-1/2 -translate-x-1/2 bottom-8 sm:bottom-16
 		w-[calc(100%-2rem)] sm:w-full max-w-[360px]
 		h-[65px] shadow-md shadow-[#00000040] rounded-xl 
 		text-2xl/9 font-poppins-medium 
-		bg-[#004AAD80] hover:bg-[#004badc2] 
+		bg-[#004AAD80] hover:bg-[#004badc2]
+		mx-auto mt-8
 	`;
 
 	return (

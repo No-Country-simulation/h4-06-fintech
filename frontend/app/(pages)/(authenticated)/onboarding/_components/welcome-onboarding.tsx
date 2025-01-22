@@ -38,6 +38,7 @@ export function WelcomeOnboarding() {
 				<Button
 					className="w-full h-[65px] max-w-[360px] rounded-lg text-2xl/9 font-poppins-medium"
 					variant={"outline"}
+					onClick={() => router.push("/home")}
 				>
 					Omitir
 				</Button>
