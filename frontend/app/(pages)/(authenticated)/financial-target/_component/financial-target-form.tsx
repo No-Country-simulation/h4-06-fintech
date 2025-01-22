@@ -1,6 +1,7 @@
 'use client';
 import SubmitButton from '@/components/button/submit-button';
 import Input from '@/components/input/input';
+import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { financialTargetAction } from '../_actions/financial-target-action';
@@ -22,16 +23,27 @@ export default function FinancialTargetForm() {
     financialTargetAction,
     initialState,
   );
+  const router = useRouter();
 
   useEffect(() => {
+    // TODO - hacer una peticion POST al backend guardando un nuevo objetivo financiero
+    // Solo por ahora, guardar el resultado en local storage
     if (state.success) {
-      toast('Sesion iniciada correctamente');
+      toast('Objetivo establecio con exito 🎉');
+      const prevFinancialTargets =
+        JSON.parse(localStorage.getItem('financialTargets')!) ?? [];
+
+      localStorage.setItem(
+        'financialTargets',
+        JSON.stringify([...prevFinancialTargets, state.message]),
+      );
+      router.replace('/home');
     }
 
     if (state.actionErrorMessage) {
       toast.error(state.actionErrorMessage);
     }
-  }, [state]);
+  }, [state, router]);
 
   return (
     <form

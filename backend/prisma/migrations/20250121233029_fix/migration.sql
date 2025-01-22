@@ -5,6 +5,9 @@ CREATE TYPE "TransactionType" AS ENUM ('DEPOSIT', 'WITHDRAWAL', 'TRANSFER');
 CREATE TYPE "CurrencyType" AS ENUM ('PESOS', 'DOLLARS');
 
 -- CreateEnum
+CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN', 'MODERATOR');
+
+-- CreateEnum
 CREATE TYPE "FinancialGoal" AS ENUM ('SAVINGS', 'INVESTMENT', 'RETIREMENT', 'EDUCATION', 'EMERGENCY_FUND', 'PASSIVE_INCOME', 'OTHER');
 
 -- CreateEnum
@@ -27,7 +30,7 @@ CREATE TABLE "User" (
     "lastName" TEXT,
     "password" TEXT NOT NULL,
     "avatarUrl" TEXT,
-    "role" TEXT DEFAULT 'USER',
+    "role" "UserRole" DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -50,11 +53,11 @@ CREATE TABLE "Target" (
 -- CreateTable
 CREATE TABLE "FinancialRadiography" (
     "id" TEXT NOT NULL,
-    "incomeMonthly" INTEGER NOT NULL,
-    "expensesMonthly" INTEGER NOT NULL,
-    "debts" INTEGER NOT NULL,
-    "savings" INTEGER NOT NULL,
-    "capitalFinanced" TEXT NOT NULL,
+    "monthlyIncome" DECIMAL(10,2) NOT NULL,
+    "monthlyExpenses" DECIMAL(10,2) NOT NULL,
+    "savingCapacity" DECIMAL(10,2) NOT NULL,
+    "debts" DECIMAL(10,2) NOT NULL,
+    "savings" DECIMAL(10,2) NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "FinancialRadiography_pkey" PRIMARY KEY ("id")
@@ -105,6 +108,7 @@ CREATE TABLE "News" (
     "source" TEXT NOT NULL,
     "dateNews" TIMESTAMP(3) NOT NULL,
     "category" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "News_pkey" PRIMARY KEY ("id")
 );
@@ -114,8 +118,10 @@ CREATE TABLE "Comment" (
     "id" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "dateComment" TIMESTAMP(3) NOT NULL,
-    "userId" TEXT NOT NULL,
-    "newsId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "userId" TEXT,
+    "newsId" TEXT,
 
     CONSTRAINT "Comment_pkey" PRIMARY KEY ("id")
 );
@@ -150,7 +156,7 @@ CREATE TABLE "Administrador" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "rol" TEXT NOT NULL,
+    "role" "UserRole" NOT NULL DEFAULT 'ADMIN',
     "name" TEXT NOT NULL,
 
     CONSTRAINT "Administrador_pkey" PRIMARY KEY ("id")
@@ -197,16 +203,22 @@ CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- AddForeignKey
+ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Investment" ADD CONSTRAINT "Investment_instrumentId_fkey" FOREIGN KEY ("instrumentId") REFERENCES "FinancialInstrument"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

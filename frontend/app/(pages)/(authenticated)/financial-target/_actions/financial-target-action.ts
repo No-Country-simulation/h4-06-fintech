@@ -1,10 +1,9 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import * as zod from 'zod';
 
-const FinancialTargetSchema = zod.object({
+const financialTargetSchema = zod.object({
   name: zod
     .string()
     .min(4, { message: 'El nombre del objetivo debe tener al menos 4 letras' }),
@@ -17,6 +16,8 @@ const FinancialTargetSchema = zod.object({
   priority: zod.string().min(4, { message: 'Prioridad no valida' }),
 });
 
+export type FinancialTargetSchema = zod.infer<typeof financialTargetSchema>;
+
 type FinancialTargetState = {
   message?: {
     name?: string[];
@@ -27,6 +28,10 @@ type FinancialTargetState = {
   success?: boolean;
   actionErrorMessage?: string;
 };
+
+export type FinancialTargetLocalStorage = Required<
+  FinancialTargetState['message']
+>;
 
 export async function financialTargetAction(
   prevState: FinancialTargetState,
@@ -39,7 +44,7 @@ export async function financialTargetAction(
 
   const data = { name, amount, months, priority };
 
-  const result = FinancialTargetSchema.safeParse(data);
+  const result = financialTargetSchema.safeParse(data);
 
   if (!result.success) {
     return {
@@ -49,5 +54,15 @@ export async function financialTargetAction(
   }
 
   revalidatePath('/home', 'page');
-  redirect('/home');
+  // Devuelve informacion asi puede ser guardada en local storage del lado del cliente
+  return {
+    success: true,
+    message: {
+      amount: [String(result.data.amount)],
+      months: [String(result.data.months)],
+      name: [result.data.name],
+      priority: [result.data.priority],
+    },
+  };
+  // redirect('/home');
 }

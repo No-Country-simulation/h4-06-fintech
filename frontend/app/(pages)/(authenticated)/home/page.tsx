@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { Balance } from './_components/balance';
 import { Income } from './_components/income';
+import { Targets } from './_components/targets';
 import './home.css';
 
 export default function page() {
@@ -17,7 +18,9 @@ export default function page() {
         <Suspense fallback={<Skeleton className='income rounded-xl' />}>
           <Income />
         </Suspense>
-        <Card className='graph'>Grafico</Card>
+        <Suspense fallback={<Skeleton className='income rounded-xl' />}>
+          <Targets />
+        </Suspense>
         <Card className='recent'>
           <Link
             href='/financial-target'
