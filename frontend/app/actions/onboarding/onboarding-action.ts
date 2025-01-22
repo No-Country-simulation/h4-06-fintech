@@ -54,6 +54,6 @@ export async function onboardingAction(
 
 	return {
 		success: true,
-		redirect: `/onboarding/sumary/1?${searchParams.toString()}`,
+		redirect: `/onboarding/sumary?${searchParams.toString()}`,
 	};
 }
