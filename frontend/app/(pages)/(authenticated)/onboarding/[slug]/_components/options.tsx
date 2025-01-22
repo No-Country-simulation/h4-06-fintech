@@ -17,7 +17,7 @@ export default function Options({
 					isQuestionFive
 						? "grid grid-cols-1 2xl:grid-cols-2 gap-3 place-items-stretch"
 						: isQuestionSevenOrEight
-							? "flex flex-col sm:flex-row gap-3 justify-center"
+							? "flex flex-col sm:flex-row gap-3 justify-center items-center"
 							: "flex flex-col gap-3"
 				}
       `}
