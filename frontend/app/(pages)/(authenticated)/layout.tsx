@@ -6,7 +6,7 @@ export default function HomeLayout({ children }: PropsWithChildren) {
 	return (
 		<SidebarProvider>
 			{/* <HomeSidebar /> */}
-			<section className="w-full h-full">{children}</section>
+			<section className="w-full h-full p-12">{children}</section>
 		</SidebarProvider>
 	);
 }

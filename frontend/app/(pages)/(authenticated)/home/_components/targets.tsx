@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { getFinancialTargets } from '@/lib/local-financial-targets';
+import Link from 'next/link';
 
 export function Targets() {
   return (
@@ -10,12 +11,14 @@ export function Targets() {
       <Text variant='detail'>Objetivos Financieros</Text>
       <ul className='flex flex-col gap-1'>
         {getFinancialTargets().map((target, index) => (
-          <li
-            className='rounded-lg border border-border bg-background p-2 text-sm'
+          <Link
+            href={`/financial-target/${target.id}`}
             key={index}
           >
-            {target.name}
-          </li>
+            <li className='rounded-lg border border-border bg-background p-2 text-sm'>
+              {target.name}
+            </li>
+          </Link>
         ))}
       </ul>
     </Card>

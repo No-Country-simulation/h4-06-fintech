@@ -35,7 +35,10 @@ export default function FinancialTargetForm() {
 
       localStorage.setItem(
         'financialTargets',
-        JSON.stringify([...prevFinancialTargets, state.message]),
+        JSON.stringify([
+          ...prevFinancialTargets,
+          { ...state.message, id: crypto.randomUUID() },
+        ]),
       );
       router.replace('/home');
     }

@@ -16,7 +16,9 @@ const financialTargetSchema = zod.object({
   priority: zod.string().min(4, { message: 'Prioridad no valida' }),
 });
 
-export type FinancialTargetSchema = zod.infer<typeof financialTargetSchema>;
+export type FinancialTargetSchema = zod.infer<typeof financialTargetSchema> & {
+  id: string;
+};
 
 type FinancialTargetState = {
   message?: {
@@ -30,7 +32,9 @@ type FinancialTargetState = {
 };
 
 export type FinancialTargetLocalStorage = Required<
-  FinancialTargetState['message']
+  FinancialTargetState['message'] & {
+    id: string;
+  }
 >;
 
 export async function financialTargetAction(
