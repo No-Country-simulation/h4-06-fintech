@@ -3,7 +3,6 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  NotFoundException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
@@ -34,17 +33,27 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
+      const existingUser = await this.prismaService.user.findFirst({
+        where: {
+          email: createUserDto.email,
+        },
+      });
+
+      if (existingUser) {
+        throw new BadRequestException(
+          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+        );
+      }
+
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
         roundOfHashing,
       );
 
-    const hashedPassword = await bcrypt.hash(
-      createUserDto.password,
-      roundOfHashing,
-    );
+      const { email, profile, ...rest } = createUserDto;
+      rest.password = hashedPassword;
 
-    const user = await this.prismaService.user.create({
+      const user = await this.prismaService.user.create({
         data: {
           ...rest,
           email,
@@ -53,8 +62,8 @@ export class UsersService {
           },
         },
       });
-      
-    await this.prismaService.wallet.create({
+
+      await this.prismaService.wallet.create({
         data: {
           userId: user.id,
           balancePesos: 0,
@@ -62,17 +71,17 @@ export class UsersService {
         },
       });
 
-    const userWithWallet = await this.prismaService.user.findUnique({
+      const userWithWallet = await this.prismaService.user.findUnique({
         where: { id: user.id },
         include: {
           wallet: true,
         },
-    });
-      
+      });
+
       // Generate token with user id and send it to email template to confirm account
-    const token = this.jwtService.sign({ id: user.id });
-    const link = `${process.env.BASE_URL}/users/confirm/${token}`;
-    await this.loginMailService.sendUserConfirmationEmail(email, link);
+      const token = this.jwtService.sign({ id: user.id });
+      const link = `${process.env.BASE_URL}/users/confirm/${token}`;
+      await this.loginMailService.sendUserConfirmationEmail(email, link);
 
       return userWithWallet;
     } catch (error) {
