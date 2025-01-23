@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SupportModule } from './support/support.module';
 import { NewsModule } from './news/news.module';
 import { CommentModule } from './comment/comment.module';
+import { FinanceModule } from './finance/financeModule.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { CommentModule } from './comment/comment.module';
     UsersModule,
     LoginMailsModule,
     SupportModule,
+    FinanceModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
