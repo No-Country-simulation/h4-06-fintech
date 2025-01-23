@@ -2,7 +2,8 @@ import { DevIsland } from '@/components/dev-island/dev-island';
 import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import OfflineAlert from '../components//offlineMessage/OfflineAlert';
+
+import PageWrapper from '@/components/offlineMessage/PageWrapper';
 import '../globals.css';
 
 const poppinsLight = Poppins({
@@ -55,9 +56,8 @@ export default function RootLayout({
       <body
         className={`${poppinsRegular.variable} ${poppinsMedium.variable} ${poppinsSemiBold.variable} ${poppinsBold.variable} ${poppinsLight.variable} font-poppins-regular antialiased`}
       >
-        {children}
+        <PageWrapper>{children}</PageWrapper>
         <Toaster />
-        <OfflineAlert />
         <DevIsland />
       </body>
     </html>

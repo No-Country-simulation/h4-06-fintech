@@ -1,9 +1,17 @@
-import {BadRequestException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { LoginMailsService } from '../login-mails/login-mails.service';
 
 export const roundOfHashing = 10;
 
@@ -12,7 +20,8 @@ export class UsersService {
   constructor(
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
-  ) {}
+    private jwtService: JwtService,
+  ) { }
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -24,24 +33,39 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
+      const existingUser = await this.prismaService.user.findFirst({
+        where: {
+          email: createUserDto.email,
+        },
+      });
+
+      if (existingUser) {
+        throw new BadRequestException(
+          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+        );
+      }
+
       const hashedPassword = await bcrypt.hash(
-          createUserDto.password,
-          roundOfHashing,
+        createUserDto.password,
+        roundOfHashing,
       );
 
-      const { email, profile, ...rest } = createUserDto;
+      const { email, profile, financialRadiographies, ...rest } = createUserDto;
       rest.password = hashedPassword;
-      await this.loginMailService.sendUserConfirmationEmail(email);
 
       const user = await this.prismaService.user.create({
         data: {
           ...rest,
           email,
           profile: {
-            create: profile
+            create: profile,
+          },
+          financialRadiographies: {
+            create: financialRadiographies
           }
         },
       });
+
       await this.prismaService.wallet.create({
         data: {
           userId: user.id,
@@ -57,11 +81,16 @@ export class UsersService {
         },
       });
 
+      // Generate token with user id and send it to email template to confirm account
+      const token = this.jwtService.sign({ id: user.id });
+      const link = `${process.env.BASE_URL}/users/confirm/${token}`;
+      await this.loginMailService.sendUserConfirmationEmail(email, link);
+
       return userWithWallet;
     } catch (error) {
       new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
@@ -72,13 +101,15 @@ export class UsersService {
         include: {
           profile: true,
           wallet: true,
-        }
+          comment: true,
+          financialRadiographies: true,
+        },
       });
       return findAll;
     } catch (error) {
       throw new HttpException(
-          'Internal server error',
-          HttpStatus.INTERNAL_SERVER_ERROR
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
@@ -90,24 +121,17 @@ export class UsersService {
         include: {
           profile: true,
           wallet: true,
-        }
+          comment: true,
+          financialRadiographies: true,
+        },
       });
       if (!findOne) {
-        throw new HttpException(
-            'User not found',
-            HttpStatus.NOT_FOUND
-        );
+        throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
       return findOne;
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR
-        );
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
-
-
-
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
@@ -115,19 +139,22 @@ export class UsersService {
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
-            updateUserDto.password,
-            roundOfHashing,
+          updateUserDto.password,
+          roundOfHashing,
         );
       }
 
-      const { profile, ...rest } = updateUserDto;
+      const { profile, financialRadiographies, ...rest } = updateUserDto;
 
       const update = await this.prismaService.user.update({
         where: { id },
         data: {
           ...rest,
           profile: {
-            create: profile
+            create: profile,
+          },
+          financialRadiographies: {
+            create: financialRadiographies,
           }
         },
       });
@@ -137,10 +164,10 @@ export class UsersService {
         data: update,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -155,10 +182,49 @@ export class UsersService {
         data: remove,
       };
     } catch (error) {
-        throw new HttpException(
-            'Internal server error',
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
+  }
+
+  async confirmEmail(token: string) {
+    const payload: JwtPayload = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: payload.id,
+      },
+    });
+
+    if (!user) {
+      throw new BadRequestException('Este usuario no existe');
+    }
+
+    if (user.isEmailVerified) {
+      throw new BadRequestException('Esta cuenta ya esta verificada');
+    }
+
+    await this.prismaService.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        isEmailVerified: true,
+      },
+    });
+
+    return user;
+  }
+
+  generateAccessToken(user: User): string {
+    const payload = { id: user.id };
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_SECRET,
+      expiresIn: '10m',
+    });
   }
 }

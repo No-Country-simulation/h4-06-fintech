@@ -1,19 +1,18 @@
-import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class LoginMailsService {
   constructor(private mailerService: MailerService) {}
 
-  async sendUserConfirmationEmail(email: string) {
-    const url = 'http://localhost:3000/api#/Users/UsersController_create';
+  async sendUserConfirmationEmail(email: string, link: string) {
     await this.mailerService.sendMail({
       from: 'zapatacamilo86@gmail.com',
       to: email,
       subject: 'User Confirmation',
       template: './welcome',
       context: {
-        url,
+        link,
       },
     });
   }

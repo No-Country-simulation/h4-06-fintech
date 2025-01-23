@@ -36,9 +36,11 @@ model User {
   wallet                 wallet[]
   financialRadiographies FinancialRadiography[]
   profile                Profile?
+  comment                Comment[]
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
   Support                Support[]
+  isEmailVerified        Boolean                @default(false)
 }
 
 model Target {
@@ -54,13 +56,13 @@ model Target {
 
 model FinancialRadiography {
   id              String  @id @default(cuid())
-  monthlyIncome   Decimal @db.Decimal(10, 2) // Ingresos mensuales
-  monthlyExpenses Decimal @db.Decimal(10, 2) // Gastos mensuales
-  savingCapacity  Decimal @db.Decimal(10, 2) // Capacidad de ahorro
-  debts           Decimal @db.Decimal(10, 2) // Deudas
-  savings         Decimal @db.Decimal(10, 2) // Ahorros
+  monthlyIncome   Decimal? @db.Decimal(10, 2) // Ingresos mensuales
+  monthlyExpenses Decimal? @db.Decimal(10, 2) // Gastos mensuales
+  savingCapacity  Decimal? @db.Decimal(10, 2) // Capacidad de ahorro
+  debts           Decimal? @db.Decimal(10, 2) // Deudas
+  savings         Decimal? @db.Decimal(10, 2) // Ahorros
   userId          String
-  user            User    @relation(fields: [userId], references: [id])
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model InvestmentPortfolio {
@@ -97,23 +99,26 @@ model Investment {
 }
 
 model News {
-  id       String    @id @default(cuid())
-  title    String
-  content  String
-  source   String
-  dateNews DateTime
-  category String
-  comment  Comment[]
+  id        String    @id @default(cuid())
+  title     String
+  content   String
+  source    String
+  dateNews  DateTime
+  category  String
+  comment   Comment[]
+  createdAt DateTime  @default(now())
 }
 
 model Comment {
   id          String   @id @default(cuid())
   content     String
   dateComment DateTime
-  userId      String
-  newsId      String
-  // user        User     @relation(fields: [userId], references: [id])
-  news        News     @relation(fields: [newsId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String?
+  newsId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  news        News?    @relation(fields: [newsId], references: [id], onDelete: Cascade)
 }
 
 model wallet {
@@ -123,7 +128,7 @@ model wallet {
   balanceDollars Int
   createdAt      DateTime            @default(now())
   updatedAt      DateTime            @updatedAt
-  user           User                @relation(fields: [userId], references: [id])
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions   WalletTransaction[]
 }
 
@@ -151,7 +156,7 @@ model Support {
   userId    String
   subject   String
   message   String
-  status    Status   @default(open)// Ticket status (open, inProgress, closed)
+  status    Status   @default(open) // Ticket status (open, inProgress, closed)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id])
@@ -169,9 +174,8 @@ model Profile {
   hasDebts          Boolean? //tiene deudas
   reactionToLoss    ReactionToLoss? //reacción a la pérdida
   userId            String             @unique
-  User              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  User              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 enum Status {
   open

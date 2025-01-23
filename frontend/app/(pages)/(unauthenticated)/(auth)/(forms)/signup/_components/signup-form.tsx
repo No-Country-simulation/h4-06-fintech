@@ -23,8 +23,10 @@ export default function SignUpForm() {
 
   useEffect(() => {
     if (state.success) {
-      toast.success('Cuenta creada con éxito! 🎉');
-      router.replace('/onboarding');
+      toast.success(
+        'Cuenta creada con éxito! 🎉\n Confirma la creacion de tu cuenta con el mail que te enviamos',
+      );
+      router.replace('/login');
     }
 
     if (state.actionErrorMessage) {
