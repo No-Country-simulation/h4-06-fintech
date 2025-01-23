@@ -10,22 +10,24 @@ const financialTargetSchema = zod.object({
   amount: zod.coerce.number().min(1, {
     message: 'La cantidad de dinero para el objetivo debe ser positiva',
   }),
-  months: zod.coerce
+  durationMonths: zod.coerce
     .number()
     .min(1, { message: 'Cantidad de meses debe ser mayor o igual a 1' }),
-  priority: zod.string().min(4, { message: 'Prioridad no valida' }),
 });
 
 export type FinancialTargetSchema = zod.infer<typeof financialTargetSchema> & {
   id: string;
+  createdAt: string;
+  category: string;
+  isActive: boolean;
+  savedAmount: number;
 };
 
 type FinancialTargetState = {
   message?: {
     name?: string[];
     amount?: string[];
-    months?: string[];
-    priority?: string[];
+    durationMonths?: string[];
   };
   success?: boolean;
   actionErrorMessage?: string;
@@ -34,6 +36,10 @@ type FinancialTargetState = {
 export type FinancialTargetLocalStorage = Required<
   FinancialTargetState['message'] & {
     id: string;
+    createdAt: string;
+    category: string;
+    isActive: boolean;
+    savedAmount: number;
   }
 >;
 
@@ -43,10 +49,9 @@ export async function financialTargetAction(
 ): Promise<FinancialTargetState> {
   const name = formData.get('name');
   const amount = formData.get('amount');
-  const months = formData.get('months');
-  const priority = formData.get('priority');
+  const durationMonths = formData.get('durationMonths');
 
-  const data = { name, amount, months, priority };
+  const data = { name, amount, durationMonths };
 
   const result = financialTargetSchema.safeParse(data);
 
@@ -63,9 +68,8 @@ export async function financialTargetAction(
     success: true,
     message: {
       amount: [String(result.data.amount)],
-      months: [String(result.data.months)],
+      durationMonths: [String(result.data.durationMonths)],
       name: [result.data.name],
-      priority: [result.data.priority],
     },
   };
   // redirect('/home');

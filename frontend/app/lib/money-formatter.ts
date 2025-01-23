@@ -4,3 +4,7 @@ export const moneyFormatter = new Intl.NumberFormat('es-US', {
   maximumFractionDigits: 2,
   minimumFractionDigits: 2,
 });
+
+export function formatMoney(amount: number) {
+  return moneyFormatter.format(amount);
+}

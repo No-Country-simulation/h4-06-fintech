@@ -42,9 +42,12 @@ export function mapFinancialTarget(
 ): FinancialTargetSchema {
   return {
     amount: Number(rawTarget?.amount[0]),
-    months: Number(rawTarget?.months[0]),
+    durationMonths: Number(rawTarget?.durationMonths[0]),
     name: rawTarget?.name[0] ?? '',
-    priority: rawTarget?.priority[0] ?? '',
     id: rawTarget.id,
+    category: rawTarget.category,
+    createdAt: rawTarget.createdAt,
+    isActive: Boolean(rawTarget.isActive),
+    savedAmount: Number(rawTarget.savedAmount),
   };
 }

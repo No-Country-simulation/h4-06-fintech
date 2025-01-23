@@ -10,9 +10,7 @@ const initialState = {
   message: {
     name: [],
     amount: [],
-    months: [],
-    monthlyContribution: [],
-    priority: [],
+    durationMonths: [],
   },
   success: false,
   actionErrorMessage: '',
@@ -37,7 +35,14 @@ export default function FinancialTargetForm() {
         'financialTargets',
         JSON.stringify([
           ...prevFinancialTargets,
-          { ...state.message, id: crypto.randomUUID() },
+          {
+            ...state.message,
+            id: crypto.randomUUID(),
+            createdAt: new Date().toDateString(),
+            category: 'house',
+            isActive: true,
+            savedAmount: 0,
+          },
         ]),
       );
       router.replace('/home');
@@ -71,17 +76,10 @@ export default function FinancialTargetForm() {
       <Input
         data-pw='months'
         label='Meses'
-        name='months'
+        name='durationMonths'
         type='number'
-        error={state.message?.months?.[0]}
+        error={state.message?.durationMonths?.[0]}
         placeholder='12 meses'
-      />
-      <Input
-        data-pw='priority'
-        label='Prioridad'
-        name='priority'
-        error={state.message?.priority?.[0]}
-        placeholder='Alta | Media | Baja'
       />
       <SubmitButton
         data-pw='submit-button'
