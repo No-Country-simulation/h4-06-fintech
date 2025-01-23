@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link';
 import { Suspense } from 'react';
+import { HomeCard } from './_components/home-card';
 import './home.css';
 
 export default function page() {
@@ -13,24 +13,13 @@ export default function page() {
           <Card>Ingresos</Card>
         </Suspense>
         <Card>Gastos</Card>
-        <Suspense fallback={<Skeleton className='income rounded-xl' />}>
-          <Card>Progreso hacia objetivos</Card>
-        </Suspense>
-        <Suspense fallback={<Skeleton className='income rounded-xl' />}>
-          <Card>Inversiones</Card>
-        </Suspense>
-        <Card>
-          <Link
-            href='/financial-target'
-            className='text-primary'
-          >
-            Mis ahorros
-          </Link>
-        </Card>
-        <Card>Wallet</Card>
-        <Card>Favoritos</Card>
-        <Card>Agenda</Card>
-        <Card>Inidicador nivel</Card>
+        <HomeCard href='/financial-target'>Progreso hacia objetivos</HomeCard>
+        <HomeCard href='/'>Inversiones</HomeCard>
+        <HomeCard href='/'>Mis ahorros</HomeCard>
+        <HomeCard href='/'>Wallet</HomeCard>
+        <HomeCard href='/'>Favoritos</HomeCard>
+        <HomeCard href='/'>Agenda</HomeCard>
+        <HomeCard href='/'>Indicador nivel</HomeCard>
         <Card className='graph'>Grafico</Card>
         <Card className='graph'>Grafico</Card>
         <Card className='graph'>Grafico</Card>
