@@ -38,7 +38,7 @@ export default function FinancialTargetForm() {
           {
             ...state.message,
             id: crypto.randomUUID(),
-            createdAt: new Date().toDateString(),
+            createdAt: new Date().toISOString().split('T')[0],
             category: 'house',
             isActive: true,
             savedAmount: 0,
