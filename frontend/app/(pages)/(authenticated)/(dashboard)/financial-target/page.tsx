@@ -1,16 +1,16 @@
 import { Text } from '@/components/ui/text';
-import FinancialTargetForm from './_component/financial-target-form';
+import { TargetsList } from './_components/targets-list';
 
 export default function page() {
   return (
     <section className='flex flex-col gap-12'>
-      <header className='flex flex-col gap-2'>
-        <Text variant='header'>Objetivo Financiero</Text>
-        <Text variant='default'>
-          Defini tu objetivo financiero asi podemos ayudarte a conseguirlo
-        </Text>
+      <header className='flex flex-col gap-4'>
+        <Text variant='header'>Objetivos financieros</Text>
+        <Text variant='small'>¿Cómo lo vas logrando?</Text>
       </header>
-      <FinancialTargetForm />
+      <section>
+        <TargetsList />
+      </section>
     </section>
   );
 }

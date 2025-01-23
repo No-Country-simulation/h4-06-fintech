@@ -6,7 +6,7 @@
 import {
   FinancialTargetLocalStorage,
   FinancialTargetSchema,
-} from '@/(pages)/(authenticated)/(dashboard)/financial-target/_actions/financial-target-action';
+} from '@/(pages)/(authenticated)/(dashboard)/financial-target/create/_actions/financial-target-action';
 
 export function getFinancialTargets(): FinancialTargetSchema[] {
   if (typeof window === 'undefined' || !('localStorage' in window)) {
