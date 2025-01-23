@@ -2,9 +2,6 @@ import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { Balance } from './_components/balance';
-import { Income } from './_components/income';
-import { Targets } from './_components/targets';
 import './home.css';
 
 export default function page() {
@@ -13,23 +10,30 @@ export default function page() {
       <h2 className='font-semibold'>Vista general</h2>
       <section className='bento'>
         <Suspense fallback={<Skeleton className='balance rounded-xl' />}>
-          <Balance />
+          <Card>Ingresos</Card>
+        </Suspense>
+        <Card>Gastos</Card>
+        <Suspense fallback={<Skeleton className='income rounded-xl' />}>
+          <Card>Progreso hacia objetivos</Card>
         </Suspense>
         <Suspense fallback={<Skeleton className='income rounded-xl' />}>
-          <Income />
+          <Card>Inversiones</Card>
         </Suspense>
-        <Suspense fallback={<Skeleton className='income rounded-xl' />}>
-          <Targets />
-        </Suspense>
-        <Card className='recent'>
+        <Card>
           <Link
             href='/financial-target'
             className='text-primary'
           >
-            Agregar objetivo financiero
+            Mis ahorros
           </Link>
         </Card>
-        <Card className='investments'>investments</Card>
+        <Card>Wallet</Card>
+        <Card>Favoritos</Card>
+        <Card>Agenda</Card>
+        <Card>Inidicador nivel</Card>
+        <Card className='graph'>Grafico</Card>
+        <Card className='graph'>Grafico</Card>
+        <Card className='graph'>Grafico</Card>
       </section>
     </section>
   );
