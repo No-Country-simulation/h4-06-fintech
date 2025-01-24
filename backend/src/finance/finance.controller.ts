@@ -6,6 +6,9 @@ export class FinanceController {
   constructor(private readonly financeService: FinanceService) {}
 
   // Endpoint para obtener datos actuales de una acción
+  // Obtener datos historicos de una accion http://localhost:3000/finance/stock/AAPL/history?period=1mo
+  // Obtener datos actuales http://localhost:3000/finance/stock/AAPL
+
   @Get('stock/:ticker')
   async getStockData(@Param('ticker') ticker: string) {
     return await this.financeService.getStockData(ticker);
