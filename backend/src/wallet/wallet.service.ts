@@ -18,6 +18,7 @@ export class WalletService {
     });
   }
 
+  // @ts-ignore
   getWalletById(id: string) {
     return this.prisma.wallet.findUnique({ where: { id } });
   }
