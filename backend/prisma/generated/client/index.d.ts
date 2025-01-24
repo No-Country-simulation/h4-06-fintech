@@ -109,6 +109,15 @@ export const UserRole: {
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 
+export const Status: {
+  open: 'open',
+  inProgress: 'inProgress',
+  closed: 'closed'
+};
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+
 export const FinancialGoal: {
   SAVINGS: 'SAVINGS',
   INVESTMENT: 'INVESTMENT',
@@ -170,6 +179,10 @@ export const CurrencyType: typeof $Enums.CurrencyType
 export type UserRole = $Enums.UserRole
 
 export const UserRole: typeof $Enums.UserRole
+
+export type Status = $Enums.Status
+
+export const Status: typeof $Enums.Status
 
 export type FinancialGoal = $Enums.FinancialGoal
 
@@ -2073,12 +2086,14 @@ export namespace Prisma {
     wallet: number
     financialRadiographies: number
     comment: number
+    Support: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     wallet?: boolean | UserCountOutputTypeCountWalletArgs
     financialRadiographies?: boolean | UserCountOutputTypeCountFinancialRadiographiesArgs
     comment?: boolean | UserCountOutputTypeCountCommentArgs
+    Support?: boolean | UserCountOutputTypeCountSupportArgs
   }
 
   // Custom InputTypes
@@ -2111,6 +2126,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupportWhereInput
   }
 
 
@@ -2450,6 +2472,7 @@ export namespace Prisma {
     financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
     comment?: boolean | User$commentArgs<ExtArgs>
+    Support?: boolean | User$SupportArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2498,6 +2521,7 @@ export namespace Prisma {
     financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
     comment?: boolean | User$commentArgs<ExtArgs>
+    Support?: boolean | User$SupportArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2510,6 +2534,7 @@ export namespace Prisma {
       financialRadiographies: Prisma.$FinancialRadiographyPayload<ExtArgs>[]
       profile: Prisma.$ProfilePayload<ExtArgs> | null
       comment: Prisma.$CommentPayload<ExtArgs>[]
+      Support: Prisma.$SupportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2920,6 +2945,7 @@ export namespace Prisma {
     financialRadiographies<T extends User$financialRadiographiesArgs<ExtArgs> = {}>(args?: Subset<T, User$financialRadiographiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     comment<T extends User$commentArgs<ExtArgs> = {}>(args?: Subset<T, User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    Support<T extends User$SupportArgs<ExtArgs> = {}>(args?: Subset<T, User$SupportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3423,6 +3449,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * User.Support
+   */
+  export type User$SupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Support
+     */
+    select?: SupportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Support
+     */
+    omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
+    where?: SupportWhereInput
+    orderBy?: SupportOrderByWithRelationInput | SupportOrderByWithRelationInput[]
+    cursor?: SupportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SupportScalarFieldEnum | SupportScalarFieldEnum[]
   }
 
   /**
@@ -4682,11 +4732,11 @@ export namespace Prisma {
 
   export type FinancialRadiographyGroupByOutputType = {
     id: string
-    monthlyIncome: Decimal
-    monthlyExpenses: Decimal
-    savingCapacity: Decimal
-    debts: Decimal
-    savings: Decimal
+    monthlyIncome: Decimal | null
+    monthlyExpenses: Decimal | null
+    savingCapacity: Decimal | null
+    debts: Decimal | null
+    savings: Decimal | null
     userId: string
     _count: FinancialRadiographyCountAggregateOutputType | null
     _avg: FinancialRadiographyAvgAggregateOutputType | null
@@ -4770,11 +4820,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      monthlyIncome: Prisma.Decimal
-      monthlyExpenses: Prisma.Decimal
-      savingCapacity: Prisma.Decimal
-      debts: Prisma.Decimal
-      savings: Prisma.Decimal
+      monthlyIncome: Prisma.Decimal | null
+      monthlyExpenses: Prisma.Decimal | null
+      savingCapacity: Prisma.Decimal | null
+      debts: Prisma.Decimal | null
+      savings: Prisma.Decimal | null
       userId: string
     }, ExtArgs["result"]["financialRadiography"]>
     composites: {}
@@ -14378,7 +14428,9 @@ export namespace Prisma {
     userId: string | null
     subject: string | null
     message: string | null
-    state: string | null
+    status: $Enums.Status | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type SupportMaxAggregateOutputType = {
@@ -14386,7 +14438,9 @@ export namespace Prisma {
     userId: string | null
     subject: string | null
     message: string | null
-    state: string | null
+    status: $Enums.Status | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type SupportCountAggregateOutputType = {
@@ -14394,7 +14448,9 @@ export namespace Prisma {
     userId: number
     subject: number
     message: number
-    state: number
+    status: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -14404,7 +14460,9 @@ export namespace Prisma {
     userId?: true
     subject?: true
     message?: true
-    state?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type SupportMaxAggregateInputType = {
@@ -14412,7 +14470,9 @@ export namespace Prisma {
     userId?: true
     subject?: true
     message?: true
-    state?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type SupportCountAggregateInputType = {
@@ -14420,7 +14480,9 @@ export namespace Prisma {
     userId?: true
     subject?: true
     message?: true
-    state?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -14501,7 +14563,9 @@ export namespace Prisma {
     userId: string
     subject: string
     message: string
-    state: string
+    status: $Enums.Status
+    createdAt: Date
+    updatedAt: Date
     _count: SupportCountAggregateOutputType | null
     _min: SupportMinAggregateOutputType | null
     _max: SupportMaxAggregateOutputType | null
@@ -14526,7 +14590,10 @@ export namespace Prisma {
     userId?: boolean
     subject?: boolean
     message?: boolean
-    state?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["support"]>
 
   export type SupportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14534,7 +14601,10 @@ export namespace Prisma {
     userId?: boolean
     subject?: boolean
     message?: boolean
-    state?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["support"]>
 
   export type SupportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14542,7 +14612,10 @@ export namespace Prisma {
     userId?: boolean
     subject?: boolean
     message?: boolean
-    state?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["support"]>
 
   export type SupportSelectScalar = {
@@ -14550,20 +14623,35 @@ export namespace Prisma {
     userId?: boolean
     subject?: boolean
     message?: boolean
-    state?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type SupportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "subject" | "message" | "state", ExtArgs["result"]["support"]>
+  export type SupportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["support"]>
+  export type SupportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SupportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SupportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $SupportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Support"
-    objects: {}
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
       subject: string
       message: string
-      state: string
+      status: $Enums.Status
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["support"]>
     composites: {}
   }
@@ -14958,6 +15046,7 @@ export namespace Prisma {
    */
   export interface Prisma__SupportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14991,7 +15080,9 @@ export namespace Prisma {
     readonly userId: FieldRef<"Support", 'String'>
     readonly subject: FieldRef<"Support", 'String'>
     readonly message: FieldRef<"Support", 'String'>
-    readonly state: FieldRef<"Support", 'String'>
+    readonly status: FieldRef<"Support", 'Status'>
+    readonly createdAt: FieldRef<"Support", 'DateTime'>
+    readonly updatedAt: FieldRef<"Support", 'DateTime'>
   }
     
 
@@ -15008,6 +15099,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
     /**
      * Filter, which Support to fetch.
      */
@@ -15027,6 +15122,10 @@ export namespace Prisma {
      */
     omit?: SupportOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
+    /**
      * Filter, which Support to fetch.
      */
     where: SupportWhereUniqueInput
@@ -15044,6 +15143,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
     /**
      * Filter, which Support to fetch.
      */
@@ -15093,6 +15196,10 @@ export namespace Prisma {
      */
     omit?: SupportOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
+    /**
      * Filter, which Support to fetch.
      */
     where?: SupportWhereInput
@@ -15141,6 +15248,10 @@ export namespace Prisma {
      */
     omit?: SupportOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
+    /**
      * Filter, which Supports to fetch.
      */
     where?: SupportWhereInput
@@ -15184,6 +15295,10 @@ export namespace Prisma {
      */
     omit?: SupportOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
+    /**
      * The data needed to create a Support.
      */
     data: XOR<SupportCreateInput, SupportUncheckedCreateInput>
@@ -15217,6 +15332,10 @@ export namespace Prisma {
      */
     data: SupportCreateManyInput | SupportCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15231,6 +15350,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
     /**
      * The data needed to update a Support.
      */
@@ -15275,6 +15398,10 @@ export namespace Prisma {
      * Filter which Supports to update
      */
     where?: SupportWhereInput
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15289,6 +15416,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
     /**
      * The filter to search for the Support to update in case it exists.
      */
@@ -15315,6 +15446,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
     /**
      * Filter which Support to delete.
      */
@@ -15343,6 +15478,10 @@ export namespace Prisma {
      * Omit specific fields from the Support
      */
     omit?: SupportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportInclude<ExtArgs> | null
   }
 
 
@@ -15588,7 +15727,7 @@ export namespace Prisma {
     hasDebts?: boolean
     reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15603,7 +15742,7 @@ export namespace Prisma {
     hasDebts?: boolean
     reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15618,7 +15757,7 @@ export namespace Prisma {
     hasDebts?: boolean
     reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectScalar = {
@@ -15637,19 +15776,19 @@ export namespace Prisma {
 
   export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "financialGoal" | "investmentHorizon" | "knowledgeLevel" | "riskTolerance" | "monthlyAllocation" | "specificPurpose" | "instrumentsUsed" | "hasDebts" | "reactionToLoss" | "userId", ExtArgs["result"]["profile"]>
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | Profile$UserArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Profile"
     objects: {
-      User: Prisma.$UserPayload<ExtArgs> | null
+      User: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -16057,7 +16196,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    User<T extends Profile$UserArgs<ExtArgs> = {}>(args?: Subset<T, Profile$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16482,25 +16621,6 @@ export namespace Prisma {
   }
 
   /**
-   * Profile.User
-   */
-  export type Profile$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * Profile without action
    */
   export type ProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16679,7 +16799,9 @@ export namespace Prisma {
     userId: 'userId',
     subject: 'subject',
     message: 'message',
-    state: 'state'
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type SupportScalarFieldEnum = (typeof SupportScalarFieldEnum)[keyof typeof SupportScalarFieldEnum]
@@ -16851,6 +16973,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Status'
+   */
+  export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
+    
+
+
+  /**
+   * Reference to a field of type 'Status[]'
+   */
+  export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
+    
+
+
+  /**
    * Reference to a field of type 'FinancialGoal'
    */
   export type EnumFinancialGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialGoal'>
@@ -16941,6 +17077,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     comment?: CommentListRelationFilter
+    Support?: SupportListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -16958,6 +17095,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyOrderByRelationAggregateInput
     profile?: ProfileOrderByWithRelationInput
     comment?: CommentOrderByRelationAggregateInput
+    Support?: SupportOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -16978,6 +17116,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     comment?: CommentListRelationFilter
+    Support?: SupportListRelationFilter
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -17081,22 +17220,22 @@ export namespace Prisma {
     OR?: FinancialRadiographyWhereInput[]
     NOT?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
     id?: StringFilter<"FinancialRadiography"> | string
-    monthlyIncome?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
     userId?: StringFilter<"FinancialRadiography"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type FinancialRadiographyOrderByWithRelationInput = {
     id?: SortOrder
-    monthlyIncome?: SortOrder
-    monthlyExpenses?: SortOrder
-    savingCapacity?: SortOrder
-    debts?: SortOrder
-    savings?: SortOrder
+    monthlyIncome?: SortOrderInput | SortOrder
+    monthlyExpenses?: SortOrderInput | SortOrder
+    savingCapacity?: SortOrderInput | SortOrder
+    debts?: SortOrderInput | SortOrder
+    savings?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -17106,22 +17245,22 @@ export namespace Prisma {
     AND?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
     OR?: FinancialRadiographyWhereInput[]
     NOT?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
-    monthlyIncome?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
     userId?: StringFilter<"FinancialRadiography"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type FinancialRadiographyOrderByWithAggregationInput = {
     id?: SortOrder
-    monthlyIncome?: SortOrder
-    monthlyExpenses?: SortOrder
-    savingCapacity?: SortOrder
-    debts?: SortOrder
-    savings?: SortOrder
+    monthlyIncome?: SortOrderInput | SortOrder
+    monthlyExpenses?: SortOrderInput | SortOrder
+    savingCapacity?: SortOrderInput | SortOrder
+    debts?: SortOrderInput | SortOrder
+    savings?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: FinancialRadiographyCountOrderByAggregateInput
     _avg?: FinancialRadiographyAvgOrderByAggregateInput
@@ -17135,11 +17274,11 @@ export namespace Prisma {
     OR?: FinancialRadiographyScalarWhereWithAggregatesInput[]
     NOT?: FinancialRadiographyScalarWhereWithAggregatesInput | FinancialRadiographyScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"FinancialRadiography"> | string
-    monthlyIncome?: DecimalWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    debts?: DecimalWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savings?: DecimalWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
     userId?: StringWithAggregatesFilter<"FinancialRadiography"> | string
   }
 
@@ -17662,7 +17801,10 @@ export namespace Prisma {
     userId?: StringFilter<"Support"> | string
     subject?: StringFilter<"Support"> | string
     message?: StringFilter<"Support"> | string
-    state?: StringFilter<"Support"> | string
+    status?: EnumStatusFilter<"Support"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Support"> | Date | string
+    updatedAt?: DateTimeFilter<"Support"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type SupportOrderByWithRelationInput = {
@@ -17670,7 +17812,10 @@ export namespace Prisma {
     userId?: SortOrder
     subject?: SortOrder
     message?: SortOrder
-    state?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type SupportWhereUniqueInput = Prisma.AtLeast<{
@@ -17681,7 +17826,10 @@ export namespace Prisma {
     userId?: StringFilter<"Support"> | string
     subject?: StringFilter<"Support"> | string
     message?: StringFilter<"Support"> | string
-    state?: StringFilter<"Support"> | string
+    status?: EnumStatusFilter<"Support"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Support"> | Date | string
+    updatedAt?: DateTimeFilter<"Support"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type SupportOrderByWithAggregationInput = {
@@ -17689,7 +17837,9 @@ export namespace Prisma {
     userId?: SortOrder
     subject?: SortOrder
     message?: SortOrder
-    state?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: SupportCountOrderByAggregateInput
     _max?: SupportMaxOrderByAggregateInput
     _min?: SupportMinOrderByAggregateInput
@@ -17703,7 +17853,9 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Support"> | string
     subject?: StringWithAggregatesFilter<"Support"> | string
     message?: StringWithAggregatesFilter<"Support"> | string
-    state?: StringWithAggregatesFilter<"Support"> | string
+    status?: EnumStatusWithAggregatesFilter<"Support"> | $Enums.Status
+    createdAt?: DateTimeWithAggregatesFilter<"Support"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Support"> | Date | string
   }
 
   export type ProfileWhereInput = {
@@ -17721,7 +17873,7 @@ export namespace Prisma {
     hasDebts?: BoolNullableFilter<"Profile"> | boolean | null
     reactionToLoss?: EnumReactionToLossNullableFilter<"Profile"> | $Enums.ReactionToLoss | null
     userId?: StringFilter<"Profile"> | string
-    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ProfileOrderByWithRelationInput = {
@@ -17754,7 +17906,7 @@ export namespace Prisma {
     instrumentsUsed?: StringNullableListFilter<"Profile">
     hasDebts?: BoolNullableFilter<"Profile"> | boolean | null
     reactionToLoss?: EnumReactionToLossNullableFilter<"Profile"> | $Enums.ReactionToLoss | null
-    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type ProfileOrderByWithAggregationInput = {
@@ -17808,6 +17960,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -17825,6 +17978,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -17842,6 +17996,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -17859,6 +18014,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17972,70 +18128,70 @@ export namespace Prisma {
 
   export type FinancialRadiographyCreateInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
     user: UserCreateNestedOneWithoutFinancialRadiographiesInput
   }
 
   export type FinancialRadiographyUncheckedCreateInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
     userId: string
   }
 
   export type FinancialRadiographyUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     user?: UserUpdateOneRequiredWithoutFinancialRadiographiesNestedInput
   }
 
   export type FinancialRadiographyUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FinancialRadiographyCreateManyInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
     userId: string
   }
 
   export type FinancialRadiographyUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type FinancialRadiographyUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -18576,10 +18732,12 @@ export namespace Prisma {
 
   export type SupportCreateInput = {
     id?: string
-    userId: string
     subject: string
     message: string
-    state: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSupportInput
   }
 
   export type SupportUncheckedCreateInput = {
@@ -18587,15 +18745,19 @@ export namespace Prisma {
     userId: string
     subject: string
     message: string
-    state: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SupportUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSupportNestedInput
   }
 
   export type SupportUncheckedUpdateInput = {
@@ -18603,7 +18765,9 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SupportCreateManyInput = {
@@ -18611,15 +18775,18 @@ export namespace Prisma {
     userId: string
     subject: string
     message: string
-    state: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SupportUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SupportUncheckedUpdateManyInput = {
@@ -18627,7 +18794,9 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
-    state?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProfileCreateInput = {
@@ -18641,7 +18810,7 @@ export namespace Prisma {
     instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
     hasDebts?: boolean | null
     reactionToLoss?: $Enums.ReactionToLoss | null
-    User?: UserCreateNestedOneWithoutProfileInput
+    User: UserCreateNestedOneWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
@@ -18669,7 +18838,7 @@ export namespace Prisma {
     instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
     hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
     reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
-    User?: UserUpdateOneWithoutProfileNestedInput
+    User?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
@@ -18803,6 +18972,12 @@ export namespace Prisma {
     none?: CommentWhereInput
   }
 
+  export type SupportListRelationFilter = {
+    every?: SupportWhereInput
+    some?: SupportWhereInput
+    none?: SupportWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -18817,6 +18992,10 @@ export namespace Prisma {
   }
 
   export type CommentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SupportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18992,15 +19171,15 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type UserScalarRelationFilter = {
@@ -19054,20 +19233,20 @@ export namespace Prisma {
     savings?: SortOrder
   }
 
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -19466,12 +19645,21 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
   export type SupportCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     subject?: SortOrder
     message?: SortOrder
-    state?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type SupportMaxOrderByAggregateInput = {
@@ -19479,7 +19667,9 @@ export namespace Prisma {
     userId?: SortOrder
     subject?: SortOrder
     message?: SortOrder
-    state?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type SupportMinOrderByAggregateInput = {
@@ -19487,7 +19677,19 @@ export namespace Prisma {
     userId?: SortOrder
     subject?: SortOrder
     message?: SortOrder
-    state?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
   export type EnumFinancialGoalNullableFilter<$PrismaModel = never> = {
@@ -19698,6 +19900,13 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
+  export type SupportCreateNestedManyWithoutUserInput = {
+    create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
+    createMany?: SupportCreateManyUserInputEnvelope
+    connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+  }
+
   export type walletUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
     connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
@@ -19723,6 +19932,13 @@ export namespace Prisma {
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
     createMany?: CommentCreateManyUserInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type SupportUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
+    createMany?: SupportCreateManyUserInputEnvelope
+    connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -19797,6 +20013,20 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
+  export type SupportUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
+    upsert?: SupportUpsertWithWhereUniqueWithoutUserInput | SupportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SupportCreateManyUserInputEnvelope
+    set?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    disconnect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    delete?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    update?: SupportUpdateWithWhereUniqueWithoutUserInput | SupportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SupportUpdateManyWithWhereWithoutUserInput | SupportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SupportScalarWhereInput | SupportScalarWhereInput[]
+  }
+
   export type walletUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
     connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
@@ -19849,6 +20079,20 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
+  export type SupportUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
+    upsert?: SupportUpsertWithWhereUniqueWithoutUserInput | SupportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SupportCreateManyUserInputEnvelope
+    set?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    disconnect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    delete?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+    update?: SupportUpdateWithWhereUniqueWithoutUserInput | SupportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SupportUpdateManyWithWhereWithoutUserInput | SupportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SupportScalarWhereInput | SupportScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -19863,8 +20107,8 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
     increment?: Decimal | DecimalJsLike | number | string
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
@@ -20155,6 +20399,24 @@ export namespace Prisma {
     set?: $Enums.UserRole
   }
 
+  export type UserCreateNestedOneWithoutSupportInput = {
+    create?: XOR<UserCreateWithoutSupportInput, UserUncheckedCreateWithoutSupportInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
+  }
+
+  export type UserUpdateOneRequiredWithoutSupportNestedInput = {
+    create?: XOR<UserCreateWithoutSupportInput, UserUncheckedCreateWithoutSupportInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportInput
+    upsert?: UserUpsertWithoutSupportInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSupportInput, UserUpdateWithoutSupportInput>, UserUncheckedUpdateWithoutSupportInput>
+  }
+
   export type ProfileCreateinstrumentsUsedInput = {
     set: string[]
   }
@@ -20202,12 +20464,10 @@ export namespace Prisma {
     set?: $Enums.ReactionToLoss | null
   }
 
-  export type UserUpdateOneWithoutProfileNestedInput = {
+  export type UserUpdateOneRequiredWithoutProfileNestedInput = {
     create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
     connectOrCreate?: UserCreateOrConnectWithoutProfileInput
     upsert?: UserUpsertWithoutProfileInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
   }
@@ -20378,31 +20638,31 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -20470,6 +20730,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
   export type NestedEnumFinancialGoalNullableFilter<$PrismaModel = never> = {
@@ -20627,20 +20904,20 @@ export namespace Prisma {
 
   export type FinancialRadiographyCreateWithoutUserInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type FinancialRadiographyUncheckedCreateWithoutUserInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type FinancialRadiographyCreateOrConnectWithoutUserInput = {
@@ -20712,6 +20989,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SupportCreateWithoutUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupportUncheckedCreateWithoutUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupportCreateOrConnectWithoutUserInput = {
+    where: SupportWhereUniqueInput
+    create: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput>
+  }
+
+  export type SupportCreateManyUserInputEnvelope = {
+    data: SupportCreateManyUserInput | SupportCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type walletUpsertWithWhereUniqueWithoutUserInput = {
     where: walletWhereUniqueInput
     update: XOR<walletUpdateWithoutUserInput, walletUncheckedUpdateWithoutUserInput>
@@ -20761,11 +21066,11 @@ export namespace Prisma {
     OR?: FinancialRadiographyScalarWhereInput[]
     NOT?: FinancialRadiographyScalarWhereInput | FinancialRadiographyScalarWhereInput[]
     id?: StringFilter<"FinancialRadiography"> | string
-    monthlyIncome?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
     userId?: StringFilter<"FinancialRadiography"> | string
   }
 
@@ -20835,6 +21140,35 @@ export namespace Prisma {
     newsId?: StringNullableFilter<"Comment"> | string | null
   }
 
+  export type SupportUpsertWithWhereUniqueWithoutUserInput = {
+    where: SupportWhereUniqueInput
+    update: XOR<SupportUpdateWithoutUserInput, SupportUncheckedUpdateWithoutUserInput>
+    create: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput>
+  }
+
+  export type SupportUpdateWithWhereUniqueWithoutUserInput = {
+    where: SupportWhereUniqueInput
+    data: XOR<SupportUpdateWithoutUserInput, SupportUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SupportUpdateManyWithWhereWithoutUserInput = {
+    where: SupportScalarWhereInput
+    data: XOR<SupportUpdateManyMutationInput, SupportUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SupportScalarWhereInput = {
+    AND?: SupportScalarWhereInput | SupportScalarWhereInput[]
+    OR?: SupportScalarWhereInput[]
+    NOT?: SupportScalarWhereInput | SupportScalarWhereInput[]
+    id?: StringFilter<"Support"> | string
+    userId?: StringFilter<"Support"> | string
+    subject?: StringFilter<"Support"> | string
+    message?: StringFilter<"Support"> | string
+    status?: EnumStatusFilter<"Support"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Support"> | Date | string
+    updatedAt?: DateTimeFilter<"Support"> | Date | string
+  }
+
   export type UserCreateWithoutFinancialRadiographiesInput = {
     id?: string
     email: string
@@ -20849,6 +21183,7 @@ export namespace Prisma {
     wallet?: walletCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFinancialRadiographiesInput = {
@@ -20865,6 +21200,7 @@ export namespace Prisma {
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFinancialRadiographiesInput = {
@@ -20897,6 +21233,7 @@ export namespace Prisma {
     wallet?: walletUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFinancialRadiographiesInput = {
@@ -20913,6 +21250,7 @@ export namespace Prisma {
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type InvestmentCreateWithoutPortfolioInput = {
@@ -21177,6 +21515,7 @@ export namespace Prisma {
     wallet?: walletCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -21193,6 +21532,7 @@ export namespace Prisma {
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -21250,6 +21590,7 @@ export namespace Prisma {
     wallet?: walletUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -21266,6 +21607,7 @@ export namespace Prisma {
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type NewsUpsertWithoutCommentInput = {
@@ -21313,6 +21655,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWalletInput = {
@@ -21329,6 +21672,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWalletInput = {
@@ -21389,6 +21733,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWalletInput = {
@@ -21405,6 +21750,7 @@ export namespace Prisma {
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WalletTransactionUpsertWithWhereUniqueWithoutWalletInput = {
@@ -21488,6 +21834,90 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserCreateWithoutSupportInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    wallet?: walletCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    comment?: CommentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSupportInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSupportInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSupportInput, UserUncheckedCreateWithoutSupportInput>
+  }
+
+  export type UserUpsertWithoutSupportInput = {
+    update: XOR<UserUpdateWithoutSupportInput, UserUncheckedUpdateWithoutSupportInput>
+    create: XOR<UserCreateWithoutSupportInput, UserUncheckedCreateWithoutSupportInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSupportInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSupportInput, UserUncheckedUpdateWithoutSupportInput>
+  }
+
+  export type UserUpdateWithoutSupportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    wallet?: walletUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    comment?: CommentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSupportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type UserCreateWithoutProfileInput = {
     id?: string
     email: string
@@ -21502,6 +21932,7 @@ export namespace Prisma {
     wallet?: walletCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -21518,6 +21949,7 @@ export namespace Prisma {
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -21550,6 +21982,7 @@ export namespace Prisma {
     wallet?: walletUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -21566,6 +21999,7 @@ export namespace Prisma {
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type walletCreateManyUserInput = {
@@ -21578,11 +22012,11 @@ export namespace Prisma {
 
   export type FinancialRadiographyCreateManyUserInput = {
     id?: string
-    monthlyIncome: Decimal | DecimalJsLike | number | string
-    monthlyExpenses: Decimal | DecimalJsLike | number | string
-    savingCapacity: Decimal | DecimalJsLike | number | string
-    debts: Decimal | DecimalJsLike | number | string
-    savings: Decimal | DecimalJsLike | number | string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type CommentCreateManyUserInput = {
@@ -21592,6 +22026,15 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     newsId?: string | null
+  }
+
+  export type SupportCreateManyUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type walletUpdateWithoutUserInput = {
@@ -21622,29 +22065,29 @@ export namespace Prisma {
 
   export type FinancialRadiographyUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type FinancialRadiographyUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type FinancialRadiographyUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    monthlyExpenses?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savingCapacity?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    debts?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    savings?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -21672,6 +22115,33 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     newsId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupportUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupportUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupportUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvestmentCreateManyPortfolioInput = {

@@ -230,7 +230,9 @@ exports.Prisma.SupportScalarFieldEnum = {
   userId: 'userId',
   subject: 'subject',
   message: 'message',
-  state: 'state'
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ProfileScalarFieldEnum = {
@@ -276,6 +278,12 @@ exports.TransactionType = exports.$Enums.TransactionType = {
   DEPOSIT: 'DEPOSIT',
   WITHDRAWAL: 'WITHDRAWAL',
   TRANSFER: 'TRANSFER'
+};
+
+exports.Status = exports.$Enums.Status = {
+  open: 'open',
+  inProgress: 'inProgress',
+  closed: 'closed'
 };
 
 exports.FinancialGoal = exports.$Enums.FinancialGoal = {
