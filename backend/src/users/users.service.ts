@@ -78,6 +78,8 @@ export class UsersService {
         where: { id: user.id },
         include: {
           wallet: true,
+          profile: true,
+          financialRadiographies: true
         },
       });
 

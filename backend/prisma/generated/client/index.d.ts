@@ -166,6 +166,58 @@ export const ReactionToLoss: {
 
 export type ReactionToLoss = (typeof ReactionToLoss)[keyof typeof ReactionToLoss]
 
+
+export const MainGoal: {
+  SAVE: 'SAVE',
+  INVEST: 'INVEST',
+  INCOME: 'INCOME',
+  RETIREMENT: 'RETIREMENT',
+  OTHER: 'OTHER'
+};
+
+export type MainGoal = (typeof MainGoal)[keyof typeof MainGoal]
+
+
+export const FinancialSkills: {
+  BEGINNER: 'BEGINNER',
+  LEARNER: 'LEARNER',
+  INTERMEDIATE: 'INTERMEDIATE',
+  ADVANCED: 'ADVANCED'
+};
+
+export type FinancialSkills = (typeof FinancialSkills)[keyof typeof FinancialSkills]
+
+
+export const MonthlyInvestment: {
+  LESS_THAN_30000: 'LESS_THAN_30000',
+  BETWEEN_30000_50000: 'BETWEEN_30000_50000',
+  MORE_THAN_50000: 'MORE_THAN_50000'
+};
+
+export type MonthlyInvestment = (typeof MonthlyInvestment)[keyof typeof MonthlyInvestment]
+
+
+export const SavingsReason: {
+  BUY_HOUSE: 'BUY_HOUSE',
+  BUY_CAR: 'BUY_CAR',
+  PLAN_VACATION: 'PLAN_VACATION',
+  PERSONAL_PROJECT: 'PERSONAL_PROJECT',
+  EDUCATION: 'EDUCATION',
+  NO_SPECIFIC_REASON: 'NO_SPECIFIC_REASON',
+  LEARNING: 'LEARNING'
+};
+
+export type SavingsReason = (typeof SavingsReason)[keyof typeof SavingsReason]
+
+
+export const InvestmentTimeframe: {
+  SHORT_TERM: 'SHORT_TERM',
+  MEDIUM_TERM: 'MEDIUM_TERM',
+  LONG_TERM: 'LONG_TERM'
+};
+
+export type InvestmentTimeframe = (typeof InvestmentTimeframe)[keyof typeof InvestmentTimeframe]
+
 }
 
 export type TransactionType = $Enums.TransactionType
@@ -203,6 +255,26 @@ export const RiskTolerance: typeof $Enums.RiskTolerance
 export type ReactionToLoss = $Enums.ReactionToLoss
 
 export const ReactionToLoss: typeof $Enums.ReactionToLoss
+
+export type MainGoal = $Enums.MainGoal
+
+export const MainGoal: typeof $Enums.MainGoal
+
+export type FinancialSkills = $Enums.FinancialSkills
+
+export const FinancialSkills: typeof $Enums.FinancialSkills
+
+export type MonthlyInvestment = $Enums.MonthlyInvestment
+
+export const MonthlyInvestment: typeof $Enums.MonthlyInvestment
+
+export type SavingsReason = $Enums.SavingsReason
+
+export const SavingsReason: typeof $Enums.SavingsReason
+
+export type InvestmentTimeframe = $Enums.InvestmentTimeframe
+
+export const InvestmentTimeframe: typeof $Enums.InvestmentTimeframe
 
 /**
  * ##  Prisma Client ʲˢ
@@ -15491,108 +15563,88 @@ export namespace Prisma {
 
   export type AggregateProfile = {
     _count: ProfileCountAggregateOutputType | null
-    _avg: ProfileAvgAggregateOutputType | null
-    _sum: ProfileSumAggregateOutputType | null
     _min: ProfileMinAggregateOutputType | null
     _max: ProfileMaxAggregateOutputType | null
   }
 
-  export type ProfileAvgAggregateOutputType = {
-    monthlyAllocation: number | null
-  }
-
-  export type ProfileSumAggregateOutputType = {
-    monthlyAllocation: number | null
-  }
-
   export type ProfileMinAggregateOutputType = {
     id: string | null
-    financialGoal: $Enums.FinancialGoal | null
-    investmentHorizon: $Enums.InvestmentHorizon | null
-    knowledgeLevel: $Enums.KnowledgeLevel | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyAllocation: number | null
-    specificPurpose: string | null
-    hasDebts: boolean | null
-    reactionToLoss: $Enums.ReactionToLoss | null
     userId: string | null
+    mainGoal: $Enums.MainGoal | null
+    financialSkills: $Enums.FinancialSkills | null
+    riskTolerance: $Enums.RiskTolerance | null
+    monthlyInvestment: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason: $Enums.SavingsReason | null
+    investmentTimeframe: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore: boolean | null
+    financialGoalNextYear: boolean | null
   }
 
   export type ProfileMaxAggregateOutputType = {
     id: string | null
-    financialGoal: $Enums.FinancialGoal | null
-    investmentHorizon: $Enums.InvestmentHorizon | null
-    knowledgeLevel: $Enums.KnowledgeLevel | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyAllocation: number | null
-    specificPurpose: string | null
-    hasDebts: boolean | null
-    reactionToLoss: $Enums.ReactionToLoss | null
     userId: string | null
+    mainGoal: $Enums.MainGoal | null
+    financialSkills: $Enums.FinancialSkills | null
+    riskTolerance: $Enums.RiskTolerance | null
+    monthlyInvestment: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason: $Enums.SavingsReason | null
+    investmentTimeframe: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore: boolean | null
+    financialGoalNextYear: boolean | null
   }
 
   export type ProfileCountAggregateOutputType = {
     id: number
-    financialGoal: number
-    investmentHorizon: number
-    knowledgeLevel: number
-    riskTolerance: number
-    monthlyAllocation: number
-    specificPurpose: number
-    instrumentsUsed: number
-    hasDebts: number
-    reactionToLoss: number
     userId: number
+    mainGoal: number
+    financialSkills: number
+    riskTolerance: number
+    monthlyInvestment: number
+    savingsOrInvestmentReason: number
+    investmentTimeframe: number
+    hasInvestedBefore: number
+    financialGoalNextYear: number
     _all: number
   }
 
 
-  export type ProfileAvgAggregateInputType = {
-    monthlyAllocation?: true
-  }
-
-  export type ProfileSumAggregateInputType = {
-    monthlyAllocation?: true
-  }
-
   export type ProfileMinAggregateInputType = {
     id?: true
-    financialGoal?: true
-    investmentHorizon?: true
-    knowledgeLevel?: true
-    riskTolerance?: true
-    monthlyAllocation?: true
-    specificPurpose?: true
-    hasDebts?: true
-    reactionToLoss?: true
     userId?: true
+    mainGoal?: true
+    financialSkills?: true
+    riskTolerance?: true
+    monthlyInvestment?: true
+    savingsOrInvestmentReason?: true
+    investmentTimeframe?: true
+    hasInvestedBefore?: true
+    financialGoalNextYear?: true
   }
 
   export type ProfileMaxAggregateInputType = {
     id?: true
-    financialGoal?: true
-    investmentHorizon?: true
-    knowledgeLevel?: true
-    riskTolerance?: true
-    monthlyAllocation?: true
-    specificPurpose?: true
-    hasDebts?: true
-    reactionToLoss?: true
     userId?: true
+    mainGoal?: true
+    financialSkills?: true
+    riskTolerance?: true
+    monthlyInvestment?: true
+    savingsOrInvestmentReason?: true
+    investmentTimeframe?: true
+    hasInvestedBefore?: true
+    financialGoalNextYear?: true
   }
 
   export type ProfileCountAggregateInputType = {
     id?: true
-    financialGoal?: true
-    investmentHorizon?: true
-    knowledgeLevel?: true
-    riskTolerance?: true
-    monthlyAllocation?: true
-    specificPurpose?: true
-    instrumentsUsed?: true
-    hasDebts?: true
-    reactionToLoss?: true
     userId?: true
+    mainGoal?: true
+    financialSkills?: true
+    riskTolerance?: true
+    monthlyInvestment?: true
+    savingsOrInvestmentReason?: true
+    investmentTimeframe?: true
+    hasInvestedBefore?: true
+    financialGoalNextYear?: true
     _all?: true
   }
 
@@ -15634,18 +15686,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ProfileAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProfileSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProfileMinAggregateInputType
@@ -15676,27 +15716,22 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProfileCountAggregateInputType | true
-    _avg?: ProfileAvgAggregateInputType
-    _sum?: ProfileSumAggregateInputType
     _min?: ProfileMinAggregateInputType
     _max?: ProfileMaxAggregateInputType
   }
 
   export type ProfileGroupByOutputType = {
     id: string
-    financialGoal: $Enums.FinancialGoal | null
-    investmentHorizon: $Enums.InvestmentHorizon | null
-    knowledgeLevel: $Enums.KnowledgeLevel | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyAllocation: number | null
-    specificPurpose: string | null
-    instrumentsUsed: string[]
-    hasDebts: boolean | null
-    reactionToLoss: $Enums.ReactionToLoss | null
     userId: string
+    mainGoal: $Enums.MainGoal | null
+    financialSkills: $Enums.FinancialSkills | null
+    riskTolerance: $Enums.RiskTolerance | null
+    monthlyInvestment: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason: $Enums.SavingsReason | null
+    investmentTimeframe: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore: boolean | null
+    financialGoalNextYear: boolean | null
     _count: ProfileCountAggregateOutputType | null
-    _avg: ProfileAvgAggregateOutputType | null
-    _sum: ProfileSumAggregateOutputType | null
     _min: ProfileMinAggregateOutputType | null
     _max: ProfileMaxAggregateOutputType | null
   }
@@ -15717,91 +15752,86 @@ export namespace Prisma {
 
   export type ProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    financialGoal?: boolean
-    investmentHorizon?: boolean
-    knowledgeLevel?: boolean
-    riskTolerance?: boolean
-    monthlyAllocation?: boolean
-    specificPurpose?: boolean
-    instrumentsUsed?: boolean
-    hasDebts?: boolean
-    reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    mainGoal?: boolean
+    financialSkills?: boolean
+    riskTolerance?: boolean
+    monthlyInvestment?: boolean
+    savingsOrInvestmentReason?: boolean
+    investmentTimeframe?: boolean
+    hasInvestedBefore?: boolean
+    financialGoalNextYear?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    financialGoal?: boolean
-    investmentHorizon?: boolean
-    knowledgeLevel?: boolean
-    riskTolerance?: boolean
-    monthlyAllocation?: boolean
-    specificPurpose?: boolean
-    instrumentsUsed?: boolean
-    hasDebts?: boolean
-    reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    mainGoal?: boolean
+    financialSkills?: boolean
+    riskTolerance?: boolean
+    monthlyInvestment?: boolean
+    savingsOrInvestmentReason?: boolean
+    investmentTimeframe?: boolean
+    hasInvestedBefore?: boolean
+    financialGoalNextYear?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    financialGoal?: boolean
-    investmentHorizon?: boolean
-    knowledgeLevel?: boolean
-    riskTolerance?: boolean
-    monthlyAllocation?: boolean
-    specificPurpose?: boolean
-    instrumentsUsed?: boolean
-    hasDebts?: boolean
-    reactionToLoss?: boolean
     userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    mainGoal?: boolean
+    financialSkills?: boolean
+    riskTolerance?: boolean
+    monthlyInvestment?: boolean
+    savingsOrInvestmentReason?: boolean
+    investmentTimeframe?: boolean
+    hasInvestedBefore?: boolean
+    financialGoalNextYear?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectScalar = {
     id?: boolean
-    financialGoal?: boolean
-    investmentHorizon?: boolean
-    knowledgeLevel?: boolean
-    riskTolerance?: boolean
-    monthlyAllocation?: boolean
-    specificPurpose?: boolean
-    instrumentsUsed?: boolean
-    hasDebts?: boolean
-    reactionToLoss?: boolean
     userId?: boolean
+    mainGoal?: boolean
+    financialSkills?: boolean
+    riskTolerance?: boolean
+    monthlyInvestment?: boolean
+    savingsOrInvestmentReason?: boolean
+    investmentTimeframe?: boolean
+    hasInvestedBefore?: boolean
+    financialGoalNextYear?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "financialGoal" | "investmentHorizon" | "knowledgeLevel" | "riskTolerance" | "monthlyAllocation" | "specificPurpose" | "instrumentsUsed" | "hasDebts" | "reactionToLoss" | "userId", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "mainGoal" | "financialSkills" | "riskTolerance" | "monthlyInvestment" | "savingsOrInvestmentReason" | "investmentTimeframe" | "hasInvestedBefore" | "financialGoalNextYear", ExtArgs["result"]["profile"]>
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Profile"
     objects: {
-      User: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      financialGoal: $Enums.FinancialGoal | null
-      investmentHorizon: $Enums.InvestmentHorizon | null
-      knowledgeLevel: $Enums.KnowledgeLevel | null
-      riskTolerance: $Enums.RiskTolerance | null
-      monthlyAllocation: number | null
-      specificPurpose: string | null
-      instrumentsUsed: string[]
-      hasDebts: boolean | null
-      reactionToLoss: $Enums.ReactionToLoss | null
       userId: string
+      mainGoal: $Enums.MainGoal | null
+      financialSkills: $Enums.FinancialSkills | null
+      riskTolerance: $Enums.RiskTolerance | null
+      monthlyInvestment: $Enums.MonthlyInvestment | null
+      savingsOrInvestmentReason: $Enums.SavingsReason | null
+      investmentTimeframe: $Enums.InvestmentTimeframe | null
+      hasInvestedBefore: boolean | null
+      financialGoalNextYear: boolean | null
     }, ExtArgs["result"]["profile"]>
     composites: {}
   }
@@ -16196,7 +16226,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16227,16 +16257,15 @@ export namespace Prisma {
    */ 
   interface ProfileFieldRefs {
     readonly id: FieldRef<"Profile", 'String'>
-    readonly financialGoal: FieldRef<"Profile", 'FinancialGoal'>
-    readonly investmentHorizon: FieldRef<"Profile", 'InvestmentHorizon'>
-    readonly knowledgeLevel: FieldRef<"Profile", 'KnowledgeLevel'>
-    readonly riskTolerance: FieldRef<"Profile", 'RiskTolerance'>
-    readonly monthlyAllocation: FieldRef<"Profile", 'Float'>
-    readonly specificPurpose: FieldRef<"Profile", 'String'>
-    readonly instrumentsUsed: FieldRef<"Profile", 'String[]'>
-    readonly hasDebts: FieldRef<"Profile", 'Boolean'>
-    readonly reactionToLoss: FieldRef<"Profile", 'ReactionToLoss'>
     readonly userId: FieldRef<"Profile", 'String'>
+    readonly mainGoal: FieldRef<"Profile", 'MainGoal'>
+    readonly financialSkills: FieldRef<"Profile", 'FinancialSkills'>
+    readonly riskTolerance: FieldRef<"Profile", 'RiskTolerance'>
+    readonly monthlyInvestment: FieldRef<"Profile", 'MonthlyInvestment'>
+    readonly savingsOrInvestmentReason: FieldRef<"Profile", 'SavingsReason'>
+    readonly investmentTimeframe: FieldRef<"Profile", 'InvestmentTimeframe'>
+    readonly hasInvestedBefore: FieldRef<"Profile", 'Boolean'>
+    readonly financialGoalNextYear: FieldRef<"Profile", 'Boolean'>
   }
     
 
@@ -16809,16 +16838,15 @@ export namespace Prisma {
 
   export const ProfileScalarFieldEnum: {
     id: 'id',
-    financialGoal: 'financialGoal',
-    investmentHorizon: 'investmentHorizon',
-    knowledgeLevel: 'knowledgeLevel',
+    userId: 'userId',
+    mainGoal: 'mainGoal',
+    financialSkills: 'financialSkills',
     riskTolerance: 'riskTolerance',
-    monthlyAllocation: 'monthlyAllocation',
-    specificPurpose: 'specificPurpose',
-    instrumentsUsed: 'instrumentsUsed',
-    hasDebts: 'hasDebts',
-    reactionToLoss: 'reactionToLoss',
-    userId: 'userId'
+    monthlyInvestment: 'monthlyInvestment',
+    savingsOrInvestmentReason: 'savingsOrInvestmentReason',
+    investmentTimeframe: 'investmentTimeframe',
+    hasInvestedBefore: 'hasInvestedBefore',
+    financialGoalNextYear: 'financialGoalNextYear'
   };
 
   export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
@@ -16987,44 +17015,30 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'FinancialGoal'
+   * Reference to a field of type 'MainGoal'
    */
-  export type EnumFinancialGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialGoal'>
+  export type EnumMainGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MainGoal'>
     
 
 
   /**
-   * Reference to a field of type 'FinancialGoal[]'
+   * Reference to a field of type 'MainGoal[]'
    */
-  export type ListEnumFinancialGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialGoal[]'>
+  export type ListEnumMainGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MainGoal[]'>
     
 
 
   /**
-   * Reference to a field of type 'InvestmentHorizon'
+   * Reference to a field of type 'FinancialSkills'
    */
-  export type EnumInvestmentHorizonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentHorizon'>
+  export type EnumFinancialSkillsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialSkills'>
     
 
 
   /**
-   * Reference to a field of type 'InvestmentHorizon[]'
+   * Reference to a field of type 'FinancialSkills[]'
    */
-  export type ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentHorizon[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'KnowledgeLevel'
-   */
-  export type EnumKnowledgeLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'KnowledgeLevel'>
-    
-
-
-  /**
-   * Reference to a field of type 'KnowledgeLevel[]'
-   */
-  export type ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'KnowledgeLevel[]'>
+  export type ListEnumFinancialSkillsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialSkills[]'>
     
 
 
@@ -17043,16 +17057,44 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'ReactionToLoss'
+   * Reference to a field of type 'MonthlyInvestment'
    */
-  export type EnumReactionToLossFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReactionToLoss'>
+  export type EnumMonthlyInvestmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MonthlyInvestment'>
     
 
 
   /**
-   * Reference to a field of type 'ReactionToLoss[]'
+   * Reference to a field of type 'MonthlyInvestment[]'
    */
-  export type ListEnumReactionToLossFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReactionToLoss[]'>
+  export type ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MonthlyInvestment[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'SavingsReason'
+   */
+  export type EnumSavingsReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SavingsReason'>
+    
+
+
+  /**
+   * Reference to a field of type 'SavingsReason[]'
+   */
+  export type ListEnumSavingsReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SavingsReason[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvestmentTimeframe'
+   */
+  export type EnumInvestmentTimeframeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentTimeframe'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvestmentTimeframe[]'
+   */
+  export type ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentTimeframe[]'>
     
   /**
    * Deep Input Types
@@ -17863,32 +17905,30 @@ export namespace Prisma {
     OR?: ProfileWhereInput[]
     NOT?: ProfileWhereInput | ProfileWhereInput[]
     id?: StringFilter<"Profile"> | string
-    financialGoal?: EnumFinancialGoalNullableFilter<"Profile"> | $Enums.FinancialGoal | null
-    investmentHorizon?: EnumInvestmentHorizonNullableFilter<"Profile"> | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: EnumKnowledgeLevelNullableFilter<"Profile"> | $Enums.KnowledgeLevel | null
-    riskTolerance?: EnumRiskToleranceNullableFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyAllocation?: FloatNullableFilter<"Profile"> | number | null
-    specificPurpose?: StringNullableFilter<"Profile"> | string | null
-    instrumentsUsed?: StringNullableListFilter<"Profile">
-    hasDebts?: BoolNullableFilter<"Profile"> | boolean | null
-    reactionToLoss?: EnumReactionToLossNullableFilter<"Profile"> | $Enums.ReactionToLoss | null
     userId?: StringFilter<"Profile"> | string
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    mainGoal?: EnumMainGoalNullableFilter<"Profile"> | $Enums.MainGoal | null
+    financialSkills?: EnumFinancialSkillsNullableFilter<"Profile"> | $Enums.FinancialSkills | null
+    riskTolerance?: EnumRiskToleranceNullableFilter<"Profile"> | $Enums.RiskTolerance | null
+    monthlyInvestment?: EnumMonthlyInvestmentNullableFilter<"Profile"> | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: EnumSavingsReasonNullableFilter<"Profile"> | $Enums.SavingsReason | null
+    investmentTimeframe?: EnumInvestmentTimeframeNullableFilter<"Profile"> | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: BoolNullableFilter<"Profile"> | boolean | null
+    financialGoalNextYear?: BoolNullableFilter<"Profile"> | boolean | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ProfileOrderByWithRelationInput = {
     id?: SortOrder
-    financialGoal?: SortOrderInput | SortOrder
-    investmentHorizon?: SortOrderInput | SortOrder
-    knowledgeLevel?: SortOrderInput | SortOrder
-    riskTolerance?: SortOrderInput | SortOrder
-    monthlyAllocation?: SortOrderInput | SortOrder
-    specificPurpose?: SortOrderInput | SortOrder
-    instrumentsUsed?: SortOrder
-    hasDebts?: SortOrderInput | SortOrder
-    reactionToLoss?: SortOrderInput | SortOrder
     userId?: SortOrder
-    User?: UserOrderByWithRelationInput
+    mainGoal?: SortOrderInput | SortOrder
+    financialSkills?: SortOrderInput | SortOrder
+    riskTolerance?: SortOrderInput | SortOrder
+    monthlyInvestment?: SortOrderInput | SortOrder
+    savingsOrInvestmentReason?: SortOrderInput | SortOrder
+    investmentTimeframe?: SortOrderInput | SortOrder
+    hasInvestedBefore?: SortOrderInput | SortOrder
+    financialGoalNextYear?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -17897,35 +17937,31 @@ export namespace Prisma {
     AND?: ProfileWhereInput | ProfileWhereInput[]
     OR?: ProfileWhereInput[]
     NOT?: ProfileWhereInput | ProfileWhereInput[]
-    financialGoal?: EnumFinancialGoalNullableFilter<"Profile"> | $Enums.FinancialGoal | null
-    investmentHorizon?: EnumInvestmentHorizonNullableFilter<"Profile"> | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: EnumKnowledgeLevelNullableFilter<"Profile"> | $Enums.KnowledgeLevel | null
+    mainGoal?: EnumMainGoalNullableFilter<"Profile"> | $Enums.MainGoal | null
+    financialSkills?: EnumFinancialSkillsNullableFilter<"Profile"> | $Enums.FinancialSkills | null
     riskTolerance?: EnumRiskToleranceNullableFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyAllocation?: FloatNullableFilter<"Profile"> | number | null
-    specificPurpose?: StringNullableFilter<"Profile"> | string | null
-    instrumentsUsed?: StringNullableListFilter<"Profile">
-    hasDebts?: BoolNullableFilter<"Profile"> | boolean | null
-    reactionToLoss?: EnumReactionToLossNullableFilter<"Profile"> | $Enums.ReactionToLoss | null
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    monthlyInvestment?: EnumMonthlyInvestmentNullableFilter<"Profile"> | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: EnumSavingsReasonNullableFilter<"Profile"> | $Enums.SavingsReason | null
+    investmentTimeframe?: EnumInvestmentTimeframeNullableFilter<"Profile"> | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: BoolNullableFilter<"Profile"> | boolean | null
+    financialGoalNextYear?: BoolNullableFilter<"Profile"> | boolean | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type ProfileOrderByWithAggregationInput = {
     id?: SortOrder
-    financialGoal?: SortOrderInput | SortOrder
-    investmentHorizon?: SortOrderInput | SortOrder
-    knowledgeLevel?: SortOrderInput | SortOrder
-    riskTolerance?: SortOrderInput | SortOrder
-    monthlyAllocation?: SortOrderInput | SortOrder
-    specificPurpose?: SortOrderInput | SortOrder
-    instrumentsUsed?: SortOrder
-    hasDebts?: SortOrderInput | SortOrder
-    reactionToLoss?: SortOrderInput | SortOrder
     userId?: SortOrder
+    mainGoal?: SortOrderInput | SortOrder
+    financialSkills?: SortOrderInput | SortOrder
+    riskTolerance?: SortOrderInput | SortOrder
+    monthlyInvestment?: SortOrderInput | SortOrder
+    savingsOrInvestmentReason?: SortOrderInput | SortOrder
+    investmentTimeframe?: SortOrderInput | SortOrder
+    hasInvestedBefore?: SortOrderInput | SortOrder
+    financialGoalNextYear?: SortOrderInput | SortOrder
     _count?: ProfileCountOrderByAggregateInput
-    _avg?: ProfileAvgOrderByAggregateInput
     _max?: ProfileMaxOrderByAggregateInput
     _min?: ProfileMinOrderByAggregateInput
-    _sum?: ProfileSumOrderByAggregateInput
   }
 
   export type ProfileScalarWhereWithAggregatesInput = {
@@ -17933,16 +17969,15 @@ export namespace Prisma {
     OR?: ProfileScalarWhereWithAggregatesInput[]
     NOT?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Profile"> | string
-    financialGoal?: EnumFinancialGoalNullableWithAggregatesFilter<"Profile"> | $Enums.FinancialGoal | null
-    investmentHorizon?: EnumInvestmentHorizonNullableWithAggregatesFilter<"Profile"> | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: EnumKnowledgeLevelNullableWithAggregatesFilter<"Profile"> | $Enums.KnowledgeLevel | null
-    riskTolerance?: EnumRiskToleranceNullableWithAggregatesFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyAllocation?: FloatNullableWithAggregatesFilter<"Profile"> | number | null
-    specificPurpose?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    instrumentsUsed?: StringNullableListFilter<"Profile">
-    hasDebts?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
-    reactionToLoss?: EnumReactionToLossNullableWithAggregatesFilter<"Profile"> | $Enums.ReactionToLoss | null
     userId?: StringWithAggregatesFilter<"Profile"> | string
+    mainGoal?: EnumMainGoalNullableWithAggregatesFilter<"Profile"> | $Enums.MainGoal | null
+    financialSkills?: EnumFinancialSkillsNullableWithAggregatesFilter<"Profile"> | $Enums.FinancialSkills | null
+    riskTolerance?: EnumRiskToleranceNullableWithAggregatesFilter<"Profile"> | $Enums.RiskTolerance | null
+    monthlyInvestment?: EnumMonthlyInvestmentNullableWithAggregatesFilter<"Profile"> | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: EnumSavingsReasonNullableWithAggregatesFilter<"Profile"> | $Enums.SavingsReason | null
+    investmentTimeframe?: EnumInvestmentTimeframeNullableWithAggregatesFilter<"Profile"> | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
+    financialGoalNextYear?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
   }
 
   export type UserCreateInput = {
@@ -18801,99 +18836,92 @@ export namespace Prisma {
 
   export type ProfileCreateInput = {
     id?: string
-    financialGoal?: $Enums.FinancialGoal | null
-    investmentHorizon?: $Enums.InvestmentHorizon | null
-    knowledgeLevel?: $Enums.KnowledgeLevel | null
+    mainGoal?: $Enums.MainGoal | null
+    financialSkills?: $Enums.FinancialSkills | null
     riskTolerance?: $Enums.RiskTolerance | null
-    monthlyAllocation?: number | null
-    specificPurpose?: string | null
-    instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
-    hasDebts?: boolean | null
-    reactionToLoss?: $Enums.ReactionToLoss | null
-    User: UserCreateNestedOneWithoutProfileInput
+    monthlyInvestment?: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: $Enums.SavingsReason | null
+    investmentTimeframe?: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: boolean | null
+    financialGoalNextYear?: boolean | null
+    user: UserCreateNestedOneWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
     id?: string
-    financialGoal?: $Enums.FinancialGoal | null
-    investmentHorizon?: $Enums.InvestmentHorizon | null
-    knowledgeLevel?: $Enums.KnowledgeLevel | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyAllocation?: number | null
-    specificPurpose?: string | null
-    instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
-    hasDebts?: boolean | null
-    reactionToLoss?: $Enums.ReactionToLoss | null
     userId: string
+    mainGoal?: $Enums.MainGoal | null
+    financialSkills?: $Enums.FinancialSkills | null
+    riskTolerance?: $Enums.RiskTolerance | null
+    monthlyInvestment?: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: $Enums.SavingsReason | null
+    investmentTimeframe?: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: boolean | null
+    financialGoalNextYear?: boolean | null
   }
 
   export type ProfileUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
     riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
-    User?: UserUpdateOneRequiredWithoutProfileNestedInput
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
     userId?: StringFieldUpdateOperationsInput | string
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
+    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ProfileCreateManyInput = {
     id?: string
-    financialGoal?: $Enums.FinancialGoal | null
-    investmentHorizon?: $Enums.InvestmentHorizon | null
-    knowledgeLevel?: $Enums.KnowledgeLevel | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyAllocation?: number | null
-    specificPurpose?: string | null
-    instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
-    hasDebts?: boolean | null
-    reactionToLoss?: $Enums.ReactionToLoss | null
     userId: string
+    mainGoal?: $Enums.MainGoal | null
+    financialSkills?: $Enums.FinancialSkills | null
+    riskTolerance?: $Enums.RiskTolerance | null
+    monthlyInvestment?: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: $Enums.SavingsReason | null
+    investmentTimeframe?: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: boolean | null
+    financialGoalNextYear?: boolean | null
   }
 
   export type ProfileUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
     riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ProfileUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
     userId?: StringFieldUpdateOperationsInput | string
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
+    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -19692,25 +19720,18 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type EnumFinancialGoalNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialGoal | EnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialGoalNullableFilter<$PrismaModel> | $Enums.FinancialGoal | null
+  export type EnumMainGoalNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMainGoalNullableFilter<$PrismaModel> | $Enums.MainGoal | null
   }
 
-  export type EnumInvestmentHorizonNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentHorizon | EnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel> | $Enums.InvestmentHorizon | null
-  }
-
-  export type EnumKnowledgeLevelNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.KnowledgeLevel | EnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    in?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel> | $Enums.KnowledgeLevel | null
+  export type EnumFinancialSkillsNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel> | $Enums.FinancialSkills | null
   }
 
   export type EnumRiskToleranceNullableFilter<$PrismaModel = never> = {
@@ -19720,23 +19741,25 @@ export namespace Prisma {
     not?: NestedEnumRiskToleranceNullableFilter<$PrismaModel> | $Enums.RiskTolerance | null
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type EnumMonthlyInvestmentNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type EnumSavingsReasonNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSavingsReasonNullableFilter<$PrismaModel> | $Enums.SavingsReason | null
+  }
+
+  export type EnumInvestmentTimeframeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -19744,89 +19767,63 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type EnumReactionToLossNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.ReactionToLoss | EnumReactionToLossFieldRefInput<$PrismaModel> | null
-    in?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumReactionToLossNullableFilter<$PrismaModel> | $Enums.ReactionToLoss | null
-  }
-
   export type ProfileCountOrderByAggregateInput = {
     id?: SortOrder
-    financialGoal?: SortOrder
-    investmentHorizon?: SortOrder
-    knowledgeLevel?: SortOrder
-    riskTolerance?: SortOrder
-    monthlyAllocation?: SortOrder
-    specificPurpose?: SortOrder
-    instrumentsUsed?: SortOrder
-    hasDebts?: SortOrder
-    reactionToLoss?: SortOrder
     userId?: SortOrder
-  }
-
-  export type ProfileAvgOrderByAggregateInput = {
-    monthlyAllocation?: SortOrder
+    mainGoal?: SortOrder
+    financialSkills?: SortOrder
+    riskTolerance?: SortOrder
+    monthlyInvestment?: SortOrder
+    savingsOrInvestmentReason?: SortOrder
+    investmentTimeframe?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoalNextYear?: SortOrder
   }
 
   export type ProfileMaxOrderByAggregateInput = {
     id?: SortOrder
-    financialGoal?: SortOrder
-    investmentHorizon?: SortOrder
-    knowledgeLevel?: SortOrder
-    riskTolerance?: SortOrder
-    monthlyAllocation?: SortOrder
-    specificPurpose?: SortOrder
-    hasDebts?: SortOrder
-    reactionToLoss?: SortOrder
     userId?: SortOrder
+    mainGoal?: SortOrder
+    financialSkills?: SortOrder
+    riskTolerance?: SortOrder
+    monthlyInvestment?: SortOrder
+    savingsOrInvestmentReason?: SortOrder
+    investmentTimeframe?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoalNextYear?: SortOrder
   }
 
   export type ProfileMinOrderByAggregateInput = {
     id?: SortOrder
-    financialGoal?: SortOrder
-    investmentHorizon?: SortOrder
-    knowledgeLevel?: SortOrder
-    riskTolerance?: SortOrder
-    monthlyAllocation?: SortOrder
-    specificPurpose?: SortOrder
-    hasDebts?: SortOrder
-    reactionToLoss?: SortOrder
     userId?: SortOrder
+    mainGoal?: SortOrder
+    financialSkills?: SortOrder
+    riskTolerance?: SortOrder
+    monthlyInvestment?: SortOrder
+    savingsOrInvestmentReason?: SortOrder
+    investmentTimeframe?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoalNextYear?: SortOrder
   }
 
-  export type ProfileSumOrderByAggregateInput = {
-    monthlyAllocation?: SortOrder
-  }
-
-  export type EnumFinancialGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialGoal | EnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialGoal | null
+  export type EnumMainGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.MainGoal | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFinancialGoalNullableFilter<$PrismaModel>
-    _max?: NestedEnumFinancialGoalNullableFilter<$PrismaModel>
+    _min?: NestedEnumMainGoalNullableFilter<$PrismaModel>
+    _max?: NestedEnumMainGoalNullableFilter<$PrismaModel>
   }
 
-  export type EnumInvestmentHorizonNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentHorizon | EnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentHorizonNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentHorizon | null
+  export type EnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialSkills | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel>
-    _max?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel>
-  }
-
-  export type EnumKnowledgeLevelNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.KnowledgeLevel | EnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    in?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumKnowledgeLevelNullableWithAggregatesFilter<$PrismaModel> | $Enums.KnowledgeLevel | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel>
-    _max?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel>
+    _min?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
+    _max?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
   }
 
   export type EnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19839,20 +19836,34 @@ export namespace Prisma {
     _max?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
   }
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type EnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
+    _max?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
+  }
+
+  export type EnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.SavingsReason | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
+    _max?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
+  }
+
+  export type EnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
   }
 
   export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19861,16 +19872,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type EnumReactionToLossNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ReactionToLoss | EnumReactionToLossFieldRefInput<$PrismaModel> | null
-    in?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumReactionToLossNullableWithAggregatesFilter<$PrismaModel> | $Enums.ReactionToLoss | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumReactionToLossNullableFilter<$PrismaModel>
-    _max?: NestedEnumReactionToLossNullableFilter<$PrismaModel>
   }
 
   export type walletCreateNestedManyWithoutUserInput = {
@@ -20417,51 +20418,38 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSupportInput, UserUpdateWithoutSupportInput>, UserUncheckedUpdateWithoutSupportInput>
   }
 
-  export type ProfileCreateinstrumentsUsedInput = {
-    set: string[]
-  }
-
   export type UserCreateNestedOneWithoutProfileInput = {
     create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
     connectOrCreate?: UserCreateOrConnectWithoutProfileInput
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableEnumFinancialGoalFieldUpdateOperationsInput = {
-    set?: $Enums.FinancialGoal | null
+  export type NullableEnumMainGoalFieldUpdateOperationsInput = {
+    set?: $Enums.MainGoal | null
   }
 
-  export type NullableEnumInvestmentHorizonFieldUpdateOperationsInput = {
-    set?: $Enums.InvestmentHorizon | null
-  }
-
-  export type NullableEnumKnowledgeLevelFieldUpdateOperationsInput = {
-    set?: $Enums.KnowledgeLevel | null
+  export type NullableEnumFinancialSkillsFieldUpdateOperationsInput = {
+    set?: $Enums.FinancialSkills | null
   }
 
   export type NullableEnumRiskToleranceFieldUpdateOperationsInput = {
     set?: $Enums.RiskTolerance | null
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type NullableEnumMonthlyInvestmentFieldUpdateOperationsInput = {
+    set?: $Enums.MonthlyInvestment | null
   }
 
-  export type ProfileUpdateinstrumentsUsedInput = {
-    set?: string[]
-    push?: string | string[]
+  export type NullableEnumSavingsReasonFieldUpdateOperationsInput = {
+    set?: $Enums.SavingsReason | null
+  }
+
+  export type NullableEnumInvestmentTimeframeFieldUpdateOperationsInput = {
+    set?: $Enums.InvestmentTimeframe | null
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
-  }
-
-  export type NullableEnumReactionToLossFieldUpdateOperationsInput = {
-    set?: $Enums.ReactionToLoss | null
   }
 
   export type UserUpdateOneRequiredWithoutProfileNestedInput = {
@@ -20749,25 +20737,18 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumFinancialGoalNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialGoal | EnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialGoalNullableFilter<$PrismaModel> | $Enums.FinancialGoal | null
+  export type NestedEnumMainGoalNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMainGoalNullableFilter<$PrismaModel> | $Enums.MainGoal | null
   }
 
-  export type NestedEnumInvestmentHorizonNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentHorizon | EnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel> | $Enums.InvestmentHorizon | null
-  }
-
-  export type NestedEnumKnowledgeLevelNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.KnowledgeLevel | EnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    in?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel> | $Enums.KnowledgeLevel | null
+  export type NestedEnumFinancialSkillsNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel> | $Enums.FinancialSkills | null
   }
 
   export type NestedEnumRiskToleranceNullableFilter<$PrismaModel = never> = {
@@ -20777,15 +20758,25 @@ export namespace Prisma {
     not?: NestedEnumRiskToleranceNullableFilter<$PrismaModel> | $Enums.RiskTolerance | null
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
+  }
+
+  export type NestedEnumSavingsReasonNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSavingsReasonNullableFilter<$PrismaModel> | $Enums.SavingsReason | null
+  }
+
+  export type NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
   }
 
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
@@ -20793,41 +20784,24 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type NestedEnumReactionToLossNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.ReactionToLoss | EnumReactionToLossFieldRefInput<$PrismaModel> | null
-    in?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumReactionToLossNullableFilter<$PrismaModel> | $Enums.ReactionToLoss | null
+  export type NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.MainGoal | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumMainGoalNullableFilter<$PrismaModel>
+    _max?: NestedEnumMainGoalNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumFinancialGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialGoal | EnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialGoal[] | ListEnumFinancialGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialGoal | null
+  export type NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialSkills | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFinancialGoalNullableFilter<$PrismaModel>
-    _max?: NestedEnumFinancialGoalNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumInvestmentHorizonNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentHorizon | EnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentHorizon[] | ListEnumInvestmentHorizonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentHorizonNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentHorizon | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel>
-    _max?: NestedEnumInvestmentHorizonNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumKnowledgeLevelNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.KnowledgeLevel | EnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    in?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.KnowledgeLevel[] | ListEnumKnowledgeLevelFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumKnowledgeLevelNullableWithAggregatesFilter<$PrismaModel> | $Enums.KnowledgeLevel | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel>
-    _max?: NestedEnumKnowledgeLevelNullableFilter<$PrismaModel>
+    _min?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
+    _max?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -20840,20 +20814,34 @@ export namespace Prisma {
     _max?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
+    _max?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.SavingsReason | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
+    _max?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -20862,16 +20850,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumReactionToLossNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ReactionToLoss | EnumReactionToLossFieldRefInput<$PrismaModel> | null
-    in?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.ReactionToLoss[] | ListEnumReactionToLossFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumReactionToLossNullableWithAggregatesFilter<$PrismaModel> | $Enums.ReactionToLoss | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumReactionToLossNullableFilter<$PrismaModel>
-    _max?: NestedEnumReactionToLossNullableFilter<$PrismaModel>
   }
 
   export type walletCreateWithoutUserInput = {
@@ -20932,28 +20910,26 @@ export namespace Prisma {
 
   export type ProfileCreateWithoutUserInput = {
     id?: string
-    financialGoal?: $Enums.FinancialGoal | null
-    investmentHorizon?: $Enums.InvestmentHorizon | null
-    knowledgeLevel?: $Enums.KnowledgeLevel | null
+    mainGoal?: $Enums.MainGoal | null
+    financialSkills?: $Enums.FinancialSkills | null
     riskTolerance?: $Enums.RiskTolerance | null
-    monthlyAllocation?: number | null
-    specificPurpose?: string | null
-    instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
-    hasDebts?: boolean | null
-    reactionToLoss?: $Enums.ReactionToLoss | null
+    monthlyInvestment?: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: $Enums.SavingsReason | null
+    investmentTimeframe?: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: boolean | null
+    financialGoalNextYear?: boolean | null
   }
 
   export type ProfileUncheckedCreateWithoutUserInput = {
     id?: string
-    financialGoal?: $Enums.FinancialGoal | null
-    investmentHorizon?: $Enums.InvestmentHorizon | null
-    knowledgeLevel?: $Enums.KnowledgeLevel | null
+    mainGoal?: $Enums.MainGoal | null
+    financialSkills?: $Enums.FinancialSkills | null
     riskTolerance?: $Enums.RiskTolerance | null
-    monthlyAllocation?: number | null
-    specificPurpose?: string | null
-    instrumentsUsed?: ProfileCreateinstrumentsUsedInput | string[]
-    hasDebts?: boolean | null
-    reactionToLoss?: $Enums.ReactionToLoss | null
+    monthlyInvestment?: $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: $Enums.SavingsReason | null
+    investmentTimeframe?: $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: boolean | null
+    financialGoalNextYear?: boolean | null
   }
 
   export type ProfileCreateOrConnectWithoutUserInput = {
@@ -21087,28 +21063,26 @@ export namespace Prisma {
 
   export type ProfileUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
     riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ProfileUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    financialGoal?: NullableEnumFinancialGoalFieldUpdateOperationsInput | $Enums.FinancialGoal | null
-    investmentHorizon?: NullableEnumInvestmentHorizonFieldUpdateOperationsInput | $Enums.InvestmentHorizon | null
-    knowledgeLevel?: NullableEnumKnowledgeLevelFieldUpdateOperationsInput | $Enums.KnowledgeLevel | null
+    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
+    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
     riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyAllocation?: NullableFloatFieldUpdateOperationsInput | number | null
-    specificPurpose?: NullableStringFieldUpdateOperationsInput | string | null
-    instrumentsUsed?: ProfileUpdateinstrumentsUsedInput | string[]
-    hasDebts?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    reactionToLoss?: NullableEnumReactionToLossFieldUpdateOperationsInput | $Enums.ReactionToLoss | null
+    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
+    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
+    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
+    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {

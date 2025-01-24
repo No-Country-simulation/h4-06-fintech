@@ -163,20 +163,20 @@ model Support {
   user      User     @relation(fields: [userId], references: [id])
 }
 
-model Profile {
-  id                String             @id @default(cuid())
-  financialGoal     FinancialGoal? //meta financiera
-  investmentHorizon InvestmentHorizon? //horizonte de inversión
-  knowledgeLevel    KnowledgeLevel? //nivel de conocimiento
-  riskTolerance     RiskTolerance? //tolerancia al riesgo
-  monthlyAllocation Float? //asignación mensual
-  specificPurpose   String? //propósito específico
-  instrumentsUsed   String[] //instrumentos utilizados
-  hasDebts          Boolean? //tiene deudas
-  reactionToLoss    ReactionToLoss? //reacción a la pérdida
-  userId            String             @unique
-  User              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
+// model Profile {
+//   id                String             @id @default(cuid())
+//   financialGoal     FinancialGoal? //meta financiera
+//   investmentHorizon InvestmentHorizon? //horizonte de inversión
+//   knowledgeLevel    KnowledgeLevel? //nivel de conocimiento
+//   riskTolerance     RiskTolerance? //tolerancia al riesgo
+//   monthlyAllocation Float? //asignación mensual
+//   specificPurpose   String? //propósito específico
+//   instrumentsUsed   String[] //instrumentos utilizados
+//   hasDebts          Boolean? //tiene deudas
+//   reactionToLoss    ReactionToLoss? //reacción a la pérdida
+//   userId            String             @unique
+//   User              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
 
 enum Status {
   open
@@ -216,4 +216,56 @@ enum ReactionToLoss {
   WITHDRAW_IMMEDIATELY
   WAIT_RECOVERY
   INVEST_MORE
+}
+
+// Enums for predefined options
+enum MainGoal {
+  SAVE // "I want to save"
+  INVEST // "I’m interested in investing"
+  INCOME // "I want to increase my income"
+  RETIREMENT // "I’m planning for my retirement"
+  OTHER // "Other"
+}
+
+enum FinancialSkills {
+  BEGINNER
+  LEARNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum MonthlyInvestment {
+  LESS_THAN_30000 // "Less than $30,000"
+  BETWEEN_30000_50000 // "Between $30,000 and $50,000"
+  MORE_THAN_50000 // "More than $50,000"
+}
+
+enum SavingsReason {
+  BUY_HOUSE // "Buy a house"
+  BUY_CAR // "Buy a car"
+  PLAN_VACATION // "Plan my vacation"
+  PERSONAL_PROJECT // "Fund a personal project"
+  EDUCATION // "Save for education"
+  NO_SPECIFIC_REASON // "No specific reason"
+  LEARNING // "I want to learn"
+}
+
+enum InvestmentTimeframe {
+  SHORT_TERM // "Less than 1 year"
+  MEDIUM_TERM // "1 to 5 years"
+  LONG_TERM // "More than 5 years"
+}
+
+model Profile {
+  id                        String               @id @default(cuid())
+  userId                    String               @unique
+  mainGoal                  MainGoal? // Answer to question 1
+  financialSkills           FinancialSkills? // Answer to question 2
+  riskTolerance             RiskTolerance? // Answer to question 3
+  monthlyInvestment         MonthlyInvestment? // Answer to question 4
+  savingsOrInvestmentReason SavingsReason? // Answer to question 5
+  investmentTimeframe       InvestmentTimeframe? // Answer to question 6
+  hasInvestedBefore         Boolean? // Answer to question 7
+  financialGoalNextYear     Boolean?             @default(false) // Answer to question 8
+  user                      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
