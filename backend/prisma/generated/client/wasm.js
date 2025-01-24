@@ -237,16 +237,15 @@ exports.Prisma.SupportScalarFieldEnum = {
 
 exports.Prisma.ProfileScalarFieldEnum = {
   id: 'id',
-  financialGoal: 'financialGoal',
-  investmentHorizon: 'investmentHorizon',
-  knowledgeLevel: 'knowledgeLevel',
+  userId: 'userId',
+  mainGoal: 'mainGoal',
+  financialSkills: 'financialSkills',
   riskTolerance: 'riskTolerance',
-  monthlyAllocation: 'monthlyAllocation',
-  specificPurpose: 'specificPurpose',
-  instrumentsUsed: 'instrumentsUsed',
-  hasDebts: 'hasDebts',
-  reactionToLoss: 'reactionToLoss',
-  userId: 'userId'
+  monthlyInvestment: 'monthlyInvestment',
+  savingsOrInvestmentReason: 'savingsOrInvestmentReason',
+  investmentTimeframe: 'investmentTimeframe',
+  hasInvestedBefore: 'hasInvestedBefore',
+  financialGoalNextYear: 'financialGoalNextYear'
 };
 
 exports.Prisma.SortOrder = {
@@ -286,24 +285,17 @@ exports.Status = exports.$Enums.Status = {
   closed: 'closed'
 };
 
-exports.FinancialGoal = exports.$Enums.FinancialGoal = {
-  SAVINGS: 'SAVINGS',
-  INVESTMENT: 'INVESTMENT',
+exports.MainGoal = exports.$Enums.MainGoal = {
+  SAVE: 'SAVE',
+  INVEST: 'INVEST',
+  INCOME: 'INCOME',
   RETIREMENT: 'RETIREMENT',
-  EDUCATION: 'EDUCATION',
-  EMERGENCY_FUND: 'EMERGENCY_FUND',
-  PASSIVE_INCOME: 'PASSIVE_INCOME',
   OTHER: 'OTHER'
 };
 
-exports.InvestmentHorizon = exports.$Enums.InvestmentHorizon = {
-  SHORT_TERM: 'SHORT_TERM',
-  MEDIUM_TERM: 'MEDIUM_TERM',
-  LONG_TERM: 'LONG_TERM'
-};
-
-exports.KnowledgeLevel = exports.$Enums.KnowledgeLevel = {
-  BASIC: 'BASIC',
+exports.FinancialSkills = exports.$Enums.FinancialSkills = {
+  BEGINNER: 'BEGINNER',
+  LEARNER: 'LEARNER',
   INTERMEDIATE: 'INTERMEDIATE',
   ADVANCED: 'ADVANCED'
 };
@@ -314,10 +306,26 @@ exports.RiskTolerance = exports.$Enums.RiskTolerance = {
   AGGRESSIVE: 'AGGRESSIVE'
 };
 
-exports.ReactionToLoss = exports.$Enums.ReactionToLoss = {
-  WITHDRAW_IMMEDIATELY: 'WITHDRAW_IMMEDIATELY',
-  WAIT_RECOVERY: 'WAIT_RECOVERY',
-  INVEST_MORE: 'INVEST_MORE'
+exports.MonthlyInvestment = exports.$Enums.MonthlyInvestment = {
+  LESS_THAN_30000: 'LESS_THAN_30000',
+  BETWEEN_30000_50000: 'BETWEEN_30000_50000',
+  MORE_THAN_50000: 'MORE_THAN_50000'
+};
+
+exports.SavingsReason = exports.$Enums.SavingsReason = {
+  BUY_HOUSE: 'BUY_HOUSE',
+  BUY_CAR: 'BUY_CAR',
+  PLAN_VACATION: 'PLAN_VACATION',
+  PERSONAL_PROJECT: 'PERSONAL_PROJECT',
+  EDUCATION: 'EDUCATION',
+  NO_SPECIFIC_REASON: 'NO_SPECIFIC_REASON',
+  LEARNING: 'LEARNING'
+};
+
+exports.InvestmentTimeframe = exports.$Enums.InvestmentTimeframe = {
+  SHORT_TERM: 'SHORT_TERM',
+  MEDIUM_TERM: 'MEDIUM_TERM',
+  LONG_TERM: 'LONG_TERM'
 };
 
 exports.Prisma.ModelName = {
