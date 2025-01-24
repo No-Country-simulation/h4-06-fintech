@@ -20,7 +20,6 @@ export class CommentService {
         'Error creating comment',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
-      console.log(error);
     }
   }
 
@@ -80,7 +79,7 @@ export class CommentService {
     try {
       await this.prismaService.comment.delete({
         where: {
-          id: id,
+          id,
         },
       });
       return {

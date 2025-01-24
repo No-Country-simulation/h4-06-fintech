@@ -8,6 +8,9 @@ CREATE TYPE "CurrencyType" AS ENUM ('PESOS', 'DOLLARS');
 CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN', 'MODERATOR');
 
 -- CreateEnum
+CREATE TYPE "Status" AS ENUM ('open', 'inProgress', 'closed');
+
+-- CreateEnum
 CREATE TYPE "FinancialGoal" AS ENUM ('SAVINGS', 'INVESTMENT', 'RETIREMENT', 'EDUCATION', 'EMERGENCY_FUND', 'PASSIVE_INCOME', 'OTHER');
 
 -- CreateEnum
@@ -54,11 +57,11 @@ CREATE TABLE "Target" (
 -- CreateTable
 CREATE TABLE "FinancialRadiography" (
     "id" TEXT NOT NULL,
-    "monthlyIncome" DECIMAL(10,2) NOT NULL,
-    "monthlyExpenses" DECIMAL(10,2) NOT NULL,
-    "savingCapacity" DECIMAL(10,2) NOT NULL,
-    "debts" DECIMAL(10,2) NOT NULL,
-    "savings" DECIMAL(10,2) NOT NULL,
+    "monthlyIncome" DECIMAL(10,2),
+    "monthlyExpenses" DECIMAL(10,2),
+    "savingCapacity" DECIMAL(10,2),
+    "debts" DECIMAL(10,2),
+    "savings" DECIMAL(10,2),
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "FinancialRadiography_pkey" PRIMARY KEY ("id")
@@ -169,7 +172,9 @@ CREATE TABLE "Support" (
     "userId" TEXT NOT NULL,
     "subject" TEXT NOT NULL,
     "message" TEXT NOT NULL,
-    "state" TEXT NOT NULL,
+    "status" "Status" NOT NULL DEFAULT 'open',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Support_pkey" PRIMARY KEY ("id")
 );
@@ -223,6 +228,9 @@ ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") 
 
 -- AddForeignKey
 ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

@@ -21,7 +21,7 @@ export class UsersService {
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
     private jwtService: JwtService,
-  ) {}
+  ) { }
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -50,7 +50,7 @@ export class UsersService {
         roundOfHashing,
       );
 
-      const { email, profile, ...rest } = createUserDto;
+      const { email, profile, financialRadiographies, ...rest } = createUserDto;
       rest.password = hashedPassword;
 
       const user = await this.prismaService.user.create({
@@ -60,6 +60,9 @@ export class UsersService {
           profile: {
             create: profile,
           },
+          financialRadiographies: {
+            create: financialRadiographies
+          }
         },
       });
 
@@ -99,6 +102,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
+          financialRadiographies: true,
         },
       });
       return findAll;
@@ -118,6 +122,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
+          financialRadiographies: true,
         },
       });
       if (!findOne) {
@@ -139,7 +144,7 @@ export class UsersService {
         );
       }
 
-      const { profile, ...rest } = updateUserDto;
+      const { profile, financialRadiographies, ...rest } = updateUserDto;
 
       const update = await this.prismaService.user.update({
         where: { id },
@@ -148,6 +153,9 @@ export class UsersService {
           profile: {
             create: profile,
           },
+          financialRadiographies: {
+            create: financialRadiographies,
+          }
         },
       });
 
