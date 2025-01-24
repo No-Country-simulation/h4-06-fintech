@@ -40,13 +40,13 @@ export default function LoginForm() {
         label='Correo'
         name='email'
         error={state.message?.email?.[0]}
-        placeholder='correo@correo.com'
+        placeholder='Ejemplo.iUPi@gmail.com'
       />
       <Input
         data-pw='password'
         label='Contraseña'
         name='password'
-        type='password'
+        password
         error={state.message?.password?.[0]}
         placeholder='********'
       />
