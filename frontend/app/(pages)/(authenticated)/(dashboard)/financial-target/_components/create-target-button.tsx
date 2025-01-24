@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 export function CreateTargetButton() {
   const path = usePathname();
 
-  if (path === '/financial-target/create') {
+  if (!(path === '/financial-target')) {
     return null;
   }
 

@@ -1,4 +1,4 @@
-import { backend } from '@api';
+import { backend } from '../../../client-api/backend';
 
 export async function DevIsland() {
   if (process.env.NODE_ENV !== 'development') {

@@ -19,6 +19,8 @@ const financialTargetApi: FinancialTargetAPI = {
     }
     return target;
   },
+  async addFunds(params) {},
+  async toggleStatus(params) {},
 };
 
 export { financialTargetApi };

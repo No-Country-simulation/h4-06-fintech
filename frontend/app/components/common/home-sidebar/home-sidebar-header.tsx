@@ -3,7 +3,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { backend } from '@api';
+import { backend } from '../../../../client-api/backend';
 
 export async function HomeSidebarHeader() {
   const { email } = await backend.authApi.getProfile();
