@@ -1,0 +1,31 @@
+import { Module } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { AuthController } from './auth.controller';
+import { PrismaModule } from '../prisma/prisma.module';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
+import { UsersModule } from '../users/users.module';
+import { JwtStrategy } from './strategy/jwt.strategy';
+import { GoogleStrategy } from './strategy/google.strategy';
+import { ConfigModule } from '@nestjs/config';
+import googleOauthConfig from './config/auth.google.config';
+
+@Module({
+  imports: [
+    PrismaModule,
+    PassportModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '10m' },
+    }),
+    UsersModule,
+    ConfigModule.forFeature(googleOauthConfig),
+  ],
+  controllers: [AuthController],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    GoogleStrategy,
+  ],
+})
+export class AuthModule {}

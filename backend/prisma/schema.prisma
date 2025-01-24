@@ -1,14 +1,209 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+}
+
+enum CurrencyType {
+  PESOS
+  DOLLARS
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+model User {
+  id                     String                 @id @unique @default(cuid())
+  email                  String                 @unique
+  firstName              String?
+  lastName               String?
+  password               String
+  avatarUrl              String?
+  role                   UserRole?              @default(USER)
+  wallet                 wallet[]
+  financialRadiographies FinancialRadiography[]
+  profile                Profile?
+  comment                Comment[]
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  isEmailVerified Boolean @default(false)
+}
+
+model Target {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  progress    String
+  montoTarget Int
+  dateTarget  DateTime
+  userId      String
+  // user        User     @relation(fields: [userId], references: [id])
+}
+
+model FinancialRadiography {
+  id              String  @id @default(cuid())
+  monthlyIncome   Decimal @db.Decimal(10, 2) // Ingresos mensuales
+  monthlyExpenses Decimal @db.Decimal(10, 2) // Gastos mensuales
+  savingCapacity  Decimal @db.Decimal(10, 2) // Capacidad de ahorro
+  debts           Decimal @db.Decimal(10, 2) // Deudas
+  savings         Decimal @db.Decimal(10, 2) // Ahorros
+  userId          String
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model InvestmentPortfolio {
+  id                 String       @id @default(cuid())
+  profileRisk        Int // Nivel de riesgo (1-5)
+  performanceCurrent Float // Rendimiento actual en porcentaje
+  coin               String // Moneda principal ("PESOS" | "DOLLARS")
+  userId             String
+  // user               User         @relation(fields: [userId], references: [id])
+  investment         Investment[]
+}
+
+model FinancialInstrument {
+  id          String       @id @default(cuid())
+  name        String
+  type        String
+  category    String
+  performance Float
+  levelRisk   Int
+  deadline    Int
+  currency    CurrencyType
+  Investment  Investment[]
+}
+
+model Investment {
+  id             String              @id @default(cuid())
+  amountInvested Int
+  performance    String
+  dateInvestment DateTime
+  portfolioId    String
+  instrumentId   String
+  instrument     FinancialInstrument @relation(fields: [instrumentId], references: [id])
+  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id])
+}
+
+model News {
+  id        String    @id @default(cuid())
+  title     String
+  content   String
+  source    String
+  dateNews  DateTime
+  category  String
+  comment   Comment[]
+  createdAt DateTime  @default(now())
+}
+
+model Comment {
+  id          String   @id @default(cuid())
+  content     String
+  dateComment DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String?
+  newsId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  news        News?    @relation(fields: [newsId], references: [id], onDelete: Cascade)
+}
+
+model wallet {
+  id             String              @id @default(cuid())
+  userId         String
+  balancePesos   Int
+  balanceDollars Int
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions   WalletTransaction[]
+}
+
+model WalletTransaction {
+  id          String          @id @default(cuid())
+  walletId    String
+  type        TransactionType
+  amount      Float
+  currency    CurrencyType
+  description String?
+  createdAt   DateTime        @default(now())
+  wallet      wallet          @relation(fields: [walletId], references: [id])
+}
+
+model Administrador {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  password String
+  role     UserRole @default(ADMIN)
+  name     String
+}
+
+model Support {
+  id      String @id @default(cuid())
+  userId  String
+  subject String
+  message String
+  state   String
+  // user    User   @relation(fields: [userId], references: [id])
+}
+
+model Profile {
+  id                String             @id @default(cuid())
+  financialGoal     FinancialGoal? //meta financiera
+  investmentHorizon InvestmentHorizon? //horizonte de inversión
+  knowledgeLevel    KnowledgeLevel? //nivel de conocimiento
+  riskTolerance     RiskTolerance? //tolerancia al riesgo
+  monthlyAllocation Float? //asignación mensual
+  specificPurpose   String? //propósito específico
+  instrumentsUsed   String[] //instrumentos utilizados
+  hasDebts          Boolean? //tiene deudas
+  reactionToLoss    ReactionToLoss? //reacción a la pérdida
+  userId            String             @unique
+  User              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum FinancialGoal {
+  SAVINGS
+  INVESTMENT
+  RETIREMENT
+  EDUCATION
+  EMERGENCY_FUND
+  PASSIVE_INCOME
+  OTHER
+}
+
+enum InvestmentHorizon {
+  SHORT_TERM
+  MEDIUM_TERM
+  LONG_TERM
+}
+
+enum KnowledgeLevel {
+  BASIC
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum RiskTolerance {
+  CONSERVATIVE
+  MODERATE
+  AGGRESSIVE
+}
+
+enum ReactionToLoss {
+  WITHDRAW_IMMEDIATELY
+  WAIT_RECOVERY
+  INVEST_MORE
 }

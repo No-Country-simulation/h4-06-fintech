@@ -1,0 +1,70 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Cuál es tu objetivo principal por el cual vas a utilizar iUPi?",
+      "options": [
+        "Quiero ahorrar",
+        "Me interesa invertir",
+        "Busco aumentar mis ingresos",
+        "Estoy planificando mi retiro",
+        "Otro"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "¿Cómo te describirías en cuanto a tus habilidades financieras?",
+      "options": ["Principiante", "Aprendiz", "Intermedio", "Avanzado"]
+    },
+    {
+      "id": 3,
+      "question": "¿Cuál es tu tolerancia al riesgo?",
+      "options": [
+        "Conservador (Prefiero evitar riesgos)",
+        "Moderado (Puedo asumir riesgos moderados)",
+        "Arriesgado (Puedo asumir riesgos altos)"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "¿Cuánto dinero estás dispuesto a invertir mensualmente?",
+      "options": [
+        "Menos de $30.000",
+        "Entre $30.000 y $50.000",
+        "Más de $50.000"
+      ]
+    },
+    {
+      "id": 5,
+      "question": "¿Cuál es el motivo principal por el cual querés ahorrar o invertir?",
+      "options": [
+        "Comprar una vivienda",
+        "Comprar un vehículo",
+        "Planificar mis vacaciones",
+        "Financiar un proyecto personal",
+        "Ahorrar para mi educación",
+        "No tengo un motivo específico",
+        "Quiero aprender"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "¿En qué plazo de inversión estás pensando para lograr tus metas?",
+      "options": [
+        "Corto plazo (Menos de 1 año)",
+        "Mediano plazo (1 a 5 años)",
+        "Largo plazo (Más de 5 años)"
+      ]
+    },
+    {
+      "id": 7,
+      "question": "¿Alguna vez invertiste?",
+      "options": ["Si", "No"]
+    },
+    {
+      "id": 8,
+      "question": "¿Tenés algún objetivo financiero que quieras lograr en los próximos 6-12 meses?",
+      "options": ["Si", "No"]
+    }
+  ]
+}
