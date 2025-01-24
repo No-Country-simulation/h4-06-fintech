@@ -13,7 +13,7 @@ export default function RegisterPage() {
             className='font-semibold'
             href={'/login'}
           >
-            Haz click aqui!
+            Iniciar sesión
           </Link>
         </p>
       </header>

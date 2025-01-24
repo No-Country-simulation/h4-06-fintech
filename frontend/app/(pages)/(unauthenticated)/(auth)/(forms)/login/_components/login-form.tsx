@@ -46,7 +46,7 @@ export default function LoginForm() {
         data-pw='password'
         label='Contraseña'
         name='password'
-        type='password'
+        password
         error={state.message?.password?.[0]}
         placeholder='********'
       />

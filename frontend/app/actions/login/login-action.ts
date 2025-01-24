@@ -1,5 +1,6 @@
 'use server';
 
+import { AuthError } from 'shared/errors';
 import zod from 'zod';
 import { backend } from '../../../client-api/backend';
 import { setAccessToken } from '../../../lib/setAccessToken';
@@ -46,8 +47,25 @@ export async function loginAction(
     await setAccessToken(accessToken);
     return { success: true };
   } catch (e) {
-    const errorMessage =
+    let errorMessage;
+
+    // Si la contraseña es incorrecta, quiero mostrar un mensaje abajo del input
+    // no necesito mostrar un toaster
+    if (e instanceof AuthError) {
+      errorMessage = 'AuthError';
+
+      return {
+        message: {
+          email: [],
+          password: [errorMessage],
+        },
+        success: false,
+      };
+    }
+
+    errorMessage =
       e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
+
     return { success: false, actionErrorMessage: errorMessage };
   }
 }

@@ -49,13 +49,21 @@ export default function Input({
 
       {error && (
         <footer className='flex items-start gap-1 px-4 pt-4 text-red-500'>
-          <CircleAlertIcon className='size-6' />
+          <CircleAlertIcon className='size-8' />
           <p
             id={`${name}-error`}
             className='text-sm'
             role='alert'
           >
-            {error}
+            {error === 'AuthError' ? (
+              <>
+                La contraseña ingresada es incorrecta. Vuelve a intentarlo o haz
+                clic en <strong>Recuperar contraseña</strong> para cambiarla.
+              </>
+            ) : (
+              error
+            )}
+            {/* error === 'AuthError */}
           </p>
         </footer>
       )}

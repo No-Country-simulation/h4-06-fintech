@@ -50,7 +50,7 @@ export default function SignUpForm() {
         data-pw='password'
         label='Contraseña'
         name='password'
-        type='password'
+        password
         error={state.message?.password?.[0]}
         placeholder='********'
       />
@@ -58,7 +58,7 @@ export default function SignUpForm() {
         data-pw='confirm-password'
         label='Confirmar contraseña'
         name='confirmPassword'
-        type='password'
+        password
         error={state.message?.confirmPassword?.[0]}
         placeholder='********'
       />
