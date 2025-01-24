@@ -11,7 +11,6 @@ const initialState = {
   message: {
     email: [],
     password: [],
-    confirmPassword: [],
   },
   success: false,
   actionErrorMessage: '',
@@ -44,7 +43,7 @@ export default function SignUpForm() {
         label='Email'
         name='email'
         error={state.message?.email?.[0]}
-        placeholder='correo@correo.com'
+        placeholder='Ejemplo.iUPi@gmail.com'
       />
       <Input
         data-pw='password'
@@ -52,15 +51,7 @@ export default function SignUpForm() {
         name='password'
         password
         error={state.message?.password?.[0]}
-        placeholder='********'
-      />
-      <Input
-        data-pw='confirm-password'
-        label='Confirmar contraseña'
-        name='confirmPassword'
-        password
-        error={state.message?.confirmPassword?.[0]}
-        placeholder='********'
+        placeholder='Debe contener al menos 8 caracteres'
       />
       <SubmitButton
         data-pw='submit-button'

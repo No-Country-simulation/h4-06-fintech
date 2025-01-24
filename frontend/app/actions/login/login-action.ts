@@ -6,8 +6,8 @@ import { backend } from '../../../client-api/backend';
 import { setAccessToken } from '../../../lib/setAccessToken';
 
 const loginSchema = zod.object({
-  email: zod.string().email({ message: 'correo no es valido' }),
-  password: zod.string().min(8, { message: 'contraseña no es valida' }),
+  email: zod.string(),
+  password: zod.string(),
 });
 
 export type LoginSchema = zod.infer<typeof loginSchema>;
