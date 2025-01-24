@@ -1,12 +1,18 @@
-import { IsNotEmpty, IsString, IsEnum, IsBoolean, IsOptional, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsBoolean,
+  IsEnum,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import {
   FinancialGoal,
   InvestmentHorizon,
-  RiskTolerance,
+  KnowledgeLevel,
   ReactionToLoss,
-  KnowledgeLevel
-} from '@prisma/client';
+  RiskTolerance,
+} from '../../../prisma/generated/client';
 
 export class CreateProfileDto {
   @ApiProperty({ enum: FinancialGoal })

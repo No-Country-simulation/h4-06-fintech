@@ -5,9 +5,9 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { User } from '../../prisma/generated/client';
 import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -21,7 +21,7 @@ export class UsersService {
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
     private jwtService: JwtService,
-  ) {}
+  ) { }
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -50,7 +50,7 @@ export class UsersService {
         roundOfHashing,
       );
 
-      const { email, profile, ...rest } = createUserDto;
+      const { email, profile, financialRadiographies, ...rest } = createUserDto;
       rest.password = hashedPassword;
 
       const user = await this.prismaService.user.create({
@@ -60,6 +60,9 @@ export class UsersService {
           profile: {
             create: profile,
           },
+          financialRadiographies: {
+            create: financialRadiographies
+          }
         },
       });
 
@@ -99,6 +102,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
+          financialRadiographies: true,
         },
       });
       return findAll;
@@ -118,6 +122,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
+          financialRadiographies: true,
         },
       });
       if (!findOne) {
@@ -139,7 +144,7 @@ export class UsersService {
         );
       }
 
-      const { profile, ...rest } = updateUserDto;
+      const { profile, financialRadiographies, ...rest } = updateUserDto;
 
       const update = await this.prismaService.user.update({
         where: { id },
@@ -148,6 +153,9 @@ export class UsersService {
           profile: {
             create: profile,
           },
+          financialRadiographies: {
+            create: financialRadiographies,
+          }
         },
       });
 
@@ -185,12 +193,14 @@ export class UsersService {
     const payload: JwtPayload = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
     });
+    console.log({ payload });
 
     const user = await this.prismaService.user.findUnique({
       where: {
         id: payload.id,
       },
     });
+    console.log({ user });
 
     if (!user) {
       throw new BadRequestException('Este usuario no existe');
