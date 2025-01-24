@@ -1,5 +1,3 @@
-import { string } from "zod";
-
-export interface ToggleStatusParams = {
-  id  :string
+export interface ToggleStatusParams {
+  id: string;
 }
