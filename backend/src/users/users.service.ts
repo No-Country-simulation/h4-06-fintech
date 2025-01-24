@@ -5,9 +5,9 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { User } from '../../prisma/generated/client';
 import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -185,12 +185,14 @@ export class UsersService {
     const payload: JwtPayload = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
     });
+    console.log({ payload });
 
     const user = await this.prismaService.user.findUnique({
       where: {
         id: payload.id,
       },
     });
+    console.log({ user });
 
     if (!user) {
       throw new BadRequestException('Este usuario no existe');

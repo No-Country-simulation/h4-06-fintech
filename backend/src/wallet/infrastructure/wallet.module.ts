@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { WalletController } from '../presentation/wallet.controller';
-import { WalletRepository } from '../infrastructure/repositories/wallet.repository';
 import { PrismaModule } from '../../prisma/prisma.module';
 import { CreateWalletUseCase } from '../application/usecases/create.wallet.use-case';
+import { WalletController } from '../presentation/wallet.controller';
+import { WalletRepository } from './repositories/wallet.repository';
 
 @Module({
   imports: [PrismaModule],

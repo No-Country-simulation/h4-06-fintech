@@ -1,7 +1,7 @@
+import { CurrencyType } from '../../../../prisma/generated/client';
+import { TransactionDto } from '../../application/dtos/transaction.dto';
 import { Wallet } from '../entities/wallet.entity';
 import { WalletTransaction } from '../entities/wallet.transaction.entity';
-import { TransactionDto } from '../../application/dtos/transaction.dto';
-import { CurrencyType } from '@prisma/client';
 
 export interface IWalletRepository {
   createWallet(userId: string): Promise<Wallet>;

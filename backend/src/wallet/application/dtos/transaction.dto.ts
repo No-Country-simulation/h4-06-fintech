@@ -1,5 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { CurrencyType, TransactionType } from '@prisma/client';
+import {
+  CurrencyType,
+  TransactionType,
+} from '../../../../prisma/generated/client';
 
 export class TransactionDto {
   @ApiProperty({

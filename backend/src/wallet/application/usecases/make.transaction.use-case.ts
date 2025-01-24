@@ -1,6 +1,9 @@
+import {
+  CurrencyType,
+  TransactionType,
+} from '../../../../prisma/generated/client';
 import { IWalletRepository } from '../../domain/interfaces/wallet.repository.interface';
 import { TransactionDto } from '../dtos/transaction.dto';
-import { CurrencyType, TransactionType } from '@prisma/client';
 
 export class MakeTransactionUseCase {
   constructor(private readonly walletRepository: IWalletRepository) {}
