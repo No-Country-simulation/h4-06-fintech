@@ -10,8 +10,10 @@ import {
 } from 'class-validator';
 import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
 import { Type } from 'class-transformer';
+import { CreateFinancialRadiographyDto } from '../../FinancialRadiographies/FinancialRadiographies.dto';
 
-export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
+export class Profile extends OmitType(CreateProfileDto, ['userId']) { }
+export class FinancialRadiographies extends OmitType(CreateFinancialRadiographyDto, ['userId']) { }
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty({
@@ -20,6 +22,7 @@ export class CreateUserDto {
   @IsString({ message: 'El correo electrónico debe ser una cadena de texto.' })
   @IsEmail({}, { message: 'Debe proporcionar un correo electrónico válido.' })
   email: string;
+
   @IsString()
   @IsOptional()
   firstName?: string;
@@ -41,6 +44,12 @@ export class CreateUserDto {
   })
   password: string;
 
+  @ApiProperty({ type: FinancialRadiographies })
+  @ValidateNested({ each: true })
+  @Type(() => FinancialRadiographies)
+  financialRadiographies?: FinancialRadiographies;
+
+
   @ApiProperty({
     type: Profile,
     required: true,
@@ -48,4 +57,5 @@ export class CreateUserDto {
   @ValidateNested({ each: true })
   @Type(() => Profile)
   profile: Profile;
+
 }

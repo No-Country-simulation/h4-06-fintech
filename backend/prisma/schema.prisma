@@ -40,7 +40,8 @@ model User {
   comment                Comment[]
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
-  isEmailVerified Boolean @default(false)
+  Support                Support[]
+  isEmailVerified        Boolean                @default(false)
 }
 
 model Target {
@@ -56,11 +57,11 @@ model Target {
 
 model FinancialRadiography {
   id              String  @id @default(cuid())
-  monthlyIncome   Decimal @db.Decimal(10, 2) // Ingresos mensuales
-  monthlyExpenses Decimal @db.Decimal(10, 2) // Gastos mensuales
-  savingCapacity  Decimal @db.Decimal(10, 2) // Capacidad de ahorro
-  debts           Decimal @db.Decimal(10, 2) // Deudas
-  savings         Decimal @db.Decimal(10, 2) // Ahorros
+  monthlyIncome   Decimal? @db.Decimal(10, 2) // Ingresos mensuales
+  monthlyExpenses Decimal? @db.Decimal(10, 2) // Gastos mensuales
+  savingCapacity  Decimal? @db.Decimal(10, 2) // Capacidad de ahorro
+  debts           Decimal? @db.Decimal(10, 2) // Deudas
+  savings         Decimal? @db.Decimal(10, 2) // Ahorros
   userId          String
   user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -152,12 +153,14 @@ model Administrador {
 }
 
 model Support {
-  id      String @id @default(cuid())
-  userId  String
-  subject String
-  message String
-  state   String
-  // user    User   @relation(fields: [userId], references: [id])
+  id        String   @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  status    Status   @default(open) // Ticket status (open, inProgress, closed)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Profile {
@@ -172,7 +175,13 @@ model Profile {
   hasDebts          Boolean? //tiene deudas
   reactionToLoss    ReactionToLoss? //reacción a la pérdida
   userId            String             @unique
-  User              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  User              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Status {
+  open
+  inProgress
+  closed
 }
 
 enum FinancialGoal {
