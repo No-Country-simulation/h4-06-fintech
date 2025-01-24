@@ -353,7 +353,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\DELL\\Desktop\\hackathon h4-06-fintech\\backend\\prisma\\generated\\client",
+      "value": "/home/santiago/dev/next/h4-06-fintech/backend/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -362,7 +362,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -371,11 +371,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\DELL\\Desktop\\hackathon h4-06-fintech\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/santiago/dev/next/h4-06-fintech/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../../.env",
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -385,6 +385,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
