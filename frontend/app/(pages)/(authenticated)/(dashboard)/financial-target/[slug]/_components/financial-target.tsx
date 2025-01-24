@@ -6,8 +6,8 @@ import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { formatMoney } from '@/lib/money-formatter';
 import { useEffect, useState } from 'react';
-import { financialTargetApi } from '../../../../../../../api/backend/financial-target/financial-target.api';
-import { type FinancialTarget } from '../../../../../../../api/backend/financial-target/interface/getOne';
+import { financialTargetApi } from '../../../../../../../client-api/backend/financial-target/financial-target.api';
+import { type FinancialTarget } from '../../../../../../../client-api/backend/financial-target/interface/getOne';
 
 interface Props {
   id: string;

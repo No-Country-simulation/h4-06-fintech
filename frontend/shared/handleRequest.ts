@@ -1,4 +1,4 @@
-import { APIErrorResponse } from '../api/backend/interface/generic-response';
+import { APIErrorResponse } from '../client-api/backend/interface/generic-response';
 import { InternalError } from './errors';
 
 /**

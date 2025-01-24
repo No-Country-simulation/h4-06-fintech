@@ -1,7 +1,7 @@
 'use server';
 
-import { backend } from '@api';
 import zod from 'zod';
+import { backend } from '../../../client-api/backend';
 import { setAccessToken } from '../../../lib/setAccessToken';
 
 const loginSchema = zod.object({

@@ -1,7 +1,7 @@
 'use server';
 
-import { backend } from '@api';
 import zod from 'zod';
+import { backend } from '../../../client-api/backend';
 
 const signUpSchema = zod
   .object({
