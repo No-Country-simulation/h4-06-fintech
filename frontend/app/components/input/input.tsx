@@ -1,12 +1,24 @@
+import { CircleAlertIcon } from 'lucide-react';
 import { Input as ShadcnInput } from '../ui/input';
 import { Label } from '../ui/label';
+import { PasswordInput } from './password-input';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string | string[];
+  password?: boolean;
 }
 
-export default function Input({ label, error, name, ...props }: InputProps) {
+export default function Input({
+  label,
+  error,
+  name,
+  password = false,
+  ...props
+}: InputProps) {
+  const inputStyles =
+    `w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${props.className || ''} `.trim();
+
   return (
     <div className='flex flex-col gap-1'>
       <Label
@@ -17,22 +29,35 @@ export default function Input({ label, error, name, ...props }: InputProps) {
         {props.required && <span className='ml-1 text-red-500'>*</span>}
       </Label>
 
-      <ShadcnInput
-        name={name}
-        aria-invalid={!!error}
-        aria-describedby={name || undefined}
-        className={`w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${props.className || ''} `.trim()}
-        {...props}
-      />
+      {password ? (
+        <PasswordInput
+          name={name}
+          aria-invalid={!!error}
+          aria-describedby={name || undefined}
+          className={inputStyles}
+          {...props}
+        />
+      ) : (
+        <ShadcnInput
+          name={name}
+          aria-invalid={!!error}
+          aria-describedby={name || undefined}
+          className={inputStyles}
+          {...props}
+        />
+      )}
 
       {error && (
-        <p
-          id={`${name}-error`}
-          className='text-sm text-red-500'
-          role='alert'
-        >
-          {error}
-        </p>
+        <footer className='flex items-start gap-1 px-4 pt-4 text-red-500'>
+          <CircleAlertIcon className='size-6' />
+          <p
+            id={`${name}-error`}
+            className='text-sm'
+            role='alert'
+          >
+            {error}
+          </p>
+        </footer>
       )}
     </div>
   );
