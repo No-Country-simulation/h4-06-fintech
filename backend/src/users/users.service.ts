@@ -66,8 +66,6 @@ export class UsersService {
         },
       });
 
-      console.log({ user });
-
       await this.prismaService.wallet.create({
         data: {
           userId: user.id,
@@ -197,14 +195,12 @@ export class UsersService {
     const payload: JwtPayload = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
     });
-    console.log({ payload });
 
     const user = await this.prismaService.user.findUnique({
       where: {
         id: payload.id,
       },
     });
-    console.log({ user });
 
     if (!user) {
       throw new BadRequestException('Este usuario no existe');
