@@ -3,12 +3,12 @@ import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
 
 // Enums imported from Prisma's generated client
 import {
-  MainGoal,
   FinancialSkills,
-  RiskTolerance,
-  MonthlyInvestment,
-  SavingsReason,
   InvestmentTimeframe,
+  MainGoal,
+  MonthlyInvestment,
+  RiskTolerance,
+  SavingsReason,
 } from '../../../prisma/generated/client';
 
 export class CreateProfileDto {
@@ -16,7 +16,10 @@ export class CreateProfileDto {
   @IsEnum(MainGoal)
   mainGoal: MainGoal;
 
-  @ApiProperty({ enum: FinancialSkills, description: 'User’s financial skills level' })
+  @ApiProperty({
+    enum: FinancialSkills,
+    description: 'User’s financial skills level',
+  })
   @IsEnum(FinancialSkills)
   financialSkills: FinancialSkills;
 
@@ -24,7 +27,10 @@ export class CreateProfileDto {
   @IsEnum(RiskTolerance)
   riskTolerance: RiskTolerance;
 
-  @ApiProperty({ enum: MonthlyInvestment, description: 'Monthly investment allocation' })
+  @ApiProperty({
+    enum: MonthlyInvestment,
+    description: 'Monthly investment allocation',
+  })
   @IsEnum(MonthlyInvestment)
   monthlyInvestment: MonthlyInvestment;
 
@@ -49,7 +55,8 @@ export class CreateProfileDto {
   hasInvestedBefore: boolean;
 
   @ApiProperty({
-    description: 'Does the user have a financial goal for the next 6-12 months?',
+    description:
+      'Does the user have a financial goal for the next 6-12 months?',
   })
   @IsBoolean()
   financialGoalNextYear: boolean;

@@ -21,7 +21,7 @@ export class UsersService {
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -61,10 +61,12 @@ export class UsersService {
             create: profile,
           },
           financialRadiographies: {
-            create: financialRadiographies
-          }
+            create: financialRadiographies,
+          },
         },
       });
+
+      console.log({ user });
 
       await this.prismaService.wallet.create({
         data: {
@@ -79,7 +81,7 @@ export class UsersService {
         include: {
           wallet: true,
           profile: true,
-          financialRadiographies: true
+          financialRadiographies: true,
         },
       });
 
@@ -90,7 +92,7 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
-      new HttpException(
+      throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
@@ -157,7 +159,7 @@ export class UsersService {
           },
           financialRadiographies: {
             create: financialRadiographies,
-          }
+          },
         },
       });
 
