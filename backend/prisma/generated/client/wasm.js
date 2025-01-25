@@ -248,6 +248,64 @@ exports.Prisma.ProfileScalarFieldEnum = {
   financialGoalNextYear: 'financialGoalNextYear'
 };
 
+exports.Prisma.StockScalarFieldEnum = {
+  id: 'id',
+  symbol: 'symbol',
+  name: 'name',
+  currency: 'currency',
+  market: 'market',
+  priceId: 'priceId',
+  volumeId: 'volumeId',
+  week52Id: 'week52Id',
+  dividendId: 'dividendId',
+  earningsId: 'earningsId',
+  marketCap: 'marketCap',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PriceScalarFieldEnum = {
+  id: 'id',
+  current: 'current',
+  changePercent: 'changePercent',
+  open: 'open',
+  dayLow: 'dayLow',
+  dayHigh: 'dayHigh',
+  previousClose: 'previousClose',
+  postMarketPrice: 'postMarketPrice',
+  postMarketChange: 'postMarketChange'
+};
+
+exports.Prisma.VolumeScalarFieldEnum = {
+  id: 'id',
+  current: 'current',
+  average3Months: 'average3Months',
+  average10Days: 'average10Days'
+};
+
+exports.Prisma.Week52ScalarFieldEnum = {
+  id: 'id',
+  high: 'high',
+  low: 'low',
+  changeFromHigh: 'changeFromHigh',
+  changeFromLow: 'changeFromLow'
+};
+
+exports.Prisma.DividendScalarFieldEnum = {
+  id: 'id',
+  rate: 'rate',
+  yield: 'yield',
+  date: 'date'
+};
+
+exports.Prisma.EarningsScalarFieldEnum = {
+  id: 'id',
+  nextDate: 'nextDate',
+  epsTrailing12Months: 'epsTrailing12Months',
+  epsForward: 'epsForward',
+  peRatio: 'peRatio'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -341,7 +399,13 @@ exports.Prisma.ModelName = {
   WalletTransaction: 'WalletTransaction',
   Administrador: 'Administrador',
   Support: 'Support',
-  Profile: 'Profile'
+  Profile: 'Profile',
+  Stock: 'Stock',
+  Price: 'Price',
+  Volume: 'Volume',
+  Week52: 'Week52',
+  Dividend: 'Dividend',
+  Earnings: 'Earnings'
 };
 
 /**

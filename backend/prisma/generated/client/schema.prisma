@@ -163,21 +163,6 @@ model Support {
   user      User     @relation(fields: [userId], references: [id])
 }
 
-// model Profile {
-//   id                String             @id @default(cuid())
-//   financialGoal     FinancialGoal? //meta financiera
-//   investmentHorizon InvestmentHorizon? //horizonte de inversión
-//   knowledgeLevel    KnowledgeLevel? //nivel de conocimiento
-//   riskTolerance     RiskTolerance? //tolerancia al riesgo
-//   monthlyAllocation Float? //asignación mensual
-//   specificPurpose   String? //propósito específico
-//   instrumentsUsed   String[] //instrumentos utilizados
-//   hasDebts          Boolean? //tiene deudas
-//   reactionToLoss    ReactionToLoss? //reacción a la pérdida
-//   userId            String             @unique
-//   User              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-// }
-
 enum Status {
   open
   inProgress
@@ -268,4 +253,72 @@ model Profile {
   hasInvestedBefore         Boolean? // Answer to question 7
   financialGoalNextYear     Boolean?             @default(false) // Answer to question 8
   user                      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Stock {
+  id         Int      @id @default(autoincrement())
+  symbol     String   @unique
+  name       String
+  currency   String
+  market     String
+  price      Price    @relation(fields: [priceId], references: [id])
+  priceId    Int
+  volume     Volume   @relation(fields: [volumeId], references: [id])
+  volumeId   Int
+  week52     Week52   @relation(fields: [week52Id], references: [id])
+  week52Id   Int
+  dividend   Dividend @relation(fields: [dividendId], references: [id])
+  dividendId Int
+  earnings   Earnings @relation(fields: [earningsId], references: [id])
+  earningsId Int
+  marketCap  Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Price {
+  id               Int     @id @default(autoincrement())
+  current          Float?
+  changePercent    Float?
+  open             Float?
+  dayLow           Float?
+  dayHigh          Float?
+  previousClose    Float?
+  postMarketPrice  Float?
+  postMarketChange Float?
+  Stock            Stock[]
+}
+
+model Volume {
+  id             Int     @id @default(autoincrement())
+  current        Int?
+  average3Months Int?
+  average10Days  Int?
+  Stock          Stock[]
+}
+
+model Week52 {
+  id             Int     @id @default(autoincrement())
+  high           Float?
+  low            Float?
+  changeFromHigh Float?
+  changeFromLow  Float?
+  Stock          Stock[]
+}
+
+model Dividend {
+  id    Int       @id @default(autoincrement())
+  rate  Float?
+  yield Float?
+  date  DateTime?
+  Stock Stock[]
+}
+
+model Earnings {
+  id                  Int       @id @default(autoincrement())
+  nextDate            DateTime?
+  epsTrailing12Months Float?
+  epsForward          Float?
+  peRatio             Float?
+  Stock               Stock[]
 }

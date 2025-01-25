@@ -78,6 +78,36 @@ export type Support = $Result.DefaultSelection<Prisma.$SupportPayload>
  * 
  */
 export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
+/**
+ * Model Stock
+ * 
+ */
+export type Stock = $Result.DefaultSelection<Prisma.$StockPayload>
+/**
+ * Model Price
+ * 
+ */
+export type Price = $Result.DefaultSelection<Prisma.$PricePayload>
+/**
+ * Model Volume
+ * 
+ */
+export type Volume = $Result.DefaultSelection<Prisma.$VolumePayload>
+/**
+ * Model Week52
+ * 
+ */
+export type Week52 = $Result.DefaultSelection<Prisma.$Week52Payload>
+/**
+ * Model Dividend
+ * 
+ */
+export type Dividend = $Result.DefaultSelection<Prisma.$DividendPayload>
+/**
+ * Model Earnings
+ * 
+ */
+export type Earnings = $Result.DefaultSelection<Prisma.$EarningsPayload>
 
 /**
  * Enums
@@ -530,6 +560,66 @@ export class PrismaClient<
     * ```
     */
   get profile(): Prisma.ProfileDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.stock`: Exposes CRUD operations for the **Stock** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Stocks
+    * const stocks = await prisma.stock.findMany()
+    * ```
+    */
+  get stock(): Prisma.StockDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.price`: Exposes CRUD operations for the **Price** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prices
+    * const prices = await prisma.price.findMany()
+    * ```
+    */
+  get price(): Prisma.PriceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.volume`: Exposes CRUD operations for the **Volume** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Volumes
+    * const volumes = await prisma.volume.findMany()
+    * ```
+    */
+  get volume(): Prisma.VolumeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.week52`: Exposes CRUD operations for the **Week52** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Week52s
+    * const week52s = await prisma.week52.findMany()
+    * ```
+    */
+  get week52(): Prisma.Week52Delegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dividend`: Exposes CRUD operations for the **Dividend** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dividends
+    * const dividends = await prisma.dividend.findMany()
+    * ```
+    */
+  get dividend(): Prisma.DividendDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.earnings`: Exposes CRUD operations for the **Earnings** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Earnings
+    * const earnings = await prisma.earnings.findMany()
+    * ```
+    */
+  get earnings(): Prisma.EarningsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -982,7 +1072,13 @@ export namespace Prisma {
     WalletTransaction: 'WalletTransaction',
     Administrador: 'Administrador',
     Support: 'Support',
-    Profile: 'Profile'
+    Profile: 'Profile',
+    Stock: 'Stock',
+    Price: 'Price',
+    Volume: 'Volume',
+    Week52: 'Week52',
+    Dividend: 'Dividend',
+    Earnings: 'Earnings'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -998,7 +1094,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "target" | "financialRadiography" | "investmentPortfolio" | "financialInstrument" | "investment" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile"
+      modelProps: "user" | "target" | "financialRadiography" | "investmentPortfolio" | "financialInstrument" | "investment" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile" | "stock" | "price" | "volume" | "week52" | "dividend" | "earnings"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1964,6 +2060,450 @@ export namespace Prisma {
           }
         }
       }
+      Stock: {
+        payload: Prisma.$StockPayload<ExtArgs>
+        fields: Prisma.StockFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          findFirst: {
+            args: Prisma.StockFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          findMany: {
+            args: Prisma.StockFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>[]
+          }
+          create: {
+            args: Prisma.StockCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          createMany: {
+            args: Prisma.StockCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StockCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>[]
+          }
+          delete: {
+            args: Prisma.StockDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          update: {
+            args: Prisma.StockUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          deleteMany: {
+            args: Prisma.StockDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StockUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>[]
+          }
+          upsert: {
+            args: Prisma.StockUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StockPayload>
+          }
+          aggregate: {
+            args: Prisma.StockAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStock>
+          }
+          groupBy: {
+            args: Prisma.StockGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StockGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockCountArgs<ExtArgs>
+            result: $Utils.Optional<StockCountAggregateOutputType> | number
+          }
+        }
+      }
+      Price: {
+        payload: Prisma.$PricePayload<ExtArgs>
+        fields: Prisma.PriceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PriceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PriceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          findFirst: {
+            args: Prisma.PriceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PriceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          findMany: {
+            args: Prisma.PriceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>[]
+          }
+          create: {
+            args: Prisma.PriceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          createMany: {
+            args: Prisma.PriceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PriceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>[]
+          }
+          delete: {
+            args: Prisma.PriceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          update: {
+            args: Prisma.PriceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          deleteMany: {
+            args: Prisma.PriceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PriceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PriceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>[]
+          }
+          upsert: {
+            args: Prisma.PriceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          aggregate: {
+            args: Prisma.PriceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePrice>
+          }
+          groupBy: {
+            args: Prisma.PriceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PriceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PriceCountArgs<ExtArgs>
+            result: $Utils.Optional<PriceCountAggregateOutputType> | number
+          }
+        }
+      }
+      Volume: {
+        payload: Prisma.$VolumePayload<ExtArgs>
+        fields: Prisma.VolumeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VolumeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VolumeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          findFirst: {
+            args: Prisma.VolumeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VolumeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          findMany: {
+            args: Prisma.VolumeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>[]
+          }
+          create: {
+            args: Prisma.VolumeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          createMany: {
+            args: Prisma.VolumeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VolumeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>[]
+          }
+          delete: {
+            args: Prisma.VolumeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          update: {
+            args: Prisma.VolumeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          deleteMany: {
+            args: Prisma.VolumeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VolumeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VolumeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>[]
+          }
+          upsert: {
+            args: Prisma.VolumeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumePayload>
+          }
+          aggregate: {
+            args: Prisma.VolumeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVolume>
+          }
+          groupBy: {
+            args: Prisma.VolumeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VolumeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VolumeCountArgs<ExtArgs>
+            result: $Utils.Optional<VolumeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Week52: {
+        payload: Prisma.$Week52Payload<ExtArgs>
+        fields: Prisma.Week52FieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Week52FindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Week52FindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          findFirst: {
+            args: Prisma.Week52FindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Week52FindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          findMany: {
+            args: Prisma.Week52FindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>[]
+          }
+          create: {
+            args: Prisma.Week52CreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          createMany: {
+            args: Prisma.Week52CreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Week52CreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>[]
+          }
+          delete: {
+            args: Prisma.Week52DeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          update: {
+            args: Prisma.Week52UpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          deleteMany: {
+            args: Prisma.Week52DeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Week52UpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Week52UpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>[]
+          }
+          upsert: {
+            args: Prisma.Week52UpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Week52Payload>
+          }
+          aggregate: {
+            args: Prisma.Week52AggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeek52>
+          }
+          groupBy: {
+            args: Prisma.Week52GroupByArgs<ExtArgs>
+            result: $Utils.Optional<Week52GroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Week52CountArgs<ExtArgs>
+            result: $Utils.Optional<Week52CountAggregateOutputType> | number
+          }
+        }
+      }
+      Dividend: {
+        payload: Prisma.$DividendPayload<ExtArgs>
+        fields: Prisma.DividendFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DividendFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DividendFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          findFirst: {
+            args: Prisma.DividendFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DividendFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          findMany: {
+            args: Prisma.DividendFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>[]
+          }
+          create: {
+            args: Prisma.DividendCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          createMany: {
+            args: Prisma.DividendCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DividendCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>[]
+          }
+          delete: {
+            args: Prisma.DividendDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          update: {
+            args: Prisma.DividendUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          deleteMany: {
+            args: Prisma.DividendDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DividendUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DividendUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>[]
+          }
+          upsert: {
+            args: Prisma.DividendUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DividendPayload>
+          }
+          aggregate: {
+            args: Prisma.DividendAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDividend>
+          }
+          groupBy: {
+            args: Prisma.DividendGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DividendGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DividendCountArgs<ExtArgs>
+            result: $Utils.Optional<DividendCountAggregateOutputType> | number
+          }
+        }
+      }
+      Earnings: {
+        payload: Prisma.$EarningsPayload<ExtArgs>
+        fields: Prisma.EarningsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EarningsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EarningsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          findFirst: {
+            args: Prisma.EarningsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EarningsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          findMany: {
+            args: Prisma.EarningsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>[]
+          }
+          create: {
+            args: Prisma.EarningsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          createMany: {
+            args: Prisma.EarningsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EarningsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>[]
+          }
+          delete: {
+            args: Prisma.EarningsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          update: {
+            args: Prisma.EarningsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          deleteMany: {
+            args: Prisma.EarningsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EarningsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EarningsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>[]
+          }
+          upsert: {
+            args: Prisma.EarningsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EarningsPayload>
+          }
+          aggregate: {
+            args: Prisma.EarningsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEarnings>
+          }
+          groupBy: {
+            args: Prisma.EarningsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EarningsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EarningsCountArgs<ExtArgs>
+            result: $Utils.Optional<EarningsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2061,6 +2601,12 @@ export namespace Prisma {
     administrador?: AdministradorOmit
     support?: SupportOmit
     profile?: ProfileOmit
+    stock?: StockOmit
+    price?: PriceOmit
+    volume?: VolumeOmit
+    week52?: Week52Omit
+    dividend?: DividendOmit
+    earnings?: EarningsOmit
   }
 
   /* Types for Logging */
@@ -2329,6 +2875,161 @@ export namespace Prisma {
    */
   export type WalletCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WalletTransactionWhereInput
+  }
+
+
+  /**
+   * Count Type PriceCountOutputType
+   */
+
+  export type PriceCountOutputType = {
+    Stock: number
+  }
+
+  export type PriceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | PriceCountOutputTypeCountStockArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PriceCountOutputType without action
+   */
+  export type PriceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceCountOutputType
+     */
+    select?: PriceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PriceCountOutputType without action
+   */
+  export type PriceCountOutputTypeCountStockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
+  }
+
+
+  /**
+   * Count Type VolumeCountOutputType
+   */
+
+  export type VolumeCountOutputType = {
+    Stock: number
+  }
+
+  export type VolumeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | VolumeCountOutputTypeCountStockArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VolumeCountOutputType without action
+   */
+  export type VolumeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumeCountOutputType
+     */
+    select?: VolumeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VolumeCountOutputType without action
+   */
+  export type VolumeCountOutputTypeCountStockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
+  }
+
+
+  /**
+   * Count Type Week52CountOutputType
+   */
+
+  export type Week52CountOutputType = {
+    Stock: number
+  }
+
+  export type Week52CountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Week52CountOutputTypeCountStockArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Week52CountOutputType without action
+   */
+  export type Week52CountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52CountOutputType
+     */
+    select?: Week52CountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Week52CountOutputType without action
+   */
+  export type Week52CountOutputTypeCountStockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
+  }
+
+
+  /**
+   * Count Type DividendCountOutputType
+   */
+
+  export type DividendCountOutputType = {
+    Stock: number
+  }
+
+  export type DividendCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | DividendCountOutputTypeCountStockArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DividendCountOutputType without action
+   */
+  export type DividendCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DividendCountOutputType
+     */
+    select?: DividendCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DividendCountOutputType without action
+   */
+  export type DividendCountOutputTypeCountStockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
+  }
+
+
+  /**
+   * Count Type EarningsCountOutputType
+   */
+
+  export type EarningsCountOutputType = {
+    Stock: number
+  }
+
+  export type EarningsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | EarningsCountOutputTypeCountStockArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EarningsCountOutputType without action
+   */
+  export type EarningsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EarningsCountOutputType
+     */
+    select?: EarningsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EarningsCountOutputType without action
+   */
+  export type EarningsCountOutputTypeCountStockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
   }
 
 
@@ -16669,6 +17370,6812 @@ export namespace Prisma {
 
 
   /**
+   * Model Stock
+   */
+
+  export type AggregateStock = {
+    _count: StockCountAggregateOutputType | null
+    _avg: StockAvgAggregateOutputType | null
+    _sum: StockSumAggregateOutputType | null
+    _min: StockMinAggregateOutputType | null
+    _max: StockMaxAggregateOutputType | null
+  }
+
+  export type StockAvgAggregateOutputType = {
+    id: number | null
+    priceId: number | null
+    volumeId: number | null
+    week52Id: number | null
+    dividendId: number | null
+    earningsId: number | null
+    marketCap: number | null
+  }
+
+  export type StockSumAggregateOutputType = {
+    id: number | null
+    priceId: number | null
+    volumeId: number | null
+    week52Id: number | null
+    dividendId: number | null
+    earningsId: number | null
+    marketCap: number | null
+  }
+
+  export type StockMinAggregateOutputType = {
+    id: number | null
+    symbol: string | null
+    name: string | null
+    currency: string | null
+    market: string | null
+    priceId: number | null
+    volumeId: number | null
+    week52Id: number | null
+    dividendId: number | null
+    earningsId: number | null
+    marketCap: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockMaxAggregateOutputType = {
+    id: number | null
+    symbol: string | null
+    name: string | null
+    currency: string | null
+    market: string | null
+    priceId: number | null
+    volumeId: number | null
+    week52Id: number | null
+    dividendId: number | null
+    earningsId: number | null
+    marketCap: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockCountAggregateOutputType = {
+    id: number
+    symbol: number
+    name: number
+    currency: number
+    market: number
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StockAvgAggregateInputType = {
+    id?: true
+    priceId?: true
+    volumeId?: true
+    week52Id?: true
+    dividendId?: true
+    earningsId?: true
+    marketCap?: true
+  }
+
+  export type StockSumAggregateInputType = {
+    id?: true
+    priceId?: true
+    volumeId?: true
+    week52Id?: true
+    dividendId?: true
+    earningsId?: true
+    marketCap?: true
+  }
+
+  export type StockMinAggregateInputType = {
+    id?: true
+    symbol?: true
+    name?: true
+    currency?: true
+    market?: true
+    priceId?: true
+    volumeId?: true
+    week52Id?: true
+    dividendId?: true
+    earningsId?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockMaxAggregateInputType = {
+    id?: true
+    symbol?: true
+    name?: true
+    currency?: true
+    market?: true
+    priceId?: true
+    volumeId?: true
+    week52Id?: true
+    dividendId?: true
+    earningsId?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockCountAggregateInputType = {
+    id?: true
+    symbol?: true
+    name?: true
+    currency?: true
+    market?: true
+    priceId?: true
+    volumeId?: true
+    week52Id?: true
+    dividendId?: true
+    earningsId?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StockAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Stock to aggregate.
+     */
+    where?: StockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stocks to fetch.
+     */
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Stocks
+    **/
+    _count?: true | StockCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockMaxAggregateInputType
+  }
+
+  export type GetStockAggregateType<T extends StockAggregateArgs> = {
+        [P in keyof T & keyof AggregateStock]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStock[P]>
+      : GetScalarType<T[P], AggregateStock[P]>
+  }
+
+
+
+
+  export type StockGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithAggregationInput | StockOrderByWithAggregationInput[]
+    by: StockScalarFieldEnum[] | StockScalarFieldEnum
+    having?: StockScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockCountAggregateInputType | true
+    _avg?: StockAvgAggregateInputType
+    _sum?: StockSumAggregateInputType
+    _min?: StockMinAggregateInputType
+    _max?: StockMaxAggregateInputType
+  }
+
+  export type StockGroupByOutputType = {
+    id: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt: Date
+    updatedAt: Date
+    _count: StockCountAggregateOutputType | null
+    _avg: StockAvgAggregateOutputType | null
+    _sum: StockSumAggregateOutputType | null
+    _min: StockMinAggregateOutputType | null
+    _max: StockMaxAggregateOutputType | null
+  }
+
+  type GetStockGroupByPayload<T extends StockGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockGroupByOutputType[P]>
+            : GetScalarType<T[P], StockGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    symbol?: boolean
+    name?: boolean
+    currency?: boolean
+    market?: boolean
+    priceId?: boolean
+    volumeId?: boolean
+    week52Id?: boolean
+    dividendId?: boolean
+    earningsId?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stock"]>
+
+  export type StockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    symbol?: boolean
+    name?: boolean
+    currency?: boolean
+    market?: boolean
+    priceId?: boolean
+    volumeId?: boolean
+    week52Id?: boolean
+    dividendId?: boolean
+    earningsId?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stock"]>
+
+  export type StockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    symbol?: boolean
+    name?: boolean
+    currency?: boolean
+    market?: boolean
+    priceId?: boolean
+    volumeId?: boolean
+    week52Id?: boolean
+    dividendId?: boolean
+    earningsId?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stock"]>
+
+  export type StockSelectScalar = {
+    id?: boolean
+    symbol?: boolean
+    name?: boolean
+    currency?: boolean
+    market?: boolean
+    priceId?: boolean
+    volumeId?: boolean
+    week52Id?: boolean
+    dividendId?: boolean
+    earningsId?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "symbol" | "name" | "currency" | "market" | "priceId" | "volumeId" | "week52Id" | "dividendId" | "earningsId" | "marketCap" | "createdAt" | "updatedAt", ExtArgs["result"]["stock"]>
+  export type StockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }
+  export type StockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }
+  export type StockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    price?: boolean | PriceDefaultArgs<ExtArgs>
+    volume?: boolean | VolumeDefaultArgs<ExtArgs>
+    week52?: boolean | Week52DefaultArgs<ExtArgs>
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
+  }
+
+  export type $StockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Stock"
+    objects: {
+      price: Prisma.$PricePayload<ExtArgs>
+      volume: Prisma.$VolumePayload<ExtArgs>
+      week52: Prisma.$Week52Payload<ExtArgs>
+      dividend: Prisma.$DividendPayload<ExtArgs>
+      earnings: Prisma.$EarningsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      symbol: string
+      name: string
+      currency: string
+      market: string
+      priceId: number
+      volumeId: number
+      week52Id: number
+      dividendId: number
+      earningsId: number
+      marketCap: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["stock"]>
+    composites: {}
+  }
+
+  type StockGetPayload<S extends boolean | null | undefined | StockDefaultArgs> = $Result.GetResult<Prisma.$StockPayload, S>
+
+  type StockCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StockFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StockCountAggregateInputType | true
+    }
+
+  export interface StockDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Stock'], meta: { name: 'Stock' } }
+    /**
+     * Find zero or one Stock that matches the filter.
+     * @param {StockFindUniqueArgs} args - Arguments to find a Stock
+     * @example
+     * // Get one Stock
+     * const stock = await prisma.stock.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StockFindUniqueArgs>(args: SelectSubset<T, StockFindUniqueArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Stock that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StockFindUniqueOrThrowArgs} args - Arguments to find a Stock
+     * @example
+     * // Get one Stock
+     * const stock = await prisma.stock.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StockFindUniqueOrThrowArgs>(args: SelectSubset<T, StockFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Stock that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFindFirstArgs} args - Arguments to find a Stock
+     * @example
+     * // Get one Stock
+     * const stock = await prisma.stock.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StockFindFirstArgs>(args?: SelectSubset<T, StockFindFirstArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Stock that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFindFirstOrThrowArgs} args - Arguments to find a Stock
+     * @example
+     * // Get one Stock
+     * const stock = await prisma.stock.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StockFindFirstOrThrowArgs>(args?: SelectSubset<T, StockFindFirstOrThrowArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Stocks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Stocks
+     * const stocks = await prisma.stock.findMany()
+     * 
+     * // Get first 10 Stocks
+     * const stocks = await prisma.stock.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockWithIdOnly = await prisma.stock.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StockFindManyArgs>(args?: SelectSubset<T, StockFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Stock.
+     * @param {StockCreateArgs} args - Arguments to create a Stock.
+     * @example
+     * // Create one Stock
+     * const Stock = await prisma.stock.create({
+     *   data: {
+     *     // ... data to create a Stock
+     *   }
+     * })
+     * 
+     */
+    create<T extends StockCreateArgs>(args: SelectSubset<T, StockCreateArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Stocks.
+     * @param {StockCreateManyArgs} args - Arguments to create many Stocks.
+     * @example
+     * // Create many Stocks
+     * const stock = await prisma.stock.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StockCreateManyArgs>(args?: SelectSubset<T, StockCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Stocks and returns the data saved in the database.
+     * @param {StockCreateManyAndReturnArgs} args - Arguments to create many Stocks.
+     * @example
+     * // Create many Stocks
+     * const stock = await prisma.stock.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Stocks and only return the `id`
+     * const stockWithIdOnly = await prisma.stock.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StockCreateManyAndReturnArgs>(args?: SelectSubset<T, StockCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Stock.
+     * @param {StockDeleteArgs} args - Arguments to delete one Stock.
+     * @example
+     * // Delete one Stock
+     * const Stock = await prisma.stock.delete({
+     *   where: {
+     *     // ... filter to delete one Stock
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StockDeleteArgs>(args: SelectSubset<T, StockDeleteArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Stock.
+     * @param {StockUpdateArgs} args - Arguments to update one Stock.
+     * @example
+     * // Update one Stock
+     * const stock = await prisma.stock.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StockUpdateArgs>(args: SelectSubset<T, StockUpdateArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Stocks.
+     * @param {StockDeleteManyArgs} args - Arguments to filter Stocks to delete.
+     * @example
+     * // Delete a few Stocks
+     * const { count } = await prisma.stock.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StockDeleteManyArgs>(args?: SelectSubset<T, StockDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Stocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Stocks
+     * const stock = await prisma.stock.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StockUpdateManyArgs>(args: SelectSubset<T, StockUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Stocks and returns the data updated in the database.
+     * @param {StockUpdateManyAndReturnArgs} args - Arguments to update many Stocks.
+     * @example
+     * // Update many Stocks
+     * const stock = await prisma.stock.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Stocks and only return the `id`
+     * const stockWithIdOnly = await prisma.stock.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StockUpdateManyAndReturnArgs>(args: SelectSubset<T, StockUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Stock.
+     * @param {StockUpsertArgs} args - Arguments to update or create a Stock.
+     * @example
+     * // Update or create a Stock
+     * const stock = await prisma.stock.upsert({
+     *   create: {
+     *     // ... data to create a Stock
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Stock we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StockUpsertArgs>(args: SelectSubset<T, StockUpsertArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Stocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockCountArgs} args - Arguments to filter Stocks to count.
+     * @example
+     * // Count the number of Stocks
+     * const count = await prisma.stock.count({
+     *   where: {
+     *     // ... the filter for the Stocks we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockCountArgs>(
+      args?: Subset<T, StockCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Stock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockAggregateArgs>(args: Subset<T, StockAggregateArgs>): Prisma.PrismaPromise<GetStockAggregateType<T>>
+
+    /**
+     * Group by Stock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockGroupByArgs['orderBy'] }
+        : { orderBy?: StockGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Stock model
+   */
+  readonly fields: StockFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Stock.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    price<T extends PriceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PriceDefaultArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    volume<T extends VolumeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VolumeDefaultArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    week52<T extends Week52DefaultArgs<ExtArgs> = {}>(args?: Subset<T, Week52DefaultArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    dividend<T extends DividendDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DividendDefaultArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    earnings<T extends EarningsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EarningsDefaultArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Stock model
+   */ 
+  interface StockFieldRefs {
+    readonly id: FieldRef<"Stock", 'Int'>
+    readonly symbol: FieldRef<"Stock", 'String'>
+    readonly name: FieldRef<"Stock", 'String'>
+    readonly currency: FieldRef<"Stock", 'String'>
+    readonly market: FieldRef<"Stock", 'String'>
+    readonly priceId: FieldRef<"Stock", 'Int'>
+    readonly volumeId: FieldRef<"Stock", 'Int'>
+    readonly week52Id: FieldRef<"Stock", 'Int'>
+    readonly dividendId: FieldRef<"Stock", 'Int'>
+    readonly earningsId: FieldRef<"Stock", 'Int'>
+    readonly marketCap: FieldRef<"Stock", 'Int'>
+    readonly createdAt: FieldRef<"Stock", 'DateTime'>
+    readonly updatedAt: FieldRef<"Stock", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Stock findUnique
+   */
+  export type StockFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter, which Stock to fetch.
+     */
+    where: StockWhereUniqueInput
+  }
+
+  /**
+   * Stock findUniqueOrThrow
+   */
+  export type StockFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter, which Stock to fetch.
+     */
+    where: StockWhereUniqueInput
+  }
+
+  /**
+   * Stock findFirst
+   */
+  export type StockFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter, which Stock to fetch.
+     */
+    where?: StockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stocks to fetch.
+     */
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Stocks.
+     */
+    cursor?: StockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Stocks.
+     */
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Stock findFirstOrThrow
+   */
+  export type StockFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter, which Stock to fetch.
+     */
+    where?: StockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stocks to fetch.
+     */
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Stocks.
+     */
+    cursor?: StockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Stocks.
+     */
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Stock findMany
+   */
+  export type StockFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter, which Stocks to fetch.
+     */
+    where?: StockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Stocks to fetch.
+     */
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Stocks.
+     */
+    cursor?: StockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Stocks.
+     */
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Stock create
+   */
+  export type StockCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Stock.
+     */
+    data: XOR<StockCreateInput, StockUncheckedCreateInput>
+  }
+
+  /**
+   * Stock createMany
+   */
+  export type StockCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Stocks.
+     */
+    data: StockCreateManyInput | StockCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Stock createManyAndReturn
+   */
+  export type StockCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * The data used to create many Stocks.
+     */
+    data: StockCreateManyInput | StockCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Stock update
+   */
+  export type StockUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Stock.
+     */
+    data: XOR<StockUpdateInput, StockUncheckedUpdateInput>
+    /**
+     * Choose, which Stock to update.
+     */
+    where: StockWhereUniqueInput
+  }
+
+  /**
+   * Stock updateMany
+   */
+  export type StockUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Stocks.
+     */
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyInput>
+    /**
+     * Filter which Stocks to update
+     */
+    where?: StockWhereInput
+  }
+
+  /**
+   * Stock updateManyAndReturn
+   */
+  export type StockUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * The data used to update Stocks.
+     */
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyInput>
+    /**
+     * Filter which Stocks to update
+     */
+    where?: StockWhereInput
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Stock upsert
+   */
+  export type StockUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Stock to update in case it exists.
+     */
+    where: StockWhereUniqueInput
+    /**
+     * In case the Stock found by the `where` argument doesn't exist, create a new Stock with this data.
+     */
+    create: XOR<StockCreateInput, StockUncheckedCreateInput>
+    /**
+     * In case the Stock was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockUpdateInput, StockUncheckedUpdateInput>
+  }
+
+  /**
+   * Stock delete
+   */
+  export type StockDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    /**
+     * Filter which Stock to delete.
+     */
+    where: StockWhereUniqueInput
+  }
+
+  /**
+   * Stock deleteMany
+   */
+  export type StockDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Stocks to delete
+     */
+    where?: StockWhereInput
+  }
+
+  /**
+   * Stock without action
+   */
+  export type StockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Price
+   */
+
+  export type AggregatePrice = {
+    _count: PriceCountAggregateOutputType | null
+    _avg: PriceAvgAggregateOutputType | null
+    _sum: PriceSumAggregateOutputType | null
+    _min: PriceMinAggregateOutputType | null
+    _max: PriceMaxAggregateOutputType | null
+  }
+
+  export type PriceAvgAggregateOutputType = {
+    id: number | null
+    current: number | null
+    changePercent: number | null
+    open: number | null
+    dayLow: number | null
+    dayHigh: number | null
+    previousClose: number | null
+    postMarketPrice: number | null
+    postMarketChange: number | null
+  }
+
+  export type PriceSumAggregateOutputType = {
+    id: number | null
+    current: number | null
+    changePercent: number | null
+    open: number | null
+    dayLow: number | null
+    dayHigh: number | null
+    previousClose: number | null
+    postMarketPrice: number | null
+    postMarketChange: number | null
+  }
+
+  export type PriceMinAggregateOutputType = {
+    id: number | null
+    current: number | null
+    changePercent: number | null
+    open: number | null
+    dayLow: number | null
+    dayHigh: number | null
+    previousClose: number | null
+    postMarketPrice: number | null
+    postMarketChange: number | null
+  }
+
+  export type PriceMaxAggregateOutputType = {
+    id: number | null
+    current: number | null
+    changePercent: number | null
+    open: number | null
+    dayLow: number | null
+    dayHigh: number | null
+    previousClose: number | null
+    postMarketPrice: number | null
+    postMarketChange: number | null
+  }
+
+  export type PriceCountAggregateOutputType = {
+    id: number
+    current: number
+    changePercent: number
+    open: number
+    dayLow: number
+    dayHigh: number
+    previousClose: number
+    postMarketPrice: number
+    postMarketChange: number
+    _all: number
+  }
+
+
+  export type PriceAvgAggregateInputType = {
+    id?: true
+    current?: true
+    changePercent?: true
+    open?: true
+    dayLow?: true
+    dayHigh?: true
+    previousClose?: true
+    postMarketPrice?: true
+    postMarketChange?: true
+  }
+
+  export type PriceSumAggregateInputType = {
+    id?: true
+    current?: true
+    changePercent?: true
+    open?: true
+    dayLow?: true
+    dayHigh?: true
+    previousClose?: true
+    postMarketPrice?: true
+    postMarketChange?: true
+  }
+
+  export type PriceMinAggregateInputType = {
+    id?: true
+    current?: true
+    changePercent?: true
+    open?: true
+    dayLow?: true
+    dayHigh?: true
+    previousClose?: true
+    postMarketPrice?: true
+    postMarketChange?: true
+  }
+
+  export type PriceMaxAggregateInputType = {
+    id?: true
+    current?: true
+    changePercent?: true
+    open?: true
+    dayLow?: true
+    dayHigh?: true
+    previousClose?: true
+    postMarketPrice?: true
+    postMarketChange?: true
+  }
+
+  export type PriceCountAggregateInputType = {
+    id?: true
+    current?: true
+    changePercent?: true
+    open?: true
+    dayLow?: true
+    dayHigh?: true
+    previousClose?: true
+    postMarketPrice?: true
+    postMarketChange?: true
+    _all?: true
+  }
+
+  export type PriceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Price to aggregate.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Prices
+    **/
+    _count?: true | PriceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PriceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PriceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PriceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PriceMaxAggregateInputType
+  }
+
+  export type GetPriceAggregateType<T extends PriceAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrice[P]>
+      : GetScalarType<T[P], AggregatePrice[P]>
+  }
+
+
+
+
+  export type PriceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceWhereInput
+    orderBy?: PriceOrderByWithAggregationInput | PriceOrderByWithAggregationInput[]
+    by: PriceScalarFieldEnum[] | PriceScalarFieldEnum
+    having?: PriceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PriceCountAggregateInputType | true
+    _avg?: PriceAvgAggregateInputType
+    _sum?: PriceSumAggregateInputType
+    _min?: PriceMinAggregateInputType
+    _max?: PriceMaxAggregateInputType
+  }
+
+  export type PriceGroupByOutputType = {
+    id: number
+    current: number | null
+    changePercent: number | null
+    open: number | null
+    dayLow: number | null
+    dayHigh: number | null
+    previousClose: number | null
+    postMarketPrice: number | null
+    postMarketChange: number | null
+    _count: PriceCountAggregateOutputType | null
+    _avg: PriceAvgAggregateOutputType | null
+    _sum: PriceSumAggregateOutputType | null
+    _min: PriceMinAggregateOutputType | null
+    _max: PriceMaxAggregateOutputType | null
+  }
+
+  type GetPriceGroupByPayload<T extends PriceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PriceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PriceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PriceGroupByOutputType[P]>
+            : GetScalarType<T[P], PriceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PriceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    changePercent?: boolean
+    open?: boolean
+    dayLow?: boolean
+    dayHigh?: boolean
+    previousClose?: boolean
+    postMarketPrice?: boolean
+    postMarketChange?: boolean
+    Stock?: boolean | Price$StockArgs<ExtArgs>
+    _count?: boolean | PriceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["price"]>
+
+  export type PriceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    changePercent?: boolean
+    open?: boolean
+    dayLow?: boolean
+    dayHigh?: boolean
+    previousClose?: boolean
+    postMarketPrice?: boolean
+    postMarketChange?: boolean
+  }, ExtArgs["result"]["price"]>
+
+  export type PriceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    changePercent?: boolean
+    open?: boolean
+    dayLow?: boolean
+    dayHigh?: boolean
+    previousClose?: boolean
+    postMarketPrice?: boolean
+    postMarketChange?: boolean
+  }, ExtArgs["result"]["price"]>
+
+  export type PriceSelectScalar = {
+    id?: boolean
+    current?: boolean
+    changePercent?: boolean
+    open?: boolean
+    dayLow?: boolean
+    dayHigh?: boolean
+    previousClose?: boolean
+    postMarketPrice?: boolean
+    postMarketChange?: boolean
+  }
+
+  export type PriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "current" | "changePercent" | "open" | "dayLow" | "dayHigh" | "previousClose" | "postMarketPrice" | "postMarketChange", ExtArgs["result"]["price"]>
+  export type PriceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Price$StockArgs<ExtArgs>
+    _count?: boolean | PriceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PriceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PriceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PricePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Price"
+    objects: {
+      Stock: Prisma.$StockPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      current: number | null
+      changePercent: number | null
+      open: number | null
+      dayLow: number | null
+      dayHigh: number | null
+      previousClose: number | null
+      postMarketPrice: number | null
+      postMarketChange: number | null
+    }, ExtArgs["result"]["price"]>
+    composites: {}
+  }
+
+  type PriceGetPayload<S extends boolean | null | undefined | PriceDefaultArgs> = $Result.GetResult<Prisma.$PricePayload, S>
+
+  type PriceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PriceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PriceCountAggregateInputType | true
+    }
+
+  export interface PriceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Price'], meta: { name: 'Price' } }
+    /**
+     * Find zero or one Price that matches the filter.
+     * @param {PriceFindUniqueArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PriceFindUniqueArgs>(args: SelectSubset<T, PriceFindUniqueArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Price that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PriceFindUniqueOrThrowArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PriceFindUniqueOrThrowArgs>(args: SelectSubset<T, PriceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Price that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindFirstArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PriceFindFirstArgs>(args?: SelectSubset<T, PriceFindFirstArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Price that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindFirstOrThrowArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PriceFindFirstOrThrowArgs>(args?: SelectSubset<T, PriceFindFirstOrThrowArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Prices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prices
+     * const prices = await prisma.price.findMany()
+     * 
+     * // Get first 10 Prices
+     * const prices = await prisma.price.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const priceWithIdOnly = await prisma.price.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PriceFindManyArgs>(args?: SelectSubset<T, PriceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Price.
+     * @param {PriceCreateArgs} args - Arguments to create a Price.
+     * @example
+     * // Create one Price
+     * const Price = await prisma.price.create({
+     *   data: {
+     *     // ... data to create a Price
+     *   }
+     * })
+     * 
+     */
+    create<T extends PriceCreateArgs>(args: SelectSubset<T, PriceCreateArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Prices.
+     * @param {PriceCreateManyArgs} args - Arguments to create many Prices.
+     * @example
+     * // Create many Prices
+     * const price = await prisma.price.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PriceCreateManyArgs>(args?: SelectSubset<T, PriceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Prices and returns the data saved in the database.
+     * @param {PriceCreateManyAndReturnArgs} args - Arguments to create many Prices.
+     * @example
+     * // Create many Prices
+     * const price = await prisma.price.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Prices and only return the `id`
+     * const priceWithIdOnly = await prisma.price.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PriceCreateManyAndReturnArgs>(args?: SelectSubset<T, PriceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Price.
+     * @param {PriceDeleteArgs} args - Arguments to delete one Price.
+     * @example
+     * // Delete one Price
+     * const Price = await prisma.price.delete({
+     *   where: {
+     *     // ... filter to delete one Price
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PriceDeleteArgs>(args: SelectSubset<T, PriceDeleteArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Price.
+     * @param {PriceUpdateArgs} args - Arguments to update one Price.
+     * @example
+     * // Update one Price
+     * const price = await prisma.price.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PriceUpdateArgs>(args: SelectSubset<T, PriceUpdateArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Prices.
+     * @param {PriceDeleteManyArgs} args - Arguments to filter Prices to delete.
+     * @example
+     * // Delete a few Prices
+     * const { count } = await prisma.price.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PriceDeleteManyArgs>(args?: SelectSubset<T, PriceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prices
+     * const price = await prisma.price.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PriceUpdateManyArgs>(args: SelectSubset<T, PriceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prices and returns the data updated in the database.
+     * @param {PriceUpdateManyAndReturnArgs} args - Arguments to update many Prices.
+     * @example
+     * // Update many Prices
+     * const price = await prisma.price.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Prices and only return the `id`
+     * const priceWithIdOnly = await prisma.price.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PriceUpdateManyAndReturnArgs>(args: SelectSubset<T, PriceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Price.
+     * @param {PriceUpsertArgs} args - Arguments to update or create a Price.
+     * @example
+     * // Update or create a Price
+     * const price = await prisma.price.upsert({
+     *   create: {
+     *     // ... data to create a Price
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Price we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PriceUpsertArgs>(args: SelectSubset<T, PriceUpsertArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Prices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceCountArgs} args - Arguments to filter Prices to count.
+     * @example
+     * // Count the number of Prices
+     * const count = await prisma.price.count({
+     *   where: {
+     *     // ... the filter for the Prices we want to count
+     *   }
+     * })
+    **/
+    count<T extends PriceCountArgs>(
+      args?: Subset<T, PriceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PriceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Price.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PriceAggregateArgs>(args: Subset<T, PriceAggregateArgs>): Prisma.PrismaPromise<GetPriceAggregateType<T>>
+
+    /**
+     * Group by Price.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PriceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PriceGroupByArgs['orderBy'] }
+        : { orderBy?: PriceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PriceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPriceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Price model
+   */
+  readonly fields: PriceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Price.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PriceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Stock<T extends Price$StockArgs<ExtArgs> = {}>(args?: Subset<T, Price$StockArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Price model
+   */ 
+  interface PriceFieldRefs {
+    readonly id: FieldRef<"Price", 'Int'>
+    readonly current: FieldRef<"Price", 'Float'>
+    readonly changePercent: FieldRef<"Price", 'Float'>
+    readonly open: FieldRef<"Price", 'Float'>
+    readonly dayLow: FieldRef<"Price", 'Float'>
+    readonly dayHigh: FieldRef<"Price", 'Float'>
+    readonly previousClose: FieldRef<"Price", 'Float'>
+    readonly postMarketPrice: FieldRef<"Price", 'Float'>
+    readonly postMarketChange: FieldRef<"Price", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Price findUnique
+   */
+  export type PriceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where: PriceWhereUniqueInput
+  }
+
+  /**
+   * Price findUniqueOrThrow
+   */
+  export type PriceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where: PriceWhereUniqueInput
+  }
+
+  /**
+   * Price findFirst
+   */
+  export type PriceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prices.
+     */
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+  }
+
+  /**
+   * Price findFirstOrThrow
+   */
+  export type PriceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prices.
+     */
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+  }
+
+  /**
+   * Price findMany
+   */
+  export type PriceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Prices to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+  }
+
+  /**
+   * Price create
+   */
+  export type PriceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Price.
+     */
+    data?: XOR<PriceCreateInput, PriceUncheckedCreateInput>
+  }
+
+  /**
+   * Price createMany
+   */
+  export type PriceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Prices.
+     */
+    data: PriceCreateManyInput | PriceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Price createManyAndReturn
+   */
+  export type PriceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Prices.
+     */
+    data: PriceCreateManyInput | PriceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Price update
+   */
+  export type PriceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Price.
+     */
+    data: XOR<PriceUpdateInput, PriceUncheckedUpdateInput>
+    /**
+     * Choose, which Price to update.
+     */
+    where: PriceWhereUniqueInput
+  }
+
+  /**
+   * Price updateMany
+   */
+  export type PriceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Prices.
+     */
+    data: XOR<PriceUpdateManyMutationInput, PriceUncheckedUpdateManyInput>
+    /**
+     * Filter which Prices to update
+     */
+    where?: PriceWhereInput
+  }
+
+  /**
+   * Price updateManyAndReturn
+   */
+  export type PriceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * The data used to update Prices.
+     */
+    data: XOR<PriceUpdateManyMutationInput, PriceUncheckedUpdateManyInput>
+    /**
+     * Filter which Prices to update
+     */
+    where?: PriceWhereInput
+  }
+
+  /**
+   * Price upsert
+   */
+  export type PriceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Price to update in case it exists.
+     */
+    where: PriceWhereUniqueInput
+    /**
+     * In case the Price found by the `where` argument doesn't exist, create a new Price with this data.
+     */
+    create: XOR<PriceCreateInput, PriceUncheckedCreateInput>
+    /**
+     * In case the Price was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PriceUpdateInput, PriceUncheckedUpdateInput>
+  }
+
+  /**
+   * Price delete
+   */
+  export type PriceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter which Price to delete.
+     */
+    where: PriceWhereUniqueInput
+  }
+
+  /**
+   * Price deleteMany
+   */
+  export type PriceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Prices to delete
+     */
+    where?: PriceWhereInput
+  }
+
+  /**
+   * Price.Stock
+   */
+  export type Price$StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    cursor?: StockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Price without action
+   */
+  export type PriceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Price
+     */
+    omit?: PriceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Volume
+   */
+
+  export type AggregateVolume = {
+    _count: VolumeCountAggregateOutputType | null
+    _avg: VolumeAvgAggregateOutputType | null
+    _sum: VolumeSumAggregateOutputType | null
+    _min: VolumeMinAggregateOutputType | null
+    _max: VolumeMaxAggregateOutputType | null
+  }
+
+  export type VolumeAvgAggregateOutputType = {
+    id: number | null
+    current: number | null
+    average3Months: number | null
+    average10Days: number | null
+  }
+
+  export type VolumeSumAggregateOutputType = {
+    id: number | null
+    current: number | null
+    average3Months: number | null
+    average10Days: number | null
+  }
+
+  export type VolumeMinAggregateOutputType = {
+    id: number | null
+    current: number | null
+    average3Months: number | null
+    average10Days: number | null
+  }
+
+  export type VolumeMaxAggregateOutputType = {
+    id: number | null
+    current: number | null
+    average3Months: number | null
+    average10Days: number | null
+  }
+
+  export type VolumeCountAggregateOutputType = {
+    id: number
+    current: number
+    average3Months: number
+    average10Days: number
+    _all: number
+  }
+
+
+  export type VolumeAvgAggregateInputType = {
+    id?: true
+    current?: true
+    average3Months?: true
+    average10Days?: true
+  }
+
+  export type VolumeSumAggregateInputType = {
+    id?: true
+    current?: true
+    average3Months?: true
+    average10Days?: true
+  }
+
+  export type VolumeMinAggregateInputType = {
+    id?: true
+    current?: true
+    average3Months?: true
+    average10Days?: true
+  }
+
+  export type VolumeMaxAggregateInputType = {
+    id?: true
+    current?: true
+    average3Months?: true
+    average10Days?: true
+  }
+
+  export type VolumeCountAggregateInputType = {
+    id?: true
+    current?: true
+    average3Months?: true
+    average10Days?: true
+    _all?: true
+  }
+
+  export type VolumeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Volume to aggregate.
+     */
+    where?: VolumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Volumes to fetch.
+     */
+    orderBy?: VolumeOrderByWithRelationInput | VolumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VolumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Volumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Volumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Volumes
+    **/
+    _count?: true | VolumeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VolumeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VolumeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VolumeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VolumeMaxAggregateInputType
+  }
+
+  export type GetVolumeAggregateType<T extends VolumeAggregateArgs> = {
+        [P in keyof T & keyof AggregateVolume]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVolume[P]>
+      : GetScalarType<T[P], AggregateVolume[P]>
+  }
+
+
+
+
+  export type VolumeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VolumeWhereInput
+    orderBy?: VolumeOrderByWithAggregationInput | VolumeOrderByWithAggregationInput[]
+    by: VolumeScalarFieldEnum[] | VolumeScalarFieldEnum
+    having?: VolumeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VolumeCountAggregateInputType | true
+    _avg?: VolumeAvgAggregateInputType
+    _sum?: VolumeSumAggregateInputType
+    _min?: VolumeMinAggregateInputType
+    _max?: VolumeMaxAggregateInputType
+  }
+
+  export type VolumeGroupByOutputType = {
+    id: number
+    current: number | null
+    average3Months: number | null
+    average10Days: number | null
+    _count: VolumeCountAggregateOutputType | null
+    _avg: VolumeAvgAggregateOutputType | null
+    _sum: VolumeSumAggregateOutputType | null
+    _min: VolumeMinAggregateOutputType | null
+    _max: VolumeMaxAggregateOutputType | null
+  }
+
+  type GetVolumeGroupByPayload<T extends VolumeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VolumeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VolumeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VolumeGroupByOutputType[P]>
+            : GetScalarType<T[P], VolumeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VolumeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    average3Months?: boolean
+    average10Days?: boolean
+    Stock?: boolean | Volume$StockArgs<ExtArgs>
+    _count?: boolean | VolumeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["volume"]>
+
+  export type VolumeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    average3Months?: boolean
+    average10Days?: boolean
+  }, ExtArgs["result"]["volume"]>
+
+  export type VolumeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    current?: boolean
+    average3Months?: boolean
+    average10Days?: boolean
+  }, ExtArgs["result"]["volume"]>
+
+  export type VolumeSelectScalar = {
+    id?: boolean
+    current?: boolean
+    average3Months?: boolean
+    average10Days?: boolean
+  }
+
+  export type VolumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "current" | "average3Months" | "average10Days", ExtArgs["result"]["volume"]>
+  export type VolumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Volume$StockArgs<ExtArgs>
+    _count?: boolean | VolumeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type VolumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type VolumeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $VolumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Volume"
+    objects: {
+      Stock: Prisma.$StockPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      current: number | null
+      average3Months: number | null
+      average10Days: number | null
+    }, ExtArgs["result"]["volume"]>
+    composites: {}
+  }
+
+  type VolumeGetPayload<S extends boolean | null | undefined | VolumeDefaultArgs> = $Result.GetResult<Prisma.$VolumePayload, S>
+
+  type VolumeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VolumeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VolumeCountAggregateInputType | true
+    }
+
+  export interface VolumeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Volume'], meta: { name: 'Volume' } }
+    /**
+     * Find zero or one Volume that matches the filter.
+     * @param {VolumeFindUniqueArgs} args - Arguments to find a Volume
+     * @example
+     * // Get one Volume
+     * const volume = await prisma.volume.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VolumeFindUniqueArgs>(args: SelectSubset<T, VolumeFindUniqueArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Volume that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VolumeFindUniqueOrThrowArgs} args - Arguments to find a Volume
+     * @example
+     * // Get one Volume
+     * const volume = await prisma.volume.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VolumeFindUniqueOrThrowArgs>(args: SelectSubset<T, VolumeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Volume that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeFindFirstArgs} args - Arguments to find a Volume
+     * @example
+     * // Get one Volume
+     * const volume = await prisma.volume.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VolumeFindFirstArgs>(args?: SelectSubset<T, VolumeFindFirstArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Volume that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeFindFirstOrThrowArgs} args - Arguments to find a Volume
+     * @example
+     * // Get one Volume
+     * const volume = await prisma.volume.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VolumeFindFirstOrThrowArgs>(args?: SelectSubset<T, VolumeFindFirstOrThrowArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Volumes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Volumes
+     * const volumes = await prisma.volume.findMany()
+     * 
+     * // Get first 10 Volumes
+     * const volumes = await prisma.volume.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const volumeWithIdOnly = await prisma.volume.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VolumeFindManyArgs>(args?: SelectSubset<T, VolumeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Volume.
+     * @param {VolumeCreateArgs} args - Arguments to create a Volume.
+     * @example
+     * // Create one Volume
+     * const Volume = await prisma.volume.create({
+     *   data: {
+     *     // ... data to create a Volume
+     *   }
+     * })
+     * 
+     */
+    create<T extends VolumeCreateArgs>(args: SelectSubset<T, VolumeCreateArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Volumes.
+     * @param {VolumeCreateManyArgs} args - Arguments to create many Volumes.
+     * @example
+     * // Create many Volumes
+     * const volume = await prisma.volume.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VolumeCreateManyArgs>(args?: SelectSubset<T, VolumeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Volumes and returns the data saved in the database.
+     * @param {VolumeCreateManyAndReturnArgs} args - Arguments to create many Volumes.
+     * @example
+     * // Create many Volumes
+     * const volume = await prisma.volume.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Volumes and only return the `id`
+     * const volumeWithIdOnly = await prisma.volume.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VolumeCreateManyAndReturnArgs>(args?: SelectSubset<T, VolumeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Volume.
+     * @param {VolumeDeleteArgs} args - Arguments to delete one Volume.
+     * @example
+     * // Delete one Volume
+     * const Volume = await prisma.volume.delete({
+     *   where: {
+     *     // ... filter to delete one Volume
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VolumeDeleteArgs>(args: SelectSubset<T, VolumeDeleteArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Volume.
+     * @param {VolumeUpdateArgs} args - Arguments to update one Volume.
+     * @example
+     * // Update one Volume
+     * const volume = await prisma.volume.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VolumeUpdateArgs>(args: SelectSubset<T, VolumeUpdateArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Volumes.
+     * @param {VolumeDeleteManyArgs} args - Arguments to filter Volumes to delete.
+     * @example
+     * // Delete a few Volumes
+     * const { count } = await prisma.volume.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VolumeDeleteManyArgs>(args?: SelectSubset<T, VolumeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Volumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Volumes
+     * const volume = await prisma.volume.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VolumeUpdateManyArgs>(args: SelectSubset<T, VolumeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Volumes and returns the data updated in the database.
+     * @param {VolumeUpdateManyAndReturnArgs} args - Arguments to update many Volumes.
+     * @example
+     * // Update many Volumes
+     * const volume = await prisma.volume.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Volumes and only return the `id`
+     * const volumeWithIdOnly = await prisma.volume.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VolumeUpdateManyAndReturnArgs>(args: SelectSubset<T, VolumeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Volume.
+     * @param {VolumeUpsertArgs} args - Arguments to update or create a Volume.
+     * @example
+     * // Update or create a Volume
+     * const volume = await prisma.volume.upsert({
+     *   create: {
+     *     // ... data to create a Volume
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Volume we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VolumeUpsertArgs>(args: SelectSubset<T, VolumeUpsertArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Volumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeCountArgs} args - Arguments to filter Volumes to count.
+     * @example
+     * // Count the number of Volumes
+     * const count = await prisma.volume.count({
+     *   where: {
+     *     // ... the filter for the Volumes we want to count
+     *   }
+     * })
+    **/
+    count<T extends VolumeCountArgs>(
+      args?: Subset<T, VolumeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VolumeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Volume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VolumeAggregateArgs>(args: Subset<T, VolumeAggregateArgs>): Prisma.PrismaPromise<GetVolumeAggregateType<T>>
+
+    /**
+     * Group by Volume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VolumeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VolumeGroupByArgs['orderBy'] }
+        : { orderBy?: VolumeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VolumeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVolumeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Volume model
+   */
+  readonly fields: VolumeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Volume.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VolumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Stock<T extends Volume$StockArgs<ExtArgs> = {}>(args?: Subset<T, Volume$StockArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Volume model
+   */ 
+  interface VolumeFieldRefs {
+    readonly id: FieldRef<"Volume", 'Int'>
+    readonly current: FieldRef<"Volume", 'Int'>
+    readonly average3Months: FieldRef<"Volume", 'Int'>
+    readonly average10Days: FieldRef<"Volume", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Volume findUnique
+   */
+  export type VolumeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Volume to fetch.
+     */
+    where: VolumeWhereUniqueInput
+  }
+
+  /**
+   * Volume findUniqueOrThrow
+   */
+  export type VolumeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Volume to fetch.
+     */
+    where: VolumeWhereUniqueInput
+  }
+
+  /**
+   * Volume findFirst
+   */
+  export type VolumeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Volume to fetch.
+     */
+    where?: VolumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Volumes to fetch.
+     */
+    orderBy?: VolumeOrderByWithRelationInput | VolumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Volumes.
+     */
+    cursor?: VolumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Volumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Volumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Volumes.
+     */
+    distinct?: VolumeScalarFieldEnum | VolumeScalarFieldEnum[]
+  }
+
+  /**
+   * Volume findFirstOrThrow
+   */
+  export type VolumeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Volume to fetch.
+     */
+    where?: VolumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Volumes to fetch.
+     */
+    orderBy?: VolumeOrderByWithRelationInput | VolumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Volumes.
+     */
+    cursor?: VolumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Volumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Volumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Volumes.
+     */
+    distinct?: VolumeScalarFieldEnum | VolumeScalarFieldEnum[]
+  }
+
+  /**
+   * Volume findMany
+   */
+  export type VolumeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Volumes to fetch.
+     */
+    where?: VolumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Volumes to fetch.
+     */
+    orderBy?: VolumeOrderByWithRelationInput | VolumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Volumes.
+     */
+    cursor?: VolumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Volumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Volumes.
+     */
+    skip?: number
+    distinct?: VolumeScalarFieldEnum | VolumeScalarFieldEnum[]
+  }
+
+  /**
+   * Volume create
+   */
+  export type VolumeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Volume.
+     */
+    data?: XOR<VolumeCreateInput, VolumeUncheckedCreateInput>
+  }
+
+  /**
+   * Volume createMany
+   */
+  export type VolumeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Volumes.
+     */
+    data: VolumeCreateManyInput | VolumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Volume createManyAndReturn
+   */
+  export type VolumeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Volumes.
+     */
+    data: VolumeCreateManyInput | VolumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Volume update
+   */
+  export type VolumeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Volume.
+     */
+    data: XOR<VolumeUpdateInput, VolumeUncheckedUpdateInput>
+    /**
+     * Choose, which Volume to update.
+     */
+    where: VolumeWhereUniqueInput
+  }
+
+  /**
+   * Volume updateMany
+   */
+  export type VolumeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Volumes.
+     */
+    data: XOR<VolumeUpdateManyMutationInput, VolumeUncheckedUpdateManyInput>
+    /**
+     * Filter which Volumes to update
+     */
+    where?: VolumeWhereInput
+  }
+
+  /**
+   * Volume updateManyAndReturn
+   */
+  export type VolumeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * The data used to update Volumes.
+     */
+    data: XOR<VolumeUpdateManyMutationInput, VolumeUncheckedUpdateManyInput>
+    /**
+     * Filter which Volumes to update
+     */
+    where?: VolumeWhereInput
+  }
+
+  /**
+   * Volume upsert
+   */
+  export type VolumeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Volume to update in case it exists.
+     */
+    where: VolumeWhereUniqueInput
+    /**
+     * In case the Volume found by the `where` argument doesn't exist, create a new Volume with this data.
+     */
+    create: XOR<VolumeCreateInput, VolumeUncheckedCreateInput>
+    /**
+     * In case the Volume was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VolumeUpdateInput, VolumeUncheckedUpdateInput>
+  }
+
+  /**
+   * Volume delete
+   */
+  export type VolumeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+    /**
+     * Filter which Volume to delete.
+     */
+    where: VolumeWhereUniqueInput
+  }
+
+  /**
+   * Volume deleteMany
+   */
+  export type VolumeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Volumes to delete
+     */
+    where?: VolumeWhereInput
+  }
+
+  /**
+   * Volume.Stock
+   */
+  export type Volume$StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    cursor?: StockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Volume without action
+   */
+  export type VolumeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Volume
+     */
+    select?: VolumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Volume
+     */
+    omit?: VolumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolumeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Week52
+   */
+
+  export type AggregateWeek52 = {
+    _count: Week52CountAggregateOutputType | null
+    _avg: Week52AvgAggregateOutputType | null
+    _sum: Week52SumAggregateOutputType | null
+    _min: Week52MinAggregateOutputType | null
+    _max: Week52MaxAggregateOutputType | null
+  }
+
+  export type Week52AvgAggregateOutputType = {
+    id: number | null
+    high: number | null
+    low: number | null
+    changeFromHigh: number | null
+    changeFromLow: number | null
+  }
+
+  export type Week52SumAggregateOutputType = {
+    id: number | null
+    high: number | null
+    low: number | null
+    changeFromHigh: number | null
+    changeFromLow: number | null
+  }
+
+  export type Week52MinAggregateOutputType = {
+    id: number | null
+    high: number | null
+    low: number | null
+    changeFromHigh: number | null
+    changeFromLow: number | null
+  }
+
+  export type Week52MaxAggregateOutputType = {
+    id: number | null
+    high: number | null
+    low: number | null
+    changeFromHigh: number | null
+    changeFromLow: number | null
+  }
+
+  export type Week52CountAggregateOutputType = {
+    id: number
+    high: number
+    low: number
+    changeFromHigh: number
+    changeFromLow: number
+    _all: number
+  }
+
+
+  export type Week52AvgAggregateInputType = {
+    id?: true
+    high?: true
+    low?: true
+    changeFromHigh?: true
+    changeFromLow?: true
+  }
+
+  export type Week52SumAggregateInputType = {
+    id?: true
+    high?: true
+    low?: true
+    changeFromHigh?: true
+    changeFromLow?: true
+  }
+
+  export type Week52MinAggregateInputType = {
+    id?: true
+    high?: true
+    low?: true
+    changeFromHigh?: true
+    changeFromLow?: true
+  }
+
+  export type Week52MaxAggregateInputType = {
+    id?: true
+    high?: true
+    low?: true
+    changeFromHigh?: true
+    changeFromLow?: true
+  }
+
+  export type Week52CountAggregateInputType = {
+    id?: true
+    high?: true
+    low?: true
+    changeFromHigh?: true
+    changeFromLow?: true
+    _all?: true
+  }
+
+  export type Week52AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Week52 to aggregate.
+     */
+    where?: Week52WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Week52s to fetch.
+     */
+    orderBy?: Week52OrderByWithRelationInput | Week52OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Week52WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Week52s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Week52s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Week52s
+    **/
+    _count?: true | Week52CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Week52AvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Week52SumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Week52MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Week52MaxAggregateInputType
+  }
+
+  export type GetWeek52AggregateType<T extends Week52AggregateArgs> = {
+        [P in keyof T & keyof AggregateWeek52]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeek52[P]>
+      : GetScalarType<T[P], AggregateWeek52[P]>
+  }
+
+
+
+
+  export type Week52GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Week52WhereInput
+    orderBy?: Week52OrderByWithAggregationInput | Week52OrderByWithAggregationInput[]
+    by: Week52ScalarFieldEnum[] | Week52ScalarFieldEnum
+    having?: Week52ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Week52CountAggregateInputType | true
+    _avg?: Week52AvgAggregateInputType
+    _sum?: Week52SumAggregateInputType
+    _min?: Week52MinAggregateInputType
+    _max?: Week52MaxAggregateInputType
+  }
+
+  export type Week52GroupByOutputType = {
+    id: number
+    high: number | null
+    low: number | null
+    changeFromHigh: number | null
+    changeFromLow: number | null
+    _count: Week52CountAggregateOutputType | null
+    _avg: Week52AvgAggregateOutputType | null
+    _sum: Week52SumAggregateOutputType | null
+    _min: Week52MinAggregateOutputType | null
+    _max: Week52MaxAggregateOutputType | null
+  }
+
+  type GetWeek52GroupByPayload<T extends Week52GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Week52GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Week52GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Week52GroupByOutputType[P]>
+            : GetScalarType<T[P], Week52GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Week52Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    high?: boolean
+    low?: boolean
+    changeFromHigh?: boolean
+    changeFromLow?: boolean
+    Stock?: boolean | Week52$StockArgs<ExtArgs>
+    _count?: boolean | Week52CountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["week52"]>
+
+  export type Week52SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    high?: boolean
+    low?: boolean
+    changeFromHigh?: boolean
+    changeFromLow?: boolean
+  }, ExtArgs["result"]["week52"]>
+
+  export type Week52SelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    high?: boolean
+    low?: boolean
+    changeFromHigh?: boolean
+    changeFromLow?: boolean
+  }, ExtArgs["result"]["week52"]>
+
+  export type Week52SelectScalar = {
+    id?: boolean
+    high?: boolean
+    low?: boolean
+    changeFromHigh?: boolean
+    changeFromLow?: boolean
+  }
+
+  export type Week52Omit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "high" | "low" | "changeFromHigh" | "changeFromLow", ExtArgs["result"]["week52"]>
+  export type Week52Include<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Week52$StockArgs<ExtArgs>
+    _count?: boolean | Week52CountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type Week52IncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type Week52IncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $Week52Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Week52"
+    objects: {
+      Stock: Prisma.$StockPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      high: number | null
+      low: number | null
+      changeFromHigh: number | null
+      changeFromLow: number | null
+    }, ExtArgs["result"]["week52"]>
+    composites: {}
+  }
+
+  type Week52GetPayload<S extends boolean | null | undefined | Week52DefaultArgs> = $Result.GetResult<Prisma.$Week52Payload, S>
+
+  type Week52CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Week52FindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Week52CountAggregateInputType | true
+    }
+
+  export interface Week52Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Week52'], meta: { name: 'Week52' } }
+    /**
+     * Find zero or one Week52 that matches the filter.
+     * @param {Week52FindUniqueArgs} args - Arguments to find a Week52
+     * @example
+     * // Get one Week52
+     * const week52 = await prisma.week52.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Week52FindUniqueArgs>(args: SelectSubset<T, Week52FindUniqueArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Week52 that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Week52FindUniqueOrThrowArgs} args - Arguments to find a Week52
+     * @example
+     * // Get one Week52
+     * const week52 = await prisma.week52.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Week52FindUniqueOrThrowArgs>(args: SelectSubset<T, Week52FindUniqueOrThrowArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Week52 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52FindFirstArgs} args - Arguments to find a Week52
+     * @example
+     * // Get one Week52
+     * const week52 = await prisma.week52.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Week52FindFirstArgs>(args?: SelectSubset<T, Week52FindFirstArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Week52 that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52FindFirstOrThrowArgs} args - Arguments to find a Week52
+     * @example
+     * // Get one Week52
+     * const week52 = await prisma.week52.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Week52FindFirstOrThrowArgs>(args?: SelectSubset<T, Week52FindFirstOrThrowArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Week52s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Week52s
+     * const week52s = await prisma.week52.findMany()
+     * 
+     * // Get first 10 Week52s
+     * const week52s = await prisma.week52.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const week52WithIdOnly = await prisma.week52.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Week52FindManyArgs>(args?: SelectSubset<T, Week52FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Week52.
+     * @param {Week52CreateArgs} args - Arguments to create a Week52.
+     * @example
+     * // Create one Week52
+     * const Week52 = await prisma.week52.create({
+     *   data: {
+     *     // ... data to create a Week52
+     *   }
+     * })
+     * 
+     */
+    create<T extends Week52CreateArgs>(args: SelectSubset<T, Week52CreateArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Week52s.
+     * @param {Week52CreateManyArgs} args - Arguments to create many Week52s.
+     * @example
+     * // Create many Week52s
+     * const week52 = await prisma.week52.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Week52CreateManyArgs>(args?: SelectSubset<T, Week52CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Week52s and returns the data saved in the database.
+     * @param {Week52CreateManyAndReturnArgs} args - Arguments to create many Week52s.
+     * @example
+     * // Create many Week52s
+     * const week52 = await prisma.week52.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Week52s and only return the `id`
+     * const week52WithIdOnly = await prisma.week52.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Week52CreateManyAndReturnArgs>(args?: SelectSubset<T, Week52CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Week52.
+     * @param {Week52DeleteArgs} args - Arguments to delete one Week52.
+     * @example
+     * // Delete one Week52
+     * const Week52 = await prisma.week52.delete({
+     *   where: {
+     *     // ... filter to delete one Week52
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Week52DeleteArgs>(args: SelectSubset<T, Week52DeleteArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Week52.
+     * @param {Week52UpdateArgs} args - Arguments to update one Week52.
+     * @example
+     * // Update one Week52
+     * const week52 = await prisma.week52.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Week52UpdateArgs>(args: SelectSubset<T, Week52UpdateArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Week52s.
+     * @param {Week52DeleteManyArgs} args - Arguments to filter Week52s to delete.
+     * @example
+     * // Delete a few Week52s
+     * const { count } = await prisma.week52.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Week52DeleteManyArgs>(args?: SelectSubset<T, Week52DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Week52s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Week52s
+     * const week52 = await prisma.week52.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Week52UpdateManyArgs>(args: SelectSubset<T, Week52UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Week52s and returns the data updated in the database.
+     * @param {Week52UpdateManyAndReturnArgs} args - Arguments to update many Week52s.
+     * @example
+     * // Update many Week52s
+     * const week52 = await prisma.week52.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Week52s and only return the `id`
+     * const week52WithIdOnly = await prisma.week52.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Week52UpdateManyAndReturnArgs>(args: SelectSubset<T, Week52UpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Week52.
+     * @param {Week52UpsertArgs} args - Arguments to update or create a Week52.
+     * @example
+     * // Update or create a Week52
+     * const week52 = await prisma.week52.upsert({
+     *   create: {
+     *     // ... data to create a Week52
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Week52 we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Week52UpsertArgs>(args: SelectSubset<T, Week52UpsertArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Week52s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52CountArgs} args - Arguments to filter Week52s to count.
+     * @example
+     * // Count the number of Week52s
+     * const count = await prisma.week52.count({
+     *   where: {
+     *     // ... the filter for the Week52s we want to count
+     *   }
+     * })
+    **/
+    count<T extends Week52CountArgs>(
+      args?: Subset<T, Week52CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Week52CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Week52.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Week52AggregateArgs>(args: Subset<T, Week52AggregateArgs>): Prisma.PrismaPromise<GetWeek52AggregateType<T>>
+
+    /**
+     * Group by Week52.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Week52GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Week52GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Week52GroupByArgs['orderBy'] }
+        : { orderBy?: Week52GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Week52GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeek52GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Week52 model
+   */
+  readonly fields: Week52FieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Week52.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Week52Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Stock<T extends Week52$StockArgs<ExtArgs> = {}>(args?: Subset<T, Week52$StockArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Week52 model
+   */ 
+  interface Week52FieldRefs {
+    readonly id: FieldRef<"Week52", 'Int'>
+    readonly high: FieldRef<"Week52", 'Float'>
+    readonly low: FieldRef<"Week52", 'Float'>
+    readonly changeFromHigh: FieldRef<"Week52", 'Float'>
+    readonly changeFromLow: FieldRef<"Week52", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Week52 findUnique
+   */
+  export type Week52FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter, which Week52 to fetch.
+     */
+    where: Week52WhereUniqueInput
+  }
+
+  /**
+   * Week52 findUniqueOrThrow
+   */
+  export type Week52FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter, which Week52 to fetch.
+     */
+    where: Week52WhereUniqueInput
+  }
+
+  /**
+   * Week52 findFirst
+   */
+  export type Week52FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter, which Week52 to fetch.
+     */
+    where?: Week52WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Week52s to fetch.
+     */
+    orderBy?: Week52OrderByWithRelationInput | Week52OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Week52s.
+     */
+    cursor?: Week52WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Week52s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Week52s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Week52s.
+     */
+    distinct?: Week52ScalarFieldEnum | Week52ScalarFieldEnum[]
+  }
+
+  /**
+   * Week52 findFirstOrThrow
+   */
+  export type Week52FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter, which Week52 to fetch.
+     */
+    where?: Week52WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Week52s to fetch.
+     */
+    orderBy?: Week52OrderByWithRelationInput | Week52OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Week52s.
+     */
+    cursor?: Week52WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Week52s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Week52s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Week52s.
+     */
+    distinct?: Week52ScalarFieldEnum | Week52ScalarFieldEnum[]
+  }
+
+  /**
+   * Week52 findMany
+   */
+  export type Week52FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter, which Week52s to fetch.
+     */
+    where?: Week52WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Week52s to fetch.
+     */
+    orderBy?: Week52OrderByWithRelationInput | Week52OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Week52s.
+     */
+    cursor?: Week52WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Week52s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Week52s.
+     */
+    skip?: number
+    distinct?: Week52ScalarFieldEnum | Week52ScalarFieldEnum[]
+  }
+
+  /**
+   * Week52 create
+   */
+  export type Week52CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * The data needed to create a Week52.
+     */
+    data?: XOR<Week52CreateInput, Week52UncheckedCreateInput>
+  }
+
+  /**
+   * Week52 createMany
+   */
+  export type Week52CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Week52s.
+     */
+    data: Week52CreateManyInput | Week52CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Week52 createManyAndReturn
+   */
+  export type Week52CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52SelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * The data used to create many Week52s.
+     */
+    data: Week52CreateManyInput | Week52CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Week52 update
+   */
+  export type Week52UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * The data needed to update a Week52.
+     */
+    data: XOR<Week52UpdateInput, Week52UncheckedUpdateInput>
+    /**
+     * Choose, which Week52 to update.
+     */
+    where: Week52WhereUniqueInput
+  }
+
+  /**
+   * Week52 updateMany
+   */
+  export type Week52UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Week52s.
+     */
+    data: XOR<Week52UpdateManyMutationInput, Week52UncheckedUpdateManyInput>
+    /**
+     * Filter which Week52s to update
+     */
+    where?: Week52WhereInput
+  }
+
+  /**
+   * Week52 updateManyAndReturn
+   */
+  export type Week52UpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52SelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * The data used to update Week52s.
+     */
+    data: XOR<Week52UpdateManyMutationInput, Week52UncheckedUpdateManyInput>
+    /**
+     * Filter which Week52s to update
+     */
+    where?: Week52WhereInput
+  }
+
+  /**
+   * Week52 upsert
+   */
+  export type Week52UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * The filter to search for the Week52 to update in case it exists.
+     */
+    where: Week52WhereUniqueInput
+    /**
+     * In case the Week52 found by the `where` argument doesn't exist, create a new Week52 with this data.
+     */
+    create: XOR<Week52CreateInput, Week52UncheckedCreateInput>
+    /**
+     * In case the Week52 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Week52UpdateInput, Week52UncheckedUpdateInput>
+  }
+
+  /**
+   * Week52 delete
+   */
+  export type Week52DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+    /**
+     * Filter which Week52 to delete.
+     */
+    where: Week52WhereUniqueInput
+  }
+
+  /**
+   * Week52 deleteMany
+   */
+  export type Week52DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Week52s to delete
+     */
+    where?: Week52WhereInput
+  }
+
+  /**
+   * Week52.Stock
+   */
+  export type Week52$StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    cursor?: StockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Week52 without action
+   */
+  export type Week52DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Week52
+     */
+    select?: Week52Select<ExtArgs> | null
+    /**
+     * Omit specific fields from the Week52
+     */
+    omit?: Week52Omit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Week52Include<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Dividend
+   */
+
+  export type AggregateDividend = {
+    _count: DividendCountAggregateOutputType | null
+    _avg: DividendAvgAggregateOutputType | null
+    _sum: DividendSumAggregateOutputType | null
+    _min: DividendMinAggregateOutputType | null
+    _max: DividendMaxAggregateOutputType | null
+  }
+
+  export type DividendAvgAggregateOutputType = {
+    id: number | null
+    rate: number | null
+    yield: number | null
+  }
+
+  export type DividendSumAggregateOutputType = {
+    id: number | null
+    rate: number | null
+    yield: number | null
+  }
+
+  export type DividendMinAggregateOutputType = {
+    id: number | null
+    rate: number | null
+    yield: number | null
+    date: Date | null
+  }
+
+  export type DividendMaxAggregateOutputType = {
+    id: number | null
+    rate: number | null
+    yield: number | null
+    date: Date | null
+  }
+
+  export type DividendCountAggregateOutputType = {
+    id: number
+    rate: number
+    yield: number
+    date: number
+    _all: number
+  }
+
+
+  export type DividendAvgAggregateInputType = {
+    id?: true
+    rate?: true
+    yield?: true
+  }
+
+  export type DividendSumAggregateInputType = {
+    id?: true
+    rate?: true
+    yield?: true
+  }
+
+  export type DividendMinAggregateInputType = {
+    id?: true
+    rate?: true
+    yield?: true
+    date?: true
+  }
+
+  export type DividendMaxAggregateInputType = {
+    id?: true
+    rate?: true
+    yield?: true
+    date?: true
+  }
+
+  export type DividendCountAggregateInputType = {
+    id?: true
+    rate?: true
+    yield?: true
+    date?: true
+    _all?: true
+  }
+
+  export type DividendAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dividend to aggregate.
+     */
+    where?: DividendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dividends to fetch.
+     */
+    orderBy?: DividendOrderByWithRelationInput | DividendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DividendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dividends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dividends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Dividends
+    **/
+    _count?: true | DividendCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DividendAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DividendSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DividendMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DividendMaxAggregateInputType
+  }
+
+  export type GetDividendAggregateType<T extends DividendAggregateArgs> = {
+        [P in keyof T & keyof AggregateDividend]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDividend[P]>
+      : GetScalarType<T[P], AggregateDividend[P]>
+  }
+
+
+
+
+  export type DividendGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DividendWhereInput
+    orderBy?: DividendOrderByWithAggregationInput | DividendOrderByWithAggregationInput[]
+    by: DividendScalarFieldEnum[] | DividendScalarFieldEnum
+    having?: DividendScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DividendCountAggregateInputType | true
+    _avg?: DividendAvgAggregateInputType
+    _sum?: DividendSumAggregateInputType
+    _min?: DividendMinAggregateInputType
+    _max?: DividendMaxAggregateInputType
+  }
+
+  export type DividendGroupByOutputType = {
+    id: number
+    rate: number | null
+    yield: number | null
+    date: Date | null
+    _count: DividendCountAggregateOutputType | null
+    _avg: DividendAvgAggregateOutputType | null
+    _sum: DividendSumAggregateOutputType | null
+    _min: DividendMinAggregateOutputType | null
+    _max: DividendMaxAggregateOutputType | null
+  }
+
+  type GetDividendGroupByPayload<T extends DividendGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DividendGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DividendGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DividendGroupByOutputType[P]>
+            : GetScalarType<T[P], DividendGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DividendSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rate?: boolean
+    yield?: boolean
+    date?: boolean
+    Stock?: boolean | Dividend$StockArgs<ExtArgs>
+    _count?: boolean | DividendCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dividend"]>
+
+  export type DividendSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rate?: boolean
+    yield?: boolean
+    date?: boolean
+  }, ExtArgs["result"]["dividend"]>
+
+  export type DividendSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rate?: boolean
+    yield?: boolean
+    date?: boolean
+  }, ExtArgs["result"]["dividend"]>
+
+  export type DividendSelectScalar = {
+    id?: boolean
+    rate?: boolean
+    yield?: boolean
+    date?: boolean
+  }
+
+  export type DividendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rate" | "yield" | "date", ExtArgs["result"]["dividend"]>
+  export type DividendInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Dividend$StockArgs<ExtArgs>
+    _count?: boolean | DividendCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DividendIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DividendIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DividendPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Dividend"
+    objects: {
+      Stock: Prisma.$StockPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      rate: number | null
+      yield: number | null
+      date: Date | null
+    }, ExtArgs["result"]["dividend"]>
+    composites: {}
+  }
+
+  type DividendGetPayload<S extends boolean | null | undefined | DividendDefaultArgs> = $Result.GetResult<Prisma.$DividendPayload, S>
+
+  type DividendCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DividendFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DividendCountAggregateInputType | true
+    }
+
+  export interface DividendDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dividend'], meta: { name: 'Dividend' } }
+    /**
+     * Find zero or one Dividend that matches the filter.
+     * @param {DividendFindUniqueArgs} args - Arguments to find a Dividend
+     * @example
+     * // Get one Dividend
+     * const dividend = await prisma.dividend.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DividendFindUniqueArgs>(args: SelectSubset<T, DividendFindUniqueArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Dividend that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DividendFindUniqueOrThrowArgs} args - Arguments to find a Dividend
+     * @example
+     * // Get one Dividend
+     * const dividend = await prisma.dividend.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DividendFindUniqueOrThrowArgs>(args: SelectSubset<T, DividendFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Dividend that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendFindFirstArgs} args - Arguments to find a Dividend
+     * @example
+     * // Get one Dividend
+     * const dividend = await prisma.dividend.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DividendFindFirstArgs>(args?: SelectSubset<T, DividendFindFirstArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Dividend that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendFindFirstOrThrowArgs} args - Arguments to find a Dividend
+     * @example
+     * // Get one Dividend
+     * const dividend = await prisma.dividend.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DividendFindFirstOrThrowArgs>(args?: SelectSubset<T, DividendFindFirstOrThrowArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Dividends that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dividends
+     * const dividends = await prisma.dividend.findMany()
+     * 
+     * // Get first 10 Dividends
+     * const dividends = await prisma.dividend.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dividendWithIdOnly = await prisma.dividend.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DividendFindManyArgs>(args?: SelectSubset<T, DividendFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Dividend.
+     * @param {DividendCreateArgs} args - Arguments to create a Dividend.
+     * @example
+     * // Create one Dividend
+     * const Dividend = await prisma.dividend.create({
+     *   data: {
+     *     // ... data to create a Dividend
+     *   }
+     * })
+     * 
+     */
+    create<T extends DividendCreateArgs>(args: SelectSubset<T, DividendCreateArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Dividends.
+     * @param {DividendCreateManyArgs} args - Arguments to create many Dividends.
+     * @example
+     * // Create many Dividends
+     * const dividend = await prisma.dividend.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DividendCreateManyArgs>(args?: SelectSubset<T, DividendCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Dividends and returns the data saved in the database.
+     * @param {DividendCreateManyAndReturnArgs} args - Arguments to create many Dividends.
+     * @example
+     * // Create many Dividends
+     * const dividend = await prisma.dividend.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Dividends and only return the `id`
+     * const dividendWithIdOnly = await prisma.dividend.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DividendCreateManyAndReturnArgs>(args?: SelectSubset<T, DividendCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Dividend.
+     * @param {DividendDeleteArgs} args - Arguments to delete one Dividend.
+     * @example
+     * // Delete one Dividend
+     * const Dividend = await prisma.dividend.delete({
+     *   where: {
+     *     // ... filter to delete one Dividend
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DividendDeleteArgs>(args: SelectSubset<T, DividendDeleteArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Dividend.
+     * @param {DividendUpdateArgs} args - Arguments to update one Dividend.
+     * @example
+     * // Update one Dividend
+     * const dividend = await prisma.dividend.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DividendUpdateArgs>(args: SelectSubset<T, DividendUpdateArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Dividends.
+     * @param {DividendDeleteManyArgs} args - Arguments to filter Dividends to delete.
+     * @example
+     * // Delete a few Dividends
+     * const { count } = await prisma.dividend.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DividendDeleteManyArgs>(args?: SelectSubset<T, DividendDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dividends.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dividends
+     * const dividend = await prisma.dividend.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DividendUpdateManyArgs>(args: SelectSubset<T, DividendUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dividends and returns the data updated in the database.
+     * @param {DividendUpdateManyAndReturnArgs} args - Arguments to update many Dividends.
+     * @example
+     * // Update many Dividends
+     * const dividend = await prisma.dividend.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Dividends and only return the `id`
+     * const dividendWithIdOnly = await prisma.dividend.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DividendUpdateManyAndReturnArgs>(args: SelectSubset<T, DividendUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Dividend.
+     * @param {DividendUpsertArgs} args - Arguments to update or create a Dividend.
+     * @example
+     * // Update or create a Dividend
+     * const dividend = await prisma.dividend.upsert({
+     *   create: {
+     *     // ... data to create a Dividend
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dividend we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DividendUpsertArgs>(args: SelectSubset<T, DividendUpsertArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Dividends.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendCountArgs} args - Arguments to filter Dividends to count.
+     * @example
+     * // Count the number of Dividends
+     * const count = await prisma.dividend.count({
+     *   where: {
+     *     // ... the filter for the Dividends we want to count
+     *   }
+     * })
+    **/
+    count<T extends DividendCountArgs>(
+      args?: Subset<T, DividendCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DividendCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dividend.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DividendAggregateArgs>(args: Subset<T, DividendAggregateArgs>): Prisma.PrismaPromise<GetDividendAggregateType<T>>
+
+    /**
+     * Group by Dividend.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DividendGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DividendGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DividendGroupByArgs['orderBy'] }
+        : { orderBy?: DividendGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DividendGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDividendGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Dividend model
+   */
+  readonly fields: DividendFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Dividend.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DividendClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Stock<T extends Dividend$StockArgs<ExtArgs> = {}>(args?: Subset<T, Dividend$StockArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Dividend model
+   */ 
+  interface DividendFieldRefs {
+    readonly id: FieldRef<"Dividend", 'Int'>
+    readonly rate: FieldRef<"Dividend", 'Float'>
+    readonly yield: FieldRef<"Dividend", 'Float'>
+    readonly date: FieldRef<"Dividend", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Dividend findUnique
+   */
+  export type DividendFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter, which Dividend to fetch.
+     */
+    where: DividendWhereUniqueInput
+  }
+
+  /**
+   * Dividend findUniqueOrThrow
+   */
+  export type DividendFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter, which Dividend to fetch.
+     */
+    where: DividendWhereUniqueInput
+  }
+
+  /**
+   * Dividend findFirst
+   */
+  export type DividendFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter, which Dividend to fetch.
+     */
+    where?: DividendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dividends to fetch.
+     */
+    orderBy?: DividendOrderByWithRelationInput | DividendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dividends.
+     */
+    cursor?: DividendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dividends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dividends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dividends.
+     */
+    distinct?: DividendScalarFieldEnum | DividendScalarFieldEnum[]
+  }
+
+  /**
+   * Dividend findFirstOrThrow
+   */
+  export type DividendFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter, which Dividend to fetch.
+     */
+    where?: DividendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dividends to fetch.
+     */
+    orderBy?: DividendOrderByWithRelationInput | DividendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dividends.
+     */
+    cursor?: DividendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dividends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dividends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dividends.
+     */
+    distinct?: DividendScalarFieldEnum | DividendScalarFieldEnum[]
+  }
+
+  /**
+   * Dividend findMany
+   */
+  export type DividendFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter, which Dividends to fetch.
+     */
+    where?: DividendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dividends to fetch.
+     */
+    orderBy?: DividendOrderByWithRelationInput | DividendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Dividends.
+     */
+    cursor?: DividendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dividends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dividends.
+     */
+    skip?: number
+    distinct?: DividendScalarFieldEnum | DividendScalarFieldEnum[]
+  }
+
+  /**
+   * Dividend create
+   */
+  export type DividendCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Dividend.
+     */
+    data?: XOR<DividendCreateInput, DividendUncheckedCreateInput>
+  }
+
+  /**
+   * Dividend createMany
+   */
+  export type DividendCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Dividends.
+     */
+    data: DividendCreateManyInput | DividendCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dividend createManyAndReturn
+   */
+  export type DividendCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * The data used to create many Dividends.
+     */
+    data: DividendCreateManyInput | DividendCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dividend update
+   */
+  export type DividendUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Dividend.
+     */
+    data: XOR<DividendUpdateInput, DividendUncheckedUpdateInput>
+    /**
+     * Choose, which Dividend to update.
+     */
+    where: DividendWhereUniqueInput
+  }
+
+  /**
+   * Dividend updateMany
+   */
+  export type DividendUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Dividends.
+     */
+    data: XOR<DividendUpdateManyMutationInput, DividendUncheckedUpdateManyInput>
+    /**
+     * Filter which Dividends to update
+     */
+    where?: DividendWhereInput
+  }
+
+  /**
+   * Dividend updateManyAndReturn
+   */
+  export type DividendUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * The data used to update Dividends.
+     */
+    data: XOR<DividendUpdateManyMutationInput, DividendUncheckedUpdateManyInput>
+    /**
+     * Filter which Dividends to update
+     */
+    where?: DividendWhereInput
+  }
+
+  /**
+   * Dividend upsert
+   */
+  export type DividendUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Dividend to update in case it exists.
+     */
+    where: DividendWhereUniqueInput
+    /**
+     * In case the Dividend found by the `where` argument doesn't exist, create a new Dividend with this data.
+     */
+    create: XOR<DividendCreateInput, DividendUncheckedCreateInput>
+    /**
+     * In case the Dividend was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DividendUpdateInput, DividendUncheckedUpdateInput>
+  }
+
+  /**
+   * Dividend delete
+   */
+  export type DividendDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+    /**
+     * Filter which Dividend to delete.
+     */
+    where: DividendWhereUniqueInput
+  }
+
+  /**
+   * Dividend deleteMany
+   */
+  export type DividendDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dividends to delete
+     */
+    where?: DividendWhereInput
+  }
+
+  /**
+   * Dividend.Stock
+   */
+  export type Dividend$StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    cursor?: StockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Dividend without action
+   */
+  export type DividendDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dividend
+     */
+    select?: DividendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dividend
+     */
+    omit?: DividendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DividendInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Earnings
+   */
+
+  export type AggregateEarnings = {
+    _count: EarningsCountAggregateOutputType | null
+    _avg: EarningsAvgAggregateOutputType | null
+    _sum: EarningsSumAggregateOutputType | null
+    _min: EarningsMinAggregateOutputType | null
+    _max: EarningsMaxAggregateOutputType | null
+  }
+
+  export type EarningsAvgAggregateOutputType = {
+    id: number | null
+    epsTrailing12Months: number | null
+    epsForward: number | null
+    peRatio: number | null
+  }
+
+  export type EarningsSumAggregateOutputType = {
+    id: number | null
+    epsTrailing12Months: number | null
+    epsForward: number | null
+    peRatio: number | null
+  }
+
+  export type EarningsMinAggregateOutputType = {
+    id: number | null
+    nextDate: Date | null
+    epsTrailing12Months: number | null
+    epsForward: number | null
+    peRatio: number | null
+  }
+
+  export type EarningsMaxAggregateOutputType = {
+    id: number | null
+    nextDate: Date | null
+    epsTrailing12Months: number | null
+    epsForward: number | null
+    peRatio: number | null
+  }
+
+  export type EarningsCountAggregateOutputType = {
+    id: number
+    nextDate: number
+    epsTrailing12Months: number
+    epsForward: number
+    peRatio: number
+    _all: number
+  }
+
+
+  export type EarningsAvgAggregateInputType = {
+    id?: true
+    epsTrailing12Months?: true
+    epsForward?: true
+    peRatio?: true
+  }
+
+  export type EarningsSumAggregateInputType = {
+    id?: true
+    epsTrailing12Months?: true
+    epsForward?: true
+    peRatio?: true
+  }
+
+  export type EarningsMinAggregateInputType = {
+    id?: true
+    nextDate?: true
+    epsTrailing12Months?: true
+    epsForward?: true
+    peRatio?: true
+  }
+
+  export type EarningsMaxAggregateInputType = {
+    id?: true
+    nextDate?: true
+    epsTrailing12Months?: true
+    epsForward?: true
+    peRatio?: true
+  }
+
+  export type EarningsCountAggregateInputType = {
+    id?: true
+    nextDate?: true
+    epsTrailing12Months?: true
+    epsForward?: true
+    peRatio?: true
+    _all?: true
+  }
+
+  export type EarningsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Earnings to aggregate.
+     */
+    where?: EarningsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Earnings to fetch.
+     */
+    orderBy?: EarningsOrderByWithRelationInput | EarningsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EarningsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Earnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Earnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Earnings
+    **/
+    _count?: true | EarningsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EarningsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EarningsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EarningsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EarningsMaxAggregateInputType
+  }
+
+  export type GetEarningsAggregateType<T extends EarningsAggregateArgs> = {
+        [P in keyof T & keyof AggregateEarnings]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEarnings[P]>
+      : GetScalarType<T[P], AggregateEarnings[P]>
+  }
+
+
+
+
+  export type EarningsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EarningsWhereInput
+    orderBy?: EarningsOrderByWithAggregationInput | EarningsOrderByWithAggregationInput[]
+    by: EarningsScalarFieldEnum[] | EarningsScalarFieldEnum
+    having?: EarningsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EarningsCountAggregateInputType | true
+    _avg?: EarningsAvgAggregateInputType
+    _sum?: EarningsSumAggregateInputType
+    _min?: EarningsMinAggregateInputType
+    _max?: EarningsMaxAggregateInputType
+  }
+
+  export type EarningsGroupByOutputType = {
+    id: number
+    nextDate: Date | null
+    epsTrailing12Months: number | null
+    epsForward: number | null
+    peRatio: number | null
+    _count: EarningsCountAggregateOutputType | null
+    _avg: EarningsAvgAggregateOutputType | null
+    _sum: EarningsSumAggregateOutputType | null
+    _min: EarningsMinAggregateOutputType | null
+    _max: EarningsMaxAggregateOutputType | null
+  }
+
+  type GetEarningsGroupByPayload<T extends EarningsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EarningsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EarningsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EarningsGroupByOutputType[P]>
+            : GetScalarType<T[P], EarningsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EarningsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nextDate?: boolean
+    epsTrailing12Months?: boolean
+    epsForward?: boolean
+    peRatio?: boolean
+    Stock?: boolean | Earnings$StockArgs<ExtArgs>
+    _count?: boolean | EarningsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["earnings"]>
+
+  export type EarningsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nextDate?: boolean
+    epsTrailing12Months?: boolean
+    epsForward?: boolean
+    peRatio?: boolean
+  }, ExtArgs["result"]["earnings"]>
+
+  export type EarningsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nextDate?: boolean
+    epsTrailing12Months?: boolean
+    epsForward?: boolean
+    peRatio?: boolean
+  }, ExtArgs["result"]["earnings"]>
+
+  export type EarningsSelectScalar = {
+    id?: boolean
+    nextDate?: boolean
+    epsTrailing12Months?: boolean
+    epsForward?: boolean
+    peRatio?: boolean
+  }
+
+  export type EarningsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nextDate" | "epsTrailing12Months" | "epsForward" | "peRatio", ExtArgs["result"]["earnings"]>
+  export type EarningsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Stock?: boolean | Earnings$StockArgs<ExtArgs>
+    _count?: boolean | EarningsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type EarningsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type EarningsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $EarningsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Earnings"
+    objects: {
+      Stock: Prisma.$StockPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nextDate: Date | null
+      epsTrailing12Months: number | null
+      epsForward: number | null
+      peRatio: number | null
+    }, ExtArgs["result"]["earnings"]>
+    composites: {}
+  }
+
+  type EarningsGetPayload<S extends boolean | null | undefined | EarningsDefaultArgs> = $Result.GetResult<Prisma.$EarningsPayload, S>
+
+  type EarningsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EarningsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EarningsCountAggregateInputType | true
+    }
+
+  export interface EarningsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Earnings'], meta: { name: 'Earnings' } }
+    /**
+     * Find zero or one Earnings that matches the filter.
+     * @param {EarningsFindUniqueArgs} args - Arguments to find a Earnings
+     * @example
+     * // Get one Earnings
+     * const earnings = await prisma.earnings.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EarningsFindUniqueArgs>(args: SelectSubset<T, EarningsFindUniqueArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Earnings that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EarningsFindUniqueOrThrowArgs} args - Arguments to find a Earnings
+     * @example
+     * // Get one Earnings
+     * const earnings = await prisma.earnings.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EarningsFindUniqueOrThrowArgs>(args: SelectSubset<T, EarningsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Earnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsFindFirstArgs} args - Arguments to find a Earnings
+     * @example
+     * // Get one Earnings
+     * const earnings = await prisma.earnings.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EarningsFindFirstArgs>(args?: SelectSubset<T, EarningsFindFirstArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Earnings that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsFindFirstOrThrowArgs} args - Arguments to find a Earnings
+     * @example
+     * // Get one Earnings
+     * const earnings = await prisma.earnings.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EarningsFindFirstOrThrowArgs>(args?: SelectSubset<T, EarningsFindFirstOrThrowArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Earnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Earnings
+     * const earnings = await prisma.earnings.findMany()
+     * 
+     * // Get first 10 Earnings
+     * const earnings = await prisma.earnings.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const earningsWithIdOnly = await prisma.earnings.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EarningsFindManyArgs>(args?: SelectSubset<T, EarningsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Earnings.
+     * @param {EarningsCreateArgs} args - Arguments to create a Earnings.
+     * @example
+     * // Create one Earnings
+     * const Earnings = await prisma.earnings.create({
+     *   data: {
+     *     // ... data to create a Earnings
+     *   }
+     * })
+     * 
+     */
+    create<T extends EarningsCreateArgs>(args: SelectSubset<T, EarningsCreateArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Earnings.
+     * @param {EarningsCreateManyArgs} args - Arguments to create many Earnings.
+     * @example
+     * // Create many Earnings
+     * const earnings = await prisma.earnings.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EarningsCreateManyArgs>(args?: SelectSubset<T, EarningsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Earnings and returns the data saved in the database.
+     * @param {EarningsCreateManyAndReturnArgs} args - Arguments to create many Earnings.
+     * @example
+     * // Create many Earnings
+     * const earnings = await prisma.earnings.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Earnings and only return the `id`
+     * const earningsWithIdOnly = await prisma.earnings.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EarningsCreateManyAndReturnArgs>(args?: SelectSubset<T, EarningsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Earnings.
+     * @param {EarningsDeleteArgs} args - Arguments to delete one Earnings.
+     * @example
+     * // Delete one Earnings
+     * const Earnings = await prisma.earnings.delete({
+     *   where: {
+     *     // ... filter to delete one Earnings
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EarningsDeleteArgs>(args: SelectSubset<T, EarningsDeleteArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Earnings.
+     * @param {EarningsUpdateArgs} args - Arguments to update one Earnings.
+     * @example
+     * // Update one Earnings
+     * const earnings = await prisma.earnings.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EarningsUpdateArgs>(args: SelectSubset<T, EarningsUpdateArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Earnings.
+     * @param {EarningsDeleteManyArgs} args - Arguments to filter Earnings to delete.
+     * @example
+     * // Delete a few Earnings
+     * const { count } = await prisma.earnings.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EarningsDeleteManyArgs>(args?: SelectSubset<T, EarningsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Earnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Earnings
+     * const earnings = await prisma.earnings.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EarningsUpdateManyArgs>(args: SelectSubset<T, EarningsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Earnings and returns the data updated in the database.
+     * @param {EarningsUpdateManyAndReturnArgs} args - Arguments to update many Earnings.
+     * @example
+     * // Update many Earnings
+     * const earnings = await prisma.earnings.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Earnings and only return the `id`
+     * const earningsWithIdOnly = await prisma.earnings.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EarningsUpdateManyAndReturnArgs>(args: SelectSubset<T, EarningsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Earnings.
+     * @param {EarningsUpsertArgs} args - Arguments to update or create a Earnings.
+     * @example
+     * // Update or create a Earnings
+     * const earnings = await prisma.earnings.upsert({
+     *   create: {
+     *     // ... data to create a Earnings
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Earnings we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EarningsUpsertArgs>(args: SelectSubset<T, EarningsUpsertArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Earnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsCountArgs} args - Arguments to filter Earnings to count.
+     * @example
+     * // Count the number of Earnings
+     * const count = await prisma.earnings.count({
+     *   where: {
+     *     // ... the filter for the Earnings we want to count
+     *   }
+     * })
+    **/
+    count<T extends EarningsCountArgs>(
+      args?: Subset<T, EarningsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EarningsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Earnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EarningsAggregateArgs>(args: Subset<T, EarningsAggregateArgs>): Prisma.PrismaPromise<GetEarningsAggregateType<T>>
+
+    /**
+     * Group by Earnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EarningsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EarningsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EarningsGroupByArgs['orderBy'] }
+        : { orderBy?: EarningsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EarningsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEarningsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Earnings model
+   */
+  readonly fields: EarningsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Earnings.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EarningsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Stock<T extends Earnings$StockArgs<ExtArgs> = {}>(args?: Subset<T, Earnings$StockArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Earnings model
+   */ 
+  interface EarningsFieldRefs {
+    readonly id: FieldRef<"Earnings", 'Int'>
+    readonly nextDate: FieldRef<"Earnings", 'DateTime'>
+    readonly epsTrailing12Months: FieldRef<"Earnings", 'Float'>
+    readonly epsForward: FieldRef<"Earnings", 'Float'>
+    readonly peRatio: FieldRef<"Earnings", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Earnings findUnique
+   */
+  export type EarningsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter, which Earnings to fetch.
+     */
+    where: EarningsWhereUniqueInput
+  }
+
+  /**
+   * Earnings findUniqueOrThrow
+   */
+  export type EarningsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter, which Earnings to fetch.
+     */
+    where: EarningsWhereUniqueInput
+  }
+
+  /**
+   * Earnings findFirst
+   */
+  export type EarningsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter, which Earnings to fetch.
+     */
+    where?: EarningsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Earnings to fetch.
+     */
+    orderBy?: EarningsOrderByWithRelationInput | EarningsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Earnings.
+     */
+    cursor?: EarningsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Earnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Earnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Earnings.
+     */
+    distinct?: EarningsScalarFieldEnum | EarningsScalarFieldEnum[]
+  }
+
+  /**
+   * Earnings findFirstOrThrow
+   */
+  export type EarningsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter, which Earnings to fetch.
+     */
+    where?: EarningsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Earnings to fetch.
+     */
+    orderBy?: EarningsOrderByWithRelationInput | EarningsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Earnings.
+     */
+    cursor?: EarningsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Earnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Earnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Earnings.
+     */
+    distinct?: EarningsScalarFieldEnum | EarningsScalarFieldEnum[]
+  }
+
+  /**
+   * Earnings findMany
+   */
+  export type EarningsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter, which Earnings to fetch.
+     */
+    where?: EarningsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Earnings to fetch.
+     */
+    orderBy?: EarningsOrderByWithRelationInput | EarningsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Earnings.
+     */
+    cursor?: EarningsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Earnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Earnings.
+     */
+    skip?: number
+    distinct?: EarningsScalarFieldEnum | EarningsScalarFieldEnum[]
+  }
+
+  /**
+   * Earnings create
+   */
+  export type EarningsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Earnings.
+     */
+    data?: XOR<EarningsCreateInput, EarningsUncheckedCreateInput>
+  }
+
+  /**
+   * Earnings createMany
+   */
+  export type EarningsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Earnings.
+     */
+    data: EarningsCreateManyInput | EarningsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Earnings createManyAndReturn
+   */
+  export type EarningsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Earnings.
+     */
+    data: EarningsCreateManyInput | EarningsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Earnings update
+   */
+  export type EarningsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Earnings.
+     */
+    data: XOR<EarningsUpdateInput, EarningsUncheckedUpdateInput>
+    /**
+     * Choose, which Earnings to update.
+     */
+    where: EarningsWhereUniqueInput
+  }
+
+  /**
+   * Earnings updateMany
+   */
+  export type EarningsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Earnings.
+     */
+    data: XOR<EarningsUpdateManyMutationInput, EarningsUncheckedUpdateManyInput>
+    /**
+     * Filter which Earnings to update
+     */
+    where?: EarningsWhereInput
+  }
+
+  /**
+   * Earnings updateManyAndReturn
+   */
+  export type EarningsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * The data used to update Earnings.
+     */
+    data: XOR<EarningsUpdateManyMutationInput, EarningsUncheckedUpdateManyInput>
+    /**
+     * Filter which Earnings to update
+     */
+    where?: EarningsWhereInput
+  }
+
+  /**
+   * Earnings upsert
+   */
+  export type EarningsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Earnings to update in case it exists.
+     */
+    where: EarningsWhereUniqueInput
+    /**
+     * In case the Earnings found by the `where` argument doesn't exist, create a new Earnings with this data.
+     */
+    create: XOR<EarningsCreateInput, EarningsUncheckedCreateInput>
+    /**
+     * In case the Earnings was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EarningsUpdateInput, EarningsUncheckedUpdateInput>
+  }
+
+  /**
+   * Earnings delete
+   */
+  export type EarningsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+    /**
+     * Filter which Earnings to delete.
+     */
+    where: EarningsWhereUniqueInput
+  }
+
+  /**
+   * Earnings deleteMany
+   */
+  export type EarningsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Earnings to delete
+     */
+    where?: EarningsWhereInput
+  }
+
+  /**
+   * Earnings.Stock
+   */
+  export type Earnings$StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+    orderBy?: StockOrderByWithRelationInput | StockOrderByWithRelationInput[]
+    cursor?: StockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockScalarFieldEnum | StockScalarFieldEnum[]
+  }
+
+  /**
+   * Earnings without action
+   */
+  export type EarningsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Earnings
+     */
+    select?: EarningsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Earnings
+     */
+    omit?: EarningsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EarningsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16850,6 +24357,82 @@ export namespace Prisma {
   };
 
   export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+  export const StockScalarFieldEnum: {
+    id: 'id',
+    symbol: 'symbol',
+    name: 'name',
+    currency: 'currency',
+    market: 'market',
+    priceId: 'priceId',
+    volumeId: 'volumeId',
+    week52Id: 'week52Id',
+    dividendId: 'dividendId',
+    earningsId: 'earningsId',
+    marketCap: 'marketCap',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockScalarFieldEnum = (typeof StockScalarFieldEnum)[keyof typeof StockScalarFieldEnum]
+
+
+  export const PriceScalarFieldEnum: {
+    id: 'id',
+    current: 'current',
+    changePercent: 'changePercent',
+    open: 'open',
+    dayLow: 'dayLow',
+    dayHigh: 'dayHigh',
+    previousClose: 'previousClose',
+    postMarketPrice: 'postMarketPrice',
+    postMarketChange: 'postMarketChange'
+  };
+
+  export type PriceScalarFieldEnum = (typeof PriceScalarFieldEnum)[keyof typeof PriceScalarFieldEnum]
+
+
+  export const VolumeScalarFieldEnum: {
+    id: 'id',
+    current: 'current',
+    average3Months: 'average3Months',
+    average10Days: 'average10Days'
+  };
+
+  export type VolumeScalarFieldEnum = (typeof VolumeScalarFieldEnum)[keyof typeof VolumeScalarFieldEnum]
+
+
+  export const Week52ScalarFieldEnum: {
+    id: 'id',
+    high: 'high',
+    low: 'low',
+    changeFromHigh: 'changeFromHigh',
+    changeFromLow: 'changeFromLow'
+  };
+
+  export type Week52ScalarFieldEnum = (typeof Week52ScalarFieldEnum)[keyof typeof Week52ScalarFieldEnum]
+
+
+  export const DividendScalarFieldEnum: {
+    id: 'id',
+    rate: 'rate',
+    yield: 'yield',
+    date: 'date'
+  };
+
+  export type DividendScalarFieldEnum = (typeof DividendScalarFieldEnum)[keyof typeof DividendScalarFieldEnum]
+
+
+  export const EarningsScalarFieldEnum: {
+    id: 'id',
+    nextDate: 'nextDate',
+    epsTrailing12Months: 'epsTrailing12Months',
+    epsForward: 'epsForward',
+    peRatio: 'peRatio'
+  };
+
+  export type EarningsScalarFieldEnum = (typeof EarningsScalarFieldEnum)[keyof typeof EarningsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -17980,6 +25563,410 @@ export namespace Prisma {
     financialGoalNextYear?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
   }
 
+  export type StockWhereInput = {
+    AND?: StockWhereInput | StockWhereInput[]
+    OR?: StockWhereInput[]
+    NOT?: StockWhereInput | StockWhereInput[]
+    id?: IntFilter<"Stock"> | number
+    symbol?: StringFilter<"Stock"> | string
+    name?: StringFilter<"Stock"> | string
+    currency?: StringFilter<"Stock"> | string
+    market?: StringFilter<"Stock"> | string
+    priceId?: IntFilter<"Stock"> | number
+    volumeId?: IntFilter<"Stock"> | number
+    week52Id?: IntFilter<"Stock"> | number
+    dividendId?: IntFilter<"Stock"> | number
+    earningsId?: IntFilter<"Stock"> | number
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
+    volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
+    week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
+    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
+    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
+  }
+
+  export type StockOrderByWithRelationInput = {
+    id?: SortOrder
+    symbol?: SortOrder
+    name?: SortOrder
+    currency?: SortOrder
+    market?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    price?: PriceOrderByWithRelationInput
+    volume?: VolumeOrderByWithRelationInput
+    week52?: Week52OrderByWithRelationInput
+    dividend?: DividendOrderByWithRelationInput
+    earnings?: EarningsOrderByWithRelationInput
+  }
+
+  export type StockWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    symbol?: string
+    AND?: StockWhereInput | StockWhereInput[]
+    OR?: StockWhereInput[]
+    NOT?: StockWhereInput | StockWhereInput[]
+    name?: StringFilter<"Stock"> | string
+    currency?: StringFilter<"Stock"> | string
+    market?: StringFilter<"Stock"> | string
+    priceId?: IntFilter<"Stock"> | number
+    volumeId?: IntFilter<"Stock"> | number
+    week52Id?: IntFilter<"Stock"> | number
+    dividendId?: IntFilter<"Stock"> | number
+    earningsId?: IntFilter<"Stock"> | number
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
+    volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
+    week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
+    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
+    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
+  }, "id" | "symbol">
+
+  export type StockOrderByWithAggregationInput = {
+    id?: SortOrder
+    symbol?: SortOrder
+    name?: SortOrder
+    currency?: SortOrder
+    market?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StockCountOrderByAggregateInput
+    _avg?: StockAvgOrderByAggregateInput
+    _max?: StockMaxOrderByAggregateInput
+    _min?: StockMinOrderByAggregateInput
+    _sum?: StockSumOrderByAggregateInput
+  }
+
+  export type StockScalarWhereWithAggregatesInput = {
+    AND?: StockScalarWhereWithAggregatesInput | StockScalarWhereWithAggregatesInput[]
+    OR?: StockScalarWhereWithAggregatesInput[]
+    NOT?: StockScalarWhereWithAggregatesInput | StockScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Stock"> | number
+    symbol?: StringWithAggregatesFilter<"Stock"> | string
+    name?: StringWithAggregatesFilter<"Stock"> | string
+    currency?: StringWithAggregatesFilter<"Stock"> | string
+    market?: StringWithAggregatesFilter<"Stock"> | string
+    priceId?: IntWithAggregatesFilter<"Stock"> | number
+    volumeId?: IntWithAggregatesFilter<"Stock"> | number
+    week52Id?: IntWithAggregatesFilter<"Stock"> | number
+    dividendId?: IntWithAggregatesFilter<"Stock"> | number
+    earningsId?: IntWithAggregatesFilter<"Stock"> | number
+    marketCap?: IntWithAggregatesFilter<"Stock"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
+  }
+
+  export type PriceWhereInput = {
+    AND?: PriceWhereInput | PriceWhereInput[]
+    OR?: PriceWhereInput[]
+    NOT?: PriceWhereInput | PriceWhereInput[]
+    id?: IntFilter<"Price"> | number
+    current?: FloatNullableFilter<"Price"> | number | null
+    changePercent?: FloatNullableFilter<"Price"> | number | null
+    open?: FloatNullableFilter<"Price"> | number | null
+    dayLow?: FloatNullableFilter<"Price"> | number | null
+    dayHigh?: FloatNullableFilter<"Price"> | number | null
+    previousClose?: FloatNullableFilter<"Price"> | number | null
+    postMarketPrice?: FloatNullableFilter<"Price"> | number | null
+    postMarketChange?: FloatNullableFilter<"Price"> | number | null
+    Stock?: StockListRelationFilter
+  }
+
+  export type PriceOrderByWithRelationInput = {
+    id?: SortOrder
+    current?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    dayLow?: SortOrderInput | SortOrder
+    dayHigh?: SortOrderInput | SortOrder
+    previousClose?: SortOrderInput | SortOrder
+    postMarketPrice?: SortOrderInput | SortOrder
+    postMarketChange?: SortOrderInput | SortOrder
+    Stock?: StockOrderByRelationAggregateInput
+  }
+
+  export type PriceWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PriceWhereInput | PriceWhereInput[]
+    OR?: PriceWhereInput[]
+    NOT?: PriceWhereInput | PriceWhereInput[]
+    current?: FloatNullableFilter<"Price"> | number | null
+    changePercent?: FloatNullableFilter<"Price"> | number | null
+    open?: FloatNullableFilter<"Price"> | number | null
+    dayLow?: FloatNullableFilter<"Price"> | number | null
+    dayHigh?: FloatNullableFilter<"Price"> | number | null
+    previousClose?: FloatNullableFilter<"Price"> | number | null
+    postMarketPrice?: FloatNullableFilter<"Price"> | number | null
+    postMarketChange?: FloatNullableFilter<"Price"> | number | null
+    Stock?: StockListRelationFilter
+  }, "id">
+
+  export type PriceOrderByWithAggregationInput = {
+    id?: SortOrder
+    current?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    dayLow?: SortOrderInput | SortOrder
+    dayHigh?: SortOrderInput | SortOrder
+    previousClose?: SortOrderInput | SortOrder
+    postMarketPrice?: SortOrderInput | SortOrder
+    postMarketChange?: SortOrderInput | SortOrder
+    _count?: PriceCountOrderByAggregateInput
+    _avg?: PriceAvgOrderByAggregateInput
+    _max?: PriceMaxOrderByAggregateInput
+    _min?: PriceMinOrderByAggregateInput
+    _sum?: PriceSumOrderByAggregateInput
+  }
+
+  export type PriceScalarWhereWithAggregatesInput = {
+    AND?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
+    OR?: PriceScalarWhereWithAggregatesInput[]
+    NOT?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Price"> | number
+    current?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    changePercent?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    open?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    dayLow?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    dayHigh?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    previousClose?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    postMarketPrice?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    postMarketChange?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+  }
+
+  export type VolumeWhereInput = {
+    AND?: VolumeWhereInput | VolumeWhereInput[]
+    OR?: VolumeWhereInput[]
+    NOT?: VolumeWhereInput | VolumeWhereInput[]
+    id?: IntFilter<"Volume"> | number
+    current?: IntNullableFilter<"Volume"> | number | null
+    average3Months?: IntNullableFilter<"Volume"> | number | null
+    average10Days?: IntNullableFilter<"Volume"> | number | null
+    Stock?: StockListRelationFilter
+  }
+
+  export type VolumeOrderByWithRelationInput = {
+    id?: SortOrder
+    current?: SortOrderInput | SortOrder
+    average3Months?: SortOrderInput | SortOrder
+    average10Days?: SortOrderInput | SortOrder
+    Stock?: StockOrderByRelationAggregateInput
+  }
+
+  export type VolumeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: VolumeWhereInput | VolumeWhereInput[]
+    OR?: VolumeWhereInput[]
+    NOT?: VolumeWhereInput | VolumeWhereInput[]
+    current?: IntNullableFilter<"Volume"> | number | null
+    average3Months?: IntNullableFilter<"Volume"> | number | null
+    average10Days?: IntNullableFilter<"Volume"> | number | null
+    Stock?: StockListRelationFilter
+  }, "id">
+
+  export type VolumeOrderByWithAggregationInput = {
+    id?: SortOrder
+    current?: SortOrderInput | SortOrder
+    average3Months?: SortOrderInput | SortOrder
+    average10Days?: SortOrderInput | SortOrder
+    _count?: VolumeCountOrderByAggregateInput
+    _avg?: VolumeAvgOrderByAggregateInput
+    _max?: VolumeMaxOrderByAggregateInput
+    _min?: VolumeMinOrderByAggregateInput
+    _sum?: VolumeSumOrderByAggregateInput
+  }
+
+  export type VolumeScalarWhereWithAggregatesInput = {
+    AND?: VolumeScalarWhereWithAggregatesInput | VolumeScalarWhereWithAggregatesInput[]
+    OR?: VolumeScalarWhereWithAggregatesInput[]
+    NOT?: VolumeScalarWhereWithAggregatesInput | VolumeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Volume"> | number
+    current?: IntNullableWithAggregatesFilter<"Volume"> | number | null
+    average3Months?: IntNullableWithAggregatesFilter<"Volume"> | number | null
+    average10Days?: IntNullableWithAggregatesFilter<"Volume"> | number | null
+  }
+
+  export type Week52WhereInput = {
+    AND?: Week52WhereInput | Week52WhereInput[]
+    OR?: Week52WhereInput[]
+    NOT?: Week52WhereInput | Week52WhereInput[]
+    id?: IntFilter<"Week52"> | number
+    high?: FloatNullableFilter<"Week52"> | number | null
+    low?: FloatNullableFilter<"Week52"> | number | null
+    changeFromHigh?: FloatNullableFilter<"Week52"> | number | null
+    changeFromLow?: FloatNullableFilter<"Week52"> | number | null
+    Stock?: StockListRelationFilter
+  }
+
+  export type Week52OrderByWithRelationInput = {
+    id?: SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    changeFromHigh?: SortOrderInput | SortOrder
+    changeFromLow?: SortOrderInput | SortOrder
+    Stock?: StockOrderByRelationAggregateInput
+  }
+
+  export type Week52WhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Week52WhereInput | Week52WhereInput[]
+    OR?: Week52WhereInput[]
+    NOT?: Week52WhereInput | Week52WhereInput[]
+    high?: FloatNullableFilter<"Week52"> | number | null
+    low?: FloatNullableFilter<"Week52"> | number | null
+    changeFromHigh?: FloatNullableFilter<"Week52"> | number | null
+    changeFromLow?: FloatNullableFilter<"Week52"> | number | null
+    Stock?: StockListRelationFilter
+  }, "id">
+
+  export type Week52OrderByWithAggregationInput = {
+    id?: SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    changeFromHigh?: SortOrderInput | SortOrder
+    changeFromLow?: SortOrderInput | SortOrder
+    _count?: Week52CountOrderByAggregateInput
+    _avg?: Week52AvgOrderByAggregateInput
+    _max?: Week52MaxOrderByAggregateInput
+    _min?: Week52MinOrderByAggregateInput
+    _sum?: Week52SumOrderByAggregateInput
+  }
+
+  export type Week52ScalarWhereWithAggregatesInput = {
+    AND?: Week52ScalarWhereWithAggregatesInput | Week52ScalarWhereWithAggregatesInput[]
+    OR?: Week52ScalarWhereWithAggregatesInput[]
+    NOT?: Week52ScalarWhereWithAggregatesInput | Week52ScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Week52"> | number
+    high?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
+    low?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
+    changeFromHigh?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
+    changeFromLow?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
+  }
+
+  export type DividendWhereInput = {
+    AND?: DividendWhereInput | DividendWhereInput[]
+    OR?: DividendWhereInput[]
+    NOT?: DividendWhereInput | DividendWhereInput[]
+    id?: IntFilter<"Dividend"> | number
+    rate?: FloatNullableFilter<"Dividend"> | number | null
+    yield?: FloatNullableFilter<"Dividend"> | number | null
+    date?: DateTimeNullableFilter<"Dividend"> | Date | string | null
+    Stock?: StockListRelationFilter
+  }
+
+  export type DividendOrderByWithRelationInput = {
+    id?: SortOrder
+    rate?: SortOrderInput | SortOrder
+    yield?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    Stock?: StockOrderByRelationAggregateInput
+  }
+
+  export type DividendWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DividendWhereInput | DividendWhereInput[]
+    OR?: DividendWhereInput[]
+    NOT?: DividendWhereInput | DividendWhereInput[]
+    rate?: FloatNullableFilter<"Dividend"> | number | null
+    yield?: FloatNullableFilter<"Dividend"> | number | null
+    date?: DateTimeNullableFilter<"Dividend"> | Date | string | null
+    Stock?: StockListRelationFilter
+  }, "id">
+
+  export type DividendOrderByWithAggregationInput = {
+    id?: SortOrder
+    rate?: SortOrderInput | SortOrder
+    yield?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    _count?: DividendCountOrderByAggregateInput
+    _avg?: DividendAvgOrderByAggregateInput
+    _max?: DividendMaxOrderByAggregateInput
+    _min?: DividendMinOrderByAggregateInput
+    _sum?: DividendSumOrderByAggregateInput
+  }
+
+  export type DividendScalarWhereWithAggregatesInput = {
+    AND?: DividendScalarWhereWithAggregatesInput | DividendScalarWhereWithAggregatesInput[]
+    OR?: DividendScalarWhereWithAggregatesInput[]
+    NOT?: DividendScalarWhereWithAggregatesInput | DividendScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Dividend"> | number
+    rate?: FloatNullableWithAggregatesFilter<"Dividend"> | number | null
+    yield?: FloatNullableWithAggregatesFilter<"Dividend"> | number | null
+    date?: DateTimeNullableWithAggregatesFilter<"Dividend"> | Date | string | null
+  }
+
+  export type EarningsWhereInput = {
+    AND?: EarningsWhereInput | EarningsWhereInput[]
+    OR?: EarningsWhereInput[]
+    NOT?: EarningsWhereInput | EarningsWhereInput[]
+    id?: IntFilter<"Earnings"> | number
+    nextDate?: DateTimeNullableFilter<"Earnings"> | Date | string | null
+    epsTrailing12Months?: FloatNullableFilter<"Earnings"> | number | null
+    epsForward?: FloatNullableFilter<"Earnings"> | number | null
+    peRatio?: FloatNullableFilter<"Earnings"> | number | null
+    Stock?: StockListRelationFilter
+  }
+
+  export type EarningsOrderByWithRelationInput = {
+    id?: SortOrder
+    nextDate?: SortOrderInput | SortOrder
+    epsTrailing12Months?: SortOrderInput | SortOrder
+    epsForward?: SortOrderInput | SortOrder
+    peRatio?: SortOrderInput | SortOrder
+    Stock?: StockOrderByRelationAggregateInput
+  }
+
+  export type EarningsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: EarningsWhereInput | EarningsWhereInput[]
+    OR?: EarningsWhereInput[]
+    NOT?: EarningsWhereInput | EarningsWhereInput[]
+    nextDate?: DateTimeNullableFilter<"Earnings"> | Date | string | null
+    epsTrailing12Months?: FloatNullableFilter<"Earnings"> | number | null
+    epsForward?: FloatNullableFilter<"Earnings"> | number | null
+    peRatio?: FloatNullableFilter<"Earnings"> | number | null
+    Stock?: StockListRelationFilter
+  }, "id">
+
+  export type EarningsOrderByWithAggregationInput = {
+    id?: SortOrder
+    nextDate?: SortOrderInput | SortOrder
+    epsTrailing12Months?: SortOrderInput | SortOrder
+    epsForward?: SortOrderInput | SortOrder
+    peRatio?: SortOrderInput | SortOrder
+    _count?: EarningsCountOrderByAggregateInput
+    _avg?: EarningsAvgOrderByAggregateInput
+    _max?: EarningsMaxOrderByAggregateInput
+    _min?: EarningsMinOrderByAggregateInput
+    _sum?: EarningsSumOrderByAggregateInput
+  }
+
+  export type EarningsScalarWhereWithAggregatesInput = {
+    AND?: EarningsScalarWhereWithAggregatesInput | EarningsScalarWhereWithAggregatesInput[]
+    OR?: EarningsScalarWhereWithAggregatesInput[]
+    NOT?: EarningsScalarWhereWithAggregatesInput | EarningsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Earnings"> | number
+    nextDate?: DateTimeNullableWithAggregatesFilter<"Earnings"> | Date | string | null
+    epsTrailing12Months?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
+    epsForward?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
+    peRatio?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -18922,6 +26909,409 @@ export namespace Prisma {
     investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
     hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
     financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type StockCreateInput = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateManyMutationInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceCreateInput = {
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+    Stock?: StockCreateNestedManyWithoutPriceInput
+  }
+
+  export type PriceUncheckedCreateInput = {
+    id?: number
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+    Stock?: StockUncheckedCreateNestedManyWithoutPriceInput
+  }
+
+  export type PriceUpdateInput = {
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUpdateManyWithoutPriceNestedInput
+  }
+
+  export type PriceUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUncheckedUpdateManyWithoutPriceNestedInput
+  }
+
+  export type PriceCreateManyInput = {
+    id?: number
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+  }
+
+  export type PriceUpdateManyMutationInput = {
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type PriceUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type VolumeCreateInput = {
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+    Stock?: StockCreateNestedManyWithoutVolumeInput
+  }
+
+  export type VolumeUncheckedCreateInput = {
+    id?: number
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+    Stock?: StockUncheckedCreateNestedManyWithoutVolumeInput
+  }
+
+  export type VolumeUpdateInput = {
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+    Stock?: StockUpdateManyWithoutVolumeNestedInput
+  }
+
+  export type VolumeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+    Stock?: StockUncheckedUpdateManyWithoutVolumeNestedInput
+  }
+
+  export type VolumeCreateManyInput = {
+    id?: number
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+  }
+
+  export type VolumeUpdateManyMutationInput = {
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type VolumeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type Week52CreateInput = {
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+    Stock?: StockCreateNestedManyWithoutWeek52Input
+  }
+
+  export type Week52UncheckedCreateInput = {
+    id?: number
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+    Stock?: StockUncheckedCreateNestedManyWithoutWeek52Input
+  }
+
+  export type Week52UpdateInput = {
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUpdateManyWithoutWeek52NestedInput
+  }
+
+  export type Week52UncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUncheckedUpdateManyWithoutWeek52NestedInput
+  }
+
+  export type Week52CreateManyInput = {
+    id?: number
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+  }
+
+  export type Week52UpdateManyMutationInput = {
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type Week52UncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type DividendCreateInput = {
+    rate?: number | null
+    yield?: number | null
+    date?: Date | string | null
+    Stock?: StockCreateNestedManyWithoutDividendInput
+  }
+
+  export type DividendUncheckedCreateInput = {
+    id?: number
+    rate?: number | null
+    yield?: number | null
+    date?: Date | string | null
+    Stock?: StockUncheckedCreateNestedManyWithoutDividendInput
+  }
+
+  export type DividendUpdateInput = {
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Stock?: StockUpdateManyWithoutDividendNestedInput
+  }
+
+  export type DividendUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Stock?: StockUncheckedUpdateManyWithoutDividendNestedInput
+  }
+
+  export type DividendCreateManyInput = {
+    id?: number
+    rate?: number | null
+    yield?: number | null
+    date?: Date | string | null
+  }
+
+  export type DividendUpdateManyMutationInput = {
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DividendUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type EarningsCreateInput = {
+    nextDate?: Date | string | null
+    epsTrailing12Months?: number | null
+    epsForward?: number | null
+    peRatio?: number | null
+    Stock?: StockCreateNestedManyWithoutEarningsInput
+  }
+
+  export type EarningsUncheckedCreateInput = {
+    id?: number
+    nextDate?: Date | string | null
+    epsTrailing12Months?: number | null
+    epsForward?: number | null
+    peRatio?: number | null
+    Stock?: StockUncheckedCreateNestedManyWithoutEarningsInput
+  }
+
+  export type EarningsUpdateInput = {
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUpdateManyWithoutEarningsNestedInput
+  }
+
+  export type EarningsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+    Stock?: StockUncheckedUpdateManyWithoutEarningsNestedInput
+  }
+
+  export type EarningsCreateManyInput = {
+    id?: number
+    nextDate?: Date | string | null
+    epsTrailing12Months?: number | null
+    epsForward?: number | null
+    peRatio?: number | null
+  }
+
+  export type EarningsUpdateManyMutationInput = {
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type EarningsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -19874,6 +28264,394 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type PriceScalarRelationFilter = {
+    is?: PriceWhereInput
+    isNot?: PriceWhereInput
+  }
+
+  export type VolumeScalarRelationFilter = {
+    is?: VolumeWhereInput
+    isNot?: VolumeWhereInput
+  }
+
+  export type Week52ScalarRelationFilter = {
+    is?: Week52WhereInput
+    isNot?: Week52WhereInput
+  }
+
+  export type DividendScalarRelationFilter = {
+    is?: DividendWhereInput
+    isNot?: DividendWhereInput
+  }
+
+  export type EarningsScalarRelationFilter = {
+    is?: EarningsWhereInput
+    isNot?: EarningsWhereInput
+  }
+
+  export type StockCountOrderByAggregateInput = {
+    id?: SortOrder
+    symbol?: SortOrder
+    name?: SortOrder
+    currency?: SortOrder
+    market?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockAvgOrderByAggregateInput = {
+    id?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+  }
+
+  export type StockMaxOrderByAggregateInput = {
+    id?: SortOrder
+    symbol?: SortOrder
+    name?: SortOrder
+    currency?: SortOrder
+    market?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockMinOrderByAggregateInput = {
+    id?: SortOrder
+    symbol?: SortOrder
+    name?: SortOrder
+    currency?: SortOrder
+    market?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSumOrderByAggregateInput = {
+    id?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
+    marketCap?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type StockListRelationFilter = {
+    every?: StockWhereInput
+    some?: StockWhereInput
+    none?: StockWhereInput
+  }
+
+  export type StockOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PriceCountOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    changePercent?: SortOrder
+    open?: SortOrder
+    dayLow?: SortOrder
+    dayHigh?: SortOrder
+    previousClose?: SortOrder
+    postMarketPrice?: SortOrder
+    postMarketChange?: SortOrder
+  }
+
+  export type PriceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    changePercent?: SortOrder
+    open?: SortOrder
+    dayLow?: SortOrder
+    dayHigh?: SortOrder
+    previousClose?: SortOrder
+    postMarketPrice?: SortOrder
+    postMarketChange?: SortOrder
+  }
+
+  export type PriceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    changePercent?: SortOrder
+    open?: SortOrder
+    dayLow?: SortOrder
+    dayHigh?: SortOrder
+    previousClose?: SortOrder
+    postMarketPrice?: SortOrder
+    postMarketChange?: SortOrder
+  }
+
+  export type PriceMinOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    changePercent?: SortOrder
+    open?: SortOrder
+    dayLow?: SortOrder
+    dayHigh?: SortOrder
+    previousClose?: SortOrder
+    postMarketPrice?: SortOrder
+    postMarketChange?: SortOrder
+  }
+
+  export type PriceSumOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    changePercent?: SortOrder
+    open?: SortOrder
+    dayLow?: SortOrder
+    dayHigh?: SortOrder
+    previousClose?: SortOrder
+    postMarketPrice?: SortOrder
+    postMarketChange?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type VolumeCountOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    average3Months?: SortOrder
+    average10Days?: SortOrder
+  }
+
+  export type VolumeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    average3Months?: SortOrder
+    average10Days?: SortOrder
+  }
+
+  export type VolumeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    average3Months?: SortOrder
+    average10Days?: SortOrder
+  }
+
+  export type VolumeMinOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    average3Months?: SortOrder
+    average10Days?: SortOrder
+  }
+
+  export type VolumeSumOrderByAggregateInput = {
+    id?: SortOrder
+    current?: SortOrder
+    average3Months?: SortOrder
+    average10Days?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type Week52CountOrderByAggregateInput = {
+    id?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    changeFromHigh?: SortOrder
+    changeFromLow?: SortOrder
+  }
+
+  export type Week52AvgOrderByAggregateInput = {
+    id?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    changeFromHigh?: SortOrder
+    changeFromLow?: SortOrder
+  }
+
+  export type Week52MaxOrderByAggregateInput = {
+    id?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    changeFromHigh?: SortOrder
+    changeFromLow?: SortOrder
+  }
+
+  export type Week52MinOrderByAggregateInput = {
+    id?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    changeFromHigh?: SortOrder
+    changeFromLow?: SortOrder
+  }
+
+  export type Week52SumOrderByAggregateInput = {
+    id?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    changeFromHigh?: SortOrder
+    changeFromLow?: SortOrder
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type DividendCountOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+    yield?: SortOrder
+    date?: SortOrder
+  }
+
+  export type DividendAvgOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+    yield?: SortOrder
+  }
+
+  export type DividendMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+    yield?: SortOrder
+    date?: SortOrder
+  }
+
+  export type DividendMinOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+    yield?: SortOrder
+    date?: SortOrder
+  }
+
+  export type DividendSumOrderByAggregateInput = {
+    id?: SortOrder
+    rate?: SortOrder
+    yield?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type EarningsCountOrderByAggregateInput = {
+    id?: SortOrder
+    nextDate?: SortOrder
+    epsTrailing12Months?: SortOrder
+    epsForward?: SortOrder
+    peRatio?: SortOrder
+  }
+
+  export type EarningsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    epsTrailing12Months?: SortOrder
+    epsForward?: SortOrder
+    peRatio?: SortOrder
+  }
+
+  export type EarningsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nextDate?: SortOrder
+    epsTrailing12Months?: SortOrder
+    epsForward?: SortOrder
+    peRatio?: SortOrder
+  }
+
+  export type EarningsMinOrderByAggregateInput = {
+    id?: SortOrder
+    nextDate?: SortOrder
+    epsTrailing12Months?: SortOrder
+    epsForward?: SortOrder
+    peRatio?: SortOrder
+  }
+
+  export type EarningsSumOrderByAggregateInput = {
+    id?: SortOrder
+    epsTrailing12Months?: SortOrder
+    epsForward?: SortOrder
+    peRatio?: SortOrder
+  }
+
   export type walletCreateNestedManyWithoutUserInput = {
     create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
     connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
@@ -20460,6 +29238,306 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
   }
 
+  export type PriceCreateNestedOneWithoutStockInput = {
+    create?: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
+    connectOrCreate?: PriceCreateOrConnectWithoutStockInput
+    connect?: PriceWhereUniqueInput
+  }
+
+  export type VolumeCreateNestedOneWithoutStockInput = {
+    create?: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
+    connectOrCreate?: VolumeCreateOrConnectWithoutStockInput
+    connect?: VolumeWhereUniqueInput
+  }
+
+  export type Week52CreateNestedOneWithoutStockInput = {
+    create?: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+    connectOrCreate?: Week52CreateOrConnectWithoutStockInput
+    connect?: Week52WhereUniqueInput
+  }
+
+  export type DividendCreateNestedOneWithoutStockInput = {
+    create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+    connectOrCreate?: DividendCreateOrConnectWithoutStockInput
+    connect?: DividendWhereUniqueInput
+  }
+
+  export type EarningsCreateNestedOneWithoutStockInput = {
+    create?: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+    connectOrCreate?: EarningsCreateOrConnectWithoutStockInput
+    connect?: EarningsWhereUniqueInput
+  }
+
+  export type PriceUpdateOneRequiredWithoutStockNestedInput = {
+    create?: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
+    connectOrCreate?: PriceCreateOrConnectWithoutStockInput
+    upsert?: PriceUpsertWithoutStockInput
+    connect?: PriceWhereUniqueInput
+    update?: XOR<XOR<PriceUpdateToOneWithWhereWithoutStockInput, PriceUpdateWithoutStockInput>, PriceUncheckedUpdateWithoutStockInput>
+  }
+
+  export type VolumeUpdateOneRequiredWithoutStockNestedInput = {
+    create?: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
+    connectOrCreate?: VolumeCreateOrConnectWithoutStockInput
+    upsert?: VolumeUpsertWithoutStockInput
+    connect?: VolumeWhereUniqueInput
+    update?: XOR<XOR<VolumeUpdateToOneWithWhereWithoutStockInput, VolumeUpdateWithoutStockInput>, VolumeUncheckedUpdateWithoutStockInput>
+  }
+
+  export type Week52UpdateOneRequiredWithoutStockNestedInput = {
+    create?: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+    connectOrCreate?: Week52CreateOrConnectWithoutStockInput
+    upsert?: Week52UpsertWithoutStockInput
+    connect?: Week52WhereUniqueInput
+    update?: XOR<XOR<Week52UpdateToOneWithWhereWithoutStockInput, Week52UpdateWithoutStockInput>, Week52UncheckedUpdateWithoutStockInput>
+  }
+
+  export type DividendUpdateOneRequiredWithoutStockNestedInput = {
+    create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+    connectOrCreate?: DividendCreateOrConnectWithoutStockInput
+    upsert?: DividendUpsertWithoutStockInput
+    connect?: DividendWhereUniqueInput
+    update?: XOR<XOR<DividendUpdateToOneWithWhereWithoutStockInput, DividendUpdateWithoutStockInput>, DividendUncheckedUpdateWithoutStockInput>
+  }
+
+  export type EarningsUpdateOneRequiredWithoutStockNestedInput = {
+    create?: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+    connectOrCreate?: EarningsCreateOrConnectWithoutStockInput
+    upsert?: EarningsUpsertWithoutStockInput
+    connect?: EarningsWhereUniqueInput
+    update?: XOR<XOR<EarningsUpdateToOneWithWhereWithoutStockInput, EarningsUpdateWithoutStockInput>, EarningsUncheckedUpdateWithoutStockInput>
+  }
+
+  export type StockCreateNestedManyWithoutPriceInput = {
+    create?: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput> | StockCreateWithoutPriceInput[] | StockUncheckedCreateWithoutPriceInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutPriceInput | StockCreateOrConnectWithoutPriceInput[]
+    createMany?: StockCreateManyPriceInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUncheckedCreateNestedManyWithoutPriceInput = {
+    create?: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput> | StockCreateWithoutPriceInput[] | StockUncheckedCreateWithoutPriceInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutPriceInput | StockCreateOrConnectWithoutPriceInput[]
+    createMany?: StockCreateManyPriceInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type StockUpdateManyWithoutPriceNestedInput = {
+    create?: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput> | StockCreateWithoutPriceInput[] | StockUncheckedCreateWithoutPriceInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutPriceInput | StockCreateOrConnectWithoutPriceInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutPriceInput | StockUpsertWithWhereUniqueWithoutPriceInput[]
+    createMany?: StockCreateManyPriceInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutPriceInput | StockUpdateWithWhereUniqueWithoutPriceInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutPriceInput | StockUpdateManyWithWhereWithoutPriceInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockUncheckedUpdateManyWithoutPriceNestedInput = {
+    create?: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput> | StockCreateWithoutPriceInput[] | StockUncheckedCreateWithoutPriceInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutPriceInput | StockCreateOrConnectWithoutPriceInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutPriceInput | StockUpsertWithWhereUniqueWithoutPriceInput[]
+    createMany?: StockCreateManyPriceInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutPriceInput | StockUpdateWithWhereUniqueWithoutPriceInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutPriceInput | StockUpdateManyWithWhereWithoutPriceInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockCreateNestedManyWithoutVolumeInput = {
+    create?: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput> | StockCreateWithoutVolumeInput[] | StockUncheckedCreateWithoutVolumeInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
+    createMany?: StockCreateManyVolumeInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUncheckedCreateNestedManyWithoutVolumeInput = {
+    create?: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput> | StockCreateWithoutVolumeInput[] | StockUncheckedCreateWithoutVolumeInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
+    createMany?: StockCreateManyVolumeInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type StockUpdateManyWithoutVolumeNestedInput = {
+    create?: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput> | StockCreateWithoutVolumeInput[] | StockUncheckedCreateWithoutVolumeInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutVolumeInput | StockUpsertWithWhereUniqueWithoutVolumeInput[]
+    createMany?: StockCreateManyVolumeInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutVolumeInput | StockUpdateWithWhereUniqueWithoutVolumeInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutVolumeInput | StockUpdateManyWithWhereWithoutVolumeInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockUncheckedUpdateManyWithoutVolumeNestedInput = {
+    create?: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput> | StockCreateWithoutVolumeInput[] | StockUncheckedCreateWithoutVolumeInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutVolumeInput | StockUpsertWithWhereUniqueWithoutVolumeInput[]
+    createMany?: StockCreateManyVolumeInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutVolumeInput | StockUpdateWithWhereUniqueWithoutVolumeInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutVolumeInput | StockUpdateManyWithWhereWithoutVolumeInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockCreateNestedManyWithoutWeek52Input = {
+    create?: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input> | StockCreateWithoutWeek52Input[] | StockUncheckedCreateWithoutWeek52Input[]
+    connectOrCreate?: StockCreateOrConnectWithoutWeek52Input | StockCreateOrConnectWithoutWeek52Input[]
+    createMany?: StockCreateManyWeek52InputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUncheckedCreateNestedManyWithoutWeek52Input = {
+    create?: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input> | StockCreateWithoutWeek52Input[] | StockUncheckedCreateWithoutWeek52Input[]
+    connectOrCreate?: StockCreateOrConnectWithoutWeek52Input | StockCreateOrConnectWithoutWeek52Input[]
+    createMany?: StockCreateManyWeek52InputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUpdateManyWithoutWeek52NestedInput = {
+    create?: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input> | StockCreateWithoutWeek52Input[] | StockUncheckedCreateWithoutWeek52Input[]
+    connectOrCreate?: StockCreateOrConnectWithoutWeek52Input | StockCreateOrConnectWithoutWeek52Input[]
+    upsert?: StockUpsertWithWhereUniqueWithoutWeek52Input | StockUpsertWithWhereUniqueWithoutWeek52Input[]
+    createMany?: StockCreateManyWeek52InputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutWeek52Input | StockUpdateWithWhereUniqueWithoutWeek52Input[]
+    updateMany?: StockUpdateManyWithWhereWithoutWeek52Input | StockUpdateManyWithWhereWithoutWeek52Input[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockUncheckedUpdateManyWithoutWeek52NestedInput = {
+    create?: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input> | StockCreateWithoutWeek52Input[] | StockUncheckedCreateWithoutWeek52Input[]
+    connectOrCreate?: StockCreateOrConnectWithoutWeek52Input | StockCreateOrConnectWithoutWeek52Input[]
+    upsert?: StockUpsertWithWhereUniqueWithoutWeek52Input | StockUpsertWithWhereUniqueWithoutWeek52Input[]
+    createMany?: StockCreateManyWeek52InputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutWeek52Input | StockUpdateWithWhereUniqueWithoutWeek52Input[]
+    updateMany?: StockUpdateManyWithWhereWithoutWeek52Input | StockUpdateManyWithWhereWithoutWeek52Input[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockCreateNestedManyWithoutDividendInput = {
+    create?: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput> | StockCreateWithoutDividendInput[] | StockUncheckedCreateWithoutDividendInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutDividendInput | StockCreateOrConnectWithoutDividendInput[]
+    createMany?: StockCreateManyDividendInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUncheckedCreateNestedManyWithoutDividendInput = {
+    create?: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput> | StockCreateWithoutDividendInput[] | StockUncheckedCreateWithoutDividendInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutDividendInput | StockCreateOrConnectWithoutDividendInput[]
+    createMany?: StockCreateManyDividendInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type StockUpdateManyWithoutDividendNestedInput = {
+    create?: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput> | StockCreateWithoutDividendInput[] | StockUncheckedCreateWithoutDividendInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutDividendInput | StockCreateOrConnectWithoutDividendInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutDividendInput | StockUpsertWithWhereUniqueWithoutDividendInput[]
+    createMany?: StockCreateManyDividendInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutDividendInput | StockUpdateWithWhereUniqueWithoutDividendInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutDividendInput | StockUpdateManyWithWhereWithoutDividendInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockUncheckedUpdateManyWithoutDividendNestedInput = {
+    create?: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput> | StockCreateWithoutDividendInput[] | StockUncheckedCreateWithoutDividendInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutDividendInput | StockCreateOrConnectWithoutDividendInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutDividendInput | StockUpsertWithWhereUniqueWithoutDividendInput[]
+    createMany?: StockCreateManyDividendInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutDividendInput | StockUpdateWithWhereUniqueWithoutDividendInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutDividendInput | StockUpdateManyWithWhereWithoutDividendInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockCreateNestedManyWithoutEarningsInput = {
+    create?: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput> | StockCreateWithoutEarningsInput[] | StockUncheckedCreateWithoutEarningsInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutEarningsInput | StockCreateOrConnectWithoutEarningsInput[]
+    createMany?: StockCreateManyEarningsInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUncheckedCreateNestedManyWithoutEarningsInput = {
+    create?: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput> | StockCreateWithoutEarningsInput[] | StockUncheckedCreateWithoutEarningsInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutEarningsInput | StockCreateOrConnectWithoutEarningsInput[]
+    createMany?: StockCreateManyEarningsInputEnvelope
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type StockUpdateManyWithoutEarningsNestedInput = {
+    create?: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput> | StockCreateWithoutEarningsInput[] | StockUncheckedCreateWithoutEarningsInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutEarningsInput | StockCreateOrConnectWithoutEarningsInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutEarningsInput | StockUpsertWithWhereUniqueWithoutEarningsInput[]
+    createMany?: StockCreateManyEarningsInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutEarningsInput | StockUpdateWithWhereUniqueWithoutEarningsInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutEarningsInput | StockUpdateManyWithWhereWithoutEarningsInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
+  export type StockUncheckedUpdateManyWithoutEarningsNestedInput = {
+    create?: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput> | StockCreateWithoutEarningsInput[] | StockUncheckedCreateWithoutEarningsInput[]
+    connectOrCreate?: StockCreateOrConnectWithoutEarningsInput | StockCreateOrConnectWithoutEarningsInput[]
+    upsert?: StockUpsertWithWhereUniqueWithoutEarningsInput | StockUpsertWithWhereUniqueWithoutEarningsInput[]
+    createMany?: StockCreateManyEarningsInputEnvelope
+    set?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    disconnect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    delete?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+    update?: StockUpdateWithWhereUniqueWithoutEarningsInput | StockUpdateWithWhereUniqueWithoutEarningsInput[]
+    updateMany?: StockUpdateManyWithWhereWithoutEarningsInput | StockUpdateManyWithWhereWithoutEarningsInput[]
+    deleteMany?: StockScalarWhereInput | StockScalarWhereInput[]
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -20850,6 +29928,74 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type walletCreateWithoutUserInput = {
@@ -21976,6 +31122,538 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type PriceCreateWithoutStockInput = {
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+  }
+
+  export type PriceUncheckedCreateWithoutStockInput = {
+    id?: number
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+  }
+
+  export type PriceCreateOrConnectWithoutStockInput = {
+    where: PriceWhereUniqueInput
+    create: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
+  }
+
+  export type VolumeCreateWithoutStockInput = {
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+  }
+
+  export type VolumeUncheckedCreateWithoutStockInput = {
+    id?: number
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+  }
+
+  export type VolumeCreateOrConnectWithoutStockInput = {
+    where: VolumeWhereUniqueInput
+    create: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
+  }
+
+  export type Week52CreateWithoutStockInput = {
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+  }
+
+  export type Week52UncheckedCreateWithoutStockInput = {
+    id?: number
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+  }
+
+  export type Week52CreateOrConnectWithoutStockInput = {
+    where: Week52WhereUniqueInput
+    create: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+  }
+
+  export type DividendCreateWithoutStockInput = {
+    rate?: number | null
+    yield?: number | null
+    date?: Date | string | null
+  }
+
+  export type DividendUncheckedCreateWithoutStockInput = {
+    id?: number
+    rate?: number | null
+    yield?: number | null
+    date?: Date | string | null
+  }
+
+  export type DividendCreateOrConnectWithoutStockInput = {
+    where: DividendWhereUniqueInput
+    create: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+  }
+
+  export type EarningsCreateWithoutStockInput = {
+    nextDate?: Date | string | null
+    epsTrailing12Months?: number | null
+    epsForward?: number | null
+    peRatio?: number | null
+  }
+
+  export type EarningsUncheckedCreateWithoutStockInput = {
+    id?: number
+    nextDate?: Date | string | null
+    epsTrailing12Months?: number | null
+    epsForward?: number | null
+    peRatio?: number | null
+  }
+
+  export type EarningsCreateOrConnectWithoutStockInput = {
+    where: EarningsWhereUniqueInput
+    create: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+  }
+
+  export type PriceUpsertWithoutStockInput = {
+    update: XOR<PriceUpdateWithoutStockInput, PriceUncheckedUpdateWithoutStockInput>
+    create: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
+    where?: PriceWhereInput
+  }
+
+  export type PriceUpdateToOneWithWhereWithoutStockInput = {
+    where?: PriceWhereInput
+    data: XOR<PriceUpdateWithoutStockInput, PriceUncheckedUpdateWithoutStockInput>
+  }
+
+  export type PriceUpdateWithoutStockInput = {
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type PriceUncheckedUpdateWithoutStockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableFloatFieldUpdateOperationsInput | number | null
+    changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
+    open?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    dayHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type VolumeUpsertWithoutStockInput = {
+    update: XOR<VolumeUpdateWithoutStockInput, VolumeUncheckedUpdateWithoutStockInput>
+    create: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
+    where?: VolumeWhereInput
+  }
+
+  export type VolumeUpdateToOneWithWhereWithoutStockInput = {
+    where?: VolumeWhereInput
+    data: XOR<VolumeUpdateWithoutStockInput, VolumeUncheckedUpdateWithoutStockInput>
+  }
+
+  export type VolumeUpdateWithoutStockInput = {
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type VolumeUncheckedUpdateWithoutStockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    current?: NullableIntFieldUpdateOperationsInput | number | null
+    average3Months?: NullableIntFieldUpdateOperationsInput | number | null
+    average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type Week52UpsertWithoutStockInput = {
+    update: XOR<Week52UpdateWithoutStockInput, Week52UncheckedUpdateWithoutStockInput>
+    create: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+    where?: Week52WhereInput
+  }
+
+  export type Week52UpdateToOneWithWhereWithoutStockInput = {
+    where?: Week52WhereInput
+    data: XOR<Week52UpdateWithoutStockInput, Week52UncheckedUpdateWithoutStockInput>
+  }
+
+  export type Week52UpdateWithoutStockInput = {
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type Week52UncheckedUpdateWithoutStockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    high?: NullableFloatFieldUpdateOperationsInput | number | null
+    low?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
+    changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type DividendUpsertWithoutStockInput = {
+    update: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
+    create: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+    where?: DividendWhereInput
+  }
+
+  export type DividendUpdateToOneWithWhereWithoutStockInput = {
+    where?: DividendWhereInput
+    data: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
+  }
+
+  export type DividendUpdateWithoutStockInput = {
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DividendUncheckedUpdateWithoutStockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type EarningsUpsertWithoutStockInput = {
+    update: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
+    create: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+    where?: EarningsWhereInput
+  }
+
+  export type EarningsUpdateToOneWithWhereWithoutStockInput = {
+    where?: EarningsWhereInput
+    data: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
+  }
+
+  export type EarningsUpdateWithoutStockInput = {
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type EarningsUncheckedUpdateWithoutStockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type StockCreateWithoutPriceInput = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutPriceInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockCreateOrConnectWithoutPriceInput = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput>
+  }
+
+  export type StockCreateManyPriceInputEnvelope = {
+    data: StockCreateManyPriceInput | StockCreateManyPriceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockUpsertWithWhereUniqueWithoutPriceInput = {
+    where: StockWhereUniqueInput
+    update: XOR<StockUpdateWithoutPriceInput, StockUncheckedUpdateWithoutPriceInput>
+    create: XOR<StockCreateWithoutPriceInput, StockUncheckedCreateWithoutPriceInput>
+  }
+
+  export type StockUpdateWithWhereUniqueWithoutPriceInput = {
+    where: StockWhereUniqueInput
+    data: XOR<StockUpdateWithoutPriceInput, StockUncheckedUpdateWithoutPriceInput>
+  }
+
+  export type StockUpdateManyWithWhereWithoutPriceInput = {
+    where: StockScalarWhereInput
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutPriceInput>
+  }
+
+  export type StockScalarWhereInput = {
+    AND?: StockScalarWhereInput | StockScalarWhereInput[]
+    OR?: StockScalarWhereInput[]
+    NOT?: StockScalarWhereInput | StockScalarWhereInput[]
+    id?: IntFilter<"Stock"> | number
+    symbol?: StringFilter<"Stock"> | string
+    name?: StringFilter<"Stock"> | string
+    currency?: StringFilter<"Stock"> | string
+    market?: StringFilter<"Stock"> | string
+    priceId?: IntFilter<"Stock"> | number
+    volumeId?: IntFilter<"Stock"> | number
+    week52Id?: IntFilter<"Stock"> | number
+    dividendId?: IntFilter<"Stock"> | number
+    earningsId?: IntFilter<"Stock"> | number
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+  }
+
+  export type StockCreateWithoutVolumeInput = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    price: PriceCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutVolumeInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockCreateOrConnectWithoutVolumeInput = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput>
+  }
+
+  export type StockCreateManyVolumeInputEnvelope = {
+    data: StockCreateManyVolumeInput | StockCreateManyVolumeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockUpsertWithWhereUniqueWithoutVolumeInput = {
+    where: StockWhereUniqueInput
+    update: XOR<StockUpdateWithoutVolumeInput, StockUncheckedUpdateWithoutVolumeInput>
+    create: XOR<StockCreateWithoutVolumeInput, StockUncheckedCreateWithoutVolumeInput>
+  }
+
+  export type StockUpdateWithWhereUniqueWithoutVolumeInput = {
+    where: StockWhereUniqueInput
+    data: XOR<StockUpdateWithoutVolumeInput, StockUncheckedUpdateWithoutVolumeInput>
+  }
+
+  export type StockUpdateManyWithWhereWithoutVolumeInput = {
+    where: StockScalarWhereInput
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutVolumeInput>
+  }
+
+  export type StockCreateWithoutWeek52Input = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutWeek52Input = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockCreateOrConnectWithoutWeek52Input = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input>
+  }
+
+  export type StockCreateManyWeek52InputEnvelope = {
+    data: StockCreateManyWeek52Input | StockCreateManyWeek52Input[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockUpsertWithWhereUniqueWithoutWeek52Input = {
+    where: StockWhereUniqueInput
+    update: XOR<StockUpdateWithoutWeek52Input, StockUncheckedUpdateWithoutWeek52Input>
+    create: XOR<StockCreateWithoutWeek52Input, StockUncheckedCreateWithoutWeek52Input>
+  }
+
+  export type StockUpdateWithWhereUniqueWithoutWeek52Input = {
+    where: StockWhereUniqueInput
+    data: XOR<StockUpdateWithoutWeek52Input, StockUncheckedUpdateWithoutWeek52Input>
+  }
+
+  export type StockUpdateManyWithWhereWithoutWeek52Input = {
+    where: StockScalarWhereInput
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutWeek52Input>
+  }
+
+  export type StockCreateWithoutDividendInput = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutDividendInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockCreateOrConnectWithoutDividendInput = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput>
+  }
+
+  export type StockCreateManyDividendInputEnvelope = {
+    data: StockCreateManyDividendInput | StockCreateManyDividendInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockUpsertWithWhereUniqueWithoutDividendInput = {
+    where: StockWhereUniqueInput
+    update: XOR<StockUpdateWithoutDividendInput, StockUncheckedUpdateWithoutDividendInput>
+    create: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput>
+  }
+
+  export type StockUpdateWithWhereUniqueWithoutDividendInput = {
+    where: StockWhereUniqueInput
+    data: XOR<StockUpdateWithoutDividendInput, StockUncheckedUpdateWithoutDividendInput>
+  }
+
+  export type StockUpdateManyWithWhereWithoutDividendInput = {
+    where: StockScalarWhereInput
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutDividendInput>
+  }
+
+  export type StockCreateWithoutEarningsInput = {
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+    dividend: DividendCreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutEarningsInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockCreateOrConnectWithoutEarningsInput = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput>
+  }
+
+  export type StockCreateManyEarningsInputEnvelope = {
+    data: StockCreateManyEarningsInput | StockCreateManyEarningsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockUpsertWithWhereUniqueWithoutEarningsInput = {
+    where: StockWhereUniqueInput
+    update: XOR<StockUpdateWithoutEarningsInput, StockUncheckedUpdateWithoutEarningsInput>
+    create: XOR<StockCreateWithoutEarningsInput, StockUncheckedCreateWithoutEarningsInput>
+  }
+
+  export type StockUpdateWithWhereUniqueWithoutEarningsInput = {
+    where: StockWhereUniqueInput
+    data: XOR<StockUpdateWithoutEarningsInput, StockUncheckedUpdateWithoutEarningsInput>
+  }
+
+  export type StockUpdateManyWithWhereWithoutEarningsInput = {
+    where: StockScalarWhereInput
+    data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutEarningsInput>
+  }
+
   export type walletCreateManyUserInput = {
     id?: string
     balancePesos: number
@@ -22252,6 +31930,301 @@ export namespace Prisma {
     currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyPriceInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateWithoutPriceInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutPriceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyWithoutPriceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyVolumeInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateWithoutVolumeInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutVolumeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyWithoutVolumeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyWeek52Input = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    dividendId: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateWithoutWeek52Input = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutWeek52Input = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyWithoutWeek52Input = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyDividendInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    earningsId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateWithoutDividendInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutDividendInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyWithoutDividendInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockCreateManyEarningsInput = {
+    id?: number
+    symbol: string
+    name: string
+    currency: string
+    market: string
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StockUpdateWithoutEarningsInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutEarningsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockUncheckedUpdateManyWithoutEarningsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
