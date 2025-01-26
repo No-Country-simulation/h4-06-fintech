@@ -5,7 +5,6 @@ import { handleRequest } from 'shared/handleRequest';
 import { AddFundsParams } from './interface/addFunds';
 import { FinancialTargetAPI } from './interface/api.interface';
 import { CreateParams } from './interface/create';
-import { ToggleStatusParams } from './interface/toggleStatus';
 
 const BASE_URL = envs.BACKEND_URL + '/target';
 
@@ -26,9 +25,17 @@ const financialTargetApi: FinancialTargetAPI = {
       ErrorClass: AuthError,
     });
   },
-  toggleStatus: function (params: ToggleStatusParams): Promise<void> {
-    console.log({ params });
-    throw new Error('Function not implemented.');
+  toggleStatus({ id }) {
+    const url = `${BASE_URL}/toggle-status/${id}`;
+
+    const options: RequestInit = {
+      method: 'PATCH',
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
   },
   addFunds: function (params: AddFundsParams): Promise<void> {
     console.log({ params });

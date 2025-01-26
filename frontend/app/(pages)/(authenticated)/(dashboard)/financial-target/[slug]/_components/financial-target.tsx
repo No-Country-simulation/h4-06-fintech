@@ -1,3 +1,4 @@
+import { toggleStatusAction } from '@/actions/financial-target/toggle-status-action';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
@@ -45,7 +46,16 @@ export async function FinancialTarget({ id }: Props) {
           </Text>
         </Card>
         <section className='flex flex-col justify-center gap-2'>
-          <Button variant='secondary'>Desactivar objectivo</Button>
+          <form action={toggleStatusAction}>
+            <input
+              defaultValue={id}
+              name='id'
+              hidden
+            />
+            <Button variant='secondary'>
+              {target.isActive ? 'Desactivar objectivo' : 'Activar objectivo'}
+            </Button>
+          </form>
           <Button variant='secondary'>Desactivar Notificaciones</Button>
         </section>
       </section>

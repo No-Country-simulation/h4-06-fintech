@@ -4,10 +4,6 @@ import Link from 'next/link';
 export async function TargetsList() {
   const { Target: targets } = await backend.authApi.getProfile();
 
-  // De esta forma obtenemos el id del objetivo financiero, no puedo pasarlo por el slug
-  // porque la pagina que tiene el mensaje de  "Selecciona uno de tus objectivos financieros para conocer el estado de tu progreso"
-  // No esta bajo la carpeta [slug]
-
   return (
     <ul className='flex flex-col gap-2 rounded-md border bg-secondary p-2'>
       {targets.map((target) => (
@@ -15,11 +11,14 @@ export async function TargetsList() {
           href={`/financial-target/${target.id}`}
           key={target.id}
         >
-          <li
-            // data-active={id === target.id}
-            className='rounded-md border bg-background px-4 py-2 transition-colors data-[active=true]:bg-primary'
-          >
-            {target.name}
+          <li className='flex w-full items-center justify-between rounded-md border bg-background px-4 py-2 transition-colors'>
+            <p>{target.name}</p>
+            <div
+              data-active={target.isActive}
+              className='rounded-full bg-red-200 px-4 py-1 text-xs text-red-600 data-[active=true]:bg-green-200 data-[active=true]:text-green-600'
+            >
+              {target.isActive ? 'Activo' : 'Inactivo'}
+            </div>
           </li>
         </Link>
       ))}
