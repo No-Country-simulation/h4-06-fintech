@@ -11,6 +11,7 @@ import { SupportModule } from './support/support.module';
 import { NewsModule } from './news/news.module';
 import { CommentModule } from './comment/comment.module';
 import { FinanceModule } from './finance/financeModule.module';
+import { TargetModule } from './target/target.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { FinanceModule } from './finance/financeModule.module';
     }),
     NewsModule,
     CommentModule,
+    TargetModule,
   ],
   controllers: [AppController],
   providers: [AppService],

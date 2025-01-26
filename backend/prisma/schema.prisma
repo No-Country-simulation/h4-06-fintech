@@ -42,17 +42,21 @@ model User {
   updatedAt              DateTime               @updatedAt
   Support                Support[]
   isEmailVerified        Boolean                @default(false)
+  Target                 Target[]
 }
 
 model Target {
   id          String   @id @default(cuid())
   name        String
-  description String
-  progress    String
-  montoTarget Int
+  progress    Decimal @default(0.0)
+  amount      Decimal
+  isActive    Boolean  @default(true)
+  category    String
   dateTarget  DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   userId      String
-  // user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model FinancialRadiography {
