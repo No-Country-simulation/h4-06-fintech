@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import {
   CurrencyType,
   TransactionType,
@@ -9,12 +10,14 @@ export class TransactionDto {
     example: '12345',
     description: 'ID de la billetera asociada a la transacción',
   })
+  @IsString()
   walletId: string;
 
   @ApiProperty({
     example: 100.5,
     description: 'Monto de la transacción',
   })
+  @IsNumber()
   amount: number;
 
   @ApiProperty({
@@ -22,6 +25,7 @@ export class TransactionDto {
     example: 'USD',
     description: 'Moneda utilizada en la transacción',
   })
+  @IsString()
   currency: CurrencyType;
 
   @ApiProperty({
@@ -29,6 +33,7 @@ export class TransactionDto {
     example: 'DEPOSIT',
     description: 'Tipo de transacción (p. ej., DEPÓSITO o RETIRO)',
   })
+  @IsString()
   type: TransactionType;
 
   @ApiProperty({
@@ -36,5 +41,7 @@ export class TransactionDto {
     description: 'Descripción opcional de la transacción',
     required: false,
   })
+  @IsString()
+  @IsOptional()
   description?: string;
 }

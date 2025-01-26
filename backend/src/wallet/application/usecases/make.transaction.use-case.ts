@@ -1,3 +1,4 @@
+import { Inject } from '@nestjs/common';
 import {
   CurrencyType,
   TransactionType,
@@ -6,7 +7,10 @@ import { IWalletRepository } from '../../domain/interfaces/wallet.repository.int
 import { TransactionDto } from '../dtos/transaction.dto';
 
 export class MakeTransactionUseCase {
-  constructor(private readonly walletRepository: IWalletRepository) {}
+  constructor(
+    @Inject('IWalletRepository')
+    private readonly walletRepository: IWalletRepository,
+  ) {}
 
   async execute(dto: TransactionDto) {
     const wallet = await this.walletRepository.getWalletById(dto.walletId);
