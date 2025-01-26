@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -50,31 +51,20 @@ export class TargetService {
   }
 
   async remove(id: string, userId: string) {
-    const target = await this.findOne(id);
-
-    if (target.userId !== userId) {
-      throw new UnauthorizedException(
-        'Unauthorized access to modify this resource',
-      );
-    }
-
     return await this.prismaService.target.delete({
       where: {
         id,
+        AND: {
+          userId,
+        },
       },
     });
   }
 
   async toggleStatus(id: string, userId: string) {
-    const target = await this.findOne(id);
+    const target = await this.findOneByUser(id, userId);
 
-    if (target.userId !== userId) {
-      throw new UnauthorizedException(
-        'Unauthorized access to modify this resource',
-      );
-    }
-
-    await this.prismaService.target.update({
+    const updatedTarget = await this.prismaService.target.update({
       where: {
         id,
       },
@@ -83,6 +73,42 @@ export class TargetService {
       },
     });
 
-    return { ...target, isActive: !target.isActive };
+    return updatedTarget;
+  }
+
+  async addFunds(id: string, userId: string, amount: number) {
+    const target = await this.findOneByUser(id, userId);
+
+    const newProgressAmount = Number(target.progress) + amount;
+
+    if (newProgressAmount > Number(target.amount)) {
+      throw new BadRequestException('New progress amount out of range');
+    }
+
+    const result = await this.prismaService.target.update({
+      where: {
+        id,
+      },
+      data: {
+        progress: newProgressAmount,
+      },
+    });
+
+    return result;
+  }
+
+  async findOneByUser(id: string, userId: string) {
+    const target = await this.findOne(id);
+
+    if (target.userId !== userId) {
+      console.warn(
+        `Unauthorized access attempt by user ${userId} on target ${id}`,
+      );
+      throw new UnauthorizedException(
+        'Unauthorized access to modify this resource',
+      );
+    }
+
+    return target;
   }
 }

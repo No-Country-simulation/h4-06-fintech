@@ -7,10 +7,10 @@ import {
   Patch,
   Post,
   Req,
-  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { AddFundsDto } from './dto/add-funds.dto';
 import { CreateTargetDto } from './dto/create-target.dto';
 import { UpdateTargetDto } from './dto/update-target.dto';
 import { TargetService } from './target.service';
@@ -32,14 +32,8 @@ export class TargetController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  async findOne(@Param('id') id: string, @Req() req) {
-    const target = await this.targetService.findOne(id);
-
-    if (target.userId !== req.user.id) {
-      throw new UnauthorizedException('Unauthorized access for this resource');
-    }
-
-    return target;
+  findOne(@Param('id') id: string, @Req() req) {
+    return this.targetService.findOneByUser(id, req.user.id);
   }
 
   @Patch(':id')
@@ -57,5 +51,15 @@ export class TargetController {
   @Patch('/toggle-status/:id')
   toggleStatus(@Req() req, @Param('id') id: string) {
     return this.targetService.toggleStatus(id, req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('/add-funds/:id')
+  addFunds(
+    @Req() req,
+    @Param('id') id: string,
+    @Body() addFundsDto: AddFundsDto,
+  ) {
+    return this.targetService.addFunds(id, req.user.id, addFundsDto.amount);
   }
 }
