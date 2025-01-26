@@ -47,9 +47,10 @@ export class TargetController {
     return this.targetService.update(+id, updateTargetDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.targetService.remove(+id);
+  remove(@Req() req, @Param('id') id: string) {
+    return this.targetService.remove(id, req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)

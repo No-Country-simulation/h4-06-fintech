@@ -49,8 +49,20 @@ export class TargetService {
     return `This action updates a #${id} target`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} target`;
+  async remove(id: string, userId: string) {
+    const target = await this.findOne(id);
+
+    if (target.userId !== userId) {
+      throw new UnauthorizedException(
+        'Unauthorized access to modify this resource',
+      );
+    }
+
+    return await this.prismaService.target.delete({
+      where: {
+        id,
+      },
+    });
   }
 
   async toggleStatus(id: string, userId: string) {
