@@ -4,13 +4,15 @@ export interface GetOneParams {
 
 export type GetOneResponse = FinancialTarget;
 
-export type FinancialTarget = {
-  name: string;
-  amount: number;
-  durationMonths: number;
+export interface FinancialTarget {
   id: string;
-  savedAmount: number;
-  createdAt: string;
-  category: string;
+  name: string;
+  progress: string;
+  amount: string;
   isActive: boolean;
-};
+  category: string;
+  dateTarget: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+}

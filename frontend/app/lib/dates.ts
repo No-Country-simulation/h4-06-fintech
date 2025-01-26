@@ -4,7 +4,6 @@ import { es } from 'date-fns/locale';
 export function getLimitDate(startDate: string, months: number) {
   const aux = new Date(startDate);
   const futureDate = addMonths(aux, months);
-  console.log({ startDate });
 
   const formattedDate = format(futureDate, "d 'de' MMMM 'de' yyyy", {
     locale: es,

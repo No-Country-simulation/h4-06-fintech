@@ -1,26 +1,15 @@
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-'use client';
-
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { formatMoney } from '@/lib/money-formatter';
-import { useEffect, useState } from 'react';
-import { financialTargetApi } from '../../../../../../../client-api/backend/financial-target/financial-target.api';
-import { type FinancialTarget } from '../../../../../../../client-api/backend/financial-target/interface/getOne';
+import { backend } from '@api';
 
 interface Props {
   id: string;
 }
 
-export function FinancialTarget({ id }: Props) {
-  const [target, setTarget] = useState<FinancialTarget | null>();
-
-  useEffect(() => {
-    financialTargetApi.getOne({ id }).then(setTarget);
-  }, [id]);
-
-  console.log({ target });
+export async function FinancialTarget({ id }: Props) {
+  const target = await backend.financialTargetApi.getOne({ id });
 
   return (
     <section className='relative flex h-full flex-col gap-12'>
@@ -31,11 +20,11 @@ export function FinancialTarget({ id }: Props) {
       <section className='grid grid-cols-2 gap-4'>
         <Card>
           <Text>Monto del objetivo</Text>
-          <p>{formatMoney(target?.amount!)}</p>
+          <p>{formatMoney(Number(target.amount))}</p>
         </Card>
         <Card>
           <Text>Tu progreso</Text>
-          <p>{formatMoney(target?.savedAmount!)}</p>
+          <p>{formatMoney(Number(target.progress))}</p>
         </Card>
         <Card>Porcentaje de objetivo/ visualizado gráficamnete</Card>
         <Card>

@@ -20,8 +20,7 @@ const authApi: AuthAPI = {
     };
 
     return handleRequest({
-      url,
-      options,
+      fetcherFn: () => fetch(url, options),
       ErrorClass: AuthError,
     });
   },
@@ -37,8 +36,7 @@ const authApi: AuthAPI = {
     };
 
     return handleRequest({
-      url,
-      options,
+      fetcherFn: () => fetch(url, options),
       ErrorClass: AuthError,
     });
   },
