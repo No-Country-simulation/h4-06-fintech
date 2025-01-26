@@ -1,7 +1,8 @@
-import { IsNumber, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsPositive } from 'class-validator';
 
 export class AddFundsDto {
+  @IsPositive()
+  @IsNotEmpty()
   @IsNumber()
-  @Min(1)
   amount: number;
 }

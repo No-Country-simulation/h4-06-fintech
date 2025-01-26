@@ -25,7 +25,7 @@ const financialTargetApi: FinancialTargetAPI = {
       ErrorClass: AuthError,
     });
   },
-  toggleStatus({ id }) {
+  async toggleStatus({ id }) {
     const url = `${BASE_URL}/toggle-status/${id}`;
 
     const options: RequestInit = {
@@ -37,9 +37,23 @@ const financialTargetApi: FinancialTargetAPI = {
       ErrorClass: AuthError,
     });
   },
-  addFunds: function (params: AddFundsParams): Promise<void> {
-    console.log({ params });
-    throw new Error('Function not implemented.');
+  async addFunds({ amount, id }: AddFundsParams) {
+    const url = `${BASE_URL}/add-funds/${id}`;
+
+    const payload = JSON.stringify({ amount });
+
+    const options: RequestInit = {
+      method: 'PATCH',
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
   },
   create: function (params: CreateParams): Promise<void> {
     console.log({ params });

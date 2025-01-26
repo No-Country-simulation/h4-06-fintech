@@ -1,7 +1,9 @@
+import { addFundsAction } from '@/actions/financial-target/add-funds-action';
 import { deleteTargetAction } from '@/actions/financial-target/delete-action';
 import { toggleStatusAction } from '@/actions/financial-target/toggle-status-action';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
 import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
@@ -45,6 +47,22 @@ export async function FinancialTarget({ id }: Props) {
           <Text>
             ejemplo: si añades $30.000 cada mes llegarás al objetivo en 3 meses
           </Text>
+        </Card>
+        <Card>
+          <Text>Agregar fondos,</Text>
+          <form action={addFundsAction}>
+            <input
+              defaultValue={id}
+              name='id'
+              hidden
+            />
+            <Input
+              placeholder='$9999'
+              type='number'
+              name='amount'
+            />
+            <Button>Agregar fondos</Button>
+          </form>
         </Card>
         <section className='flex flex-col justify-center gap-2'>
           <form action={toggleStatusAction}>

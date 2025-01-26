@@ -12,6 +12,7 @@ export async function authRequest(url: string, options?: RequestInit) {
   return fetch(url, {
     ...options,
     headers: {
+      ...options?.headers,
       Authorization: `Bearer ${accessToken.value}`,
     },
   });
