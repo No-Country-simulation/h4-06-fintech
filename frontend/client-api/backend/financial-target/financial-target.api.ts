@@ -55,9 +55,23 @@ const financialTargetApi: FinancialTargetAPI = {
       ErrorClass: AuthError,
     });
   },
-  create: function (params: CreateParams): Promise<void> {
-    console.log({ params });
-    throw new Error('Function not implemented.');
+  async create(params: CreateParams) {
+    const url = BASE_URL;
+
+    const payload = JSON.stringify(params);
+
+    const options: RequestInit = {
+      method: 'POST',
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
   },
   async delete({ id }) {
     const url = `${BASE_URL}/${id}`;
