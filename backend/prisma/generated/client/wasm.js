@@ -238,34 +238,33 @@ exports.Prisma.SupportScalarFieldEnum = {
 exports.Prisma.ProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  mainGoal: 'mainGoal',
-  financialSkills: 'financialSkills',
   riskTolerance: 'riskTolerance',
-  monthlyInvestment: 'monthlyInvestment',
-  savingsOrInvestmentReason: 'savingsOrInvestmentReason',
-  investmentTimeframe: 'investmentTimeframe',
+  investmentHorizon: 'investmentHorizon',
+  financialSkills: 'financialSkills',
   hasInvestedBefore: 'hasInvestedBefore',
-  financialGoalNextYear: 'financialGoalNextYear'
+  financialGoal: 'financialGoal',
+  mainGoal: 'mainGoal',
+  monthlyInvestment: 'monthlyInvestment',
+  savingsOrInvestmentReason: 'savingsOrInvestmentReason'
 };
 
 exports.Prisma.StockScalarFieldEnum = {
-  id: 'id',
   symbol: 'symbol',
   name: 'name',
   currency: 'currency',
   market: 'market',
+  marketCap: 'marketCap',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  id: 'id',
   priceId: 'priceId',
   volumeId: 'volumeId',
   week52Id: 'week52Id',
   dividendId: 'dividendId',
-  earningsId: 'earningsId',
-  marketCap: 'marketCap',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  earningsId: 'earningsId'
 };
 
 exports.Prisma.PriceScalarFieldEnum = {
-  id: 'id',
   current: 'current',
   changePercent: 'changePercent',
   open: 'open',
@@ -273,37 +272,38 @@ exports.Prisma.PriceScalarFieldEnum = {
   dayHigh: 'dayHigh',
   previousClose: 'previousClose',
   postMarketPrice: 'postMarketPrice',
-  postMarketChange: 'postMarketChange'
+  postMarketChange: 'postMarketChange',
+  id: 'id'
 };
 
 exports.Prisma.VolumeScalarFieldEnum = {
-  id: 'id',
   current: 'current',
   average3Months: 'average3Months',
-  average10Days: 'average10Days'
+  average10Days: 'average10Days',
+  id: 'id'
 };
 
 exports.Prisma.Week52ScalarFieldEnum = {
-  id: 'id',
   high: 'high',
   low: 'low',
   changeFromHigh: 'changeFromHigh',
-  changeFromLow: 'changeFromLow'
+  changeFromLow: 'changeFromLow',
+  id: 'id'
 };
 
 exports.Prisma.DividendScalarFieldEnum = {
-  id: 'id',
   rate: 'rate',
   yield: 'yield',
-  date: 'date'
+  date: 'date',
+  id: 'id'
 };
 
 exports.Prisma.EarningsScalarFieldEnum = {
-  id: 'id',
   nextDate: 'nextDate',
   epsTrailing12Months: 'epsTrailing12Months',
   epsForward: 'epsForward',
-  peRatio: 'peRatio'
+  peRatio: 'peRatio',
+  id: 'id'
 };
 
 exports.Prisma.SortOrder = {
@@ -341,49 +341,6 @@ exports.Status = exports.$Enums.Status = {
   open: 'open',
   inProgress: 'inProgress',
   closed: 'closed'
-};
-
-exports.MainGoal = exports.$Enums.MainGoal = {
-  SAVE: 'SAVE',
-  INVEST: 'INVEST',
-  INCOME: 'INCOME',
-  RETIREMENT: 'RETIREMENT',
-  OTHER: 'OTHER'
-};
-
-exports.FinancialSkills = exports.$Enums.FinancialSkills = {
-  BEGINNER: 'BEGINNER',
-  LEARNER: 'LEARNER',
-  INTERMEDIATE: 'INTERMEDIATE',
-  ADVANCED: 'ADVANCED'
-};
-
-exports.RiskTolerance = exports.$Enums.RiskTolerance = {
-  CONSERVATIVE: 'CONSERVATIVE',
-  MODERATE: 'MODERATE',
-  AGGRESSIVE: 'AGGRESSIVE'
-};
-
-exports.MonthlyInvestment = exports.$Enums.MonthlyInvestment = {
-  LESS_THAN_30000: 'LESS_THAN_30000',
-  BETWEEN_30000_50000: 'BETWEEN_30000_50000',
-  MORE_THAN_50000: 'MORE_THAN_50000'
-};
-
-exports.SavingsReason = exports.$Enums.SavingsReason = {
-  BUY_HOUSE: 'BUY_HOUSE',
-  BUY_CAR: 'BUY_CAR',
-  PLAN_VACATION: 'PLAN_VACATION',
-  PERSONAL_PROJECT: 'PERSONAL_PROJECT',
-  EDUCATION: 'EDUCATION',
-  NO_SPECIFIC_REASON: 'NO_SPECIFIC_REASON',
-  LEARNING: 'LEARNING'
-};
-
-exports.InvestmentTimeframe = exports.$Enums.InvestmentTimeframe = {
-  SHORT_TERM: 'SHORT_TERM',
-  MEDIUM_TERM: 'MEDIUM_TERM',
-  LONG_TERM: 'LONG_TERM'
 };
 
 exports.Prisma.ModelName = {

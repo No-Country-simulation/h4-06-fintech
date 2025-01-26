@@ -147,107 +147,6 @@ export const Status: {
 
 export type Status = (typeof Status)[keyof typeof Status]
 
-
-export const FinancialGoal: {
-  SAVINGS: 'SAVINGS',
-  INVESTMENT: 'INVESTMENT',
-  RETIREMENT: 'RETIREMENT',
-  EDUCATION: 'EDUCATION',
-  EMERGENCY_FUND: 'EMERGENCY_FUND',
-  PASSIVE_INCOME: 'PASSIVE_INCOME',
-  OTHER: 'OTHER'
-};
-
-export type FinancialGoal = (typeof FinancialGoal)[keyof typeof FinancialGoal]
-
-
-export const InvestmentHorizon: {
-  SHORT_TERM: 'SHORT_TERM',
-  MEDIUM_TERM: 'MEDIUM_TERM',
-  LONG_TERM: 'LONG_TERM'
-};
-
-export type InvestmentHorizon = (typeof InvestmentHorizon)[keyof typeof InvestmentHorizon]
-
-
-export const KnowledgeLevel: {
-  BASIC: 'BASIC',
-  INTERMEDIATE: 'INTERMEDIATE',
-  ADVANCED: 'ADVANCED'
-};
-
-export type KnowledgeLevel = (typeof KnowledgeLevel)[keyof typeof KnowledgeLevel]
-
-
-export const RiskTolerance: {
-  CONSERVATIVE: 'CONSERVATIVE',
-  MODERATE: 'MODERATE',
-  AGGRESSIVE: 'AGGRESSIVE'
-};
-
-export type RiskTolerance = (typeof RiskTolerance)[keyof typeof RiskTolerance]
-
-
-export const ReactionToLoss: {
-  WITHDRAW_IMMEDIATELY: 'WITHDRAW_IMMEDIATELY',
-  WAIT_RECOVERY: 'WAIT_RECOVERY',
-  INVEST_MORE: 'INVEST_MORE'
-};
-
-export type ReactionToLoss = (typeof ReactionToLoss)[keyof typeof ReactionToLoss]
-
-
-export const MainGoal: {
-  SAVE: 'SAVE',
-  INVEST: 'INVEST',
-  INCOME: 'INCOME',
-  RETIREMENT: 'RETIREMENT',
-  OTHER: 'OTHER'
-};
-
-export type MainGoal = (typeof MainGoal)[keyof typeof MainGoal]
-
-
-export const FinancialSkills: {
-  BEGINNER: 'BEGINNER',
-  LEARNER: 'LEARNER',
-  INTERMEDIATE: 'INTERMEDIATE',
-  ADVANCED: 'ADVANCED'
-};
-
-export type FinancialSkills = (typeof FinancialSkills)[keyof typeof FinancialSkills]
-
-
-export const MonthlyInvestment: {
-  LESS_THAN_30000: 'LESS_THAN_30000',
-  BETWEEN_30000_50000: 'BETWEEN_30000_50000',
-  MORE_THAN_50000: 'MORE_THAN_50000'
-};
-
-export type MonthlyInvestment = (typeof MonthlyInvestment)[keyof typeof MonthlyInvestment]
-
-
-export const SavingsReason: {
-  BUY_HOUSE: 'BUY_HOUSE',
-  BUY_CAR: 'BUY_CAR',
-  PLAN_VACATION: 'PLAN_VACATION',
-  PERSONAL_PROJECT: 'PERSONAL_PROJECT',
-  EDUCATION: 'EDUCATION',
-  NO_SPECIFIC_REASON: 'NO_SPECIFIC_REASON',
-  LEARNING: 'LEARNING'
-};
-
-export type SavingsReason = (typeof SavingsReason)[keyof typeof SavingsReason]
-
-
-export const InvestmentTimeframe: {
-  SHORT_TERM: 'SHORT_TERM',
-  MEDIUM_TERM: 'MEDIUM_TERM',
-  LONG_TERM: 'LONG_TERM'
-};
-
-export type InvestmentTimeframe = (typeof InvestmentTimeframe)[keyof typeof InvestmentTimeframe]
-
 }
 
 export type TransactionType = $Enums.TransactionType
@@ -265,46 +164,6 @@ export const UserRole: typeof $Enums.UserRole
 export type Status = $Enums.Status
 
 export const Status: typeof $Enums.Status
-
-export type FinancialGoal = $Enums.FinancialGoal
-
-export const FinancialGoal: typeof $Enums.FinancialGoal
-
-export type InvestmentHorizon = $Enums.InvestmentHorizon
-
-export const InvestmentHorizon: typeof $Enums.InvestmentHorizon
-
-export type KnowledgeLevel = $Enums.KnowledgeLevel
-
-export const KnowledgeLevel: typeof $Enums.KnowledgeLevel
-
-export type RiskTolerance = $Enums.RiskTolerance
-
-export const RiskTolerance: typeof $Enums.RiskTolerance
-
-export type ReactionToLoss = $Enums.ReactionToLoss
-
-export const ReactionToLoss: typeof $Enums.ReactionToLoss
-
-export type MainGoal = $Enums.MainGoal
-
-export const MainGoal: typeof $Enums.MainGoal
-
-export type FinancialSkills = $Enums.FinancialSkills
-
-export const FinancialSkills: typeof $Enums.FinancialSkills
-
-export type MonthlyInvestment = $Enums.MonthlyInvestment
-
-export const MonthlyInvestment: typeof $Enums.MonthlyInvestment
-
-export type SavingsReason = $Enums.SavingsReason
-
-export const SavingsReason: typeof $Enums.SavingsReason
-
-export type InvestmentTimeframe = $Enums.InvestmentTimeframe
-
-export const InvestmentTimeframe: typeof $Enums.InvestmentTimeframe
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2701,17 +2560,17 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    wallet: number
-    financialRadiographies: number
     comment: number
+    financialRadiographies: number
     Support: number
+    wallet: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    wallet?: boolean | UserCountOutputTypeCountWalletArgs
-    financialRadiographies?: boolean | UserCountOutputTypeCountFinancialRadiographiesArgs
     comment?: boolean | UserCountOutputTypeCountCommentArgs
+    financialRadiographies?: boolean | UserCountOutputTypeCountFinancialRadiographiesArgs
     Support?: boolean | UserCountOutputTypeCountSupportArgs
+    wallet?: boolean | UserCountOutputTypeCountWalletArgs
   }
 
   // Custom InputTypes
@@ -2728,8 +2587,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountWalletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: walletWhereInput
+  export type UserCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
   }
 
   /**
@@ -2742,15 +2601,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CommentWhereInput
+  export type UserCountOutputTypeCountSupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupportWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SupportWhereInput
+  export type UserCountOutputTypeCountWalletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: walletWhereInput
   }
 
 
@@ -3241,11 +3100,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     isEmailVerified?: boolean
-    wallet?: boolean | User$walletArgs<ExtArgs>
+    comment?: boolean | User$commentArgs<ExtArgs>
     financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
-    comment?: boolean | User$commentArgs<ExtArgs>
     Support?: boolean | User$SupportArgs<ExtArgs>
+    wallet?: boolean | User$walletArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3290,11 +3149,11 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "password" | "avatarUrl" | "role" | "createdAt" | "updatedAt" | "isEmailVerified", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    wallet?: boolean | User$walletArgs<ExtArgs>
+    comment?: boolean | User$commentArgs<ExtArgs>
     financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
-    comment?: boolean | User$commentArgs<ExtArgs>
     Support?: boolean | User$SupportArgs<ExtArgs>
+    wallet?: boolean | User$walletArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3303,11 +3162,11 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      wallet: Prisma.$walletPayload<ExtArgs>[]
+      comment: Prisma.$CommentPayload<ExtArgs>[]
       financialRadiographies: Prisma.$FinancialRadiographyPayload<ExtArgs>[]
       profile: Prisma.$ProfilePayload<ExtArgs> | null
-      comment: Prisma.$CommentPayload<ExtArgs>[]
       Support: Prisma.$SupportPayload<ExtArgs>[]
+      wallet: Prisma.$walletPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3714,11 +3573,11 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    wallet<T extends User$walletArgs<ExtArgs> = {}>(args?: Subset<T, User$walletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$walletPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    comment<T extends User$commentArgs<ExtArgs> = {}>(args?: Subset<T, User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     financialRadiographies<T extends User$financialRadiographiesArgs<ExtArgs> = {}>(args?: Subset<T, User$financialRadiographiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
-    comment<T extends User$commentArgs<ExtArgs> = {}>(args?: Subset<T, User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     Support<T extends User$SupportArgs<ExtArgs> = {}>(args?: Subset<T, User$SupportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    wallet<T extends User$walletArgs<ExtArgs> = {}>(args?: Subset<T, User$walletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$walletPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4134,27 +3993,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.wallet
+   * User.comment
    */
-  export type User$walletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$commentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the wallet
+     * Select specific fields to fetch from the Comment
      */
-    select?: walletSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the wallet
+     * Omit specific fields from the Comment
      */
-    omit?: walletOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: walletInclude<ExtArgs> | null
-    where?: walletWhereInput
-    orderBy?: walletOrderByWithRelationInput | walletOrderByWithRelationInput[]
-    cursor?: walletWhereUniqueInput
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: WalletScalarFieldEnum | WalletScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -4201,30 +4060,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.comment
-   */
-  export type User$commentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Comment
-     */
-    select?: CommentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Comment
-     */
-    omit?: CommentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CommentInclude<ExtArgs> | null
-    where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
-    cursor?: CommentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
-  }
-
-  /**
    * User.Support
    */
   export type User$SupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4246,6 +4081,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SupportScalarFieldEnum | SupportScalarFieldEnum[]
+  }
+
+  /**
+   * User.wallet
+   */
+  export type User$walletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the wallet
+     */
+    select?: walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the wallet
+     */
+    omit?: walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: walletInclude<ExtArgs> | null
+    where?: walletWhereInput
+    orderBy?: walletOrderByWithRelationInput | walletOrderByWithRelationInput[]
+    cursor?: walletWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WalletScalarFieldEnum | WalletScalarFieldEnum[]
   }
 
   /**
@@ -11032,8 +10891,8 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     newsId?: boolean
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11044,8 +10903,8 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     newsId?: boolean
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11056,8 +10915,8 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     newsId?: boolean
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
@@ -11072,23 +10931,23 @@ export namespace Prisma {
 
   export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "dateComment" | "createdAt" | "updatedAt" | "userId" | "newsId", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }
   export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }
   export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Comment$userArgs<ExtArgs>
     news?: boolean | Comment$newsArgs<ExtArgs>
+    user?: boolean | Comment$userArgs<ExtArgs>
   }
 
   export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Comment"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
       news: Prisma.$NewsPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11492,8 +11351,8 @@ export namespace Prisma {
    */
   export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends Comment$userArgs<ExtArgs> = {}>(args?: Subset<T, Comment$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     news<T extends Comment$newsArgs<ExtArgs> = {}>(args?: Subset<T, Comment$newsArgs<ExtArgs>>): Prisma__NewsClient<$Result.GetResult<Prisma.$NewsPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    user<T extends Comment$userArgs<ExtArgs> = {}>(args?: Subset<T, Comment$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11914,25 +11773,6 @@ export namespace Prisma {
   }
 
   /**
-   * Comment.user
-   */
-  export type Comment$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * Comment.news
    */
   export type Comment$newsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11949,6 +11789,25 @@ export namespace Prisma {
      */
     include?: NewsInclude<ExtArgs> | null
     where?: NewsWhereInput
+  }
+
+  /**
+   * Comment.user
+   */
+  export type Comment$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -12180,8 +12039,8 @@ export namespace Prisma {
     balanceDollars?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     transactions?: boolean | wallet$transactionsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | WalletCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["wallet"]>
 
@@ -12216,8 +12075,8 @@ export namespace Prisma {
 
   export type walletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "balancePesos" | "balanceDollars" | "createdAt" | "updatedAt", ExtArgs["result"]["wallet"]>
   export type walletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     transactions?: boolean | wallet$transactionsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | WalletCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type walletIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12230,8 +12089,8 @@ export namespace Prisma {
   export type $walletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "wallet"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       transactions: Prisma.$WalletTransactionPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12634,8 +12493,8 @@ export namespace Prisma {
    */
   export interface Prisma__walletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     transactions<T extends wallet$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, wallet$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalletTransactionPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16271,40 +16130,40 @@ export namespace Prisma {
   export type ProfileMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    mainGoal: $Enums.MainGoal | null
-    financialSkills: $Enums.FinancialSkills | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyInvestment: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason: $Enums.SavingsReason | null
-    investmentTimeframe: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore: boolean | null
-    financialGoalNextYear: boolean | null
+    riskTolerance: string | null
+    investmentHorizon: string | null
+    financialSkills: string | null
+    hasInvestedBefore: string | null
+    financialGoal: string | null
+    mainGoal: string | null
+    monthlyInvestment: string | null
+    savingsOrInvestmentReason: string | null
   }
 
   export type ProfileMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    mainGoal: $Enums.MainGoal | null
-    financialSkills: $Enums.FinancialSkills | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyInvestment: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason: $Enums.SavingsReason | null
-    investmentTimeframe: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore: boolean | null
-    financialGoalNextYear: boolean | null
+    riskTolerance: string | null
+    investmentHorizon: string | null
+    financialSkills: string | null
+    hasInvestedBefore: string | null
+    financialGoal: string | null
+    mainGoal: string | null
+    monthlyInvestment: string | null
+    savingsOrInvestmentReason: string | null
   }
 
   export type ProfileCountAggregateOutputType = {
     id: number
     userId: number
-    mainGoal: number
-    financialSkills: number
     riskTolerance: number
+    investmentHorizon: number
+    financialSkills: number
+    hasInvestedBefore: number
+    financialGoal: number
+    mainGoal: number
     monthlyInvestment: number
     savingsOrInvestmentReason: number
-    investmentTimeframe: number
-    hasInvestedBefore: number
-    financialGoalNextYear: number
     _all: number
   }
 
@@ -16312,40 +16171,40 @@ export namespace Prisma {
   export type ProfileMinAggregateInputType = {
     id?: true
     userId?: true
-    mainGoal?: true
-    financialSkills?: true
     riskTolerance?: true
+    investmentHorizon?: true
+    financialSkills?: true
+    hasInvestedBefore?: true
+    financialGoal?: true
+    mainGoal?: true
     monthlyInvestment?: true
     savingsOrInvestmentReason?: true
-    investmentTimeframe?: true
-    hasInvestedBefore?: true
-    financialGoalNextYear?: true
   }
 
   export type ProfileMaxAggregateInputType = {
     id?: true
     userId?: true
-    mainGoal?: true
-    financialSkills?: true
     riskTolerance?: true
+    investmentHorizon?: true
+    financialSkills?: true
+    hasInvestedBefore?: true
+    financialGoal?: true
+    mainGoal?: true
     monthlyInvestment?: true
     savingsOrInvestmentReason?: true
-    investmentTimeframe?: true
-    hasInvestedBefore?: true
-    financialGoalNextYear?: true
   }
 
   export type ProfileCountAggregateInputType = {
     id?: true
     userId?: true
-    mainGoal?: true
-    financialSkills?: true
     riskTolerance?: true
+    investmentHorizon?: true
+    financialSkills?: true
+    hasInvestedBefore?: true
+    financialGoal?: true
+    mainGoal?: true
     monthlyInvestment?: true
     savingsOrInvestmentReason?: true
-    investmentTimeframe?: true
-    hasInvestedBefore?: true
-    financialGoalNextYear?: true
     _all?: true
   }
 
@@ -16424,14 +16283,14 @@ export namespace Prisma {
   export type ProfileGroupByOutputType = {
     id: string
     userId: string
-    mainGoal: $Enums.MainGoal | null
-    financialSkills: $Enums.FinancialSkills | null
-    riskTolerance: $Enums.RiskTolerance | null
-    monthlyInvestment: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason: $Enums.SavingsReason | null
-    investmentTimeframe: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore: boolean | null
-    financialGoalNextYear: boolean | null
+    riskTolerance: string | null
+    investmentHorizon: string | null
+    financialSkills: string | null
+    hasInvestedBefore: string | null
+    financialGoal: string | null
+    mainGoal: string | null
+    monthlyInvestment: string | null
+    savingsOrInvestmentReason: string | null
     _count: ProfileCountAggregateOutputType | null
     _min: ProfileMinAggregateOutputType | null
     _max: ProfileMaxAggregateOutputType | null
@@ -16454,59 +16313,59 @@ export namespace Prisma {
   export type ProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    mainGoal?: boolean
-    financialSkills?: boolean
     riskTolerance?: boolean
+    investmentHorizon?: boolean
+    financialSkills?: boolean
+    hasInvestedBefore?: boolean
+    financialGoal?: boolean
+    mainGoal?: boolean
     monthlyInvestment?: boolean
     savingsOrInvestmentReason?: boolean
-    investmentTimeframe?: boolean
-    hasInvestedBefore?: boolean
-    financialGoalNextYear?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    mainGoal?: boolean
-    financialSkills?: boolean
     riskTolerance?: boolean
+    investmentHorizon?: boolean
+    financialSkills?: boolean
+    hasInvestedBefore?: boolean
+    financialGoal?: boolean
+    mainGoal?: boolean
     monthlyInvestment?: boolean
     savingsOrInvestmentReason?: boolean
-    investmentTimeframe?: boolean
-    hasInvestedBefore?: boolean
-    financialGoalNextYear?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    mainGoal?: boolean
-    financialSkills?: boolean
     riskTolerance?: boolean
+    investmentHorizon?: boolean
+    financialSkills?: boolean
+    hasInvestedBefore?: boolean
+    financialGoal?: boolean
+    mainGoal?: boolean
     monthlyInvestment?: boolean
     savingsOrInvestmentReason?: boolean
-    investmentTimeframe?: boolean
-    hasInvestedBefore?: boolean
-    financialGoalNextYear?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectScalar = {
     id?: boolean
     userId?: boolean
-    mainGoal?: boolean
-    financialSkills?: boolean
     riskTolerance?: boolean
+    investmentHorizon?: boolean
+    financialSkills?: boolean
+    hasInvestedBefore?: boolean
+    financialGoal?: boolean
+    mainGoal?: boolean
     monthlyInvestment?: boolean
     savingsOrInvestmentReason?: boolean
-    investmentTimeframe?: boolean
-    hasInvestedBefore?: boolean
-    financialGoalNextYear?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "mainGoal" | "financialSkills" | "riskTolerance" | "monthlyInvestment" | "savingsOrInvestmentReason" | "investmentTimeframe" | "hasInvestedBefore" | "financialGoalNextYear", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "riskTolerance" | "investmentHorizon" | "financialSkills" | "hasInvestedBefore" | "financialGoal" | "mainGoal" | "monthlyInvestment" | "savingsOrInvestmentReason", ExtArgs["result"]["profile"]>
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -16525,14 +16384,14 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      mainGoal: $Enums.MainGoal | null
-      financialSkills: $Enums.FinancialSkills | null
-      riskTolerance: $Enums.RiskTolerance | null
-      monthlyInvestment: $Enums.MonthlyInvestment | null
-      savingsOrInvestmentReason: $Enums.SavingsReason | null
-      investmentTimeframe: $Enums.InvestmentTimeframe | null
-      hasInvestedBefore: boolean | null
-      financialGoalNextYear: boolean | null
+      riskTolerance: string | null
+      investmentHorizon: string | null
+      financialSkills: string | null
+      hasInvestedBefore: string | null
+      financialGoal: string | null
+      mainGoal: string | null
+      monthlyInvestment: string | null
+      savingsOrInvestmentReason: string | null
     }, ExtArgs["result"]["profile"]>
     composites: {}
   }
@@ -16959,14 +16818,14 @@ export namespace Prisma {
   interface ProfileFieldRefs {
     readonly id: FieldRef<"Profile", 'String'>
     readonly userId: FieldRef<"Profile", 'String'>
-    readonly mainGoal: FieldRef<"Profile", 'MainGoal'>
-    readonly financialSkills: FieldRef<"Profile", 'FinancialSkills'>
-    readonly riskTolerance: FieldRef<"Profile", 'RiskTolerance'>
-    readonly monthlyInvestment: FieldRef<"Profile", 'MonthlyInvestment'>
-    readonly savingsOrInvestmentReason: FieldRef<"Profile", 'SavingsReason'>
-    readonly investmentTimeframe: FieldRef<"Profile", 'InvestmentTimeframe'>
-    readonly hasInvestedBefore: FieldRef<"Profile", 'Boolean'>
-    readonly financialGoalNextYear: FieldRef<"Profile", 'Boolean'>
+    readonly riskTolerance: FieldRef<"Profile", 'String'>
+    readonly investmentHorizon: FieldRef<"Profile", 'String'>
+    readonly financialSkills: FieldRef<"Profile", 'String'>
+    readonly hasInvestedBefore: FieldRef<"Profile", 'String'>
+    readonly financialGoal: FieldRef<"Profile", 'String'>
+    readonly mainGoal: FieldRef<"Profile", 'String'>
+    readonly monthlyInvestment: FieldRef<"Profile", 'String'>
+    readonly savingsOrInvestmentReason: FieldRef<"Profile", 'String'>
   }
     
 
@@ -17382,141 +17241,141 @@ export namespace Prisma {
   }
 
   export type StockAvgAggregateOutputType = {
+    marketCap: number | null
     id: number | null
     priceId: number | null
     volumeId: number | null
     week52Id: number | null
     dividendId: number | null
     earningsId: number | null
-    marketCap: number | null
   }
 
   export type StockSumAggregateOutputType = {
+    marketCap: number | null
     id: number | null
     priceId: number | null
     volumeId: number | null
     week52Id: number | null
     dividendId: number | null
     earningsId: number | null
-    marketCap: number | null
   }
 
   export type StockMinAggregateOutputType = {
-    id: number | null
     symbol: string | null
     name: string | null
     currency: string | null
     market: string | null
+    marketCap: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    id: number | null
     priceId: number | null
     volumeId: number | null
     week52Id: number | null
     dividendId: number | null
     earningsId: number | null
-    marketCap: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type StockMaxAggregateOutputType = {
-    id: number | null
     symbol: string | null
     name: string | null
     currency: string | null
     market: string | null
+    marketCap: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    id: number | null
     priceId: number | null
     volumeId: number | null
     week52Id: number | null
     dividendId: number | null
     earningsId: number | null
-    marketCap: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type StockCountAggregateOutputType = {
-    id: number
     symbol: number
     name: number
     currency: number
     market: number
+    marketCap: number
+    createdAt: number
+    updatedAt: number
+    id: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
 
   export type StockAvgAggregateInputType = {
+    marketCap?: true
     id?: true
     priceId?: true
     volumeId?: true
     week52Id?: true
     dividendId?: true
     earningsId?: true
-    marketCap?: true
   }
 
   export type StockSumAggregateInputType = {
+    marketCap?: true
     id?: true
     priceId?: true
     volumeId?: true
     week52Id?: true
     dividendId?: true
     earningsId?: true
-    marketCap?: true
   }
 
   export type StockMinAggregateInputType = {
-    id?: true
     symbol?: true
     name?: true
     currency?: true
     market?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+    id?: true
     priceId?: true
     volumeId?: true
     week52Id?: true
     dividendId?: true
     earningsId?: true
-    marketCap?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type StockMaxAggregateInputType = {
-    id?: true
     symbol?: true
     name?: true
     currency?: true
     market?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+    id?: true
     priceId?: true
     volumeId?: true
     week52Id?: true
     dividendId?: true
     earningsId?: true
-    marketCap?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type StockCountAggregateInputType = {
-    id?: true
     symbol?: true
     name?: true
     currency?: true
     market?: true
+    marketCap?: true
+    createdAt?: true
+    updatedAt?: true
+    id?: true
     priceId?: true
     volumeId?: true
     week52Id?: true
     dividendId?: true
     earningsId?: true
-    marketCap?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -17607,19 +17466,19 @@ export namespace Prisma {
   }
 
   export type StockGroupByOutputType = {
-    id: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt: Date
+    updatedAt: Date
+    id: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt: Date
-    updatedAt: Date
     _count: StockCountAggregateOutputType | null
     _avg: StockAvgAggregateOutputType | null
     _sum: StockSumAggregateOutputType | null
@@ -17642,130 +17501,130 @@ export namespace Prisma {
 
 
   export type StockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     symbol?: boolean
     name?: boolean
     currency?: boolean
     market?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    id?: boolean
     priceId?: boolean
     volumeId?: boolean
     week52Id?: boolean
     dividendId?: boolean
     earningsId?: boolean
-    marketCap?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock"]>
 
   export type StockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     symbol?: boolean
     name?: boolean
     currency?: boolean
     market?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    id?: boolean
     priceId?: boolean
     volumeId?: boolean
     week52Id?: boolean
     dividendId?: boolean
     earningsId?: boolean
-    marketCap?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock"]>
 
   export type StockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     symbol?: boolean
     name?: boolean
     currency?: boolean
     market?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    id?: boolean
     priceId?: boolean
     volumeId?: boolean
     week52Id?: boolean
     dividendId?: boolean
     earningsId?: boolean
-    marketCap?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock"]>
 
   export type StockSelectScalar = {
-    id?: boolean
     symbol?: boolean
     name?: boolean
     currency?: boolean
     market?: boolean
+    marketCap?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    id?: boolean
     priceId?: boolean
     volumeId?: boolean
     week52Id?: boolean
     dividendId?: boolean
     earningsId?: boolean
-    marketCap?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type StockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "symbol" | "name" | "currency" | "market" | "priceId" | "volumeId" | "week52Id" | "dividendId" | "earningsId" | "marketCap" | "createdAt" | "updatedAt", ExtArgs["result"]["stock"]>
+  export type StockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"symbol" | "name" | "currency" | "market" | "marketCap" | "createdAt" | "updatedAt" | "id" | "priceId" | "volumeId" | "week52Id" | "dividendId" | "earningsId", ExtArgs["result"]["stock"]>
   export type StockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }
   export type StockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }
   export type StockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dividend?: boolean | DividendDefaultArgs<ExtArgs>
+    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
-    dividend?: boolean | DividendDefaultArgs<ExtArgs>
-    earnings?: boolean | EarningsDefaultArgs<ExtArgs>
   }
 
   export type $StockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Stock"
     objects: {
+      dividend: Prisma.$DividendPayload<ExtArgs>
+      earnings: Prisma.$EarningsPayload<ExtArgs>
       price: Prisma.$PricePayload<ExtArgs>
       volume: Prisma.$VolumePayload<ExtArgs>
       week52: Prisma.$Week52Payload<ExtArgs>
-      dividend: Prisma.$DividendPayload<ExtArgs>
-      earnings: Prisma.$EarningsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       symbol: string
       name: string
       currency: string
       market: string
+      marketCap: number
+      createdAt: Date
+      updatedAt: Date
+      id: number
       priceId: number
       volumeId: number
       week52Id: number
       dividendId: number
       earningsId: number
-      marketCap: number
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["stock"]>
     composites: {}
   }
@@ -17849,8 +17708,8 @@ export namespace Prisma {
      * // Get first 10 Stocks
      * const stocks = await prisma.stock.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const stockWithIdOnly = await prisma.stock.findMany({ select: { id: true } })
+     * // Only select the `symbol`
+     * const stockWithSymbolOnly = await prisma.stock.findMany({ select: { symbol: true } })
      * 
      */
     findMany<T extends StockFindManyArgs>(args?: SelectSubset<T, StockFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -17894,9 +17753,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Stocks and only return the `id`
-     * const stockWithIdOnly = await prisma.stock.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Stocks and only return the `symbol`
+     * const stockWithSymbolOnly = await prisma.stock.createManyAndReturn({
+     *   select: { symbol: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -17985,9 +17844,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Stocks and only return the `id`
-     * const stockWithIdOnly = await prisma.stock.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Stocks and only return the `symbol`
+     * const stockWithSymbolOnly = await prisma.stock.updateManyAndReturn({
+     *   select: { symbol: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -18160,11 +18019,11 @@ export namespace Prisma {
    */
   export interface Prisma__StockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    dividend<T extends DividendDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DividendDefaultArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    earnings<T extends EarningsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EarningsDefaultArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     price<T extends PriceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PriceDefaultArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     volume<T extends VolumeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VolumeDefaultArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     week52<T extends Week52DefaultArgs<ExtArgs> = {}>(args?: Subset<T, Week52DefaultArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    dividend<T extends DividendDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DividendDefaultArgs<ExtArgs>>): Prisma__DividendClient<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    earnings<T extends EarningsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EarningsDefaultArgs<ExtArgs>>): Prisma__EarningsClient<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18194,19 +18053,19 @@ export namespace Prisma {
    * Fields of the Stock model
    */ 
   interface StockFieldRefs {
-    readonly id: FieldRef<"Stock", 'Int'>
     readonly symbol: FieldRef<"Stock", 'String'>
     readonly name: FieldRef<"Stock", 'String'>
     readonly currency: FieldRef<"Stock", 'String'>
     readonly market: FieldRef<"Stock", 'String'>
+    readonly marketCap: FieldRef<"Stock", 'Int'>
+    readonly createdAt: FieldRef<"Stock", 'DateTime'>
+    readonly updatedAt: FieldRef<"Stock", 'DateTime'>
+    readonly id: FieldRef<"Stock", 'Int'>
     readonly priceId: FieldRef<"Stock", 'Int'>
     readonly volumeId: FieldRef<"Stock", 'Int'>
     readonly week52Id: FieldRef<"Stock", 'Int'>
     readonly dividendId: FieldRef<"Stock", 'Int'>
     readonly earningsId: FieldRef<"Stock", 'Int'>
-    readonly marketCap: FieldRef<"Stock", 'Int'>
-    readonly createdAt: FieldRef<"Stock", 'DateTime'>
-    readonly updatedAt: FieldRef<"Stock", 'DateTime'>
   }
     
 
@@ -18622,7 +18481,6 @@ export namespace Prisma {
   }
 
   export type PriceAvgAggregateOutputType = {
-    id: number | null
     current: number | null
     changePercent: number | null
     open: number | null
@@ -18631,10 +18489,10 @@ export namespace Prisma {
     previousClose: number | null
     postMarketPrice: number | null
     postMarketChange: number | null
+    id: number | null
   }
 
   export type PriceSumAggregateOutputType = {
-    id: number | null
     current: number | null
     changePercent: number | null
     open: number | null
@@ -18643,10 +18501,10 @@ export namespace Prisma {
     previousClose: number | null
     postMarketPrice: number | null
     postMarketChange: number | null
+    id: number | null
   }
 
   export type PriceMinAggregateOutputType = {
-    id: number | null
     current: number | null
     changePercent: number | null
     open: number | null
@@ -18655,10 +18513,10 @@ export namespace Prisma {
     previousClose: number | null
     postMarketPrice: number | null
     postMarketChange: number | null
+    id: number | null
   }
 
   export type PriceMaxAggregateOutputType = {
-    id: number | null
     current: number | null
     changePercent: number | null
     open: number | null
@@ -18667,10 +18525,10 @@ export namespace Prisma {
     previousClose: number | null
     postMarketPrice: number | null
     postMarketChange: number | null
+    id: number | null
   }
 
   export type PriceCountAggregateOutputType = {
-    id: number
     current: number
     changePercent: number
     open: number
@@ -18679,12 +18537,12 @@ export namespace Prisma {
     previousClose: number
     postMarketPrice: number
     postMarketChange: number
+    id: number
     _all: number
   }
 
 
   export type PriceAvgAggregateInputType = {
-    id?: true
     current?: true
     changePercent?: true
     open?: true
@@ -18693,10 +18551,10 @@ export namespace Prisma {
     previousClose?: true
     postMarketPrice?: true
     postMarketChange?: true
+    id?: true
   }
 
   export type PriceSumAggregateInputType = {
-    id?: true
     current?: true
     changePercent?: true
     open?: true
@@ -18705,10 +18563,10 @@ export namespace Prisma {
     previousClose?: true
     postMarketPrice?: true
     postMarketChange?: true
+    id?: true
   }
 
   export type PriceMinAggregateInputType = {
-    id?: true
     current?: true
     changePercent?: true
     open?: true
@@ -18717,10 +18575,10 @@ export namespace Prisma {
     previousClose?: true
     postMarketPrice?: true
     postMarketChange?: true
+    id?: true
   }
 
   export type PriceMaxAggregateInputType = {
-    id?: true
     current?: true
     changePercent?: true
     open?: true
@@ -18729,10 +18587,10 @@ export namespace Prisma {
     previousClose?: true
     postMarketPrice?: true
     postMarketChange?: true
+    id?: true
   }
 
   export type PriceCountAggregateInputType = {
-    id?: true
     current?: true
     changePercent?: true
     open?: true
@@ -18741,6 +18599,7 @@ export namespace Prisma {
     previousClose?: true
     postMarketPrice?: true
     postMarketChange?: true
+    id?: true
     _all?: true
   }
 
@@ -18831,7 +18690,6 @@ export namespace Prisma {
   }
 
   export type PriceGroupByOutputType = {
-    id: number
     current: number | null
     changePercent: number | null
     open: number | null
@@ -18840,6 +18698,7 @@ export namespace Prisma {
     previousClose: number | null
     postMarketPrice: number | null
     postMarketChange: number | null
+    id: number
     _count: PriceCountAggregateOutputType | null
     _avg: PriceAvgAggregateOutputType | null
     _sum: PriceSumAggregateOutputType | null
@@ -18862,7 +18721,6 @@ export namespace Prisma {
 
 
   export type PriceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     changePercent?: boolean
     open?: boolean
@@ -18871,12 +18729,12 @@ export namespace Prisma {
     previousClose?: boolean
     postMarketPrice?: boolean
     postMarketChange?: boolean
+    id?: boolean
     Stock?: boolean | Price$StockArgs<ExtArgs>
     _count?: boolean | PriceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["price"]>
 
   export type PriceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     changePercent?: boolean
     open?: boolean
@@ -18885,10 +18743,10 @@ export namespace Prisma {
     previousClose?: boolean
     postMarketPrice?: boolean
     postMarketChange?: boolean
+    id?: boolean
   }, ExtArgs["result"]["price"]>
 
   export type PriceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     changePercent?: boolean
     open?: boolean
@@ -18897,10 +18755,10 @@ export namespace Prisma {
     previousClose?: boolean
     postMarketPrice?: boolean
     postMarketChange?: boolean
+    id?: boolean
   }, ExtArgs["result"]["price"]>
 
   export type PriceSelectScalar = {
-    id?: boolean
     current?: boolean
     changePercent?: boolean
     open?: boolean
@@ -18909,9 +18767,10 @@ export namespace Prisma {
     previousClose?: boolean
     postMarketPrice?: boolean
     postMarketChange?: boolean
+    id?: boolean
   }
 
-  export type PriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "current" | "changePercent" | "open" | "dayLow" | "dayHigh" | "previousClose" | "postMarketPrice" | "postMarketChange", ExtArgs["result"]["price"]>
+  export type PriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"current" | "changePercent" | "open" | "dayLow" | "dayHigh" | "previousClose" | "postMarketPrice" | "postMarketChange" | "id", ExtArgs["result"]["price"]>
   export type PriceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stock?: boolean | Price$StockArgs<ExtArgs>
     _count?: boolean | PriceCountOutputTypeDefaultArgs<ExtArgs>
@@ -18925,7 +18784,6 @@ export namespace Prisma {
       Stock: Prisma.$StockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       current: number | null
       changePercent: number | null
       open: number | null
@@ -18934,6 +18792,7 @@ export namespace Prisma {
       previousClose: number | null
       postMarketPrice: number | null
       postMarketChange: number | null
+      id: number
     }, ExtArgs["result"]["price"]>
     composites: {}
   }
@@ -19017,8 +18876,8 @@ export namespace Prisma {
      * // Get first 10 Prices
      * const prices = await prisma.price.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const priceWithIdOnly = await prisma.price.findMany({ select: { id: true } })
+     * // Only select the `current`
+     * const priceWithCurrentOnly = await prisma.price.findMany({ select: { current: true } })
      * 
      */
     findMany<T extends PriceFindManyArgs>(args?: SelectSubset<T, PriceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -19062,9 +18921,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Prices and only return the `id`
-     * const priceWithIdOnly = await prisma.price.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Prices and only return the `current`
+     * const priceWithCurrentOnly = await prisma.price.createManyAndReturn({
+     *   select: { current: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -19153,9 +19012,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Prices and only return the `id`
-     * const priceWithIdOnly = await prisma.price.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Prices and only return the `current`
+     * const priceWithCurrentOnly = await prisma.price.updateManyAndReturn({
+     *   select: { current: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -19358,7 +19217,6 @@ export namespace Prisma {
    * Fields of the Price model
    */ 
   interface PriceFieldRefs {
-    readonly id: FieldRef<"Price", 'Int'>
     readonly current: FieldRef<"Price", 'Float'>
     readonly changePercent: FieldRef<"Price", 'Float'>
     readonly open: FieldRef<"Price", 'Float'>
@@ -19367,6 +19225,7 @@ export namespace Prisma {
     readonly previousClose: FieldRef<"Price", 'Float'>
     readonly postMarketPrice: FieldRef<"Price", 'Float'>
     readonly postMarketChange: FieldRef<"Price", 'Float'>
+    readonly id: FieldRef<"Price", 'Int'>
   }
     
 
@@ -19798,75 +19657,75 @@ export namespace Prisma {
   }
 
   export type VolumeAvgAggregateOutputType = {
-    id: number | null
     current: number | null
     average3Months: number | null
     average10Days: number | null
+    id: number | null
   }
 
   export type VolumeSumAggregateOutputType = {
-    id: number | null
     current: number | null
     average3Months: number | null
     average10Days: number | null
+    id: number | null
   }
 
   export type VolumeMinAggregateOutputType = {
-    id: number | null
     current: number | null
     average3Months: number | null
     average10Days: number | null
+    id: number | null
   }
 
   export type VolumeMaxAggregateOutputType = {
-    id: number | null
     current: number | null
     average3Months: number | null
     average10Days: number | null
+    id: number | null
   }
 
   export type VolumeCountAggregateOutputType = {
-    id: number
     current: number
     average3Months: number
     average10Days: number
+    id: number
     _all: number
   }
 
 
   export type VolumeAvgAggregateInputType = {
-    id?: true
     current?: true
     average3Months?: true
     average10Days?: true
+    id?: true
   }
 
   export type VolumeSumAggregateInputType = {
-    id?: true
     current?: true
     average3Months?: true
     average10Days?: true
+    id?: true
   }
 
   export type VolumeMinAggregateInputType = {
-    id?: true
     current?: true
     average3Months?: true
     average10Days?: true
+    id?: true
   }
 
   export type VolumeMaxAggregateInputType = {
-    id?: true
     current?: true
     average3Months?: true
     average10Days?: true
+    id?: true
   }
 
   export type VolumeCountAggregateInputType = {
-    id?: true
     current?: true
     average3Months?: true
     average10Days?: true
+    id?: true
     _all?: true
   }
 
@@ -19957,10 +19816,10 @@ export namespace Prisma {
   }
 
   export type VolumeGroupByOutputType = {
-    id: number
     current: number | null
     average3Months: number | null
     average10Days: number | null
+    id: number
     _count: VolumeCountAggregateOutputType | null
     _avg: VolumeAvgAggregateOutputType | null
     _sum: VolumeSumAggregateOutputType | null
@@ -19983,36 +19842,36 @@ export namespace Prisma {
 
 
   export type VolumeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     average3Months?: boolean
     average10Days?: boolean
+    id?: boolean
     Stock?: boolean | Volume$StockArgs<ExtArgs>
     _count?: boolean | VolumeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["volume"]>
 
   export type VolumeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     average3Months?: boolean
     average10Days?: boolean
+    id?: boolean
   }, ExtArgs["result"]["volume"]>
 
   export type VolumeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     current?: boolean
     average3Months?: boolean
     average10Days?: boolean
+    id?: boolean
   }, ExtArgs["result"]["volume"]>
 
   export type VolumeSelectScalar = {
-    id?: boolean
     current?: boolean
     average3Months?: boolean
     average10Days?: boolean
+    id?: boolean
   }
 
-  export type VolumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "current" | "average3Months" | "average10Days", ExtArgs["result"]["volume"]>
+  export type VolumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"current" | "average3Months" | "average10Days" | "id", ExtArgs["result"]["volume"]>
   export type VolumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stock?: boolean | Volume$StockArgs<ExtArgs>
     _count?: boolean | VolumeCountOutputTypeDefaultArgs<ExtArgs>
@@ -20026,10 +19885,10 @@ export namespace Prisma {
       Stock: Prisma.$StockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       current: number | null
       average3Months: number | null
       average10Days: number | null
+      id: number
     }, ExtArgs["result"]["volume"]>
     composites: {}
   }
@@ -20113,8 +19972,8 @@ export namespace Prisma {
      * // Get first 10 Volumes
      * const volumes = await prisma.volume.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const volumeWithIdOnly = await prisma.volume.findMany({ select: { id: true } })
+     * // Only select the `current`
+     * const volumeWithCurrentOnly = await prisma.volume.findMany({ select: { current: true } })
      * 
      */
     findMany<T extends VolumeFindManyArgs>(args?: SelectSubset<T, VolumeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -20158,9 +20017,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Volumes and only return the `id`
-     * const volumeWithIdOnly = await prisma.volume.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Volumes and only return the `current`
+     * const volumeWithCurrentOnly = await prisma.volume.createManyAndReturn({
+     *   select: { current: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -20249,9 +20108,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Volumes and only return the `id`
-     * const volumeWithIdOnly = await prisma.volume.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Volumes and only return the `current`
+     * const volumeWithCurrentOnly = await prisma.volume.updateManyAndReturn({
+     *   select: { current: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -20454,10 +20313,10 @@ export namespace Prisma {
    * Fields of the Volume model
    */ 
   interface VolumeFieldRefs {
-    readonly id: FieldRef<"Volume", 'Int'>
     readonly current: FieldRef<"Volume", 'Int'>
     readonly average3Months: FieldRef<"Volume", 'Int'>
     readonly average10Days: FieldRef<"Volume", 'Int'>
+    readonly id: FieldRef<"Volume", 'Int'>
   }
     
 
@@ -20889,85 +20748,85 @@ export namespace Prisma {
   }
 
   export type Week52AvgAggregateOutputType = {
-    id: number | null
     high: number | null
     low: number | null
     changeFromHigh: number | null
     changeFromLow: number | null
+    id: number | null
   }
 
   export type Week52SumAggregateOutputType = {
-    id: number | null
     high: number | null
     low: number | null
     changeFromHigh: number | null
     changeFromLow: number | null
+    id: number | null
   }
 
   export type Week52MinAggregateOutputType = {
-    id: number | null
     high: number | null
     low: number | null
     changeFromHigh: number | null
     changeFromLow: number | null
+    id: number | null
   }
 
   export type Week52MaxAggregateOutputType = {
-    id: number | null
     high: number | null
     low: number | null
     changeFromHigh: number | null
     changeFromLow: number | null
+    id: number | null
   }
 
   export type Week52CountAggregateOutputType = {
-    id: number
     high: number
     low: number
     changeFromHigh: number
     changeFromLow: number
+    id: number
     _all: number
   }
 
 
   export type Week52AvgAggregateInputType = {
-    id?: true
     high?: true
     low?: true
     changeFromHigh?: true
     changeFromLow?: true
+    id?: true
   }
 
   export type Week52SumAggregateInputType = {
-    id?: true
     high?: true
     low?: true
     changeFromHigh?: true
     changeFromLow?: true
+    id?: true
   }
 
   export type Week52MinAggregateInputType = {
-    id?: true
     high?: true
     low?: true
     changeFromHigh?: true
     changeFromLow?: true
+    id?: true
   }
 
   export type Week52MaxAggregateInputType = {
-    id?: true
     high?: true
     low?: true
     changeFromHigh?: true
     changeFromLow?: true
+    id?: true
   }
 
   export type Week52CountAggregateInputType = {
-    id?: true
     high?: true
     low?: true
     changeFromHigh?: true
     changeFromLow?: true
+    id?: true
     _all?: true
   }
 
@@ -21058,11 +20917,11 @@ export namespace Prisma {
   }
 
   export type Week52GroupByOutputType = {
-    id: number
     high: number | null
     low: number | null
     changeFromHigh: number | null
     changeFromLow: number | null
+    id: number
     _count: Week52CountAggregateOutputType | null
     _avg: Week52AvgAggregateOutputType | null
     _sum: Week52SumAggregateOutputType | null
@@ -21085,40 +20944,40 @@ export namespace Prisma {
 
 
   export type Week52Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     high?: boolean
     low?: boolean
     changeFromHigh?: boolean
     changeFromLow?: boolean
+    id?: boolean
     Stock?: boolean | Week52$StockArgs<ExtArgs>
     _count?: boolean | Week52CountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["week52"]>
 
   export type Week52SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     high?: boolean
     low?: boolean
     changeFromHigh?: boolean
     changeFromLow?: boolean
+    id?: boolean
   }, ExtArgs["result"]["week52"]>
 
   export type Week52SelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     high?: boolean
     low?: boolean
     changeFromHigh?: boolean
     changeFromLow?: boolean
+    id?: boolean
   }, ExtArgs["result"]["week52"]>
 
   export type Week52SelectScalar = {
-    id?: boolean
     high?: boolean
     low?: boolean
     changeFromHigh?: boolean
     changeFromLow?: boolean
+    id?: boolean
   }
 
-  export type Week52Omit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "high" | "low" | "changeFromHigh" | "changeFromLow", ExtArgs["result"]["week52"]>
+  export type Week52Omit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"high" | "low" | "changeFromHigh" | "changeFromLow" | "id", ExtArgs["result"]["week52"]>
   export type Week52Include<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stock?: boolean | Week52$StockArgs<ExtArgs>
     _count?: boolean | Week52CountOutputTypeDefaultArgs<ExtArgs>
@@ -21132,11 +20991,11 @@ export namespace Prisma {
       Stock: Prisma.$StockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       high: number | null
       low: number | null
       changeFromHigh: number | null
       changeFromLow: number | null
+      id: number
     }, ExtArgs["result"]["week52"]>
     composites: {}
   }
@@ -21220,8 +21079,8 @@ export namespace Prisma {
      * // Get first 10 Week52s
      * const week52s = await prisma.week52.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const week52WithIdOnly = await prisma.week52.findMany({ select: { id: true } })
+     * // Only select the `high`
+     * const week52WithHighOnly = await prisma.week52.findMany({ select: { high: true } })
      * 
      */
     findMany<T extends Week52FindManyArgs>(args?: SelectSubset<T, Week52FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -21265,9 +21124,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Week52s and only return the `id`
-     * const week52WithIdOnly = await prisma.week52.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Week52s and only return the `high`
+     * const week52WithHighOnly = await prisma.week52.createManyAndReturn({
+     *   select: { high: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -21356,9 +21215,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Week52s and only return the `id`
-     * const week52WithIdOnly = await prisma.week52.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Week52s and only return the `high`
+     * const week52WithHighOnly = await prisma.week52.updateManyAndReturn({
+     *   select: { high: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -21561,11 +21420,11 @@ export namespace Prisma {
    * Fields of the Week52 model
    */ 
   interface Week52FieldRefs {
-    readonly id: FieldRef<"Week52", 'Int'>
     readonly high: FieldRef<"Week52", 'Float'>
     readonly low: FieldRef<"Week52", 'Float'>
     readonly changeFromHigh: FieldRef<"Week52", 'Float'>
     readonly changeFromLow: FieldRef<"Week52", 'Float'>
+    readonly id: FieldRef<"Week52", 'Int'>
   }
     
 
@@ -21997,71 +21856,71 @@ export namespace Prisma {
   }
 
   export type DividendAvgAggregateOutputType = {
-    id: number | null
     rate: number | null
     yield: number | null
+    id: number | null
   }
 
   export type DividendSumAggregateOutputType = {
-    id: number | null
     rate: number | null
     yield: number | null
+    id: number | null
   }
 
   export type DividendMinAggregateOutputType = {
-    id: number | null
     rate: number | null
     yield: number | null
     date: Date | null
+    id: number | null
   }
 
   export type DividendMaxAggregateOutputType = {
-    id: number | null
     rate: number | null
     yield: number | null
     date: Date | null
+    id: number | null
   }
 
   export type DividendCountAggregateOutputType = {
-    id: number
     rate: number
     yield: number
     date: number
+    id: number
     _all: number
   }
 
 
   export type DividendAvgAggregateInputType = {
-    id?: true
     rate?: true
     yield?: true
+    id?: true
   }
 
   export type DividendSumAggregateInputType = {
-    id?: true
     rate?: true
     yield?: true
+    id?: true
   }
 
   export type DividendMinAggregateInputType = {
-    id?: true
     rate?: true
     yield?: true
     date?: true
+    id?: true
   }
 
   export type DividendMaxAggregateInputType = {
-    id?: true
     rate?: true
     yield?: true
     date?: true
+    id?: true
   }
 
   export type DividendCountAggregateInputType = {
-    id?: true
     rate?: true
     yield?: true
     date?: true
+    id?: true
     _all?: true
   }
 
@@ -22152,10 +22011,10 @@ export namespace Prisma {
   }
 
   export type DividendGroupByOutputType = {
-    id: number
     rate: number | null
     yield: number | null
     date: Date | null
+    id: number
     _count: DividendCountAggregateOutputType | null
     _avg: DividendAvgAggregateOutputType | null
     _sum: DividendSumAggregateOutputType | null
@@ -22178,36 +22037,36 @@ export namespace Prisma {
 
 
   export type DividendSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     rate?: boolean
     yield?: boolean
     date?: boolean
+    id?: boolean
     Stock?: boolean | Dividend$StockArgs<ExtArgs>
     _count?: boolean | DividendCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dividend"]>
 
   export type DividendSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     rate?: boolean
     yield?: boolean
     date?: boolean
+    id?: boolean
   }, ExtArgs["result"]["dividend"]>
 
   export type DividendSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     rate?: boolean
     yield?: boolean
     date?: boolean
+    id?: boolean
   }, ExtArgs["result"]["dividend"]>
 
   export type DividendSelectScalar = {
-    id?: boolean
     rate?: boolean
     yield?: boolean
     date?: boolean
+    id?: boolean
   }
 
-  export type DividendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rate" | "yield" | "date", ExtArgs["result"]["dividend"]>
+  export type DividendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"rate" | "yield" | "date" | "id", ExtArgs["result"]["dividend"]>
   export type DividendInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stock?: boolean | Dividend$StockArgs<ExtArgs>
     _count?: boolean | DividendCountOutputTypeDefaultArgs<ExtArgs>
@@ -22221,10 +22080,10 @@ export namespace Prisma {
       Stock: Prisma.$StockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       rate: number | null
       yield: number | null
       date: Date | null
+      id: number
     }, ExtArgs["result"]["dividend"]>
     composites: {}
   }
@@ -22308,8 +22167,8 @@ export namespace Prisma {
      * // Get first 10 Dividends
      * const dividends = await prisma.dividend.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const dividendWithIdOnly = await prisma.dividend.findMany({ select: { id: true } })
+     * // Only select the `rate`
+     * const dividendWithRateOnly = await prisma.dividend.findMany({ select: { rate: true } })
      * 
      */
     findMany<T extends DividendFindManyArgs>(args?: SelectSubset<T, DividendFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DividendPayload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -22353,9 +22212,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Dividends and only return the `id`
-     * const dividendWithIdOnly = await prisma.dividend.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Dividends and only return the `rate`
+     * const dividendWithRateOnly = await prisma.dividend.createManyAndReturn({
+     *   select: { rate: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -22444,9 +22303,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Dividends and only return the `id`
-     * const dividendWithIdOnly = await prisma.dividend.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Dividends and only return the `rate`
+     * const dividendWithRateOnly = await prisma.dividend.updateManyAndReturn({
+     *   select: { rate: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22649,10 +22508,10 @@ export namespace Prisma {
    * Fields of the Dividend model
    */ 
   interface DividendFieldRefs {
-    readonly id: FieldRef<"Dividend", 'Int'>
     readonly rate: FieldRef<"Dividend", 'Float'>
     readonly yield: FieldRef<"Dividend", 'Float'>
     readonly date: FieldRef<"Dividend", 'DateTime'>
+    readonly id: FieldRef<"Dividend", 'Int'>
   }
     
 
@@ -23084,81 +22943,81 @@ export namespace Prisma {
   }
 
   export type EarningsAvgAggregateOutputType = {
-    id: number | null
     epsTrailing12Months: number | null
     epsForward: number | null
     peRatio: number | null
+    id: number | null
   }
 
   export type EarningsSumAggregateOutputType = {
-    id: number | null
     epsTrailing12Months: number | null
     epsForward: number | null
     peRatio: number | null
+    id: number | null
   }
 
   export type EarningsMinAggregateOutputType = {
-    id: number | null
     nextDate: Date | null
     epsTrailing12Months: number | null
     epsForward: number | null
     peRatio: number | null
+    id: number | null
   }
 
   export type EarningsMaxAggregateOutputType = {
-    id: number | null
     nextDate: Date | null
     epsTrailing12Months: number | null
     epsForward: number | null
     peRatio: number | null
+    id: number | null
   }
 
   export type EarningsCountAggregateOutputType = {
-    id: number
     nextDate: number
     epsTrailing12Months: number
     epsForward: number
     peRatio: number
+    id: number
     _all: number
   }
 
 
   export type EarningsAvgAggregateInputType = {
-    id?: true
     epsTrailing12Months?: true
     epsForward?: true
     peRatio?: true
+    id?: true
   }
 
   export type EarningsSumAggregateInputType = {
-    id?: true
     epsTrailing12Months?: true
     epsForward?: true
     peRatio?: true
+    id?: true
   }
 
   export type EarningsMinAggregateInputType = {
-    id?: true
     nextDate?: true
     epsTrailing12Months?: true
     epsForward?: true
     peRatio?: true
+    id?: true
   }
 
   export type EarningsMaxAggregateInputType = {
-    id?: true
     nextDate?: true
     epsTrailing12Months?: true
     epsForward?: true
     peRatio?: true
+    id?: true
   }
 
   export type EarningsCountAggregateInputType = {
-    id?: true
     nextDate?: true
     epsTrailing12Months?: true
     epsForward?: true
     peRatio?: true
+    id?: true
     _all?: true
   }
 
@@ -23249,11 +23108,11 @@ export namespace Prisma {
   }
 
   export type EarningsGroupByOutputType = {
-    id: number
     nextDate: Date | null
     epsTrailing12Months: number | null
     epsForward: number | null
     peRatio: number | null
+    id: number
     _count: EarningsCountAggregateOutputType | null
     _avg: EarningsAvgAggregateOutputType | null
     _sum: EarningsSumAggregateOutputType | null
@@ -23276,40 +23135,40 @@ export namespace Prisma {
 
 
   export type EarningsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     nextDate?: boolean
     epsTrailing12Months?: boolean
     epsForward?: boolean
     peRatio?: boolean
+    id?: boolean
     Stock?: boolean | Earnings$StockArgs<ExtArgs>
     _count?: boolean | EarningsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["earnings"]>
 
   export type EarningsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     nextDate?: boolean
     epsTrailing12Months?: boolean
     epsForward?: boolean
     peRatio?: boolean
+    id?: boolean
   }, ExtArgs["result"]["earnings"]>
 
   export type EarningsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     nextDate?: boolean
     epsTrailing12Months?: boolean
     epsForward?: boolean
     peRatio?: boolean
+    id?: boolean
   }, ExtArgs["result"]["earnings"]>
 
   export type EarningsSelectScalar = {
-    id?: boolean
     nextDate?: boolean
     epsTrailing12Months?: boolean
     epsForward?: boolean
     peRatio?: boolean
+    id?: boolean
   }
 
-  export type EarningsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nextDate" | "epsTrailing12Months" | "epsForward" | "peRatio", ExtArgs["result"]["earnings"]>
+  export type EarningsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"nextDate" | "epsTrailing12Months" | "epsForward" | "peRatio" | "id", ExtArgs["result"]["earnings"]>
   export type EarningsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stock?: boolean | Earnings$StockArgs<ExtArgs>
     _count?: boolean | EarningsCountOutputTypeDefaultArgs<ExtArgs>
@@ -23323,11 +23182,11 @@ export namespace Prisma {
       Stock: Prisma.$StockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       nextDate: Date | null
       epsTrailing12Months: number | null
       epsForward: number | null
       peRatio: number | null
+      id: number
     }, ExtArgs["result"]["earnings"]>
     composites: {}
   }
@@ -23411,8 +23270,8 @@ export namespace Prisma {
      * // Get first 10 Earnings
      * const earnings = await prisma.earnings.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const earningsWithIdOnly = await prisma.earnings.findMany({ select: { id: true } })
+     * // Only select the `nextDate`
+     * const earningsWithNextDateOnly = await prisma.earnings.findMany({ select: { nextDate: true } })
      * 
      */
     findMany<T extends EarningsFindManyArgs>(args?: SelectSubset<T, EarningsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EarningsPayload<ExtArgs>, T, "findMany", ClientOptions>>
@@ -23456,9 +23315,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Earnings and only return the `id`
-     * const earningsWithIdOnly = await prisma.earnings.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Earnings and only return the `nextDate`
+     * const earningsWithNextDateOnly = await prisma.earnings.createManyAndReturn({
+     *   select: { nextDate: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -23547,9 +23406,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Earnings and only return the `id`
-     * const earningsWithIdOnly = await prisma.earnings.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Earnings and only return the `nextDate`
+     * const earningsWithNextDateOnly = await prisma.earnings.updateManyAndReturn({
+     *   select: { nextDate: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -23752,11 +23611,11 @@ export namespace Prisma {
    * Fields of the Earnings model
    */ 
   interface EarningsFieldRefs {
-    readonly id: FieldRef<"Earnings", 'Int'>
     readonly nextDate: FieldRef<"Earnings", 'DateTime'>
     readonly epsTrailing12Months: FieldRef<"Earnings", 'Float'>
     readonly epsForward: FieldRef<"Earnings", 'Float'>
     readonly peRatio: FieldRef<"Earnings", 'Float'>
+    readonly id: FieldRef<"Earnings", 'Int'>
   }
     
 
@@ -24346,40 +24205,39 @@ export namespace Prisma {
   export const ProfileScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    mainGoal: 'mainGoal',
-    financialSkills: 'financialSkills',
     riskTolerance: 'riskTolerance',
-    monthlyInvestment: 'monthlyInvestment',
-    savingsOrInvestmentReason: 'savingsOrInvestmentReason',
-    investmentTimeframe: 'investmentTimeframe',
+    investmentHorizon: 'investmentHorizon',
+    financialSkills: 'financialSkills',
     hasInvestedBefore: 'hasInvestedBefore',
-    financialGoalNextYear: 'financialGoalNextYear'
+    financialGoal: 'financialGoal',
+    mainGoal: 'mainGoal',
+    monthlyInvestment: 'monthlyInvestment',
+    savingsOrInvestmentReason: 'savingsOrInvestmentReason'
   };
 
   export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
 
 
   export const StockScalarFieldEnum: {
-    id: 'id',
     symbol: 'symbol',
     name: 'name',
     currency: 'currency',
     market: 'market',
+    marketCap: 'marketCap',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    id: 'id',
     priceId: 'priceId',
     volumeId: 'volumeId',
     week52Id: 'week52Id',
     dividendId: 'dividendId',
-    earningsId: 'earningsId',
-    marketCap: 'marketCap',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    earningsId: 'earningsId'
   };
 
   export type StockScalarFieldEnum = (typeof StockScalarFieldEnum)[keyof typeof StockScalarFieldEnum]
 
 
   export const PriceScalarFieldEnum: {
-    id: 'id',
     current: 'current',
     changePercent: 'changePercent',
     open: 'open',
@@ -24387,49 +24245,50 @@ export namespace Prisma {
     dayHigh: 'dayHigh',
     previousClose: 'previousClose',
     postMarketPrice: 'postMarketPrice',
-    postMarketChange: 'postMarketChange'
+    postMarketChange: 'postMarketChange',
+    id: 'id'
   };
 
   export type PriceScalarFieldEnum = (typeof PriceScalarFieldEnum)[keyof typeof PriceScalarFieldEnum]
 
 
   export const VolumeScalarFieldEnum: {
-    id: 'id',
     current: 'current',
     average3Months: 'average3Months',
-    average10Days: 'average10Days'
+    average10Days: 'average10Days',
+    id: 'id'
   };
 
   export type VolumeScalarFieldEnum = (typeof VolumeScalarFieldEnum)[keyof typeof VolumeScalarFieldEnum]
 
 
   export const Week52ScalarFieldEnum: {
-    id: 'id',
     high: 'high',
     low: 'low',
     changeFromHigh: 'changeFromHigh',
-    changeFromLow: 'changeFromLow'
+    changeFromLow: 'changeFromLow',
+    id: 'id'
   };
 
   export type Week52ScalarFieldEnum = (typeof Week52ScalarFieldEnum)[keyof typeof Week52ScalarFieldEnum]
 
 
   export const DividendScalarFieldEnum: {
-    id: 'id',
     rate: 'rate',
     yield: 'yield',
-    date: 'date'
+    date: 'date',
+    id: 'id'
   };
 
   export type DividendScalarFieldEnum = (typeof DividendScalarFieldEnum)[keyof typeof DividendScalarFieldEnum]
 
 
   export const EarningsScalarFieldEnum: {
-    id: 'id',
     nextDate: 'nextDate',
     epsTrailing12Months: 'epsTrailing12Months',
     epsForward: 'epsForward',
-    peRatio: 'peRatio'
+    peRatio: 'peRatio',
+    id: 'id'
   };
 
   export type EarningsScalarFieldEnum = (typeof EarningsScalarFieldEnum)[keyof typeof EarningsScalarFieldEnum]
@@ -24595,90 +24454,6 @@ export namespace Prisma {
    */
   export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
     
-
-
-  /**
-   * Reference to a field of type 'MainGoal'
-   */
-  export type EnumMainGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MainGoal'>
-    
-
-
-  /**
-   * Reference to a field of type 'MainGoal[]'
-   */
-  export type ListEnumMainGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MainGoal[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'FinancialSkills'
-   */
-  export type EnumFinancialSkillsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialSkills'>
-    
-
-
-  /**
-   * Reference to a field of type 'FinancialSkills[]'
-   */
-  export type ListEnumFinancialSkillsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FinancialSkills[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'RiskTolerance'
-   */
-  export type EnumRiskToleranceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskTolerance'>
-    
-
-
-  /**
-   * Reference to a field of type 'RiskTolerance[]'
-   */
-  export type ListEnumRiskToleranceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskTolerance[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'MonthlyInvestment'
-   */
-  export type EnumMonthlyInvestmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MonthlyInvestment'>
-    
-
-
-  /**
-   * Reference to a field of type 'MonthlyInvestment[]'
-   */
-  export type ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MonthlyInvestment[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'SavingsReason'
-   */
-  export type EnumSavingsReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SavingsReason'>
-    
-
-
-  /**
-   * Reference to a field of type 'SavingsReason[]'
-   */
-  export type ListEnumSavingsReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SavingsReason[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'InvestmentTimeframe'
-   */
-  export type EnumInvestmentTimeframeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentTimeframe'>
-    
-
-
-  /**
-   * Reference to a field of type 'InvestmentTimeframe[]'
-   */
-  export type ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvestmentTimeframe[]'>
-    
   /**
    * Deep Input Types
    */
@@ -24698,11 +24473,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     isEmailVerified?: BoolFilter<"User"> | boolean
-    wallet?: WalletListRelationFilter
+    comment?: CommentListRelationFilter
     financialRadiographies?: FinancialRadiographyListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
-    comment?: CommentListRelationFilter
     Support?: SupportListRelationFilter
+    wallet?: WalletListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -24716,11 +24491,11 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
-    wallet?: walletOrderByRelationAggregateInput
+    comment?: CommentOrderByRelationAggregateInput
     financialRadiographies?: FinancialRadiographyOrderByRelationAggregateInput
     profile?: ProfileOrderByWithRelationInput
-    comment?: CommentOrderByRelationAggregateInput
     Support?: SupportOrderByRelationAggregateInput
+    wallet?: walletOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -24737,11 +24512,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     isEmailVerified?: BoolFilter<"User"> | boolean
-    wallet?: WalletListRelationFilter
+    comment?: CommentListRelationFilter
     financialRadiographies?: FinancialRadiographyListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
-    comment?: CommentListRelationFilter
     Support?: SupportListRelationFilter
+    wallet?: WalletListRelationFilter
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -25177,8 +24952,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringNullableFilter<"Comment"> | string | null
     newsId?: StringNullableFilter<"Comment"> | string | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     news?: XOR<NewsNullableScalarRelationFilter, NewsWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type CommentOrderByWithRelationInput = {
@@ -25189,8 +24964,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     newsId?: SortOrderInput | SortOrder
-    user?: UserOrderByWithRelationInput
     news?: NewsOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -25204,8 +24979,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringNullableFilter<"Comment"> | string | null
     newsId?: StringNullableFilter<"Comment"> | string | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     news?: XOR<NewsNullableScalarRelationFilter, NewsWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
@@ -25244,8 +25019,8 @@ export namespace Prisma {
     balanceDollars?: IntFilter<"wallet"> | number
     createdAt?: DateTimeFilter<"wallet"> | Date | string
     updatedAt?: DateTimeFilter<"wallet"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     transactions?: WalletTransactionListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type walletOrderByWithRelationInput = {
@@ -25255,8 +25030,8 @@ export namespace Prisma {
     balanceDollars?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     transactions?: WalletTransactionOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type walletWhereUniqueInput = Prisma.AtLeast<{
@@ -25269,8 +25044,8 @@ export namespace Prisma {
     balanceDollars?: IntFilter<"wallet"> | number
     createdAt?: DateTimeFilter<"wallet"> | Date | string
     updatedAt?: DateTimeFilter<"wallet"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     transactions?: WalletTransactionListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type walletOrderByWithAggregationInput = {
@@ -25489,28 +25264,28 @@ export namespace Prisma {
     NOT?: ProfileWhereInput | ProfileWhereInput[]
     id?: StringFilter<"Profile"> | string
     userId?: StringFilter<"Profile"> | string
-    mainGoal?: EnumMainGoalNullableFilter<"Profile"> | $Enums.MainGoal | null
-    financialSkills?: EnumFinancialSkillsNullableFilter<"Profile"> | $Enums.FinancialSkills | null
-    riskTolerance?: EnumRiskToleranceNullableFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyInvestment?: EnumMonthlyInvestmentNullableFilter<"Profile"> | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: EnumSavingsReasonNullableFilter<"Profile"> | $Enums.SavingsReason | null
-    investmentTimeframe?: EnumInvestmentTimeframeNullableFilter<"Profile"> | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: BoolNullableFilter<"Profile"> | boolean | null
-    financialGoalNextYear?: BoolNullableFilter<"Profile"> | boolean | null
+    riskTolerance?: StringNullableFilter<"Profile"> | string | null
+    investmentHorizon?: StringNullableFilter<"Profile"> | string | null
+    financialSkills?: StringNullableFilter<"Profile"> | string | null
+    hasInvestedBefore?: StringNullableFilter<"Profile"> | string | null
+    financialGoal?: StringNullableFilter<"Profile"> | string | null
+    mainGoal?: StringNullableFilter<"Profile"> | string | null
+    monthlyInvestment?: StringNullableFilter<"Profile"> | string | null
+    savingsOrInvestmentReason?: StringNullableFilter<"Profile"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ProfileOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    mainGoal?: SortOrderInput | SortOrder
-    financialSkills?: SortOrderInput | SortOrder
     riskTolerance?: SortOrderInput | SortOrder
+    investmentHorizon?: SortOrderInput | SortOrder
+    financialSkills?: SortOrderInput | SortOrder
+    hasInvestedBefore?: SortOrderInput | SortOrder
+    financialGoal?: SortOrderInput | SortOrder
+    mainGoal?: SortOrderInput | SortOrder
     monthlyInvestment?: SortOrderInput | SortOrder
     savingsOrInvestmentReason?: SortOrderInput | SortOrder
-    investmentTimeframe?: SortOrderInput | SortOrder
-    hasInvestedBefore?: SortOrderInput | SortOrder
-    financialGoalNextYear?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -25520,28 +25295,28 @@ export namespace Prisma {
     AND?: ProfileWhereInput | ProfileWhereInput[]
     OR?: ProfileWhereInput[]
     NOT?: ProfileWhereInput | ProfileWhereInput[]
-    mainGoal?: EnumMainGoalNullableFilter<"Profile"> | $Enums.MainGoal | null
-    financialSkills?: EnumFinancialSkillsNullableFilter<"Profile"> | $Enums.FinancialSkills | null
-    riskTolerance?: EnumRiskToleranceNullableFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyInvestment?: EnumMonthlyInvestmentNullableFilter<"Profile"> | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: EnumSavingsReasonNullableFilter<"Profile"> | $Enums.SavingsReason | null
-    investmentTimeframe?: EnumInvestmentTimeframeNullableFilter<"Profile"> | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: BoolNullableFilter<"Profile"> | boolean | null
-    financialGoalNextYear?: BoolNullableFilter<"Profile"> | boolean | null
+    riskTolerance?: StringNullableFilter<"Profile"> | string | null
+    investmentHorizon?: StringNullableFilter<"Profile"> | string | null
+    financialSkills?: StringNullableFilter<"Profile"> | string | null
+    hasInvestedBefore?: StringNullableFilter<"Profile"> | string | null
+    financialGoal?: StringNullableFilter<"Profile"> | string | null
+    mainGoal?: StringNullableFilter<"Profile"> | string | null
+    monthlyInvestment?: StringNullableFilter<"Profile"> | string | null
+    savingsOrInvestmentReason?: StringNullableFilter<"Profile"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type ProfileOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    mainGoal?: SortOrderInput | SortOrder
-    financialSkills?: SortOrderInput | SortOrder
     riskTolerance?: SortOrderInput | SortOrder
+    investmentHorizon?: SortOrderInput | SortOrder
+    financialSkills?: SortOrderInput | SortOrder
+    hasInvestedBefore?: SortOrderInput | SortOrder
+    financialGoal?: SortOrderInput | SortOrder
+    mainGoal?: SortOrderInput | SortOrder
     monthlyInvestment?: SortOrderInput | SortOrder
     savingsOrInvestmentReason?: SortOrderInput | SortOrder
-    investmentTimeframe?: SortOrderInput | SortOrder
-    hasInvestedBefore?: SortOrderInput | SortOrder
-    financialGoalNextYear?: SortOrderInput | SortOrder
     _count?: ProfileCountOrderByAggregateInput
     _max?: ProfileMaxOrderByAggregateInput
     _min?: ProfileMinOrderByAggregateInput
@@ -25553,99 +25328,99 @@ export namespace Prisma {
     NOT?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Profile"> | string
     userId?: StringWithAggregatesFilter<"Profile"> | string
-    mainGoal?: EnumMainGoalNullableWithAggregatesFilter<"Profile"> | $Enums.MainGoal | null
-    financialSkills?: EnumFinancialSkillsNullableWithAggregatesFilter<"Profile"> | $Enums.FinancialSkills | null
-    riskTolerance?: EnumRiskToleranceNullableWithAggregatesFilter<"Profile"> | $Enums.RiskTolerance | null
-    monthlyInvestment?: EnumMonthlyInvestmentNullableWithAggregatesFilter<"Profile"> | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: EnumSavingsReasonNullableWithAggregatesFilter<"Profile"> | $Enums.SavingsReason | null
-    investmentTimeframe?: EnumInvestmentTimeframeNullableWithAggregatesFilter<"Profile"> | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
-    financialGoalNextYear?: BoolNullableWithAggregatesFilter<"Profile"> | boolean | null
+    riskTolerance?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    investmentHorizon?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    financialSkills?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    hasInvestedBefore?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    financialGoal?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    mainGoal?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    monthlyInvestment?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    savingsOrInvestmentReason?: StringNullableWithAggregatesFilter<"Profile"> | string | null
   }
 
   export type StockWhereInput = {
     AND?: StockWhereInput | StockWhereInput[]
     OR?: StockWhereInput[]
     NOT?: StockWhereInput | StockWhereInput[]
-    id?: IntFilter<"Stock"> | number
     symbol?: StringFilter<"Stock"> | string
     name?: StringFilter<"Stock"> | string
     currency?: StringFilter<"Stock"> | string
     market?: StringFilter<"Stock"> | string
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    id?: IntFilter<"Stock"> | number
     priceId?: IntFilter<"Stock"> | number
     volumeId?: IntFilter<"Stock"> | number
     week52Id?: IntFilter<"Stock"> | number
     dividendId?: IntFilter<"Stock"> | number
     earningsId?: IntFilter<"Stock"> | number
-    marketCap?: IntFilter<"Stock"> | number
-    createdAt?: DateTimeFilter<"Stock"> | Date | string
-    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
+    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
     price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
     volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
     week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
-    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
-    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
   }
 
   export type StockOrderByWithRelationInput = {
-    id?: SortOrder
     symbol?: SortOrder
     name?: SortOrder
     currency?: SortOrder
     market?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
-    marketCap?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    dividend?: DividendOrderByWithRelationInput
+    earnings?: EarningsOrderByWithRelationInput
     price?: PriceOrderByWithRelationInput
     volume?: VolumeOrderByWithRelationInput
     week52?: Week52OrderByWithRelationInput
-    dividend?: DividendOrderByWithRelationInput
-    earnings?: EarningsOrderByWithRelationInput
   }
 
   export type StockWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
     symbol?: string
+    id?: number
     AND?: StockWhereInput | StockWhereInput[]
     OR?: StockWhereInput[]
     NOT?: StockWhereInput | StockWhereInput[]
     name?: StringFilter<"Stock"> | string
     currency?: StringFilter<"Stock"> | string
     market?: StringFilter<"Stock"> | string
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
     priceId?: IntFilter<"Stock"> | number
     volumeId?: IntFilter<"Stock"> | number
     week52Id?: IntFilter<"Stock"> | number
     dividendId?: IntFilter<"Stock"> | number
     earningsId?: IntFilter<"Stock"> | number
-    marketCap?: IntFilter<"Stock"> | number
-    createdAt?: DateTimeFilter<"Stock"> | Date | string
-    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
+    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
     price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
     volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
     week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
-    dividend?: XOR<DividendScalarRelationFilter, DividendWhereInput>
-    earnings?: XOR<EarningsScalarRelationFilter, EarningsWhereInput>
   }, "id" | "symbol">
 
   export type StockOrderByWithAggregationInput = {
-    id?: SortOrder
     symbol?: SortOrder
     name?: SortOrder
     currency?: SortOrder
     market?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
-    marketCap?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: StockCountOrderByAggregateInput
     _avg?: StockAvgOrderByAggregateInput
     _max?: StockMaxOrderByAggregateInput
@@ -25657,26 +25432,25 @@ export namespace Prisma {
     AND?: StockScalarWhereWithAggregatesInput | StockScalarWhereWithAggregatesInput[]
     OR?: StockScalarWhereWithAggregatesInput[]
     NOT?: StockScalarWhereWithAggregatesInput | StockScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Stock"> | number
     symbol?: StringWithAggregatesFilter<"Stock"> | string
     name?: StringWithAggregatesFilter<"Stock"> | string
     currency?: StringWithAggregatesFilter<"Stock"> | string
     market?: StringWithAggregatesFilter<"Stock"> | string
+    marketCap?: IntWithAggregatesFilter<"Stock"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
+    id?: IntWithAggregatesFilter<"Stock"> | number
     priceId?: IntWithAggregatesFilter<"Stock"> | number
     volumeId?: IntWithAggregatesFilter<"Stock"> | number
     week52Id?: IntWithAggregatesFilter<"Stock"> | number
     dividendId?: IntWithAggregatesFilter<"Stock"> | number
     earningsId?: IntWithAggregatesFilter<"Stock"> | number
-    marketCap?: IntWithAggregatesFilter<"Stock"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
   }
 
   export type PriceWhereInput = {
     AND?: PriceWhereInput | PriceWhereInput[]
     OR?: PriceWhereInput[]
     NOT?: PriceWhereInput | PriceWhereInput[]
-    id?: IntFilter<"Price"> | number
     current?: FloatNullableFilter<"Price"> | number | null
     changePercent?: FloatNullableFilter<"Price"> | number | null
     open?: FloatNullableFilter<"Price"> | number | null
@@ -25685,11 +25459,11 @@ export namespace Prisma {
     previousClose?: FloatNullableFilter<"Price"> | number | null
     postMarketPrice?: FloatNullableFilter<"Price"> | number | null
     postMarketChange?: FloatNullableFilter<"Price"> | number | null
+    id?: IntFilter<"Price"> | number
     Stock?: StockListRelationFilter
   }
 
   export type PriceOrderByWithRelationInput = {
-    id?: SortOrder
     current?: SortOrderInput | SortOrder
     changePercent?: SortOrderInput | SortOrder
     open?: SortOrderInput | SortOrder
@@ -25698,6 +25472,7 @@ export namespace Prisma {
     previousClose?: SortOrderInput | SortOrder
     postMarketPrice?: SortOrderInput | SortOrder
     postMarketChange?: SortOrderInput | SortOrder
+    id?: SortOrder
     Stock?: StockOrderByRelationAggregateInput
   }
 
@@ -25718,7 +25493,6 @@ export namespace Prisma {
   }, "id">
 
   export type PriceOrderByWithAggregationInput = {
-    id?: SortOrder
     current?: SortOrderInput | SortOrder
     changePercent?: SortOrderInput | SortOrder
     open?: SortOrderInput | SortOrder
@@ -25727,6 +25501,7 @@ export namespace Prisma {
     previousClose?: SortOrderInput | SortOrder
     postMarketPrice?: SortOrderInput | SortOrder
     postMarketChange?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: PriceCountOrderByAggregateInput
     _avg?: PriceAvgOrderByAggregateInput
     _max?: PriceMaxOrderByAggregateInput
@@ -25738,7 +25513,6 @@ export namespace Prisma {
     AND?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
     OR?: PriceScalarWhereWithAggregatesInput[]
     NOT?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Price"> | number
     current?: FloatNullableWithAggregatesFilter<"Price"> | number | null
     changePercent?: FloatNullableWithAggregatesFilter<"Price"> | number | null
     open?: FloatNullableWithAggregatesFilter<"Price"> | number | null
@@ -25747,24 +25521,25 @@ export namespace Prisma {
     previousClose?: FloatNullableWithAggregatesFilter<"Price"> | number | null
     postMarketPrice?: FloatNullableWithAggregatesFilter<"Price"> | number | null
     postMarketChange?: FloatNullableWithAggregatesFilter<"Price"> | number | null
+    id?: IntWithAggregatesFilter<"Price"> | number
   }
 
   export type VolumeWhereInput = {
     AND?: VolumeWhereInput | VolumeWhereInput[]
     OR?: VolumeWhereInput[]
     NOT?: VolumeWhereInput | VolumeWhereInput[]
-    id?: IntFilter<"Volume"> | number
     current?: IntNullableFilter<"Volume"> | number | null
     average3Months?: IntNullableFilter<"Volume"> | number | null
     average10Days?: IntNullableFilter<"Volume"> | number | null
+    id?: IntFilter<"Volume"> | number
     Stock?: StockListRelationFilter
   }
 
   export type VolumeOrderByWithRelationInput = {
-    id?: SortOrder
     current?: SortOrderInput | SortOrder
     average3Months?: SortOrderInput | SortOrder
     average10Days?: SortOrderInput | SortOrder
+    id?: SortOrder
     Stock?: StockOrderByRelationAggregateInput
   }
 
@@ -25780,10 +25555,10 @@ export namespace Prisma {
   }, "id">
 
   export type VolumeOrderByWithAggregationInput = {
-    id?: SortOrder
     current?: SortOrderInput | SortOrder
     average3Months?: SortOrderInput | SortOrder
     average10Days?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: VolumeCountOrderByAggregateInput
     _avg?: VolumeAvgOrderByAggregateInput
     _max?: VolumeMaxOrderByAggregateInput
@@ -25795,30 +25570,30 @@ export namespace Prisma {
     AND?: VolumeScalarWhereWithAggregatesInput | VolumeScalarWhereWithAggregatesInput[]
     OR?: VolumeScalarWhereWithAggregatesInput[]
     NOT?: VolumeScalarWhereWithAggregatesInput | VolumeScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Volume"> | number
     current?: IntNullableWithAggregatesFilter<"Volume"> | number | null
     average3Months?: IntNullableWithAggregatesFilter<"Volume"> | number | null
     average10Days?: IntNullableWithAggregatesFilter<"Volume"> | number | null
+    id?: IntWithAggregatesFilter<"Volume"> | number
   }
 
   export type Week52WhereInput = {
     AND?: Week52WhereInput | Week52WhereInput[]
     OR?: Week52WhereInput[]
     NOT?: Week52WhereInput | Week52WhereInput[]
-    id?: IntFilter<"Week52"> | number
     high?: FloatNullableFilter<"Week52"> | number | null
     low?: FloatNullableFilter<"Week52"> | number | null
     changeFromHigh?: FloatNullableFilter<"Week52"> | number | null
     changeFromLow?: FloatNullableFilter<"Week52"> | number | null
+    id?: IntFilter<"Week52"> | number
     Stock?: StockListRelationFilter
   }
 
   export type Week52OrderByWithRelationInput = {
-    id?: SortOrder
     high?: SortOrderInput | SortOrder
     low?: SortOrderInput | SortOrder
     changeFromHigh?: SortOrderInput | SortOrder
     changeFromLow?: SortOrderInput | SortOrder
+    id?: SortOrder
     Stock?: StockOrderByRelationAggregateInput
   }
 
@@ -25835,11 +25610,11 @@ export namespace Prisma {
   }, "id">
 
   export type Week52OrderByWithAggregationInput = {
-    id?: SortOrder
     high?: SortOrderInput | SortOrder
     low?: SortOrderInput | SortOrder
     changeFromHigh?: SortOrderInput | SortOrder
     changeFromLow?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: Week52CountOrderByAggregateInput
     _avg?: Week52AvgOrderByAggregateInput
     _max?: Week52MaxOrderByAggregateInput
@@ -25851,29 +25626,29 @@ export namespace Prisma {
     AND?: Week52ScalarWhereWithAggregatesInput | Week52ScalarWhereWithAggregatesInput[]
     OR?: Week52ScalarWhereWithAggregatesInput[]
     NOT?: Week52ScalarWhereWithAggregatesInput | Week52ScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Week52"> | number
     high?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
     low?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
     changeFromHigh?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
     changeFromLow?: FloatNullableWithAggregatesFilter<"Week52"> | number | null
+    id?: IntWithAggregatesFilter<"Week52"> | number
   }
 
   export type DividendWhereInput = {
     AND?: DividendWhereInput | DividendWhereInput[]
     OR?: DividendWhereInput[]
     NOT?: DividendWhereInput | DividendWhereInput[]
-    id?: IntFilter<"Dividend"> | number
     rate?: FloatNullableFilter<"Dividend"> | number | null
     yield?: FloatNullableFilter<"Dividend"> | number | null
     date?: DateTimeNullableFilter<"Dividend"> | Date | string | null
+    id?: IntFilter<"Dividend"> | number
     Stock?: StockListRelationFilter
   }
 
   export type DividendOrderByWithRelationInput = {
-    id?: SortOrder
     rate?: SortOrderInput | SortOrder
     yield?: SortOrderInput | SortOrder
     date?: SortOrderInput | SortOrder
+    id?: SortOrder
     Stock?: StockOrderByRelationAggregateInput
   }
 
@@ -25889,10 +25664,10 @@ export namespace Prisma {
   }, "id">
 
   export type DividendOrderByWithAggregationInput = {
-    id?: SortOrder
     rate?: SortOrderInput | SortOrder
     yield?: SortOrderInput | SortOrder
     date?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: DividendCountOrderByAggregateInput
     _avg?: DividendAvgOrderByAggregateInput
     _max?: DividendMaxOrderByAggregateInput
@@ -25904,30 +25679,30 @@ export namespace Prisma {
     AND?: DividendScalarWhereWithAggregatesInput | DividendScalarWhereWithAggregatesInput[]
     OR?: DividendScalarWhereWithAggregatesInput[]
     NOT?: DividendScalarWhereWithAggregatesInput | DividendScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Dividend"> | number
     rate?: FloatNullableWithAggregatesFilter<"Dividend"> | number | null
     yield?: FloatNullableWithAggregatesFilter<"Dividend"> | number | null
     date?: DateTimeNullableWithAggregatesFilter<"Dividend"> | Date | string | null
+    id?: IntWithAggregatesFilter<"Dividend"> | number
   }
 
   export type EarningsWhereInput = {
     AND?: EarningsWhereInput | EarningsWhereInput[]
     OR?: EarningsWhereInput[]
     NOT?: EarningsWhereInput | EarningsWhereInput[]
-    id?: IntFilter<"Earnings"> | number
     nextDate?: DateTimeNullableFilter<"Earnings"> | Date | string | null
     epsTrailing12Months?: FloatNullableFilter<"Earnings"> | number | null
     epsForward?: FloatNullableFilter<"Earnings"> | number | null
     peRatio?: FloatNullableFilter<"Earnings"> | number | null
+    id?: IntFilter<"Earnings"> | number
     Stock?: StockListRelationFilter
   }
 
   export type EarningsOrderByWithRelationInput = {
-    id?: SortOrder
     nextDate?: SortOrderInput | SortOrder
     epsTrailing12Months?: SortOrderInput | SortOrder
     epsForward?: SortOrderInput | SortOrder
     peRatio?: SortOrderInput | SortOrder
+    id?: SortOrder
     Stock?: StockOrderByRelationAggregateInput
   }
 
@@ -25944,11 +25719,11 @@ export namespace Prisma {
   }, "id">
 
   export type EarningsOrderByWithAggregationInput = {
-    id?: SortOrder
     nextDate?: SortOrderInput | SortOrder
     epsTrailing12Months?: SortOrderInput | SortOrder
     epsForward?: SortOrderInput | SortOrder
     peRatio?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: EarningsCountOrderByAggregateInput
     _avg?: EarningsAvgOrderByAggregateInput
     _max?: EarningsMaxOrderByAggregateInput
@@ -25960,11 +25735,11 @@ export namespace Prisma {
     AND?: EarningsScalarWhereWithAggregatesInput | EarningsScalarWhereWithAggregatesInput[]
     OR?: EarningsScalarWhereWithAggregatesInput[]
     NOT?: EarningsScalarWhereWithAggregatesInput | EarningsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Earnings"> | number
     nextDate?: DateTimeNullableWithAggregatesFilter<"Earnings"> | Date | string | null
     epsTrailing12Months?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
     epsForward?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
     peRatio?: FloatNullableWithAggregatesFilter<"Earnings"> | number | null
+    id?: IntWithAggregatesFilter<"Earnings"> | number
   }
 
   export type UserCreateInput = {
@@ -25978,11 +25753,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletCreateNestedManyWithoutUserInput
+    comment?: CommentCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
-    comment?: CommentCreateNestedManyWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -25996,11 +25771,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -26014,11 +25789,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUpdateManyWithoutUserNestedInput
+    comment?: CommentUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
-    comment?: CommentUpdateManyWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -26032,11 +25807,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -26499,8 +26274,8 @@ export namespace Prisma {
     dateComment: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    user?: UserCreateNestedOneWithoutCommentInput
     news?: NewsCreateNestedOneWithoutCommentInput
+    user?: UserCreateNestedOneWithoutCommentInput
   }
 
   export type CommentUncheckedCreateInput = {
@@ -26519,8 +26294,8 @@ export namespace Prisma {
     dateComment?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneWithoutCommentNestedInput
     news?: NewsUpdateOneWithoutCommentNestedInput
+    user?: UserUpdateOneWithoutCommentNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
@@ -26567,8 +26342,8 @@ export namespace Prisma {
     balanceDollars: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutWalletInput
     transactions?: WalletTransactionCreateNestedManyWithoutWalletInput
+    user: UserCreateNestedOneWithoutWalletInput
   }
 
   export type walletUncheckedCreateInput = {
@@ -26587,8 +26362,8 @@ export namespace Prisma {
     balanceDollars?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutWalletNestedInput
     transactions?: WalletTransactionUpdateManyWithoutWalletNestedInput
+    user?: UserUpdateOneRequiredWithoutWalletNestedInput
   }
 
   export type walletUncheckedUpdateInput = {
@@ -26823,92 +26598,92 @@ export namespace Prisma {
 
   export type ProfileCreateInput = {
     id?: string
-    mainGoal?: $Enums.MainGoal | null
-    financialSkills?: $Enums.FinancialSkills | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyInvestment?: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: $Enums.SavingsReason | null
-    investmentTimeframe?: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: boolean | null
-    financialGoalNextYear?: boolean | null
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    savingsOrInvestmentReason?: string | null
     user: UserCreateNestedOneWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
     id?: string
     userId: string
-    mainGoal?: $Enums.MainGoal | null
-    financialSkills?: $Enums.FinancialSkills | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyInvestment?: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: $Enums.SavingsReason | null
-    investmentTimeframe?: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: boolean | null
-    financialGoalNextYear?: boolean | null
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    savingsOrInvestmentReason?: string | null
   }
 
   export type ProfileUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProfileCreateManyInput = {
     id?: string
     userId: string
-    mainGoal?: $Enums.MainGoal | null
-    financialSkills?: $Enums.FinancialSkills | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyInvestment?: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: $Enums.SavingsReason | null
-    investmentTimeframe?: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: boolean | null
-    financialGoalNextYear?: boolean | null
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    savingsOrInvestmentReason?: string | null
   }
 
   export type ProfileUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProfileUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StockCreateInput = {
@@ -26919,27 +26694,27 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
-    dividend: DividendCreateNestedOneWithoutStockInput
-    earnings: EarningsCreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateInput = {
@@ -26950,43 +26725,43 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
-    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
-    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockCreateManyInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateManyMutationInput = {
@@ -27000,19 +26775,19 @@ export namespace Prisma {
   }
 
   export type StockUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PriceCreateInput = {
@@ -27028,7 +26803,6 @@ export namespace Prisma {
   }
 
   export type PriceUncheckedCreateInput = {
-    id?: number
     current?: number | null
     changePercent?: number | null
     open?: number | null
@@ -27037,6 +26811,7 @@ export namespace Prisma {
     previousClose?: number | null
     postMarketPrice?: number | null
     postMarketChange?: number | null
+    id?: number
     Stock?: StockUncheckedCreateNestedManyWithoutPriceInput
   }
 
@@ -27053,7 +26828,6 @@ export namespace Prisma {
   }
 
   export type PriceUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableFloatFieldUpdateOperationsInput | number | null
     changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
     open?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -27062,11 +26836,11 @@ export namespace Prisma {
     previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
     Stock?: StockUncheckedUpdateManyWithoutPriceNestedInput
   }
 
   export type PriceCreateManyInput = {
-    id?: number
     current?: number | null
     changePercent?: number | null
     open?: number | null
@@ -27075,6 +26849,7 @@ export namespace Prisma {
     previousClose?: number | null
     postMarketPrice?: number | null
     postMarketChange?: number | null
+    id?: number
   }
 
   export type PriceUpdateManyMutationInput = {
@@ -27089,7 +26864,6 @@ export namespace Prisma {
   }
 
   export type PriceUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableFloatFieldUpdateOperationsInput | number | null
     changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
     open?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -27098,6 +26872,7 @@ export namespace Prisma {
     previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type VolumeCreateInput = {
@@ -27108,10 +26883,10 @@ export namespace Prisma {
   }
 
   export type VolumeUncheckedCreateInput = {
-    id?: number
     current?: number | null
     average3Months?: number | null
     average10Days?: number | null
+    id?: number
     Stock?: StockUncheckedCreateNestedManyWithoutVolumeInput
   }
 
@@ -27123,18 +26898,18 @@ export namespace Prisma {
   }
 
   export type VolumeUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableIntFieldUpdateOperationsInput | number | null
     average3Months?: NullableIntFieldUpdateOperationsInput | number | null
     average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
     Stock?: StockUncheckedUpdateManyWithoutVolumeNestedInput
   }
 
   export type VolumeCreateManyInput = {
-    id?: number
     current?: number | null
     average3Months?: number | null
     average10Days?: number | null
+    id?: number
   }
 
   export type VolumeUpdateManyMutationInput = {
@@ -27144,10 +26919,10 @@ export namespace Prisma {
   }
 
   export type VolumeUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableIntFieldUpdateOperationsInput | number | null
     average3Months?: NullableIntFieldUpdateOperationsInput | number | null
     average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type Week52CreateInput = {
@@ -27159,11 +26934,11 @@ export namespace Prisma {
   }
 
   export type Week52UncheckedCreateInput = {
-    id?: number
     high?: number | null
     low?: number | null
     changeFromHigh?: number | null
     changeFromLow?: number | null
+    id?: number
     Stock?: StockUncheckedCreateNestedManyWithoutWeek52Input
   }
 
@@ -27176,20 +26951,20 @@ export namespace Prisma {
   }
 
   export type Week52UncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     high?: NullableFloatFieldUpdateOperationsInput | number | null
     low?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
     Stock?: StockUncheckedUpdateManyWithoutWeek52NestedInput
   }
 
   export type Week52CreateManyInput = {
-    id?: number
     high?: number | null
     low?: number | null
     changeFromHigh?: number | null
     changeFromLow?: number | null
+    id?: number
   }
 
   export type Week52UpdateManyMutationInput = {
@@ -27200,11 +26975,11 @@ export namespace Prisma {
   }
 
   export type Week52UncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     high?: NullableFloatFieldUpdateOperationsInput | number | null
     low?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type DividendCreateInput = {
@@ -27215,10 +26990,10 @@ export namespace Prisma {
   }
 
   export type DividendUncheckedCreateInput = {
-    id?: number
     rate?: number | null
     yield?: number | null
     date?: Date | string | null
+    id?: number
     Stock?: StockUncheckedCreateNestedManyWithoutDividendInput
   }
 
@@ -27230,18 +27005,18 @@ export namespace Prisma {
   }
 
   export type DividendUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     rate?: NullableFloatFieldUpdateOperationsInput | number | null
     yield?: NullableFloatFieldUpdateOperationsInput | number | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
     Stock?: StockUncheckedUpdateManyWithoutDividendNestedInput
   }
 
   export type DividendCreateManyInput = {
-    id?: number
     rate?: number | null
     yield?: number | null
     date?: Date | string | null
+    id?: number
   }
 
   export type DividendUpdateManyMutationInput = {
@@ -27251,10 +27026,10 @@ export namespace Prisma {
   }
 
   export type DividendUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     rate?: NullableFloatFieldUpdateOperationsInput | number | null
     yield?: NullableFloatFieldUpdateOperationsInput | number | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type EarningsCreateInput = {
@@ -27266,11 +27041,11 @@ export namespace Prisma {
   }
 
   export type EarningsUncheckedCreateInput = {
-    id?: number
     nextDate?: Date | string | null
     epsTrailing12Months?: number | null
     epsForward?: number | null
     peRatio?: number | null
+    id?: number
     Stock?: StockUncheckedCreateNestedManyWithoutEarningsInput
   }
 
@@ -27283,20 +27058,20 @@ export namespace Prisma {
   }
 
   export type EarningsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
     epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
     peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
     Stock?: StockUncheckedUpdateManyWithoutEarningsNestedInput
   }
 
   export type EarningsCreateManyInput = {
-    id?: number
     nextDate?: Date | string | null
     epsTrailing12Months?: number | null
     epsForward?: number | null
     peRatio?: number | null
+    id?: number
   }
 
   export type EarningsUpdateManyMutationInput = {
@@ -27307,11 +27082,11 @@ export namespace Prisma {
   }
 
   export type EarningsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
     epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
     peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -27367,10 +27142,10 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type WalletListRelationFilter = {
-    every?: walletWhereInput
-    some?: walletWhereInput
-    none?: walletWhereInput
+  export type CommentListRelationFilter = {
+    every?: CommentWhereInput
+    some?: CommentWhereInput
+    none?: CommentWhereInput
   }
 
   export type FinancialRadiographyListRelationFilter = {
@@ -27384,16 +27159,16 @@ export namespace Prisma {
     isNot?: ProfileWhereInput | null
   }
 
-  export type CommentListRelationFilter = {
-    every?: CommentWhereInput
-    some?: CommentWhereInput
-    none?: CommentWhereInput
-  }
-
   export type SupportListRelationFilter = {
     every?: SupportWhereInput
     some?: SupportWhereInput
     none?: SupportWhereInput
+  }
+
+  export type WalletListRelationFilter = {
+    every?: walletWhereInput
+    some?: walletWhereInput
+    none?: walletWhereInput
   }
 
   export type SortOrderInput = {
@@ -27401,7 +27176,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type walletOrderByRelationAggregateInput = {
+  export type CommentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27409,11 +27184,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CommentOrderByRelationAggregateInput = {
+  export type SupportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type SupportOrderByRelationAggregateInput = {
+  export type walletOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27875,14 +27650,14 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
-  }
-
   export type NewsNullableScalarRelationFilter = {
     is?: NewsWhereInput | null
     isNot?: NewsWhereInput | null
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type CommentCountOrderByAggregateInput = {
@@ -28110,158 +27885,53 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type EnumMainGoalNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMainGoalNullableFilter<$PrismaModel> | $Enums.MainGoal | null
-  }
-
-  export type EnumFinancialSkillsNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel> | $Enums.FinancialSkills | null
-  }
-
-  export type EnumRiskToleranceNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.RiskTolerance | EnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRiskToleranceNullableFilter<$PrismaModel> | $Enums.RiskTolerance | null
-  }
-
-  export type EnumMonthlyInvestmentNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
-  }
-
-  export type EnumSavingsReasonNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSavingsReasonNullableFilter<$PrismaModel> | $Enums.SavingsReason | null
-  }
-
-  export type EnumInvestmentTimeframeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
-  }
-
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type ProfileCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    mainGoal?: SortOrder
-    financialSkills?: SortOrder
     riskTolerance?: SortOrder
+    investmentHorizon?: SortOrder
+    financialSkills?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoal?: SortOrder
+    mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
     savingsOrInvestmentReason?: SortOrder
-    investmentTimeframe?: SortOrder
-    hasInvestedBefore?: SortOrder
-    financialGoalNextYear?: SortOrder
   }
 
   export type ProfileMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    mainGoal?: SortOrder
-    financialSkills?: SortOrder
     riskTolerance?: SortOrder
+    investmentHorizon?: SortOrder
+    financialSkills?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoal?: SortOrder
+    mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
     savingsOrInvestmentReason?: SortOrder
-    investmentTimeframe?: SortOrder
-    hasInvestedBefore?: SortOrder
-    financialGoalNextYear?: SortOrder
   }
 
   export type ProfileMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    mainGoal?: SortOrder
-    financialSkills?: SortOrder
     riskTolerance?: SortOrder
+    investmentHorizon?: SortOrder
+    financialSkills?: SortOrder
+    hasInvestedBefore?: SortOrder
+    financialGoal?: SortOrder
+    mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
     savingsOrInvestmentReason?: SortOrder
-    investmentTimeframe?: SortOrder
-    hasInvestedBefore?: SortOrder
-    financialGoalNextYear?: SortOrder
   }
 
-  export type EnumMainGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.MainGoal | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumMainGoalNullableFilter<$PrismaModel>
-    _max?: NestedEnumMainGoalNullableFilter<$PrismaModel>
+  export type DividendScalarRelationFilter = {
+    is?: DividendWhereInput
+    isNot?: DividendWhereInput
   }
 
-  export type EnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialSkills | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
-    _max?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
-  }
-
-  export type EnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RiskTolerance | EnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel> | $Enums.RiskTolerance | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
-    _max?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
-  }
-
-  export type EnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
-    _max?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
-  }
-
-  export type EnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.SavingsReason | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
-    _max?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
-  }
-
-  export type EnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
-    _max?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type EarningsScalarRelationFilter = {
+    is?: EarningsWhereInput
+    isNot?: EarningsWhereInput
   }
 
   export type PriceScalarRelationFilter = {
@@ -28279,82 +27949,72 @@ export namespace Prisma {
     isNot?: Week52WhereInput
   }
 
-  export type DividendScalarRelationFilter = {
-    is?: DividendWhereInput
-    isNot?: DividendWhereInput
-  }
-
-  export type EarningsScalarRelationFilter = {
-    is?: EarningsWhereInput
-    isNot?: EarningsWhereInput
-  }
-
   export type StockCountOrderByAggregateInput = {
-    id?: SortOrder
     symbol?: SortOrder
     name?: SortOrder
     currency?: SortOrder
     market?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
-    marketCap?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type StockAvgOrderByAggregateInput = {
+    marketCap?: SortOrder
     id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
-    marketCap?: SortOrder
   }
 
   export type StockMaxOrderByAggregateInput = {
-    id?: SortOrder
     symbol?: SortOrder
     name?: SortOrder
     currency?: SortOrder
     market?: SortOrder
+    marketCap?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
-    marketCap?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type StockMinOrderByAggregateInput = {
-    id?: SortOrder
     symbol?: SortOrder
     name?: SortOrder
     currency?: SortOrder
     market?: SortOrder
-    priceId?: SortOrder
-    volumeId?: SortOrder
-    week52Id?: SortOrder
-    dividendId?: SortOrder
-    earningsId?: SortOrder
     marketCap?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type StockSumOrderByAggregateInput = {
     id?: SortOrder
     priceId?: SortOrder
     volumeId?: SortOrder
     week52Id?: SortOrder
     dividendId?: SortOrder
     earningsId?: SortOrder
+  }
+
+  export type StockSumOrderByAggregateInput = {
     marketCap?: SortOrder
+    id?: SortOrder
+    priceId?: SortOrder
+    volumeId?: SortOrder
+    week52Id?: SortOrder
+    dividendId?: SortOrder
+    earningsId?: SortOrder
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -28379,7 +28039,6 @@ export namespace Prisma {
   }
 
   export type PriceCountOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     changePercent?: SortOrder
     open?: SortOrder
@@ -28388,10 +28047,10 @@ export namespace Prisma {
     previousClose?: SortOrder
     postMarketPrice?: SortOrder
     postMarketChange?: SortOrder
+    id?: SortOrder
   }
 
   export type PriceAvgOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     changePercent?: SortOrder
     open?: SortOrder
@@ -28400,10 +28059,10 @@ export namespace Prisma {
     previousClose?: SortOrder
     postMarketPrice?: SortOrder
     postMarketChange?: SortOrder
+    id?: SortOrder
   }
 
   export type PriceMaxOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     changePercent?: SortOrder
     open?: SortOrder
@@ -28412,10 +28071,10 @@ export namespace Prisma {
     previousClose?: SortOrder
     postMarketPrice?: SortOrder
     postMarketChange?: SortOrder
+    id?: SortOrder
   }
 
   export type PriceMinOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     changePercent?: SortOrder
     open?: SortOrder
@@ -28424,10 +28083,10 @@ export namespace Prisma {
     previousClose?: SortOrder
     postMarketPrice?: SortOrder
     postMarketChange?: SortOrder
+    id?: SortOrder
   }
 
   export type PriceSumOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     changePercent?: SortOrder
     open?: SortOrder
@@ -28436,6 +28095,7 @@ export namespace Prisma {
     previousClose?: SortOrder
     postMarketPrice?: SortOrder
     postMarketChange?: SortOrder
+    id?: SortOrder
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -28466,38 +28126,38 @@ export namespace Prisma {
   }
 
   export type VolumeCountOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     average3Months?: SortOrder
     average10Days?: SortOrder
+    id?: SortOrder
   }
 
   export type VolumeAvgOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     average3Months?: SortOrder
     average10Days?: SortOrder
+    id?: SortOrder
   }
 
   export type VolumeMaxOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     average3Months?: SortOrder
     average10Days?: SortOrder
+    id?: SortOrder
   }
 
   export type VolumeMinOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     average3Months?: SortOrder
     average10Days?: SortOrder
+    id?: SortOrder
   }
 
   export type VolumeSumOrderByAggregateInput = {
-    id?: SortOrder
     current?: SortOrder
     average3Months?: SortOrder
     average10Days?: SortOrder
+    id?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -28517,43 +28177,43 @@ export namespace Prisma {
   }
 
   export type Week52CountOrderByAggregateInput = {
-    id?: SortOrder
     high?: SortOrder
     low?: SortOrder
     changeFromHigh?: SortOrder
     changeFromLow?: SortOrder
+    id?: SortOrder
   }
 
   export type Week52AvgOrderByAggregateInput = {
-    id?: SortOrder
     high?: SortOrder
     low?: SortOrder
     changeFromHigh?: SortOrder
     changeFromLow?: SortOrder
+    id?: SortOrder
   }
 
   export type Week52MaxOrderByAggregateInput = {
-    id?: SortOrder
     high?: SortOrder
     low?: SortOrder
     changeFromHigh?: SortOrder
     changeFromLow?: SortOrder
+    id?: SortOrder
   }
 
   export type Week52MinOrderByAggregateInput = {
-    id?: SortOrder
     high?: SortOrder
     low?: SortOrder
     changeFromHigh?: SortOrder
     changeFromLow?: SortOrder
+    id?: SortOrder
   }
 
   export type Week52SumOrderByAggregateInput = {
-    id?: SortOrder
     high?: SortOrder
     low?: SortOrder
     changeFromHigh?: SortOrder
     changeFromLow?: SortOrder
+    id?: SortOrder
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -28568,36 +28228,36 @@ export namespace Prisma {
   }
 
   export type DividendCountOrderByAggregateInput = {
-    id?: SortOrder
     rate?: SortOrder
     yield?: SortOrder
     date?: SortOrder
+    id?: SortOrder
   }
 
   export type DividendAvgOrderByAggregateInput = {
-    id?: SortOrder
     rate?: SortOrder
     yield?: SortOrder
+    id?: SortOrder
   }
 
   export type DividendMaxOrderByAggregateInput = {
-    id?: SortOrder
     rate?: SortOrder
     yield?: SortOrder
     date?: SortOrder
+    id?: SortOrder
   }
 
   export type DividendMinOrderByAggregateInput = {
-    id?: SortOrder
     rate?: SortOrder
     yield?: SortOrder
     date?: SortOrder
+    id?: SortOrder
   }
 
   export type DividendSumOrderByAggregateInput = {
-    id?: SortOrder
     rate?: SortOrder
     yield?: SortOrder
+    id?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -28615,48 +28275,48 @@ export namespace Prisma {
   }
 
   export type EarningsCountOrderByAggregateInput = {
-    id?: SortOrder
     nextDate?: SortOrder
     epsTrailing12Months?: SortOrder
     epsForward?: SortOrder
     peRatio?: SortOrder
+    id?: SortOrder
   }
 
   export type EarningsAvgOrderByAggregateInput = {
-    id?: SortOrder
     epsTrailing12Months?: SortOrder
     epsForward?: SortOrder
     peRatio?: SortOrder
+    id?: SortOrder
   }
 
   export type EarningsMaxOrderByAggregateInput = {
-    id?: SortOrder
     nextDate?: SortOrder
     epsTrailing12Months?: SortOrder
     epsForward?: SortOrder
     peRatio?: SortOrder
+    id?: SortOrder
   }
 
   export type EarningsMinOrderByAggregateInput = {
-    id?: SortOrder
     nextDate?: SortOrder
     epsTrailing12Months?: SortOrder
     epsForward?: SortOrder
     peRatio?: SortOrder
+    id?: SortOrder
   }
 
   export type EarningsSumOrderByAggregateInput = {
-    id?: SortOrder
     epsTrailing12Months?: SortOrder
     epsForward?: SortOrder
     peRatio?: SortOrder
+    id?: SortOrder
   }
 
-  export type walletCreateNestedManyWithoutUserInput = {
-    create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
-    createMany?: walletCreateManyUserInputEnvelope
-    connect?: walletWhereUniqueInput | walletWhereUniqueInput[]
+  export type CommentCreateNestedManyWithoutUserInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type FinancialRadiographyCreateNestedManyWithoutUserInput = {
@@ -28672,13 +28332,6 @@ export namespace Prisma {
     connect?: ProfileWhereUniqueInput
   }
 
-  export type CommentCreateNestedManyWithoutUserInput = {
-    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
-    createMany?: CommentCreateManyUserInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
   export type SupportCreateNestedManyWithoutUserInput = {
     create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
@@ -28686,11 +28339,18 @@ export namespace Prisma {
     connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
   }
 
-  export type walletUncheckedCreateNestedManyWithoutUserInput = {
+  export type walletCreateNestedManyWithoutUserInput = {
     create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
     connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
     createMany?: walletCreateManyUserInputEnvelope
     connect?: walletWhereUniqueInput | walletWhereUniqueInput[]
+  }
+
+  export type CommentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput = {
@@ -28706,18 +28366,18 @@ export namespace Prisma {
     connect?: ProfileWhereUniqueInput
   }
 
-  export type CommentUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
-    createMany?: CommentCreateManyUserInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
   export type SupportUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
     createMany?: SupportCreateManyUserInputEnvelope
     connect?: SupportWhereUniqueInput | SupportWhereUniqueInput[]
+  }
+
+  export type walletUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
+    createMany?: walletCreateManyUserInputEnvelope
+    connect?: walletWhereUniqueInput | walletWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -28740,18 +28400,18 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type walletUpdateManyWithoutUserNestedInput = {
-    create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
-    upsert?: walletUpsertWithWhereUniqueWithoutUserInput | walletUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: walletCreateManyUserInputEnvelope
-    set?: walletWhereUniqueInput | walletWhereUniqueInput[]
-    disconnect?: walletWhereUniqueInput | walletWhereUniqueInput[]
-    delete?: walletWhereUniqueInput | walletWhereUniqueInput[]
-    connect?: walletWhereUniqueInput | walletWhereUniqueInput[]
-    update?: walletUpdateWithWhereUniqueWithoutUserInput | walletUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: walletUpdateManyWithWhereWithoutUserInput | walletUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: walletScalarWhereInput | walletScalarWhereInput[]
+  export type CommentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type FinancialRadiographyUpdateManyWithoutUserNestedInput = {
@@ -28778,20 +28438,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
   }
 
-  export type CommentUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CommentCreateManyUserInputEnvelope
-    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
   export type SupportUpdateManyWithoutUserNestedInput = {
     create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
@@ -28806,7 +28452,7 @@ export namespace Prisma {
     deleteMany?: SupportScalarWhereInput | SupportScalarWhereInput[]
   }
 
-  export type walletUncheckedUpdateManyWithoutUserNestedInput = {
+  export type walletUpdateManyWithoutUserNestedInput = {
     create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
     connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
     upsert?: walletUpsertWithWhereUniqueWithoutUserInput | walletUpsertWithWhereUniqueWithoutUserInput[]
@@ -28818,6 +28464,20 @@ export namespace Prisma {
     update?: walletUpdateWithWhereUniqueWithoutUserInput | walletUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: walletUpdateManyWithWhereWithoutUserInput | walletUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: walletScalarWhereInput | walletScalarWhereInput[]
+  }
+
+  export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput = {
@@ -28844,20 +28504,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
   }
 
-  export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CommentCreateManyUserInputEnvelope
-    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
   export type SupportUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
@@ -28870,6 +28516,20 @@ export namespace Prisma {
     update?: SupportUpdateWithWhereUniqueWithoutUserInput | SupportUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SupportUpdateManyWithWhereWithoutUserInput | SupportUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SupportScalarWhereInput | SupportScalarWhereInput[]
+  }
+
+  export type walletUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput> | walletCreateWithoutUserInput[] | walletUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: walletCreateOrConnectWithoutUserInput | walletCreateOrConnectWithoutUserInput[]
+    upsert?: walletUpsertWithWhereUniqueWithoutUserInput | walletUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: walletCreateManyUserInputEnvelope
+    set?: walletWhereUniqueInput | walletWhereUniqueInput[]
+    disconnect?: walletWhereUniqueInput | walletWhereUniqueInput[]
+    delete?: walletWhereUniqueInput | walletWhereUniqueInput[]
+    connect?: walletWhereUniqueInput | walletWhereUniqueInput[]
+    update?: walletUpdateWithWhereUniqueWithoutUserInput | walletUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: walletUpdateManyWithWhereWithoutUserInput | walletUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: walletScalarWhereInput | walletScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -29068,26 +28728,16 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutCommentInput = {
-    create?: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCommentInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type NewsCreateNestedOneWithoutCommentInput = {
     create?: XOR<NewsCreateWithoutCommentInput, NewsUncheckedCreateWithoutCommentInput>
     connectOrCreate?: NewsCreateOrConnectWithoutCommentInput
     connect?: NewsWhereUniqueInput
   }
 
-  export type UserUpdateOneWithoutCommentNestedInput = {
+  export type UserCreateNestedOneWithoutCommentInput = {
     create?: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
     connectOrCreate?: UserCreateOrConnectWithoutCommentInput
-    upsert?: UserUpsertWithoutCommentInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentInput, UserUpdateWithoutCommentInput>, UserUncheckedUpdateWithoutCommentInput>
   }
 
   export type NewsUpdateOneWithoutCommentNestedInput = {
@@ -29100,10 +28750,14 @@ export namespace Prisma {
     update?: XOR<XOR<NewsUpdateToOneWithWhereWithoutCommentInput, NewsUpdateWithoutCommentInput>, NewsUncheckedUpdateWithoutCommentInput>
   }
 
-  export type UserCreateNestedOneWithoutWalletInput = {
-    create?: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWalletInput
+  export type UserUpdateOneWithoutCommentNestedInput = {
+    create?: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentInput
+    upsert?: UserUpsertWithoutCommentInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentInput, UserUpdateWithoutCommentInput>, UserUncheckedUpdateWithoutCommentInput>
   }
 
   export type WalletTransactionCreateNestedManyWithoutWalletInput = {
@@ -29113,19 +28767,17 @@ export namespace Prisma {
     connect?: WalletTransactionWhereUniqueInput | WalletTransactionWhereUniqueInput[]
   }
 
+  export type UserCreateNestedOneWithoutWalletInput = {
+    create?: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWalletInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type WalletTransactionUncheckedCreateNestedManyWithoutWalletInput = {
     create?: XOR<WalletTransactionCreateWithoutWalletInput, WalletTransactionUncheckedCreateWithoutWalletInput> | WalletTransactionCreateWithoutWalletInput[] | WalletTransactionUncheckedCreateWithoutWalletInput[]
     connectOrCreate?: WalletTransactionCreateOrConnectWithoutWalletInput | WalletTransactionCreateOrConnectWithoutWalletInput[]
     createMany?: WalletTransactionCreateManyWalletInputEnvelope
     connect?: WalletTransactionWhereUniqueInput | WalletTransactionWhereUniqueInput[]
-  }
-
-  export type UserUpdateOneRequiredWithoutWalletNestedInput = {
-    create?: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWalletInput
-    upsert?: UserUpsertWithoutWalletInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWalletInput, UserUpdateWithoutWalletInput>, UserUncheckedUpdateWithoutWalletInput>
   }
 
   export type WalletTransactionUpdateManyWithoutWalletNestedInput = {
@@ -29140,6 +28792,14 @@ export namespace Prisma {
     update?: WalletTransactionUpdateWithWhereUniqueWithoutWalletInput | WalletTransactionUpdateWithWhereUniqueWithoutWalletInput[]
     updateMany?: WalletTransactionUpdateManyWithWhereWithoutWalletInput | WalletTransactionUpdateManyWithWhereWithoutWalletInput[]
     deleteMany?: WalletTransactionScalarWhereInput | WalletTransactionScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutWalletNestedInput = {
+    create?: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWalletInput
+    upsert?: UserUpsertWithoutWalletInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWalletInput, UserUpdateWithoutWalletInput>, UserUncheckedUpdateWithoutWalletInput>
   }
 
   export type WalletTransactionUncheckedUpdateManyWithoutWalletNestedInput = {
@@ -29202,40 +28862,24 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableEnumMainGoalFieldUpdateOperationsInput = {
-    set?: $Enums.MainGoal | null
-  }
-
-  export type NullableEnumFinancialSkillsFieldUpdateOperationsInput = {
-    set?: $Enums.FinancialSkills | null
-  }
-
-  export type NullableEnumRiskToleranceFieldUpdateOperationsInput = {
-    set?: $Enums.RiskTolerance | null
-  }
-
-  export type NullableEnumMonthlyInvestmentFieldUpdateOperationsInput = {
-    set?: $Enums.MonthlyInvestment | null
-  }
-
-  export type NullableEnumSavingsReasonFieldUpdateOperationsInput = {
-    set?: $Enums.SavingsReason | null
-  }
-
-  export type NullableEnumInvestmentTimeframeFieldUpdateOperationsInput = {
-    set?: $Enums.InvestmentTimeframe | null
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
   export type UserUpdateOneRequiredWithoutProfileNestedInput = {
     create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
     connectOrCreate?: UserCreateOrConnectWithoutProfileInput
     upsert?: UserUpsertWithoutProfileInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type DividendCreateNestedOneWithoutStockInput = {
+    create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+    connectOrCreate?: DividendCreateOrConnectWithoutStockInput
+    connect?: DividendWhereUniqueInput
+  }
+
+  export type EarningsCreateNestedOneWithoutStockInput = {
+    create?: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+    connectOrCreate?: EarningsCreateOrConnectWithoutStockInput
+    connect?: EarningsWhereUniqueInput
   }
 
   export type PriceCreateNestedOneWithoutStockInput = {
@@ -29256,16 +28900,20 @@ export namespace Prisma {
     connect?: Week52WhereUniqueInput
   }
 
-  export type DividendCreateNestedOneWithoutStockInput = {
+  export type DividendUpdateOneRequiredWithoutStockNestedInput = {
     create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
     connectOrCreate?: DividendCreateOrConnectWithoutStockInput
+    upsert?: DividendUpsertWithoutStockInput
     connect?: DividendWhereUniqueInput
+    update?: XOR<XOR<DividendUpdateToOneWithWhereWithoutStockInput, DividendUpdateWithoutStockInput>, DividendUncheckedUpdateWithoutStockInput>
   }
 
-  export type EarningsCreateNestedOneWithoutStockInput = {
+  export type EarningsUpdateOneRequiredWithoutStockNestedInput = {
     create?: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
     connectOrCreate?: EarningsCreateOrConnectWithoutStockInput
+    upsert?: EarningsUpsertWithoutStockInput
     connect?: EarningsWhereUniqueInput
+    update?: XOR<XOR<EarningsUpdateToOneWithWhereWithoutStockInput, EarningsUpdateWithoutStockInput>, EarningsUncheckedUpdateWithoutStockInput>
   }
 
   export type PriceUpdateOneRequiredWithoutStockNestedInput = {
@@ -29290,22 +28938,6 @@ export namespace Prisma {
     upsert?: Week52UpsertWithoutStockInput
     connect?: Week52WhereUniqueInput
     update?: XOR<XOR<Week52UpdateToOneWithWhereWithoutStockInput, Week52UpdateWithoutStockInput>, Week52UncheckedUpdateWithoutStockInput>
-  }
-
-  export type DividendUpdateOneRequiredWithoutStockNestedInput = {
-    create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
-    connectOrCreate?: DividendCreateOrConnectWithoutStockInput
-    upsert?: DividendUpsertWithoutStockInput
-    connect?: DividendWhereUniqueInput
-    update?: XOR<XOR<DividendUpdateToOneWithWhereWithoutStockInput, DividendUpdateWithoutStockInput>, DividendUncheckedUpdateWithoutStockInput>
-  }
-
-  export type EarningsUpdateOneRequiredWithoutStockNestedInput = {
-    create?: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
-    connectOrCreate?: EarningsCreateOrConnectWithoutStockInput
-    upsert?: EarningsUpsertWithoutStockInput
-    connect?: EarningsWhereUniqueInput
-    update?: XOR<XOR<EarningsUpdateToOneWithWhereWithoutStockInput, EarningsUpdateWithoutStockInput>, EarningsUncheckedUpdateWithoutStockInput>
   }
 
   export type StockCreateNestedManyWithoutPriceInput = {
@@ -29815,121 +29447,6 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumMainGoalNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMainGoalNullableFilter<$PrismaModel> | $Enums.MainGoal | null
-  }
-
-  export type NestedEnumFinancialSkillsNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel> | $Enums.FinancialSkills | null
-  }
-
-  export type NestedEnumRiskToleranceNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.RiskTolerance | EnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRiskToleranceNullableFilter<$PrismaModel> | $Enums.RiskTolerance | null
-  }
-
-  export type NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
-  }
-
-  export type NestedEnumSavingsReasonNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSavingsReasonNullableFilter<$PrismaModel> | $Enums.SavingsReason | null
-  }
-
-  export type NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.MainGoal | EnumMainGoalFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MainGoal[] | ListEnumMainGoalFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMainGoalNullableWithAggregatesFilter<$PrismaModel> | $Enums.MainGoal | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumMainGoalNullableFilter<$PrismaModel>
-    _max?: NestedEnumMainGoalNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FinancialSkills | EnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FinancialSkills[] | ListEnumFinancialSkillsFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFinancialSkillsNullableWithAggregatesFilter<$PrismaModel> | $Enums.FinancialSkills | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
-    _max?: NestedEnumFinancialSkillsNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RiskTolerance | EnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RiskTolerance[] | ListEnumRiskToleranceFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRiskToleranceNullableWithAggregatesFilter<$PrismaModel> | $Enums.RiskTolerance | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
-    _max?: NestedEnumRiskToleranceNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.MonthlyInvestment | EnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.MonthlyInvestment[] | ListEnumMonthlyInvestmentFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumMonthlyInvestmentNullableWithAggregatesFilter<$PrismaModel> | $Enums.MonthlyInvestment | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
-    _max?: NestedEnumMonthlyInvestmentNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SavingsReason | EnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SavingsReason[] | ListEnumSavingsReasonFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSavingsReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.SavingsReason | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
-    _max?: NestedEnumSavingsReasonNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.InvestmentTimeframe | EnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.InvestmentTimeframe[] | ListEnumInvestmentTimeframeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumInvestmentTimeframeNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvestmentTimeframe | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
-    _max?: NestedEnumInvestmentTimeframeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -29998,31 +29515,31 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type walletCreateWithoutUserInput = {
+  export type CommentCreateWithoutUserInput = {
     id?: string
-    balancePesos: number
-    balanceDollars: number
+    content: string
+    dateComment: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    transactions?: WalletTransactionCreateNestedManyWithoutWalletInput
+    news?: NewsCreateNestedOneWithoutCommentInput
   }
 
-  export type walletUncheckedCreateWithoutUserInput = {
+  export type CommentUncheckedCreateWithoutUserInput = {
     id?: string
-    balancePesos: number
-    balanceDollars: number
+    content: string
+    dateComment: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    transactions?: WalletTransactionUncheckedCreateNestedManyWithoutWalletInput
+    newsId?: string | null
   }
 
-  export type walletCreateOrConnectWithoutUserInput = {
-    where: walletWhereUniqueInput
-    create: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput>
+  export type CommentCreateOrConnectWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
   }
 
-  export type walletCreateManyUserInputEnvelope = {
-    data: walletCreateManyUserInput | walletCreateManyUserInput[]
+  export type CommentCreateManyUserInputEnvelope = {
+    data: CommentCreateManyUserInput | CommentCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -30056,59 +29573,31 @@ export namespace Prisma {
 
   export type ProfileCreateWithoutUserInput = {
     id?: string
-    mainGoal?: $Enums.MainGoal | null
-    financialSkills?: $Enums.FinancialSkills | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyInvestment?: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: $Enums.SavingsReason | null
-    investmentTimeframe?: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: boolean | null
-    financialGoalNextYear?: boolean | null
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    savingsOrInvestmentReason?: string | null
   }
 
   export type ProfileUncheckedCreateWithoutUserInput = {
     id?: string
-    mainGoal?: $Enums.MainGoal | null
-    financialSkills?: $Enums.FinancialSkills | null
-    riskTolerance?: $Enums.RiskTolerance | null
-    monthlyInvestment?: $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: $Enums.SavingsReason | null
-    investmentTimeframe?: $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: boolean | null
-    financialGoalNextYear?: boolean | null
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    savingsOrInvestmentReason?: string | null
   }
 
   export type ProfileCreateOrConnectWithoutUserInput = {
     where: ProfileWhereUniqueInput
     create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-  }
-
-  export type CommentCreateWithoutUserInput = {
-    id?: string
-    content: string
-    dateComment: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    news?: NewsCreateNestedOneWithoutCommentInput
-  }
-
-  export type CommentUncheckedCreateWithoutUserInput = {
-    id?: string
-    content: string
-    dateComment: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    newsId?: string | null
-  }
-
-  export type CommentCreateOrConnectWithoutUserInput = {
-    where: CommentWhereUniqueInput
-    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
-  }
-
-  export type CommentCreateManyUserInputEnvelope = {
-    data: CommentCreateManyUserInput | CommentCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type SupportCreateWithoutUserInput = {
@@ -30139,32 +29628,61 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type walletUpsertWithWhereUniqueWithoutUserInput = {
+  export type walletCreateWithoutUserInput = {
+    id?: string
+    balancePesos: number
+    balanceDollars: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transactions?: WalletTransactionCreateNestedManyWithoutWalletInput
+  }
+
+  export type walletUncheckedCreateWithoutUserInput = {
+    id?: string
+    balancePesos: number
+    balanceDollars: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transactions?: WalletTransactionUncheckedCreateNestedManyWithoutWalletInput
+  }
+
+  export type walletCreateOrConnectWithoutUserInput = {
     where: walletWhereUniqueInput
-    update: XOR<walletUpdateWithoutUserInput, walletUncheckedUpdateWithoutUserInput>
     create: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput>
   }
 
-  export type walletUpdateWithWhereUniqueWithoutUserInput = {
-    where: walletWhereUniqueInput
-    data: XOR<walletUpdateWithoutUserInput, walletUncheckedUpdateWithoutUserInput>
+  export type walletCreateManyUserInputEnvelope = {
+    data: walletCreateManyUserInput | walletCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
-  export type walletUpdateManyWithWhereWithoutUserInput = {
-    where: walletScalarWhereInput
-    data: XOR<walletUpdateManyMutationInput, walletUncheckedUpdateManyWithoutUserInput>
+  export type CommentUpsertWithWhereUniqueWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
+    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
   }
 
-  export type walletScalarWhereInput = {
-    AND?: walletScalarWhereInput | walletScalarWhereInput[]
-    OR?: walletScalarWhereInput[]
-    NOT?: walletScalarWhereInput | walletScalarWhereInput[]
-    id?: StringFilter<"wallet"> | string
-    userId?: StringFilter<"wallet"> | string
-    balancePesos?: IntFilter<"wallet"> | number
-    balanceDollars?: IntFilter<"wallet"> | number
-    createdAt?: DateTimeFilter<"wallet"> | Date | string
-    updatedAt?: DateTimeFilter<"wallet"> | Date | string
+  export type CommentUpdateWithWhereUniqueWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutUserInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CommentScalarWhereInput = {
+    AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    OR?: CommentScalarWhereInput[]
+    NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    dateComment?: DateTimeFilter<"Comment"> | Date | string
+    createdAt?: DateTimeFilter<"Comment"> | Date | string
+    updatedAt?: DateTimeFilter<"Comment"> | Date | string
+    userId?: StringNullableFilter<"Comment"> | string | null
+    newsId?: StringNullableFilter<"Comment"> | string | null
   }
 
   export type FinancialRadiographyUpsertWithWhereUniqueWithoutUserInput = {
@@ -30209,55 +29727,26 @@ export namespace Prisma {
 
   export type ProfileUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProfileUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mainGoal?: NullableEnumMainGoalFieldUpdateOperationsInput | $Enums.MainGoal | null
-    financialSkills?: NullableEnumFinancialSkillsFieldUpdateOperationsInput | $Enums.FinancialSkills | null
-    riskTolerance?: NullableEnumRiskToleranceFieldUpdateOperationsInput | $Enums.RiskTolerance | null
-    monthlyInvestment?: NullableEnumMonthlyInvestmentFieldUpdateOperationsInput | $Enums.MonthlyInvestment | null
-    savingsOrInvestmentReason?: NullableEnumSavingsReasonFieldUpdateOperationsInput | $Enums.SavingsReason | null
-    investmentTimeframe?: NullableEnumInvestmentTimeframeFieldUpdateOperationsInput | $Enums.InvestmentTimeframe | null
-    hasInvestedBefore?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    financialGoalNextYear?: NullableBoolFieldUpdateOperationsInput | boolean | null
-  }
-
-  export type CommentUpsertWithWhereUniqueWithoutUserInput = {
-    where: CommentWhereUniqueInput
-    update: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
-    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
-  }
-
-  export type CommentUpdateWithWhereUniqueWithoutUserInput = {
-    where: CommentWhereUniqueInput
-    data: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
-  }
-
-  export type CommentUpdateManyWithWhereWithoutUserInput = {
-    where: CommentScalarWhereInput
-    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type CommentScalarWhereInput = {
-    AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
-    OR?: CommentScalarWhereInput[]
-    NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
-    id?: StringFilter<"Comment"> | string
-    content?: StringFilter<"Comment"> | string
-    dateComment?: DateTimeFilter<"Comment"> | Date | string
-    createdAt?: DateTimeFilter<"Comment"> | Date | string
-    updatedAt?: DateTimeFilter<"Comment"> | Date | string
-    userId?: StringNullableFilter<"Comment"> | string | null
-    newsId?: StringNullableFilter<"Comment"> | string | null
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SupportUpsertWithWhereUniqueWithoutUserInput = {
@@ -30289,6 +29778,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Support"> | Date | string
   }
 
+  export type walletUpsertWithWhereUniqueWithoutUserInput = {
+    where: walletWhereUniqueInput
+    update: XOR<walletUpdateWithoutUserInput, walletUncheckedUpdateWithoutUserInput>
+    create: XOR<walletCreateWithoutUserInput, walletUncheckedCreateWithoutUserInput>
+  }
+
+  export type walletUpdateWithWhereUniqueWithoutUserInput = {
+    where: walletWhereUniqueInput
+    data: XOR<walletUpdateWithoutUserInput, walletUncheckedUpdateWithoutUserInput>
+  }
+
+  export type walletUpdateManyWithWhereWithoutUserInput = {
+    where: walletScalarWhereInput
+    data: XOR<walletUpdateManyMutationInput, walletUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type walletScalarWhereInput = {
+    AND?: walletScalarWhereInput | walletScalarWhereInput[]
+    OR?: walletScalarWhereInput[]
+    NOT?: walletScalarWhereInput | walletScalarWhereInput[]
+    id?: StringFilter<"wallet"> | string
+    userId?: StringFilter<"wallet"> | string
+    balancePesos?: IntFilter<"wallet"> | number
+    balanceDollars?: IntFilter<"wallet"> | number
+    createdAt?: DateTimeFilter<"wallet"> | Date | string
+    updatedAt?: DateTimeFilter<"wallet"> | Date | string
+  }
+
   export type UserCreateWithoutFinancialRadiographiesInput = {
     id?: string
     email: string
@@ -30300,10 +29817,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFinancialRadiographiesInput = {
@@ -30317,10 +29834,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFinancialRadiographiesInput = {
@@ -30350,10 +29867,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFinancialRadiographiesInput = {
@@ -30367,10 +29884,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type InvestmentCreateWithoutPortfolioInput = {
@@ -30621,45 +30138,6 @@ export namespace Prisma {
     data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutNewsInput>
   }
 
-  export type UserCreateWithoutCommentInput = {
-    id?: string
-    email: string
-    firstName?: string | null
-    lastName?: string | null
-    password: string
-    avatarUrl?: string | null
-    role?: $Enums.UserRole | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isEmailVerified?: boolean
-    wallet?: walletCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    Support?: SupportCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutCommentInput = {
-    id?: string
-    email: string
-    firstName?: string | null
-    lastName?: string | null
-    password: string
-    avatarUrl?: string | null
-    role?: $Enums.UserRole | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isEmailVerified?: boolean
-    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutCommentInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
-  }
-
   export type NewsCreateWithoutCommentInput = {
     id?: string
     title: string
@@ -30685,49 +30163,43 @@ export namespace Prisma {
     create: XOR<NewsCreateWithoutCommentInput, NewsUncheckedCreateWithoutCommentInput>
   }
 
-  export type UserUpsertWithoutCommentInput = {
-    update: XOR<UserUpdateWithoutCommentInput, UserUncheckedUpdateWithoutCommentInput>
+  export type UserCreateWithoutCommentInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCommentInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCommentInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCommentInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCommentInput, UserUncheckedUpdateWithoutCommentInput>
-  }
-
-  export type UserUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    Support?: SupportUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type NewsUpsertWithoutCommentInput = {
@@ -30761,43 +30233,49 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutWalletInput = {
-    id?: string
-    email: string
-    firstName?: string | null
-    lastName?: string | null
-    password: string
-    avatarUrl?: string | null
-    role?: $Enums.UserRole | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isEmailVerified?: boolean
-    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    comment?: CommentCreateNestedManyWithoutUserInput
-    Support?: SupportCreateNestedManyWithoutUserInput
+  export type UserUpsertWithoutCommentInput = {
+    update: XOR<UserUpdateWithoutCommentInput, UserUncheckedUpdateWithoutCommentInput>
+    create: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
+    where?: UserWhereInput
   }
 
-  export type UserUncheckedCreateWithoutWalletInput = {
-    id?: string
-    email: string
-    firstName?: string | null
-    lastName?: string | null
-    password: string
-    avatarUrl?: string | null
-    role?: $Enums.UserRole | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isEmailVerified?: boolean
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+  export type UserUpdateToOneWithWhereWithoutCommentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCommentInput, UserUncheckedUpdateWithoutCommentInput>
   }
 
-  export type UserCreateOrConnectWithoutWalletInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
+  export type UserUpdateWithoutCommentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCommentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WalletTransactionCreateWithoutWalletInput = {
@@ -30828,49 +30306,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutWalletInput = {
-    update: XOR<UserUpdateWithoutWalletInput, UserUncheckedUpdateWithoutWalletInput>
+  export type UserCreateWithoutWalletInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    comment?: CommentCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutWalletInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutWalletInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutWalletInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutWalletInput, UserUncheckedUpdateWithoutWalletInput>
-  }
-
-  export type UserUpdateWithoutWalletInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    comment?: CommentUpdateManyWithoutUserNestedInput
-    Support?: SupportUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutWalletInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    firstName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WalletTransactionUpsertWithWhereUniqueWithoutWalletInput = {
@@ -30900,6 +30372,51 @@ export namespace Prisma {
     currency?: EnumCurrencyTypeFilter<"WalletTransaction"> | $Enums.CurrencyType
     description?: StringNullableFilter<"WalletTransaction"> | string | null
     createdAt?: DateTimeFilter<"WalletTransaction"> | Date | string
+  }
+
+  export type UserUpsertWithoutWalletInput = {
+    update: XOR<UserUpdateWithoutWalletInput, UserUncheckedUpdateWithoutWalletInput>
+    create: XOR<UserCreateWithoutWalletInput, UserUncheckedCreateWithoutWalletInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutWalletInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutWalletInput, UserUncheckedUpdateWithoutWalletInput>
+  }
+
+  export type UserUpdateWithoutWalletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    comment?: CommentUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutWalletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type walletCreateWithoutTransactionsInput = {
@@ -30965,10 +30482,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletCreateNestedManyWithoutUserInput
+    comment?: CommentCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
-    comment?: CommentCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSupportInput = {
@@ -30982,10 +30499,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSupportInput = {
@@ -31015,10 +30532,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUpdateManyWithoutUserNestedInput
+    comment?: CommentUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
-    comment?: CommentUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSupportInput = {
@@ -31032,10 +30549,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProfileInput = {
@@ -31049,10 +30566,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyCreateNestedManyWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -31066,10 +30583,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedManyWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -31099,10 +30616,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUpdateManyWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -31116,76 +30633,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUncheckedUpdateManyWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type PriceCreateWithoutStockInput = {
-    current?: number | null
-    changePercent?: number | null
-    open?: number | null
-    dayLow?: number | null
-    dayHigh?: number | null
-    previousClose?: number | null
-    postMarketPrice?: number | null
-    postMarketChange?: number | null
-  }
-
-  export type PriceUncheckedCreateWithoutStockInput = {
-    id?: number
-    current?: number | null
-    changePercent?: number | null
-    open?: number | null
-    dayLow?: number | null
-    dayHigh?: number | null
-    previousClose?: number | null
-    postMarketPrice?: number | null
-    postMarketChange?: number | null
-  }
-
-  export type PriceCreateOrConnectWithoutStockInput = {
-    where: PriceWhereUniqueInput
-    create: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
-  }
-
-  export type VolumeCreateWithoutStockInput = {
-    current?: number | null
-    average3Months?: number | null
-    average10Days?: number | null
-  }
-
-  export type VolumeUncheckedCreateWithoutStockInput = {
-    id?: number
-    current?: number | null
-    average3Months?: number | null
-    average10Days?: number | null
-  }
-
-  export type VolumeCreateOrConnectWithoutStockInput = {
-    where: VolumeWhereUniqueInput
-    create: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
-  }
-
-  export type Week52CreateWithoutStockInput = {
-    high?: number | null
-    low?: number | null
-    changeFromHigh?: number | null
-    changeFromLow?: number | null
-  }
-
-  export type Week52UncheckedCreateWithoutStockInput = {
-    id?: number
-    high?: number | null
-    low?: number | null
-    changeFromHigh?: number | null
-    changeFromLow?: number | null
-  }
-
-  export type Week52CreateOrConnectWithoutStockInput = {
-    where: Week52WhereUniqueInput
-    create: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type DividendCreateWithoutStockInput = {
@@ -31195,10 +30646,10 @@ export namespace Prisma {
   }
 
   export type DividendUncheckedCreateWithoutStockInput = {
-    id?: number
     rate?: number | null
     yield?: number | null
     date?: Date | string | null
+    id?: number
   }
 
   export type DividendCreateOrConnectWithoutStockInput = {
@@ -31214,16 +30665,132 @@ export namespace Prisma {
   }
 
   export type EarningsUncheckedCreateWithoutStockInput = {
-    id?: number
     nextDate?: Date | string | null
     epsTrailing12Months?: number | null
     epsForward?: number | null
     peRatio?: number | null
+    id?: number
   }
 
   export type EarningsCreateOrConnectWithoutStockInput = {
     where: EarningsWhereUniqueInput
     create: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+  }
+
+  export type PriceCreateWithoutStockInput = {
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+  }
+
+  export type PriceUncheckedCreateWithoutStockInput = {
+    current?: number | null
+    changePercent?: number | null
+    open?: number | null
+    dayLow?: number | null
+    dayHigh?: number | null
+    previousClose?: number | null
+    postMarketPrice?: number | null
+    postMarketChange?: number | null
+    id?: number
+  }
+
+  export type PriceCreateOrConnectWithoutStockInput = {
+    where: PriceWhereUniqueInput
+    create: XOR<PriceCreateWithoutStockInput, PriceUncheckedCreateWithoutStockInput>
+  }
+
+  export type VolumeCreateWithoutStockInput = {
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+  }
+
+  export type VolumeUncheckedCreateWithoutStockInput = {
+    current?: number | null
+    average3Months?: number | null
+    average10Days?: number | null
+    id?: number
+  }
+
+  export type VolumeCreateOrConnectWithoutStockInput = {
+    where: VolumeWhereUniqueInput
+    create: XOR<VolumeCreateWithoutStockInput, VolumeUncheckedCreateWithoutStockInput>
+  }
+
+  export type Week52CreateWithoutStockInput = {
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+  }
+
+  export type Week52UncheckedCreateWithoutStockInput = {
+    high?: number | null
+    low?: number | null
+    changeFromHigh?: number | null
+    changeFromLow?: number | null
+    id?: number
+  }
+
+  export type Week52CreateOrConnectWithoutStockInput = {
+    where: Week52WhereUniqueInput
+    create: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+  }
+
+  export type DividendUpsertWithoutStockInput = {
+    update: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
+    create: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
+    where?: DividendWhereInput
+  }
+
+  export type DividendUpdateToOneWithWhereWithoutStockInput = {
+    where?: DividendWhereInput
+    data: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
+  }
+
+  export type DividendUpdateWithoutStockInput = {
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DividendUncheckedUpdateWithoutStockInput = {
+    rate?: NullableFloatFieldUpdateOperationsInput | number | null
+    yield?: NullableFloatFieldUpdateOperationsInput | number | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EarningsUpsertWithoutStockInput = {
+    update: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
+    create: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
+    where?: EarningsWhereInput
+  }
+
+  export type EarningsUpdateToOneWithWhereWithoutStockInput = {
+    where?: EarningsWhereInput
+    data: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
+  }
+
+  export type EarningsUpdateWithoutStockInput = {
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type EarningsUncheckedUpdateWithoutStockInput = {
+    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
+    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
+    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type PriceUpsertWithoutStockInput = {
@@ -31249,7 +30816,6 @@ export namespace Prisma {
   }
 
   export type PriceUncheckedUpdateWithoutStockInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableFloatFieldUpdateOperationsInput | number | null
     changePercent?: NullableFloatFieldUpdateOperationsInput | number | null
     open?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -31258,6 +30824,7 @@ export namespace Prisma {
     previousClose?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketPrice?: NullableFloatFieldUpdateOperationsInput | number | null
     postMarketChange?: NullableFloatFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type VolumeUpsertWithoutStockInput = {
@@ -31278,10 +30845,10 @@ export namespace Prisma {
   }
 
   export type VolumeUncheckedUpdateWithoutStockInput = {
-    id?: IntFieldUpdateOperationsInput | number
     current?: NullableIntFieldUpdateOperationsInput | number | null
     average3Months?: NullableIntFieldUpdateOperationsInput | number | null
     average10Days?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type Week52UpsertWithoutStockInput = {
@@ -31303,61 +30870,11 @@ export namespace Prisma {
   }
 
   export type Week52UncheckedUpdateWithoutStockInput = {
-    id?: IntFieldUpdateOperationsInput | number
     high?: NullableFloatFieldUpdateOperationsInput | number | null
     low?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromHigh?: NullableFloatFieldUpdateOperationsInput | number | null
     changeFromLow?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type DividendUpsertWithoutStockInput = {
-    update: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
-    create: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
-    where?: DividendWhereInput
-  }
-
-  export type DividendUpdateToOneWithWhereWithoutStockInput = {
-    where?: DividendWhereInput
-    data: XOR<DividendUpdateWithoutStockInput, DividendUncheckedUpdateWithoutStockInput>
-  }
-
-  export type DividendUpdateWithoutStockInput = {
-    rate?: NullableFloatFieldUpdateOperationsInput | number | null
-    yield?: NullableFloatFieldUpdateOperationsInput | number | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type DividendUncheckedUpdateWithoutStockInput = {
     id?: IntFieldUpdateOperationsInput | number
-    rate?: NullableFloatFieldUpdateOperationsInput | number | null
-    yield?: NullableFloatFieldUpdateOperationsInput | number | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type EarningsUpsertWithoutStockInput = {
-    update: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
-    create: XOR<EarningsCreateWithoutStockInput, EarningsUncheckedCreateWithoutStockInput>
-    where?: EarningsWhereInput
-  }
-
-  export type EarningsUpdateToOneWithWhereWithoutStockInput = {
-    where?: EarningsWhereInput
-    data: XOR<EarningsUpdateWithoutStockInput, EarningsUncheckedUpdateWithoutStockInput>
-  }
-
-  export type EarningsUpdateWithoutStockInput = {
-    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
-    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
-    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type EarningsUncheckedUpdateWithoutStockInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    epsTrailing12Months?: NullableFloatFieldUpdateOperationsInput | number | null
-    epsForward?: NullableFloatFieldUpdateOperationsInput | number | null
-    peRatio?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type StockCreateWithoutPriceInput = {
@@ -31368,25 +30885,25 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    volume: VolumeCreateNestedOneWithoutStockInput
-    week52: Week52CreateNestedOneWithoutStockInput
     dividend: DividendCreateNestedOneWithoutStockInput
     earnings: EarningsCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutPriceInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockCreateOrConnectWithoutPriceInput = {
@@ -31419,19 +30936,19 @@ export namespace Prisma {
     AND?: StockScalarWhereInput | StockScalarWhereInput[]
     OR?: StockScalarWhereInput[]
     NOT?: StockScalarWhereInput | StockScalarWhereInput[]
-    id?: IntFilter<"Stock"> | number
     symbol?: StringFilter<"Stock"> | string
     name?: StringFilter<"Stock"> | string
     currency?: StringFilter<"Stock"> | string
     market?: StringFilter<"Stock"> | string
+    marketCap?: IntFilter<"Stock"> | number
+    createdAt?: DateTimeFilter<"Stock"> | Date | string
+    updatedAt?: DateTimeFilter<"Stock"> | Date | string
+    id?: IntFilter<"Stock"> | number
     priceId?: IntFilter<"Stock"> | number
     volumeId?: IntFilter<"Stock"> | number
     week52Id?: IntFilter<"Stock"> | number
     dividendId?: IntFilter<"Stock"> | number
     earningsId?: IntFilter<"Stock"> | number
-    marketCap?: IntFilter<"Stock"> | number
-    createdAt?: DateTimeFilter<"Stock"> | Date | string
-    updatedAt?: DateTimeFilter<"Stock"> | Date | string
   }
 
   export type StockCreateWithoutVolumeInput = {
@@ -31442,25 +30959,25 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    price: PriceCreateNestedOneWithoutStockInput
-    week52: Week52CreateNestedOneWithoutStockInput
     dividend: DividendCreateNestedOneWithoutStockInput
     earnings: EarningsCreateNestedOneWithoutStockInput
+    price: PriceCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutVolumeInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockCreateOrConnectWithoutVolumeInput = {
@@ -31497,25 +31014,25 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    price: PriceCreateNestedOneWithoutStockInput
-    volume: VolumeCreateNestedOneWithoutStockInput
     dividend: DividendCreateNestedOneWithoutStockInput
     earnings: EarningsCreateNestedOneWithoutStockInput
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutWeek52Input = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockCreateOrConnectWithoutWeek52Input = {
@@ -31552,25 +31069,25 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    earnings: EarningsCreateNestedOneWithoutStockInput
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
-    earnings: EarningsCreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutDividendInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockCreateOrConnectWithoutDividendInput = {
@@ -31607,25 +31124,25 @@ export namespace Prisma {
     marketCap: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    dividend: DividendCreateNestedOneWithoutStockInput
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
-    dividend: DividendCreateNestedOneWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutEarningsInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockCreateOrConnectWithoutEarningsInput = {
@@ -31654,12 +31171,13 @@ export namespace Prisma {
     data: XOR<StockUpdateManyMutationInput, StockUncheckedUpdateManyWithoutEarningsInput>
   }
 
-  export type walletCreateManyUserInput = {
+  export type CommentCreateManyUserInput = {
     id?: string
-    balancePesos: number
-    balanceDollars: number
+    content: string
+    dateComment: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    newsId?: string | null
   }
 
   export type FinancialRadiographyCreateManyUserInput = {
@@ -31671,15 +31189,6 @@ export namespace Prisma {
     savings?: Decimal | DecimalJsLike | number | string | null
   }
 
-  export type CommentCreateManyUserInput = {
-    id?: string
-    content: string
-    dateComment: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    newsId?: string | null
-  }
-
   export type SupportCreateManyUserInput = {
     id?: string
     subject: string
@@ -31689,57 +31198,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type walletUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    balancePesos?: IntFieldUpdateOperationsInput | number
-    balanceDollars?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transactions?: WalletTransactionUpdateManyWithoutWalletNestedInput
-  }
-
-  export type walletUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    balancePesos?: IntFieldUpdateOperationsInput | number
-    balanceDollars?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transactions?: WalletTransactionUncheckedUpdateManyWithoutWalletNestedInput
-  }
-
-  export type walletUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    balancePesos?: IntFieldUpdateOperationsInput | number
-    balanceDollars?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FinancialRadiographyUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type FinancialRadiographyUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type FinancialRadiographyUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  export type walletCreateManyUserInput = {
+    id?: string
+    balancePesos: number
+    balanceDollars: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -31769,6 +31233,33 @@ export namespace Prisma {
     newsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type FinancialRadiographyUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type FinancialRadiographyUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type FinancialRadiographyUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type SupportUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
@@ -31792,6 +31283,32 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type walletUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    balancePesos?: IntFieldUpdateOperationsInput | number
+    balanceDollars?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: WalletTransactionUpdateManyWithoutWalletNestedInput
+  }
+
+  export type walletUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    balancePesos?: IntFieldUpdateOperationsInput | number
+    balanceDollars?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: WalletTransactionUncheckedUpdateManyWithoutWalletNestedInput
+  }
+
+  export type walletUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    balancePesos?: IntFieldUpdateOperationsInput | number
+    balanceDollars?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -31933,18 +31450,18 @@ export namespace Prisma {
   }
 
   export type StockCreateManyPriceInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     volumeId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateWithoutPriceInput = {
@@ -31955,55 +31472,55 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
-    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
     dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutPriceInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockUncheckedUpdateManyWithoutPriceInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockCreateManyVolumeInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     week52Id: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateWithoutVolumeInput = {
@@ -32014,55 +31531,55 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: PriceUpdateOneRequiredWithoutStockNestedInput
-    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
     dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutVolumeInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockUncheckedUpdateManyWithoutVolumeInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockCreateManyWeek52Input = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     dividendId: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateWithoutWeek52Input = {
@@ -32073,55 +31590,55 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: PriceUpdateOneRequiredWithoutStockNestedInput
-    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutWeek52Input = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockUncheckedUpdateManyWithoutWeek52Input = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockCreateManyDividendInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     earningsId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateWithoutDividendInput = {
@@ -32132,55 +31649,55 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
-    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutDividendInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockUncheckedUpdateManyWithoutDividendInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockCreateManyEarningsInput = {
-    id?: number
     symbol: string
     name: string
     currency: string
     market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
     priceId: number
     volumeId: number
     week52Id: number
     dividendId: number
-    marketCap: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type StockUpdateWithoutEarningsInput = {
@@ -32191,40 +31708,40 @@ export namespace Prisma {
     marketCap?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
-    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutEarningsInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockUncheckedUpdateManyWithoutEarningsInput = {
-    id?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
     priceId?: IntFieldUpdateOperationsInput | number
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
-    marketCap?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

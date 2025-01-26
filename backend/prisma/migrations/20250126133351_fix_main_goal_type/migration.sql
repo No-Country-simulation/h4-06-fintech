@@ -10,21 +10,6 @@ CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN', 'MODERATOR');
 -- CreateEnum
 CREATE TYPE "Status" AS ENUM ('open', 'inProgress', 'closed');
 
--- CreateEnum
-CREATE TYPE "FinancialGoal" AS ENUM ('SAVINGS', 'INVESTMENT', 'RETIREMENT', 'EDUCATION', 'EMERGENCY_FUND', 'PASSIVE_INCOME', 'OTHER');
-
--- CreateEnum
-CREATE TYPE "InvestmentHorizon" AS ENUM ('SHORT_TERM', 'MEDIUM_TERM', 'LONG_TERM');
-
--- CreateEnum
-CREATE TYPE "KnowledgeLevel" AS ENUM ('BASIC', 'INTERMEDIATE', 'ADVANCED');
-
--- CreateEnum
-CREATE TYPE "RiskTolerance" AS ENUM ('CONSERVATIVE', 'MODERATE', 'AGGRESSIVE');
-
--- CreateEnum
-CREATE TYPE "ReactionToLoss" AS ENUM ('WITHDRAW_IMMEDIATELY', 'WAIT_RECOVERY', 'INVEST_MORE');
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -182,18 +167,93 @@ CREATE TABLE "Support" (
 -- CreateTable
 CREATE TABLE "Profile" (
     "id" TEXT NOT NULL,
-    "financialGoal" "FinancialGoal",
-    "investmentHorizon" "InvestmentHorizon",
-    "knowledgeLevel" "KnowledgeLevel",
-    "riskTolerance" "RiskTolerance",
-    "monthlyAllocation" DOUBLE PRECISION,
-    "specificPurpose" TEXT,
-    "instrumentsUsed" TEXT[],
-    "hasDebts" BOOLEAN,
-    "reactionToLoss" "ReactionToLoss",
     "userId" TEXT NOT NULL,
+    "riskTolerance" TEXT,
+    "financialGoalNextYear" TEXT,
+    "financialSkills" TEXT,
+    "hasInvestedBefore" TEXT,
+    "investmentTimeframe" TEXT,
+    "mainGoal" TEXT,
+    "monthlyInvestment" TEXT,
+    "savingsOrInvestmentReason" TEXT,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Stock" (
+    "symbol" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "currency" TEXT NOT NULL,
+    "market" TEXT NOT NULL,
+    "marketCap" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "id" SERIAL NOT NULL,
+    "priceId" INTEGER NOT NULL,
+    "volumeId" INTEGER NOT NULL,
+    "week52Id" INTEGER NOT NULL,
+    "dividendId" INTEGER NOT NULL,
+    "earningsId" INTEGER NOT NULL,
+
+    CONSTRAINT "Stock_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Price" (
+    "current" DOUBLE PRECISION,
+    "changePercent" DOUBLE PRECISION,
+    "open" DOUBLE PRECISION,
+    "dayLow" DOUBLE PRECISION,
+    "dayHigh" DOUBLE PRECISION,
+    "previousClose" DOUBLE PRECISION,
+    "postMarketPrice" DOUBLE PRECISION,
+    "postMarketChange" DOUBLE PRECISION,
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Price_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Volume" (
+    "current" INTEGER,
+    "average3Months" INTEGER,
+    "average10Days" INTEGER,
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Volume_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Week52" (
+    "high" DOUBLE PRECISION,
+    "low" DOUBLE PRECISION,
+    "changeFromHigh" DOUBLE PRECISION,
+    "changeFromLow" DOUBLE PRECISION,
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Week52_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Dividend" (
+    "rate" DOUBLE PRECISION,
+    "yield" DOUBLE PRECISION,
+    "date" TIMESTAMP(3),
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Dividend_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Earnings" (
+    "nextDate" TIMESTAMP(3),
+    "epsTrailing12Months" DOUBLE PRECISION,
+    "epsForward" DOUBLE PRECISION,
+    "peRatio" DOUBLE PRECISION,
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Earnings_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -208,6 +268,9 @@ CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Stock_symbol_key" ON "Stock"("symbol");
+
 -- AddForeignKey
 ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -218,10 +281,10 @@ ALTER TABLE "Investment" ADD CONSTRAINT "Investment_instrumentId_fkey" FOREIGN K
 ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -234,3 +297,18 @@ ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Stock" ADD CONSTRAINT "Stock_dividendId_fkey" FOREIGN KEY ("dividendId") REFERENCES "Dividend"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Stock" ADD CONSTRAINT "Stock_earningsId_fkey" FOREIGN KEY ("earningsId") REFERENCES "Earnings"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Stock" ADD CONSTRAINT "Stock_priceId_fkey" FOREIGN KEY ("priceId") REFERENCES "Price"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Stock" ADD CONSTRAINT "Stock_volumeId_fkey" FOREIGN KEY ("volumeId") REFERENCES "Volume"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Stock" ADD CONSTRAINT "Stock_week52Id_fkey" FOREIGN KEY ("week52Id") REFERENCES "Week52"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

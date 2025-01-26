@@ -1,29 +1,12 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
   output        = "./generated/client"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-enum TransactionType {
-  DEPOSIT
-  WITHDRAWAL
-  TRANSFER
-}
-
-enum CurrencyType {
-  PESOS
-  DOLLARS
-}
-
-enum UserRole {
-  USER
-  ADMIN
-  MODERATOR
 }
 
 model User {
@@ -34,14 +17,14 @@ model User {
   password               String
   avatarUrl              String?
   role                   UserRole?              @default(USER)
-  wallet                 wallet[]
-  financialRadiographies FinancialRadiography[]
-  profile                Profile?
-  comment                Comment[]
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
-  Support                Support[]
   isEmailVerified        Boolean                @default(false)
+  comment                Comment[]
+  financialRadiographies FinancialRadiography[]
+  profile                Profile?
+  Support                Support[]
+  wallet                 wallet[]
 }
 
 model Target {
@@ -52,27 +35,25 @@ model Target {
   montoTarget Int
   dateTarget  DateTime
   userId      String
-  // user        User     @relation(fields: [userId], references: [id])
 }
 
 model FinancialRadiography {
   id              String   @id @default(cuid())
-  monthlyIncome   Decimal? @db.Decimal(10, 2) // Ingresos mensuales
-  monthlyExpenses Decimal? @db.Decimal(10, 2) // Gastos mensuales
-  savingCapacity  Decimal? @db.Decimal(10, 2) // Capacidad de ahorro
-  debts           Decimal? @db.Decimal(10, 2) // Deudas
-  savings         Decimal? @db.Decimal(10, 2) // Ahorros
+  monthlyIncome   Decimal? @db.Decimal(10, 2)
+  monthlyExpenses Decimal? @db.Decimal(10, 2)
+  savingCapacity  Decimal? @db.Decimal(10, 2)
+  debts           Decimal? @db.Decimal(10, 2)
+  savings         Decimal? @db.Decimal(10, 2)
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model InvestmentPortfolio {
   id                 String       @id @default(cuid())
-  profileRisk        Int // Nivel de riesgo (1-5)
-  performanceCurrent Float // Rendimiento actual en porcentaje
-  coin               String // Moneda principal ("PESOS" | "DOLLARS")
+  profileRisk        Int
+  performanceCurrent Float
+  coin               String
   userId             String
-  // user               User         @relation(fields: [userId], references: [id])
   investment         Investment[]
 }
 
@@ -106,8 +87,8 @@ model News {
   source    String
   dateNews  DateTime
   category  String
-  comment   Comment[]
   createdAt DateTime  @default(now())
+  comment   Comment[]
 }
 
 model Comment {
@@ -118,8 +99,8 @@ model Comment {
   updatedAt   DateTime @updatedAt
   userId      String?
   newsId      String?
-  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   news        News?    @relation(fields: [newsId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model wallet {
@@ -129,8 +110,8 @@ model wallet {
   balanceDollars Int
   createdAt      DateTime            @default(now())
   updatedAt      DateTime            @updatedAt
-  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions   WalletTransaction[]
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model WalletTransaction {
@@ -157,127 +138,48 @@ model Support {
   userId    String
   subject   String
   message   String
-  status    Status   @default(open) // Ticket status (open, inProgress, closed)
+  status    Status   @default(open)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id])
 }
 
-enum Status {
-  open
-  inProgress
-  closed
-}
-
-enum FinancialGoal {
-  SAVINGS
-  INVESTMENT
-  RETIREMENT
-  EDUCATION
-  EMERGENCY_FUND
-  PASSIVE_INCOME
-  OTHER
-}
-
-enum InvestmentHorizon {
-  SHORT_TERM
-  MEDIUM_TERM
-  LONG_TERM
-}
-
-enum KnowledgeLevel {
-  BASIC
-  INTERMEDIATE
-  ADVANCED
-}
-
-enum RiskTolerance {
-  CONSERVATIVE
-  MODERATE
-  AGGRESSIVE
-}
-
-enum ReactionToLoss {
-  WITHDRAW_IMMEDIATELY
-  WAIT_RECOVERY
-  INVEST_MORE
-}
-
-// Enums for predefined options
-enum MainGoal {
-  SAVE // "I want to save"
-  INVEST // "I’m interested in investing"
-  INCOME // "I want to increase my income"
-  RETIREMENT // "I’m planning for my retirement"
-  OTHER // "Other"
-}
-
-enum FinancialSkills {
-  BEGINNER
-  LEARNER
-  INTERMEDIATE
-  ADVANCED
-}
-
-enum MonthlyInvestment {
-  LESS_THAN_30000 // "Less than $30,000"
-  BETWEEN_30000_50000 // "Between $30,000 and $50,000"
-  MORE_THAN_50000 // "More than $50,000"
-}
-
-enum SavingsReason {
-  BUY_HOUSE // "Buy a house"
-  BUY_CAR // "Buy a car"
-  PLAN_VACATION // "Plan my vacation"
-  PERSONAL_PROJECT // "Fund a personal project"
-  EDUCATION // "Save for education"
-  NO_SPECIFIC_REASON // "No specific reason"
-  LEARNING // "I want to learn"
-}
-
-enum InvestmentTimeframe {
-  SHORT_TERM // "Less than 1 year"
-  MEDIUM_TERM // "1 to 5 years"
-  LONG_TERM // "More than 5 years"
-}
-
 model Profile {
-  id                        String               @id @default(cuid())
-  userId                    String               @unique
-  mainGoal                  MainGoal? // Answer to question 1
-  financialSkills           FinancialSkills? // Answer to question 2
-  riskTolerance             RiskTolerance? // Answer to question 3
-  monthlyInvestment         MonthlyInvestment? // Answer to question 4
-  savingsOrInvestmentReason SavingsReason? // Answer to question 5
-  investmentTimeframe       InvestmentTimeframe? // Answer to question 6
-  hasInvestedBefore         Boolean? // Answer to question 7
-  financialGoalNextYear     Boolean?             @default(false) // Answer to question 8
-  user                      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                        String  @id @default(cuid())
+  userId                    String  @unique
+  riskTolerance             String?
+  investmentHorizon         String?
+  financialSkills           String?
+  hasInvestedBefore         String?
+  financialGoal             String?
+  mainGoal                  String?
+  monthlyInvestment         String?
+  savingsOrInvestmentReason String?
+  user                      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Stock {
-  id         Int      @id @default(autoincrement())
   symbol     String   @unique
   name       String
   currency   String
   market     String
-  price      Price    @relation(fields: [priceId], references: [id])
-  priceId    Int
-  volume     Volume   @relation(fields: [volumeId], references: [id])
-  volumeId   Int
-  week52     Week52   @relation(fields: [week52Id], references: [id])
-  week52Id   Int
-  dividend   Dividend @relation(fields: [dividendId], references: [id])
-  dividendId Int
-  earnings   Earnings @relation(fields: [earningsId], references: [id])
-  earningsId Int
   marketCap  Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  priceId    Int
+  volumeId   Int
+  week52Id   Int
+  dividendId Int
+  earningsId Int
+  dividend   Dividend @relation(fields: [dividendId], references: [id])
+  earnings   Earnings @relation(fields: [earningsId], references: [id])
+  price      Price    @relation(fields: [priceId], references: [id])
+  volume     Volume   @relation(fields: [volumeId], references: [id])
+  week52     Week52   @relation(fields: [week52Id], references: [id])
 }
 
 model Price {
-  id               Int     @id @default(autoincrement())
   current          Float?
   changePercent    Float?
   open             Float?
@@ -286,39 +188,63 @@ model Price {
   previousClose    Float?
   postMarketPrice  Float?
   postMarketChange Float?
+  id               Int     @id @default(autoincrement())
   Stock            Stock[]
 }
 
 model Volume {
-  id             Int     @id @default(autoincrement())
   current        Int?
   average3Months Int?
   average10Days  Int?
+  id             Int     @id @default(autoincrement())
   Stock          Stock[]
 }
 
 model Week52 {
-  id             Int     @id @default(autoincrement())
   high           Float?
   low            Float?
   changeFromHigh Float?
   changeFromLow  Float?
+  id             Int     @id @default(autoincrement())
   Stock          Stock[]
 }
 
 model Dividend {
-  id    Int       @id @default(autoincrement())
   rate  Float?
   yield Float?
   date  DateTime?
+  id    Int       @id @default(autoincrement())
   Stock Stock[]
 }
 
 model Earnings {
-  id                  Int       @id @default(autoincrement())
   nextDate            DateTime?
   epsTrailing12Months Float?
   epsForward          Float?
   peRatio             Float?
+  id                  Int       @id @default(autoincrement())
   Stock               Stock[]
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+}
+
+enum CurrencyType {
+  PESOS
+  DOLLARS
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum Status {
+  open
+  inProgress
+  closed
 }
