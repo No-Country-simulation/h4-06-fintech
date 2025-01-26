@@ -1,4 +1,4 @@
-import { FinancialTarget } from 'client-api/backend/financial-target/interface/getOne';
+import { FinancialTarget } from 'client-api/backend/modules/financial-target/interface/getOne';
 
 export interface GetProfileResponse {
   id: string;

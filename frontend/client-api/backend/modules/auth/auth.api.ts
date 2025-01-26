@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers';
-import envs from '../../../config/envs';
-import { AuthError, InternalError } from '../../../shared/errors';
-import { handleRequest } from '../../../shared/handleRequest';
-import { APIErrorResponse } from '../interface/generic-response';
+import envs from '../../../../config/envs';
+import { AuthError, InternalError } from '../../../../shared/errors';
+import { handleRequest } from '../../../../shared/handleRequest';
+import { APIErrorResponse } from '../../interface/generic-response';
 import { AuthAPI } from './interface/api.interface';
 
 const BASE_URL = envs.BACKEND_URL;
