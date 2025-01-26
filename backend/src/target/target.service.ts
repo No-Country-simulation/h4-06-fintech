@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateTargetDto } from './dto/create-target.dto';
 import { UpdateTargetDto } from './dto/update-target.dto';
@@ -47,5 +51,26 @@ export class TargetService {
 
   remove(id: number) {
     return `This action removes a #${id} target`;
+  }
+
+  async toggleStatus(id: string, userId: string) {
+    const target = await this.findOne(id);
+
+    if (target.userId !== userId) {
+      throw new UnauthorizedException(
+        'Unauthorized access to modify this resource',
+      );
+    }
+
+    await this.prismaService.target.update({
+      where: {
+        id,
+      },
+      data: {
+        isActive: !target.isActive,
+      },
+    });
+
+    return { ...target, isActive: !target.isActive };
   }
 }

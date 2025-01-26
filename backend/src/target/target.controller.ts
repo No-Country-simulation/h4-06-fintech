@@ -22,8 +22,6 @@ export class TargetController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Req() req, @Body() createTargetDto: CreateTargetDto) {
-    console.log('HOLAAAA');
-
     return this.targetService.create(createTargetDto, req.user.id);
   }
 
@@ -52,5 +50,11 @@ export class TargetController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.targetService.remove(+id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('/toggle-status/:id')
+  toggleStatus(@Req() req, @Param('id') id: string) {
+    return this.targetService.toggleStatus(id, req.user.id);
   }
 }
