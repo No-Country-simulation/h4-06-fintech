@@ -45,6 +45,18 @@ const financialTargetApi: FinancialTargetAPI = {
     console.log({ params });
     throw new Error('Function not implemented.');
   },
+  async delete({ id }) {
+    const url = `${BASE_URL}/${id}`;
+
+    const options: RequestInit = {
+      method: 'DELETE',
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
+  },
 };
 
 export { financialTargetApi };

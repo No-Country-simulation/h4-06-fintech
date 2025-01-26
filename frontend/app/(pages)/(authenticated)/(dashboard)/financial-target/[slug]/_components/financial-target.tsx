@@ -1,3 +1,4 @@
+import { deleteTargetAction } from '@/actions/financial-target/delete-action';
 import { toggleStatusAction } from '@/actions/financial-target/toggle-status-action';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -57,6 +58,14 @@ export async function FinancialTarget({ id }: Props) {
             </Button>
           </form>
           <Button variant='secondary'>Desactivar Notificaciones</Button>
+          <form action={deleteTargetAction}>
+            <input
+              defaultValue={id}
+              name='id'
+              hidden
+            />
+            <Button variant='destructive'>Eliminar objetivo</Button>
+          </form>
         </section>
       </section>
       <Button
