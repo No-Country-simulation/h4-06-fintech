@@ -1,30 +1,28 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CarIcon } from './car-icon';
+import { CarIcon } from '../_components/car-icon';
 
-export function TargetsEmpty() {
+export default function SuccessPage() {
   return (
     <section className='flex flex-col items-center gap-40'>
       <section className='flex flex-col items-center justify-center gap-6'>
         <CarIcon />
         <section className='flex flex-col items-center gap-2'>
           <p className='text-center text-3xl'>
-            Tu lista de objetivos está vacía.
+            ¡Felicidades, definiste un nuevo objetivo por cumplir!
           </p>
-          <p className='text-center font-light'>
-            Haz clic en{' '}
-            <span className='font-normal italic'>Añadir nuevo objetivo</span> y
-            ¡Comienza a alcanzar tus metas!
+          <p className='text-center text-3xl'>
+            Para verlo en detalle ve a la sección Mis objetivos en el inicio
           </p>
         </section>
       </section>
       <footer>
-        <Link href='/financial-target/create'>
+        <Link href='/financial-target'>
           <Button
             variant='outline'
             size='custom'
           >
-            Añadir nuevo objetivo
+            Inicio
           </Button>
         </Link>
       </footer>

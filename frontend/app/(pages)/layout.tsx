@@ -2,6 +2,7 @@ import { DevIsland } from '@/components/dev-island/dev-island';
 import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 import PageWrapper from '@/components/offlineMessage/PageWrapper';
 import '../globals.css';
@@ -56,7 +57,9 @@ export default function RootLayout({
       <body
         className={`${poppinsRegular.variable} ${poppinsMedium.variable} ${poppinsSemiBold.variable} ${poppinsBold.variable} ${poppinsLight.variable} font-poppins-regular antialiased`}
       >
-        <PageWrapper>{children}</PageWrapper>
+        <NuqsAdapter>
+          <PageWrapper>{children}</PageWrapper>
+        </NuqsAdapter>
         <Toaster />
         <DevIsland />
       </body>
