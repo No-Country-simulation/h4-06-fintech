@@ -20,7 +20,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["node", "express"],
+    "types": ["node", "express", "jest"],
     "esModuleInterop": true
   }
 }
