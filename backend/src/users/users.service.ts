@@ -125,7 +125,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
-          Target: true,
+          target: true,
         },
       });
       if (!findOne) {

@@ -13,7 +13,7 @@ export interface GetProfileResponse {
   isEmailVerified: boolean;
   profile: string | null;
   wallet: Wallet[];
-  Target: FinancialTarget[];
+  target: FinancialTarget[];
   // TODO - Arreglar los tipos para estos dos campos
   comment: unknown[];
   financialRadiographies: unknown[];

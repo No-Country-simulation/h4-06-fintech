@@ -30,10 +30,13 @@ CREATE TABLE "User" (
 CREATE TABLE "Target" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
-    "progress" TEXT NOT NULL,
-    "montoTarget" INTEGER NOT NULL,
+    "progress" DECIMAL(65,30) NOT NULL DEFAULT 0.0,
+    "amount" DECIMAL(65,30) NOT NULL,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "category" TEXT NOT NULL,
     "dateTarget" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Target_pkey" PRIMARY KEY ("id")
@@ -270,6 +273,9 @@ CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Stock_symbol_key" ON "Stock"("symbol");
+
+-- AddForeignKey
+ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

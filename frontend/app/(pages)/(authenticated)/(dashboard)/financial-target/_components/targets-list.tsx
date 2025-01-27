@@ -2,7 +2,7 @@ import { backend } from '@api';
 import Link from 'next/link';
 
 export async function TargetsList() {
-  const { Target: targets } = await backend.authApi.getProfile();
+  const { target: targets } = await backend.authApi.getProfile();
 
   return (
     <ul className='flex flex-col gap-2 rounded-md border bg-secondary p-2'>
