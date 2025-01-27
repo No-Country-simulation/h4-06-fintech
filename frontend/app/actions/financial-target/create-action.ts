@@ -1,7 +1,5 @@
 'use server';
 
-import { backend } from '@api';
-import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import * as zod from 'zod';
 
@@ -48,18 +46,11 @@ export async function financialTargetAction(
     };
   }
 
-  let newTargetId;
+  const query = new URLSearchParams({
+    name: result.data.name,
+    amount: result.data.amount.toString(),
+    durationMonths: result.data.durationMonths.toString(),
+  }).toString();
 
-  try {
-    const newTarget = await backend.financialTargetApi.create({
-      ...result.data,
-      category: 'otro',
-    });
-    newTargetId = newTarget.id;
-  } catch (error) {
-    console.error(error);
-  }
-
-  revalidatePath('/financial-target', 'page');
-  redirect(`/financial-target/${newTargetId}`);
+  redirect(`/financial-target/recommendation?${query}`);
 }
