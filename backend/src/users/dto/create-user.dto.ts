@@ -58,5 +58,5 @@ export class CreateUserDto {
   })
   @ValidateNested({ each: true })
   @Type(() => Profile)
-  profile: Profile;
+  profile?: Profile;
 }

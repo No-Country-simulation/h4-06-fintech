@@ -34,7 +34,7 @@ export class UsersService {
     }
     return user;
   }
-  
+
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
@@ -132,7 +132,7 @@ export class UsersService {
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.findOne(id);
-  
+
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
@@ -140,32 +140,34 @@ export class UsersService {
           roundOfHashing,
         );
       }
-  
+
       const { profile, financialRadiographies, ...rest } = updateUserDto;
-     
+
       const updateData: any = {
-        ...rest, 
+        ...rest,
       };
-  
+
       if (profile) {
         updateData.profile = {
-          update: {
-            ...profile, 
+          upsert: {
+            create: profile,
+            update: profile,
           },
         };
       }
-  
+
       if (financialRadiographies) {
         updateData.financialRadiographies = {
-          update: {
-            ...financialRadiographies, 
+          upsert: {
+            create: financialRadiographies,
+            update: financialRadiographies,
           },
         };
       }
-  
+
       const update = await this.prismaService.user.update({
         where: { id },
-        data: updateData, 
+        data: updateData,
         include: {
           profile: true,
           wallet: true,
@@ -173,7 +175,7 @@ export class UsersService {
           financialRadiographies: true,
         },
       });
-  
+
       return {
         message: 'User updated successfully',
         data: update,
@@ -186,8 +188,7 @@ export class UsersService {
       );
     }
   }
-  
-  
+
   async remove(id: string) {
     await this.findOne(id);
     try {

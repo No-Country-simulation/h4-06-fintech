@@ -1,9 +1,11 @@
-import { backend } from '@api';
+import { FinancialTarget } from 'client-api/backend/modules/financial-target/interface/getOne';
 import Link from 'next/link';
 
-export async function TargetsList() {
-  const { target: targets } = await backend.authApi.getProfile();
+interface Props {
+  targets: FinancialTarget[];
+}
 
+export async function TargetsList({ targets }: Props) {
   return (
     <ul className='flex flex-col gap-2 rounded-md border bg-secondary p-2'>
       {targets.map((target) => (
