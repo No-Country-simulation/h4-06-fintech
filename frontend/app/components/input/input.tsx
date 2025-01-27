@@ -14,10 +14,11 @@ export default function Input({
   error,
   name,
   password = false,
+  className,
   ...props
 }: InputProps) {
   const inputStyles =
-    `w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${props.className || ''} `.trim();
+    `w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${className || ''} `.trim();
 
   return (
     <div className='flex flex-col gap-1'>

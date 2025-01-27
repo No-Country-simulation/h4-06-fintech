@@ -1,63 +1,40 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
-
-// Enums imported from Prisma's generated client
-import {
-  MainGoal,
-  FinancialSkills,
-  RiskTolerance,
-  MonthlyInvestment,
-  SavingsReason,
-  InvestmentTimeframe,
-} from '../../../prisma/generated/client';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateProfileDto {
-  @ApiProperty({ enum: MainGoal, description: 'Main financial goal' })
-  @IsEnum(MainGoal)
-  mainGoal: MainGoal;
+  @ApiProperty({ description: 'Main financial goal' })
+  @IsString()
+  mainGoal: string;
 
-  @ApiProperty({ enum: FinancialSkills, description: 'User’s financial skills level' })
-  @IsEnum(FinancialSkills)
-  financialSkills: FinancialSkills;
+  @ApiProperty({ description: 'User’s financial skills level' })
+  @IsString()
+  financialSkills: string;
 
-  @ApiProperty({ enum: RiskTolerance, description: 'Risk tolerance level' })
-  @IsEnum(RiskTolerance)
-  riskTolerance: RiskTolerance;
+  @ApiProperty({ description: 'Risk tolerance level' })
+  @IsString()
+  riskTolerance: string;
 
-  @ApiProperty({ enum: MonthlyInvestment, description: 'Monthly investment allocation' })
-  @IsEnum(MonthlyInvestment)
-  monthlyInvestment: MonthlyInvestment;
+  @ApiProperty({ description: 'Monthly investment allocation' })
+  @IsString()
+  monthlyInvestment: string;
 
-  @ApiProperty({
-    enum: SavingsReason,
-    description: 'Reason for saving or investing',
-  })
-  @IsEnum(SavingsReason)
-  savingsOrInvestmentReason: SavingsReason;
+  @ApiProperty({ description: 'Reason for saving or investing' })
+  @IsString()
+  savingsOrInvestmentReason: string;
 
-  @ApiProperty({
-    enum: InvestmentTimeframe,
-    description: 'Investment timeframe for achieving goals',
-  })
-  @IsEnum(InvestmentTimeframe)
-  investmentTimeframe: InvestmentTimeframe;
+  @ApiProperty({ description: 'Has the user invested before?' })
+  @IsString()
+  hasInvestedBefore: string;
 
-  @ApiProperty({
-    description: 'Has the user invested before?',
-  })
-  @IsBoolean()
-  hasInvestedBefore: boolean;
+  @ApiProperty({ description: 'Investment horizon' })
+  @IsString()
+  investmentHorizon: string; 
 
-  @ApiProperty({
-    description: 'Does the user have a financial goal for the next 6-12 months?',
-  })
-  @IsBoolean()
-  financialGoalNextYear: boolean;
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  financialGoal: string;
 
-  @ApiProperty({
-    description: 'Optional user ID if linked to a user profile',
-    required: false,
-  })
+  @ApiProperty({ description: 'Optional user ID if linked to a user profile', required: false })
   @IsOptional()
   @IsString()
   userId?: string;

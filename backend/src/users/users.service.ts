@@ -21,7 +21,7 @@ export class UsersService {
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -61,8 +61,8 @@ export class UsersService {
             create: profile,
           },
           financialRadiographies: {
-            create: financialRadiographies
-          }
+            create: financialRadiographies,
+          },
         },
       });
 
@@ -79,7 +79,7 @@ export class UsersService {
         include: {
           wallet: true,
           profile: true,
-          financialRadiographies: true
+          financialRadiographies: true,
         },
       });
 
@@ -90,7 +90,7 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
-      new HttpException(
+      throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
@@ -125,6 +125,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
         },
       });
       if (!findOne) {
@@ -157,7 +158,7 @@ export class UsersService {
           },
           financialRadiographies: {
             create: financialRadiographies,
-          }
+          },
         },
       });
 
@@ -195,14 +196,12 @@ export class UsersService {
     const payload: JwtPayload = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
     });
-    console.log({ payload });
 
     const user = await this.prismaService.user.findUnique({
       where: {
         id: payload.id,
       },
     });
-    console.log({ user });
 
     if (!user) {
       throw new BadRequestException('Este usuario no existe');
