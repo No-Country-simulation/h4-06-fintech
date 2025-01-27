@@ -346,7 +346,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\DELL\\Desktop\\hackathon h4-06-fintech\\backend\\prisma\\generated\\client",
+      "value": "C:\\Users\\EVER ROJAS\\OneDrive\\Escritorio\\h4-06-fintech\\backend\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -364,7 +364,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\DELL\\Desktop\\hackathon h4-06-fintech\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\EVER ROJAS\\OneDrive\\Escritorio\\h4-06-fintech\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -378,7 +378,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
