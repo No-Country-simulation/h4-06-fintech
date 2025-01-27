@@ -4,6 +4,7 @@ import { redirectFinancialTargetAction } from '@/actions/financial-target/redire
 import SubmitButton from '@/components/button/submit-button';
 import Input from '@/components/input/input';
 import { Button } from '@/components/ui/button';
+import { useTargetUrl } from '@/hooks/use-target-url';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -19,6 +20,8 @@ const initialState = {
 };
 
 export default function FinancialTargetForm() {
+  const { amount, durationMonths, name } = useTargetUrl();
+
   const [state, action, pending] = useActionState(
     redirectFinancialTargetAction,
     initialState,
@@ -54,6 +57,7 @@ export default function FinancialTargetForm() {
     >
       <section className='flex flex-col gap-12 rounded-[20px] bg-secondary px-6 py-8'>
         <Input
+          defaultValue={name ?? ''}
           variant='secondary'
           label='Nombre de objetivo financiero'
           name='name'
@@ -61,6 +65,7 @@ export default function FinancialTargetForm() {
           placeholder='Vacaciones 2025'
         />
         <Input
+          defaultValue={amount ?? ''}
           variant='secondary'
           label='Monto estimativo de lo que necesitás para lograr tu objetivo'
           name='amount'
@@ -69,6 +74,7 @@ export default function FinancialTargetForm() {
           placeholder='Monto en pesos'
         />
         <Input
+          defaultValue={durationMonths ?? ''}
           variant='secondary'
           label='Define un plazo de tiempo en el que quieras lograrlo'
           name='durationMonths'

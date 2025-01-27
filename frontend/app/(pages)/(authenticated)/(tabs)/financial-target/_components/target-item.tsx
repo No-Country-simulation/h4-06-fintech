@@ -8,7 +8,7 @@ interface Props {
 export function TargetItem({ target }: Props) {
   const percentaje =
     Number(target.progress) > 0
-      ? `${(Number(target.progress) / Number(target.amount)) * 100}%`
+      ? `${((Number(target.progress) / Number(target.amount)) * 100).toFixed(0)}%`
       : '0%';
 
   return (

@@ -6,24 +6,17 @@ import { Text } from '@/components/ui/text';
 import { RecommendationCard } from './_components/recommendation-card';
 
 import { createFinancialTargetAction } from '@/actions/financial-target/create-action';
+import { useTargetUrl } from '@/hooks/use-target-url';
 import Link from 'next/link';
-import { parseAsInteger, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
+// Los meses de las tarjetas que se renderizan
+const MESES = [8, 6, 4];
+
 export default function RecommendationPage() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
-
-  const [target] = useQueryStates(
-    {
-      name: parseAsString,
-      durationMonths: parseAsInteger,
-      amount: parseAsInteger,
-    },
-    {
-      history: 'push',
-    },
-  );
+  const { amount, durationMonths, name } = useTargetUrl();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,9 +26,9 @@ export default function RecommendationPage() {
 
       // Llama a la Server Action
       await createFinancialTargetAction({
-        name: target.name!,
-        amount: target.amount!,
-        durationMonths: target.durationMonths!,
+        name: name!,
+        amount: amount!,
+        durationMonths: durationMonths!,
       });
     } catch (err) {
       toast.error('Error al establecer un objetivo financiero');
@@ -45,10 +38,16 @@ export default function RecommendationPage() {
     }
   };
 
+  const query = new URLSearchParams({
+    name: name!,
+    amount: amount!.toString(),
+    durationMonths: durationMonths!.toString(),
+  }).toString();
+
   return (
     <section className='flex flex-col gap-[72px]'>
       <header>
-        <Text className='max-w-[1040px] text-4xl font-medium'>
+        <Text className='max-w-[1040px] text-lg font-medium sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl'>
           Te recomendamos estas opciones de cuotas mensuales para lograr tu
           objetivo
         </Text>
@@ -56,7 +55,7 @@ export default function RecommendationPage() {
       <section className='flex flex-col gap-28'>
         <section className='flex flex-col gap-4'>
           <section className='flex flex-wrap justify-center gap-6'>
-            {[8, 6, 4].map((meses) => (
+            {MESES.map((meses) => (
               <button
                 onClick={() => {
                   setSelectedCard(selectedCard === meses ? null : meses);
@@ -66,7 +65,7 @@ export default function RecommendationPage() {
                 key={meses}
               >
                 <RecommendationCard
-                  amount={target.amount!}
+                  amount={amount!}
                   meses={meses}
                 />
               </button>
@@ -78,7 +77,7 @@ export default function RecommendationPage() {
           </p>
         </section>
         <footer className='mx-auto flex w-fit flex-wrap justify-center gap-6'>
-          <Link href={`/financial-target/create`}>
+          <Link href={`/financial-target/create?${query}`}>
             <Button
               variant='outline'
               size='custom'
