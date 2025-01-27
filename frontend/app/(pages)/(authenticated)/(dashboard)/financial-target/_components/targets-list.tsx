@@ -1,22 +1,8 @@
-'use client';
-
-import { getFinancialTargets } from '@/lib/local-financial-targets';
+import { backend } from '@api';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-export function TargetsList() {
-  const targets = getFinancialTargets();
-  const path = usePathname();
-
-  // De esta forma obtenemos el id del objetivo financiero, no puedo pasarlo por el slug
-  // porque la pagina que tiene el mensaje de  "Selecciona uno de tus objectivos financieros para conocer el estado de tu progreso"
-  // No esta bajo la carpeta [slug]
-  const pathSegments = path.split('/');
-
-  let id: string;
-  if (pathSegments.length >= 3) {
-    id = pathSegments[2];
-  }
+export async function TargetsList() {
+  const { target: targets } = await backend.authApi.getProfile();
 
   return (
     <ul className='flex flex-col gap-2 rounded-md border bg-secondary p-2'>
@@ -25,11 +11,14 @@ export function TargetsList() {
           href={`/financial-target/${target.id}`}
           key={target.id}
         >
-          <li
-            data-active={id === target.id}
-            className='rounded-md border bg-background px-4 py-2 transition-colors data-[active=true]:bg-primary'
-          >
-            {target.name}
+          <li className='flex w-full items-center justify-between rounded-md border bg-background px-4 py-2 transition-colors'>
+            <p>{target.name}</p>
+            <div
+              data-active={target.isActive}
+              className='rounded-full bg-red-200 px-4 py-1 text-xs text-red-600 data-[active=true]:bg-green-200 data-[active=true]:text-green-600'
+            >
+              {target.isActive ? 'Activo' : 'Inactivo'}
+            </div>
           </li>
         </Link>
       ))}

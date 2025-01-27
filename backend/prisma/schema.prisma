@@ -10,31 +10,36 @@ datasource db {
 }
 
 model User {
-  id                     String                 @id @unique @default(cuid())
-  email                  String                 @unique
+  id                     String                @id @unique @default(cuid())
+  email                  String                @unique
   firstName              String?
   lastName               String?
   password               String
   avatarUrl              String?
-  role                   UserRole?              @default(USER)
-  createdAt              DateTime               @default(now())
-  updatedAt              DateTime               @updatedAt
-  isEmailVerified        Boolean                @default(false)
+  role                   UserRole?             @default(USER)
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  isEmailVerified        Boolean               @default(false)
   comment                Comment[]
-  financialRadiographies FinancialRadiography[]
+  financialRadiographies FinancialRadiography?
   profile                Profile?
   Support                Support[]
   wallet                 wallet[]
+  target                 Target[]
 }
 
 model Target {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  progress    String
-  montoTarget Int
-  dateTarget  DateTime
-  userId      String
+  id         String   @id @default(cuid())
+  name       String
+  progress   Decimal  @default(0.0)
+  amount     Decimal
+  isActive   Boolean  @default(true)
+  category   String
+  dateTarget DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model FinancialRadiography {
@@ -44,8 +49,8 @@ model FinancialRadiography {
   savingCapacity  Decimal? @db.Decimal(10, 2)
   debts           Decimal? @db.Decimal(10, 2)
   savings         Decimal? @db.Decimal(10, 2)
-  userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String?  @unique
+  user            User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model InvestmentPortfolio {

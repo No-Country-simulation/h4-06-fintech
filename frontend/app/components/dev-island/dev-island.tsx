@@ -6,7 +6,6 @@ export async function DevIsland() {
   }
 
   const isBackendWorking = await backend.isActive();
-  console.log({ isBackendWorking });
 
   return (
     <section className='fixed bottom-0 right-0 m-6 flex flex-col gap-2 rounded-lg border bg-background p-6'>
