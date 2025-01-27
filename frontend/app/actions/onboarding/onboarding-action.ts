@@ -1,6 +1,6 @@
 "use server";
 
-import { authApi } from "client-api/backend/auth/auth.api";
+import { authApi } from "client-api/backend/modules/auth/auth.api";
 import { OnboardingFormData } from "client-api/backend/onboarding/interface/onboarding";
 import { onboardingApi } from "client-api/backend/onboarding/onboarding";
 import { z } from "zod";
@@ -50,6 +50,8 @@ export async function onboardingAction(
 
 	try {
 		const data = {
+			email: 'everjosejr@hotmail.com',
+			password: 'crack1234',
 			profile: {
 				mainGoal: formValues.question_1,
 				financialSkills: formValues.question_2,
@@ -70,7 +72,7 @@ export async function onboardingAction(
 
 		return {
 			success: true,
-			redirect: `/onboarding/sumary/${userId.id}`,
+			redirect: '/onboarding/sumary',
 		};
 	} catch (error) {
 		console.error("Error creating onboarding:", error);

@@ -29,10 +29,8 @@ export const onboardingApi = {
         console.log("options", options);
 
         return handleRequest({
-            url,
-            options,
+            fetcherFn: () => fetch(url, options),
             ErrorClass: InternalError,
         });
     }
-
 }

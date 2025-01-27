@@ -1,4 +1,4 @@
-import { authApi } from "client-api/backend/auth/auth.api";
+import { authApi } from "client-api/backend/modules/auth/auth.api";
 import ProfileOverview from "../_components/profile-overview";
 
 export default async function OnboardingSummary() {

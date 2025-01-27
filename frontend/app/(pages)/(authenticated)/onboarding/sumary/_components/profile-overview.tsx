@@ -16,7 +16,8 @@ const PROFILE_LABELS: Record<string, string> = {
   financialGoal: '¿Tenés algún objetivo financiero?'
 };
 
-export default function ProfileOverview({ profile }: { profile: ProfileData}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function ProfileOverview({ profile }: { profile: any}) {
   // const searchParams = useSearchParams();
   // const questions = questionsData.questions;
   console.log(profile);
