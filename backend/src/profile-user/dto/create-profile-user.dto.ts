@@ -1,52 +1,41 @@
-import { IsNotEmpty, IsString, IsEnum, IsBoolean, IsOptional, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  FinancialGoal,
-  InvestmentHorizon,
-  RiskTolerance,
-  ReactionToLoss,
-  KnowledgeLevel
-} from '@prisma/client';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateProfileDto {
-  @ApiProperty({ enum: FinancialGoal })
-  @IsEnum(FinancialGoal)
-  financialGoal: FinancialGoal;
+  @ApiProperty({ description: 'Main financial goal' })
+  @IsString()
+  mainGoal: string;
 
-  @ApiProperty({ enum: InvestmentHorizon })
-  @IsEnum(InvestmentHorizon)
-  investmentHorizon: InvestmentHorizon;
+  @ApiProperty({ description: 'User’s financial skills level' })
+  @IsString()
+  financialSkills: string;
 
-  @ApiProperty({ enum: RiskTolerance })
-  @IsEnum(RiskTolerance)
-  riskTolerance: RiskTolerance;
+  @ApiProperty({ description: 'Risk tolerance level' })
+  @IsString()
+  riskTolerance: string;
 
-  @ApiProperty()
-  @IsNumber()
-  monthlyAllocation: number;
+  @ApiProperty({ description: 'Monthly investment allocation' })
+  @IsString()
+  monthlyInvestment: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Reason for saving or investing' })
+  @IsString()
+  savingsOrInvestmentReason: string;
+
+  @ApiProperty({ description: 'Has the user invested before?' })
+  @IsString()
+  hasInvestedBefore: string;
+
+  @ApiProperty({ description: 'Investment horizon' })
+  @IsString()
+  investmentHorizon: string; 
+
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  financialGoal: string;
+
+  @ApiProperty({ description: 'Optional user ID if linked to a user profile', required: false })
   @IsOptional()
   @IsString()
-  specificPurpose?: string;
-
-  @ApiProperty({ type: [String] })
-  @IsString({ each: true })
-  instrumentsUsed: string[];
-
-  @ApiProperty()
-  @IsBoolean()
-  hasDebts: boolean;
-
-  @ApiProperty({ enum: ReactionToLoss })
-  @IsEnum(ReactionToLoss)
-  reactionToLoss: ReactionToLoss;
-
-  @ApiProperty({ enum: KnowledgeLevel })
-  @IsEnum(KnowledgeLevel)
-  knowledgeLevel: KnowledgeLevel;
-
-  @ApiProperty()
-  @IsString()
-  userId: string;
+  userId?: string;
 }

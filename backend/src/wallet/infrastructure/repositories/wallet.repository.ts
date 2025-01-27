@@ -1,10 +1,10 @@
-import { PrismaService } from '../../../prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
-import { IWalletRepository } from '../../domain/interfaces/wallet.repository.interface';
+import { CurrencyType } from '../../../../prisma/generated/client';
+import { PrismaService } from '../../../prisma/prisma.service';
+import { TransactionDto } from '../../application/dtos/transaction.dto';
 import { Wallet } from '../../domain/entities/wallet.entity';
 import { WalletTransaction } from '../../domain/entities/wallet.transaction.entity';
-import { TransactionDto } from '../../application/dtos/transaction.dto';
-import { CurrencyType } from '@prisma/client';
+import { IWalletRepository } from '../../domain/interfaces/wallet.repository.interface';
 
 @Injectable()
 export class WalletRepository implements IWalletRepository {

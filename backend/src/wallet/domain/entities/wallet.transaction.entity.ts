@@ -1,4 +1,7 @@
-import { TransactionType, CurrencyType } from '@prisma/client';
+import {
+  CurrencyType,
+  TransactionType,
+} from '../../../../prisma/generated/client';
 
 export class WalletTransaction {
   constructor(
@@ -7,6 +10,14 @@ export class WalletTransaction {
     public amount: number,
     public type: TransactionType,
     public currency: CurrencyType,
-    public date: Date,
+    public createdAt: Date,
   ) {}
+
+  isDeposit(): boolean {
+    return this.type === 'DEPOSIT';
+  }
+
+  isWithdrawal(): boolean {
+    return this.type === 'WITHDRAWAL';
+  }
 }

@@ -1,37 +1,19 @@
 'use server';
 
-import { backend } from '@api';
 import zod from 'zod';
+import { backend } from '../../../client-api/backend';
 
-const signUpSchema = zod
-  .object({
-    email: zod.string().email({ message: 'correo no es valido' }).trim(),
-    password: zod
-      .string()
-      .min(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
-      .max(20, { message: 'La contraseña no puede tener más de 20 caracteres' })
-      .regex(/[a-zA-Z]/, {
-        message: 'La contraseña debe contener al menos una letra',
-      })
-      .regex(/[0-9]/, {
-        message: 'La contraseña debe contener al menos un número',
-      })
-      .trim(),
-    confirmPassword: zod
-      .string()
-      .min(8, {
-        message:
-          'La confirmacion de la contraseña debe tener al menos 8 caracteres',
-      })
-      .max(20, {
-        message: 'La contraseña no puede tener más de 20 caracteres',
-      })
-      .trim(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'La contraseña de confirmación no coincide',
-    path: ['confirmPassword'],
-  });
+const signUpSchema = zod.object({
+  email: zod
+    .string({ message: 'Por favor ingresa un email' })
+    .email({ message: 'El email debe tener un dominio válido' })
+    .trim(),
+  password: zod
+    .string()
+    .min(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
+    .max(20, { message: 'La contraseña no puede tener más de 20 caracteres' })
+    .trim(),
+});
 
 export type SignUpSchema = zod.infer<typeof signUpSchema>;
 
@@ -39,7 +21,6 @@ export type SignUpState = {
   message?: {
     email?: string[];
     password?: string[];
-    confirmPassword?: string[];
   };
   success?: boolean;
   actionErrorMessage?: string;
@@ -51,8 +32,7 @@ export async function signUpAction(
 ): Promise<SignUpState> {
   const email = formData.get('email');
   const password = formData.get('password');
-  const confirmPassword = formData.get('confirmPassword');
-  const data = { email, password, confirmPassword };
+  const data = { email, password };
 
   const result = signUpSchema.safeParse(data);
 

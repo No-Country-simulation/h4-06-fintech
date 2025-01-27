@@ -1,4 +1,5 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
@@ -8,12 +9,14 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
-import { Type } from 'class-transformer';
 import { CreateFinancialRadiographyDto } from '../../FinancialRadiographies/FinancialRadiographies.dto';
+import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
 
-export class Profile extends OmitType(CreateProfileDto, ['userId']) { }
-export class FinancialRadiographies extends OmitType(CreateFinancialRadiographyDto, ['userId']) { }
+export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
+export class FinancialRadiographies extends OmitType(
+  CreateFinancialRadiographyDto,
+  ['userId'],
+) {}
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty({
@@ -49,7 +52,6 @@ export class CreateUserDto {
   @Type(() => FinancialRadiographies)
   financialRadiographies?: FinancialRadiographies;
 
-
   @ApiProperty({
     type: Profile,
     required: true,
@@ -57,5 +59,4 @@ export class CreateUserDto {
   @ValidateNested({ each: true })
   @Type(() => Profile)
   profile: Profile;
-
 }

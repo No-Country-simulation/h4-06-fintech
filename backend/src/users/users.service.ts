@@ -5,9 +5,9 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
+import { User } from '../../prisma/generated/client';
 import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -21,30 +21,23 @@ export class UsersService {
     private readonly prismaService: PrismaService,
     private loginMailService: LoginMailsService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
+    if (user) {
+      throw new BadRequestException(
+        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+      );
+    }
     return user;
   }
-
+  
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
-      const existingUser = await this.prismaService.user.findFirst({
-        where: {
-          email: createUserDto.email,
-        },
-      });
-
-      if (existingUser) {
-        throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-        );
-      }
-
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
         roundOfHashing,
@@ -61,8 +54,8 @@ export class UsersService {
             create: profile,
           },
           financialRadiographies: {
-            create: financialRadiographies
-          }
+            create: financialRadiographies,
+          },
         },
       });
 
@@ -78,6 +71,8 @@ export class UsersService {
         where: { id: user.id },
         include: {
           wallet: true,
+          profile: true,
+          financialRadiographies: true,
         },
       });
 
@@ -88,7 +83,7 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
-      new HttpException(
+      throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
@@ -123,6 +118,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
         },
       });
       if (!findOne) {
@@ -135,7 +131,8 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    await this.findOne(id);
+    const user = await this.findOne(id);
+  
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
@@ -143,34 +140,54 @@ export class UsersService {
           roundOfHashing,
         );
       }
-
+  
       const { profile, financialRadiographies, ...rest } = updateUserDto;
-
+     
+      const updateData: any = {
+        ...rest, 
+      };
+  
+      if (profile) {
+        updateData.profile = {
+          update: {
+            ...profile, 
+          },
+        };
+      }
+  
+      if (financialRadiographies) {
+        updateData.financialRadiographies = {
+          update: {
+            ...financialRadiographies, 
+          },
+        };
+      }
+  
       const update = await this.prismaService.user.update({
         where: { id },
-        data: {
-          ...rest,
-          profile: {
-            create: profile,
-          },
-          financialRadiographies: {
-            create: financialRadiographies,
-          }
+        data: updateData, 
+        include: {
+          profile: true,
+          wallet: true,
+          comment: true,
+          financialRadiographies: true,
         },
       });
-
+  
       return {
         message: 'User updated successfully',
         data: update,
       };
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
-
+  
+  
   async remove(id: string) {
     await this.findOne(id);
     try {

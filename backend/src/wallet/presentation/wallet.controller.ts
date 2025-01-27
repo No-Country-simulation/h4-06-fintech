@@ -7,7 +7,10 @@ export class WalletController {
   constructor(private readonly createWalletUseCase: CreateWalletUseCase) {}
 
   @Post('create')
-  async createWallet(@Body() createWalletDto: CreateWalletDto): Promise<void> {
+  async createWallet(
+    @Body() createWalletDto: CreateWalletDto,
+  ): Promise<{ message: string }> {
     await this.createWalletUseCase.execute(createWalletDto.userId);
+    return { message: 'Wallet created successfully' };
   }
 }

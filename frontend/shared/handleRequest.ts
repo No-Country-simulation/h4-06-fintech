@@ -1,4 +1,4 @@
-import { APIErrorResponse } from '../api/backend/interface/generic-response';
+import { APIErrorResponse } from '../client-api/backend/interface/generic-response';
 import { InternalError } from './errors';
 
 /**
@@ -14,18 +14,16 @@ import { InternalError } from './errors';
  */
 
 interface Options<E> {
-  url: string;
-  options: RequestInit;
+  fetcherFn: () => Promise<Response>;
   ErrorClass: new (message: string) => E;
 }
 
 export async function handleRequest<E extends Error, ApiResponse>({
   ErrorClass,
-  options,
-  url,
+  fetcherFn,
 }: Options<E>): Promise<ApiResponse> {
   try {
-    const response = await fetch(url, options);
+    const response = await fetcherFn();
 
     if (!response.ok) {
       const errorResponse: APIErrorResponse = await response.json();
@@ -37,6 +35,8 @@ export async function handleRequest<E extends Error, ApiResponse>({
 
     return await response.json();
   } catch (error) {
+    console.log(error);
+
     if (error instanceof ErrorClass) {
       throw error;
     }

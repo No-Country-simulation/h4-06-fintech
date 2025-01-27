@@ -1,16 +1,20 @@
+import { Inject, Injectable } from '@nestjs/common';
 import { IWalletRepository } from '../../domain/interfaces/wallet.repository.interface';
 import { TransactionDto } from '../dtos/transaction.dto';
-import { CurrencyType, TransactionType } from '@prisma/client';
 
+@Injectable()
 export class MakeTransactionUseCase {
-  constructor(private readonly walletRepository: IWalletRepository) {}
+  constructor(
+    @Inject('IWalletRepository')
+    private readonly walletRepository: IWalletRepository,
+  ) {}
 
   async execute(dto: TransactionDto) {
     const wallet = await this.walletRepository.getWalletById(dto.walletId);
     if (!wallet) throw new Error('Wallet not found');
 
     if (
-      dto.type === TransactionType.WITHDRAWAL &&
+      dto.type === 'WITHDRAWAL' &&
       dto.amount > wallet[dto.currency.toLowerCase()]
     ) {
       throw new Error('Insufficient funds');
@@ -18,8 +22,8 @@ export class MakeTransactionUseCase {
 
     const updatedWallet = await this.walletRepository.updateWalletBalances(
       dto.walletId,
-      dto.currency as CurrencyType,
-      dto.type === TransactionType.DEPOSIT ? dto.amount : -dto.amount,
+      dto.currency,
+      dto.type === 'DEPOSIT' ? dto.amount : -dto.amount,
     );
 
     await this.walletRepository.logTransaction(dto);

@@ -1,7 +1,8 @@
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import { ValidationPipe, Logger } from '@nestjs/common';
+import { AppModule } from './app.module';
 
 import { setupSwagger } from './config/swagger.config';
 
@@ -27,9 +28,20 @@ async function bootstrap() {
 
   // Configuración de CORS
   app.enableCors({
-    origin: process.env.CORS_ORIGIN?.split(',') || '*',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+    ],
   });
+
+  // Configura cookie parser para setear cookies del lado del server
+  app.use(cookieParser());
 
   // Configurar Swagger
   setupSwagger(app);
@@ -37,5 +49,8 @@ async function bootstrap() {
   const port = process.env.PORT || 5000;
   await app.listen(port);
   logger.log(`🚀 Server is running on: http://localhost:${port}`);
+  logger.log(
+    `Swagger documentation available at: http://localhost:${port}/api/docs`,
+  );
 }
 bootstrap();
