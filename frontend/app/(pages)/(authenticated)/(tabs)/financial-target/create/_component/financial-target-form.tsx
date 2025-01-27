@@ -1,6 +1,6 @@
 'use client';
 
-import { financialTargetAction } from '@/actions/financial-target/create-action';
+import { redirectFinancialTargetAction } from '@/actions/financial-target/redirect-action';
 import SubmitButton from '@/components/button/submit-button';
 import Input from '@/components/input/input';
 import { Button } from '@/components/ui/button';
@@ -20,7 +20,7 @@ const initialState = {
 
 export default function FinancialTargetForm() {
   const [state, action, pending] = useActionState(
-    financialTargetAction,
+    redirectFinancialTargetAction,
     initialState,
   );
   const router = useRouter();

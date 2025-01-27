@@ -1,5 +1,6 @@
 'use server';
 
+import { backend } from '@api';
 import { redirect } from 'next/navigation';
 import * as zod from 'zod';
 
@@ -17,40 +18,25 @@ const financialTargetSchema = zod.object({
 
 export type FinancialTargetSchema = zod.infer<typeof financialTargetSchema>;
 
-type FinancialTargetState = {
-  message?: {
-    name?: string[];
-    amount?: string[];
-    durationMonths?: string[];
-  };
-  success?: boolean;
-  actionErrorMessage?: string;
-};
-
-export async function financialTargetAction(
-  prevState: FinancialTargetState,
-  formData: FormData,
-): Promise<FinancialTargetState> {
-  const name = formData.get('name');
-  const amount = formData.get('amount');
-  const durationMonths = formData.get('durationMonths');
-
-  const data = { name, amount, durationMonths };
-
-  const result = financialTargetSchema.safeParse(data);
+export async function createFinancialTargetAction(
+  payload: FinancialTargetSchema,
+) {
+  const result = financialTargetSchema.safeParse(payload);
 
   if (!result.success) {
-    return {
-      message: result.error.flatten().fieldErrors,
-      success: false,
-    };
+    throw new Error('Error al establecer un objetivo financiero');
   }
 
-  const query = new URLSearchParams({
-    name: result.data.name,
-    amount: result.data.amount.toString(),
-    durationMonths: result.data.durationMonths.toString(),
-  }).toString();
+  try {
+    await backend.financialTargetApi.create({
+      durationMonths: result.data.durationMonths,
+      amount: result.data.amount,
+      name: result.data.name,
+      category: 'otro',
+    });
+  } catch (error) {
+    console.error({ error });
+  }
 
-  redirect(`/financial-target/recommendation?${query}`);
+  redirect(`/financial-target/success`);
 }
