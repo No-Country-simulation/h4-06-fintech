@@ -14,7 +14,7 @@ const LINKS = [
     icon: <HomeIcon />,
   },
   {
-    href: '/investments',
+    href: '/investment',
     value: 'Inversiones',
     icon: <InvestmentIcon />,
   },
@@ -24,7 +24,7 @@ const LINKS = [
     icon: <WalletIcon />,
   },
   {
-    href: '/settings',
+    href: '/setting',
     value: 'Configuración',
     icon: <SettingIcon />,
   },
