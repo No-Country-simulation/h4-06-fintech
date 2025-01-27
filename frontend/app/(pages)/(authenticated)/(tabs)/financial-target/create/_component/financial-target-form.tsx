@@ -5,7 +5,7 @@ import SubmitButton from '@/components/button/submit-button';
 import Input from '@/components/input/input';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import { useActionState, useEffect } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 const initialState = {
@@ -25,6 +25,17 @@ export default function FinancialTargetForm() {
   );
   const router = useRouter();
 
+  // Al usar el hook useActionState no tenemos forma de setear
+  // el estado del formulario de manera programatica sin tener que
+  // enviar el formulario, por eso le asigno una key al formulario
+  // y al apretar el boton de deshacer se actualizar la key haciendo
+  // que el formulario se vuelva a montar
+  const [formKey, setFormKey] = useState<number>(0);
+
+  const handleReset = () => {
+    setFormKey(formKey + 1);
+  };
+
   useEffect(() => {
     if (state.success) {
       toast('Objetivo establecio con exito 🎉');
@@ -37,6 +48,7 @@ export default function FinancialTargetForm() {
 
   return (
     <form
+      key={formKey}
       action={action}
       className='flex flex-col gap-20'
     >
@@ -67,15 +79,16 @@ export default function FinancialTargetForm() {
       </section>
       <footer className='mx-auto flex w-fit flex-wrap items-center justify-center gap-4'>
         <Button
+          onClick={handleReset}
           variant='outline'
           size='custom'
-          className='border-red-500 text-red-500'
+          className='border-red-500 text-red-500 hover:bg-red-100'
         >
           Deshacer
         </Button>
         <SubmitButton
           data-pw='submit-button'
-          label='Crear objetivo'
+          label='Continuar'
           pending={pending}
         />
       </footer>
