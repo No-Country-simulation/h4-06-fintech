@@ -38,14 +38,16 @@ export function HeaderNavbar() {
       {LINKS.map((link) => (
         <Link
           data-active={pathname === link.href}
-          className='group flex items-center gap-3 rounded-lg border border-foreground px-4 py-[10px] transition-colors hover:bg-primary/20 data-[active=true]:border-primary'
+          className='group flex items-center gap-3 rounded-lg border border-foreground px-4 py-[10px] transition-colors hover:bg-primary/10 data-[active=true]:border-primary'
           key={link.href}
           href={link.href}
         >
           <span className='stroke-foreground text-foreground group-data-[active=true]:stroke-primary'>
             {link.icon}
           </span>
-          <p>{link.value}</p>
+          <p className='hidden group-data-[active=true]:text-primary lg:block'>
+            {link.value}
+          </p>
         </Link>
       ))}
     </section>
