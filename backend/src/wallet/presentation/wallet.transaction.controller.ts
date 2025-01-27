@@ -20,6 +20,13 @@ export class WalletTransactionController {
   @ApiResponse({ status: 400, description: 'Datos de entrada inválidos' })
   @ApiResponse({ status: 500, description: 'Error en el servidor' })
   async makeTransaction(@Body() dto: TransactionDto) {
-    return await this.makeTransactionUseCase.execute(dto);
+    // Llama al caso de uso para manejar la lógica
+    const transaction = await this.makeTransactionUseCase.execute(dto);
+
+    // Devuelve una respuesta clara y estructurada
+    return {
+      message: 'Transacción realizada con éxito',
+      data: transaction,
+    };
   }
 }

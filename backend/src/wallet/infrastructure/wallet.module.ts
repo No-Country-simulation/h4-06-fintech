@@ -12,12 +12,13 @@ import { WalletRepository } from './repositories/wallet.repository';
   providers: [
     WalletRepository,
     CreateWalletUseCase,
+    MakeTransactionUseCase,
     {
       provide: 'IWalletRepository',
       useClass: WalletRepository,
     },
     MakeTransactionUseCase,
   ],
-  exports: [WalletRepository, CreateWalletUseCase],
+  exports: [WalletRepository, CreateWalletUseCase, MakeTransactionUseCase],
 })
 export class WalletModule {}
