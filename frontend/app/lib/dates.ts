@@ -1,10 +1,12 @@
 import { addMonths, differenceInMonths, format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-export function getLimitDate(startDate: string, months: number) {
-  const aux = new Date(startDate);
-  const futureDate = addMonths(aux, months);
-  console.log({ startDate });
+export function getLimitDate(startDate: Date, startFinish: Date) {
+  // Calculate the difference in months
+  const monthsDifference = differenceInMonths(startFinish, startDate);
+
+  // Add the difference in months to the start date
+  const futureDate = addMonths(startDate, monthsDifference);
 
   const formattedDate = format(futureDate, "d 'de' MMMM 'de' yyyy", {
     locale: es,
@@ -12,12 +14,9 @@ export function getLimitDate(startDate: string, months: number) {
   return formattedDate;
 }
 
-export function getMonthsUntil(startDate: string, months: number) {
-  const aux = new Date(startDate);
-  const targetDate = addMonths(aux, months);
-
+export function getMonthsUntil(startFinish: Date) {
   const currentDate = new Date();
-  const monthsUntilTarget = differenceInMonths(targetDate, currentDate);
+  const monthsUntilTarget = differenceInMonths(startFinish, currentDate);
 
   return `${monthsUntilTarget} meses para llegar a la fecha límite`;
 }
