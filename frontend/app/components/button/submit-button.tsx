@@ -12,12 +12,12 @@ export default function SubmitButton({
   className,
   ...props
 }: SubmitButtonProps) {
-  const baseStyles = 'mx-auto w-fit';
+  const baseStyles = 'mx-auto';
 
   return (
     <Button
       variant='secondary'
-      size='full'
+      size='custom'
       type='submit'
       disabled={pending}
       className={`${baseStyles} ${className}`}

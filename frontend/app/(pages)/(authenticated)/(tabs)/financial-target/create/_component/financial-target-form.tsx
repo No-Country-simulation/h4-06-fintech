@@ -3,6 +3,7 @@
 import { financialTargetAction } from '@/actions/financial-target/create-action';
 import SubmitButton from '@/components/button/submit-button';
 import Input from '@/components/input/input';
+import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
@@ -12,7 +13,6 @@ const initialState = {
     name: [],
     amount: [],
     durationMonths: [],
-    category: [],
   },
   success: false,
   actionErrorMessage: '',
@@ -38,44 +38,47 @@ export default function FinancialTargetForm() {
   return (
     <form
       action={action}
-      className='grid grid-cols-2 flex-col gap-8'
+      className='flex flex-col gap-20'
     >
-      <Input
-        data-pw='name'
-        label='Nombre de tu objetivo'
-        name='name'
-        error={state.message?.name?.[0]}
-        placeholder='Cambiar el auto, vacaciones 2025, ...'
-      />
-      <Input
-        data-pw='amount'
-        label='Objetivo'
-        name='amount'
-        type='number'
-        error={state.message?.amount?.[0]}
-        placeholder='$9999'
-      />
-      <Input
-        data-pw='months'
-        label='Meses'
-        name='durationMonths'
-        type='number'
-        error={state.message?.durationMonths?.[0]}
-        placeholder='12 meses'
-      />
-      <Input
-        data-pw='months'
-        label='Categoria'
-        name='category'
-        error={state.message?.category?.[0]}
-        placeholder='Vida | Vacaciones | Ocio'
-      />
-      <SubmitButton
-        data-pw='submit-button'
-        label='Crear objetivo'
-        className='col-span-2 mt-10'
-        pending={pending}
-      />
+      <section className='flex flex-col gap-12 rounded-[20px] bg-secondary px-6 py-8'>
+        <Input
+          variant='secondary'
+          label='Nombre de objetivo financiero'
+          name='name'
+          error={state.message?.name?.[0]}
+          placeholder='Vacaciones 2025'
+        />
+        <Input
+          variant='secondary'
+          label='Monto estimativo de lo que necesitás para lograr tu objetivo'
+          name='amount'
+          type='number'
+          error={state.message?.amount?.[0]}
+          placeholder='Monto en pesos'
+        />
+        <Input
+          variant='secondary'
+          label='Define un plazo de tiempo en el que quieras lograrlo'
+          name='durationMonths'
+          type='number'
+          error={state.message?.durationMonths?.[0]}
+          placeholder='6 meses'
+        />
+      </section>
+      <footer className='mx-auto flex w-fit flex-wrap items-center justify-center gap-4'>
+        <Button
+          variant='outline'
+          size='custom'
+          className='border-red-500 text-red-500'
+        >
+          Deshacer
+        </Button>
+        <SubmitButton
+          data-pw='submit-button'
+          label='Crear objetivo'
+          pending={pending}
+        />
+      </footer>
     </form>
   );
 }

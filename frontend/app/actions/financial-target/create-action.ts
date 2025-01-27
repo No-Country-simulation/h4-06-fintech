@@ -9,9 +9,6 @@ const financialTargetSchema = zod.object({
   name: zod
     .string()
     .min(4, { message: 'El nombre del objetivo debe tener al menos 4 letras' }),
-  category: zod
-    .string()
-    .min(4, { message: 'La categoria debe tener al menos 4 letras' }),
   amount: zod.coerce.number().min(1, {
     message: 'La cantidad de dinero para el objetivo debe ser positiva',
   }),
@@ -27,7 +24,6 @@ type FinancialTargetState = {
     name?: string[];
     amount?: string[];
     durationMonths?: string[];
-    category?: string[];
   };
   success?: boolean;
   actionErrorMessage?: string;
@@ -39,10 +35,9 @@ export async function financialTargetAction(
 ): Promise<FinancialTargetState> {
   const name = formData.get('name');
   const amount = formData.get('amount');
-  const category = formData.get('category');
   const durationMonths = formData.get('durationMonths');
 
-  const data = { name, amount, durationMonths, category };
+  const data = { name, amount, durationMonths };
 
   const result = financialTargetSchema.safeParse(data);
 
@@ -56,7 +51,10 @@ export async function financialTargetAction(
   let newTargetId;
 
   try {
-    const newTarget = await backend.financialTargetApi.create(result.data);
+    const newTarget = await backend.financialTargetApi.create({
+      ...result.data,
+      category: 'otro',
+    });
     newTargetId = newTarget.id;
   } catch (error) {
     console.error(error);

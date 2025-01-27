@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function TargetsEmpty() {
   return (
@@ -14,8 +15,10 @@ export function TargetsEmpty() {
           />
         </div>
         <section className='flex flex-col items-center gap-2'>
-          <p className='text-3xl'>Tu lista de objetivos está vacía.</p>
-          <p className='font-light'>
+          <p className='text-center text-3xl'>
+            Tu lista de objetivos está vacía.
+          </p>
+          <p className='text-center font-light'>
             Haz clic en{' '}
             <span className='font-normal italic'>Añadir nuevo objetivo</span> y
             ¡Comienza a alcanzar tus metas!
@@ -23,12 +26,14 @@ export function TargetsEmpty() {
         </section>
       </section>
       <footer>
-        <Button
-          variant='outline'
-          size='custom'
-        >
-          Añadir nuevo objetivo
-        </Button>
+        <Link href='/financial-target/create'>
+          <Button
+            variant='outline'
+            size='custom'
+          >
+            Añadir nuevo objetivo
+          </Button>
+        </Link>
       </footer>
     </section>
   );
