@@ -50,8 +50,6 @@ export async function onboardingAction(
 
 	try {
 		const data = {
-			email: 'everjosejr@hotmail.com',
-			password: 'crack1234',
 			profile: {
 				mainGoal: formValues.question_1,
 				financialSkills: formValues.question_2,
@@ -65,10 +63,9 @@ export async function onboardingAction(
 		};
 
 		const userId = await authApi.getProfile();
-		console.log("userId", userId);
-		console.log("Sending data:", data);
-		const response = await onboardingApi.createOnboarding(data, userId.id);
-		console.log("Response:", response);
+		
+		await onboardingApi.createOnboarding(data, userId.id);
+		
 
 		return {
 			success: true,

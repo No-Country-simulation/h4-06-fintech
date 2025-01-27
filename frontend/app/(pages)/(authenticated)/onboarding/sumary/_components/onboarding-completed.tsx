@@ -49,7 +49,7 @@ export default function OnboardingCompleted() {
         variant='secondary'
         onClick={() => router.push('/home')}
       >
-        Siguiente
+        Comenzar
       </Button>
     </div>
   );

@@ -1,9 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-// import { useSearchParams } from 'next/navigation';
-// import questionsData from '../../_data/data.json';
-import { ProfileData } from '../interface/profile';
+
 
 const PROFILE_LABELS: Record<string, string> = {
   mainGoal: '¿Cuál es tu objetivo principal?',
@@ -18,8 +16,7 @@ const PROFILE_LABELS: Record<string, string> = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProfileOverview({ profile }: { profile: any}) {
-  // const searchParams = useSearchParams();
-  // const questions = questionsData.questions;
+  
   console.log(profile);
 
   return (
@@ -37,13 +34,14 @@ export default function ProfileOverview({ profile }: { profile: any}) {
               <h3 className='text-sm font-medium text-foreground/70'>
                   {PROFILE_LABELS[key]}
               </h3>
-              <p className='mt-1 text-base'>{value}</p>
+              <p className='mt-1 text-base'>{`${value}`}</p>
             </div>
           );
         })}
       </div>
       <Button
-        className='mt-3 w-full bg-blue-500 text-base text-white hover:bg-blue-600'
+        variant={'outline'}
+        size={'full'}
         asChild
       >
         <Link href={'/home'}>ir a inicio</Link>
