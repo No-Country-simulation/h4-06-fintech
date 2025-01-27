@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
+import { getLimitDate, getMonthsUntil } from '@/lib/dates';
 import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
 
@@ -14,6 +15,8 @@ interface Props {
 
 export async function FinancialTarget({ id }: Props) {
   const target = await backend.financialTargetApi.getOne({ id });
+
+  console.log({ target });
 
   return (
     <section className='relative flex h-full flex-col gap-12'>
@@ -33,14 +36,8 @@ export async function FinancialTarget({ id }: Props) {
         <Card>Porcentaje de objetivo/ visualizado gráficamnete</Card>
         <Card>
           <Text>Fecha Límitte</Text>
-          <Text>
-            22 de enero de 2026
-            {/* {getLimitDate(target?.createdAt!, target?.durationMonths!)} */}
-          </Text>
-          <Text>
-            11 meses para llegar a la fecha límite
-            {/* {getMonthsUntil(target?.createdAt!, target?.durationMonths!)} */}
-          </Text>
+          <Text>{getLimitDate(target.createdAt, target.dateTarget)}</Text>
+          <Text>{getMonthsUntil(target.dateTarget)}</Text>
         </Card>
         <Card>
           <Text>Sugerencia gráfica,</Text>
