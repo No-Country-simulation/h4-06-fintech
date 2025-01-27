@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 export default function RecommendationPage() {
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+
   const [target] = useQueryStates(
     {
       name: parseAsString,
@@ -54,18 +56,21 @@ export default function RecommendationPage() {
       <section className='flex flex-col gap-28'>
         <section className='flex flex-col gap-4'>
           <section className='flex flex-wrap justify-center gap-6'>
-            <RecommendationCard
-              amount={target.amount!}
-              meses={8}
-            />
-            <RecommendationCard
-              amount={target.amount!}
-              meses={6}
-            />
-            <RecommendationCard
-              amount={target.amount!}
-              meses={4}
-            />
+            {[8, 6, 4].map((meses) => (
+              <button
+                onClick={() => {
+                  setSelectedCard(selectedCard === meses ? null : meses);
+                }}
+                data-active={selectedCard === meses}
+                className='rounded-xl data-[active=true]:outline data-[active=true]:outline-primary'
+                key={meses}
+              >
+                <RecommendationCard
+                  amount={target.amount!}
+                  meses={meses}
+                />
+              </button>
+            ))}
           </section>
           <p className='text-center'>
             Seleccióna una opción y haz clic en{' '}
