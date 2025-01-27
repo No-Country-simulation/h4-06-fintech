@@ -50,7 +50,7 @@ CREATE TABLE "FinancialRadiography" (
     "savingCapacity" DECIMAL(10,2),
     "debts" DECIMAL(10,2),
     "savings" DECIMAL(10,2),
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
 
     CONSTRAINT "FinancialRadiography_pkey" PRIMARY KEY ("id")
 );
@@ -264,6 +264,9 @@ CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "FinancialRadiography_userId_key" ON "FinancialRadiography"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
