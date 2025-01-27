@@ -17,7 +17,7 @@ const PROFILE_LABELS: Record<string, string> = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProfileOverview({ profile }: { profile: any}) {
   
-  console.log(profile);
+  
 
   return (
     <div className='mx-auto max-w-3xl space-y-6 p-6'>
@@ -29,7 +29,7 @@ export default function ProfileOverview({ profile }: { profile: any}) {
           return (
             <div
               key={key}
-              className='rounded-lg bg-secondary p-4'
+              className='rounded-lg bg-gray-200 p-4'
             >
               <h3 className='text-sm font-medium text-foreground/70'>
                   {PROFILE_LABELS[key]}
