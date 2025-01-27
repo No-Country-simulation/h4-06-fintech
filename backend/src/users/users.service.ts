@@ -27,24 +27,17 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
+    if (user) {
+      throw new BadRequestException(
+        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+      );
+    }
     return user;
   }
-
+  
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
-      const existingUser = await this.prismaService.user.findFirst({
-        where: {
-          email: createUserDto.email,
-        },
-      });
-
-      if (existingUser) {
-        throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-        );
-      }
-
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
         roundOfHashing,
