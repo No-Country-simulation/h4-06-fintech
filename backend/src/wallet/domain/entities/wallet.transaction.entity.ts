@@ -10,6 +10,14 @@ export class WalletTransaction {
     public amount: number,
     public type: TransactionType,
     public currency: CurrencyType,
-    public date: Date,
+    public createdAt: Date,
   ) {}
+
+  isDeposit(): boolean {
+    return this.type === 'DEPOSIT';
+  }
+
+  isWithdrawal(): boolean {
+    return this.type === 'WITHDRAWAL';
+  }
 }
