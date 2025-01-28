@@ -3,6 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 import { HomeCard } from './_components/home-card';
 import './home.css';
+import { GraphComponent } from './_components/graph/graph';
 
 export default function page() {
   return (
@@ -10,7 +11,7 @@ export default function page() {
       <h2 className='font-semibold'>Vista general</h2>
       <section className='bento'>
         <Suspense fallback={<Skeleton className='balance rounded-xl' />}>
-          <Card>Ingresos</Card>
+          <Card className='bg-secondary'>Ingresos</Card>
         </Suspense>
         <Card>Gastos</Card>
         <HomeCard href='/financial-target'>Progreso hacia objetivos</HomeCard>
@@ -20,10 +21,9 @@ export default function page() {
         <HomeCard href='/'>Favoritos</HomeCard>
         <HomeCard href='/'>Agenda</HomeCard>
         <HomeCard href='/'>Indicador nivel</HomeCard>
-        <Card className='graph'>Grafico</Card>
-        <Card className='graph'>Grafico</Card>
-        <Card className='graph'>Grafico</Card>
+        
       </section>
+      <GraphComponent />
     </section>
   );
 }
