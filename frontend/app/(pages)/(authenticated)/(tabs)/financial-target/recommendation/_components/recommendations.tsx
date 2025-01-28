@@ -10,7 +10,6 @@ import { useTargetUrl } from '@/hooks/use-target-url';
 import { generateMonthOptions } from '@/lib/generate-month-recommendation';
 import Link from 'next/link';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 export default function Recommendations() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
@@ -31,7 +30,6 @@ export default function Recommendations() {
         durationMonths: durationMonths!,
       });
     } catch (err) {
-      toast.error('Error al establecer un objetivo financiero');
       console.error(err);
     } finally {
       setIsLoading(false);
