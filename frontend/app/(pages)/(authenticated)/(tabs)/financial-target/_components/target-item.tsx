@@ -20,7 +20,7 @@ export function TargetItem({ target }: Props) {
     >
       <li className='flex w-full items-center justify-between rounded-md border border-foreground bg-background p-2 transition-colors group-hover:bg-primary/10'>
         <section className='flex items-center gap-2'>
-          <div className='flex aspect-square items-center justify-center rounded-full bg-accent/50 p-2 text-xs'>
+          <div className='flex aspect-square size-11 items-center justify-center rounded-full bg-accent/50 p-2 text-xs'>
             {percentaje}
           </div>
           <p>{target.name}</p>
