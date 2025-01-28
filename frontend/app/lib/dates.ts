@@ -8,7 +8,7 @@ export function getLimitDate(startDate: Date, startFinish: Date) {
   // Add the difference in months to the start date
   const futureDate = addMonths(startDate, monthsDifference);
 
-  const formattedDate = format(futureDate, "d 'de' MMMM 'de' yyyy", {
+  const formattedDate = format(futureDate, 'd / MM / yyyy', {
     locale: es,
   });
   return formattedDate;
