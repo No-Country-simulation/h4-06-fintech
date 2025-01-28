@@ -1,3 +1,4 @@
+import { getFinancialTargetPercentage } from '@/lib/get-financial-target-percentage';
 import { FinancialTarget } from 'client-api/backend/modules/financial-target/interface/getOne';
 import Link from 'next/link';
 
@@ -6,10 +7,10 @@ interface Props {
 }
 
 export function TargetItem({ target }: Props) {
-  const percentaje =
-    Number(target.progress) > 0
-      ? `${((Number(target.progress) / Number(target.amount)) * 100).toFixed(0)}%`
-      : '0%';
+  const percentaje = getFinancialTargetPercentage(
+    target.amount,
+    target.progress,
+  );
 
   return (
     <Link

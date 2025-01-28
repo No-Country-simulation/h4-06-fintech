@@ -3,10 +3,12 @@
 import { Text } from '@/components/ui/text';
 import { usePathname } from 'next/navigation';
 
+const pathsThatNeedHeader = ['/financial-target', '/financial-target/create'];
+
 export function LayoutHeader({}) {
   const pathname = usePathname();
 
-  if (pathname.includes('/recommendation')) {
+  if (!pathsThatNeedHeader.some((p) => pathname === p)) {
     return null;
   }
 
