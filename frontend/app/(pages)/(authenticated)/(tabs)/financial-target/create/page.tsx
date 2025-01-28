@@ -5,7 +5,7 @@ import FinancialTargetForm from './_component/financial-target-form';
 export default function page() {
   return (
     <Suspense fallback={<Loader />}>
-      <FinancialTargetForm />;
+      <FinancialTargetForm />
     </Suspense>
   );
 }

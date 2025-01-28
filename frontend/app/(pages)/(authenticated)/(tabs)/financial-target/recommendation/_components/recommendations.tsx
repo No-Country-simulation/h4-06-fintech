@@ -7,18 +7,18 @@ import { RecommendationCard } from './recommendation-card';
 
 import { createFinancialTargetAction } from '@/actions/financial-target/create-action';
 import { useTargetUrl } from '@/hooks/use-target-url';
+import { generateMonthOptions } from '@/lib/generate-month-recommendation';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
-
-// Los meses de las tarjetas que se renderizan
-const MESES = [8, 6, 4];
 
 export default function Recommendations() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const { amount, durationMonths, name } = useTargetUrl();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const meses = generateMonthOptions(durationMonths!);
 
   const handleCreateTarget = async () => {
     try {
@@ -55,7 +55,7 @@ export default function Recommendations() {
       <section className='flex flex-col gap-28'>
         <section className='flex flex-col gap-4'>
           <section className='flex flex-wrap justify-center gap-6'>
-            {MESES.map((meses) => (
+            {meses.map((meses) => (
               <button
                 onClick={() => {
                   setSelectedCard(selectedCard === meses ? null : meses);

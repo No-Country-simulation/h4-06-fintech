@@ -20,7 +20,7 @@ const initialState = {
 };
 
 export default function FinancialTargetForm() {
-  const { amount, durationMonths, name } = useTargetUrl();
+  const { amount, durationMonths, name, reset } = useTargetUrl();
 
   const [state, action, pending] = useActionState(
     redirectFinancialTargetAction,
@@ -36,6 +36,7 @@ export default function FinancialTargetForm() {
   const [formKey, setFormKey] = useState<number>(0);
 
   const handleReset = () => {
+    reset();
     setFormKey(formKey + 1);
   };
 
