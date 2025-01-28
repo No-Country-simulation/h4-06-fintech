@@ -1,7 +1,7 @@
 import { parseAsInteger, parseAsString, useQueryStates } from 'nuqs';
 
 export function useTargetUrl() {
-  const [target] = useQueryStates(
+  const [target, setTarget] = useQueryStates(
     {
       name: parseAsString,
       durationMonths: parseAsInteger,
@@ -12,5 +12,9 @@ export function useTargetUrl() {
     },
   );
 
-  return target;
+  const reset = () => {
+    setTarget(null);
+  };
+
+  return { ...target, reset };
 }
