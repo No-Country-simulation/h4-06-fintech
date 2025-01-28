@@ -33,28 +33,28 @@ export async function FinancialTarget({ id }: Props) {
         />
       </header>
       <section className='flex flex-col gap-14'>
-        <header className='flex justify-between'>
+        <header className='flex flex-wrap justify-between'>
           <FinancialTargetCard icon='/svg/heart.svg'>
             <Text>Monto del objetivo</Text>
             <p className='text-2xl font-medium'>
               {formatMoney(Number(target.amount))}
             </p>
           </FinancialTargetCard>
-          <FinancialTargetCard icon='/svg/heart.svg'>
+          <FinancialTargetCard icon='/svg/money.svg'>
             <Text>Tu progreso</Text>
             <p className='text-2xl font-medium'>
               {formatMoney(Number(target.progress))}
             </p>
           </FinancialTargetCard>
-          <FinancialTargetCard icon='/svg/heart.svg'>
+          <FinancialTargetCard icon='/svg/calendar.svg'>
             <Text>Fecha Límitte</Text>
             <p className='text-2xl font-medium'>
               {getLimitDate(target.createdAt, target.dateTarget)}
             </p>
           </FinancialTargetCard>
         </header>
-        <section className='flex justify-around'>
-          <Card className='h-[320px] w-[400px] bg-secondary'>
+        <section className='flex flex-wrap justify-around'>
+          <Card className='h-[320px] w-full max-w-[400px] bg-secondary'>
             <header className='flex items-center'>
               <IconCircle icon='/svg/percent.svg' />
               <p className='flex-1 -translate-x-6 text-center text-xl'>
@@ -69,7 +69,7 @@ export async function FinancialTarget({ id }: Props) {
               </p>
             </section>
           </Card>
-          <Card className='h-[320px] w-[400px] bg-secondary'>
+          <Card className='h-[320px] w-full max-w-[400px] bg-secondary'>
             <header className='flex items-center'>
               <IconCircle icon='/svg/star.svg' />
               <p className='flex-1 -translate-x-6 text-center text-lg'>
@@ -84,21 +84,24 @@ export async function FinancialTarget({ id }: Props) {
             </section>
           </Card>
         </section>
-        <footer className='flex justify-between'>
-          <form action={toggleStatusAction}>
+        <footer className='flex flex-wrap justify-between'>
+          <form
+            action={toggleStatusAction}
+            className='w-full max-w-[320px]'
+          >
             <input
               defaultValue={id}
               name='id'
               hidden
             />
-            <button>
+            <button className='w-full max-w-[320px]'>
               <FinancialTargetCard
                 icon='/svg/warning-circle.svg'
                 color='red'
               >
-                <Text>
+                <p className='text-xl font-medium'>
                   {target.isActive ? 'Pausar objetivo' : 'Activar objectivo'}
-                </Text>
+                </p>
               </FinancialTargetCard>
             </button>
           </form>
@@ -106,13 +109,13 @@ export async function FinancialTarget({ id }: Props) {
             icon='/svg/wallet.svg'
             color='green'
           >
-            <Text>Ingresar dinero</Text>
+            <p className='text-xl font-medium'>Ingresar dinero</p>
           </FinancialTargetCard>
           <FinancialTargetCard
             icon='/svg/money-circle.svg'
             color='yellow'
           >
-            <Text>Cambiar plan</Text>
+            <p className='text-xl font-medium'>Cambiar plan</p>
           </FinancialTargetCard>
         </footer>
       </section>

@@ -13,7 +13,9 @@ export function IconCircle({ icon, color = 'default' }: IconCircleProps) {
   if (color === 'yellow') style = 'bg-yellow-500';
 
   return (
-    <div className={`rounded-full p-2 ${style}`}>
+    <div
+      className={`flex aspect-square items-center justify-center rounded-full p-2 ${style}`}
+    >
       <Image
         src={icon}
         height={44}
