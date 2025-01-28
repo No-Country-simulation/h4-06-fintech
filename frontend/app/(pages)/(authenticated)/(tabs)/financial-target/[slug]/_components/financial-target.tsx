@@ -1,13 +1,13 @@
-import { addFundsAction } from '@/actions/financial-target/add-funds-action';
-import { deleteTargetAction } from '@/actions/financial-target/delete-action';
 import { toggleStatusAction } from '@/actions/financial-target/toggle-status-action';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
-import { getLimitDate, getMonthsUntil } from '@/lib/dates';
+import { getLimitDate } from '@/lib/dates';
+import { getFinancialTargetPercentage } from '@/lib/get-financial-target-percentage';
 import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
+import Image from 'next/image';
+import { FinancialTargetCard } from './financial-target-card';
+import { IconCircle } from './icon-circle';
 
 interface Props {
   id: string;
@@ -16,80 +16,106 @@ interface Props {
 export async function FinancialTarget({ id }: Props) {
   const target = await backend.financialTargetApi.getOne({ id });
 
-  console.log({ target });
+  const percentage = getFinancialTargetPercentage(
+    target.amount,
+    target.progress,
+  );
 
   return (
     <section className='relative flex h-full flex-col gap-12'>
-      <header className='flex flex-col gap-4'>
-        <Text variant='header'>Tu objectivo financiero</Text>
-        <Text variant='small'>{target?.name}</Text>
+      <header className='flex items-center justify-between gap-4'>
+        <Text variant='header'>{target?.name}</Text>
+        <Image
+          alt='bell icon'
+          src={`/svg/bell.svg`}
+          height={24}
+          width={24}
+        />
       </header>
-      <section className='grid grid-cols-2 gap-4'>
-        <Card>
-          <Text>Monto del objetivo</Text>
-          <p>{formatMoney(Number(target.amount))}</p>
-        </Card>
-        <Card>
-          <Text>Tu progreso</Text>
-          <p>{formatMoney(Number(target.progress))}</p>
-        </Card>
-        <Card>Porcentaje de objetivo/ visualizado gráficamnete</Card>
-        <Card>
-          <Text>Fecha Límitte</Text>
-          <Text>{getLimitDate(target.createdAt, target.dateTarget)}</Text>
-          <Text>{getMonthsUntil(target.dateTarget)}</Text>
-        </Card>
-        <Card>
-          <Text>Sugerencia gráfica,</Text>
-          <Text>
-            ejemplo: si añades $30.000 cada mes llegarás al objetivo en 3 meses
-          </Text>
-        </Card>
-        <Card>
-          <Text>Agregar fondos,</Text>
-          <form action={addFundsAction}>
-            <input
-              defaultValue={id}
-              name='id'
-              hidden
-            />
-            <Input
-              placeholder='$9999'
-              type='number'
-              name='amount'
-            />
-            <Button>Agregar fondos</Button>
-          </form>
-        </Card>
-        <section className='flex flex-col justify-center gap-2'>
+      <section className='flex flex-col gap-14'>
+        <header className='flex justify-between'>
+          <FinancialTargetCard icon='/svg/heart.svg'>
+            <Text>Monto del objetivo</Text>
+            <p className='text-2xl font-medium'>
+              {formatMoney(Number(target.amount))}
+            </p>
+          </FinancialTargetCard>
+          <FinancialTargetCard icon='/svg/heart.svg'>
+            <Text>Tu progreso</Text>
+            <p className='text-2xl font-medium'>
+              {formatMoney(Number(target.progress))}
+            </p>
+          </FinancialTargetCard>
+          <FinancialTargetCard icon='/svg/heart.svg'>
+            <Text>Fecha Límitte</Text>
+            <p className='text-2xl font-medium'>
+              {getLimitDate(target.createdAt, target.dateTarget)}
+            </p>
+          </FinancialTargetCard>
+        </header>
+        <section className='flex justify-around'>
+          <Card className='h-[320px] w-[400px] bg-secondary'>
+            <header className='flex items-center'>
+              <IconCircle icon='/svg/percent.svg' />
+              <p className='flex-1 -translate-x-6 text-center text-xl'>
+                Mi progreso
+              </p>
+            </header>
+            <section className='flex h-full flex-col items-center gap-10'>
+              <p className='text-[64px] font-medium'>{percentage}</p>
+              <p className='text-center text-xl font-medium'>
+                ¡Excelente! Completaste el {percentage} de tu objetivo ¡Seguí
+                así!
+              </p>
+            </section>
+          </Card>
+          <Card className='h-[320px] w-[400px] bg-secondary'>
+            <header className='flex items-center'>
+              <IconCircle icon='/svg/star.svg' />
+              <p className='flex-1 -translate-x-6 text-center text-lg'>
+                Sugerencia iUPi
+              </p>
+            </header>
+            <section className='flex h-full flex-col items-center justify-center'>
+              <p className='text-center text-xl font-medium'>
+                ¿Sabías que? Si cambias el monto y ahorras $50.000 al mes,
+                podrás cumplir tu objetivo en 2 meses
+              </p>
+            </section>
+          </Card>
+        </section>
+        <footer className='flex justify-between'>
           <form action={toggleStatusAction}>
             <input
               defaultValue={id}
               name='id'
               hidden
             />
-            <Button variant='secondary'>
-              {target.isActive ? 'Desactivar objectivo' : 'Activar objectivo'}
-            </Button>
+            <button>
+              <FinancialTargetCard
+                icon='/svg/warning-circle.svg'
+                color='red'
+              >
+                <Text>
+                  {target.isActive ? 'Pausar objetivo' : 'Activar objectivo'}
+                </Text>
+              </FinancialTargetCard>
+            </button>
           </form>
-          <Button variant='secondary'>Desactivar Notificaciones</Button>
-          <form action={deleteTargetAction}>
-            <input
-              defaultValue={id}
-              name='id'
-              hidden
-            />
-            <Button variant='destructive'>Eliminar objetivo</Button>
-          </form>
-        </section>
+          <FinancialTargetCard
+            icon='/svg/wallet.svg'
+            color='green'
+          >
+            <Text>Ingresar dinero</Text>
+          </FinancialTargetCard>
+          <FinancialTargetCard
+            icon='/svg/money-circle.svg'
+            color='yellow'
+          >
+            <Text>Cambiar plan</Text>
+          </FinancialTargetCard>
+        </footer>
       </section>
-      <Button
-        variant='secondary'
-        size='full'
-        className='absolute bottom-0 right-0 z-[9999] w-fit'
-      >
-        ingresar dinero
-      </Button>
     </section>
   );
 }
