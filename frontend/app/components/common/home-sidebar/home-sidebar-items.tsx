@@ -24,7 +24,7 @@ export const items = [
   },
   {
     title: 'Billetera',
-    url: '/setting',
+    url: '/wallet',
     icon: WalletIcon,
   },
   {
