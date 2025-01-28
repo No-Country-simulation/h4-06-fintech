@@ -25,7 +25,7 @@ const stockApi: StockApi = {
       },
       {
         companyName: 'Apple Inc. Common Stock',
-        symbol: 'APPL',
+        symbol: 'AAPL',
       },
       {
         companyName: 'NVIDIA Corporation Common Stock',

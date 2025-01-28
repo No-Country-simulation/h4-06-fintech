@@ -5,6 +5,8 @@ export const moneyFormatter = new Intl.NumberFormat('es-US', {
   minimumFractionDigits: 2,
 });
 
-export function formatMoney(amount: number) {
-  return moneyFormatter.format(amount);
+export function formatMoney(amount: number | string) {
+  return moneyFormatter.format(
+    typeof amount === 'number' ? amount : Number(amount),
+  );
 }
