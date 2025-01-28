@@ -5,9 +5,9 @@ import { getLimitDate } from '@/lib/dates';
 import { getFinancialTargetPercentage } from '@/lib/get-financial-target-percentage';
 import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
-import Image from 'next/image';
 import { FinancialTargetCard } from './financial-target-card';
 import { IconCircle } from './icon-circle';
+import { NotificationBell } from './notification-bell';
 
 interface Props {
   id: string;
@@ -25,12 +25,7 @@ export async function FinancialTarget({ id }: Props) {
     <section className='relative flex h-full flex-col gap-12'>
       <header className='flex items-center justify-between gap-4'>
         <Text variant='header'>{target?.name}</Text>
-        <Image
-          alt='bell icon'
-          src={`/svg/bell.svg`}
-          height={24}
-          width={24}
-        />
+        <NotificationBell />
       </header>
       <section className='flex flex-col gap-14'>
         <header className='flex flex-wrap justify-between'>
