@@ -1,27 +1,19 @@
-import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 import { HomeCard } from './_components/home-card';
 import './home.css';
 import { GraphComponent } from './_components/graph/graph';
+import { Text } from '@/components/ui/text';
 
 export default function page() {
   return (
-    <section className='flex h-full flex-col gap-4'>
-      <h2 className='font-semibold'>Vista general</h2>
-      <section className='bento'>
+    <section className='flex h-full flex-col w-full max-w-[1200px] mx-auto p-4'>
+      <Text variant='title' >¡Hola!</Text>
+      <Text variant='small'>Estas son las novedades el día de hoy</Text>
+      <section className='bento my-10'>
         <Suspense fallback={<Skeleton className='balance rounded-xl' />}>
-          <Card className='bg-secondary'>Ingresos</Card>
+          <HomeCard/>
         </Suspense>
-        <Card>Gastos</Card>
-        <HomeCard href='/financial-target'>Progreso hacia objetivos</HomeCard>
-        <HomeCard href='/'>Inversiones</HomeCard>
-        <HomeCard href='/'>Mis ahorros</HomeCard>
-        <HomeCard href='/'>Wallet</HomeCard>
-        <HomeCard href='/'>Favoritos</HomeCard>
-        <HomeCard href='/'>Agenda</HomeCard>
-        <HomeCard href='/'>Indicador nivel</HomeCard>
-        
       </section>
       <GraphComponent />
     </section>

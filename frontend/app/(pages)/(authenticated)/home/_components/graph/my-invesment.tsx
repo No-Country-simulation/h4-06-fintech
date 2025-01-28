@@ -33,12 +33,12 @@ const chartConfig = {
 
 export function MyInvesmentsChartComponent() {
   return (
-    <Card className='bg-[#004AAD4D] w-full max-w-[321px] h-[370px] flex flex-col items-center'>
+    <Card className='bg-[#004AAD4D] w-full h-[370px] flex flex-col items-center p-4'>
       <Text variant={'title'}>Mis inversiones</Text>
 
       <ChartContainer
         config={chartConfig}
-        className='rounded-xl bg-white p-2 w-full max-w-[258px] h-[270px]'
+        className='rounded-xl bg-white p-1 w-full h-[calc(100%-2rem)] min-h-[250px]'
       >
         <AreaChart
           accessibilityLayer

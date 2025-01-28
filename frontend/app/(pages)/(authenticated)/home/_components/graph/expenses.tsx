@@ -46,14 +46,12 @@ const chartConfig = {
 
 export function ExpensesChartComponent() {
   return (
-    <Card className='flex flex-col items-center bg-[#004AAD4D] w-full max-w-[321px] h-[370px]'>
+    <Card className='bg-[#004AAD4D] w-full h-[370px] flex flex-col items-center p-4'>
       <Text variant={'title'}>Gastos</Text>
-      <div className='flex-1 pb-0'>
       <ChartContainer
         config={chartConfig}
-        className='rounded-xl bg-white p-1 w-full max-w-[258px] h-[270px]'
+        className='rounded-xl bg-white p-1 w-full h-[calc(100%-2rem)] min-h-[250px]'
       >
-         
         <PieChart>
           <ChartTooltip
             cursor={false}
@@ -67,7 +65,6 @@ export function ExpensesChartComponent() {
           />
         </PieChart>
       </ChartContainer>
-      </div>
 
       {/* <div className='flex items-center gap-2 font-medium leading-none'>
         Trending up by 5.2% this month <TrendingUp className='h-4 w-4' />

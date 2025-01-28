@@ -9,3 +9,15 @@
 .graph {
   grid-row: span 2;
 }
+
+@media (max-width: 768px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+}
