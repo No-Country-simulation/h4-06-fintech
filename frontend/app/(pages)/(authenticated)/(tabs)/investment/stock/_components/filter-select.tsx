@@ -24,7 +24,7 @@ interface Props {
 }
 
 export function FilterSelect({ options, queryKey, label }: Props) {
-  const [_, setFilters] = useQueryStates(
+  const [filter, setFilters] = useQueryStates(
     {
       riskLevel: parseAsString,
       timeHorizon: parseAsString,
@@ -44,7 +44,10 @@ export function FilterSelect({ options, queryKey, label }: Props) {
   };
 
   return (
-    <Select onValueChange={handleChange}>
+    <Select
+      onValueChange={handleChange}
+      value={filter[queryKey] ?? ''}
+    >
       <SelectTrigger className='w-[180px] border-foreground'>
         <SelectValue placeholder={label} />
       </SelectTrigger>
