@@ -20,4 +20,11 @@ export class FinanceController {
   ) {
     return await this.financeService.getHistoricalData(ticker, period);
   }
+
+  @Get('instruments')
+  async getstockData(@Query('tickers') tickers: string): Promise<StockDTO[]> {
+    const tickerList = tickers.split(',');
+    return await this.financeService.getInstruments(tickerList);
+   
+  }
 }

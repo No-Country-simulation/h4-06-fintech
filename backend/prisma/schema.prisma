@@ -166,6 +166,7 @@ model Profile {
 model Stock {
   symbol     String   @unique
   name       String
+  typeDisp   String
   currency   String
   market     String
   marketCap  Int
