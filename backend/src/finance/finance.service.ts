@@ -1,27 +1,27 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable, HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import YahooFinance from 'yahoo-finance2';
 import { StockDTO } from './dto/finance.dto';
 
+//Apple Inc.	AAPL	NASDAQ
+//Microsoft Corp.	MSFT	NASDAQ
+//Amazon.com Inc.	AMZN	NASDAQ
+//Tesla Inc.	TSLA	NASDAQ
+//Alphabet Inc. (Google)	GOOGL	NASDAQ
+//Meta Platforms Inc.	META	NASDAQ
+//The Coca-Cola Company	KO	NYSE
+//McDonald's Corp.	MCD	NYSE
+//Nike Inc.	NKE	NYSE
+//IBM Corp.	IBM	NYSE
 
- //Apple Inc.	AAPL	NASDAQ
-  //Microsoft Corp.	MSFT	NASDAQ
-  //Amazon.com Inc.	AMZN	NASDAQ
-  //Tesla Inc.	TSLA	NASDAQ
-  //Alphabet Inc. (Google)	GOOGL	NASDAQ
-  //Meta Platforms Inc.	META	NASDAQ
-  //The Coca-Cola Company	KO	NYSE
-  //McDonald's Corp.	MCD	NYSE
-  //Nike Inc.	NKE	NYSE
-  //IBM Corp.	IBM	NYSE
-  
 //http://localhost:3000/finance/stock/AMZN
-
-
 
 @Injectable()
 export class FinanceService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   // Función para guardar los datos de una acción en la base de datos
   async saveStockData(ticker: string) {
@@ -30,6 +30,7 @@ export class FinanceService {
     const stockData: StockDTO = {
       symbol: data.symbol,
       name: data.shortName,
+      typeDisp: data.typeDisp,
       currency: data.currency,
       market: data.exchange,
       price: {
@@ -66,7 +67,7 @@ export class FinanceService {
         epsForward: data.epsForward ?? 0,
         peRatio: data.trailingPE ?? 0,
       },
-      marketCap: Number(data.marketCap/1000000) || 0,
+      marketCap: Number(data.marketCap / 1000000) || 0,
     };
 
     // Guardar en la base de datos
@@ -74,6 +75,7 @@ export class FinanceService {
       data: {
         symbol: stockData.symbol,
         name: stockData.name,
+        typeDisp: stockData.typeDisp,
         currency: stockData.currency,
         market: stockData.market,
         price: {
@@ -104,11 +106,11 @@ export class FinanceService {
       let stock = await this.prisma.stock.findUnique({
         where: { symbol: ticker },
         include: {
-          price: true, // Relación de precio
-          volume: true, // Relación de volumen
-          week52: true, // Relación de 52 semanas
-          dividend: true, // Relación de dividendos
-          earnings: true, // Relación de ganancias
+          price: true,
+          volume: true,
+          week52: true,
+          dividend: true,
+          earnings: true,
         },
       });
 
@@ -116,7 +118,7 @@ export class FinanceService {
         console.log(
           `Stock no encontrado, obteniendo datos de Yahoo Finance...`,
         );
-        await this.saveStockData(ticker); // Obtiene y guarda los datos
+        await this.saveStockData(ticker);
         stock = await this.prisma.stock.findUnique({
           where: { symbol: ticker },
           include: {
@@ -127,11 +129,38 @@ export class FinanceService {
             earnings: true,
           },
         });
+      } else {
+        await this.prisma.stock.update({
+          where: { symbol: ticker },
+          data: {
+            price: {
+              update: stock.price,
+            },
+            volume: {
+              update: stock.volume,
+            },
+            week52: {
+              update: stock.week52,
+            },
+            dividend: {
+              update: stock.dividend,
+            },
+            earnings: {
+              update: stock.earnings,
+            },
+            marketCap: stock.marketCap,
+          },
+        });
       }
       return stock;
     } catch (error) {
-      console.error(error);
+      throw new HttpException('Error al obtener los datos de la acción', HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
+  }
+  async getInstruments(tickers: string[]) {
+    const stockPromises = tickers.map(ticker => this.getStockData(ticker));
+    return Promise.all(stockPromises);
   }
 
   // Endpoint para obtener los datos históricos de una acción (se mantiene igual)
