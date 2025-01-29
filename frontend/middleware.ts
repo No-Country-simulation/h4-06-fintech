@@ -1,5 +1,6 @@
 // middleware.ts
 
+import { setAccessToken } from 'lib/setAccessToken';
 import { NextRequest, NextResponse } from 'next/server';
 
 const PUBLIC_ROUTES = ['/login', '/signup', '/start', '/'];
@@ -10,16 +11,27 @@ const PUBLIC_ROUTES = ['/login', '/signup', '/start', '/'];
  * @param {NextRequest} req - The incoming request object.
  * @returns {NextResponse} - The response object to allow or redirect.
  */
-export function middleware(req: NextRequest): NextResponse {
-  const { pathname } = req.nextUrl;
+export async function middleware(req: NextRequest): Promise<NextResponse> {
+  const { pathname, searchParams } = req.nextUrl;
 
   // Allow public routes to be accessible by everyone
   if (PUBLIC_ROUTES.includes(pathname)) {
     return NextResponse.next();
   }
 
+  if (pathname === '/onboarding') {
+    const urlToken = searchParams.get('token');
+    console.log({ urlToken });
+
+    if (urlToken) {
+      await setAccessToken(urlToken);
+    }
+  }
+
   // Get the token from cookies
   const token = req.cookies.get('access_token');
+  console.log('TOKEN DESDE EL FRONT');
+  console.log({ token });
 
   // If token is missing, redirect to login
   if (!token) {

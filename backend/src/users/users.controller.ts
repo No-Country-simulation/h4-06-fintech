@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CookieOptions, Response } from 'express';
+import { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -64,19 +64,16 @@ export class UsersController {
     // Generate access token and set it to response
     const accessToken = this.usersService.generateAccessToken(user);
 
-    const cookieOptions: CookieOptions = {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'none',
-      maxAge: 10 * 60 * 1000, // 10 minutes
-      path: '/',
-      domain: process.env.FRONTEND_DOMAIN,
-    };
+    console.log('TOKEN DESDE EL BACK');
+    console.log({ accessToken });
 
-    res.cookie('access_token', accessToken, cookieOptions);
+    // 1 - En vez de setear la cookie desde el backend, mandamos la cookie como parte
+    // de la url, una vez llega al middleware, se lee el token y se lo setea el front.
 
-    const url = `${process.env.FRONTEND_URL}/onboarding`;
+    const url = `${process.env.FRONTEND_URL}/onboarding?token=${accessToken}`;
     // Redirect to the frontend onboarding page with the access token in the header
+    console.log({ url });
+
     return res.redirect(307, url);
   }
 }
