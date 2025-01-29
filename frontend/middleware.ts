@@ -25,6 +25,9 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 
     if (urlToken) {
       await setAccessToken(urlToken);
+      // Remove token from URL and redirect to clean onboarding URL
+      const cleanUrl = new URL('/onboarding', req.url);
+      return NextResponse.redirect(cleanUrl);
     }
   }
 

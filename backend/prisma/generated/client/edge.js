@@ -350,7 +350,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/santiago/dev/next/h4-06-fintech/backend/prisma/generated/client",
+      "value": "C:\\Users\\EVER ROJAS\\OneDrive\\Escritorio\\h4-06-fintech\\backend\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -359,7 +359,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       },
       {
@@ -368,7 +368,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/santiago/dev/next/h4-06-fintech/backend/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\EVER ROJAS\\OneDrive\\Escritorio\\h4-06-fintech\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
