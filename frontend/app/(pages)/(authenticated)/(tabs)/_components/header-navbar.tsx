@@ -37,7 +37,7 @@ export function HeaderNavbar() {
     <section className='flex items-center gap-6'>
       {LINKS.map((link) => (
         <Link
-          data-active={pathname === link.href}
+          data-active={pathname.includes(link.href)}
           className='group flex items-center gap-3 rounded-lg border border-foreground px-4 py-[10px] transition-colors hover:bg-primary/10 data-[active=true]:border-primary'
           key={link.href}
           href={link.href}
