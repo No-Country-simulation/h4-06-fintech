@@ -1,6 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import Link from 'next/link';
+import { SuggestionsSection } from './_components/suggestions-section';
 
 const LINKS = [
   {
@@ -40,6 +41,7 @@ export default function ExplorePage() {
           </Link>
         ))}
       </section>
+      <SuggestionsSection />
     </section>
   );
 }

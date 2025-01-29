@@ -1,7 +1,6 @@
 import { Text } from '@/components/ui/text';
 import Link from 'next/link';
 import { FinancialTargetCard } from '../financial-target/[slug]/_components/financial-target-card';
-import { SuggestionsSection } from './_components/suggestions-section';
 
 export default function InvestmentPage() {
   return (
@@ -22,7 +21,6 @@ export default function InvestmentPage() {
           <p className='text-xl font-medium'>Favoritos</p>
         </FinancialTargetCard>
       </section>
-      <SuggestionsSection />
     </section>
   );
 }
