@@ -7,4 +7,7 @@ export type Ticker = {
     current: number;
     previousClose: number;
   };
+  riskLevel: string;
+  timeHorizon: string;
+  expectedReturn: string;
 };
