@@ -92,7 +92,7 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 - **Deploy:** (Pendiente de agregar enlace si aún no está disponible)
 - **Figma:** [Diseño en Figma](https://www.figma.com/design/WqqLuwDkulV4o8vh0i37eZ/IUPI-Ahorros-e-inversiones?node-id=1-7&t=glc6uS4u56haGFwW-1)
 - **Documentación:** (Pendiente de agregar enlace si aún no está disponible)
-- **Demo Dashboard para el cliente:** 
+- **Demo Dashboard para el cliente:** [Tablero en Streamlit](https://tableroiupi.streamlit.app/)
  
 
 ## Integrantes del equipo.
@@ -101,9 +101,9 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 |---------------------------------------------------------------------------------------------------------------------------------------------|-------------------| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="60" height="60" src="https://github.com/damianfe.png" alt="Damian Fernandez" />                                                 | Damian Fernandez  |Backend Developer | [![Github](https://skillicons.dev/icons?i=github)](https://github.com/damianfe) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/damian-r-fernandez/)                         |
 |                                                                                                                                             |
-| <img width="60" height="60" src="https://github.com/Martin-Valdes.png" alt="Martin" />                                                      | Fernando Valdes   | Backend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Martin-Valdes) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/fernandomartinvaldes/)                         |  
+| <img width="60" height="60" src="https://github.com/Martin-Valdes.png" alt="Martin" />                                                      | Fernando Valdes   | Backend Developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Martin-Valdes) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/fernandomartinvaldes/)                         |  
 |                                                                                                                                             |
-| <img width="60" height="60" src="https://avatars.githubusercontent.com/u/113942592?v=4" alt="Camilo" />                                     | Camilo Zapata     | Backend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/ZapataCamilo) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/camilo-zapata-web-dv/)                         |
+| <img width="60" height="60" src="https://avatars.githubusercontent.com/u/113942592?v=4" alt="Camilo" />                                     | Camilo Zapata     | Backend Developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/ZapataCamilo) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/camilo-zapata-web-dv/)                         |
 |                                                                                                                                             |
 | <img width="60" height="60" src="https://github.com/Everjr18.png" alt="Everjr18" /> | Ever Rojas        | frontend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
 |                                                                                                                                             |
