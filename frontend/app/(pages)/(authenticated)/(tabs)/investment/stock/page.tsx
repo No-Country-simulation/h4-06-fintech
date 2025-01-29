@@ -10,7 +10,7 @@ export default async function StocksPage() {
       <header>
         <Text variant='header'>Acciones</Text>
       </header>
-      <ul className='flex flex-col divide-y'>
+      <ul className='flex flex-col gap-2 divide-y'>
         {tickers.map((ticker) => (
           <TickerItem
             ticker={ticker}
