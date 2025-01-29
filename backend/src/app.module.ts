@@ -12,6 +12,8 @@ import { NewsModule } from './news/news.module';
 import { CommentModule } from './comment/comment.module';
 import { FinanceModule } from './finance/financeModule.module';
 import { TargetModule } from './target/target.module';
+import { InvestmentPortfolioModule } from './investment-portfolio/investment-portfolio.module';
+import { InvestmentModule } from './investment/investment.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { TargetModule } from './target/target.module';
     NewsModule,
     CommentModule,
     TargetModule,
+    InvestmentPortfolioModule,
+    InvestmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

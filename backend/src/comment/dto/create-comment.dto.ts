@@ -19,6 +19,6 @@ export class CreateCommentDto {
 
   @ApiProperty()
   @IsString()
-  @IsOptional({ message: 'NewId is not required' })
+  @IsOptional({ message: 'NewsId is not required' })
   newsId: string;
 }
