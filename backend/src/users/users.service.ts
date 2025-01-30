@@ -240,9 +240,10 @@ export class UsersService {
 
   generateAccessToken(user: User): string {
     const payload = { id: user.id };
+    const isProduction = process.env.NODE_ENV === 'production';
     return this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET,
-      expiresIn: '10m',
+      expiresIn: isProduction ? '10m' : '24h',
     });
   }
 }

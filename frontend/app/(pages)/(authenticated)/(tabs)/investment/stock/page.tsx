@@ -5,11 +5,13 @@ import { Loader } from '@/components/ui/loader';
 import { Suspense } from 'react';
 import { TickersList } from './_components/tickers-list';
 import { TickersSectionHeader } from './_components/tickers-section-header';
+import { Suspense } from 'react';
 
 export default async function StocksPage() {
   const tickers = await backend.investment.stockApi.getTickers();
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <section className='flex flex-col gap-12'>
       <header>
         <Text variant='header'>Acciones</Text>
@@ -21,5 +23,6 @@ export default async function StocksPage() {
         </Suspense>
       </section>
     </section>
+    </Suspense>
   );
 }
