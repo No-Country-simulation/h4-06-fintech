@@ -1,8 +1,6 @@
 import { Text } from '@/components/ui/text';
 import { backend } from '@api';
-
 import { Loader } from '@/components/ui/loader';
-import { Suspense } from 'react';
 import { TickersList } from './_components/tickers-list';
 import { TickersSectionHeader } from './_components/tickers-section-header';
 import { Suspense } from 'react';
