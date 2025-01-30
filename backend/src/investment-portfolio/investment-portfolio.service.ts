@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateInvestmentPortfolioDto } from './dto/create-investment-portfolio.dto';
 import { UpdateInvestmentPortfolioDto } from './dto/update-investment-portfolio.dto';
-import { PrismaService } from '@/src/prisma/prisma.service';
 
 @Injectable()
 export class InvestmentPortfolioService {
