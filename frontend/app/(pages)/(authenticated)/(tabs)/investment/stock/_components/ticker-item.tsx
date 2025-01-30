@@ -26,6 +26,14 @@ export function TickerItem({ ticker }: Props) {
       href={`/investment/stock/${ticker.symbol}`}
     >
       <section className='flex items-center gap-2'>
+        <div className='flex aspect-square items-center rounded-md bg-foreground p-1 text-background'>
+          <Image
+            alt={`${ticker.companyName}'s icon`}
+            src={ticker.image}
+            width={48}
+            height={48}
+          />
+        </div>
         <p className='text-lg font-medium'>{ticker.companyName}</p>
         <Image
           alt='stock evolution'
