@@ -31,7 +31,7 @@ export default function ExplorePage() {
       <section className='flex flex-wrap items-center gap-5'>
         {LINKS.map((link) => (
           <Link
-            className='flex-1'
+            className='flex-1 transition-opacity hover:opacity-50'
             key={link.href}
             href={link.href}
           >

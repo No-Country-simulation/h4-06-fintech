@@ -1,11 +1,10 @@
 import { PageHeader } from '@/components/common/page/page-header';
-import { Ticker } from '@/components/ticker/ticker';
-import { TickerEvolutionicon } from '@/components/ticker/ticker-evolution-icon';
 import { Button } from '@/components/ui/button';
 import { calcularCambio } from '@/lib/calcular-cambios';
-import { getPriceInfo } from '@/lib/get-price-info';
 import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
+import { CardInformation } from '../../stock/[slug]/_components/card-information';
+import ComparativeTab from '../../stock/[slug]/_components/tabs/comparative-tab/comparative-tab';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -14,52 +13,29 @@ interface Props {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
 
-  const { name, price } = await backend.investment.stockApi.getByTicker({
+  const ticker = await backend.investment.stockApi.getByTicker({
     ticker: slug,
   });
 
   const { amountInvested, totalAssets } =
     await backend.investment.stockApi.getDetails({ symbol: slug });
 
-  const { changeAmount, changePercent, isUp } = getPriceInfo({
-    current: price.current,
-    previousClose: price.previousClose,
-  });
+  const marketValue = totalAssets * ticker.price.current;
 
-  const marketValue = totalAssets * price.current;
-
-  const cambios = calcularCambio(amountInvested, price.current, totalAssets);
+  const cambios = calcularCambio(
+    amountInvested,
+    ticker.price.current,
+    totalAssets,
+  );
 
   return (
     <PageHeader title='Mis inversiones'>
-      <section className='flex rounded-md bg-primary/10 px-4 py-8'>
-        <section className='flex items-center gap-12'>
-          <section className='flex flex-col items-center justify-center'>
-            <Ticker.Image src='/svg/brands/apple.svg' />
-            <p className='text-lg font-light'>{name}</p>
-          </section>
-          <section className='flex items-center'>
-            <TickerEvolutionicon isUp={isUp} />
-            <section className='flex flex-col gap-1'>
-              <p className='text-2xl font-medium'>
-                {formatMoney(price.current)}
-              </p>
-              <div
-                data-isup={isUp}
-                className='flex gap-2 text-red-600 data-[isup=true]:text-green-600'
-              >
-                <p>{formatMoney(changeAmount)}</p>
-                <p>({changePercent}%)</p>
-              </div>
-              <p className=''></p>
-              <p className='text-lg text-gray-500'>
-                {formatMoney(price.previousClose)}
-              </p>
-            </section>
-          </section>
-        </section>
-      </section>
-      <section>GRAFICOS</section>
+      <CardInformation
+        slug={slug}
+        info={ticker}
+      />
+
+      <ComparativeTab />
       <section className='flex flex-col gap-3'>
         <AuxItem
           text='Activos totales'
@@ -71,7 +47,7 @@ export default async function Page({ params }: Props) {
         />
         <AuxItem
           text='Costo promedio'
-          value={formatMoney(price.current)}
+          value={formatMoney(ticker.price.current)}
         />
         <AuxItem
           text='Monto invertido'
