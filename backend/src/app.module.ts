@@ -14,6 +14,7 @@ import { FinanceModule } from './finance/financeModule.module';
 import { TargetModule } from './target/target.module';
 import { InvestmentPortfolioModule } from './investment-portfolio/investment-portfolio.module';
 import { InvestmentModule } from './investment/investment.module';
+import { ChatbotModule } from './chatbot/chatbot.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { InvestmentModule } from './investment/investment.module';
     TargetModule,
     InvestmentPortfolioModule,
     InvestmentModule,
+    ChatbotModule,
   ],
   controllers: [AppController],
   providers: [AppService],
