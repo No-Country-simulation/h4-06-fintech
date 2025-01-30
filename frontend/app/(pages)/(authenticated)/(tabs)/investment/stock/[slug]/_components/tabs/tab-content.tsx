@@ -32,7 +32,7 @@ function TabSkeleton() {
 }
 
 interface TabContentProps {
-  tab: string | undefined;
+  tab: string ;
 }
 
 export function TabContent({ tab }: TabContentProps) {

@@ -40,9 +40,9 @@ export function StockTabs() {
   };
 
   return (
-    <div className="flex flex-row gap-2 mt-4 w-full justify-center max-w-7xl mx-auto">
-      {TABS.map((tab) => (
-        <Button
+      <div className="flex flex-row gap-2 mt-4 w-full justify-center max-w-7xl mx-auto">
+        {TABS.map((tab) => (
+          <Button
           key={tab.id}
           type="button"
           onClick={() => handleTabChange(tab.id)}
