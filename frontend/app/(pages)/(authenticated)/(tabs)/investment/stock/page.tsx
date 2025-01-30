@@ -9,7 +9,7 @@ export default async function StocksPage() {
   const tickers = await backend.investment.stockApi.getTickers();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
     <section className='flex flex-col gap-12'>
       <header>
         <Text variant='header'>Acciones</Text>

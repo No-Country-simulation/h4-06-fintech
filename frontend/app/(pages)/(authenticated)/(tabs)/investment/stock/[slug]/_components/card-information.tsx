@@ -15,15 +15,18 @@ export function CardInformation({
   const isPositiveChange = info.price.changePercent > 0;
   const information = card.find((item) => item.id === slug);
   return (
-    <Card className='flex flex-row gap-4 bg-muted p-10'>
-      <div className='flex flex-col gap-4'>
-        <Image
-          src={information?.image || ''}
-          alt={info.name}
-          width={88}
-          height={88}
-          className='rounded-lg'
+    <Card className=' bg-muted'>
+      <div className='flex flex-row gap-4 p-10' >
+      <div className='flex flex-col gap-4 max-w-[100px] '>
+        <div className='w-[84px] h-[84px] rounded-lg bg-black flex items-center justify-center'>
+          <Image
+            src={information?.image || ''}
+            alt={info.name}
+            width={64}
+            height={64}
+            
         />
+        </div>
         <Text>{info.name}</Text>
       </div>
       <Image
@@ -35,7 +38,7 @@ export function CardInformation({
       />
       <div className='flex flex-col justify-start gap-y-2'>
         <Text
-          variant='title'
+          variant='header'
           className='text-[40px]/[60px]'
         >
           {formatMoney(info.price.current)}
@@ -65,6 +68,7 @@ export function CardInformation({
       <Text className='ml-40 max-w-[300px] text-center font-poppins-light text-2xl/9 leading-10'>
         {information?.description}
       </Text>
+      </div>
     </Card>
   );
 }
