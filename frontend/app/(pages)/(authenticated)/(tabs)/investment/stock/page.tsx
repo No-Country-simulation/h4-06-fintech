@@ -15,8 +15,8 @@ export default async function StocksPage() {
         <Text variant='header'>Acciones</Text>
       </header>
       <section className='flex flex-col gap-8'>
-        <TickersSectionHeader />
         <Suspense fallback={<Loader />}>
+          <TickersSectionHeader />
           <TickersList tickers={tickers} />
         </Suspense>
       </section>
