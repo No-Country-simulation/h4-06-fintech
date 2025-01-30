@@ -148,6 +148,13 @@ model Profile {
   financialGoal             String?
   mainGoal                  String?
   monthlyInvestment         String?
+  financialInstrument       String?
+  investmentMethod          String?
+  investmentCategories      String?
+  mainIncomeSource          String?
+  financialNewsSource       String?
+  years                     String?
+  investingDuration         String?
   savingsOrInvestmentReason String?
   user                      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

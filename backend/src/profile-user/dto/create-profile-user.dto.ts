@@ -34,6 +34,27 @@ export class CreateProfileDto {
   @IsString()
   financialGoal: string;
 
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  investmentCategories: string;
+
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  investmentMethod : string;
+
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  mainIncomeSource: string;
+
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  financialNewsSource: string;
+
+  @ApiProperty({ description: 'Financial goal' })
+  @IsString()
+  years: string;
+
+
   @ApiProperty({ description: 'Optional user ID if linked to a user profile', required: false })
   @IsOptional()
   @IsString()
