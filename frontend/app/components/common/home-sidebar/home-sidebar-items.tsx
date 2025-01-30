@@ -1,5 +1,13 @@
 import { HelpIcon, SettingsIcon } from './svg/bottom-items';
-import { ProfileIcon, NotificationIcon, CustomizeIcon, CommunityIcon, WalletIcon, ReminderIcon, FavoriteIcon } from './svg/home-sidebar';
+import {
+  CommunityIcon,
+  CustomizeIcon,
+  FavoriteIcon,
+  NotificationIcon,
+  ProfileIcon,
+  ReminderIcon,
+  WalletIcon,
+} from './svg/home-sidebar';
 
 export const items = [
   {
@@ -14,7 +22,7 @@ export const items = [
   },
   {
     title: 'Perzonalizar',
-    url: '#',
+    url: '/customization',
     icon: CustomizeIcon,
   },
   {
@@ -31,8 +39,6 @@ export const items = [
     title: 'Recordatorios',
     url: '#',
     icon: ReminderIcon,
-
-    
   },
   {
     title: 'Comunidad',
@@ -52,5 +58,4 @@ export const bottomItems = [
     url: '#',
     icon: HelpIcon,
   },
-
 ];

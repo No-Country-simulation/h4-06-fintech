@@ -1,17 +1,18 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
+  Controller,
+  Delete,
+  Get,
   Param,
-  Delete, UseGuards,
+  Patch,
+  Post,
+  UseGuards,
 } from '@nestjs/common';
-import { InvestmentPortfolioService } from './investment-portfolio.service';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateInvestmentPortfolioDto } from './dto/create-investment-portfolio.dto';
 import { UpdateInvestmentPortfolioDto } from './dto/update-investment-portfolio.dto';
-import {JwtAuthGuard} from "@/src/auth/jwt-auth.guard";
-import {ApiBearerAuth} from "@nestjs/swagger";
+import { InvestmentPortfolioService } from './investment-portfolio.service';
 
 @Controller('investment-portfolio')
 export class InvestmentPortfolioController {

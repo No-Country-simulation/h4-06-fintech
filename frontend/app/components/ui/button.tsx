@@ -16,7 +16,7 @@ const buttonVariants = cva(
           'border border-foreground bg-background shadow-md shadow-foreground/25 hover:bg-accent hover:text-accent-foreground w-full rounded-[20px]',
         secondary:
           'bg-primary/50 text-secondary-foreground shadow-sm hover:bg-primary/80 rounded-[20px]',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        ghost: 'hover:opacity-50 transition-opacity',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
@@ -26,7 +26,7 @@ const buttonVariants = cva(
         icon: 'h-9 w-9',
         full: 'w-full py-3 px-10 text-2xl',
         medium: 'h-9 px-10 py-2',
-        custom: 'h-[65px] w-[350px] px-12 py-4 text-2xl',
+        custom: 'h-[65px] w-full max-w-[350px] px-12 py-4 text-2xl',
       },
     },
     defaultVariants: {
