@@ -81,18 +81,6 @@ CREATE TABLE "FinancialInstrument" (
 );
 
 -- CreateTable
-CREATE TABLE "Investment" (
-    "id" TEXT NOT NULL,
-    "amountInvested" INTEGER NOT NULL,
-    "performance" TEXT NOT NULL,
-    "dateInvestment" TIMESTAMP(3) NOT NULL,
-    "portfolioId" TEXT NOT NULL,
-    "instrumentId" TEXT NOT NULL,
-
-    CONSTRAINT "Investment_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "News" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -187,6 +175,7 @@ CREATE TABLE "Profile" (
 CREATE TABLE "Stock" (
     "symbol" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "typeDisp" TEXT NOT NULL,
     "currency" TEXT NOT NULL,
     "market" TEXT NOT NULL,
     "marketCap" INTEGER NOT NULL,
@@ -200,6 +189,18 @@ CREATE TABLE "Stock" (
     "earningsId" INTEGER NOT NULL,
 
     CONSTRAINT "Stock_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Investment" (
+    "id" TEXT NOT NULL,
+    "amountInvested" INTEGER NOT NULL,
+    "performance" TEXT NOT NULL,
+    "dateInvestment" TIMESTAMP(3) NOT NULL,
+    "portfolioId" TEXT NOT NULL,
+    "stockSymbol" TEXT,
+
+    CONSTRAINT "Investment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -284,12 +285,6 @@ ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") 
 ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Investment" ADD CONSTRAINT "Investment_instrumentId_fkey" FOREIGN KEY ("instrumentId") REFERENCES "FinancialInstrument"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -321,3 +316,9 @@ ALTER TABLE "Stock" ADD CONSTRAINT "Stock_volumeId_fkey" FOREIGN KEY ("volumeId"
 
 -- AddForeignKey
 ALTER TABLE "Stock" ADD CONSTRAINT "Stock_week52Id_fkey" FOREIGN KEY ("week52Id") REFERENCES "Week52"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_stockSymbol_fkey" FOREIGN KEY ("stockSymbol") REFERENCES "Stock"("symbol") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE CASCADE ON UPDATE CASCADE;

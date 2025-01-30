@@ -24,6 +24,6 @@ export class CreateNewsDto {
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty({ message: 'El campo de imagen no puede estar vacío.' })
+  @IsNotEmpty({ message: 'El campo de categoria no puede estar vacío.' })
   category: string;
 }
