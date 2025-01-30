@@ -3,16 +3,13 @@
 ## Índice
 
 1. [Descripción del proyecto](#Descripción-del-proyecto)
-2. [MVP](#MVP)
-3. [Alcance del MVP](#Alcance-del-MVP)
-4. [Stack de tecnologías y herramientas](#Stack-de-tecnologías-y-herramientas)
-5. [Metodología de gestión de proyectos](#Metodología-de-gestión-de-proyectos)
-6. [Etapas del proyecto](#Etapas-del-proyecto)
-7. [Contenido del proyecto](#Contenido-del-proyecto)
-8. [Integrantes del equipo](#Integrantes-del-equipo)
+2. [Stack de tecnologías y herramientas](#Stack-de-tecnologías-y-herramientas)
+3. [Metodología de gestión de proyectos](#Metodología-de-gestión-de-proyectos)
+4. [Etapas del proyecto](#Etapas-del-proyecto)
+5. [Contenido del proyecto](#Contenido-del-proyecto)
+6. [Integrantes del equipo](#Integrantes-del-equipo)
 
-
-## Descripción del proyecto
+# Descripción del proyecto
 
 ## 📉 Introducción
 
@@ -32,13 +29,9 @@ La escasez de herramientas financieras accesibles, pensadas para distintos nivel
 
 Las herramientas existentes suelen estar destinadas a personas con mayores ingresos y educación, excluyendo a aquellos que necesitan apoyo.
 
-
-
 ## 🎯 Objetivo
 
 Crear una aplicación financiera inclusiva y accesible que brinde herramientas de ahorro e inversión personalizadas, educación financiera y recomendaciones inteligentes que ayuden a los usuarios a crecer financieramente, cumplir sus objetivos y adaptarse a los desafíos de un entorno económico incierto.
-
-
 
 ## ✅ Solución
 
@@ -54,22 +47,16 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 ⭐ **Formar parte de una comunidad** en la cual miles de usuarios comparten recursos e información sobre el sistema financiero actual.  
 ⭐ **Monitorear y controlar sus finanzas** de manera segura y eficiente.
 
-
-# MVP 
-
-## Alcance del proyecto
-
 ## Stack de tecnologías y herramientas
 
-|  Librería/herramienta    |   Logo                                    | Descripción                                                                                                           |
+| Herramienta    |   Logo                                    | Descripción                                                                                                           |
 |----------------------|-----------------------------------------|----------------------------------------------|
 | **Pandas**   |      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1200px-Pandas_logo.svg.png" width="100">   | Librería de Python para manipulación y análisis de datos.|
-|**Matplotlib**|<img src="https://matplotlib.org/_static/logo_light.svg" width="100">| Librería usada para la generación de gráficos en dos dimensiones.|
-|**Seaborn**|<img src="https://seaborn.pydata.org/_images/logo-tall-lightbg.svg" width="100"> | Librería de Python creada sobre matplotlib, usada para crear gráficos estadísticos.|
+| **Plotly** | <img src="https://getlogovector.com/wp-content/uploads/2020/09/plotly-logo-vector.png" width="100"> | Paquete de Python que permite crear gráficos interactivos. | 
 | **Jupyter**|<img src="https://jupyter.org/assets/homepage/main-logo.svg" width="65">| Software gratuito, estándares abiertos y servicios web para informática interactiva en todos los lenguajes de programación.|
 | **Visual Studio Code**|<img src="https://static-00.iconduck.com/assets.00/visual-studio-code-icon-512x506-2fdb6ar6.png" width="70">| Editor de código fuente.|
-| **Canva**|<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Canva_Logo.svg/250px-Canva_Logo.svg.png" width="100">| Plataforma de diseño gráfico y composición de imágenes.|
-| **Python**|<img src="https://seeklogo.com/images/P/python-logo-A32636CAA3-seeklogo.com.png" width="50">| Lenguaje de programación utilizado para análisis de datos y desarrollo de aplicaciones.|
+| **Figma**|<img src="https://w7.pngwing.com/pngs/648/190/png-transparent-figma-logo-tech-companies-thumbnail.png" width="100">| Herramienta de diseño en línea que permite crear, compartir y probar diseños de sitios web, aplicaciones y otros productos digitales.|
+| **Python**|<img src="https://banner2.cleanpng.com/20181212/lkz/kisspng-professional-python-high-level-programming-languag-5c115384027755.6218390315446393640101.jpg" width="50">| Lenguaje de programación utilizado para análisis de datos y desarrollo de aplicaciones.|
 | **GitHub**|<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" width="100">| Plataforma de desarrollo colaborativo para proyectos de software.|
 | **Google Drive**|<img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" width="100"> | Servicio de alojamiento y sincronización de archivos.|
 | **Streamlit** | <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" width="100"> | Streamlit es una herramienta de código abierto diseñada para crear aplicaciones web interactivas y visualizaciones de datos de manera rápida y sencilla utilizando Python.|
@@ -105,7 +92,7 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 |                                                                                                                                             |
 | <img width="60" height="60" src="https://avatars.githubusercontent.com/u/113942592?v=4" alt="Camilo" />                                     | Camilo Zapata     | Backend Developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/ZapataCamilo) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/camilo-zapata-web-dv/)                         |
 |                                                                                                                                             |
-| <img width="60" height="60" src="https://github.com/Everjr18.png" alt="Everjr18" /> | Ever Rojas        | frontend developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
+| <img width="60" height="60" src="https://github.com/Everjr18.png" alt="Everjr18" /> | Ever Rojas        | Frontend Developer |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Everjr18) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a/)                         |
 |                                                                                                                                             |
 | <img width="60" height="60" src="https://github.com/Mathiroldan.png" alt="Mathiroldan" />                                                   | Mathias Roldán    | Data Analyst |  [![Github](https://skillicons.dev/icons?i=github)](https://github.com/Mathiroldan) [![Linkedin](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/mathias-roldan)                         |
 |                                                                                                                                             |
