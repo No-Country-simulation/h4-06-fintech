@@ -242,7 +242,7 @@ export class UsersService {
     const payload = { id: user.id };
     return this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET,
-      expiresIn: '10m',
+      expiresIn: '24h',
     });
   }
 }
