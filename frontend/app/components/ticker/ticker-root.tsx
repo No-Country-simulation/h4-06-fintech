@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { PropsWithChildren } from 'react';
+import { TickerEvolutionicon } from './ticker-evolution-icon';
 import { TickerImage } from './ticker-image';
 
 interface RootProps extends PropsWithChildren {
@@ -15,14 +15,7 @@ export function Root({ image, name, isUp, children }: RootProps) {
       <section className='flex items-center gap-4'>
         <TickerImage src={image} />
         <p className='text-lg font-medium'>{name}</p>
-        {isUp !== undefined && (
-          <Image
-            alt='stock evolution'
-            src={isUp ? '/svg/is-up.svg' : '/svg/is-down.svg'}
-            height={24}
-            width={24}
-          />
-        )}
+        {isUp !== undefined && <TickerEvolutionicon isUp={isUp} />}
       </section>
       {children}
     </section>
