@@ -14,9 +14,11 @@ export default function InvestmentPage() {
             <p className='text-xl font-medium'>Explorar inversiones</p>
           </FinancialTargetCard>
         </Link>
-        <FinancialTargetCard icon='/svg/chart.svg'>
-          <p className='text-xl font-medium'>Mis Inversiones</p>
-        </FinancialTargetCard>
+        <Link href={'/investment/my-investments'}>
+          <FinancialTargetCard icon='/svg/chart.svg'>
+            <p className='text-xl font-medium'>Mis Inversiones</p>
+          </FinancialTargetCard>
+        </Link>
         <FinancialTargetCard icon='/svg/heart.svg'>
           <p className='text-xl font-medium'>Favoritos</p>
         </FinancialTargetCard>
