@@ -15,7 +15,6 @@
   "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
   "prisma:migrate": "prisma migrate deploy --schema=prisma/schema.prisma",
   "deploy": "pnpm prisma:generate && pnpm prisma:migrate && pnpm build",
-  "postinstall": "pnpm prisma:generate",  
   "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
   "test": "jest",
   "test:watch": "jest --watch",
