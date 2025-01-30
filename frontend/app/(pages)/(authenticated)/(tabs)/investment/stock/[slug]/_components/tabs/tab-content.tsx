@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Skeleton } from "@/components/ui/skeleton";
 
-const HistoricalTab = dynamic(() => import('./historical-tab'), {
+const HistoricalTab = dynamic(() => import('./historical-tab/historical-tab'), {
   loading: () => <TabSkeleton />,
 });
 
@@ -9,11 +9,11 @@ const PercentageTab = dynamic(() => import('./percentage-tab'), {
   loading: () => <TabSkeleton />,
 });
 
-const ComparativeTab = dynamic(() => import('./comparative-tab'), {
+const ComparativeTab = dynamic(() => import('./comparative-tab/comparative-tab'), {
   loading: () => <TabSkeleton />,
 });
 
-const RisksTab = dynamic(() => import('./risks-tab'), {
+const RisksTab = dynamic(() => import('./risks-tab/risks-tab'), {
   loading: () => <TabSkeleton />,
 });
 
@@ -32,17 +32,16 @@ function TabSkeleton() {
 }
 
 interface TabContentProps {
-  tab: string;
-  stockData: any; // Replace 'any' with your stock data type
+  tab: string | undefined;
 }
 
-export function TabContent({ tab, stockData }: TabContentProps) {
+export function TabContent({ tab }: TabContentProps) {
   const tabs = {
-    historical: <HistoricalTab data={stockData} />,
-    percentage: <PercentageTab data={stockData} />,
-    comparative: <ComparativeTab data={stockData} />,
-    risks: <RisksTab data={stockData} />,
-    requirements: <RequirementsTab data={stockData} />,
+    historical: <HistoricalTab  />,
+    percentage: <PercentageTab  />,
+    comparative: <ComparativeTab />,
+    risks: <RisksTab  />,
+    requirements: <RequirementsTab  />,
   } as const;
 
   return tabs[tab as keyof typeof tabs] || tabs.historical;

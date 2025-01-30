@@ -1,7 +1,9 @@
-export default function PercentageTab({ data }: { data: any }) {
+import HistoricalTab from "./historical-tab/historical-tab";
+
+export default function PercentageTab() {
   return (
     <div className="p-4">
-      {/* Percentage content */}
+      <HistoricalTab />
     </div>
   );
 }
