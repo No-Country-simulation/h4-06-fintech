@@ -14,7 +14,7 @@ export function IconCircle({ icon, color = 'default' }: IconCircleProps) {
 
   return (
     <div
-      className={`flex aspect-square items-center justify-center rounded-full p-3 ${style} w-fit`}
+      className={`flex aspect-square size-12 w-fit items-center justify-center rounded-full p-3 ${style} `}
     >
       <Image
         src={icon}

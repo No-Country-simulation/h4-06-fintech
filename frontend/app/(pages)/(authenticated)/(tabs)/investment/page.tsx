@@ -8,7 +8,7 @@ export default function InvestmentPage() {
       <header>
         <Text variant='header'>Inversiones</Text>
       </header>
-      <section className='flex justify-between'>
+      <section className='flex flex-wrap justify-between'>
         <Link href={'/investment/explore'}>
           <FinancialTargetCard icon='/svg/glass.svg'>
             <p className='text-xl font-medium'>Explorar inversiones</p>
