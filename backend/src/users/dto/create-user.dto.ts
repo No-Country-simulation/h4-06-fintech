@@ -13,6 +13,7 @@ import { CreateFinancialRadiographyDto } from '../../FinancialRadiographies/Fina
 import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
 
 export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
+export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
 export class FinancialRadiographies extends OmitType(
   CreateFinancialRadiographyDto,
   ['userId'],

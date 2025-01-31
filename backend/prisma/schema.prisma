@@ -16,16 +16,17 @@ model User {
   lastName               String?
   password               String
   avatarUrl              String?
-  role                   UserRole?             @default(USER)
   createdAt              DateTime              @default(now())
   updatedAt              DateTime              @updatedAt
   isEmailVerified        Boolean               @default(false)
   comment                Comment[]
-  financialRadiographies FinancialRadiography?
-  profile                Profile?
   Support                Support[]
   wallet                 wallet[]
   target                 Target[]
+  role                   UserRole?             @default(USER)
+  financialRadiographies FinancialRadiography?
+  profile                Profile?
+  Investment             Investment?
 }
 
 model Target {
@@ -184,12 +185,14 @@ model Stock {
 
 model Investment {
   id             String              @id @default(cuid())
+  userId         String              @unique
   amountInvested Int
   performance    String
   dateInvestment DateTime
   portfolioId    String
   stockSymbol    String?
   stock          Stock?              @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
   // FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
   // financialInstrumentId String?
