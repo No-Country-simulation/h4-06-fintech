@@ -15,7 +15,7 @@
 
 En un contexto económico incierto, donde la inestabilidad y la desigualdad financiera afectan a millones de personas, surge una oportunidad para revolucionar la forma en que se abordan las finanzas personales.
 
-Pero, ¿cómo podemos tomar decisiones informadas sobre nuestras finanzas cuando el sistema financiero parece complejo y abrumador?
+Pero, ¿cómo podemos decisiones financieras informadas en un sistema complejo y abrumador?
 
 Es por eso que creamos **iUPi**, una aplicación financiera innovadora diseñada para empoderar a los usuarios en la gestión y crecimiento de su patrimonio. Fomentamos la cultura del ahorro e inversión responsable en Argentina, proporcionando un espacio accesible, seguro y personalizado.
 
@@ -25,9 +25,7 @@ Con **iUPi**, podrás tomar el control de tus finanzas, alcanzar objetivos y des
 
 En Argentina, la inestabilidad económica y la falta de educación financiera dificultan que las personas tomen control de sus finanzas y logren sus objetivos.
 
-La escasez de herramientas financieras accesibles, pensadas para distintos niveles de experiencia, edades, y para personas con una educación financiera básica o intermedia intensifica este problema.
-
-Las herramientas existentes suelen estar destinadas a personas con mayores ingresos y educación, excluyendo a aquellos que necesitan apoyo.
+Faltan herramientas accesibles que se adapten a distintos niveles de experiencia y educación financiera, lo que agrava el problema. La mayoría de las soluciones actuales están dirigidas a personas con mayores ingresos y conocimientos, dejando fuera a quienes más las necesitan.
 
 ## 🎯 Objetivo
 
@@ -42,8 +40,8 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 ### Con **iUPi**, los usuarios pueden:
 
 ⭐ **Definir objetivos personales** y recibir recomendaciones de inversión personalizadas.  
-⭐ **Acceder a un portafolio de inversiones** personalizado, adaptado al perfil del usuario y las dinámicas del mercado.  
-⭐ **Recomendaciones de inversión** precisas y alineadas a sus metas.  
+⭐ **Acceder a un portafolio de inversiones** adaptado a su perfil y al mercado.
+⭐ **Recibir recomendaciones de inversión** precisas y alineadas a sus metas.  
 ⭐ **Formar parte de una comunidad** en la cual miles de usuarios comparten recursos e información sobre el sistema financiero actual.  
 ⭐ **Monitorear y controlar sus finanzas** de manera segura y eficiente.
 
@@ -62,6 +60,13 @@ Con una interfaz intuitiva, **iUPi** ayuda a los usuarios a definir objetivos fi
 | **Streamlit** | <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" width="100"> | Streamlit es una herramienta de código abierto diseñada para crear aplicaciones web interactivas y visualizaciones de datos de manera rápida y sencilla utilizando Python.|
 
 ## Metodología de gestión de proyectos 
+
+El equipo utilizó un **enfoque ágil** basado en **Kanban** para la gestión del proyecto, priorizando la colaboración, la comunicación continua y la mejora iterativa.
+
+- **Reuniones diarias (Daily):** Se realizaron a través de Discord para informar los avances diarios del proyecto y resolver bloqueos.
+- **Reuniones semanales con el Team Leader:** Dos veces por semana, el equipo se reunió con el TL para evaluar el progreso y aplicar la técnica retrospectiva de las 4 L (Loved, Loathed, Learned, Longed for), identificando aprendizajes y oportunidades de mejora.
+- **Interacción con el Product Owner:** Se llevaron a cabo reuniones ocasionales para resolver dudas y mostrar avances.
+- **Seguimiento de tareas con Kanban:** Se utilizó un tablero Kanban en Notion, basado en las historias de usuario proporcionadas por el cliente, para gestionar el flujo de trabajo y la asignación de tareas.
 
 ## Cronograma y fechas clave del proyecto
 
