@@ -28,7 +28,7 @@ export class CreateProfileDto {
 
   @ApiProperty({ description: 'Investment horizon' })
   @IsString()
-  investmentHorizon: string; 
+  investmentHorizon: string;
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
@@ -36,26 +36,33 @@ export class CreateProfileDto {
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
+  @IsOptional()
   investmentCategories: string;
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
-  investmentMethod : string;
+  @IsOptional()
+  investmentMethod: string;
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
+  @IsOptional()
   mainIncomeSource: string;
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
+  @IsOptional()
   financialNewsSource: string;
 
   @ApiProperty({ description: 'Financial goal' })
   @IsString()
+  @IsOptional()
   years: string;
 
-
-  @ApiProperty({ description: 'Optional user ID if linked to a user profile', required: false })
+  @ApiProperty({
+    description: 'Optional user ID if linked to a user profile',
+    required: false,
+  })
   @IsOptional()
   @IsString()
   userId?: string;
