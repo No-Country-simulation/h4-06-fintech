@@ -9,7 +9,7 @@ export class FinanceController {
   // Endpoint para obtener datos actuales de una acción
   @Get('stock/:ticker')
   async getStockData(@Param('ticker') ticker: string): Promise<StockDTO> { 
-    return await this.financeService.getStockData(ticker);
+    return await this.financeService.getStockData(ticker, false);
   }
 
   // Endpoint para obtener datos históricos de una acción
@@ -19,5 +19,12 @@ export class FinanceController {
     @Query('period') period: string = '1mo',  // Permite que se pase el periodo como parámetro
   ) {
     return await this.financeService.getHistoricalData(ticker, period);
+  }
+
+  @Get('instruments')
+  async getstockData(@Query('tickers') tickers: string): Promise<StockDTO[]> {
+    const tickerList = tickers.split(',');
+    return await this.financeService.getInstruments(tickerList, true);
+   
   }
 }

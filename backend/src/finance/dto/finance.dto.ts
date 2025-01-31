@@ -117,6 +117,7 @@ export class EarningsDTO {
 }
 
 export class StockDTO {
+
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -126,6 +127,11 @@ export class StockDTO {
   @IsString()
   @IsNotEmpty()
   name: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  typeDisp: string;
 
   @ApiProperty()
   @IsString()

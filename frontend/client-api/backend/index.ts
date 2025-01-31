@@ -3,6 +3,7 @@ import { isActive } from './ping';
 // Modules
 import { authApi } from './modules/auth/auth.api';
 import { financialTargetApi } from './modules/financial-target/financial-target.api';
+import { stockApi } from './modules/investment/stock/stock.api';
 import { walletApi } from './modules/wallet/wallet.api';
 
 export const backend = {
@@ -10,6 +11,9 @@ export const backend = {
   authApi,
   financialTargetApi,
   walletApi,
+  investment: {
+    stockApi,
+  },
 };
 
 // Exporta un objecto que tiene mas objectos con funciones, para usarlos seria algo asi

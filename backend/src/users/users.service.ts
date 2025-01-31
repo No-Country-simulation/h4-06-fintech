@@ -27,24 +27,17 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
+    if (user) {
+      throw new BadRequestException(
+        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
+      );
+    }
     return user;
   }
 
   async create(createUserDto: CreateUserDto) {
     await this.findByEmail(createUserDto.email);
     try {
-      const existingUser = await this.prismaService.user.findFirst({
-        where: {
-          email: createUserDto.email,
-        },
-      });
-
-      if (existingUser) {
-        throw new BadRequestException(
-          'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-        );
-      }
-
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
         roundOfHashing,
@@ -138,7 +131,8 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    await this.findOne(id);
+    const user = await this.findOne(id);
+
     try {
       if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
@@ -149,16 +143,36 @@ export class UsersService {
 
       const { profile, financialRadiographies, ...rest } = updateUserDto;
 
+      const updateData: any = {
+        ...rest,
+      };
+
+      if (profile) {
+        updateData.profile = {
+          upsert: {
+            create: profile,
+            update: profile,
+          },
+        };
+      }
+
+      if (financialRadiographies) {
+        updateData.financialRadiographies = {
+          upsert: {
+            create: financialRadiographies,
+            update: financialRadiographies,
+          },
+        };
+      }
+
       const update = await this.prismaService.user.update({
         where: { id },
-        data: {
-          ...rest,
-          profile: {
-            create: profile,
-          },
-          financialRadiographies: {
-            create: financialRadiographies,
-          },
+        data: updateData,
+        include: {
+          profile: true,
+          wallet: true,
+          comment: true,
+          financialRadiographies: true,
         },
       });
 
@@ -167,6 +181,7 @@ export class UsersService {
         data: update,
       };
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -225,9 +240,10 @@ export class UsersService {
 
   generateAccessToken(user: User): string {
     const payload = { id: user.id };
+    const isProduction = process.env.NODE_ENV === 'production';
     return this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET,
-      expiresIn: '10m',
+      expiresIn: isProduction ? '10m' : '24h',
     });
   }
 }

@@ -5,21 +5,22 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { HomeSidebarHeader } from './home-sidebar-header';
-import { items } from './home-sidebar-items';
+import { items, bottomItems } from './home-sidebar-items';
+import { LogoutIcon } from './svg/bottom-items';
+import Link from 'next/link';
 
+const buttonStyle = 'border border-[#06040433]  h-[40px] focus:bg-[#004AAD80] ';
 export function HomeSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className='w-full max-w-[291px]'>
       <HomeSidebarHeader />
-      <SidebarContent>
+      <SidebarContent className='bg-[#E9EDF6]'>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -29,12 +30,15 @@ export function HomeSidebar() {
                     className='h-auto'
                     disabled
                   >
-                    <a href={item.url}>
-                      <span className='flex aspect-square items-center justify-center rounded-xl bg-blue-600 p-2 text-blue-200'>
+                    <Link
+                      href={item.url}
+                      className={`${buttonStyle} `}
+                    >
+                      <span className=''>
                         <item.icon />
                       </span>
-                      <span>{item.title}</span>
-                    </a>
+                      <span className='text-lg/5 font-poppins-regular h-5'>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -42,11 +46,36 @@ export function HomeSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className='bg-[#E9EDF6]'>
         <SidebarMenu>
+          {bottomItems.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton
+                asChild
+                className='h-auto'
+                disabled
+              >
+                <Link
+                  href={item.url}
+                  className={buttonStyle}
+                >
+                  <span className=''>
+                    <item.icon />
+                  </span>
+                  <span className='text-lg/5 font-poppins-regular h-5'>{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+
           <SidebarMenuItem>
             <form action={logout}>
-              <SidebarMenuButton>Cerrar sesión</SidebarMenuButton>
+              <SidebarMenuButton className={buttonStyle}>
+                <span className='ml-1'>
+                  <LogoutIcon />
+                </span>
+                <span className='text-lg/5 font-poppins-regular h-5'>Cerrar sesión</span>
+              </SidebarMenuButton>
             </form>
           </SidebarMenuItem>
         </SidebarMenu>

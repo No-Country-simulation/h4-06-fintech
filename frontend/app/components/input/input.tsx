@@ -7,6 +7,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string | string[];
   password?: boolean;
+  variant?: 'default' | 'secondary';
 }
 
 export default function Input({
@@ -14,11 +15,14 @@ export default function Input({
   error,
   name,
   password = false,
+  variant = 'default',
   className,
   ...props
 }: InputProps) {
   const inputStyles =
-    `w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${className || ''} `.trim();
+    variant === 'default'
+      ? `max-w-[530px] w-full border px-4 py-7 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 ${error ? 'border-red-500' : 'border-foreground'} ${className || ''} `.trim()
+      : 'rounded-xl shadow-md';
 
   return (
     <div className='flex flex-col gap-1'>

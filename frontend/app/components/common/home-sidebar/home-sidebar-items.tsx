@@ -1,35 +1,61 @@
+import { HelpIcon, SettingsIcon } from './svg/bottom-items';
 import {
-  ChartAreaIcon,
-  GanttChartIcon,
-  Home,
-  SettingsIcon,
-  Wallet2Icon,
-} from 'lucide-react';
+  CommunityIcon,
+  CustomizeIcon,
+  FavoriteIcon,
+  NotificationIcon,
+  ProfileIcon,
+  ReminderIcon,
+  WalletIcon,
+} from './svg/home-sidebar';
 
 export const items = [
   {
-    title: 'Inicio',
+    title: 'Perfil',
     url: '/home',
-    icon: Home,
+    icon: ProfileIcon,
   },
   {
-    title: 'Wallet',
+    title: 'Notificaciones',
     url: '#',
-    icon: Wallet2Icon,
+    icon: NotificationIcon,
   },
   {
-    title: 'Portfolio',
+    title: 'Perzonalizar',
+    url: '/customization',
+    icon: CustomizeIcon,
+  },
+  {
+    title: 'Favoritos',
     url: '#',
-    icon: GanttChartIcon,
+    icon: FavoriteIcon,
   },
   {
-    title: 'Gestion de inversiones',
+    title: 'Billetera',
+    url: '/wallet',
+    icon: WalletIcon,
+  },
+  {
+    title: 'Recordatorios',
     url: '#',
-    icon: ChartAreaIcon,
+    icon: ReminderIcon,
   },
   {
-    title: 'Configuracion',
+    title: 'Comunidad',
+    url: '#',
+    icon: CommunityIcon,
+  },
+];
+
+export const bottomItems = [
+  {
+    title: 'Configuración',
     url: '/setting',
     icon: SettingsIcon,
+  },
+  {
+    title: 'Ayuda',
+    url: '#',
+    icon: HelpIcon,
   },
 ];
