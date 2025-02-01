@@ -27,11 +27,6 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
-    if (user) {
-      throw new BadRequestException(
-        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
     return user;
   }
 
@@ -208,35 +203,35 @@ export class UsersService {
   }
 
   async confirmEmail(token: string) {
-    const payload: JwtPayload = this.jwtService.verify(token, {
-      secret: process.env.JWT_SECRET,
-    });
-
+    let payload: JwtPayload;
+    try {
+      payload = this.jwtService.verify(token, {
+        secret: process.env.JWT_SECRET,
+      });
+    } catch (error) {
+      throw new BadRequestException('Token inválido o expirado.');
+    }
+  
     const user = await this.prismaService.user.findUnique({
-      where: {
-        id: payload.id,
-      },
+      where: { id: payload.id },
     });
-
+  
     if (!user) {
       throw new BadRequestException('Este usuario no existe');
     }
-
+  
     if (user.isEmailVerified) {
-      throw new BadRequestException('Esta cuenta ya esta verificada');
+      throw new BadRequestException('Esta cuenta ya está verificada.');
     }
-
+  
     await this.prismaService.user.update({
-      where: {
-        id: user.id,
-      },
-      data: {
-        isEmailVerified: true,
-      },
+      where: { id: user.id },
+      data: { isEmailVerified: true },
     });
-
-    return user;
+  
+    return { message: 'Cuenta verificada con éxito', user };
   }
+  
 
   generateAccessToken(user: User): string {
     const payload = { id: user.id };
