@@ -61,6 +61,6 @@ export class AuthController {
     
     const authResponse = await this.authService.validateGoogleUser(googleUser);
 
-    res.redirect(`${process.env.BASE_URL}?token=${authResponse.accessToken}`);
+    res.redirect(`${process.env.FRONTEND_URL}?token=${authResponse.accessToken}`);
   }
 }
