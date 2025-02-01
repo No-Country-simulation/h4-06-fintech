@@ -34,6 +34,7 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
+    createUserDto.email.toLowerCase();
     await this.findByEmail(createUserDto.email);
     try {
       const hashedPassword = await bcrypt.hash(
