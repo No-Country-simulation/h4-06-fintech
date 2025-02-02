@@ -16,6 +16,10 @@ export class InvestmentService {
           amountInvested: data.amountInvested,
           dateInvestment: data.dateInvestment instanceof Date ? data.dateInvestment : new Date(data.dateInvestment),
         },
+        include: {
+          stock: true,
+
+        }
       });
       return {
         message: 'Investment created successfully',
