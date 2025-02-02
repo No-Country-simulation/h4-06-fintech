@@ -61,6 +61,18 @@ model InvestmentPortfolio {
   userId             String
   investment         Investment[]
 }
+model Investment {
+  id             String              @id @default(cuid())
+  amountInvested Int
+  performance    String
+  dateInvestment DateTime
+  portfolioId    String
+  stockSymbol    String?
+  stock          Stock?              @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  // FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
+  // financialInstrumentId String?
+}
 
 model FinancialInstrument {
   id          String       @id @default(cuid())
@@ -182,18 +194,6 @@ model Stock {
   Investment Investment[]
 }
 
-model Investment {
-  id             String              @id @default(cuid())
-  amountInvested Int
-  performance    String
-  dateInvestment DateTime
-  portfolioId    String
-  stockSymbol    String?
-  stock          Stock?              @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
-  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
-  // FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
-  // financialInstrumentId String?
-}
 
 model Price {
   current          Float?
