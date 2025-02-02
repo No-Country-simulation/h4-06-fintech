@@ -12,7 +12,7 @@ export function TickersSectionHeader() {
       <section className='flex flex-col items-center gap-2'>
         <section className='flex gap-2'>
           <Image
-            src='/svg/profile.svg'
+            src='/svg/customize.svg'
             alt='Filter icon'
             width={24}
             height={24}

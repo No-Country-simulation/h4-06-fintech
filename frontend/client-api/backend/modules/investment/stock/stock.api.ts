@@ -33,6 +33,14 @@ const stockApi: StockApi = {
       expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
     }));
   },
+  async getDetails({ symbol }) {
+    console.log({ symbol });
+
+    // TODO - Usar un endpoint para obtener la informacion de mi inversion
+    return new Promise(async (resolve) =>
+      resolve({ totalAssets: 0.5, amountInvested: 200 }),
+    );
+  },
 };
 
 export { stockApi };

@@ -1,4 +1,5 @@
 import { Text } from '@/components/ui/text';
+import Link from 'next/link';
 import { FinancialTargetCard } from '../financial-target/[slug]/_components/financial-target-card';
 
 export default function InvestmentPage() {
@@ -8,26 +9,31 @@ export default function InvestmentPage() {
         <Text variant='header'>Inversiones</Text>
       </header>
       <section className='flex flex-wrap justify-between'>
-        <FinancialTargetCard
-          icon='/svg/glass.svg'
+        <Link
+          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
           href='/investment/explore'
         >
-          <p className='text-xl font-medium'>Explorar inversiones</p>
-        </FinancialTargetCard>
-
-        <FinancialTargetCard
-          icon='/svg/chart.svg'
+          <FinancialTargetCard icon='/svg/glass.svg'>
+            <p className='text-xl font-medium'>Explorar inversiones</p>
+          </FinancialTargetCard>
+        </Link>
+        <Link
+          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
           href='/investment/my-investments'
         >
-          <p className='text-xl font-medium'>Mis Inversiones</p>
-        </FinancialTargetCard>
+          <FinancialTargetCard icon='/svg/chart.svg'>
+            <p className='text-xl font-medium'>Mis Inversiones</p>
+          </FinancialTargetCard>
+        </Link>
 
-        <FinancialTargetCard
-          icon='/svg/heart.svg'
+        <Link
+          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
           href='/investment/favorites'
         >
-          <p className='text-xl font-medium'>Favoritos</p>
-        </FinancialTargetCard>
+          <FinancialTargetCard icon='/svg/heart.svg'>
+            <p className='text-xl font-medium'>Favoritos</p>
+          </FinancialTargetCard>
+        </Link>
       </section>
     </section>
   );
