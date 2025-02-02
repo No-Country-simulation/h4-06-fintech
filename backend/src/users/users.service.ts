@@ -27,15 +27,15 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
-    if (user) {
-      throw new HttpException('User already exists', HttpStatus.CONFLICT);
-    }
     return user;
   }
 
   async create(createUserDto: CreateUserDto) {
     createUserDto.email.toLowerCase();
-    await this.findByEmail(createUserDto.email);
+    const user = await this.findByEmail(createUserDto.email);
+    if (user) {
+      throw new HttpException('User already exists', HttpStatus.CONFLICT);
+    }
     try {
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
