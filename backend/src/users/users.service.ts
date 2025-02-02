@@ -31,7 +31,11 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    await this.findByEmail(createUserDto.email);
+    createUserDto.email.toLowerCase();
+    const user = await this.findByEmail(createUserDto.email);
+    if (user) {
+      throw new HttpException('User already exists', HttpStatus.CONFLICT);
+    }
     try {
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
@@ -211,27 +215,26 @@ export class UsersService {
     } catch (error) {
       throw new BadRequestException('Token inválido o expirado.');
     }
-  
+
     const user = await this.prismaService.user.findUnique({
       where: { id: payload.id },
     });
-  
+
     if (!user) {
       throw new BadRequestException('Este usuario no existe');
     }
-  
+
     if (user.isEmailVerified) {
       throw new BadRequestException('Esta cuenta ya está verificada.');
     }
-  
+
     await this.prismaService.user.update({
       where: { id: user.id },
       data: { isEmailVerified: true },
     });
-  
+
     return { message: 'Cuenta verificada con éxito', user };
   }
-  
 
   generateAccessToken(user: User): string {
     const payload = { id: user.id };

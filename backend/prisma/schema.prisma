@@ -26,6 +26,7 @@ model User {
   Support                Support[]
   wallet                 wallet[]
   target                 Target[]
+  investmentPortfolio    InvestmentPortfolio[]
 }
 
 model Target {
@@ -39,7 +40,7 @@ model Target {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   userId     String
-  user       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model FinancialRadiography {
@@ -54,12 +55,24 @@ model FinancialRadiography {
 }
 
 model InvestmentPortfolio {
-  id                 String       @id @default(cuid())
-  profileRisk        Int
-  performanceCurrent Float
-  coin               String
-  userId             String
-  investment         Investment[]
+  id          String       @id @default(cuid())
+  userId      String
+  name        String
+  createdAt   DateTime     @default(now()) @map("fecha_creacion")
+  user        User         @relation(fields: [userId], references: [id])
+  investments Investment[]
+}
+
+model Investment {
+  id                    String               @id @default(cuid())
+  amountInvested        Int
+  dateInvestment        DateTime
+  portfolioId           String
+  financialInstrumentId String?
+  stockSymbol           String?
+  stock                 Stock?               @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  portfolio             InvestmentPortfolio? @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
 }
 
 model FinancialInstrument {
@@ -71,7 +84,7 @@ model FinancialInstrument {
   levelRisk   Int
   deadline    Int
   currency    CurrencyType
-  // Investment  Investment[]
+  Investments Investment[]
 }
 
 model News {
@@ -116,7 +129,7 @@ model WalletTransaction {
   currency    CurrencyType
   description String?
   createdAt   DateTime        @default(now())
-  wallet      wallet          @relation(fields: [walletId], references: [id])
+  wallet      wallet          @relation(fields: [walletId], references: [id], onDelete: Cascade)
 }
 
 model Administrador {
@@ -135,7 +148,7 @@ model Support {
   status    Status   @default(open)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Profile {
@@ -180,19 +193,6 @@ model Stock {
   volume     Volume       @relation(fields: [volumeId], references: [id])
   week52     Week52       @relation(fields: [week52Id], references: [id])
   Investment Investment[]
-}
-
-model Investment {
-  id             String              @id @default(cuid())
-  amountInvested Int
-  performance    String
-  dateInvestment DateTime
-  portfolioId    String
-  stockSymbol    String?
-  stock          Stock?              @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
-  portfolio      InvestmentPortfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
-  // FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
-  // financialInstrumentId String?
 }
 
 model Price {
