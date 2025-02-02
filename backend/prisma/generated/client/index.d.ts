@@ -34,15 +34,15 @@ export type FinancialRadiography = $Result.DefaultSelection<Prisma.$FinancialRad
  */
 export type InvestmentPortfolio = $Result.DefaultSelection<Prisma.$InvestmentPortfolioPayload>
 /**
- * Model FinancialInstrument
- * 
- */
-export type FinancialInstrument = $Result.DefaultSelection<Prisma.$FinancialInstrumentPayload>
-/**
  * Model Investment
  * 
  */
 export type Investment = $Result.DefaultSelection<Prisma.$InvestmentPayload>
+/**
+ * Model FinancialInstrument
+ * 
+ */
+export type FinancialInstrument = $Result.DefaultSelection<Prisma.$FinancialInstrumentPayload>
 /**
  * Model News
  * 
@@ -331,16 +331,6 @@ export class PrismaClient<
   get investmentPortfolio(): Prisma.InvestmentPortfolioDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.financialInstrument`: Exposes CRUD operations for the **FinancialInstrument** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more FinancialInstruments
-    * const financialInstruments = await prisma.financialInstrument.findMany()
-    * ```
-    */
-  get financialInstrument(): Prisma.FinancialInstrumentDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.investment`: Exposes CRUD operations for the **Investment** model.
     * Example usage:
     * ```ts
@@ -349,6 +339,16 @@ export class PrismaClient<
     * ```
     */
   get investment(): Prisma.InvestmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.financialInstrument`: Exposes CRUD operations for the **FinancialInstrument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FinancialInstruments
+    * const financialInstruments = await prisma.financialInstrument.findMany()
+    * ```
+    */
+  get financialInstrument(): Prisma.FinancialInstrumentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.news`: Exposes CRUD operations for the **News** model.
@@ -923,8 +923,8 @@ export namespace Prisma {
     Target: 'Target',
     FinancialRadiography: 'FinancialRadiography',
     InvestmentPortfolio: 'InvestmentPortfolio',
-    FinancialInstrument: 'FinancialInstrument',
     Investment: 'Investment',
+    FinancialInstrument: 'FinancialInstrument',
     News: 'News',
     Comment: 'Comment',
     wallet: 'wallet',
@@ -953,7 +953,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "target" | "financialRadiography" | "investmentPortfolio" | "financialInstrument" | "investment" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile" | "stock" | "price" | "volume" | "week52" | "dividend" | "earnings"
+      modelProps: "user" | "target" | "financialRadiography" | "investmentPortfolio" | "investment" | "financialInstrument" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile" | "stock" | "price" | "volume" | "week52" | "dividend" | "earnings"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1253,80 +1253,6 @@ export namespace Prisma {
           }
         }
       }
-      FinancialInstrument: {
-        payload: Prisma.$FinancialInstrumentPayload<ExtArgs>
-        fields: Prisma.FinancialInstrumentFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.FinancialInstrumentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.FinancialInstrumentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          findFirst: {
-            args: Prisma.FinancialInstrumentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.FinancialInstrumentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          findMany: {
-            args: Prisma.FinancialInstrumentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
-          }
-          create: {
-            args: Prisma.FinancialInstrumentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          createMany: {
-            args: Prisma.FinancialInstrumentCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.FinancialInstrumentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
-          }
-          delete: {
-            args: Prisma.FinancialInstrumentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          update: {
-            args: Prisma.FinancialInstrumentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          deleteMany: {
-            args: Prisma.FinancialInstrumentDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.FinancialInstrumentUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.FinancialInstrumentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
-          }
-          upsert: {
-            args: Prisma.FinancialInstrumentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
-          }
-          aggregate: {
-            args: Prisma.FinancialInstrumentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateFinancialInstrument>
-          }
-          groupBy: {
-            args: Prisma.FinancialInstrumentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<FinancialInstrumentGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.FinancialInstrumentCountArgs<ExtArgs>
-            result: $Utils.Optional<FinancialInstrumentCountAggregateOutputType> | number
-          }
-        }
-      }
       Investment: {
         payload: Prisma.$InvestmentPayload<ExtArgs>
         fields: Prisma.InvestmentFieldRefs
@@ -1398,6 +1324,80 @@ export namespace Prisma {
           count: {
             args: Prisma.InvestmentCountArgs<ExtArgs>
             result: $Utils.Optional<InvestmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      FinancialInstrument: {
+        payload: Prisma.$FinancialInstrumentPayload<ExtArgs>
+        fields: Prisma.FinancialInstrumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FinancialInstrumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FinancialInstrumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          findFirst: {
+            args: Prisma.FinancialInstrumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FinancialInstrumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          findMany: {
+            args: Prisma.FinancialInstrumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
+          }
+          create: {
+            args: Prisma.FinancialInstrumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          createMany: {
+            args: Prisma.FinancialInstrumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FinancialInstrumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
+          }
+          delete: {
+            args: Prisma.FinancialInstrumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          update: {
+            args: Prisma.FinancialInstrumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.FinancialInstrumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FinancialInstrumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FinancialInstrumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>[]
+          }
+          upsert: {
+            args: Prisma.FinancialInstrumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialInstrumentPayload>
+          }
+          aggregate: {
+            args: Prisma.FinancialInstrumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFinancialInstrument>
+          }
+          groupBy: {
+            args: Prisma.FinancialInstrumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FinancialInstrumentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FinancialInstrumentCountArgs<ExtArgs>
+            result: $Utils.Optional<FinancialInstrumentCountAggregateOutputType> | number
           }
         }
       }
@@ -2451,8 +2451,8 @@ export namespace Prisma {
     target?: TargetOmit
     financialRadiography?: FinancialRadiographyOmit
     investmentPortfolio?: InvestmentPortfolioOmit
-    financialInstrument?: FinancialInstrumentOmit
     investment?: InvestmentOmit
+    financialInstrument?: FinancialInstrumentOmit
     news?: NewsOmit
     comment?: CommentOmit
     wallet?: walletOmit
@@ -2564,6 +2564,7 @@ export namespace Prisma {
     Support: number
     wallet: number
     target: number
+    investmentPortfolio: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2571,6 +2572,7 @@ export namespace Prisma {
     Support?: boolean | UserCountOutputTypeCountSupportArgs
     wallet?: boolean | UserCountOutputTypeCountWalletArgs
     target?: boolean | UserCountOutputTypeCountTargetArgs
+    investmentPortfolio?: boolean | UserCountOutputTypeCountInvestmentPortfolioArgs
   }
 
   // Custom InputTypes
@@ -2612,17 +2614,24 @@ export namespace Prisma {
     where?: TargetWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountInvestmentPortfolioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvestmentPortfolioWhereInput
+  }
+
 
   /**
    * Count Type InvestmentPortfolioCountOutputType
    */
 
   export type InvestmentPortfolioCountOutputType = {
-    investment: number
+    investments: number
   }
 
   export type InvestmentPortfolioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    investment?: boolean | InvestmentPortfolioCountOutputTypeCountInvestmentArgs
+    investments?: boolean | InvestmentPortfolioCountOutputTypeCountInvestmentsArgs
   }
 
   // Custom InputTypes
@@ -2639,7 +2648,7 @@ export namespace Prisma {
   /**
    * InvestmentPortfolioCountOutputType without action
    */
-  export type InvestmentPortfolioCountOutputTypeCountInvestmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InvestmentPortfolioCountOutputTypeCountInvestmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvestmentWhereInput
   }
 
@@ -2649,11 +2658,11 @@ export namespace Prisma {
    */
 
   export type FinancialInstrumentCountOutputType = {
-    Investment: number
+    Investments: number
   }
 
   export type FinancialInstrumentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Investment?: boolean | FinancialInstrumentCountOutputTypeCountInvestmentArgs
+    Investments?: boolean | FinancialInstrumentCountOutputTypeCountInvestmentsArgs
   }
 
   // Custom InputTypes
@@ -2670,7 +2679,7 @@ export namespace Prisma {
   /**
    * FinancialInstrumentCountOutputType without action
    */
-  export type FinancialInstrumentCountOutputTypeCountInvestmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialInstrumentCountOutputTypeCountInvestmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvestmentWhereInput
   }
 
@@ -2734,6 +2743,37 @@ export namespace Prisma {
    */
   export type WalletCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WalletTransactionWhereInput
+  }
+
+
+  /**
+   * Count Type StockCountOutputType
+   */
+
+  export type StockCountOutputType = {
+    Investment: number
+  }
+
+  export type StockCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Investment?: boolean | StockCountOutputTypeCountInvestmentArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StockCountOutputType without action
+   */
+  export type StockCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockCountOutputType
+     */
+    select?: StockCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StockCountOutputType without action
+   */
+  export type StockCountOutputTypeCountInvestmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvestmentWhereInput
   }
 
 
@@ -3106,6 +3146,7 @@ export namespace Prisma {
     Support?: boolean | User$SupportArgs<ExtArgs>
     wallet?: boolean | User$walletArgs<ExtArgs>
     target?: boolean | User$targetArgs<ExtArgs>
+    investmentPortfolio?: boolean | User$investmentPortfolioArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3156,6 +3197,7 @@ export namespace Prisma {
     Support?: boolean | User$SupportArgs<ExtArgs>
     wallet?: boolean | User$walletArgs<ExtArgs>
     target?: boolean | User$targetArgs<ExtArgs>
+    investmentPortfolio?: boolean | User$investmentPortfolioArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3170,6 +3212,7 @@ export namespace Prisma {
       Support: Prisma.$SupportPayload<ExtArgs>[]
       wallet: Prisma.$walletPayload<ExtArgs>[]
       target: Prisma.$TargetPayload<ExtArgs>[]
+      investmentPortfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3582,6 +3625,7 @@ export namespace Prisma {
     Support<T extends User$SupportArgs<ExtArgs> = {}>(args?: Subset<T, User$SupportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     wallet<T extends User$walletArgs<ExtArgs> = {}>(args?: Subset<T, User$walletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$walletPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     target<T extends User$targetArgs<ExtArgs> = {}>(args?: Subset<T, User$targetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TargetPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    investmentPortfolio<T extends User$investmentPortfolioArgs<ExtArgs> = {}>(args?: Subset<T, User$investmentPortfolioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4128,6 +4172,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TargetScalarFieldEnum | TargetScalarFieldEnum[]
+  }
+
+  /**
+   * User.investmentPortfolio
+   */
+  export type User$investmentPortfolioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvestmentPortfolio
+     */
+    select?: InvestmentPortfolioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvestmentPortfolio
+     */
+    omit?: InvestmentPortfolioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentPortfolioInclude<ExtArgs> | null
+    where?: InvestmentPortfolioWhereInput
+    orderBy?: InvestmentPortfolioOrderByWithRelationInput | InvestmentPortfolioOrderByWithRelationInput[]
+    cursor?: InvestmentPortfolioWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvestmentPortfolioScalarFieldEnum | InvestmentPortfolioScalarFieldEnum[]
   }
 
   /**
@@ -6445,80 +6513,52 @@ export namespace Prisma {
 
   export type AggregateInvestmentPortfolio = {
     _count: InvestmentPortfolioCountAggregateOutputType | null
-    _avg: InvestmentPortfolioAvgAggregateOutputType | null
-    _sum: InvestmentPortfolioSumAggregateOutputType | null
     _min: InvestmentPortfolioMinAggregateOutputType | null
     _max: InvestmentPortfolioMaxAggregateOutputType | null
   }
 
-  export type InvestmentPortfolioAvgAggregateOutputType = {
-    profileRisk: number | null
-    performanceCurrent: number | null
-  }
-
-  export type InvestmentPortfolioSumAggregateOutputType = {
-    profileRisk: number | null
-    performanceCurrent: number | null
-  }
-
   export type InvestmentPortfolioMinAggregateOutputType = {
     id: string | null
-    profileRisk: number | null
-    performanceCurrent: number | null
-    coin: string | null
     userId: string | null
+    name: string | null
+    createdAt: Date | null
   }
 
   export type InvestmentPortfolioMaxAggregateOutputType = {
     id: string | null
-    profileRisk: number | null
-    performanceCurrent: number | null
-    coin: string | null
     userId: string | null
+    name: string | null
+    createdAt: Date | null
   }
 
   export type InvestmentPortfolioCountAggregateOutputType = {
     id: number
-    profileRisk: number
-    performanceCurrent: number
-    coin: number
     userId: number
+    name: number
+    createdAt: number
     _all: number
   }
 
 
-  export type InvestmentPortfolioAvgAggregateInputType = {
-    profileRisk?: true
-    performanceCurrent?: true
-  }
-
-  export type InvestmentPortfolioSumAggregateInputType = {
-    profileRisk?: true
-    performanceCurrent?: true
-  }
-
   export type InvestmentPortfolioMinAggregateInputType = {
     id?: true
-    profileRisk?: true
-    performanceCurrent?: true
-    coin?: true
     userId?: true
+    name?: true
+    createdAt?: true
   }
 
   export type InvestmentPortfolioMaxAggregateInputType = {
     id?: true
-    profileRisk?: true
-    performanceCurrent?: true
-    coin?: true
     userId?: true
+    name?: true
+    createdAt?: true
   }
 
   export type InvestmentPortfolioCountAggregateInputType = {
     id?: true
-    profileRisk?: true
-    performanceCurrent?: true
-    coin?: true
     userId?: true
+    name?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -6560,18 +6600,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: InvestmentPortfolioAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: InvestmentPortfolioSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: InvestmentPortfolioMinAggregateInputType
@@ -6602,21 +6630,16 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: InvestmentPortfolioCountAggregateInputType | true
-    _avg?: InvestmentPortfolioAvgAggregateInputType
-    _sum?: InvestmentPortfolioSumAggregateInputType
     _min?: InvestmentPortfolioMinAggregateInputType
     _max?: InvestmentPortfolioMaxAggregateInputType
   }
 
   export type InvestmentPortfolioGroupByOutputType = {
     id: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
     userId: string
+    name: string
+    createdAt: Date
     _count: InvestmentPortfolioCountAggregateOutputType | null
-    _avg: InvestmentPortfolioAvgAggregateOutputType | null
-    _sum: InvestmentPortfolioSumAggregateOutputType | null
     _min: InvestmentPortfolioMinAggregateOutputType | null
     _max: InvestmentPortfolioMaxAggregateOutputType | null
   }
@@ -6637,57 +6660,61 @@ export namespace Prisma {
 
   export type InvestmentPortfolioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    profileRisk?: boolean
-    performanceCurrent?: boolean
-    coin?: boolean
     userId?: boolean
-    investment?: boolean | InvestmentPortfolio$investmentArgs<ExtArgs>
+    name?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
     _count?: boolean | InvestmentPortfolioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
   export type InvestmentPortfolioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    profileRisk?: boolean
-    performanceCurrent?: boolean
-    coin?: boolean
     userId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
   export type InvestmentPortfolioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    profileRisk?: boolean
-    performanceCurrent?: boolean
-    coin?: boolean
     userId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
   export type InvestmentPortfolioSelectScalar = {
     id?: boolean
-    profileRisk?: boolean
-    performanceCurrent?: boolean
-    coin?: boolean
     userId?: boolean
+    name?: boolean
+    createdAt?: boolean
   }
 
-  export type InvestmentPortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "profileRisk" | "performanceCurrent" | "coin" | "userId", ExtArgs["result"]["investmentPortfolio"]>
+  export type InvestmentPortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "createdAt", ExtArgs["result"]["investmentPortfolio"]>
   export type InvestmentPortfolioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    investment?: boolean | InvestmentPortfolio$investmentArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
     _count?: boolean | InvestmentPortfolioCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type InvestmentPortfolioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type InvestmentPortfolioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type InvestmentPortfolioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type InvestmentPortfolioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $InvestmentPortfolioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InvestmentPortfolio"
     objects: {
-      investment: Prisma.$InvestmentPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+      investments: Prisma.$InvestmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      profileRisk: number
-      performanceCurrent: number
-      coin: string
       userId: string
+      name: string
+      createdAt: Date
     }, ExtArgs["result"]["investmentPortfolio"]>
     composites: {}
   }
@@ -7082,7 +7109,8 @@ export namespace Prisma {
    */
   export interface Prisma__InvestmentPortfolioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    investment<T extends InvestmentPortfolio$investmentArgs<ExtArgs> = {}>(args?: Subset<T, InvestmentPortfolio$investmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    investments<T extends InvestmentPortfolio$investmentsArgs<ExtArgs> = {}>(args?: Subset<T, InvestmentPortfolio$investmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7113,10 +7141,9 @@ export namespace Prisma {
    */ 
   interface InvestmentPortfolioFieldRefs {
     readonly id: FieldRef<"InvestmentPortfolio", 'String'>
-    readonly profileRisk: FieldRef<"InvestmentPortfolio", 'Int'>
-    readonly performanceCurrent: FieldRef<"InvestmentPortfolio", 'Float'>
-    readonly coin: FieldRef<"InvestmentPortfolio", 'String'>
     readonly userId: FieldRef<"InvestmentPortfolio", 'String'>
+    readonly name: FieldRef<"InvestmentPortfolio", 'String'>
+    readonly createdAt: FieldRef<"InvestmentPortfolio", 'DateTime'>
   }
     
 
@@ -7366,6 +7393,10 @@ export namespace Prisma {
      */
     data: InvestmentPortfolioCreateManyInput | InvestmentPortfolioCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentPortfolioIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7428,6 +7459,10 @@ export namespace Prisma {
      * Filter which InvestmentPortfolios to update
      */
     where?: InvestmentPortfolioWhereInput
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentPortfolioIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7493,9 +7528,9 @@ export namespace Prisma {
   }
 
   /**
-   * InvestmentPortfolio.investment
+   * InvestmentPortfolio.investments
    */
-  export type InvestmentPortfolio$investmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InvestmentPortfolio$investmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Investment
      */
@@ -7532,6 +7567,1172 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: InvestmentPortfolioInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Investment
+   */
+
+  export type AggregateInvestment = {
+    _count: InvestmentCountAggregateOutputType | null
+    _avg: InvestmentAvgAggregateOutputType | null
+    _sum: InvestmentSumAggregateOutputType | null
+    _min: InvestmentMinAggregateOutputType | null
+    _max: InvestmentMaxAggregateOutputType | null
+  }
+
+  export type InvestmentAvgAggregateOutputType = {
+    amountInvested: number | null
+  }
+
+  export type InvestmentSumAggregateOutputType = {
+    amountInvested: number | null
+  }
+
+  export type InvestmentMinAggregateOutputType = {
+    id: string | null
+    amountInvested: number | null
+    dateInvestment: Date | null
+    portfolioId: string | null
+    financialInstrumentId: string | null
+    stockSymbol: string | null
+  }
+
+  export type InvestmentMaxAggregateOutputType = {
+    id: string | null
+    amountInvested: number | null
+    dateInvestment: Date | null
+    portfolioId: string | null
+    financialInstrumentId: string | null
+    stockSymbol: string | null
+  }
+
+  export type InvestmentCountAggregateOutputType = {
+    id: number
+    amountInvested: number
+    dateInvestment: number
+    portfolioId: number
+    financialInstrumentId: number
+    stockSymbol: number
+    _all: number
+  }
+
+
+  export type InvestmentAvgAggregateInputType = {
+    amountInvested?: true
+  }
+
+  export type InvestmentSumAggregateInputType = {
+    amountInvested?: true
+  }
+
+  export type InvestmentMinAggregateInputType = {
+    id?: true
+    amountInvested?: true
+    dateInvestment?: true
+    portfolioId?: true
+    financialInstrumentId?: true
+    stockSymbol?: true
+  }
+
+  export type InvestmentMaxAggregateInputType = {
+    id?: true
+    amountInvested?: true
+    dateInvestment?: true
+    portfolioId?: true
+    financialInstrumentId?: true
+    stockSymbol?: true
+  }
+
+  export type InvestmentCountAggregateInputType = {
+    id?: true
+    amountInvested?: true
+    dateInvestment?: true
+    portfolioId?: true
+    financialInstrumentId?: true
+    stockSymbol?: true
+    _all?: true
+  }
+
+  export type InvestmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Investment to aggregate.
+     */
+    where?: InvestmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Investments to fetch.
+     */
+    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvestmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Investments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Investments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Investments
+    **/
+    _count?: true | InvestmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvestmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvestmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvestmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvestmentMaxAggregateInputType
+  }
+
+  export type GetInvestmentAggregateType<T extends InvestmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvestment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvestment[P]>
+      : GetScalarType<T[P], AggregateInvestment[P]>
+  }
+
+
+
+
+  export type InvestmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvestmentWhereInput
+    orderBy?: InvestmentOrderByWithAggregationInput | InvestmentOrderByWithAggregationInput[]
+    by: InvestmentScalarFieldEnum[] | InvestmentScalarFieldEnum
+    having?: InvestmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvestmentCountAggregateInputType | true
+    _avg?: InvestmentAvgAggregateInputType
+    _sum?: InvestmentSumAggregateInputType
+    _min?: InvestmentMinAggregateInputType
+    _max?: InvestmentMaxAggregateInputType
+  }
+
+  export type InvestmentGroupByOutputType = {
+    id: string
+    amountInvested: number
+    dateInvestment: Date
+    portfolioId: string
+    financialInstrumentId: string | null
+    stockSymbol: string | null
+    _count: InvestmentCountAggregateOutputType | null
+    _avg: InvestmentAvgAggregateOutputType | null
+    _sum: InvestmentSumAggregateOutputType | null
+    _min: InvestmentMinAggregateOutputType | null
+    _max: InvestmentMaxAggregateOutputType | null
+  }
+
+  type GetInvestmentGroupByPayload<T extends InvestmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvestmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvestmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvestmentGroupByOutputType[P]>
+            : GetScalarType<T[P], InvestmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvestmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amountInvested?: boolean
+    dateInvestment?: boolean
+    portfolioId?: boolean
+    financialInstrumentId?: boolean
+    stockSymbol?: boolean
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }, ExtArgs["result"]["investment"]>
+
+  export type InvestmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amountInvested?: boolean
+    dateInvestment?: boolean
+    portfolioId?: boolean
+    financialInstrumentId?: boolean
+    stockSymbol?: boolean
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }, ExtArgs["result"]["investment"]>
+
+  export type InvestmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amountInvested?: boolean
+    dateInvestment?: boolean
+    portfolioId?: boolean
+    financialInstrumentId?: boolean
+    stockSymbol?: boolean
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }, ExtArgs["result"]["investment"]>
+
+  export type InvestmentSelectScalar = {
+    id?: boolean
+    amountInvested?: boolean
+    dateInvestment?: boolean
+    portfolioId?: boolean
+    financialInstrumentId?: boolean
+    stockSymbol?: boolean
+  }
+
+  export type InvestmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amountInvested" | "dateInvestment" | "portfolioId" | "financialInstrumentId" | "stockSymbol", ExtArgs["result"]["investment"]>
+  export type InvestmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }
+  export type InvestmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }
+  export type InvestmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stock?: boolean | Investment$stockArgs<ExtArgs>
+    portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
+    FinancialInstrument?: boolean | Investment$FinancialInstrumentArgs<ExtArgs>
+  }
+
+  export type $InvestmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Investment"
+    objects: {
+      stock: Prisma.$StockPayload<ExtArgs> | null
+      portfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs> | null
+      FinancialInstrument: Prisma.$FinancialInstrumentPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      amountInvested: number
+      dateInvestment: Date
+      portfolioId: string
+      financialInstrumentId: string | null
+      stockSymbol: string | null
+    }, ExtArgs["result"]["investment"]>
+    composites: {}
+  }
+
+  type InvestmentGetPayload<S extends boolean | null | undefined | InvestmentDefaultArgs> = $Result.GetResult<Prisma.$InvestmentPayload, S>
+
+  type InvestmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvestmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvestmentCountAggregateInputType | true
+    }
+
+  export interface InvestmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Investment'], meta: { name: 'Investment' } }
+    /**
+     * Find zero or one Investment that matches the filter.
+     * @param {InvestmentFindUniqueArgs} args - Arguments to find a Investment
+     * @example
+     * // Get one Investment
+     * const investment = await prisma.investment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvestmentFindUniqueArgs>(args: SelectSubset<T, InvestmentFindUniqueArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Investment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvestmentFindUniqueOrThrowArgs} args - Arguments to find a Investment
+     * @example
+     * // Get one Investment
+     * const investment = await prisma.investment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvestmentFindUniqueOrThrowArgs>(args: SelectSubset<T, InvestmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Investment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentFindFirstArgs} args - Arguments to find a Investment
+     * @example
+     * // Get one Investment
+     * const investment = await prisma.investment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvestmentFindFirstArgs>(args?: SelectSubset<T, InvestmentFindFirstArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Investment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentFindFirstOrThrowArgs} args - Arguments to find a Investment
+     * @example
+     * // Get one Investment
+     * const investment = await prisma.investment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvestmentFindFirstOrThrowArgs>(args?: SelectSubset<T, InvestmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Investments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Investments
+     * const investments = await prisma.investment.findMany()
+     * 
+     * // Get first 10 Investments
+     * const investments = await prisma.investment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const investmentWithIdOnly = await prisma.investment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvestmentFindManyArgs>(args?: SelectSubset<T, InvestmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Investment.
+     * @param {InvestmentCreateArgs} args - Arguments to create a Investment.
+     * @example
+     * // Create one Investment
+     * const Investment = await prisma.investment.create({
+     *   data: {
+     *     // ... data to create a Investment
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvestmentCreateArgs>(args: SelectSubset<T, InvestmentCreateArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Investments.
+     * @param {InvestmentCreateManyArgs} args - Arguments to create many Investments.
+     * @example
+     * // Create many Investments
+     * const investment = await prisma.investment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvestmentCreateManyArgs>(args?: SelectSubset<T, InvestmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Investments and returns the data saved in the database.
+     * @param {InvestmentCreateManyAndReturnArgs} args - Arguments to create many Investments.
+     * @example
+     * // Create many Investments
+     * const investment = await prisma.investment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Investments and only return the `id`
+     * const investmentWithIdOnly = await prisma.investment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends InvestmentCreateManyAndReturnArgs>(args?: SelectSubset<T, InvestmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Investment.
+     * @param {InvestmentDeleteArgs} args - Arguments to delete one Investment.
+     * @example
+     * // Delete one Investment
+     * const Investment = await prisma.investment.delete({
+     *   where: {
+     *     // ... filter to delete one Investment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvestmentDeleteArgs>(args: SelectSubset<T, InvestmentDeleteArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Investment.
+     * @param {InvestmentUpdateArgs} args - Arguments to update one Investment.
+     * @example
+     * // Update one Investment
+     * const investment = await prisma.investment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvestmentUpdateArgs>(args: SelectSubset<T, InvestmentUpdateArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Investments.
+     * @param {InvestmentDeleteManyArgs} args - Arguments to filter Investments to delete.
+     * @example
+     * // Delete a few Investments
+     * const { count } = await prisma.investment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvestmentDeleteManyArgs>(args?: SelectSubset<T, InvestmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Investments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Investments
+     * const investment = await prisma.investment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvestmentUpdateManyArgs>(args: SelectSubset<T, InvestmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Investments and returns the data updated in the database.
+     * @param {InvestmentUpdateManyAndReturnArgs} args - Arguments to update many Investments.
+     * @example
+     * // Update many Investments
+     * const investment = await prisma.investment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Investments and only return the `id`
+     * const investmentWithIdOnly = await prisma.investment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends InvestmentUpdateManyAndReturnArgs>(args: SelectSubset<T, InvestmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Investment.
+     * @param {InvestmentUpsertArgs} args - Arguments to update or create a Investment.
+     * @example
+     * // Update or create a Investment
+     * const investment = await prisma.investment.upsert({
+     *   create: {
+     *     // ... data to create a Investment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Investment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvestmentUpsertArgs>(args: SelectSubset<T, InvestmentUpsertArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Investments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentCountArgs} args - Arguments to filter Investments to count.
+     * @example
+     * // Count the number of Investments
+     * const count = await prisma.investment.count({
+     *   where: {
+     *     // ... the filter for the Investments we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvestmentCountArgs>(
+      args?: Subset<T, InvestmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvestmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Investment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvestmentAggregateArgs>(args: Subset<T, InvestmentAggregateArgs>): Prisma.PrismaPromise<GetInvestmentAggregateType<T>>
+
+    /**
+     * Group by Investment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvestmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvestmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvestmentGroupByArgs['orderBy'] }
+        : { orderBy?: InvestmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvestmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvestmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Investment model
+   */
+  readonly fields: InvestmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Investment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvestmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    stock<T extends Investment$stockArgs<ExtArgs> = {}>(args?: Subset<T, Investment$stockArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    portfolio<T extends Investment$portfolioArgs<ExtArgs> = {}>(args?: Subset<T, Investment$portfolioArgs<ExtArgs>>): Prisma__InvestmentPortfolioClient<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    FinancialInstrument<T extends Investment$FinancialInstrumentArgs<ExtArgs> = {}>(args?: Subset<T, Investment$FinancialInstrumentArgs<ExtArgs>>): Prisma__FinancialInstrumentClient<$Result.GetResult<Prisma.$FinancialInstrumentPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Investment model
+   */ 
+  interface InvestmentFieldRefs {
+    readonly id: FieldRef<"Investment", 'String'>
+    readonly amountInvested: FieldRef<"Investment", 'Int'>
+    readonly dateInvestment: FieldRef<"Investment", 'DateTime'>
+    readonly portfolioId: FieldRef<"Investment", 'String'>
+    readonly financialInstrumentId: FieldRef<"Investment", 'String'>
+    readonly stockSymbol: FieldRef<"Investment", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Investment findUnique
+   */
+  export type InvestmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Investment to fetch.
+     */
+    where: InvestmentWhereUniqueInput
+  }
+
+  /**
+   * Investment findUniqueOrThrow
+   */
+  export type InvestmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Investment to fetch.
+     */
+    where: InvestmentWhereUniqueInput
+  }
+
+  /**
+   * Investment findFirst
+   */
+  export type InvestmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Investment to fetch.
+     */
+    where?: InvestmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Investments to fetch.
+     */
+    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Investments.
+     */
+    cursor?: InvestmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Investments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Investments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Investments.
+     */
+    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
+  }
+
+  /**
+   * Investment findFirstOrThrow
+   */
+  export type InvestmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Investment to fetch.
+     */
+    where?: InvestmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Investments to fetch.
+     */
+    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Investments.
+     */
+    cursor?: InvestmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Investments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Investments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Investments.
+     */
+    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
+  }
+
+  /**
+   * Investment findMany
+   */
+  export type InvestmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Investments to fetch.
+     */
+    where?: InvestmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Investments to fetch.
+     */
+    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Investments.
+     */
+    cursor?: InvestmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Investments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Investments.
+     */
+    skip?: number
+    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
+  }
+
+  /**
+   * Investment create
+   */
+  export type InvestmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Investment.
+     */
+    data: XOR<InvestmentCreateInput, InvestmentUncheckedCreateInput>
+  }
+
+  /**
+   * Investment createMany
+   */
+  export type InvestmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Investments.
+     */
+    data: InvestmentCreateManyInput | InvestmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Investment createManyAndReturn
+   */
+  export type InvestmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Investments.
+     */
+    data: InvestmentCreateManyInput | InvestmentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Investment update
+   */
+  export type InvestmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Investment.
+     */
+    data: XOR<InvestmentUpdateInput, InvestmentUncheckedUpdateInput>
+    /**
+     * Choose, which Investment to update.
+     */
+    where: InvestmentWhereUniqueInput
+  }
+
+  /**
+   * Investment updateMany
+   */
+  export type InvestmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Investments.
+     */
+    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Investments to update
+     */
+    where?: InvestmentWhereInput
+  }
+
+  /**
+   * Investment updateManyAndReturn
+   */
+  export type InvestmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * The data used to update Investments.
+     */
+    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Investments to update
+     */
+    where?: InvestmentWhereInput
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Investment upsert
+   */
+  export type InvestmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Investment to update in case it exists.
+     */
+    where: InvestmentWhereUniqueInput
+    /**
+     * In case the Investment found by the `where` argument doesn't exist, create a new Investment with this data.
+     */
+    create: XOR<InvestmentCreateInput, InvestmentUncheckedCreateInput>
+    /**
+     * In case the Investment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvestmentUpdateInput, InvestmentUncheckedUpdateInput>
+  }
+
+  /**
+   * Investment delete
+   */
+  export type InvestmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    /**
+     * Filter which Investment to delete.
+     */
+    where: InvestmentWhereUniqueInput
+  }
+
+  /**
+   * Investment deleteMany
+   */
+  export type InvestmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Investments to delete
+     */
+    where?: InvestmentWhereInput
+  }
+
+  /**
+   * Investment.stock
+   */
+  export type Investment$stockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Stock
+     */
+    select?: StockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Stock
+     */
+    omit?: StockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StockInclude<ExtArgs> | null
+    where?: StockWhereInput
+  }
+
+  /**
+   * Investment.portfolio
+   */
+  export type Investment$portfolioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvestmentPortfolio
+     */
+    select?: InvestmentPortfolioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvestmentPortfolio
+     */
+    omit?: InvestmentPortfolioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentPortfolioInclude<ExtArgs> | null
+    where?: InvestmentPortfolioWhereInput
+  }
+
+  /**
+   * Investment.FinancialInstrument
+   */
+  export type Investment$FinancialInstrumentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FinancialInstrument
+     */
+    select?: FinancialInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FinancialInstrument
+     */
+    omit?: FinancialInstrumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FinancialInstrumentInclude<ExtArgs> | null
+    where?: FinancialInstrumentWhereInput
+  }
+
+  /**
+   * Investment without action
+   */
+  export type InvestmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
   }
 
 
@@ -7765,7 +8966,7 @@ export namespace Prisma {
     levelRisk?: boolean
     deadline?: boolean
     currency?: boolean
-    Investment?: boolean | FinancialInstrument$InvestmentArgs<ExtArgs>
+    Investments?: boolean | FinancialInstrument$InvestmentsArgs<ExtArgs>
     _count?: boolean | FinancialInstrumentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["financialInstrument"]>
 
@@ -7804,7 +9005,7 @@ export namespace Prisma {
 
   export type FinancialInstrumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "category" | "performance" | "levelRisk" | "deadline" | "currency", ExtArgs["result"]["financialInstrument"]>
   export type FinancialInstrumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Investment?: boolean | FinancialInstrument$InvestmentArgs<ExtArgs>
+    Investments?: boolean | FinancialInstrument$InvestmentsArgs<ExtArgs>
     _count?: boolean | FinancialInstrumentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type FinancialInstrumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7813,7 +9014,7 @@ export namespace Prisma {
   export type $FinancialInstrumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "FinancialInstrument"
     objects: {
-      Investment: Prisma.$InvestmentPayload<ExtArgs>[]
+      Investments: Prisma.$InvestmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8218,7 +9419,7 @@ export namespace Prisma {
    */
   export interface Prisma__FinancialInstrumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Investment<T extends FinancialInstrument$InvestmentArgs<ExtArgs> = {}>(args?: Subset<T, FinancialInstrument$InvestmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    Investments<T extends FinancialInstrument$InvestmentsArgs<ExtArgs> = {}>(args?: Subset<T, FinancialInstrument$InvestmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8632,9 +9833,9 @@ export namespace Prisma {
   }
 
   /**
-   * FinancialInstrument.Investment
+   * FinancialInstrument.Investments
    */
-  export type FinancialInstrument$InvestmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialInstrument$InvestmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Investment
      */
@@ -8671,1107 +9872,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: FinancialInstrumentInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Investment
-   */
-
-  export type AggregateInvestment = {
-    _count: InvestmentCountAggregateOutputType | null
-    _avg: InvestmentAvgAggregateOutputType | null
-    _sum: InvestmentSumAggregateOutputType | null
-    _min: InvestmentMinAggregateOutputType | null
-    _max: InvestmentMaxAggregateOutputType | null
-  }
-
-  export type InvestmentAvgAggregateOutputType = {
-    amountInvested: number | null
-  }
-
-  export type InvestmentSumAggregateOutputType = {
-    amountInvested: number | null
-  }
-
-  export type InvestmentMinAggregateOutputType = {
-    id: string | null
-    amountInvested: number | null
-    performance: string | null
-    dateInvestment: Date | null
-    portfolioId: string | null
-    instrumentId: string | null
-  }
-
-  export type InvestmentMaxAggregateOutputType = {
-    id: string | null
-    amountInvested: number | null
-    performance: string | null
-    dateInvestment: Date | null
-    portfolioId: string | null
-    instrumentId: string | null
-  }
-
-  export type InvestmentCountAggregateOutputType = {
-    id: number
-    amountInvested: number
-    performance: number
-    dateInvestment: number
-    portfolioId: number
-    instrumentId: number
-    _all: number
-  }
-
-
-  export type InvestmentAvgAggregateInputType = {
-    amountInvested?: true
-  }
-
-  export type InvestmentSumAggregateInputType = {
-    amountInvested?: true
-  }
-
-  export type InvestmentMinAggregateInputType = {
-    id?: true
-    amountInvested?: true
-    performance?: true
-    dateInvestment?: true
-    portfolioId?: true
-    instrumentId?: true
-  }
-
-  export type InvestmentMaxAggregateInputType = {
-    id?: true
-    amountInvested?: true
-    performance?: true
-    dateInvestment?: true
-    portfolioId?: true
-    instrumentId?: true
-  }
-
-  export type InvestmentCountAggregateInputType = {
-    id?: true
-    amountInvested?: true
-    performance?: true
-    dateInvestment?: true
-    portfolioId?: true
-    instrumentId?: true
-    _all?: true
-  }
-
-  export type InvestmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Investment to aggregate.
-     */
-    where?: InvestmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Investments to fetch.
-     */
-    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: InvestmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Investments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Investments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Investments
-    **/
-    _count?: true | InvestmentCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: InvestmentAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: InvestmentSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: InvestmentMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: InvestmentMaxAggregateInputType
-  }
-
-  export type GetInvestmentAggregateType<T extends InvestmentAggregateArgs> = {
-        [P in keyof T & keyof AggregateInvestment]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateInvestment[P]>
-      : GetScalarType<T[P], AggregateInvestment[P]>
-  }
-
-
-
-
-  export type InvestmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvestmentWhereInput
-    orderBy?: InvestmentOrderByWithAggregationInput | InvestmentOrderByWithAggregationInput[]
-    by: InvestmentScalarFieldEnum[] | InvestmentScalarFieldEnum
-    having?: InvestmentScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: InvestmentCountAggregateInputType | true
-    _avg?: InvestmentAvgAggregateInputType
-    _sum?: InvestmentSumAggregateInputType
-    _min?: InvestmentMinAggregateInputType
-    _max?: InvestmentMaxAggregateInputType
-  }
-
-  export type InvestmentGroupByOutputType = {
-    id: string
-    amountInvested: number
-    performance: string
-    dateInvestment: Date
-    portfolioId: string
-    instrumentId: string
-    _count: InvestmentCountAggregateOutputType | null
-    _avg: InvestmentAvgAggregateOutputType | null
-    _sum: InvestmentSumAggregateOutputType | null
-    _min: InvestmentMinAggregateOutputType | null
-    _max: InvestmentMaxAggregateOutputType | null
-  }
-
-  type GetInvestmentGroupByPayload<T extends InvestmentGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<InvestmentGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof InvestmentGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], InvestmentGroupByOutputType[P]>
-            : GetScalarType<T[P], InvestmentGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type InvestmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    amountInvested?: boolean
-    performance?: boolean
-    dateInvestment?: boolean
-    portfolioId?: boolean
-    instrumentId?: boolean
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["investment"]>
-
-  export type InvestmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    amountInvested?: boolean
-    performance?: boolean
-    dateInvestment?: boolean
-    portfolioId?: boolean
-    instrumentId?: boolean
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["investment"]>
-
-  export type InvestmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    amountInvested?: boolean
-    performance?: boolean
-    dateInvestment?: boolean
-    portfolioId?: boolean
-    instrumentId?: boolean
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["investment"]>
-
-  export type InvestmentSelectScalar = {
-    id?: boolean
-    amountInvested?: boolean
-    performance?: boolean
-    dateInvestment?: boolean
-    portfolioId?: boolean
-    instrumentId?: boolean
-  }
-
-  export type InvestmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amountInvested" | "performance" | "dateInvestment" | "portfolioId" | "instrumentId", ExtArgs["result"]["investment"]>
-  export type InvestmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }
-  export type InvestmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }
-  export type InvestmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    instrument?: boolean | FinancialInstrumentDefaultArgs<ExtArgs>
-    portfolio?: boolean | InvestmentPortfolioDefaultArgs<ExtArgs>
-  }
-
-  export type $InvestmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Investment"
-    objects: {
-      instrument: Prisma.$FinancialInstrumentPayload<ExtArgs>
-      portfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      amountInvested: number
-      performance: string
-      dateInvestment: Date
-      portfolioId: string
-      instrumentId: string
-    }, ExtArgs["result"]["investment"]>
-    composites: {}
-  }
-
-  type InvestmentGetPayload<S extends boolean | null | undefined | InvestmentDefaultArgs> = $Result.GetResult<Prisma.$InvestmentPayload, S>
-
-  type InvestmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<InvestmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: InvestmentCountAggregateInputType | true
-    }
-
-  export interface InvestmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Investment'], meta: { name: 'Investment' } }
-    /**
-     * Find zero or one Investment that matches the filter.
-     * @param {InvestmentFindUniqueArgs} args - Arguments to find a Investment
-     * @example
-     * // Get one Investment
-     * const investment = await prisma.investment.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends InvestmentFindUniqueArgs>(args: SelectSubset<T, InvestmentFindUniqueArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find one Investment that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {InvestmentFindUniqueOrThrowArgs} args - Arguments to find a Investment
-     * @example
-     * // Get one Investment
-     * const investment = await prisma.investment.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends InvestmentFindUniqueOrThrowArgs>(args: SelectSubset<T, InvestmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Investment that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentFindFirstArgs} args - Arguments to find a Investment
-     * @example
-     * // Get one Investment
-     * const investment = await prisma.investment.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends InvestmentFindFirstArgs>(args?: SelectSubset<T, InvestmentFindFirstArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Investment that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentFindFirstOrThrowArgs} args - Arguments to find a Investment
-     * @example
-     * // Get one Investment
-     * const investment = await prisma.investment.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends InvestmentFindFirstOrThrowArgs>(args?: SelectSubset<T, InvestmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find zero or more Investments that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Investments
-     * const investments = await prisma.investment.findMany()
-     * 
-     * // Get first 10 Investments
-     * const investments = await prisma.investment.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const investmentWithIdOnly = await prisma.investment.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends InvestmentFindManyArgs>(args?: SelectSubset<T, InvestmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions>>
-
-    /**
-     * Create a Investment.
-     * @param {InvestmentCreateArgs} args - Arguments to create a Investment.
-     * @example
-     * // Create one Investment
-     * const Investment = await prisma.investment.create({
-     *   data: {
-     *     // ... data to create a Investment
-     *   }
-     * })
-     * 
-     */
-    create<T extends InvestmentCreateArgs>(args: SelectSubset<T, InvestmentCreateArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Create many Investments.
-     * @param {InvestmentCreateManyArgs} args - Arguments to create many Investments.
-     * @example
-     * // Create many Investments
-     * const investment = await prisma.investment.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends InvestmentCreateManyArgs>(args?: SelectSubset<T, InvestmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Investments and returns the data saved in the database.
-     * @param {InvestmentCreateManyAndReturnArgs} args - Arguments to create many Investments.
-     * @example
-     * // Create many Investments
-     * const investment = await prisma.investment.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Investments and only return the `id`
-     * const investmentWithIdOnly = await prisma.investment.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends InvestmentCreateManyAndReturnArgs>(args?: SelectSubset<T, InvestmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
-
-    /**
-     * Delete a Investment.
-     * @param {InvestmentDeleteArgs} args - Arguments to delete one Investment.
-     * @example
-     * // Delete one Investment
-     * const Investment = await prisma.investment.delete({
-     *   where: {
-     *     // ... filter to delete one Investment
-     *   }
-     * })
-     * 
-     */
-    delete<T extends InvestmentDeleteArgs>(args: SelectSubset<T, InvestmentDeleteArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Update one Investment.
-     * @param {InvestmentUpdateArgs} args - Arguments to update one Investment.
-     * @example
-     * // Update one Investment
-     * const investment = await prisma.investment.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends InvestmentUpdateArgs>(args: SelectSubset<T, InvestmentUpdateArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Delete zero or more Investments.
-     * @param {InvestmentDeleteManyArgs} args - Arguments to filter Investments to delete.
-     * @example
-     * // Delete a few Investments
-     * const { count } = await prisma.investment.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends InvestmentDeleteManyArgs>(args?: SelectSubset<T, InvestmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Investments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Investments
-     * const investment = await prisma.investment.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends InvestmentUpdateManyArgs>(args: SelectSubset<T, InvestmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Investments and returns the data updated in the database.
-     * @param {InvestmentUpdateManyAndReturnArgs} args - Arguments to update many Investments.
-     * @example
-     * // Update many Investments
-     * const investment = await prisma.investment.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Investments and only return the `id`
-     * const investmentWithIdOnly = await prisma.investment.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends InvestmentUpdateManyAndReturnArgs>(args: SelectSubset<T, InvestmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
-
-    /**
-     * Create or update one Investment.
-     * @param {InvestmentUpsertArgs} args - Arguments to update or create a Investment.
-     * @example
-     * // Update or create a Investment
-     * const investment = await prisma.investment.upsert({
-     *   create: {
-     *     // ... data to create a Investment
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Investment we want to update
-     *   }
-     * })
-     */
-    upsert<T extends InvestmentUpsertArgs>(args: SelectSubset<T, InvestmentUpsertArgs<ExtArgs>>): Prisma__InvestmentClient<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
-
-
-    /**
-     * Count the number of Investments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentCountArgs} args - Arguments to filter Investments to count.
-     * @example
-     * // Count the number of Investments
-     * const count = await prisma.investment.count({
-     *   where: {
-     *     // ... the filter for the Investments we want to count
-     *   }
-     * })
-    **/
-    count<T extends InvestmentCountArgs>(
-      args?: Subset<T, InvestmentCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], InvestmentCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Investment.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends InvestmentAggregateArgs>(args: Subset<T, InvestmentAggregateArgs>): Prisma.PrismaPromise<GetInvestmentAggregateType<T>>
-
-    /**
-     * Group by Investment.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {InvestmentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends InvestmentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: InvestmentGroupByArgs['orderBy'] }
-        : { orderBy?: InvestmentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, InvestmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvestmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Investment model
-   */
-  readonly fields: InvestmentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Investment.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__InvestmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    instrument<T extends FinancialInstrumentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FinancialInstrumentDefaultArgs<ExtArgs>>): Prisma__FinancialInstrumentClient<$Result.GetResult<Prisma.$FinancialInstrumentPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    portfolio<T extends InvestmentPortfolioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvestmentPortfolioDefaultArgs<ExtArgs>>): Prisma__InvestmentPortfolioClient<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Investment model
-   */ 
-  interface InvestmentFieldRefs {
-    readonly id: FieldRef<"Investment", 'String'>
-    readonly amountInvested: FieldRef<"Investment", 'Int'>
-    readonly performance: FieldRef<"Investment", 'String'>
-    readonly dateInvestment: FieldRef<"Investment", 'DateTime'>
-    readonly portfolioId: FieldRef<"Investment", 'String'>
-    readonly instrumentId: FieldRef<"Investment", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Investment findUnique
-   */
-  export type InvestmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Investment to fetch.
-     */
-    where: InvestmentWhereUniqueInput
-  }
-
-  /**
-   * Investment findUniqueOrThrow
-   */
-  export type InvestmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Investment to fetch.
-     */
-    where: InvestmentWhereUniqueInput
-  }
-
-  /**
-   * Investment findFirst
-   */
-  export type InvestmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Investment to fetch.
-     */
-    where?: InvestmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Investments to fetch.
-     */
-    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Investments.
-     */
-    cursor?: InvestmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Investments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Investments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Investments.
-     */
-    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
-  }
-
-  /**
-   * Investment findFirstOrThrow
-   */
-  export type InvestmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Investment to fetch.
-     */
-    where?: InvestmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Investments to fetch.
-     */
-    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Investments.
-     */
-    cursor?: InvestmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Investments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Investments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Investments.
-     */
-    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
-  }
-
-  /**
-   * Investment findMany
-   */
-  export type InvestmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Investments to fetch.
-     */
-    where?: InvestmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Investments to fetch.
-     */
-    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Investments.
-     */
-    cursor?: InvestmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Investments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Investments.
-     */
-    skip?: number
-    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
-  }
-
-  /**
-   * Investment create
-   */
-  export type InvestmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Investment.
-     */
-    data: XOR<InvestmentCreateInput, InvestmentUncheckedCreateInput>
-  }
-
-  /**
-   * Investment createMany
-   */
-  export type InvestmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Investments.
-     */
-    data: InvestmentCreateManyInput | InvestmentCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Investment createManyAndReturn
-   */
-  export type InvestmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * The data used to create many Investments.
-     */
-    data: InvestmentCreateManyInput | InvestmentCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Investment update
-   */
-  export type InvestmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Investment.
-     */
-    data: XOR<InvestmentUpdateInput, InvestmentUncheckedUpdateInput>
-    /**
-     * Choose, which Investment to update.
-     */
-    where: InvestmentWhereUniqueInput
-  }
-
-  /**
-   * Investment updateMany
-   */
-  export type InvestmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Investments.
-     */
-    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyInput>
-    /**
-     * Filter which Investments to update
-     */
-    where?: InvestmentWhereInput
-  }
-
-  /**
-   * Investment updateManyAndReturn
-   */
-  export type InvestmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * The data used to update Investments.
-     */
-    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyInput>
-    /**
-     * Filter which Investments to update
-     */
-    where?: InvestmentWhereInput
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Investment upsert
-   */
-  export type InvestmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Investment to update in case it exists.
-     */
-    where: InvestmentWhereUniqueInput
-    /**
-     * In case the Investment found by the `where` argument doesn't exist, create a new Investment with this data.
-     */
-    create: XOR<InvestmentCreateInput, InvestmentUncheckedCreateInput>
-    /**
-     * In case the Investment was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<InvestmentUpdateInput, InvestmentUncheckedUpdateInput>
-  }
-
-  /**
-   * Investment delete
-   */
-  export type InvestmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
-    /**
-     * Filter which Investment to delete.
-     */
-    where: InvestmentWhereUniqueInput
-  }
-
-  /**
-   * Investment deleteMany
-   */
-  export type InvestmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Investments to delete
-     */
-    where?: InvestmentWhereInput
-  }
-
-  /**
-   * Investment without action
-   */
-  export type InvestmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Investment
-     */
-    select?: InvestmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Investment
-     */
-    omit?: InvestmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvestmentInclude<ExtArgs> | null
   }
 
 
@@ -16285,6 +16385,13 @@ export namespace Prisma {
     financialGoal: string | null
     mainGoal: string | null
     monthlyInvestment: string | null
+    financialInstrument: string | null
+    investmentMethod: string | null
+    investmentCategories: string | null
+    mainIncomeSource: string | null
+    financialNewsSource: string | null
+    years: string | null
+    investingDuration: string | null
     savingsOrInvestmentReason: string | null
   }
 
@@ -16298,6 +16405,13 @@ export namespace Prisma {
     financialGoal: string | null
     mainGoal: string | null
     monthlyInvestment: string | null
+    financialInstrument: string | null
+    investmentMethod: string | null
+    investmentCategories: string | null
+    mainIncomeSource: string | null
+    financialNewsSource: string | null
+    years: string | null
+    investingDuration: string | null
     savingsOrInvestmentReason: string | null
   }
 
@@ -16311,6 +16425,13 @@ export namespace Prisma {
     financialGoal: number
     mainGoal: number
     monthlyInvestment: number
+    financialInstrument: number
+    investmentMethod: number
+    investmentCategories: number
+    mainIncomeSource: number
+    financialNewsSource: number
+    years: number
+    investingDuration: number
     savingsOrInvestmentReason: number
     _all: number
   }
@@ -16326,6 +16447,13 @@ export namespace Prisma {
     financialGoal?: true
     mainGoal?: true
     monthlyInvestment?: true
+    financialInstrument?: true
+    investmentMethod?: true
+    investmentCategories?: true
+    mainIncomeSource?: true
+    financialNewsSource?: true
+    years?: true
+    investingDuration?: true
     savingsOrInvestmentReason?: true
   }
 
@@ -16339,6 +16467,13 @@ export namespace Prisma {
     financialGoal?: true
     mainGoal?: true
     monthlyInvestment?: true
+    financialInstrument?: true
+    investmentMethod?: true
+    investmentCategories?: true
+    mainIncomeSource?: true
+    financialNewsSource?: true
+    years?: true
+    investingDuration?: true
     savingsOrInvestmentReason?: true
   }
 
@@ -16352,6 +16487,13 @@ export namespace Prisma {
     financialGoal?: true
     mainGoal?: true
     monthlyInvestment?: true
+    financialInstrument?: true
+    investmentMethod?: true
+    investmentCategories?: true
+    mainIncomeSource?: true
+    financialNewsSource?: true
+    years?: true
+    investingDuration?: true
     savingsOrInvestmentReason?: true
     _all?: true
   }
@@ -16438,6 +16580,13 @@ export namespace Prisma {
     financialGoal: string | null
     mainGoal: string | null
     monthlyInvestment: string | null
+    financialInstrument: string | null
+    investmentMethod: string | null
+    investmentCategories: string | null
+    mainIncomeSource: string | null
+    financialNewsSource: string | null
+    years: string | null
+    investingDuration: string | null
     savingsOrInvestmentReason: string | null
     _count: ProfileCountAggregateOutputType | null
     _min: ProfileMinAggregateOutputType | null
@@ -16468,6 +16617,13 @@ export namespace Prisma {
     financialGoal?: boolean
     mainGoal?: boolean
     monthlyInvestment?: boolean
+    financialInstrument?: boolean
+    investmentMethod?: boolean
+    investmentCategories?: boolean
+    mainIncomeSource?: boolean
+    financialNewsSource?: boolean
+    years?: boolean
+    investingDuration?: boolean
     savingsOrInvestmentReason?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
@@ -16482,6 +16638,13 @@ export namespace Prisma {
     financialGoal?: boolean
     mainGoal?: boolean
     monthlyInvestment?: boolean
+    financialInstrument?: boolean
+    investmentMethod?: boolean
+    investmentCategories?: boolean
+    mainIncomeSource?: boolean
+    financialNewsSource?: boolean
+    years?: boolean
+    investingDuration?: boolean
     savingsOrInvestmentReason?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
@@ -16496,6 +16659,13 @@ export namespace Prisma {
     financialGoal?: boolean
     mainGoal?: boolean
     monthlyInvestment?: boolean
+    financialInstrument?: boolean
+    investmentMethod?: boolean
+    investmentCategories?: boolean
+    mainIncomeSource?: boolean
+    financialNewsSource?: boolean
+    years?: boolean
+    investingDuration?: boolean
     savingsOrInvestmentReason?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
@@ -16510,10 +16680,17 @@ export namespace Prisma {
     financialGoal?: boolean
     mainGoal?: boolean
     monthlyInvestment?: boolean
+    financialInstrument?: boolean
+    investmentMethod?: boolean
+    investmentCategories?: boolean
+    mainIncomeSource?: boolean
+    financialNewsSource?: boolean
+    years?: boolean
+    investingDuration?: boolean
     savingsOrInvestmentReason?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "riskTolerance" | "investmentHorizon" | "financialSkills" | "hasInvestedBefore" | "financialGoal" | "mainGoal" | "monthlyInvestment" | "savingsOrInvestmentReason", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "riskTolerance" | "investmentHorizon" | "financialSkills" | "hasInvestedBefore" | "financialGoal" | "mainGoal" | "monthlyInvestment" | "financialInstrument" | "investmentMethod" | "investmentCategories" | "mainIncomeSource" | "financialNewsSource" | "years" | "investingDuration" | "savingsOrInvestmentReason", ExtArgs["result"]["profile"]>
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -16539,6 +16716,13 @@ export namespace Prisma {
       financialGoal: string | null
       mainGoal: string | null
       monthlyInvestment: string | null
+      financialInstrument: string | null
+      investmentMethod: string | null
+      investmentCategories: string | null
+      mainIncomeSource: string | null
+      financialNewsSource: string | null
+      years: string | null
+      investingDuration: string | null
       savingsOrInvestmentReason: string | null
     }, ExtArgs["result"]["profile"]>
     composites: {}
@@ -16973,6 +17157,13 @@ export namespace Prisma {
     readonly financialGoal: FieldRef<"Profile", 'String'>
     readonly mainGoal: FieldRef<"Profile", 'String'>
     readonly monthlyInvestment: FieldRef<"Profile", 'String'>
+    readonly financialInstrument: FieldRef<"Profile", 'String'>
+    readonly investmentMethod: FieldRef<"Profile", 'String'>
+    readonly investmentCategories: FieldRef<"Profile", 'String'>
+    readonly mainIncomeSource: FieldRef<"Profile", 'String'>
+    readonly financialNewsSource: FieldRef<"Profile", 'String'>
+    readonly years: FieldRef<"Profile", 'String'>
+    readonly investingDuration: FieldRef<"Profile", 'String'>
     readonly savingsOrInvestmentReason: FieldRef<"Profile", 'String'>
   }
     
@@ -17675,6 +17866,8 @@ export namespace Prisma {
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
+    Investment?: boolean | Stock$InvestmentArgs<ExtArgs>
+    _count?: boolean | StockCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock"]>
 
   export type StockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17745,6 +17938,8 @@ export namespace Prisma {
     price?: boolean | PriceDefaultArgs<ExtArgs>
     volume?: boolean | VolumeDefaultArgs<ExtArgs>
     week52?: boolean | Week52DefaultArgs<ExtArgs>
+    Investment?: boolean | Stock$InvestmentArgs<ExtArgs>
+    _count?: boolean | StockCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type StockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dividend?: boolean | DividendDefaultArgs<ExtArgs>
@@ -17769,6 +17964,7 @@ export namespace Prisma {
       price: Prisma.$PricePayload<ExtArgs>
       volume: Prisma.$VolumePayload<ExtArgs>
       week52: Prisma.$Week52Payload<ExtArgs>
+      Investment: Prisma.$InvestmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       symbol: string
@@ -18184,6 +18380,7 @@ export namespace Prisma {
     price<T extends PriceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PriceDefaultArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     volume<T extends VolumeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VolumeDefaultArgs<ExtArgs>>): Prisma__VolumeClient<$Result.GetResult<Prisma.$VolumePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     week52<T extends Week52DefaultArgs<ExtArgs> = {}>(args?: Subset<T, Week52DefaultArgs<ExtArgs>>): Prisma__Week52Client<$Result.GetResult<Prisma.$Week52Payload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    Investment<T extends Stock$InvestmentArgs<ExtArgs> = {}>(args?: Subset<T, Stock$InvestmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18608,6 +18805,30 @@ export namespace Prisma {
      * Filter which Stocks to delete
      */
     where?: StockWhereInput
+  }
+
+  /**
+   * Stock.Investment
+   */
+  export type Stock$InvestmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Investment
+     */
+    select?: InvestmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Investment
+     */
+    omit?: InvestmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvestmentInclude<ExtArgs> | null
+    where?: InvestmentWhereInput
+    orderBy?: InvestmentOrderByWithRelationInput | InvestmentOrderByWithRelationInput[]
+    cursor?: InvestmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvestmentScalarFieldEnum | InvestmentScalarFieldEnum[]
   }
 
   /**
@@ -24256,13 +24477,24 @@ export namespace Prisma {
 
   export const InvestmentPortfolioScalarFieldEnum: {
     id: 'id',
-    profileRisk: 'profileRisk',
-    performanceCurrent: 'performanceCurrent',
-    coin: 'coin',
-    userId: 'userId'
+    userId: 'userId',
+    name: 'name',
+    createdAt: 'createdAt'
   };
 
   export type InvestmentPortfolioScalarFieldEnum = (typeof InvestmentPortfolioScalarFieldEnum)[keyof typeof InvestmentPortfolioScalarFieldEnum]
+
+
+  export const InvestmentScalarFieldEnum: {
+    id: 'id',
+    amountInvested: 'amountInvested',
+    dateInvestment: 'dateInvestment',
+    portfolioId: 'portfolioId',
+    financialInstrumentId: 'financialInstrumentId',
+    stockSymbol: 'stockSymbol'
+  };
+
+  export type InvestmentScalarFieldEnum = (typeof InvestmentScalarFieldEnum)[keyof typeof InvestmentScalarFieldEnum]
 
 
   export const FinancialInstrumentScalarFieldEnum: {
@@ -24277,18 +24509,6 @@ export namespace Prisma {
   };
 
   export type FinancialInstrumentScalarFieldEnum = (typeof FinancialInstrumentScalarFieldEnum)[keyof typeof FinancialInstrumentScalarFieldEnum]
-
-
-  export const InvestmentScalarFieldEnum: {
-    id: 'id',
-    amountInvested: 'amountInvested',
-    performance: 'performance',
-    dateInvestment: 'dateInvestment',
-    portfolioId: 'portfolioId',
-    instrumentId: 'instrumentId'
-  };
-
-  export type InvestmentScalarFieldEnum = (typeof InvestmentScalarFieldEnum)[keyof typeof InvestmentScalarFieldEnum]
 
 
   export const NewsScalarFieldEnum: {
@@ -24376,6 +24596,13 @@ export namespace Prisma {
     financialGoal: 'financialGoal',
     mainGoal: 'mainGoal',
     monthlyInvestment: 'monthlyInvestment',
+    financialInstrument: 'financialInstrument',
+    investmentMethod: 'investmentMethod',
+    investmentCategories: 'investmentCategories',
+    mainIncomeSource: 'mainIncomeSource',
+    financialNewsSource: 'financialNewsSource',
+    years: 'years',
+    investingDuration: 'investingDuration',
     savingsOrInvestmentReason: 'savingsOrInvestmentReason'
   };
 
@@ -24644,6 +24871,7 @@ export namespace Prisma {
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
+    investmentPortfolio?: InvestmentPortfolioListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -24663,6 +24891,7 @@ export namespace Prisma {
     Support?: SupportOrderByRelationAggregateInput
     wallet?: walletOrderByRelationAggregateInput
     target?: TargetOrderByRelationAggregateInput
+    investmentPortfolio?: InvestmentPortfolioOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -24685,6 +24914,7 @@ export namespace Prisma {
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
+    investmentPortfolio?: InvestmentPortfolioListRelationFilter
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -24873,20 +25103,20 @@ export namespace Prisma {
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     id?: StringFilter<"InvestmentPortfolio"> | string
-    profileRisk?: IntFilter<"InvestmentPortfolio"> | number
-    performanceCurrent?: FloatFilter<"InvestmentPortfolio"> | number
-    coin?: StringFilter<"InvestmentPortfolio"> | string
     userId?: StringFilter<"InvestmentPortfolio"> | string
-    investment?: InvestmentListRelationFilter
+    name?: StringFilter<"InvestmentPortfolio"> | string
+    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    investments?: InvestmentListRelationFilter
   }
 
   export type InvestmentPortfolioOrderByWithRelationInput = {
     id?: SortOrder
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
-    coin?: SortOrder
     userId?: SortOrder
-    investment?: InvestmentOrderByRelationAggregateInput
+    name?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    investments?: InvestmentOrderByRelationAggregateInput
   }
 
   export type InvestmentPortfolioWhereUniqueInput = Prisma.AtLeast<{
@@ -24894,24 +25124,21 @@ export namespace Prisma {
     AND?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
-    profileRisk?: IntFilter<"InvestmentPortfolio"> | number
-    performanceCurrent?: FloatFilter<"InvestmentPortfolio"> | number
-    coin?: StringFilter<"InvestmentPortfolio"> | string
     userId?: StringFilter<"InvestmentPortfolio"> | string
-    investment?: InvestmentListRelationFilter
+    name?: StringFilter<"InvestmentPortfolio"> | string
+    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    investments?: InvestmentListRelationFilter
   }, "id">
 
   export type InvestmentPortfolioOrderByWithAggregationInput = {
     id?: SortOrder
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
-    coin?: SortOrder
     userId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
     _count?: InvestmentPortfolioCountOrderByAggregateInput
-    _avg?: InvestmentPortfolioAvgOrderByAggregateInput
     _max?: InvestmentPortfolioMaxOrderByAggregateInput
     _min?: InvestmentPortfolioMinOrderByAggregateInput
-    _sum?: InvestmentPortfolioSumOrderByAggregateInput
   }
 
   export type InvestmentPortfolioScalarWhereWithAggregatesInput = {
@@ -24919,10 +25146,77 @@ export namespace Prisma {
     OR?: InvestmentPortfolioScalarWhereWithAggregatesInput[]
     NOT?: InvestmentPortfolioScalarWhereWithAggregatesInput | InvestmentPortfolioScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    profileRisk?: IntWithAggregatesFilter<"InvestmentPortfolio"> | number
-    performanceCurrent?: FloatWithAggregatesFilter<"InvestmentPortfolio"> | number
-    coin?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
     userId?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
+    name?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"InvestmentPortfolio"> | Date | string
+  }
+
+  export type InvestmentWhereInput = {
+    AND?: InvestmentWhereInput | InvestmentWhereInput[]
+    OR?: InvestmentWhereInput[]
+    NOT?: InvestmentWhereInput | InvestmentWhereInput[]
+    id?: StringFilter<"Investment"> | string
+    amountInvested?: IntFilter<"Investment"> | number
+    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
+    portfolioId?: StringFilter<"Investment"> | string
+    financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
+    stockSymbol?: StringNullableFilter<"Investment"> | string | null
+    stock?: XOR<StockNullableScalarRelationFilter, StockWhereInput> | null
+    portfolio?: XOR<InvestmentPortfolioNullableScalarRelationFilter, InvestmentPortfolioWhereInput> | null
+    FinancialInstrument?: XOR<FinancialInstrumentNullableScalarRelationFilter, FinancialInstrumentWhereInput> | null
+  }
+
+  export type InvestmentOrderByWithRelationInput = {
+    id?: SortOrder
+    amountInvested?: SortOrder
+    dateInvestment?: SortOrder
+    portfolioId?: SortOrder
+    financialInstrumentId?: SortOrderInput | SortOrder
+    stockSymbol?: SortOrderInput | SortOrder
+    stock?: StockOrderByWithRelationInput
+    portfolio?: InvestmentPortfolioOrderByWithRelationInput
+    FinancialInstrument?: FinancialInstrumentOrderByWithRelationInput
+  }
+
+  export type InvestmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: InvestmentWhereInput | InvestmentWhereInput[]
+    OR?: InvestmentWhereInput[]
+    NOT?: InvestmentWhereInput | InvestmentWhereInput[]
+    amountInvested?: IntFilter<"Investment"> | number
+    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
+    portfolioId?: StringFilter<"Investment"> | string
+    financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
+    stockSymbol?: StringNullableFilter<"Investment"> | string | null
+    stock?: XOR<StockNullableScalarRelationFilter, StockWhereInput> | null
+    portfolio?: XOR<InvestmentPortfolioNullableScalarRelationFilter, InvestmentPortfolioWhereInput> | null
+    FinancialInstrument?: XOR<FinancialInstrumentNullableScalarRelationFilter, FinancialInstrumentWhereInput> | null
+  }, "id">
+
+  export type InvestmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    amountInvested?: SortOrder
+    dateInvestment?: SortOrder
+    portfolioId?: SortOrder
+    financialInstrumentId?: SortOrderInput | SortOrder
+    stockSymbol?: SortOrderInput | SortOrder
+    _count?: InvestmentCountOrderByAggregateInput
+    _avg?: InvestmentAvgOrderByAggregateInput
+    _max?: InvestmentMaxOrderByAggregateInput
+    _min?: InvestmentMinOrderByAggregateInput
+    _sum?: InvestmentSumOrderByAggregateInput
+  }
+
+  export type InvestmentScalarWhereWithAggregatesInput = {
+    AND?: InvestmentScalarWhereWithAggregatesInput | InvestmentScalarWhereWithAggregatesInput[]
+    OR?: InvestmentScalarWhereWithAggregatesInput[]
+    NOT?: InvestmentScalarWhereWithAggregatesInput | InvestmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Investment"> | string
+    amountInvested?: IntWithAggregatesFilter<"Investment"> | number
+    dateInvestment?: DateTimeWithAggregatesFilter<"Investment"> | Date | string
+    portfolioId?: StringWithAggregatesFilter<"Investment"> | string
+    financialInstrumentId?: StringNullableWithAggregatesFilter<"Investment"> | string | null
+    stockSymbol?: StringNullableWithAggregatesFilter<"Investment"> | string | null
   }
 
   export type FinancialInstrumentWhereInput = {
@@ -24937,7 +25231,7 @@ export namespace Prisma {
     levelRisk?: IntFilter<"FinancialInstrument"> | number
     deadline?: IntFilter<"FinancialInstrument"> | number
     currency?: EnumCurrencyTypeFilter<"FinancialInstrument"> | $Enums.CurrencyType
-    Investment?: InvestmentListRelationFilter
+    Investments?: InvestmentListRelationFilter
   }
 
   export type FinancialInstrumentOrderByWithRelationInput = {
@@ -24949,7 +25243,7 @@ export namespace Prisma {
     levelRisk?: SortOrder
     deadline?: SortOrder
     currency?: SortOrder
-    Investment?: InvestmentOrderByRelationAggregateInput
+    Investments?: InvestmentOrderByRelationAggregateInput
   }
 
   export type FinancialInstrumentWhereUniqueInput = Prisma.AtLeast<{
@@ -24964,7 +25258,7 @@ export namespace Prisma {
     levelRisk?: IntFilter<"FinancialInstrument"> | number
     deadline?: IntFilter<"FinancialInstrument"> | number
     currency?: EnumCurrencyTypeFilter<"FinancialInstrument"> | $Enums.CurrencyType
-    Investment?: InvestmentListRelationFilter
+    Investments?: InvestmentListRelationFilter
   }, "id">
 
   export type FinancialInstrumentOrderByWithAggregationInput = {
@@ -24995,71 +25289,6 @@ export namespace Prisma {
     levelRisk?: IntWithAggregatesFilter<"FinancialInstrument"> | number
     deadline?: IntWithAggregatesFilter<"FinancialInstrument"> | number
     currency?: EnumCurrencyTypeWithAggregatesFilter<"FinancialInstrument"> | $Enums.CurrencyType
-  }
-
-  export type InvestmentWhereInput = {
-    AND?: InvestmentWhereInput | InvestmentWhereInput[]
-    OR?: InvestmentWhereInput[]
-    NOT?: InvestmentWhereInput | InvestmentWhereInput[]
-    id?: StringFilter<"Investment"> | string
-    amountInvested?: IntFilter<"Investment"> | number
-    performance?: StringFilter<"Investment"> | string
-    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
-    portfolioId?: StringFilter<"Investment"> | string
-    instrumentId?: StringFilter<"Investment"> | string
-    instrument?: XOR<FinancialInstrumentScalarRelationFilter, FinancialInstrumentWhereInput>
-    portfolio?: XOR<InvestmentPortfolioScalarRelationFilter, InvestmentPortfolioWhereInput>
-  }
-
-  export type InvestmentOrderByWithRelationInput = {
-    id?: SortOrder
-    amountInvested?: SortOrder
-    performance?: SortOrder
-    dateInvestment?: SortOrder
-    portfolioId?: SortOrder
-    instrumentId?: SortOrder
-    instrument?: FinancialInstrumentOrderByWithRelationInput
-    portfolio?: InvestmentPortfolioOrderByWithRelationInput
-  }
-
-  export type InvestmentWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: InvestmentWhereInput | InvestmentWhereInput[]
-    OR?: InvestmentWhereInput[]
-    NOT?: InvestmentWhereInput | InvestmentWhereInput[]
-    amountInvested?: IntFilter<"Investment"> | number
-    performance?: StringFilter<"Investment"> | string
-    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
-    portfolioId?: StringFilter<"Investment"> | string
-    instrumentId?: StringFilter<"Investment"> | string
-    instrument?: XOR<FinancialInstrumentScalarRelationFilter, FinancialInstrumentWhereInput>
-    portfolio?: XOR<InvestmentPortfolioScalarRelationFilter, InvestmentPortfolioWhereInput>
-  }, "id">
-
-  export type InvestmentOrderByWithAggregationInput = {
-    id?: SortOrder
-    amountInvested?: SortOrder
-    performance?: SortOrder
-    dateInvestment?: SortOrder
-    portfolioId?: SortOrder
-    instrumentId?: SortOrder
-    _count?: InvestmentCountOrderByAggregateInput
-    _avg?: InvestmentAvgOrderByAggregateInput
-    _max?: InvestmentMaxOrderByAggregateInput
-    _min?: InvestmentMinOrderByAggregateInput
-    _sum?: InvestmentSumOrderByAggregateInput
-  }
-
-  export type InvestmentScalarWhereWithAggregatesInput = {
-    AND?: InvestmentScalarWhereWithAggregatesInput | InvestmentScalarWhereWithAggregatesInput[]
-    OR?: InvestmentScalarWhereWithAggregatesInput[]
-    NOT?: InvestmentScalarWhereWithAggregatesInput | InvestmentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Investment"> | string
-    amountInvested?: IntWithAggregatesFilter<"Investment"> | number
-    performance?: StringWithAggregatesFilter<"Investment"> | string
-    dateInvestment?: DateTimeWithAggregatesFilter<"Investment"> | Date | string
-    portfolioId?: StringWithAggregatesFilter<"Investment"> | string
-    instrumentId?: StringWithAggregatesFilter<"Investment"> | string
   }
 
   export type NewsWhereInput = {
@@ -25457,6 +25686,13 @@ export namespace Prisma {
     financialGoal?: StringNullableFilter<"Profile"> | string | null
     mainGoal?: StringNullableFilter<"Profile"> | string | null
     monthlyInvestment?: StringNullableFilter<"Profile"> | string | null
+    financialInstrument?: StringNullableFilter<"Profile"> | string | null
+    investmentMethod?: StringNullableFilter<"Profile"> | string | null
+    investmentCategories?: StringNullableFilter<"Profile"> | string | null
+    mainIncomeSource?: StringNullableFilter<"Profile"> | string | null
+    financialNewsSource?: StringNullableFilter<"Profile"> | string | null
+    years?: StringNullableFilter<"Profile"> | string | null
+    investingDuration?: StringNullableFilter<"Profile"> | string | null
     savingsOrInvestmentReason?: StringNullableFilter<"Profile"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -25471,6 +25707,13 @@ export namespace Prisma {
     financialGoal?: SortOrderInput | SortOrder
     mainGoal?: SortOrderInput | SortOrder
     monthlyInvestment?: SortOrderInput | SortOrder
+    financialInstrument?: SortOrderInput | SortOrder
+    investmentMethod?: SortOrderInput | SortOrder
+    investmentCategories?: SortOrderInput | SortOrder
+    mainIncomeSource?: SortOrderInput | SortOrder
+    financialNewsSource?: SortOrderInput | SortOrder
+    years?: SortOrderInput | SortOrder
+    investingDuration?: SortOrderInput | SortOrder
     savingsOrInvestmentReason?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -25488,6 +25731,13 @@ export namespace Prisma {
     financialGoal?: StringNullableFilter<"Profile"> | string | null
     mainGoal?: StringNullableFilter<"Profile"> | string | null
     monthlyInvestment?: StringNullableFilter<"Profile"> | string | null
+    financialInstrument?: StringNullableFilter<"Profile"> | string | null
+    investmentMethod?: StringNullableFilter<"Profile"> | string | null
+    investmentCategories?: StringNullableFilter<"Profile"> | string | null
+    mainIncomeSource?: StringNullableFilter<"Profile"> | string | null
+    financialNewsSource?: StringNullableFilter<"Profile"> | string | null
+    years?: StringNullableFilter<"Profile"> | string | null
+    investingDuration?: StringNullableFilter<"Profile"> | string | null
     savingsOrInvestmentReason?: StringNullableFilter<"Profile"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
@@ -25502,6 +25752,13 @@ export namespace Prisma {
     financialGoal?: SortOrderInput | SortOrder
     mainGoal?: SortOrderInput | SortOrder
     monthlyInvestment?: SortOrderInput | SortOrder
+    financialInstrument?: SortOrderInput | SortOrder
+    investmentMethod?: SortOrderInput | SortOrder
+    investmentCategories?: SortOrderInput | SortOrder
+    mainIncomeSource?: SortOrderInput | SortOrder
+    financialNewsSource?: SortOrderInput | SortOrder
+    years?: SortOrderInput | SortOrder
+    investingDuration?: SortOrderInput | SortOrder
     savingsOrInvestmentReason?: SortOrderInput | SortOrder
     _count?: ProfileCountOrderByAggregateInput
     _max?: ProfileMaxOrderByAggregateInput
@@ -25521,6 +25778,13 @@ export namespace Prisma {
     financialGoal?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     mainGoal?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     monthlyInvestment?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    financialInstrument?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    investmentMethod?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    investmentCategories?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    mainIncomeSource?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    financialNewsSource?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    years?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    investingDuration?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     savingsOrInvestmentReason?: StringNullableWithAggregatesFilter<"Profile"> | string | null
   }
 
@@ -25547,6 +25811,7 @@ export namespace Prisma {
     price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
     volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
     week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
+    Investment?: InvestmentListRelationFilter
   }
 
   export type StockOrderByWithRelationInput = {
@@ -25569,6 +25834,7 @@ export namespace Prisma {
     price?: PriceOrderByWithRelationInput
     volume?: VolumeOrderByWithRelationInput
     week52?: Week52OrderByWithRelationInput
+    Investment?: InvestmentOrderByRelationAggregateInput
   }
 
   export type StockWhereUniqueInput = Prisma.AtLeast<{
@@ -25594,6 +25860,7 @@ export namespace Prisma {
     price?: XOR<PriceScalarRelationFilter, PriceWhereInput>
     volume?: XOR<VolumeScalarRelationFilter, VolumeWhereInput>
     week52?: XOR<Week52ScalarRelationFilter, Week52WhereInput>
+    Investment?: InvestmentListRelationFilter
   }, "id" | "symbol">
 
   export type StockOrderByWithAggregationInput = {
@@ -25950,6 +26217,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -25969,6 +26237,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -25988,6 +26257,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -26007,6 +26277,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -26209,62 +26480,114 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateInput = {
     id?: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
-    userId: string
-    investment?: InvestmentCreateNestedManyWithoutPortfolioInput
+    name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutInvestmentPortfolioInput
+    investments?: InvestmentCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateInput = {
     id?: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
     userId: string
-    investment?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
+    name: string
+    createdAt?: Date | string
+    investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    investment?: InvestmentUpdateManyWithoutPortfolioNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
+    investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    investment?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioCreateManyInput = {
     id?: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
     userId: string
+    name: string
+    createdAt?: Date | string
   }
 
   export type InvestmentPortfolioUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvestmentPortfolioUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvestmentCreateInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    stock?: StockCreateNestedOneWithoutInvestmentInput
+    portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
+    FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
+  }
+
+  export type InvestmentUncheckedCreateInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    portfolioId: string
+    financialInstrumentId?: string | null
+    stockSymbol?: string | null
+  }
+
+  export type InvestmentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    stock?: StockUpdateOneWithoutInvestmentNestedInput
+    portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
+    FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
+  }
+
+  export type InvestmentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolioId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvestmentCreateManyInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    portfolioId: string
+    financialInstrumentId?: string | null
+    stockSymbol?: string | null
+  }
+
+  export type InvestmentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvestmentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolioId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FinancialInstrumentCreateInput = {
@@ -26276,7 +26599,7 @@ export namespace Prisma {
     levelRisk: number
     deadline: number
     currency: $Enums.CurrencyType
-    Investment?: InvestmentCreateNestedManyWithoutInstrumentInput
+    Investments?: InvestmentCreateNestedManyWithoutFinancialInstrumentInput
   }
 
   export type FinancialInstrumentUncheckedCreateInput = {
@@ -26288,7 +26611,7 @@ export namespace Prisma {
     levelRisk: number
     deadline: number
     currency: $Enums.CurrencyType
-    Investment?: InvestmentUncheckedCreateNestedManyWithoutInstrumentInput
+    Investments?: InvestmentUncheckedCreateNestedManyWithoutFinancialInstrumentInput
   }
 
   export type FinancialInstrumentUpdateInput = {
@@ -26300,7 +26623,7 @@ export namespace Prisma {
     levelRisk?: IntFieldUpdateOperationsInput | number
     deadline?: IntFieldUpdateOperationsInput | number
     currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
-    Investment?: InvestmentUpdateManyWithoutInstrumentNestedInput
+    Investments?: InvestmentUpdateManyWithoutFinancialInstrumentNestedInput
   }
 
   export type FinancialInstrumentUncheckedUpdateInput = {
@@ -26312,7 +26635,7 @@ export namespace Prisma {
     levelRisk?: IntFieldUpdateOperationsInput | number
     deadline?: IntFieldUpdateOperationsInput | number
     currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
-    Investment?: InvestmentUncheckedUpdateManyWithoutInstrumentNestedInput
+    Investments?: InvestmentUncheckedUpdateManyWithoutFinancialInstrumentNestedInput
   }
 
   export type FinancialInstrumentCreateManyInput = {
@@ -26346,67 +26669,6 @@ export namespace Prisma {
     levelRisk?: IntFieldUpdateOperationsInput | number
     deadline?: IntFieldUpdateOperationsInput | number
     currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
-  }
-
-  export type InvestmentCreateInput = {
-    id?: string
-    amountInvested: number
-    performance: string
-    dateInvestment: Date | string
-    instrument: FinancialInstrumentCreateNestedOneWithoutInvestmentInput
-    portfolio: InvestmentPortfolioCreateNestedOneWithoutInvestmentInput
-  }
-
-  export type InvestmentUncheckedCreateInput = {
-    id?: string
-    amountInvested: number
-    performance: string
-    dateInvestment: Date | string
-    portfolioId: string
-    instrumentId: string
-  }
-
-  export type InvestmentUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    instrument?: FinancialInstrumentUpdateOneRequiredWithoutInvestmentNestedInput
-    portfolio?: InvestmentPortfolioUpdateOneRequiredWithoutInvestmentNestedInput
-  }
-
-  export type InvestmentUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    portfolioId?: StringFieldUpdateOperationsInput | string
-    instrumentId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type InvestmentCreateManyInput = {
-    id?: string
-    amountInvested: number
-    performance: string
-    dateInvestment: Date | string
-    portfolioId: string
-    instrumentId: string
-  }
-
-  export type InvestmentUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type InvestmentUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    portfolioId?: StringFieldUpdateOperationsInput | string
-    instrumentId?: StringFieldUpdateOperationsInput | string
   }
 
   export type NewsCreateInput = {
@@ -26820,6 +27082,13 @@ export namespace Prisma {
     financialGoal?: string | null
     mainGoal?: string | null
     monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
     savingsOrInvestmentReason?: string | null
     user: UserCreateNestedOneWithoutProfileInput
   }
@@ -26834,6 +27103,13 @@ export namespace Prisma {
     financialGoal?: string | null
     mainGoal?: string | null
     monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
     savingsOrInvestmentReason?: string | null
   }
 
@@ -26846,6 +27122,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
@@ -26860,6 +27143,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -26873,6 +27163,13 @@ export namespace Prisma {
     financialGoal?: string | null
     mainGoal?: string | null
     monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
     savingsOrInvestmentReason?: string | null
   }
 
@@ -26885,6 +27182,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -26898,6 +27202,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -26915,6 +27226,7 @@ export namespace Prisma {
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateInput = {
@@ -26932,6 +27244,7 @@ export namespace Prisma {
     week52Id: number
     dividendId: number
     earningsId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockUpdateInput = {
@@ -26948,6 +27261,7 @@ export namespace Prisma {
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateInput = {
@@ -26965,6 +27279,7 @@ export namespace Prisma {
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockCreateManyInput = {
@@ -27398,6 +27713,12 @@ export namespace Prisma {
     none?: TargetWhereInput
   }
 
+  export type InvestmentPortfolioListRelationFilter = {
+    every?: InvestmentPortfolioWhereInput
+    some?: InvestmentPortfolioWhereInput
+    none?: InvestmentPortfolioWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -27416,6 +27737,10 @@ export namespace Prisma {
   }
 
   export type TargetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvestmentPortfolioOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27685,28 +28010,6 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type InvestmentListRelationFilter = {
     every?: InvestmentWhereInput
     some?: InvestmentWhereInput
@@ -27719,36 +28022,84 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCountOrderByAggregateInput = {
     id?: SortOrder
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
-    coin?: SortOrder
     userId?: SortOrder
-  }
-
-  export type InvestmentPortfolioAvgOrderByAggregateInput = {
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InvestmentPortfolioMaxOrderByAggregateInput = {
     id?: SortOrder
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
-    coin?: SortOrder
     userId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InvestmentPortfolioMinOrderByAggregateInput = {
     id?: SortOrder
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
-    coin?: SortOrder
     userId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type InvestmentPortfolioSumOrderByAggregateInput = {
-    profileRisk?: SortOrder
-    performanceCurrent?: SortOrder
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StockNullableScalarRelationFilter = {
+    is?: StockWhereInput | null
+    isNot?: StockWhereInput | null
+  }
+
+  export type InvestmentPortfolioNullableScalarRelationFilter = {
+    is?: InvestmentPortfolioWhereInput | null
+    isNot?: InvestmentPortfolioWhereInput | null
+  }
+
+  export type FinancialInstrumentNullableScalarRelationFilter = {
+    is?: FinancialInstrumentWhereInput | null
+    isNot?: FinancialInstrumentWhereInput | null
+  }
+
+  export type InvestmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    amountInvested?: SortOrder
+    dateInvestment?: SortOrder
+    portfolioId?: SortOrder
+    financialInstrumentId?: SortOrder
+    stockSymbol?: SortOrder
+  }
+
+  export type InvestmentAvgOrderByAggregateInput = {
+    amountInvested?: SortOrder
+  }
+
+  export type InvestmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    amountInvested?: SortOrder
+    dateInvestment?: SortOrder
+    portfolioId?: SortOrder
+    financialInstrumentId?: SortOrder
+    stockSymbol?: SortOrder
+  }
+
+  export type InvestmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    amountInvested?: SortOrder
+    dateInvestment?: SortOrder
+    portfolioId?: SortOrder
+    financialInstrumentId?: SortOrder
+    stockSymbol?: SortOrder
+  }
+
+  export type InvestmentSumOrderByAggregateInput = {
+    amountInvested?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -27767,7 +28118,7 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+  export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -27775,12 +28126,7 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type EnumCurrencyTypeFilter<$PrismaModel = never> = {
@@ -27835,6 +28181,22 @@ export namespace Prisma {
     deadline?: SortOrder
   }
 
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type EnumCurrencyTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CurrencyType | EnumCurrencyTypeFieldRefInput<$PrismaModel>
     in?: $Enums.CurrencyType[] | ListEnumCurrencyTypeFieldRefInput<$PrismaModel>
@@ -27843,51 +28205,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCurrencyTypeFilter<$PrismaModel>
     _max?: NestedEnumCurrencyTypeFilter<$PrismaModel>
-  }
-
-  export type FinancialInstrumentScalarRelationFilter = {
-    is?: FinancialInstrumentWhereInput
-    isNot?: FinancialInstrumentWhereInput
-  }
-
-  export type InvestmentPortfolioScalarRelationFilter = {
-    is?: InvestmentPortfolioWhereInput
-    isNot?: InvestmentPortfolioWhereInput
-  }
-
-  export type InvestmentCountOrderByAggregateInput = {
-    id?: SortOrder
-    amountInvested?: SortOrder
-    performance?: SortOrder
-    dateInvestment?: SortOrder
-    portfolioId?: SortOrder
-    instrumentId?: SortOrder
-  }
-
-  export type InvestmentAvgOrderByAggregateInput = {
-    amountInvested?: SortOrder
-  }
-
-  export type InvestmentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    amountInvested?: SortOrder
-    performance?: SortOrder
-    dateInvestment?: SortOrder
-    portfolioId?: SortOrder
-    instrumentId?: SortOrder
-  }
-
-  export type InvestmentMinOrderByAggregateInput = {
-    id?: SortOrder
-    amountInvested?: SortOrder
-    performance?: SortOrder
-    dateInvestment?: SortOrder
-    portfolioId?: SortOrder
-    instrumentId?: SortOrder
-  }
-
-  export type InvestmentSumOrderByAggregateInput = {
-    amountInvested?: SortOrder
   }
 
   export type NewsCountOrderByAggregateInput = {
@@ -28160,6 +28477,13 @@ export namespace Prisma {
     financialGoal?: SortOrder
     mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
+    financialInstrument?: SortOrder
+    investmentMethod?: SortOrder
+    investmentCategories?: SortOrder
+    mainIncomeSource?: SortOrder
+    financialNewsSource?: SortOrder
+    years?: SortOrder
+    investingDuration?: SortOrder
     savingsOrInvestmentReason?: SortOrder
   }
 
@@ -28173,6 +28497,13 @@ export namespace Prisma {
     financialGoal?: SortOrder
     mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
+    financialInstrument?: SortOrder
+    investmentMethod?: SortOrder
+    investmentCategories?: SortOrder
+    mainIncomeSource?: SortOrder
+    financialNewsSource?: SortOrder
+    years?: SortOrder
+    investingDuration?: SortOrder
     savingsOrInvestmentReason?: SortOrder
   }
 
@@ -28186,6 +28517,13 @@ export namespace Prisma {
     financialGoal?: SortOrder
     mainGoal?: SortOrder
     monthlyInvestment?: SortOrder
+    financialInstrument?: SortOrder
+    investmentMethod?: SortOrder
+    investmentCategories?: SortOrder
+    mainIncomeSource?: SortOrder
+    financialNewsSource?: SortOrder
+    years?: SortOrder
+    investingDuration?: SortOrder
     savingsOrInvestmentReason?: SortOrder
   }
 
@@ -28620,6 +28958,13 @@ export namespace Prisma {
     connect?: TargetWhereUniqueInput | TargetWhereUniqueInput[]
   }
 
+  export type InvestmentPortfolioCreateNestedManyWithoutUserInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
+    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
+    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+  }
+
   export type CommentUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
@@ -28658,6 +29003,13 @@ export namespace Prisma {
     connectOrCreate?: TargetCreateOrConnectWithoutUserInput | TargetCreateOrConnectWithoutUserInput[]
     createMany?: TargetCreateManyUserInputEnvelope
     connect?: TargetWhereUniqueInput | TargetWhereUniqueInput[]
+  }
+
+  export type InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
+    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
+    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -28756,6 +29108,20 @@ export namespace Prisma {
     deleteMany?: TargetScalarWhereInput | TargetScalarWhereInput[]
   }
 
+  export type InvestmentPortfolioUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
+    upsert?: InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
+    set?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    disconnect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    delete?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    update?: InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InvestmentPortfolioUpdateManyWithWhereWithoutUserInput | InvestmentPortfolioUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+  }
+
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
@@ -28832,6 +29198,20 @@ export namespace Prisma {
     deleteMany?: TargetScalarWhereInput | TargetScalarWhereInput[]
   }
 
+  export type InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
+    upsert?: InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
+    set?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    disconnect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    delete?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+    update?: InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InvestmentPortfolioUpdateManyWithWhereWithoutUserInput | InvestmentPortfolioUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutTargetInput = {
     create?: XOR<UserCreateWithoutTargetInput, UserUncheckedCreateWithoutTargetInput>
     connectOrCreate?: UserCreateOrConnectWithoutTargetInput
@@ -28878,6 +29258,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFinancialRadiographiesInput, UserUpdateWithoutFinancialRadiographiesInput>, UserUncheckedUpdateWithoutFinancialRadiographiesInput>
   }
 
+  export type UserCreateNestedOneWithoutInvestmentPortfolioInput = {
+    create?: XOR<UserCreateWithoutInvestmentPortfolioInput, UserUncheckedCreateWithoutInvestmentPortfolioInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInvestmentPortfolioInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type InvestmentCreateNestedManyWithoutPortfolioInput = {
     create?: XOR<InvestmentCreateWithoutPortfolioInput, InvestmentUncheckedCreateWithoutPortfolioInput> | InvestmentCreateWithoutPortfolioInput[] | InvestmentUncheckedCreateWithoutPortfolioInput[]
     connectOrCreate?: InvestmentCreateOrConnectWithoutPortfolioInput | InvestmentCreateOrConnectWithoutPortfolioInput[]
@@ -28892,20 +29278,12 @@ export namespace Prisma {
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput = {
+    create?: XOR<UserCreateWithoutInvestmentPortfolioInput, UserUncheckedCreateWithoutInvestmentPortfolioInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInvestmentPortfolioInput
+    upsert?: UserUpsertWithoutInvestmentPortfolioInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInvestmentPortfolioInput, UserUpdateWithoutInvestmentPortfolioInput>, UserUncheckedUpdateWithoutInvestmentPortfolioInput>
   }
 
   export type InvestmentUpdateManyWithoutPortfolioNestedInput = {
@@ -28936,78 +29314,114 @@ export namespace Prisma {
     deleteMany?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
   }
 
-  export type InvestmentCreateNestedManyWithoutInstrumentInput = {
-    create?: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput> | InvestmentCreateWithoutInstrumentInput[] | InvestmentUncheckedCreateWithoutInstrumentInput[]
-    connectOrCreate?: InvestmentCreateOrConnectWithoutInstrumentInput | InvestmentCreateOrConnectWithoutInstrumentInput[]
-    createMany?: InvestmentCreateManyInstrumentInputEnvelope
+  export type StockCreateNestedOneWithoutInvestmentInput = {
+    create?: XOR<StockCreateWithoutInvestmentInput, StockUncheckedCreateWithoutInvestmentInput>
+    connectOrCreate?: StockCreateOrConnectWithoutInvestmentInput
+    connect?: StockWhereUniqueInput
+  }
+
+  export type InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutInvestmentsInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutInvestmentsInput
+    connect?: InvestmentPortfolioWhereUniqueInput
+  }
+
+  export type FinancialInstrumentCreateNestedOneWithoutInvestmentsInput = {
+    create?: XOR<FinancialInstrumentCreateWithoutInvestmentsInput, FinancialInstrumentUncheckedCreateWithoutInvestmentsInput>
+    connectOrCreate?: FinancialInstrumentCreateOrConnectWithoutInvestmentsInput
+    connect?: FinancialInstrumentWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type StockUpdateOneWithoutInvestmentNestedInput = {
+    create?: XOR<StockCreateWithoutInvestmentInput, StockUncheckedCreateWithoutInvestmentInput>
+    connectOrCreate?: StockCreateOrConnectWithoutInvestmentInput
+    upsert?: StockUpsertWithoutInvestmentInput
+    disconnect?: StockWhereInput | boolean
+    delete?: StockWhereInput | boolean
+    connect?: StockWhereUniqueInput
+    update?: XOR<XOR<StockUpdateToOneWithWhereWithoutInvestmentInput, StockUpdateWithoutInvestmentInput>, StockUncheckedUpdateWithoutInvestmentInput>
+  }
+
+  export type InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutInvestmentsInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutInvestmentsInput
+    upsert?: InvestmentPortfolioUpsertWithoutInvestmentsInput
+    disconnect?: InvestmentPortfolioWhereInput | boolean
+    delete?: InvestmentPortfolioWhereInput | boolean
+    connect?: InvestmentPortfolioWhereUniqueInput
+    update?: XOR<XOR<InvestmentPortfolioUpdateToOneWithWhereWithoutInvestmentsInput, InvestmentPortfolioUpdateWithoutInvestmentsInput>, InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput>
+  }
+
+  export type FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput = {
+    create?: XOR<FinancialInstrumentCreateWithoutInvestmentsInput, FinancialInstrumentUncheckedCreateWithoutInvestmentsInput>
+    connectOrCreate?: FinancialInstrumentCreateOrConnectWithoutInvestmentsInput
+    upsert?: FinancialInstrumentUpsertWithoutInvestmentsInput
+    disconnect?: FinancialInstrumentWhereInput | boolean
+    delete?: FinancialInstrumentWhereInput | boolean
+    connect?: FinancialInstrumentWhereUniqueInput
+    update?: XOR<XOR<FinancialInstrumentUpdateToOneWithWhereWithoutInvestmentsInput, FinancialInstrumentUpdateWithoutInvestmentsInput>, FinancialInstrumentUncheckedUpdateWithoutInvestmentsInput>
+  }
+
+  export type InvestmentCreateNestedManyWithoutFinancialInstrumentInput = {
+    create?: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput> | InvestmentCreateWithoutFinancialInstrumentInput[] | InvestmentUncheckedCreateWithoutFinancialInstrumentInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutFinancialInstrumentInput | InvestmentCreateOrConnectWithoutFinancialInstrumentInput[]
+    createMany?: InvestmentCreateManyFinancialInstrumentInputEnvelope
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
   }
 
-  export type InvestmentUncheckedCreateNestedManyWithoutInstrumentInput = {
-    create?: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput> | InvestmentCreateWithoutInstrumentInput[] | InvestmentUncheckedCreateWithoutInstrumentInput[]
-    connectOrCreate?: InvestmentCreateOrConnectWithoutInstrumentInput | InvestmentCreateOrConnectWithoutInstrumentInput[]
-    createMany?: InvestmentCreateManyInstrumentInputEnvelope
+  export type InvestmentUncheckedCreateNestedManyWithoutFinancialInstrumentInput = {
+    create?: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput> | InvestmentCreateWithoutFinancialInstrumentInput[] | InvestmentUncheckedCreateWithoutFinancialInstrumentInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutFinancialInstrumentInput | InvestmentCreateOrConnectWithoutFinancialInstrumentInput[]
+    createMany?: InvestmentCreateManyFinancialInstrumentInputEnvelope
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type EnumCurrencyTypeFieldUpdateOperationsInput = {
     set?: $Enums.CurrencyType
   }
 
-  export type InvestmentUpdateManyWithoutInstrumentNestedInput = {
-    create?: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput> | InvestmentCreateWithoutInstrumentInput[] | InvestmentUncheckedCreateWithoutInstrumentInput[]
-    connectOrCreate?: InvestmentCreateOrConnectWithoutInstrumentInput | InvestmentCreateOrConnectWithoutInstrumentInput[]
-    upsert?: InvestmentUpsertWithWhereUniqueWithoutInstrumentInput | InvestmentUpsertWithWhereUniqueWithoutInstrumentInput[]
-    createMany?: InvestmentCreateManyInstrumentInputEnvelope
+  export type InvestmentUpdateManyWithoutFinancialInstrumentNestedInput = {
+    create?: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput> | InvestmentCreateWithoutFinancialInstrumentInput[] | InvestmentUncheckedCreateWithoutFinancialInstrumentInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutFinancialInstrumentInput | InvestmentCreateOrConnectWithoutFinancialInstrumentInput[]
+    upsert?: InvestmentUpsertWithWhereUniqueWithoutFinancialInstrumentInput | InvestmentUpsertWithWhereUniqueWithoutFinancialInstrumentInput[]
+    createMany?: InvestmentCreateManyFinancialInstrumentInputEnvelope
     set?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     disconnect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     delete?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
-    update?: InvestmentUpdateWithWhereUniqueWithoutInstrumentInput | InvestmentUpdateWithWhereUniqueWithoutInstrumentInput[]
-    updateMany?: InvestmentUpdateManyWithWhereWithoutInstrumentInput | InvestmentUpdateManyWithWhereWithoutInstrumentInput[]
+    update?: InvestmentUpdateWithWhereUniqueWithoutFinancialInstrumentInput | InvestmentUpdateWithWhereUniqueWithoutFinancialInstrumentInput[]
+    updateMany?: InvestmentUpdateManyWithWhereWithoutFinancialInstrumentInput | InvestmentUpdateManyWithWhereWithoutFinancialInstrumentInput[]
     deleteMany?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
   }
 
-  export type InvestmentUncheckedUpdateManyWithoutInstrumentNestedInput = {
-    create?: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput> | InvestmentCreateWithoutInstrumentInput[] | InvestmentUncheckedCreateWithoutInstrumentInput[]
-    connectOrCreate?: InvestmentCreateOrConnectWithoutInstrumentInput | InvestmentCreateOrConnectWithoutInstrumentInput[]
-    upsert?: InvestmentUpsertWithWhereUniqueWithoutInstrumentInput | InvestmentUpsertWithWhereUniqueWithoutInstrumentInput[]
-    createMany?: InvestmentCreateManyInstrumentInputEnvelope
+  export type InvestmentUncheckedUpdateManyWithoutFinancialInstrumentNestedInput = {
+    create?: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput> | InvestmentCreateWithoutFinancialInstrumentInput[] | InvestmentUncheckedCreateWithoutFinancialInstrumentInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutFinancialInstrumentInput | InvestmentCreateOrConnectWithoutFinancialInstrumentInput[]
+    upsert?: InvestmentUpsertWithWhereUniqueWithoutFinancialInstrumentInput | InvestmentUpsertWithWhereUniqueWithoutFinancialInstrumentInput[]
+    createMany?: InvestmentCreateManyFinancialInstrumentInputEnvelope
     set?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     disconnect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     delete?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
-    update?: InvestmentUpdateWithWhereUniqueWithoutInstrumentInput | InvestmentUpdateWithWhereUniqueWithoutInstrumentInput[]
-    updateMany?: InvestmentUpdateManyWithWhereWithoutInstrumentInput | InvestmentUpdateManyWithWhereWithoutInstrumentInput[]
+    update?: InvestmentUpdateWithWhereUniqueWithoutFinancialInstrumentInput | InvestmentUpdateWithWhereUniqueWithoutFinancialInstrumentInput[]
+    updateMany?: InvestmentUpdateManyWithWhereWithoutFinancialInstrumentInput | InvestmentUpdateManyWithWhereWithoutFinancialInstrumentInput[]
     deleteMany?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
-  }
-
-  export type FinancialInstrumentCreateNestedOneWithoutInvestmentInput = {
-    create?: XOR<FinancialInstrumentCreateWithoutInvestmentInput, FinancialInstrumentUncheckedCreateWithoutInvestmentInput>
-    connectOrCreate?: FinancialInstrumentCreateOrConnectWithoutInvestmentInput
-    connect?: FinancialInstrumentWhereUniqueInput
-  }
-
-  export type InvestmentPortfolioCreateNestedOneWithoutInvestmentInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutInvestmentInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentInput>
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutInvestmentInput
-    connect?: InvestmentPortfolioWhereUniqueInput
-  }
-
-  export type FinancialInstrumentUpdateOneRequiredWithoutInvestmentNestedInput = {
-    create?: XOR<FinancialInstrumentCreateWithoutInvestmentInput, FinancialInstrumentUncheckedCreateWithoutInvestmentInput>
-    connectOrCreate?: FinancialInstrumentCreateOrConnectWithoutInvestmentInput
-    upsert?: FinancialInstrumentUpsertWithoutInvestmentInput
-    connect?: FinancialInstrumentWhereUniqueInput
-    update?: XOR<XOR<FinancialInstrumentUpdateToOneWithWhereWithoutInvestmentInput, FinancialInstrumentUpdateWithoutInvestmentInput>, FinancialInstrumentUncheckedUpdateWithoutInvestmentInput>
-  }
-
-  export type InvestmentPortfolioUpdateOneRequiredWithoutInvestmentNestedInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutInvestmentInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentInput>
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutInvestmentInput
-    upsert?: InvestmentPortfolioUpsertWithoutInvestmentInput
-    connect?: InvestmentPortfolioWhereUniqueInput
-    update?: XOR<XOR<InvestmentPortfolioUpdateToOneWithWhereWithoutInvestmentInput, InvestmentPortfolioUpdateWithoutInvestmentInput>, InvestmentPortfolioUncheckedUpdateWithoutInvestmentInput>
   }
 
   export type CommentCreateNestedManyWithoutNewsInput = {
@@ -29224,6 +29638,20 @@ export namespace Prisma {
     connect?: Week52WhereUniqueInput
   }
 
+  export type InvestmentCreateNestedManyWithoutStockInput = {
+    create?: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput> | InvestmentCreateWithoutStockInput[] | InvestmentUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutStockInput | InvestmentCreateOrConnectWithoutStockInput[]
+    createMany?: InvestmentCreateManyStockInputEnvelope
+    connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+  }
+
+  export type InvestmentUncheckedCreateNestedManyWithoutStockInput = {
+    create?: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput> | InvestmentCreateWithoutStockInput[] | InvestmentUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutStockInput | InvestmentCreateOrConnectWithoutStockInput[]
+    createMany?: InvestmentCreateManyStockInputEnvelope
+    connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+  }
+
   export type DividendUpdateOneRequiredWithoutStockNestedInput = {
     create?: XOR<DividendCreateWithoutStockInput, DividendUncheckedCreateWithoutStockInput>
     connectOrCreate?: DividendCreateOrConnectWithoutStockInput
@@ -29262,6 +29690,34 @@ export namespace Prisma {
     upsert?: Week52UpsertWithoutStockInput
     connect?: Week52WhereUniqueInput
     update?: XOR<XOR<Week52UpdateToOneWithWhereWithoutStockInput, Week52UpdateWithoutStockInput>, Week52UncheckedUpdateWithoutStockInput>
+  }
+
+  export type InvestmentUpdateManyWithoutStockNestedInput = {
+    create?: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput> | InvestmentCreateWithoutStockInput[] | InvestmentUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutStockInput | InvestmentCreateOrConnectWithoutStockInput[]
+    upsert?: InvestmentUpsertWithWhereUniqueWithoutStockInput | InvestmentUpsertWithWhereUniqueWithoutStockInput[]
+    createMany?: InvestmentCreateManyStockInputEnvelope
+    set?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    disconnect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    delete?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    update?: InvestmentUpdateWithWhereUniqueWithoutStockInput | InvestmentUpdateWithWhereUniqueWithoutStockInput[]
+    updateMany?: InvestmentUpdateManyWithWhereWithoutStockInput | InvestmentUpdateManyWithWhereWithoutStockInput[]
+    deleteMany?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
+  }
+
+  export type InvestmentUncheckedUpdateManyWithoutStockNestedInput = {
+    create?: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput> | InvestmentCreateWithoutStockInput[] | InvestmentUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: InvestmentCreateOrConnectWithoutStockInput | InvestmentCreateOrConnectWithoutStockInput[]
+    upsert?: InvestmentUpsertWithWhereUniqueWithoutStockInput | InvestmentUpsertWithWhereUniqueWithoutStockInput[]
+    createMany?: InvestmentCreateManyStockInputEnvelope
+    set?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    disconnect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    delete?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
+    update?: InvestmentUpdateWithWhereUniqueWithoutStockInput | InvestmentUpdateWithWhereUniqueWithoutStockInput[]
+    updateMany?: InvestmentUpdateManyWithWhereWithoutStockInput | InvestmentUpdateManyWithWhereWithoutStockInput[]
+    deleteMany?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
   }
 
   export type StockCreateNestedManyWithoutPriceInput = {
@@ -29687,17 +30143,6 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -29714,6 +30159,24 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumCurrencyTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyType | EnumCurrencyTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CurrencyType[] | ListEnumCurrencyTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CurrencyType[] | ListEnumCurrencyTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumCurrencyTypeFilter<$PrismaModel> | $Enums.CurrencyType
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -29728,13 +30191,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedEnumCurrencyTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.CurrencyType | EnumCurrencyTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.CurrencyType[] | ListEnumCurrencyTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CurrencyType[] | ListEnumCurrencyTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumCurrencyTypeFilter<$PrismaModel> | $Enums.CurrencyType
   }
 
   export type NestedEnumCurrencyTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -29926,6 +30382,13 @@ export namespace Prisma {
     financialGoal?: string | null
     mainGoal?: string | null
     monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
     savingsOrInvestmentReason?: string | null
   }
 
@@ -29938,6 +30401,13 @@ export namespace Prisma {
     financialGoal?: string | null
     mainGoal?: string | null
     monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
     savingsOrInvestmentReason?: string | null
   }
 
@@ -30036,6 +30506,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type InvestmentPortfolioCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    investments?: InvestmentCreateNestedManyWithoutPortfolioInput
+  }
+
+  export type InvestmentPortfolioUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
+  }
+
+  export type InvestmentPortfolioCreateOrConnectWithoutUserInput = {
+    where: InvestmentPortfolioWhereUniqueInput
+    create: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+  }
+
+  export type InvestmentPortfolioCreateManyUserInputEnvelope = {
+    data: InvestmentPortfolioCreateManyUserInput | InvestmentPortfolioCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
     where: CommentWhereUniqueInput
     update: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
@@ -30114,6 +30608,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -30126,6 +30627,13 @@ export namespace Prisma {
     financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
     mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
     monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
     savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -30218,6 +30726,32 @@ export namespace Prisma {
     userId?: StringFilter<"Target"> | string
   }
 
+  export type InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput = {
+    where: InvestmentPortfolioWhereUniqueInput
+    update: XOR<InvestmentPortfolioUpdateWithoutUserInput, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
+    create: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+  }
+
+  export type InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput = {
+    where: InvestmentPortfolioWhereUniqueInput
+    data: XOR<InvestmentPortfolioUpdateWithoutUserInput, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
+  }
+
+  export type InvestmentPortfolioUpdateManyWithWhereWithoutUserInput = {
+    where: InvestmentPortfolioScalarWhereInput
+    data: XOR<InvestmentPortfolioUpdateManyMutationInput, InvestmentPortfolioUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type InvestmentPortfolioScalarWhereInput = {
+    AND?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+    OR?: InvestmentPortfolioScalarWhereInput[]
+    NOT?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+    id?: StringFilter<"InvestmentPortfolio"> | string
+    userId?: StringFilter<"InvestmentPortfolio"> | string
+    name?: StringFilter<"InvestmentPortfolio"> | string
+    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+  }
+
   export type UserCreateWithoutTargetInput = {
     id?: string
     email: string
@@ -30234,6 +30768,7 @@ export namespace Prisma {
     profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTargetInput = {
@@ -30252,6 +30787,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTargetInput = {
@@ -30286,6 +30822,7 @@ export namespace Prisma {
     profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTargetInput = {
@@ -30304,6 +30841,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutFinancialRadiographiesInput = {
@@ -30322,6 +30860,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFinancialRadiographiesInput = {
@@ -30340,6 +30879,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFinancialRadiographiesInput = {
@@ -30374,6 +30914,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFinancialRadiographiesInput = {
@@ -30392,22 +30933,66 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutInvestmentPortfolioInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    comment?: CommentCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    Support?: SupportCreateNestedManyWithoutUserInput
+    wallet?: walletCreateNestedManyWithoutUserInput
+    target?: TargetCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutInvestmentPortfolioInput = {
+    id?: string
+    email: string
+    firstName?: string | null
+    lastName?: string | null
+    password: string
+    avatarUrl?: string | null
+    role?: $Enums.UserRole | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isEmailVerified?: boolean
+    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
+    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    Support?: SupportUncheckedCreateNestedManyWithoutUserInput
+    wallet?: walletUncheckedCreateNestedManyWithoutUserInput
+    target?: TargetUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutInvestmentPortfolioInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutInvestmentPortfolioInput, UserUncheckedCreateWithoutInvestmentPortfolioInput>
   }
 
   export type InvestmentCreateWithoutPortfolioInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
-    instrument: FinancialInstrumentCreateNestedOneWithoutInvestmentInput
+    stock?: StockCreateNestedOneWithoutInvestmentInput
+    FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
   }
 
   export type InvestmentUncheckedCreateWithoutPortfolioInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
-    instrumentId: string
+    financialInstrumentId?: string | null
+    stockSymbol?: string | null
   }
 
   export type InvestmentCreateOrConnectWithoutPortfolioInput = {
@@ -30418,6 +31003,55 @@ export namespace Prisma {
   export type InvestmentCreateManyPortfolioInputEnvelope = {
     data: InvestmentCreateManyPortfolioInput | InvestmentCreateManyPortfolioInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutInvestmentPortfolioInput = {
+    update: XOR<UserUpdateWithoutInvestmentPortfolioInput, UserUncheckedUpdateWithoutInvestmentPortfolioInput>
+    create: XOR<UserCreateWithoutInvestmentPortfolioInput, UserUncheckedCreateWithoutInvestmentPortfolioInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutInvestmentPortfolioInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutInvestmentPortfolioInput, UserUncheckedUpdateWithoutInvestmentPortfolioInput>
+  }
+
+  export type UserUpdateWithoutInvestmentPortfolioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    comment?: CommentUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    Support?: SupportUpdateManyWithoutUserNestedInput
+    wallet?: walletUpdateManyWithoutUserNestedInput
+    target?: TargetUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutInvestmentPortfolioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
+    wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
+    target?: TargetUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type InvestmentUpsertWithWhereUniqueWithoutPortfolioInput = {
@@ -30442,160 +31076,238 @@ export namespace Prisma {
     NOT?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
     id?: StringFilter<"Investment"> | string
     amountInvested?: IntFilter<"Investment"> | number
-    performance?: StringFilter<"Investment"> | string
     dateInvestment?: DateTimeFilter<"Investment"> | Date | string
     portfolioId?: StringFilter<"Investment"> | string
-    instrumentId?: StringFilter<"Investment"> | string
+    financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
+    stockSymbol?: StringNullableFilter<"Investment"> | string | null
   }
 
-  export type InvestmentCreateWithoutInstrumentInput = {
+  export type StockCreateWithoutInvestmentInput = {
+    symbol: string
+    name: string
+    typeDisp: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dividend: DividendCreateNestedOneWithoutStockInput
+    earnings: EarningsCreateNestedOneWithoutStockInput
+    price: PriceCreateNestedOneWithoutStockInput
+    volume: VolumeCreateNestedOneWithoutStockInput
+    week52: Week52CreateNestedOneWithoutStockInput
+  }
+
+  export type StockUncheckedCreateWithoutInvestmentInput = {
+    symbol: string
+    name: string
+    typeDisp: string
+    currency: string
+    market: string
+    marketCap: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    id?: number
+    priceId: number
+    volumeId: number
+    week52Id: number
+    dividendId: number
+    earningsId: number
+  }
+
+  export type StockCreateOrConnectWithoutInvestmentInput = {
+    where: StockWhereUniqueInput
+    create: XOR<StockCreateWithoutInvestmentInput, StockUncheckedCreateWithoutInvestmentInput>
+  }
+
+  export type InvestmentPortfolioCreateWithoutInvestmentsInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutInvestmentPortfolioInput
+  }
+
+  export type InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput = {
+    id?: string
+    userId: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type InvestmentPortfolioCreateOrConnectWithoutInvestmentsInput = {
+    where: InvestmentPortfolioWhereUniqueInput
+    create: XOR<InvestmentPortfolioCreateWithoutInvestmentsInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput>
+  }
+
+  export type FinancialInstrumentCreateWithoutInvestmentsInput = {
+    id?: string
+    name: string
+    type: string
+    category: string
+    performance: number
+    levelRisk: number
+    deadline: number
+    currency: $Enums.CurrencyType
+  }
+
+  export type FinancialInstrumentUncheckedCreateWithoutInvestmentsInput = {
+    id?: string
+    name: string
+    type: string
+    category: string
+    performance: number
+    levelRisk: number
+    deadline: number
+    currency: $Enums.CurrencyType
+  }
+
+  export type FinancialInstrumentCreateOrConnectWithoutInvestmentsInput = {
+    where: FinancialInstrumentWhereUniqueInput
+    create: XOR<FinancialInstrumentCreateWithoutInvestmentsInput, FinancialInstrumentUncheckedCreateWithoutInvestmentsInput>
+  }
+
+  export type StockUpsertWithoutInvestmentInput = {
+    update: XOR<StockUpdateWithoutInvestmentInput, StockUncheckedUpdateWithoutInvestmentInput>
+    create: XOR<StockCreateWithoutInvestmentInput, StockUncheckedCreateWithoutInvestmentInput>
+    where?: StockWhereInput
+  }
+
+  export type StockUpdateToOneWithWhereWithoutInvestmentInput = {
+    where?: StockWhereInput
+    data: XOR<StockUpdateWithoutInvestmentInput, StockUncheckedUpdateWithoutInvestmentInput>
+  }
+
+  export type StockUpdateWithoutInvestmentInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    typeDisp?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dividend?: DividendUpdateOneRequiredWithoutStockNestedInput
+    earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
+    price?: PriceUpdateOneRequiredWithoutStockNestedInput
+    volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+  }
+
+  export type StockUncheckedUpdateWithoutInvestmentInput = {
+    symbol?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    typeDisp?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    marketCap?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    id?: IntFieldUpdateOperationsInput | number
+    priceId?: IntFieldUpdateOperationsInput | number
+    volumeId?: IntFieldUpdateOperationsInput | number
+    week52Id?: IntFieldUpdateOperationsInput | number
+    dividendId?: IntFieldUpdateOperationsInput | number
+    earningsId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type InvestmentPortfolioUpsertWithoutInvestmentsInput = {
+    update: XOR<InvestmentPortfolioUpdateWithoutInvestmentsInput, InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput>
+    create: XOR<InvestmentPortfolioCreateWithoutInvestmentsInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput>
+    where?: InvestmentPortfolioWhereInput
+  }
+
+  export type InvestmentPortfolioUpdateToOneWithWhereWithoutInvestmentsInput = {
+    where?: InvestmentPortfolioWhereInput
+    data: XOR<InvestmentPortfolioUpdateWithoutInvestmentsInput, InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput>
+  }
+
+  export type InvestmentPortfolioUpdateWithoutInvestmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
+  }
+
+  export type InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FinancialInstrumentUpsertWithoutInvestmentsInput = {
+    update: XOR<FinancialInstrumentUpdateWithoutInvestmentsInput, FinancialInstrumentUncheckedUpdateWithoutInvestmentsInput>
+    create: XOR<FinancialInstrumentCreateWithoutInvestmentsInput, FinancialInstrumentUncheckedCreateWithoutInvestmentsInput>
+    where?: FinancialInstrumentWhereInput
+  }
+
+  export type FinancialInstrumentUpdateToOneWithWhereWithoutInvestmentsInput = {
+    where?: FinancialInstrumentWhereInput
+    data: XOR<FinancialInstrumentUpdateWithoutInvestmentsInput, FinancialInstrumentUncheckedUpdateWithoutInvestmentsInput>
+  }
+
+  export type FinancialInstrumentUpdateWithoutInvestmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    performance?: FloatFieldUpdateOperationsInput | number
+    levelRisk?: IntFieldUpdateOperationsInput | number
+    deadline?: IntFieldUpdateOperationsInput | number
+    currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
+  }
+
+  export type FinancialInstrumentUncheckedUpdateWithoutInvestmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    performance?: FloatFieldUpdateOperationsInput | number
+    levelRisk?: IntFieldUpdateOperationsInput | number
+    deadline?: IntFieldUpdateOperationsInput | number
+    currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
+  }
+
+  export type InvestmentCreateWithoutFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
-    portfolio: InvestmentPortfolioCreateNestedOneWithoutInvestmentInput
+    stock?: StockCreateNestedOneWithoutInvestmentInput
+    portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
   }
 
-  export type InvestmentUncheckedCreateWithoutInstrumentInput = {
+  export type InvestmentUncheckedCreateWithoutFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
     portfolioId: string
+    stockSymbol?: string | null
   }
 
-  export type InvestmentCreateOrConnectWithoutInstrumentInput = {
+  export type InvestmentCreateOrConnectWithoutFinancialInstrumentInput = {
     where: InvestmentWhereUniqueInput
-    create: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput>
+    create: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput>
   }
 
-  export type InvestmentCreateManyInstrumentInputEnvelope = {
-    data: InvestmentCreateManyInstrumentInput | InvestmentCreateManyInstrumentInput[]
+  export type InvestmentCreateManyFinancialInstrumentInputEnvelope = {
+    data: InvestmentCreateManyFinancialInstrumentInput | InvestmentCreateManyFinancialInstrumentInput[]
     skipDuplicates?: boolean
   }
 
-  export type InvestmentUpsertWithWhereUniqueWithoutInstrumentInput = {
+  export type InvestmentUpsertWithWhereUniqueWithoutFinancialInstrumentInput = {
     where: InvestmentWhereUniqueInput
-    update: XOR<InvestmentUpdateWithoutInstrumentInput, InvestmentUncheckedUpdateWithoutInstrumentInput>
-    create: XOR<InvestmentCreateWithoutInstrumentInput, InvestmentUncheckedCreateWithoutInstrumentInput>
+    update: XOR<InvestmentUpdateWithoutFinancialInstrumentInput, InvestmentUncheckedUpdateWithoutFinancialInstrumentInput>
+    create: XOR<InvestmentCreateWithoutFinancialInstrumentInput, InvestmentUncheckedCreateWithoutFinancialInstrumentInput>
   }
 
-  export type InvestmentUpdateWithWhereUniqueWithoutInstrumentInput = {
+  export type InvestmentUpdateWithWhereUniqueWithoutFinancialInstrumentInput = {
     where: InvestmentWhereUniqueInput
-    data: XOR<InvestmentUpdateWithoutInstrumentInput, InvestmentUncheckedUpdateWithoutInstrumentInput>
+    data: XOR<InvestmentUpdateWithoutFinancialInstrumentInput, InvestmentUncheckedUpdateWithoutFinancialInstrumentInput>
   }
 
-  export type InvestmentUpdateManyWithWhereWithoutInstrumentInput = {
+  export type InvestmentUpdateManyWithWhereWithoutFinancialInstrumentInput = {
     where: InvestmentScalarWhereInput
-    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyWithoutInstrumentInput>
-  }
-
-  export type FinancialInstrumentCreateWithoutInvestmentInput = {
-    id?: string
-    name: string
-    type: string
-    category: string
-    performance: number
-    levelRisk: number
-    deadline: number
-    currency: $Enums.CurrencyType
-  }
-
-  export type FinancialInstrumentUncheckedCreateWithoutInvestmentInput = {
-    id?: string
-    name: string
-    type: string
-    category: string
-    performance: number
-    levelRisk: number
-    deadline: number
-    currency: $Enums.CurrencyType
-  }
-
-  export type FinancialInstrumentCreateOrConnectWithoutInvestmentInput = {
-    where: FinancialInstrumentWhereUniqueInput
-    create: XOR<FinancialInstrumentCreateWithoutInvestmentInput, FinancialInstrumentUncheckedCreateWithoutInvestmentInput>
-  }
-
-  export type InvestmentPortfolioCreateWithoutInvestmentInput = {
-    id?: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
-    userId: string
-  }
-
-  export type InvestmentPortfolioUncheckedCreateWithoutInvestmentInput = {
-    id?: string
-    profileRisk: number
-    performanceCurrent: number
-    coin: string
-    userId: string
-  }
-
-  export type InvestmentPortfolioCreateOrConnectWithoutInvestmentInput = {
-    where: InvestmentPortfolioWhereUniqueInput
-    create: XOR<InvestmentPortfolioCreateWithoutInvestmentInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentInput>
-  }
-
-  export type FinancialInstrumentUpsertWithoutInvestmentInput = {
-    update: XOR<FinancialInstrumentUpdateWithoutInvestmentInput, FinancialInstrumentUncheckedUpdateWithoutInvestmentInput>
-    create: XOR<FinancialInstrumentCreateWithoutInvestmentInput, FinancialInstrumentUncheckedCreateWithoutInvestmentInput>
-    where?: FinancialInstrumentWhereInput
-  }
-
-  export type FinancialInstrumentUpdateToOneWithWhereWithoutInvestmentInput = {
-    where?: FinancialInstrumentWhereInput
-    data: XOR<FinancialInstrumentUpdateWithoutInvestmentInput, FinancialInstrumentUncheckedUpdateWithoutInvestmentInput>
-  }
-
-  export type FinancialInstrumentUpdateWithoutInvestmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    performance?: FloatFieldUpdateOperationsInput | number
-    levelRisk?: IntFieldUpdateOperationsInput | number
-    deadline?: IntFieldUpdateOperationsInput | number
-    currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
-  }
-
-  export type FinancialInstrumentUncheckedUpdateWithoutInvestmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    performance?: FloatFieldUpdateOperationsInput | number
-    levelRisk?: IntFieldUpdateOperationsInput | number
-    deadline?: IntFieldUpdateOperationsInput | number
-    currency?: EnumCurrencyTypeFieldUpdateOperationsInput | $Enums.CurrencyType
-  }
-
-  export type InvestmentPortfolioUpsertWithoutInvestmentInput = {
-    update: XOR<InvestmentPortfolioUpdateWithoutInvestmentInput, InvestmentPortfolioUncheckedUpdateWithoutInvestmentInput>
-    create: XOR<InvestmentPortfolioCreateWithoutInvestmentInput, InvestmentPortfolioUncheckedCreateWithoutInvestmentInput>
-    where?: InvestmentPortfolioWhereInput
-  }
-
-  export type InvestmentPortfolioUpdateToOneWithWhereWithoutInvestmentInput = {
-    where?: InvestmentPortfolioWhereInput
-    data: XOR<InvestmentPortfolioUpdateWithoutInvestmentInput, InvestmentPortfolioUncheckedUpdateWithoutInvestmentInput>
-  }
-
-  export type InvestmentPortfolioUpdateWithoutInvestmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type InvestmentPortfolioUncheckedUpdateWithoutInvestmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    profileRisk?: IntFieldUpdateOperationsInput | number
-    performanceCurrent?: FloatFieldUpdateOperationsInput | number
-    coin?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyWithoutFinancialInstrumentInput>
   }
 
   export type CommentCreateWithoutNewsInput = {
@@ -30683,6 +31395,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -30701,6 +31414,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -30766,6 +31480,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -30784,6 +31499,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WalletTransactionCreateWithoutWalletInput = {
@@ -30830,6 +31546,7 @@ export namespace Prisma {
     profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWalletInput = {
@@ -30848,6 +31565,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWalletInput = {
@@ -30911,6 +31629,7 @@ export namespace Prisma {
     profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWalletInput = {
@@ -30929,6 +31648,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type walletCreateWithoutTransactionsInput = {
@@ -30999,6 +31719,7 @@ export namespace Prisma {
     profile?: ProfileCreateNestedOneWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSupportInput = {
@@ -31017,6 +31738,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSupportInput = {
@@ -31051,6 +31773,7 @@ export namespace Prisma {
     profile?: ProfileUpdateOneWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSupportInput = {
@@ -31069,6 +31792,7 @@ export namespace Prisma {
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProfileInput = {
@@ -31087,6 +31811,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -31105,6 +31830,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -31139,6 +31865,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -31157,6 +31884,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type DividendCreateWithoutStockInput = {
@@ -31261,6 +31989,32 @@ export namespace Prisma {
   export type Week52CreateOrConnectWithoutStockInput = {
     where: Week52WhereUniqueInput
     create: XOR<Week52CreateWithoutStockInput, Week52UncheckedCreateWithoutStockInput>
+  }
+
+  export type InvestmentCreateWithoutStockInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
+    FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
+  }
+
+  export type InvestmentUncheckedCreateWithoutStockInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    portfolioId: string
+    financialInstrumentId?: string | null
+  }
+
+  export type InvestmentCreateOrConnectWithoutStockInput = {
+    where: InvestmentWhereUniqueInput
+    create: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput>
+  }
+
+  export type InvestmentCreateManyStockInputEnvelope = {
+    data: InvestmentCreateManyStockInput | InvestmentCreateManyStockInput[]
+    skipDuplicates?: boolean
   }
 
   export type DividendUpsertWithoutStockInput = {
@@ -31397,6 +32151,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type InvestmentUpsertWithWhereUniqueWithoutStockInput = {
+    where: InvestmentWhereUniqueInput
+    update: XOR<InvestmentUpdateWithoutStockInput, InvestmentUncheckedUpdateWithoutStockInput>
+    create: XOR<InvestmentCreateWithoutStockInput, InvestmentUncheckedCreateWithoutStockInput>
+  }
+
+  export type InvestmentUpdateWithWhereUniqueWithoutStockInput = {
+    where: InvestmentWhereUniqueInput
+    data: XOR<InvestmentUpdateWithoutStockInput, InvestmentUncheckedUpdateWithoutStockInput>
+  }
+
+  export type InvestmentUpdateManyWithWhereWithoutStockInput = {
+    where: InvestmentScalarWhereInput
+    data: XOR<InvestmentUpdateManyMutationInput, InvestmentUncheckedUpdateManyWithoutStockInput>
+  }
+
   export type StockCreateWithoutPriceInput = {
     symbol: string
     name: string
@@ -31410,6 +32180,7 @@ export namespace Prisma {
     earnings: EarningsCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutPriceInput = {
@@ -31426,6 +32197,7 @@ export namespace Prisma {
     week52Id: number
     dividendId: number
     earningsId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutPriceInput = {
@@ -31487,6 +32259,7 @@ export namespace Prisma {
     earnings: EarningsCreateNestedOneWithoutStockInput
     price: PriceCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutVolumeInput = {
@@ -31503,6 +32276,7 @@ export namespace Prisma {
     week52Id: number
     dividendId: number
     earningsId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutVolumeInput = {
@@ -31544,6 +32318,7 @@ export namespace Prisma {
     earnings: EarningsCreateNestedOneWithoutStockInput
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutWeek52Input = {
@@ -31560,6 +32335,7 @@ export namespace Prisma {
     volumeId: number
     dividendId: number
     earningsId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutWeek52Input = {
@@ -31601,6 +32377,7 @@ export namespace Prisma {
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutDividendInput = {
@@ -31617,6 +32394,7 @@ export namespace Prisma {
     volumeId: number
     week52Id: number
     earningsId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutDividendInput = {
@@ -31658,6 +32436,7 @@ export namespace Prisma {
     price: PriceCreateNestedOneWithoutStockInput
     volume: VolumeCreateNestedOneWithoutStockInput
     week52: Week52CreateNestedOneWithoutStockInput
+    Investment?: InvestmentCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutEarningsInput = {
@@ -31674,6 +32453,7 @@ export namespace Prisma {
     volumeId: number
     week52Id: number
     dividendId: number
+    Investment?: InvestmentUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutEarningsInput = {
@@ -31738,6 +32518,12 @@ export namespace Prisma {
     dateTarget: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type InvestmentPortfolioCreateManyUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -31856,68 +32642,88 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InvestmentPortfolioUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
+  }
+
+  export type InvestmentPortfolioUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
+  }
+
+  export type InvestmentPortfolioUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type InvestmentCreateManyPortfolioInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
-    instrumentId: string
+    financialInstrumentId?: string | null
+    stockSymbol?: string | null
   }
 
   export type InvestmentUpdateWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
     dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    instrument?: FinancialInstrumentUpdateOneRequiredWithoutInvestmentNestedInput
+    stock?: StockUpdateOneWithoutInvestmentNestedInput
+    FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
   }
 
   export type InvestmentUncheckedUpdateWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
     dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    instrumentId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvestmentUncheckedUpdateManyWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
     dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    instrumentId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type InvestmentCreateManyInstrumentInput = {
+  export type InvestmentCreateManyFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    performance: string
     dateInvestment: Date | string
     portfolioId: string
+    stockSymbol?: string | null
   }
 
-  export type InvestmentUpdateWithoutInstrumentInput = {
+  export type InvestmentUpdateWithoutFinancialInstrumentInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
     dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    portfolio?: InvestmentPortfolioUpdateOneRequiredWithoutInvestmentNestedInput
+    stock?: StockUpdateOneWithoutInvestmentNestedInput
+    portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
   }
 
-  export type InvestmentUncheckedUpdateWithoutInstrumentInput = {
+  export type InvestmentUncheckedUpdateWithoutFinancialInstrumentInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
-    portfolioId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type InvestmentUncheckedUpdateManyWithoutInstrumentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amountInvested?: IntFieldUpdateOperationsInput | number
-    performance?: StringFieldUpdateOperationsInput | string
     dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvestmentUncheckedUpdateManyWithoutFinancialInstrumentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolioId?: StringFieldUpdateOperationsInput | string
+    stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CommentCreateManyNewsInput = {
@@ -31992,6 +32798,38 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InvestmentCreateManyStockInput = {
+    id?: string
+    amountInvested: number
+    dateInvestment: Date | string
+    portfolioId: string
+    financialInstrumentId?: string | null
+  }
+
+  export type InvestmentUpdateWithoutStockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
+    FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
+  }
+
+  export type InvestmentUncheckedUpdateWithoutStockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolioId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvestmentUncheckedUpdateManyWithoutStockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amountInvested?: IntFieldUpdateOperationsInput | number
+    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
+    portfolioId?: StringFieldUpdateOperationsInput | string
+    financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type StockCreateManyPriceInput = {
     symbol: string
     name: string
@@ -32021,6 +32859,7 @@ export namespace Prisma {
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutPriceInput = {
@@ -32037,6 +32876,7 @@ export namespace Prisma {
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateManyWithoutPriceInput = {
@@ -32084,6 +32924,7 @@ export namespace Prisma {
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutVolumeInput = {
@@ -32100,6 +32941,7 @@ export namespace Prisma {
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateManyWithoutVolumeInput = {
@@ -32147,6 +32989,7 @@ export namespace Prisma {
     earnings?: EarningsUpdateOneRequiredWithoutStockNestedInput
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutWeek52Input = {
@@ -32163,6 +33006,7 @@ export namespace Prisma {
     volumeId?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateManyWithoutWeek52Input = {
@@ -32210,6 +33054,7 @@ export namespace Prisma {
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutDividendInput = {
@@ -32226,6 +33071,7 @@ export namespace Prisma {
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     earningsId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateManyWithoutDividendInput = {
@@ -32273,6 +33119,7 @@ export namespace Prisma {
     price?: PriceUpdateOneRequiredWithoutStockNestedInput
     volume?: VolumeUpdateOneRequiredWithoutStockNestedInput
     week52?: Week52UpdateOneRequiredWithoutStockNestedInput
+    Investment?: InvestmentUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutEarningsInput = {
@@ -32289,6 +33136,7 @@ export namespace Prisma {
     volumeId?: IntFieldUpdateOperationsInput | number
     week52Id?: IntFieldUpdateOperationsInput | number
     dividendId?: IntFieldUpdateOperationsInput | number
+    Investment?: InvestmentUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateManyWithoutEarningsInput = {

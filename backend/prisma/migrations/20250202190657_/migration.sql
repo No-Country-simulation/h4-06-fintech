@@ -58,12 +58,24 @@ CREATE TABLE "FinancialRadiography" (
 -- CreateTable
 CREATE TABLE "InvestmentPortfolio" (
     "id" TEXT NOT NULL,
-    "profileRisk" INTEGER NOT NULL,
-    "performanceCurrent" DOUBLE PRECISION NOT NULL,
-    "coin" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "fecha_creacion" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "InvestmentPortfolio_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Investment" (
+    "id" TEXT NOT NULL,
+    "amountInvested" INTEGER NOT NULL,
+    "performance" TEXT NOT NULL,
+    "dateInvestment" TIMESTAMP(3) NOT NULL,
+    "portfolioId" TEXT NOT NULL,
+    "financialInstrumentId" TEXT,
+    "stockSymbol" TEXT,
+
+    CONSTRAINT "Investment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -166,6 +178,13 @@ CREATE TABLE "Profile" (
     "financialGoal" TEXT,
     "mainGoal" TEXT,
     "monthlyInvestment" TEXT,
+    "financialInstrument" TEXT,
+    "investmentMethod" TEXT,
+    "investmentCategories" TEXT,
+    "mainIncomeSource" TEXT,
+    "financialNewsSource" TEXT,
+    "years" TEXT,
+    "investingDuration" TEXT,
     "savingsOrInvestmentReason" TEXT,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
@@ -189,18 +208,6 @@ CREATE TABLE "Stock" (
     "earningsId" INTEGER NOT NULL,
 
     CONSTRAINT "Stock_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Investment" (
-    "id" TEXT NOT NULL,
-    "amountInvested" INTEGER NOT NULL,
-    "performance" TEXT NOT NULL,
-    "dateInvestment" TIMESTAMP(3) NOT NULL,
-    "portfolioId" TEXT NOT NULL,
-    "stockSymbol" TEXT,
-
-    CONSTRAINT "Investment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -279,10 +286,22 @@ CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 CREATE UNIQUE INDEX "Stock_symbol_key" ON "Stock"("symbol");
 
 -- AddForeignKey
-ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "InvestmentPortfolio" ADD CONSTRAINT "InvestmentPortfolio_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_stockSymbol_fkey" FOREIGN KEY ("stockSymbol") REFERENCES "Stock"("symbol") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Investment" ADD CONSTRAINT "Investment_financialInstrumentId_fkey" FOREIGN KEY ("financialInstrumentId") REFERENCES "FinancialInstrument"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_newsId_fkey" FOREIGN KEY ("newsId") REFERENCES "News"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -294,10 +313,10 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -316,9 +335,3 @@ ALTER TABLE "Stock" ADD CONSTRAINT "Stock_volumeId_fkey" FOREIGN KEY ("volumeId"
 
 -- AddForeignKey
 ALTER TABLE "Stock" ADD CONSTRAINT "Stock_week52Id_fkey" FOREIGN KEY ("week52Id") REFERENCES "Week52"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Investment" ADD CONSTRAINT "Investment_stockSymbol_fkey" FOREIGN KEY ("stockSymbol") REFERENCES "Stock"("symbol") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Investment" ADD CONSTRAINT "Investment_portfolioId_fkey" FOREIGN KEY ("portfolioId") REFERENCES "InvestmentPortfolio"("id") ON DELETE CASCADE ON UPDATE CASCADE;

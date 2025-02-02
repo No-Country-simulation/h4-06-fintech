@@ -25,7 +25,7 @@ export class InvestmentPortfolioService {
     try {
       return await this.prismaService.investmentPortfolio.findMany({
         include: {
-          investment: true,
+          investments: true,
         },
       });
     } catch (error) {
@@ -42,7 +42,7 @@ export class InvestmentPortfolioService {
         await this.prismaService.investmentPortfolio.findUnique({
           where: { id },
           include: {
-            investment: true,
+            investments: true,
           },
         });
       return investmentPortfolio;

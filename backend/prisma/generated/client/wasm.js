@@ -155,10 +155,18 @@ exports.Prisma.FinancialRadiographyScalarFieldEnum = {
 
 exports.Prisma.InvestmentPortfolioScalarFieldEnum = {
   id: 'id',
-  profileRisk: 'profileRisk',
-  performanceCurrent: 'performanceCurrent',
-  coin: 'coin',
-  userId: 'userId'
+  userId: 'userId',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InvestmentScalarFieldEnum = {
+  id: 'id',
+  amountInvested: 'amountInvested',
+  dateInvestment: 'dateInvestment',
+  portfolioId: 'portfolioId',
+  financialInstrumentId: 'financialInstrumentId',
+  stockSymbol: 'stockSymbol'
 };
 
 exports.Prisma.FinancialInstrumentScalarFieldEnum = {
@@ -170,15 +178,6 @@ exports.Prisma.FinancialInstrumentScalarFieldEnum = {
   levelRisk: 'levelRisk',
   deadline: 'deadline',
   currency: 'currency'
-};
-
-exports.Prisma.InvestmentScalarFieldEnum = {
-  id: 'id',
-  amountInvested: 'amountInvested',
-  performance: 'performance',
-  dateInvestment: 'dateInvestment',
-  portfolioId: 'portfolioId',
-  instrumentId: 'instrumentId'
 };
 
 exports.Prisma.NewsScalarFieldEnum = {
@@ -248,6 +247,13 @@ exports.Prisma.ProfileScalarFieldEnum = {
   financialGoal: 'financialGoal',
   mainGoal: 'mainGoal',
   monthlyInvestment: 'monthlyInvestment',
+  financialInstrument: 'financialInstrument',
+  investmentMethod: 'investmentMethod',
+  investmentCategories: 'investmentCategories',
+  mainIncomeSource: 'mainIncomeSource',
+  financialNewsSource: 'financialNewsSource',
+  years: 'years',
+  investingDuration: 'investingDuration',
   savingsOrInvestmentReason: 'savingsOrInvestmentReason'
 };
 
@@ -352,8 +358,8 @@ exports.Prisma.ModelName = {
   Target: 'Target',
   FinancialRadiography: 'FinancialRadiography',
   InvestmentPortfolio: 'InvestmentPortfolio',
-  FinancialInstrument: 'FinancialInstrument',
   Investment: 'Investment',
+  FinancialInstrument: 'FinancialInstrument',
   News: 'News',
   Comment: 'Comment',
   wallet: 'wallet',
