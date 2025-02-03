@@ -69,7 +69,6 @@ CREATE TABLE "InvestmentPortfolio" (
 CREATE TABLE "Investment" (
     "id" TEXT NOT NULL,
     "amountInvested" INTEGER NOT NULL,
-    "performance" TEXT NOT NULL,
     "dateInvestment" TIMESTAMP(3) NOT NULL,
     "portfolioId" TEXT NOT NULL,
     "financialInstrumentId" TEXT,
