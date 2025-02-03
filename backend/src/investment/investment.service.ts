@@ -17,7 +17,11 @@ export class InvestmentService {
           dateInvestment: data.dateInvestment instanceof Date ? data.dateInvestment : new Date(data.dateInvestment),
         },
         include: {
-          stock: true,
+          stock: {
+            include: {
+              price: true,
+            }
+          },
 
         }
       });
@@ -51,6 +55,13 @@ export class InvestmentService {
         where: {
           id,
         },
+        include: { 
+          stock: {
+            include: {
+              price: true,
+            }
+          }
+         },
       });
       return {
         message: 'Investment found',
