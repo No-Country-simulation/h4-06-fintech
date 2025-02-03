@@ -8,9 +8,8 @@ export class CreateInvestmentDto {
   amountInvested: number;
 
   @IsOptional()
-  @IsNotEmpty()
   @IsString()
-  financialInstrumentId: string;
+  financialInstrumentId?: string;
 
   @ApiProperty()
   @IsNotEmpty()
