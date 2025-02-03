@@ -1,13 +1,13 @@
-import FirstGraph from "./first-graph";
+// import FirstGraph from "./first-graph";
 import SecondGraph from "./second-graph";
-import ThirdGraph from "./third-graph";
+// import ThirdGraph from "./third-graph";
 
 export default function HistoricalTab() {
   return (
     <div className="flex flex-row gap-4 mt-5">
-      <FirstGraph />
+      {/* <FirstGraph /> */}
       <SecondGraph />
-      <ThirdGraph />
+      {/* <ThirdGraph /> */}
     </div>
   )
 }
