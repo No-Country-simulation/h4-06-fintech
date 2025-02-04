@@ -16,9 +16,9 @@ const socket: Socket = io(BASE_URL, {
 
 
 
-socket.on('connect_error', (error) => {
-  console.error('Socket Connection Error:', error);
-});
+// socket.on('connect_error', (error) => {
+//   console.error('Socket Connection Error:', error);
+// });
 
 
 export const useChat = () => {
