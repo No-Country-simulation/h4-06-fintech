@@ -16,13 +16,13 @@ model User {
   lastName               String?
   password               String
   avatarUrl              String?
-  role                   UserRole?             @default(USER)
   createdAt              DateTime              @default(now())
   updatedAt              DateTime              @updatedAt
   isEmailVerified        Boolean               @default(false)
   comment                Comment[]
-  financialRadiographies FinancialRadiography?
+  financialRadiographies FinancialRadiograp?
   profile                Profile?
+  customization          Customization?
   Support                Support[]
   wallet                 wallet[]
   target                 Target[]
@@ -43,7 +43,7 @@ model Target {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model FinancialRadiography {
+model FinancialRadiograp {
   id              String   @id @default(cuid())
   monthlyIncome   Decimal? @db.Decimal(10, 2)
   monthlyExpenses Decimal? @db.Decimal(10, 2)
@@ -170,6 +170,24 @@ model Profile {
   investingDuration         String?
   savingsOrInvestmentReason String?
   user                      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Customization {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  categories     String
+  strategy       String
+  method         String
+  newsSource     String
+  instrument     String
+  age            Int
+  investingYears Int
+  goal           String
+  monthlyAmount  Int
+  incomeSource   String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Stock {
