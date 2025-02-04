@@ -50,11 +50,10 @@ export function FilterSelect({ options, queryKey, label }: Props) {
       <SelectTrigger className='w-[180px] border-foreground'>
         <SelectValue placeholder={label} />
       </SelectTrigger>
-      <SelectContent className='gap-0 divide-foreground bg-[#E9EDF6] p-0'>
-        <SelectGroup className='m-0 p-0'>
+      <SelectContent>
+        <SelectGroup>
           {options.map((option) => (
             <SelectItem
-              className='focus:bg-primary/20'
               key={option.value}
               value={option.value}
             >

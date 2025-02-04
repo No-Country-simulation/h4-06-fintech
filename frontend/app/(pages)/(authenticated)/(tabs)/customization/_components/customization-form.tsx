@@ -60,14 +60,14 @@ export function CustomizationForm() {
           >
             <p className='text-lg font-medium'>{question.question}</p>
             <Select name={`question_${question.id}`}>
-              <SelectTrigger className='w-full max-w-[415px] border-none border-foreground bg-secondary'>
+              <SelectTrigger className='w-full max-w-[415px] '>
                 <SelectValue placeholder='Selecciona una opción' />
               </SelectTrigger>
-              <SelectContent className='gap-0 divide-foreground bg-[#E9EDF6] p-0'>
-                <SelectGroup className='m-0 p-0'>
+              <SelectContent>
+                <SelectGroup>
                   {question.options.map((option) => (
                     <SelectItem
-                      className='bg-secondary/10 focus:bg-secondary/70'
+                      className=''
                       key={option}
                       value={option}
                     >
