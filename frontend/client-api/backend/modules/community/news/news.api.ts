@@ -10,10 +10,12 @@ const newsApi: NewsApi = {
 
     return new Promise((resolve) => setTimeout(() => resolve(newsData), 2000))
   },
-  async getOne() {
+  async getOne({ id }) {
     // const url = BASE_URL
 
-    return new Promise((resolve) => setTimeout(() => resolve(newsData[0]), 2000))
+    const news = newsData.find(n => n.id === Number(id))!
+
+    return new Promise((resolve) => setTimeout(() => resolve(news), 2000))
   },
 }
 

@@ -11,7 +11,7 @@ export default async function ComunidadPage() {
       <section className="flex flex-col divide-y divide-foreground">
         {
           news.map(n => (
-            <Link href={`/community/news/1`} key={n.title} className="p-2 hover:bg-primary/10 transition-colors flex flex-col gap-1">
+            <Link href={`/community/news/${n.id}`} key={n.title} className="p-2 hover:bg-primary/10 transition-colors flex flex-col gap-1">
               <p className="font-medium truncate max-w-[600px]">
                 {n.title}
               </p>
