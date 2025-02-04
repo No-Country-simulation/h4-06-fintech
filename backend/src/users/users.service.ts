@@ -27,16 +27,15 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
-    if (user) {
-      throw new BadRequestException(
-        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
     return user;
   }
 
   async create(createUserDto: CreateUserDto) {
-    await this.findByEmail(createUserDto.email);
+    createUserDto.email.toLowerCase();
+    const user = await this.findByEmail(createUserDto.email);
+    if (user) {
+      throw new HttpException('User already exists', HttpStatus.CONFLICT);
+    }
     try {
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
@@ -98,6 +97,8 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
         },
       });
       return findAll;
@@ -119,6 +120,7 @@ export class UsersService {
           comment: true,
           financialRadiographies: true,
           target: true,
+          customization: true,
         },
       });
       if (!findOne) {
@@ -173,6 +175,8 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
         },
       });
 
@@ -208,14 +212,17 @@ export class UsersService {
   }
 
   async confirmEmail(token: string) {
-    const payload: JwtPayload = this.jwtService.verify(token, {
-      secret: process.env.JWT_SECRET,
-    });
+    let payload: JwtPayload;
+    try {
+      payload = this.jwtService.verify(token, {
+        secret: process.env.JWT_SECRET,
+      });
+    } catch (error) {
+      throw new BadRequestException('Token inválido o expirado.');
+    }
 
     const user = await this.prismaService.user.findUnique({
-      where: {
-        id: payload.id,
-      },
+      where: { id: payload.id },
     });
 
     if (!user) {
@@ -223,19 +230,15 @@ export class UsersService {
     }
 
     if (user.isEmailVerified) {
-      throw new BadRequestException('Esta cuenta ya esta verificada');
+      throw new BadRequestException('Esta cuenta ya está verificada.');
     }
 
     await this.prismaService.user.update({
-      where: {
-        id: user.id,
-      },
-      data: {
-        isEmailVerified: true,
-      },
+      where: { id: user.id },
+      data: { isEmailVerified: true },
     });
 
-    return user;
+    return { message: 'Cuenta verificada con éxito', user };
   }
 
   generateAccessToken(user: User): string {
