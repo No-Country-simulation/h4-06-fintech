@@ -20,7 +20,7 @@ model User {
   updatedAt              DateTime              @updatedAt
   isEmailVerified        Boolean               @default(false)
   comment                Comment[]
-  financialRadiographies FinancialRadiography?
+  financialRadiographies FinancialRadiograp?
   profile                Profile?
   customization          Customization?
   Support                Support[]
@@ -43,7 +43,7 @@ model Target {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model FinancialRadiography {
+model FinancialRadiograp {
   id              String   @id @default(cuid())
   monthlyIncome   Decimal? @db.Decimal(10, 2)
   monthlyExpenses Decimal? @db.Decimal(10, 2)

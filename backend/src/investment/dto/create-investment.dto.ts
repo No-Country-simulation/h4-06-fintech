@@ -8,8 +8,14 @@ export class CreateInvestmentDto {
   amountInvested: number;
 
   @IsOptional()
+<<<<<<< HEAD
   @IsString()
   financialInstrumentId?: string;
+=======
+  @IsNotEmpty()
+  @IsString()
+  financialInstrumentId: string;
+>>>>>>> Martin/back
 
   @ApiProperty()
   @IsNotEmpty()
@@ -25,4 +31,6 @@ export class CreateInvestmentDto {
   @IsOptional({ message: 'Stock symbol is optional' })
   @IsString()
   stockSymbol: string;
+
+  
 }

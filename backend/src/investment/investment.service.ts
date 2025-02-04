@@ -77,6 +77,7 @@ export class InvestmentService {
   async findOne(id: string) {
     try {
       const findOne = await this.prismaService.investment.findUnique({
+<<<<<<< HEAD
         where: { id },
         select: {
           amountInvested: true,
@@ -101,6 +102,18 @@ export class InvestmentService {
             }
           }
         }
+=======
+        where: {
+          id,
+        },
+        include: { 
+          stock: {
+            include: {
+              price: true,
+            }
+          }
+         },
+>>>>>>> Martin/back
       });
       return {
         message: 'Investment found',

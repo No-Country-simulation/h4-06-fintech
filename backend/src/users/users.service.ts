@@ -12,6 +12,7 @@ import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Investment } from '../investment-portfolio/dto/create-investment-portfolio.dto';
 
 export const roundOfHashing = 10;
 
@@ -42,7 +43,7 @@ export class UsersService {
         roundOfHashing,
       );
 
-      const { email, profile, financialRadiographies, ...rest } = createUserDto;
+      const { email, profile, financialRadiograp, investmentPortfolio, ...rest } = createUserDto;
       rest.password = hashedPassword;
 
       const user = await this.prismaService.user.create({
@@ -52,10 +53,13 @@ export class UsersService {
           profile: {
             create: profile,
           },
-          financialRadiographies: {
-            create: financialRadiographies,
+          financialRadiography: {
+            create: financialRadiograp,
           },
-        },
+          investmentPortfolio: {
+            create: investmentPortfolio,
+          }
+        }
       });
 
       await this.prismaService.wallet.create({
@@ -71,7 +75,8 @@ export class UsersService {
         include: {
           wallet: true,
           profile: true,
-          financialRadiographies: true,
+          financialRadiography: true,
+          investmentPortfolio: true,
         },
       });
 
@@ -82,6 +87,7 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
+      console.log(error)
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -118,7 +124,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
-          financialRadiographies: true,
+          financialRadiography: true,
           target: true,
           customization: true,
         },
@@ -143,7 +149,7 @@ export class UsersService {
         );
       }
 
-      const { profile, financialRadiographies, ...rest } = updateUserDto;
+      const { profile, financialRadiograp, investmentPortfolio, ...rest } = updateUserDto;
 
       const updateData: any = {
         ...rest,
@@ -158,11 +164,20 @@ export class UsersService {
         };
       }
 
-      if (financialRadiographies) {
+      if (investmentPortfolio) {
+        updateData.investmentPortfolio = {
+          upsert: {
+            create: investmentPortfolio,
+            update: investmentPortfolio,
+          },
+        };
+      }
+
+      if (financialRadiograp) {
         updateData.financialRadiographies = {
           upsert: {
-            create: financialRadiographies,
-            update: financialRadiographies,
+            create: financialRadiograp,
+            update: financialRadiograp,
           },
         };
       }
