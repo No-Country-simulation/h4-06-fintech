@@ -97,6 +97,8 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
         },
       });
       return findAll;
@@ -118,6 +120,7 @@ export class UsersService {
           comment: true,
           financialRadiographies: true,
           target: true,
+          customization: true,
         },
       });
       if (!findOne) {
@@ -172,6 +175,8 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
         },
       });
 
