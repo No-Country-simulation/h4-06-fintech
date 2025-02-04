@@ -57,8 +57,14 @@ export class UsersService {
             create: financialRadiograp,
           },
           investmentPortfolio: {
-            create: investmentPortfolio,
-          }
+            create: Array.isArray(investmentPortfolio) 
+              ? investmentPortfolio.map((portfolio) => ({
+                  ...portfolio, 
+                  userId: user.id,        
+                }))
+              : [],            
+          },
+          
         }
       });
 
