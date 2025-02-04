@@ -6,6 +6,7 @@ import { financialTargetApi } from './modules/financial-target/financial-target.
 import { stockApi } from './modules/investment/stock/stock.api';
 import { walletApi } from './modules/wallet/wallet.api';
 import { newsApi } from './modules/community/news/news.api';
+import { commentApi } from './modules/community/comment/comment.api';
 
 export const backend = {
   isActive,
@@ -16,7 +17,8 @@ export const backend = {
     stockApi,
   },
   community: {
-    newsApi
+    newsApi,
+    commentApi
   }
 };
 
