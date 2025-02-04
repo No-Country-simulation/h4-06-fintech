@@ -23,9 +23,9 @@ export default async function FavoritePage() {
               symbol={ticker.symbol}
             >
               <Ticker.Content>
-                <Button className='rounded-md bg-secondary/50 p-2 shadow-none transition-colors hover:bg-secondary'>
+                <Button className='rounded-lg bg-[#004AAD] w-fit px-6 py-2 shadow-none transition-colors hover:bg-secondary'>
                   <Image
-                    src='/svg/heart-fill.svg'
+                    src='/svg/heart-2.svg'
                     alt='favorite icon'
                     width={24}
                     height={24}
@@ -35,7 +35,7 @@ export default async function FavoritePage() {
                   className='rounded-md bg-secondary/50 px-10 py-2 text-center font-medium transition-colors hover:bg-secondary'
                   href={`/investment/my-investments/${ticker.symbol}`}
                 >
-                  Ver
+                  Ver más
                 </Link>
               </Ticker.Content>
             </Ticker.Root>

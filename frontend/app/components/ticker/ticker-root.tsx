@@ -12,7 +12,7 @@ interface RootProps extends PropsWithChildren {
 export function Root({ image, name, isUp, symbol, children }: RootProps) {
   return (
     <section data-isup={isUp} className='group flex items-center justify-between rounded-md  p-2 transition-colors hover:bg-primary/10 shadow-md'>
-      <section className='flex items-center gap-3 w-full max-w-[600px]'>
+      <section className='flex items-center gap-3 max-w-[600px]'>
         <TickerImage src={image} />
         <section className='flex flex-col'>
           <p className='text-lg font-bold'>{symbol}</p>
