@@ -23,6 +23,7 @@ model User {
   comment                Comment[]
   financialRadiographies FinancialRadiography?
   profile                Profile?
+  customization          Customization?
   Support                Support[]
   wallet                 wallet[]
   target                 Target[]
@@ -157,6 +158,24 @@ model Profile {
   investingDuration         String?
   savingsOrInvestmentReason String?
   user                      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Customization {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  categories     String
+  strategy       String
+  method         String
+  newsSource     String
+  instrument     String
+  age            Int
+  investingYears Int
+  goal           String
+  monthlyAmount  Int
+  incomeSource   String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Stock {

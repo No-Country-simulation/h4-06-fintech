@@ -166,9 +166,36 @@ CREATE TABLE "Profile" (
     "financialGoal" TEXT,
     "mainGoal" TEXT,
     "monthlyInvestment" TEXT,
+    "financialInstrument" TEXT,
+    "investmentMethod" TEXT,
+    "investmentCategories" TEXT,
+    "mainIncomeSource" TEXT,
+    "financialNewsSource" TEXT,
+    "years" TEXT,
+    "investingDuration" TEXT,
     "savingsOrInvestmentReason" TEXT,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Customization" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "categories" TEXT NOT NULL,
+    "strategy" TEXT NOT NULL,
+    "method" TEXT NOT NULL,
+    "newsSource" TEXT NOT NULL,
+    "instrument" TEXT NOT NULL,
+    "age" INTEGER NOT NULL,
+    "investingYears" INTEGER NOT NULL,
+    "goal" TEXT NOT NULL,
+    "monthlyAmount" INTEGER NOT NULL,
+    "incomeSource" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Customization_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -276,10 +303,13 @@ CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Customization_userId_key" ON "Customization"("userId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Stock_symbol_key" ON "Stock"("symbol");
 
 -- AddForeignKey
-ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Target" ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "FinancialRadiography" ADD CONSTRAINT "FinancialRadiography_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -294,13 +324,16 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "wallet" ADD CONSTRAINT "wallet_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WalletTransaction" ADD CONSTRAINT "WalletTransaction_walletId_fkey" FOREIGN KEY ("walletId") REFERENCES "wallet"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Customization" ADD CONSTRAINT "Customization_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Stock" ADD CONSTRAINT "Stock_dividendId_fkey" FOREIGN KEY ("dividendId") REFERENCES "Dividend"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
