@@ -18,7 +18,7 @@ export class InvestmentPortfolio extends OmitType(
   CreateInvestmentPortfolioDto,
   ['userId'],
 ) {}
-export class FinancialRadiographies extends OmitType(
+export class FinancialRadiograp extends OmitType(
   CreateFinancialRadiographyDto,
   ['userId'],
 ) {}
@@ -52,10 +52,10 @@ export class CreateUserDto {
   })
   password: string;
 
-  @ApiProperty({ type: FinancialRadiographies })
+  @ApiProperty({ type: FinancialRadiograp })
   @ValidateNested({ each: true })
-  @Type(() => FinancialRadiographies)
-  financialRadiographies?: FinancialRadiographies;
+  @Type(() => FinancialRadiograp)
+  financialRadiograp?: FinancialRadiograp;
 
   @ApiProperty({ type: InvestmentPortfolio })
   @ValidateNested({ each: true })

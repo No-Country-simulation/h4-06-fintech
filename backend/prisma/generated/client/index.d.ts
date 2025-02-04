@@ -24,10 +24,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Target = $Result.DefaultSelection<Prisma.$TargetPayload>
 /**
- * Model FinancialRadiography
+ * Model FinancialRadiograp
  * 
  */
-export type FinancialRadiography = $Result.DefaultSelection<Prisma.$FinancialRadiographyPayload>
+export type FinancialRadiograp = $Result.DefaultSelection<Prisma.$FinancialRadiograpPayload>
 /**
  * Model InvestmentPortfolio
  * 
@@ -311,14 +311,14 @@ export class PrismaClient<
   get target(): Prisma.TargetDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.financialRadiography`: Exposes CRUD operations for the **FinancialRadiography** model.
+   * `prisma.financialRadiograp`: Exposes CRUD operations for the **FinancialRadiograp** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more FinancialRadiographies
-    * const financialRadiographies = await prisma.financialRadiography.findMany()
+    * // Fetch zero or more FinancialRadiograps
+    * const financialRadiograps = await prisma.financialRadiograp.findMany()
     * ```
     */
-  get financialRadiography(): Prisma.FinancialRadiographyDelegate<ExtArgs, ClientOptions>;
+  get financialRadiograp(): Prisma.FinancialRadiograpDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.investmentPortfolio`: Exposes CRUD operations for the **InvestmentPortfolio** model.
@@ -921,7 +921,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Target: 'Target',
-    FinancialRadiography: 'FinancialRadiography',
+    FinancialRadiograp: 'FinancialRadiograp',
     InvestmentPortfolio: 'InvestmentPortfolio',
     Investment: 'Investment',
     FinancialInstrument: 'FinancialInstrument',
@@ -953,7 +953,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "target" | "financialRadiography" | "investmentPortfolio" | "investment" | "financialInstrument" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile" | "stock" | "price" | "volume" | "week52" | "dividend" | "earnings"
+      modelProps: "user" | "target" | "financialRadiograp" | "investmentPortfolio" | "investment" | "financialInstrument" | "news" | "comment" | "wallet" | "walletTransaction" | "administrador" | "support" | "profile" | "stock" | "price" | "volume" | "week52" | "dividend" | "earnings"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1105,77 +1105,77 @@ export namespace Prisma {
           }
         }
       }
-      FinancialRadiography: {
-        payload: Prisma.$FinancialRadiographyPayload<ExtArgs>
-        fields: Prisma.FinancialRadiographyFieldRefs
+      FinancialRadiograp: {
+        payload: Prisma.$FinancialRadiograpPayload<ExtArgs>
+        fields: Prisma.FinancialRadiograpFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.FinancialRadiographyFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload> | null
+            args: Prisma.FinancialRadiograpFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.FinancialRadiographyFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           findFirst: {
-            args: Prisma.FinancialRadiographyFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload> | null
+            args: Prisma.FinancialRadiograpFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.FinancialRadiographyFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           findMany: {
-            args: Prisma.FinancialRadiographyFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>[]
+            args: Prisma.FinancialRadiograpFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>[]
           }
           create: {
-            args: Prisma.FinancialRadiographyCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           createMany: {
-            args: Prisma.FinancialRadiographyCreateManyArgs<ExtArgs>
+            args: Prisma.FinancialRadiograpCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.FinancialRadiographyCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>[]
+            args: Prisma.FinancialRadiograpCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>[]
           }
           delete: {
-            args: Prisma.FinancialRadiographyDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           update: {
-            args: Prisma.FinancialRadiographyUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           deleteMany: {
-            args: Prisma.FinancialRadiographyDeleteManyArgs<ExtArgs>
+            args: Prisma.FinancialRadiograpDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.FinancialRadiographyUpdateManyArgs<ExtArgs>
+            args: Prisma.FinancialRadiograpUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.FinancialRadiographyUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>[]
+            args: Prisma.FinancialRadiograpUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>[]
           }
           upsert: {
-            args: Prisma.FinancialRadiographyUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FinancialRadiographyPayload>
+            args: Prisma.FinancialRadiograpUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FinancialRadiograpPayload>
           }
           aggregate: {
-            args: Prisma.FinancialRadiographyAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateFinancialRadiography>
+            args: Prisma.FinancialRadiograpAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFinancialRadiograp>
           }
           groupBy: {
-            args: Prisma.FinancialRadiographyGroupByArgs<ExtArgs>
-            result: $Utils.Optional<FinancialRadiographyGroupByOutputType>[]
+            args: Prisma.FinancialRadiograpGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FinancialRadiograpGroupByOutputType>[]
           }
           count: {
-            args: Prisma.FinancialRadiographyCountArgs<ExtArgs>
-            result: $Utils.Optional<FinancialRadiographyCountAggregateOutputType> | number
+            args: Prisma.FinancialRadiograpCountArgs<ExtArgs>
+            result: $Utils.Optional<FinancialRadiograpCountAggregateOutputType> | number
           }
         }
       }
@@ -2449,7 +2449,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     target?: TargetOmit
-    financialRadiography?: FinancialRadiographyOmit
+    financialRadiograp?: FinancialRadiograpOmit
     investmentPortfolio?: InvestmentPortfolioOmit
     investment?: InvestmentOmit
     financialInstrument?: FinancialInstrumentOmit
@@ -2953,7 +2953,6 @@ export namespace Prisma {
     lastName: string | null
     password: string | null
     avatarUrl: string | null
-    role: $Enums.UserRole | null
     createdAt: Date | null
     updatedAt: Date | null
     isEmailVerified: boolean | null
@@ -2966,7 +2965,6 @@ export namespace Prisma {
     lastName: string | null
     password: string | null
     avatarUrl: string | null
-    role: $Enums.UserRole | null
     createdAt: Date | null
     updatedAt: Date | null
     isEmailVerified: boolean | null
@@ -2979,7 +2977,6 @@ export namespace Prisma {
     lastName: number
     password: number
     avatarUrl: number
-    role: number
     createdAt: number
     updatedAt: number
     isEmailVerified: number
@@ -2994,7 +2991,6 @@ export namespace Prisma {
     lastName?: true
     password?: true
     avatarUrl?: true
-    role?: true
     createdAt?: true
     updatedAt?: true
     isEmailVerified?: true
@@ -3007,7 +3003,6 @@ export namespace Prisma {
     lastName?: true
     password?: true
     avatarUrl?: true
-    role?: true
     createdAt?: true
     updatedAt?: true
     isEmailVerified?: true
@@ -3020,7 +3015,6 @@ export namespace Prisma {
     lastName?: true
     password?: true
     avatarUrl?: true
-    role?: true
     createdAt?: true
     updatedAt?: true
     isEmailVerified?: true
@@ -3106,7 +3100,6 @@ export namespace Prisma {
     lastName: string | null
     password: string
     avatarUrl: string | null
-    role: $Enums.UserRole | null
     createdAt: Date
     updatedAt: Date
     isEmailVerified: boolean
@@ -3136,17 +3129,16 @@ export namespace Prisma {
     lastName?: boolean
     password?: boolean
     avatarUrl?: boolean
-    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isEmailVerified?: boolean
     comment?: boolean | User$commentArgs<ExtArgs>
-    financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
-    profile?: boolean | User$profileArgs<ExtArgs>
     Support?: boolean | User$SupportArgs<ExtArgs>
     wallet?: boolean | User$walletArgs<ExtArgs>
     target?: boolean | User$targetArgs<ExtArgs>
     investmentPortfolio?: boolean | User$investmentPortfolioArgs<ExtArgs>
+    financialRadiography?: boolean | User$financialRadiographyArgs<ExtArgs>
+    profile?: boolean | User$profileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3157,7 +3149,6 @@ export namespace Prisma {
     lastName?: boolean
     password?: boolean
     avatarUrl?: boolean
-    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isEmailVerified?: boolean
@@ -3170,7 +3161,6 @@ export namespace Prisma {
     lastName?: boolean
     password?: boolean
     avatarUrl?: boolean
-    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isEmailVerified?: boolean
@@ -3183,21 +3173,20 @@ export namespace Prisma {
     lastName?: boolean
     password?: boolean
     avatarUrl?: boolean
-    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isEmailVerified?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "password" | "avatarUrl" | "role" | "createdAt" | "updatedAt" | "isEmailVerified", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "password" | "avatarUrl" | "createdAt" | "updatedAt" | "isEmailVerified", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     comment?: boolean | User$commentArgs<ExtArgs>
-    financialRadiographies?: boolean | User$financialRadiographiesArgs<ExtArgs>
-    profile?: boolean | User$profileArgs<ExtArgs>
     Support?: boolean | User$SupportArgs<ExtArgs>
     wallet?: boolean | User$walletArgs<ExtArgs>
     target?: boolean | User$targetArgs<ExtArgs>
     investmentPortfolio?: boolean | User$investmentPortfolioArgs<ExtArgs>
+    financialRadiography?: boolean | User$financialRadiographyArgs<ExtArgs>
+    profile?: boolean | User$profileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3207,12 +3196,12 @@ export namespace Prisma {
     name: "User"
     objects: {
       comment: Prisma.$CommentPayload<ExtArgs>[]
-      financialRadiographies: Prisma.$FinancialRadiographyPayload<ExtArgs> | null
-      profile: Prisma.$ProfilePayload<ExtArgs> | null
       Support: Prisma.$SupportPayload<ExtArgs>[]
       wallet: Prisma.$walletPayload<ExtArgs>[]
       target: Prisma.$TargetPayload<ExtArgs>[]
       investmentPortfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs>[]
+      financialRadiography: Prisma.$FinancialRadiograpPayload<ExtArgs> | null
+      profile: Prisma.$ProfilePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3221,7 +3210,6 @@ export namespace Prisma {
       lastName: string | null
       password: string
       avatarUrl: string | null
-      role: $Enums.UserRole | null
       createdAt: Date
       updatedAt: Date
       isEmailVerified: boolean
@@ -3620,12 +3608,12 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     comment<T extends User$commentArgs<ExtArgs> = {}>(args?: Subset<T, User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    financialRadiographies<T extends User$financialRadiographiesArgs<ExtArgs> = {}>(args?: Subset<T, User$financialRadiographiesArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
-    profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     Support<T extends User$SupportArgs<ExtArgs> = {}>(args?: Subset<T, User$SupportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     wallet<T extends User$walletArgs<ExtArgs> = {}>(args?: Subset<T, User$walletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$walletPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     target<T extends User$targetArgs<ExtArgs> = {}>(args?: Subset<T, User$targetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TargetPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     investmentPortfolio<T extends User$investmentPortfolioArgs<ExtArgs> = {}>(args?: Subset<T, User$investmentPortfolioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    financialRadiography<T extends User$financialRadiographyArgs<ExtArgs> = {}>(args?: Subset<T, User$financialRadiographyArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3661,7 +3649,6 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly avatarUrl: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'UserRole'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly isEmailVerified: FieldRef<"User", 'Boolean'>
@@ -4065,44 +4052,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.financialRadiographies
-   */
-  export type User$financialRadiographiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FinancialRadiography
-     */
-    select?: FinancialRadiographySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FinancialRadiography
-     */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
-    where?: FinancialRadiographyWhereInput
-  }
-
-  /**
-   * User.profile
-   */
-  export type User$profileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    where?: ProfileWhereInput
-  }
-
-  /**
    * User.Support
    */
   export type User$SupportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4196,6 +4145,44 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvestmentPortfolioScalarFieldEnum | InvestmentPortfolioScalarFieldEnum[]
+  }
+
+  /**
+   * User.financialRadiography
+   */
+  export type User$financialRadiographyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FinancialRadiograp
+     */
+    select?: FinancialRadiograpSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FinancialRadiograp
+     */
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FinancialRadiograpInclude<ExtArgs> | null
+    where?: FinancialRadiograpWhereInput
+  }
+
+  /**
+   * User.profile
+   */
+  export type User$profileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    where?: ProfileWhereInput
   }
 
   /**
@@ -5367,18 +5354,18 @@ export namespace Prisma {
 
 
   /**
-   * Model FinancialRadiography
+   * Model FinancialRadiograp
    */
 
-  export type AggregateFinancialRadiography = {
-    _count: FinancialRadiographyCountAggregateOutputType | null
-    _avg: FinancialRadiographyAvgAggregateOutputType | null
-    _sum: FinancialRadiographySumAggregateOutputType | null
-    _min: FinancialRadiographyMinAggregateOutputType | null
-    _max: FinancialRadiographyMaxAggregateOutputType | null
+  export type AggregateFinancialRadiograp = {
+    _count: FinancialRadiograpCountAggregateOutputType | null
+    _avg: FinancialRadiograpAvgAggregateOutputType | null
+    _sum: FinancialRadiograpSumAggregateOutputType | null
+    _min: FinancialRadiograpMinAggregateOutputType | null
+    _max: FinancialRadiograpMaxAggregateOutputType | null
   }
 
-  export type FinancialRadiographyAvgAggregateOutputType = {
+  export type FinancialRadiograpAvgAggregateOutputType = {
     monthlyIncome: Decimal | null
     monthlyExpenses: Decimal | null
     savingCapacity: Decimal | null
@@ -5386,7 +5373,7 @@ export namespace Prisma {
     savings: Decimal | null
   }
 
-  export type FinancialRadiographySumAggregateOutputType = {
+  export type FinancialRadiograpSumAggregateOutputType = {
     monthlyIncome: Decimal | null
     monthlyExpenses: Decimal | null
     savingCapacity: Decimal | null
@@ -5394,7 +5381,7 @@ export namespace Prisma {
     savings: Decimal | null
   }
 
-  export type FinancialRadiographyMinAggregateOutputType = {
+  export type FinancialRadiograpMinAggregateOutputType = {
     id: string | null
     monthlyIncome: Decimal | null
     monthlyExpenses: Decimal | null
@@ -5404,7 +5391,7 @@ export namespace Prisma {
     userId: string | null
   }
 
-  export type FinancialRadiographyMaxAggregateOutputType = {
+  export type FinancialRadiograpMaxAggregateOutputType = {
     id: string | null
     monthlyIncome: Decimal | null
     monthlyExpenses: Decimal | null
@@ -5414,7 +5401,7 @@ export namespace Prisma {
     userId: string | null
   }
 
-  export type FinancialRadiographyCountAggregateOutputType = {
+  export type FinancialRadiograpCountAggregateOutputType = {
     id: number
     monthlyIncome: number
     monthlyExpenses: number
@@ -5426,7 +5413,7 @@ export namespace Prisma {
   }
 
 
-  export type FinancialRadiographyAvgAggregateInputType = {
+  export type FinancialRadiograpAvgAggregateInputType = {
     monthlyIncome?: true
     monthlyExpenses?: true
     savingCapacity?: true
@@ -5434,7 +5421,7 @@ export namespace Prisma {
     savings?: true
   }
 
-  export type FinancialRadiographySumAggregateInputType = {
+  export type FinancialRadiograpSumAggregateInputType = {
     monthlyIncome?: true
     monthlyExpenses?: true
     savingCapacity?: true
@@ -5442,7 +5429,7 @@ export namespace Prisma {
     savings?: true
   }
 
-  export type FinancialRadiographyMinAggregateInputType = {
+  export type FinancialRadiograpMinAggregateInputType = {
     id?: true
     monthlyIncome?: true
     monthlyExpenses?: true
@@ -5452,7 +5439,7 @@ export namespace Prisma {
     userId?: true
   }
 
-  export type FinancialRadiographyMaxAggregateInputType = {
+  export type FinancialRadiograpMaxAggregateInputType = {
     id?: true
     monthlyIncome?: true
     monthlyExpenses?: true
@@ -5462,7 +5449,7 @@ export namespace Prisma {
     userId?: true
   }
 
-  export type FinancialRadiographyCountAggregateInputType = {
+  export type FinancialRadiograpCountAggregateInputType = {
     id?: true
     monthlyIncome?: true
     monthlyExpenses?: true
@@ -5473,93 +5460,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type FinancialRadiographyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FinancialRadiography to aggregate.
+     * Filter which FinancialRadiograp to aggregate.
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FinancialRadiographies to fetch.
+     * Determine the order of FinancialRadiograps to fetch.
      */
-    orderBy?: FinancialRadiographyOrderByWithRelationInput | FinancialRadiographyOrderByWithRelationInput[]
+    orderBy?: FinancialRadiograpOrderByWithRelationInput | FinancialRadiograpOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: FinancialRadiographyWhereUniqueInput
+    cursor?: FinancialRadiograpWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FinancialRadiographies from the position of the cursor.
+     * Take `±n` FinancialRadiograps from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FinancialRadiographies.
+     * Skip the first `n` FinancialRadiograps.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned FinancialRadiographies
+     * Count returned FinancialRadiograps
     **/
-    _count?: true | FinancialRadiographyCountAggregateInputType
+    _count?: true | FinancialRadiograpCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: FinancialRadiographyAvgAggregateInputType
+    _avg?: FinancialRadiograpAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: FinancialRadiographySumAggregateInputType
+    _sum?: FinancialRadiograpSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: FinancialRadiographyMinAggregateInputType
+    _min?: FinancialRadiograpMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: FinancialRadiographyMaxAggregateInputType
+    _max?: FinancialRadiograpMaxAggregateInputType
   }
 
-  export type GetFinancialRadiographyAggregateType<T extends FinancialRadiographyAggregateArgs> = {
-        [P in keyof T & keyof AggregateFinancialRadiography]: P extends '_count' | 'count'
+  export type GetFinancialRadiograpAggregateType<T extends FinancialRadiograpAggregateArgs> = {
+        [P in keyof T & keyof AggregateFinancialRadiograp]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateFinancialRadiography[P]>
-      : GetScalarType<T[P], AggregateFinancialRadiography[P]>
+        : GetScalarType<T[P], AggregateFinancialRadiograp[P]>
+      : GetScalarType<T[P], AggregateFinancialRadiograp[P]>
   }
 
 
 
 
-  export type FinancialRadiographyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FinancialRadiographyWhereInput
-    orderBy?: FinancialRadiographyOrderByWithAggregationInput | FinancialRadiographyOrderByWithAggregationInput[]
-    by: FinancialRadiographyScalarFieldEnum[] | FinancialRadiographyScalarFieldEnum
-    having?: FinancialRadiographyScalarWhereWithAggregatesInput
+  export type FinancialRadiograpGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FinancialRadiograpWhereInput
+    orderBy?: FinancialRadiograpOrderByWithAggregationInput | FinancialRadiograpOrderByWithAggregationInput[]
+    by: FinancialRadiograpScalarFieldEnum[] | FinancialRadiograpScalarFieldEnum
+    having?: FinancialRadiograpScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: FinancialRadiographyCountAggregateInputType | true
-    _avg?: FinancialRadiographyAvgAggregateInputType
-    _sum?: FinancialRadiographySumAggregateInputType
-    _min?: FinancialRadiographyMinAggregateInputType
-    _max?: FinancialRadiographyMaxAggregateInputType
+    _count?: FinancialRadiograpCountAggregateInputType | true
+    _avg?: FinancialRadiograpAvgAggregateInputType
+    _sum?: FinancialRadiograpSumAggregateInputType
+    _min?: FinancialRadiograpMinAggregateInputType
+    _max?: FinancialRadiograpMaxAggregateInputType
   }
 
-  export type FinancialRadiographyGroupByOutputType = {
+  export type FinancialRadiograpGroupByOutputType = {
     id: string
     monthlyIncome: Decimal | null
     monthlyExpenses: Decimal | null
@@ -5567,28 +5554,28 @@ export namespace Prisma {
     debts: Decimal | null
     savings: Decimal | null
     userId: string | null
-    _count: FinancialRadiographyCountAggregateOutputType | null
-    _avg: FinancialRadiographyAvgAggregateOutputType | null
-    _sum: FinancialRadiographySumAggregateOutputType | null
-    _min: FinancialRadiographyMinAggregateOutputType | null
-    _max: FinancialRadiographyMaxAggregateOutputType | null
+    _count: FinancialRadiograpCountAggregateOutputType | null
+    _avg: FinancialRadiograpAvgAggregateOutputType | null
+    _sum: FinancialRadiograpSumAggregateOutputType | null
+    _min: FinancialRadiograpMinAggregateOutputType | null
+    _max: FinancialRadiograpMaxAggregateOutputType | null
   }
 
-  type GetFinancialRadiographyGroupByPayload<T extends FinancialRadiographyGroupByArgs> = Prisma.PrismaPromise<
+  type GetFinancialRadiograpGroupByPayload<T extends FinancialRadiograpGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<FinancialRadiographyGroupByOutputType, T['by']> &
+      PickEnumerable<FinancialRadiograpGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof FinancialRadiographyGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FinancialRadiograpGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], FinancialRadiographyGroupByOutputType[P]>
-            : GetScalarType<T[P], FinancialRadiographyGroupByOutputType[P]>
+              : GetScalarType<T[P], FinancialRadiograpGroupByOutputType[P]>
+            : GetScalarType<T[P], FinancialRadiograpGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type FinancialRadiographySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FinancialRadiograpSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     monthlyIncome?: boolean
     monthlyExpenses?: boolean
@@ -5596,10 +5583,10 @@ export namespace Prisma {
     debts?: boolean
     savings?: boolean
     userId?: boolean
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
-  }, ExtArgs["result"]["financialRadiography"]>
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
+  }, ExtArgs["result"]["financialRadiograp"]>
 
-  export type FinancialRadiographySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FinancialRadiograpSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     monthlyIncome?: boolean
     monthlyExpenses?: boolean
@@ -5607,10 +5594,10 @@ export namespace Prisma {
     debts?: boolean
     savings?: boolean
     userId?: boolean
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
-  }, ExtArgs["result"]["financialRadiography"]>
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
+  }, ExtArgs["result"]["financialRadiograp"]>
 
-  export type FinancialRadiographySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FinancialRadiograpSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     monthlyIncome?: boolean
     monthlyExpenses?: boolean
@@ -5618,10 +5605,10 @@ export namespace Prisma {
     debts?: boolean
     savings?: boolean
     userId?: boolean
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
-  }, ExtArgs["result"]["financialRadiography"]>
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
+  }, ExtArgs["result"]["financialRadiograp"]>
 
-  export type FinancialRadiographySelectScalar = {
+  export type FinancialRadiograpSelectScalar = {
     id?: boolean
     monthlyIncome?: boolean
     monthlyExpenses?: boolean
@@ -5631,19 +5618,19 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type FinancialRadiographyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "monthlyIncome" | "monthlyExpenses" | "savingCapacity" | "debts" | "savings" | "userId", ExtArgs["result"]["financialRadiography"]>
-  export type FinancialRadiographyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
+  export type FinancialRadiograpOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "monthlyIncome" | "monthlyExpenses" | "savingCapacity" | "debts" | "savings" | "userId", ExtArgs["result"]["financialRadiograp"]>
+  export type FinancialRadiograpInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
   }
-  export type FinancialRadiographyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
+  export type FinancialRadiograpIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
   }
-  export type FinancialRadiographyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | FinancialRadiography$userArgs<ExtArgs>
+  export type FinancialRadiograpIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | FinancialRadiograp$userArgs<ExtArgs>
   }
 
-  export type $FinancialRadiographyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "FinancialRadiography"
+  export type $FinancialRadiograpPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FinancialRadiograp"
     objects: {
       user: Prisma.$UserPayload<ExtArgs> | null
     }
@@ -5655,136 +5642,136 @@ export namespace Prisma {
       debts: Prisma.Decimal | null
       savings: Prisma.Decimal | null
       userId: string | null
-    }, ExtArgs["result"]["financialRadiography"]>
+    }, ExtArgs["result"]["financialRadiograp"]>
     composites: {}
   }
 
-  type FinancialRadiographyGetPayload<S extends boolean | null | undefined | FinancialRadiographyDefaultArgs> = $Result.GetResult<Prisma.$FinancialRadiographyPayload, S>
+  type FinancialRadiograpGetPayload<S extends boolean | null | undefined | FinancialRadiograpDefaultArgs> = $Result.GetResult<Prisma.$FinancialRadiograpPayload, S>
 
-  type FinancialRadiographyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<FinancialRadiographyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: FinancialRadiographyCountAggregateInputType | true
+  type FinancialRadiograpCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FinancialRadiograpFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FinancialRadiograpCountAggregateInputType | true
     }
 
-  export interface FinancialRadiographyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FinancialRadiography'], meta: { name: 'FinancialRadiography' } }
+  export interface FinancialRadiograpDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FinancialRadiograp'], meta: { name: 'FinancialRadiograp' } }
     /**
-     * Find zero or one FinancialRadiography that matches the filter.
-     * @param {FinancialRadiographyFindUniqueArgs} args - Arguments to find a FinancialRadiography
+     * Find zero or one FinancialRadiograp that matches the filter.
+     * @param {FinancialRadiograpFindUniqueArgs} args - Arguments to find a FinancialRadiograp
      * @example
-     * // Get one FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.findUnique({
+     * // Get one FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends FinancialRadiographyFindUniqueArgs>(args: SelectSubset<T, FinancialRadiographyFindUniqueArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    findUnique<T extends FinancialRadiograpFindUniqueArgs>(args: SelectSubset<T, FinancialRadiograpFindUniqueArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
-     * Find one FinancialRadiography that matches the filter or throw an error with `error.code='P2025'`
+     * Find one FinancialRadiograp that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {FinancialRadiographyFindUniqueOrThrowArgs} args - Arguments to find a FinancialRadiography
+     * @param {FinancialRadiograpFindUniqueOrThrowArgs} args - Arguments to find a FinancialRadiograp
      * @example
-     * // Get one FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.findUniqueOrThrow({
+     * // Get one FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends FinancialRadiographyFindUniqueOrThrowArgs>(args: SelectSubset<T, FinancialRadiographyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+    findUniqueOrThrow<T extends FinancialRadiograpFindUniqueOrThrowArgs>(args: SelectSubset<T, FinancialRadiograpFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
-     * Find the first FinancialRadiography that matches the filter.
+     * Find the first FinancialRadiograp that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyFindFirstArgs} args - Arguments to find a FinancialRadiography
+     * @param {FinancialRadiograpFindFirstArgs} args - Arguments to find a FinancialRadiograp
      * @example
-     * // Get one FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.findFirst({
+     * // Get one FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends FinancialRadiographyFindFirstArgs>(args?: SelectSubset<T, FinancialRadiographyFindFirstArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    findFirst<T extends FinancialRadiograpFindFirstArgs>(args?: SelectSubset<T, FinancialRadiograpFindFirstArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
-     * Find the first FinancialRadiography that matches the filter or
+     * Find the first FinancialRadiograp that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyFindFirstOrThrowArgs} args - Arguments to find a FinancialRadiography
+     * @param {FinancialRadiograpFindFirstOrThrowArgs} args - Arguments to find a FinancialRadiograp
      * @example
-     * // Get one FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.findFirstOrThrow({
+     * // Get one FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends FinancialRadiographyFindFirstOrThrowArgs>(args?: SelectSubset<T, FinancialRadiographyFindFirstOrThrowArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+    findFirstOrThrow<T extends FinancialRadiograpFindFirstOrThrowArgs>(args?: SelectSubset<T, FinancialRadiograpFindFirstOrThrowArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
-     * Find zero or more FinancialRadiographies that matches the filter.
+     * Find zero or more FinancialRadiograps that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FinancialRadiograpFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all FinancialRadiographies
-     * const financialRadiographies = await prisma.financialRadiography.findMany()
+     * // Get all FinancialRadiograps
+     * const financialRadiograps = await prisma.financialRadiograp.findMany()
      * 
-     * // Get first 10 FinancialRadiographies
-     * const financialRadiographies = await prisma.financialRadiography.findMany({ take: 10 })
+     * // Get first 10 FinancialRadiograps
+     * const financialRadiograps = await prisma.financialRadiograp.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const financialRadiographyWithIdOnly = await prisma.financialRadiography.findMany({ select: { id: true } })
+     * const financialRadiograpWithIdOnly = await prisma.financialRadiograp.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends FinancialRadiographyFindManyArgs>(args?: SelectSubset<T, FinancialRadiographyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "findMany", ClientOptions>>
+    findMany<T extends FinancialRadiograpFindManyArgs>(args?: SelectSubset<T, FinancialRadiograpFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "findMany", ClientOptions>>
 
     /**
-     * Create a FinancialRadiography.
-     * @param {FinancialRadiographyCreateArgs} args - Arguments to create a FinancialRadiography.
+     * Create a FinancialRadiograp.
+     * @param {FinancialRadiograpCreateArgs} args - Arguments to create a FinancialRadiograp.
      * @example
-     * // Create one FinancialRadiography
-     * const FinancialRadiography = await prisma.financialRadiography.create({
+     * // Create one FinancialRadiograp
+     * const FinancialRadiograp = await prisma.financialRadiograp.create({
      *   data: {
-     *     // ... data to create a FinancialRadiography
+     *     // ... data to create a FinancialRadiograp
      *   }
      * })
      * 
      */
-    create<T extends FinancialRadiographyCreateArgs>(args: SelectSubset<T, FinancialRadiographyCreateArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+    create<T extends FinancialRadiograpCreateArgs>(args: SelectSubset<T, FinancialRadiograpCreateArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
-     * Create many FinancialRadiographies.
-     * @param {FinancialRadiographyCreateManyArgs} args - Arguments to create many FinancialRadiographies.
+     * Create many FinancialRadiograps.
+     * @param {FinancialRadiograpCreateManyArgs} args - Arguments to create many FinancialRadiograps.
      * @example
-     * // Create many FinancialRadiographies
-     * const financialRadiography = await prisma.financialRadiography.createMany({
+     * // Create many FinancialRadiograps
+     * const financialRadiograp = await prisma.financialRadiograp.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends FinancialRadiographyCreateManyArgs>(args?: SelectSubset<T, FinancialRadiographyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FinancialRadiograpCreateManyArgs>(args?: SelectSubset<T, FinancialRadiograpCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many FinancialRadiographies and returns the data saved in the database.
-     * @param {FinancialRadiographyCreateManyAndReturnArgs} args - Arguments to create many FinancialRadiographies.
+     * Create many FinancialRadiograps and returns the data saved in the database.
+     * @param {FinancialRadiograpCreateManyAndReturnArgs} args - Arguments to create many FinancialRadiograps.
      * @example
-     * // Create many FinancialRadiographies
-     * const financialRadiography = await prisma.financialRadiography.createManyAndReturn({
+     * // Create many FinancialRadiograps
+     * const financialRadiograp = await prisma.financialRadiograp.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many FinancialRadiographies and only return the `id`
-     * const financialRadiographyWithIdOnly = await prisma.financialRadiography.createManyAndReturn({
+     * // Create many FinancialRadiograps and only return the `id`
+     * const financialRadiograpWithIdOnly = await prisma.financialRadiograp.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5794,28 +5781,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends FinancialRadiographyCreateManyAndReturnArgs>(args?: SelectSubset<T, FinancialRadiographyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+    createManyAndReturn<T extends FinancialRadiograpCreateManyAndReturnArgs>(args?: SelectSubset<T, FinancialRadiograpCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
 
     /**
-     * Delete a FinancialRadiography.
-     * @param {FinancialRadiographyDeleteArgs} args - Arguments to delete one FinancialRadiography.
+     * Delete a FinancialRadiograp.
+     * @param {FinancialRadiograpDeleteArgs} args - Arguments to delete one FinancialRadiograp.
      * @example
-     * // Delete one FinancialRadiography
-     * const FinancialRadiography = await prisma.financialRadiography.delete({
+     * // Delete one FinancialRadiograp
+     * const FinancialRadiograp = await prisma.financialRadiograp.delete({
      *   where: {
-     *     // ... filter to delete one FinancialRadiography
+     *     // ... filter to delete one FinancialRadiograp
      *   }
      * })
      * 
      */
-    delete<T extends FinancialRadiographyDeleteArgs>(args: SelectSubset<T, FinancialRadiographyDeleteArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+    delete<T extends FinancialRadiograpDeleteArgs>(args: SelectSubset<T, FinancialRadiograpDeleteArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
-     * Update one FinancialRadiography.
-     * @param {FinancialRadiographyUpdateArgs} args - Arguments to update one FinancialRadiography.
+     * Update one FinancialRadiograp.
+     * @param {FinancialRadiograpUpdateArgs} args - Arguments to update one FinancialRadiograp.
      * @example
-     * // Update one FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.update({
+     * // Update one FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5825,30 +5812,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends FinancialRadiographyUpdateArgs>(args: SelectSubset<T, FinancialRadiographyUpdateArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+    update<T extends FinancialRadiograpUpdateArgs>(args: SelectSubset<T, FinancialRadiograpUpdateArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
-     * Delete zero or more FinancialRadiographies.
-     * @param {FinancialRadiographyDeleteManyArgs} args - Arguments to filter FinancialRadiographies to delete.
+     * Delete zero or more FinancialRadiograps.
+     * @param {FinancialRadiograpDeleteManyArgs} args - Arguments to filter FinancialRadiograps to delete.
      * @example
-     * // Delete a few FinancialRadiographies
-     * const { count } = await prisma.financialRadiography.deleteMany({
+     * // Delete a few FinancialRadiograps
+     * const { count } = await prisma.financialRadiograp.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends FinancialRadiographyDeleteManyArgs>(args?: SelectSubset<T, FinancialRadiographyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FinancialRadiograpDeleteManyArgs>(args?: SelectSubset<T, FinancialRadiograpDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more FinancialRadiographies.
+     * Update zero or more FinancialRadiograps.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FinancialRadiograpUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many FinancialRadiographies
-     * const financialRadiography = await prisma.financialRadiography.updateMany({
+     * // Update many FinancialRadiograps
+     * const financialRadiograp = await prisma.financialRadiograp.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5858,14 +5845,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends FinancialRadiographyUpdateManyArgs>(args: SelectSubset<T, FinancialRadiographyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FinancialRadiograpUpdateManyArgs>(args: SelectSubset<T, FinancialRadiograpUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more FinancialRadiographies and returns the data updated in the database.
-     * @param {FinancialRadiographyUpdateManyAndReturnArgs} args - Arguments to update many FinancialRadiographies.
+     * Update zero or more FinancialRadiograps and returns the data updated in the database.
+     * @param {FinancialRadiograpUpdateManyAndReturnArgs} args - Arguments to update many FinancialRadiograps.
      * @example
-     * // Update many FinancialRadiographies
-     * const financialRadiography = await prisma.financialRadiography.updateManyAndReturn({
+     * // Update many FinancialRadiograps
+     * const financialRadiograp = await prisma.financialRadiograp.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5874,8 +5861,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more FinancialRadiographies and only return the `id`
-     * const financialRadiographyWithIdOnly = await prisma.financialRadiography.updateManyAndReturn({
+     * // Update zero or more FinancialRadiograps and only return the `id`
+     * const financialRadiograpWithIdOnly = await prisma.financialRadiograp.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5888,56 +5875,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends FinancialRadiographyUpdateManyAndReturnArgs>(args: SelectSubset<T, FinancialRadiographyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+    updateManyAndReturn<T extends FinancialRadiograpUpdateManyAndReturnArgs>(args: SelectSubset<T, FinancialRadiograpUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
 
     /**
-     * Create or update one FinancialRadiography.
-     * @param {FinancialRadiographyUpsertArgs} args - Arguments to update or create a FinancialRadiography.
+     * Create or update one FinancialRadiograp.
+     * @param {FinancialRadiograpUpsertArgs} args - Arguments to update or create a FinancialRadiograp.
      * @example
-     * // Update or create a FinancialRadiography
-     * const financialRadiography = await prisma.financialRadiography.upsert({
+     * // Update or create a FinancialRadiograp
+     * const financialRadiograp = await prisma.financialRadiograp.upsert({
      *   create: {
-     *     // ... data to create a FinancialRadiography
+     *     // ... data to create a FinancialRadiograp
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the FinancialRadiography we want to update
+     *     // ... the filter for the FinancialRadiograp we want to update
      *   }
      * })
      */
-    upsert<T extends FinancialRadiographyUpsertArgs>(args: SelectSubset<T, FinancialRadiographyUpsertArgs<ExtArgs>>): Prisma__FinancialRadiographyClient<$Result.GetResult<Prisma.$FinancialRadiographyPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+    upsert<T extends FinancialRadiograpUpsertArgs>(args: SelectSubset<T, FinancialRadiograpUpsertArgs<ExtArgs>>): Prisma__FinancialRadiograpClient<$Result.GetResult<Prisma.$FinancialRadiograpPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
 
 
     /**
-     * Count the number of FinancialRadiographies.
+     * Count the number of FinancialRadiograps.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyCountArgs} args - Arguments to filter FinancialRadiographies to count.
+     * @param {FinancialRadiograpCountArgs} args - Arguments to filter FinancialRadiograps to count.
      * @example
-     * // Count the number of FinancialRadiographies
-     * const count = await prisma.financialRadiography.count({
+     * // Count the number of FinancialRadiograps
+     * const count = await prisma.financialRadiograp.count({
      *   where: {
-     *     // ... the filter for the FinancialRadiographies we want to count
+     *     // ... the filter for the FinancialRadiograps we want to count
      *   }
      * })
     **/
-    count<T extends FinancialRadiographyCountArgs>(
-      args?: Subset<T, FinancialRadiographyCountArgs>,
+    count<T extends FinancialRadiograpCountArgs>(
+      args?: Subset<T, FinancialRadiograpCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], FinancialRadiographyCountAggregateOutputType>
+          : GetScalarType<T['select'], FinancialRadiograpCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a FinancialRadiography.
+     * Allows you to perform aggregations operations on a FinancialRadiograp.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FinancialRadiograpAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5957,13 +5944,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends FinancialRadiographyAggregateArgs>(args: Subset<T, FinancialRadiographyAggregateArgs>): Prisma.PrismaPromise<GetFinancialRadiographyAggregateType<T>>
+    aggregate<T extends FinancialRadiograpAggregateArgs>(args: Subset<T, FinancialRadiograpAggregateArgs>): Prisma.PrismaPromise<GetFinancialRadiograpAggregateType<T>>
 
     /**
-     * Group by FinancialRadiography.
+     * Group by FinancialRadiograp.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FinancialRadiographyGroupByArgs} args - Group by arguments.
+     * @param {FinancialRadiograpGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5978,14 +5965,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends FinancialRadiographyGroupByArgs,
+      T extends FinancialRadiograpGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FinancialRadiographyGroupByArgs['orderBy'] }
-        : { orderBy?: FinancialRadiographyGroupByArgs['orderBy'] },
+        ? { orderBy: FinancialRadiograpGroupByArgs['orderBy'] }
+        : { orderBy?: FinancialRadiograpGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6034,22 +6021,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, FinancialRadiographyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFinancialRadiographyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FinancialRadiograpGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFinancialRadiograpGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the FinancialRadiography model
+   * Fields of the FinancialRadiograp model
    */
-  readonly fields: FinancialRadiographyFieldRefs;
+  readonly fields: FinancialRadiograpFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for FinancialRadiography.
+   * The delegate class that acts as a "Promise-like" for FinancialRadiograp.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__FinancialRadiographyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FinancialRadiograpClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends FinancialRadiography$userArgs<ExtArgs> = {}>(args?: Subset<T, FinancialRadiography$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    user<T extends FinancialRadiograp$userArgs<ExtArgs> = {}>(args?: Subset<T, FinancialRadiograp$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6076,403 +6063,403 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the FinancialRadiography model
+   * Fields of the FinancialRadiograp model
    */ 
-  interface FinancialRadiographyFieldRefs {
-    readonly id: FieldRef<"FinancialRadiography", 'String'>
-    readonly monthlyIncome: FieldRef<"FinancialRadiography", 'Decimal'>
-    readonly monthlyExpenses: FieldRef<"FinancialRadiography", 'Decimal'>
-    readonly savingCapacity: FieldRef<"FinancialRadiography", 'Decimal'>
-    readonly debts: FieldRef<"FinancialRadiography", 'Decimal'>
-    readonly savings: FieldRef<"FinancialRadiography", 'Decimal'>
-    readonly userId: FieldRef<"FinancialRadiography", 'String'>
+  interface FinancialRadiograpFieldRefs {
+    readonly id: FieldRef<"FinancialRadiograp", 'String'>
+    readonly monthlyIncome: FieldRef<"FinancialRadiograp", 'Decimal'>
+    readonly monthlyExpenses: FieldRef<"FinancialRadiograp", 'Decimal'>
+    readonly savingCapacity: FieldRef<"FinancialRadiograp", 'Decimal'>
+    readonly debts: FieldRef<"FinancialRadiograp", 'Decimal'>
+    readonly savings: FieldRef<"FinancialRadiograp", 'Decimal'>
+    readonly userId: FieldRef<"FinancialRadiograp", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * FinancialRadiography findUnique
+   * FinancialRadiograp findUnique
    */
-  export type FinancialRadiographyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter, which FinancialRadiography to fetch.
+     * Filter, which FinancialRadiograp to fetch.
      */
-    where: FinancialRadiographyWhereUniqueInput
+    where: FinancialRadiograpWhereUniqueInput
   }
 
   /**
-   * FinancialRadiography findUniqueOrThrow
+   * FinancialRadiograp findUniqueOrThrow
    */
-  export type FinancialRadiographyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter, which FinancialRadiography to fetch.
+     * Filter, which FinancialRadiograp to fetch.
      */
-    where: FinancialRadiographyWhereUniqueInput
+    where: FinancialRadiograpWhereUniqueInput
   }
 
   /**
-   * FinancialRadiography findFirst
+   * FinancialRadiograp findFirst
    */
-  export type FinancialRadiographyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter, which FinancialRadiography to fetch.
+     * Filter, which FinancialRadiograp to fetch.
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FinancialRadiographies to fetch.
+     * Determine the order of FinancialRadiograps to fetch.
      */
-    orderBy?: FinancialRadiographyOrderByWithRelationInput | FinancialRadiographyOrderByWithRelationInput[]
+    orderBy?: FinancialRadiograpOrderByWithRelationInput | FinancialRadiograpOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FinancialRadiographies.
+     * Sets the position for searching for FinancialRadiograps.
      */
-    cursor?: FinancialRadiographyWhereUniqueInput
+    cursor?: FinancialRadiograpWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FinancialRadiographies from the position of the cursor.
+     * Take `±n` FinancialRadiograps from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FinancialRadiographies.
+     * Skip the first `n` FinancialRadiograps.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FinancialRadiographies.
+     * Filter by unique combinations of FinancialRadiograps.
      */
-    distinct?: FinancialRadiographyScalarFieldEnum | FinancialRadiographyScalarFieldEnum[]
+    distinct?: FinancialRadiograpScalarFieldEnum | FinancialRadiograpScalarFieldEnum[]
   }
 
   /**
-   * FinancialRadiography findFirstOrThrow
+   * FinancialRadiograp findFirstOrThrow
    */
-  export type FinancialRadiographyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter, which FinancialRadiography to fetch.
+     * Filter, which FinancialRadiograp to fetch.
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FinancialRadiographies to fetch.
+     * Determine the order of FinancialRadiograps to fetch.
      */
-    orderBy?: FinancialRadiographyOrderByWithRelationInput | FinancialRadiographyOrderByWithRelationInput[]
+    orderBy?: FinancialRadiograpOrderByWithRelationInput | FinancialRadiograpOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FinancialRadiographies.
+     * Sets the position for searching for FinancialRadiograps.
      */
-    cursor?: FinancialRadiographyWhereUniqueInput
+    cursor?: FinancialRadiograpWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FinancialRadiographies from the position of the cursor.
+     * Take `±n` FinancialRadiograps from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FinancialRadiographies.
+     * Skip the first `n` FinancialRadiograps.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FinancialRadiographies.
+     * Filter by unique combinations of FinancialRadiograps.
      */
-    distinct?: FinancialRadiographyScalarFieldEnum | FinancialRadiographyScalarFieldEnum[]
+    distinct?: FinancialRadiograpScalarFieldEnum | FinancialRadiograpScalarFieldEnum[]
   }
 
   /**
-   * FinancialRadiography findMany
+   * FinancialRadiograp findMany
    */
-  export type FinancialRadiographyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter, which FinancialRadiographies to fetch.
+     * Filter, which FinancialRadiograps to fetch.
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FinancialRadiographies to fetch.
+     * Determine the order of FinancialRadiograps to fetch.
      */
-    orderBy?: FinancialRadiographyOrderByWithRelationInput | FinancialRadiographyOrderByWithRelationInput[]
+    orderBy?: FinancialRadiograpOrderByWithRelationInput | FinancialRadiograpOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing FinancialRadiographies.
+     * Sets the position for listing FinancialRadiograps.
      */
-    cursor?: FinancialRadiographyWhereUniqueInput
+    cursor?: FinancialRadiograpWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FinancialRadiographies from the position of the cursor.
+     * Take `±n` FinancialRadiograps from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FinancialRadiographies.
+     * Skip the first `n` FinancialRadiograps.
      */
     skip?: number
-    distinct?: FinancialRadiographyScalarFieldEnum | FinancialRadiographyScalarFieldEnum[]
+    distinct?: FinancialRadiograpScalarFieldEnum | FinancialRadiograpScalarFieldEnum[]
   }
 
   /**
-   * FinancialRadiography create
+   * FinancialRadiograp create
    */
-  export type FinancialRadiographyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * The data needed to create a FinancialRadiography.
+     * The data needed to create a FinancialRadiograp.
      */
-    data?: XOR<FinancialRadiographyCreateInput, FinancialRadiographyUncheckedCreateInput>
+    data?: XOR<FinancialRadiograpCreateInput, FinancialRadiograpUncheckedCreateInput>
   }
 
   /**
-   * FinancialRadiography createMany
+   * FinancialRadiograp createMany
    */
-  export type FinancialRadiographyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many FinancialRadiographies.
+     * The data used to create many FinancialRadiograps.
      */
-    data: FinancialRadiographyCreateManyInput | FinancialRadiographyCreateManyInput[]
+    data: FinancialRadiograpCreateManyInput | FinancialRadiograpCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FinancialRadiography createManyAndReturn
+   * FinancialRadiograp createManyAndReturn
    */
-  export type FinancialRadiographyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelectCreateManyAndReturn<ExtArgs> | null
+    select?: FinancialRadiograpSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
-     * The data used to create many FinancialRadiographies.
+     * The data used to create many FinancialRadiograps.
      */
-    data: FinancialRadiographyCreateManyInput | FinancialRadiographyCreateManyInput[]
+    data: FinancialRadiograpCreateManyInput | FinancialRadiograpCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: FinancialRadiograpIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * FinancialRadiography update
+   * FinancialRadiograp update
    */
-  export type FinancialRadiographyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * The data needed to update a FinancialRadiography.
+     * The data needed to update a FinancialRadiograp.
      */
-    data: XOR<FinancialRadiographyUpdateInput, FinancialRadiographyUncheckedUpdateInput>
+    data: XOR<FinancialRadiograpUpdateInput, FinancialRadiograpUncheckedUpdateInput>
     /**
-     * Choose, which FinancialRadiography to update.
+     * Choose, which FinancialRadiograp to update.
      */
-    where: FinancialRadiographyWhereUniqueInput
+    where: FinancialRadiograpWhereUniqueInput
   }
 
   /**
-   * FinancialRadiography updateMany
+   * FinancialRadiograp updateMany
    */
-  export type FinancialRadiographyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update FinancialRadiographies.
+     * The data used to update FinancialRadiograps.
      */
-    data: XOR<FinancialRadiographyUpdateManyMutationInput, FinancialRadiographyUncheckedUpdateManyInput>
+    data: XOR<FinancialRadiograpUpdateManyMutationInput, FinancialRadiograpUncheckedUpdateManyInput>
     /**
-     * Filter which FinancialRadiographies to update
+     * Filter which FinancialRadiograps to update
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
   }
 
   /**
-   * FinancialRadiography updateManyAndReturn
+   * FinancialRadiograp updateManyAndReturn
    */
-  export type FinancialRadiographyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FinancialRadiograpSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
-     * The data used to update FinancialRadiographies.
+     * The data used to update FinancialRadiograps.
      */
-    data: XOR<FinancialRadiographyUpdateManyMutationInput, FinancialRadiographyUncheckedUpdateManyInput>
+    data: XOR<FinancialRadiograpUpdateManyMutationInput, FinancialRadiograpUncheckedUpdateManyInput>
     /**
-     * Filter which FinancialRadiographies to update
+     * Filter which FinancialRadiograps to update
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: FinancialRadiograpIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * FinancialRadiography upsert
+   * FinancialRadiograp upsert
    */
-  export type FinancialRadiographyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * The filter to search for the FinancialRadiography to update in case it exists.
+     * The filter to search for the FinancialRadiograp to update in case it exists.
      */
-    where: FinancialRadiographyWhereUniqueInput
+    where: FinancialRadiograpWhereUniqueInput
     /**
-     * In case the FinancialRadiography found by the `where` argument doesn't exist, create a new FinancialRadiography with this data.
+     * In case the FinancialRadiograp found by the `where` argument doesn't exist, create a new FinancialRadiograp with this data.
      */
-    create: XOR<FinancialRadiographyCreateInput, FinancialRadiographyUncheckedCreateInput>
+    create: XOR<FinancialRadiograpCreateInput, FinancialRadiograpUncheckedCreateInput>
     /**
-     * In case the FinancialRadiography was found with the provided `where` argument, update it with this data.
+     * In case the FinancialRadiograp was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<FinancialRadiographyUpdateInput, FinancialRadiographyUncheckedUpdateInput>
+    update: XOR<FinancialRadiograpUpdateInput, FinancialRadiograpUncheckedUpdateInput>
   }
 
   /**
-   * FinancialRadiography delete
+   * FinancialRadiograp delete
    */
-  export type FinancialRadiographyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
     /**
-     * Filter which FinancialRadiography to delete.
+     * Filter which FinancialRadiograp to delete.
      */
-    where: FinancialRadiographyWhereUniqueInput
+    where: FinancialRadiograpWhereUniqueInput
   }
 
   /**
-   * FinancialRadiography deleteMany
+   * FinancialRadiograp deleteMany
    */
-  export type FinancialRadiographyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FinancialRadiographies to delete
+     * Filter which FinancialRadiograps to delete
      */
-    where?: FinancialRadiographyWhereInput
+    where?: FinancialRadiograpWhereInput
   }
 
   /**
-   * FinancialRadiography.user
+   * FinancialRadiograp.user
    */
-  export type FinancialRadiography$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograp$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the User
      */
@@ -6489,21 +6476,21 @@ export namespace Prisma {
   }
 
   /**
-   * FinancialRadiography without action
+   * FinancialRadiograp without action
    */
-  export type FinancialRadiographyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FinancialRadiograpDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FinancialRadiography
+     * Select specific fields to fetch from the FinancialRadiograp
      */
-    select?: FinancialRadiographySelect<ExtArgs> | null
+    select?: FinancialRadiograpSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the FinancialRadiography
+     * Omit specific fields from the FinancialRadiograp
      */
-    omit?: FinancialRadiographyOmit<ExtArgs> | null
+    omit?: FinancialRadiograpOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FinancialRadiographyInclude<ExtArgs> | null
+    include?: FinancialRadiograpInclude<ExtArgs> | null
   }
 
 
@@ -6636,9 +6623,9 @@ export namespace Prisma {
 
   export type InvestmentPortfolioGroupByOutputType = {
     id: string
-    userId: string
-    name: string
-    createdAt: Date
+    userId: string | null
+    name: string | null
+    createdAt: Date | null
     _count: InvestmentPortfolioCountAggregateOutputType | null
     _min: InvestmentPortfolioMinAggregateOutputType | null
     _max: InvestmentPortfolioMaxAggregateOutputType | null
@@ -6663,7 +6650,7 @@ export namespace Prisma {
     userId?: boolean
     name?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
     investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
     _count?: boolean | InvestmentPortfolioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
@@ -6673,7 +6660,7 @@ export namespace Prisma {
     userId?: boolean
     name?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
   export type InvestmentPortfolioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6681,7 +6668,7 @@ export namespace Prisma {
     userId?: boolean
     name?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
   export type InvestmentPortfolioSelectScalar = {
@@ -6693,28 +6680,28 @@ export namespace Prisma {
 
   export type InvestmentPortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "createdAt", ExtArgs["result"]["investmentPortfolio"]>
   export type InvestmentPortfolioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
     investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
     _count?: boolean | InvestmentPortfolioCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type InvestmentPortfolioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
   }
   export type InvestmentPortfolioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | InvestmentPortfolio$userArgs<ExtArgs>
   }
 
   export type $InvestmentPortfolioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InvestmentPortfolio"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
       investments: Prisma.$InvestmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
-      name: string
-      createdAt: Date
+      userId: string | null
+      name: string | null
+      createdAt: Date | null
     }, ExtArgs["result"]["investmentPortfolio"]>
     composites: {}
   }
@@ -7109,7 +7096,7 @@ export namespace Prisma {
    */
   export interface Prisma__InvestmentPortfolioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    user<T extends InvestmentPortfolio$userArgs<ExtArgs> = {}>(args?: Subset<T, InvestmentPortfolio$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     investments<T extends InvestmentPortfolio$investmentsArgs<ExtArgs> = {}>(args?: Subset<T, InvestmentPortfolio$investmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7362,7 +7349,7 @@ export namespace Prisma {
     /**
      * The data needed to create a InvestmentPortfolio.
      */
-    data: XOR<InvestmentPortfolioCreateInput, InvestmentPortfolioUncheckedCreateInput>
+    data?: XOR<InvestmentPortfolioCreateInput, InvestmentPortfolioUncheckedCreateInput>
   }
 
   /**
@@ -7525,6 +7512,25 @@ export namespace Prisma {
      * Filter which InvestmentPortfolios to delete
      */
     where?: InvestmentPortfolioWhereInput
+  }
+
+  /**
+   * InvestmentPortfolio.user
+   */
+  export type InvestmentPortfolio$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -24437,7 +24443,6 @@ export namespace Prisma {
     lastName: 'lastName',
     password: 'password',
     avatarUrl: 'avatarUrl',
-    role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     isEmailVerified: 'isEmailVerified'
@@ -24462,7 +24467,7 @@ export namespace Prisma {
   export type TargetScalarFieldEnum = (typeof TargetScalarFieldEnum)[keyof typeof TargetScalarFieldEnum]
 
 
-  export const FinancialRadiographyScalarFieldEnum: {
+  export const FinancialRadiograpScalarFieldEnum: {
     id: 'id',
     monthlyIncome: 'monthlyIncome',
     monthlyExpenses: 'monthlyExpenses',
@@ -24472,7 +24477,7 @@ export namespace Prisma {
     userId: 'userId'
   };
 
-  export type FinancialRadiographyScalarFieldEnum = (typeof FinancialRadiographyScalarFieldEnum)[keyof typeof FinancialRadiographyScalarFieldEnum]
+  export type FinancialRadiograpScalarFieldEnum = (typeof FinancialRadiograpScalarFieldEnum)[keyof typeof FinancialRadiograpScalarFieldEnum]
 
 
   export const InvestmentPortfolioScalarFieldEnum: {
@@ -24730,20 +24735,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'UserRole'
-   */
-  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
-    
-
-
-  /**
-   * Reference to a field of type 'UserRole[]'
-   */
-  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -24835,6 +24826,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'UserRole'
+   */
+  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Status'
    */
   export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
@@ -24861,17 +24866,16 @@ export namespace Prisma {
     lastName?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    role?: EnumUserRoleNullableFilter<"User"> | $Enums.UserRole | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     isEmailVerified?: BoolFilter<"User"> | boolean
     comment?: CommentListRelationFilter
-    financialRadiographies?: XOR<FinancialRadiographyNullableScalarRelationFilter, FinancialRadiographyWhereInput> | null
-    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
     investmentPortfolio?: InvestmentPortfolioListRelationFilter
+    financialRadiography?: XOR<FinancialRadiograpNullableScalarRelationFilter, FinancialRadiograpWhereInput> | null
+    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -24881,17 +24885,16 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     password?: SortOrder
     avatarUrl?: SortOrderInput | SortOrder
-    role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
     comment?: CommentOrderByRelationAggregateInput
-    financialRadiographies?: FinancialRadiographyOrderByWithRelationInput
-    profile?: ProfileOrderByWithRelationInput
     Support?: SupportOrderByRelationAggregateInput
     wallet?: walletOrderByRelationAggregateInput
     target?: TargetOrderByRelationAggregateInput
     investmentPortfolio?: InvestmentPortfolioOrderByRelationAggregateInput
+    financialRadiography?: FinancialRadiograpOrderByWithRelationInput
+    profile?: ProfileOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -24904,17 +24907,16 @@ export namespace Prisma {
     lastName?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    role?: EnumUserRoleNullableFilter<"User"> | $Enums.UserRole | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     isEmailVerified?: BoolFilter<"User"> | boolean
     comment?: CommentListRelationFilter
-    financialRadiographies?: XOR<FinancialRadiographyNullableScalarRelationFilter, FinancialRadiographyWhereInput> | null
-    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
     investmentPortfolio?: InvestmentPortfolioListRelationFilter
+    financialRadiography?: XOR<FinancialRadiograpNullableScalarRelationFilter, FinancialRadiograpWhereInput> | null
+    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -24924,7 +24926,6 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     password?: SortOrder
     avatarUrl?: SortOrderInput | SortOrder
-    role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
@@ -24943,7 +24944,6 @@ export namespace Prisma {
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringWithAggregatesFilter<"User"> | string
     avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: EnumUserRoleNullableWithAggregatesFilter<"User"> | $Enums.UserRole | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     isEmailVerified?: BoolWithAggregatesFilter<"User"> | boolean
@@ -25031,21 +25031,21 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Target"> | string
   }
 
-  export type FinancialRadiographyWhereInput = {
-    AND?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
-    OR?: FinancialRadiographyWhereInput[]
-    NOT?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
-    id?: StringFilter<"FinancialRadiography"> | string
-    monthlyIncome?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    debts?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savings?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    userId?: StringNullableFilter<"FinancialRadiography"> | string | null
+  export type FinancialRadiograpWhereInput = {
+    AND?: FinancialRadiograpWhereInput | FinancialRadiograpWhereInput[]
+    OR?: FinancialRadiograpWhereInput[]
+    NOT?: FinancialRadiograpWhereInput | FinancialRadiograpWhereInput[]
+    id?: StringFilter<"FinancialRadiograp"> | string
+    monthlyIncome?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    userId?: StringNullableFilter<"FinancialRadiograp"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
-  export type FinancialRadiographyOrderByWithRelationInput = {
+  export type FinancialRadiograpOrderByWithRelationInput = {
     id?: SortOrder
     monthlyIncome?: SortOrderInput | SortOrder
     monthlyExpenses?: SortOrderInput | SortOrder
@@ -25056,21 +25056,21 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
   }
 
-  export type FinancialRadiographyWhereUniqueInput = Prisma.AtLeast<{
+  export type FinancialRadiograpWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     userId?: string
-    AND?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
-    OR?: FinancialRadiographyWhereInput[]
-    NOT?: FinancialRadiographyWhereInput | FinancialRadiographyWhereInput[]
-    monthlyIncome?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    debts?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savings?: DecimalNullableFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
+    AND?: FinancialRadiograpWhereInput | FinancialRadiograpWhereInput[]
+    OR?: FinancialRadiograpWhereInput[]
+    NOT?: FinancialRadiograpWhereInput | FinancialRadiograpWhereInput[]
+    monthlyIncome?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "userId">
 
-  export type FinancialRadiographyOrderByWithAggregationInput = {
+  export type FinancialRadiograpOrderByWithAggregationInput = {
     id?: SortOrder
     monthlyIncome?: SortOrderInput | SortOrder
     monthlyExpenses?: SortOrderInput | SortOrder
@@ -25078,24 +25078,24 @@ export namespace Prisma {
     debts?: SortOrderInput | SortOrder
     savings?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
-    _count?: FinancialRadiographyCountOrderByAggregateInput
-    _avg?: FinancialRadiographyAvgOrderByAggregateInput
-    _max?: FinancialRadiographyMaxOrderByAggregateInput
-    _min?: FinancialRadiographyMinOrderByAggregateInput
-    _sum?: FinancialRadiographySumOrderByAggregateInput
+    _count?: FinancialRadiograpCountOrderByAggregateInput
+    _avg?: FinancialRadiograpAvgOrderByAggregateInput
+    _max?: FinancialRadiograpMaxOrderByAggregateInput
+    _min?: FinancialRadiograpMinOrderByAggregateInput
+    _sum?: FinancialRadiograpSumOrderByAggregateInput
   }
 
-  export type FinancialRadiographyScalarWhereWithAggregatesInput = {
-    AND?: FinancialRadiographyScalarWhereWithAggregatesInput | FinancialRadiographyScalarWhereWithAggregatesInput[]
-    OR?: FinancialRadiographyScalarWhereWithAggregatesInput[]
-    NOT?: FinancialRadiographyScalarWhereWithAggregatesInput | FinancialRadiographyScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"FinancialRadiography"> | string
-    monthlyIncome?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    debts?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    savings?: DecimalNullableWithAggregatesFilter<"FinancialRadiography"> | Decimal | DecimalJsLike | number | string | null
-    userId?: StringNullableWithAggregatesFilter<"FinancialRadiography"> | string | null
+  export type FinancialRadiograpScalarWhereWithAggregatesInput = {
+    AND?: FinancialRadiograpScalarWhereWithAggregatesInput | FinancialRadiograpScalarWhereWithAggregatesInput[]
+    OR?: FinancialRadiograpScalarWhereWithAggregatesInput[]
+    NOT?: FinancialRadiograpScalarWhereWithAggregatesInput | FinancialRadiograpScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FinancialRadiograp"> | string
+    monthlyIncome?: DecimalNullableWithAggregatesFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: DecimalNullableWithAggregatesFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: DecimalNullableWithAggregatesFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    debts?: DecimalNullableWithAggregatesFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    savings?: DecimalNullableWithAggregatesFilter<"FinancialRadiograp"> | Decimal | DecimalJsLike | number | string | null
+    userId?: StringNullableWithAggregatesFilter<"FinancialRadiograp"> | string | null
   }
 
   export type InvestmentPortfolioWhereInput = {
@@ -25103,39 +25103,39 @@ export namespace Prisma {
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     id?: StringFilter<"InvestmentPortfolio"> | string
-    userId?: StringFilter<"InvestmentPortfolio"> | string
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    userId?: StringNullableFilter<"InvestmentPortfolio"> | string | null
+    name?: StringNullableFilter<"InvestmentPortfolio"> | string | null
+    createdAt?: DateTimeNullableFilter<"InvestmentPortfolio"> | Date | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     investments?: InvestmentListRelationFilter
   }
 
   export type InvestmentPortfolioOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     investments?: InvestmentOrderByRelationAggregateInput
   }
 
   export type InvestmentPortfolioWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId?: string
     AND?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
-    userId?: StringFilter<"InvestmentPortfolio"> | string
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    name?: StringNullableFilter<"InvestmentPortfolio"> | string | null
+    createdAt?: DateTimeNullableFilter<"InvestmentPortfolio"> | Date | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     investments?: InvestmentListRelationFilter
-  }, "id">
+  }, "id" | "userId">
 
   export type InvestmentPortfolioOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
     _count?: InvestmentPortfolioCountOrderByAggregateInput
     _max?: InvestmentPortfolioMaxOrderByAggregateInput
     _min?: InvestmentPortfolioMinOrderByAggregateInput
@@ -25146,9 +25146,9 @@ export namespace Prisma {
     OR?: InvestmentPortfolioScalarWhereWithAggregatesInput[]
     NOT?: InvestmentPortfolioScalarWhereWithAggregatesInput | InvestmentPortfolioScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    userId?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    name?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"InvestmentPortfolio"> | Date | string
+    userId?: StringNullableWithAggregatesFilter<"InvestmentPortfolio"> | string | null
+    name?: StringNullableWithAggregatesFilter<"InvestmentPortfolio"> | string | null
+    createdAt?: DateTimeNullableWithAggregatesFilter<"InvestmentPortfolio"> | Date | string | null
   }
 
   export type InvestmentWhereInput = {
@@ -26207,17 +26207,16 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -26227,17 +26226,16 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -26247,17 +26245,16 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -26267,17 +26264,16 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -26287,7 +26283,6 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
@@ -26300,7 +26295,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
@@ -26313,7 +26307,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
@@ -26409,17 +26402,17 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type FinancialRadiographyCreateInput = {
+  export type FinancialRadiograpCreateInput = {
     id?: string
     monthlyIncome?: Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
     savingCapacity?: Decimal | DecimalJsLike | number | string | null
     debts?: Decimal | DecimalJsLike | number | string | null
     savings?: Decimal | DecimalJsLike | number | string | null
-    user?: UserCreateNestedOneWithoutFinancialRadiographiesInput
+    user?: UserCreateNestedOneWithoutFinancialRadiographyInput
   }
 
-  export type FinancialRadiographyUncheckedCreateInput = {
+  export type FinancialRadiograpUncheckedCreateInput = {
     id?: string
     monthlyIncome?: Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
@@ -26429,17 +26422,17 @@ export namespace Prisma {
     userId?: string | null
   }
 
-  export type FinancialRadiographyUpdateInput = {
+  export type FinancialRadiograpUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    user?: UserUpdateOneWithoutFinancialRadiographiesNestedInput
+    user?: UserUpdateOneWithoutFinancialRadiographyNestedInput
   }
 
-  export type FinancialRadiographyUncheckedUpdateInput = {
+  export type FinancialRadiograpUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -26449,7 +26442,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type FinancialRadiographyCreateManyInput = {
+  export type FinancialRadiograpCreateManyInput = {
     id?: string
     monthlyIncome?: Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
@@ -26459,7 +26452,7 @@ export namespace Prisma {
     userId?: string | null
   }
 
-  export type FinancialRadiographyUpdateManyMutationInput = {
+  export type FinancialRadiograpUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -26468,7 +26461,7 @@ export namespace Prisma {
     savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type FinancialRadiographyUncheckedUpdateManyInput = {
+  export type FinancialRadiograpUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -26480,54 +26473,54 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutInvestmentPortfolioInput
+    name?: string | null
+    createdAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvestmentPortfolioInput
     investments?: InvestmentCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateInput = {
     id?: string
-    userId: string
-    name: string
-    createdAt?: Date | string
+    userId?: string | null
+    name?: string | null
+    createdAt?: Date | string | null
     investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvestmentPortfolioNestedInput
     investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioCreateManyInput = {
     id?: string
-    userId: string
-    name: string
-    createdAt?: Date | string
+    userId?: string | null
+    name?: string | null
+    createdAt?: Date | string | null
   }
 
   export type InvestmentPortfolioUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvestmentPortfolioUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvestmentCreateInput = {
@@ -27656,13 +27649,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type EnumUserRoleNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel> | null
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumUserRoleNullableFilter<$PrismaModel> | $Enums.UserRole | null
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -27683,16 +27669,6 @@ export namespace Prisma {
     every?: CommentWhereInput
     some?: CommentWhereInput
     none?: CommentWhereInput
-  }
-
-  export type FinancialRadiographyNullableScalarRelationFilter = {
-    is?: FinancialRadiographyWhereInput | null
-    isNot?: FinancialRadiographyWhereInput | null
-  }
-
-  export type ProfileNullableScalarRelationFilter = {
-    is?: ProfileWhereInput | null
-    isNot?: ProfileWhereInput | null
   }
 
   export type SupportListRelationFilter = {
@@ -27717,6 +27693,16 @@ export namespace Prisma {
     every?: InvestmentPortfolioWhereInput
     some?: InvestmentPortfolioWhereInput
     none?: InvestmentPortfolioWhereInput
+  }
+
+  export type FinancialRadiograpNullableScalarRelationFilter = {
+    is?: FinancialRadiograpWhereInput | null
+    isNot?: FinancialRadiograpWhereInput | null
+  }
+
+  export type ProfileNullableScalarRelationFilter = {
+    is?: ProfileWhereInput | null
+    isNot?: ProfileWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -27751,7 +27737,6 @@ export namespace Prisma {
     lastName?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
-    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
@@ -27764,7 +27749,6 @@ export namespace Prisma {
     lastName?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
-    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
@@ -27777,7 +27761,6 @@ export namespace Prisma {
     lastName?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
-    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isEmailVerified?: SortOrder
@@ -27817,16 +27800,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type EnumUserRoleNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel> | null
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumUserRoleNullableWithAggregatesFilter<$PrismaModel> | $Enums.UserRole | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumUserRoleNullableFilter<$PrismaModel>
-    _max?: NestedEnumUserRoleNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -27948,7 +27921,7 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
-  export type FinancialRadiographyCountOrderByAggregateInput = {
+  export type FinancialRadiograpCountOrderByAggregateInput = {
     id?: SortOrder
     monthlyIncome?: SortOrder
     monthlyExpenses?: SortOrder
@@ -27958,7 +27931,7 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type FinancialRadiographyAvgOrderByAggregateInput = {
+  export type FinancialRadiograpAvgOrderByAggregateInput = {
     monthlyIncome?: SortOrder
     monthlyExpenses?: SortOrder
     savingCapacity?: SortOrder
@@ -27966,7 +27939,7 @@ export namespace Prisma {
     savings?: SortOrder
   }
 
-  export type FinancialRadiographyMaxOrderByAggregateInput = {
+  export type FinancialRadiograpMaxOrderByAggregateInput = {
     id?: SortOrder
     monthlyIncome?: SortOrder
     monthlyExpenses?: SortOrder
@@ -27976,7 +27949,7 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type FinancialRadiographyMinOrderByAggregateInput = {
+  export type FinancialRadiograpMinOrderByAggregateInput = {
     id?: SortOrder
     monthlyIncome?: SortOrder
     monthlyExpenses?: SortOrder
@@ -27986,7 +27959,7 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type FinancialRadiographySumOrderByAggregateInput = {
+  export type FinancialRadiograpSumOrderByAggregateInput = {
     monthlyIncome?: SortOrder
     monthlyExpenses?: SortOrder
     savingCapacity?: SortOrder
@@ -28008,6 +27981,17 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type InvestmentListRelationFilter = {
@@ -28039,6 +28023,20 @@ export namespace Prisma {
     userId?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -28822,17 +28820,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type DividendCountOrderByAggregateInput = {
     rate?: SortOrder
     yield?: SortOrder
@@ -28864,20 +28851,6 @@ export namespace Prisma {
     rate?: SortOrder
     yield?: SortOrder
     id?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EarningsCountOrderByAggregateInput = {
@@ -28925,18 +28898,6 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type FinancialRadiographyCreateNestedOneWithoutUserInput = {
-    create?: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-    connectOrCreate?: FinancialRadiographyCreateOrConnectWithoutUserInput
-    connect?: FinancialRadiographyWhereUniqueInput
-  }
-
-  export type ProfileCreateNestedOneWithoutUserInput = {
-    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
-    connect?: ProfileWhereUniqueInput
-  }
-
   export type SupportCreateNestedManyWithoutUserInput = {
     create?: XOR<SupportCreateWithoutUserInput, SupportUncheckedCreateWithoutUserInput> | SupportCreateWithoutUserInput[] | SupportUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SupportCreateOrConnectWithoutUserInput | SupportCreateOrConnectWithoutUserInput[]
@@ -28965,23 +28926,23 @@ export namespace Prisma {
     connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
   }
 
+  export type FinancialRadiograpCreateNestedOneWithoutUserInput = {
+    create?: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+    connectOrCreate?: FinancialRadiograpCreateOrConnectWithoutUserInput
+    connect?: FinancialRadiograpWhereUniqueInput
+  }
+
+  export type ProfileCreateNestedOneWithoutUserInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    connect?: ProfileWhereUniqueInput
+  }
+
   export type CommentUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
     createMany?: CommentCreateManyUserInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
-  export type FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-    connectOrCreate?: FinancialRadiographyCreateOrConnectWithoutUserInput
-    connect?: FinancialRadiographyWhereUniqueInput
-  }
-
-  export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
-    connect?: ProfileWhereUniqueInput
   }
 
   export type SupportUncheckedCreateNestedManyWithoutUserInput = {
@@ -29012,16 +28973,24 @@ export namespace Prisma {
     connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
   }
 
+  export type FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+    connectOrCreate?: FinancialRadiograpCreateOrConnectWithoutUserInput
+    connect?: FinancialRadiograpWhereUniqueInput
+  }
+
+  export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    connect?: ProfileWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type NullableEnumUserRoleFieldUpdateOperationsInput = {
-    set?: $Enums.UserRole | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -29044,26 +29013,6 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
-  export type FinancialRadiographyUpdateOneWithoutUserNestedInput = {
-    create?: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-    connectOrCreate?: FinancialRadiographyCreateOrConnectWithoutUserInput
-    upsert?: FinancialRadiographyUpsertWithoutUserInput
-    disconnect?: FinancialRadiographyWhereInput | boolean
-    delete?: FinancialRadiographyWhereInput | boolean
-    connect?: FinancialRadiographyWhereUniqueInput
-    update?: XOR<XOR<FinancialRadiographyUpdateToOneWithWhereWithoutUserInput, FinancialRadiographyUpdateWithoutUserInput>, FinancialRadiographyUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ProfileUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
-    upsert?: ProfileUpsertWithoutUserInput
-    disconnect?: ProfileWhereInput | boolean
-    delete?: ProfileWhereInput | boolean
-    connect?: ProfileWhereUniqueInput
-    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
   }
 
   export type SupportUpdateManyWithoutUserNestedInput = {
@@ -29122,6 +29071,26 @@ export namespace Prisma {
     deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
   }
 
+  export type FinancialRadiograpUpdateOneWithoutUserNestedInput = {
+    create?: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+    connectOrCreate?: FinancialRadiograpCreateOrConnectWithoutUserInput
+    upsert?: FinancialRadiograpUpsertWithoutUserInput
+    disconnect?: FinancialRadiograpWhereInput | boolean
+    delete?: FinancialRadiograpWhereInput | boolean
+    connect?: FinancialRadiograpWhereUniqueInput
+    update?: XOR<XOR<FinancialRadiograpUpdateToOneWithWhereWithoutUserInput, FinancialRadiograpUpdateWithoutUserInput>, FinancialRadiograpUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProfileUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    upsert?: ProfileUpsertWithoutUserInput
+    disconnect?: ProfileWhereInput | boolean
+    delete?: ProfileWhereInput | boolean
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
@@ -29134,26 +29103,6 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
-  export type FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-    connectOrCreate?: FinancialRadiographyCreateOrConnectWithoutUserInput
-    upsert?: FinancialRadiographyUpsertWithoutUserInput
-    disconnect?: FinancialRadiographyWhereInput | boolean
-    delete?: FinancialRadiographyWhereInput | boolean
-    connect?: FinancialRadiographyWhereUniqueInput
-    update?: XOR<XOR<FinancialRadiographyUpdateToOneWithWhereWithoutUserInput, FinancialRadiographyUpdateWithoutUserInput>, FinancialRadiographyUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
-    upsert?: ProfileUpsertWithoutUserInput
-    disconnect?: ProfileWhereInput | boolean
-    delete?: ProfileWhereInput | boolean
-    connect?: ProfileWhereUniqueInput
-    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
   }
 
   export type SupportUncheckedUpdateManyWithoutUserNestedInput = {
@@ -29212,6 +29161,26 @@ export namespace Prisma {
     deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
   }
 
+  export type FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+    connectOrCreate?: FinancialRadiograpCreateOrConnectWithoutUserInput
+    upsert?: FinancialRadiograpUpsertWithoutUserInput
+    disconnect?: FinancialRadiograpWhereInput | boolean
+    delete?: FinancialRadiograpWhereInput | boolean
+    connect?: FinancialRadiograpWhereUniqueInput
+    update?: XOR<XOR<FinancialRadiograpUpdateToOneWithWhereWithoutUserInput, FinancialRadiograpUpdateWithoutUserInput>, FinancialRadiograpUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    upsert?: ProfileUpsertWithoutUserInput
+    disconnect?: ProfileWhereInput | boolean
+    delete?: ProfileWhereInput | boolean
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
   export type UserCreateNestedOneWithoutTargetInput = {
     create?: XOR<UserCreateWithoutTargetInput, UserUncheckedCreateWithoutTargetInput>
     connectOrCreate?: UserCreateOrConnectWithoutTargetInput
@@ -29234,9 +29203,9 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTargetInput, UserUpdateWithoutTargetInput>, UserUncheckedUpdateWithoutTargetInput>
   }
 
-  export type UserCreateNestedOneWithoutFinancialRadiographiesInput = {
-    create?: XOR<UserCreateWithoutFinancialRadiographiesInput, UserUncheckedCreateWithoutFinancialRadiographiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutFinancialRadiographiesInput
+  export type UserCreateNestedOneWithoutFinancialRadiographyInput = {
+    create?: XOR<UserCreateWithoutFinancialRadiographyInput, UserUncheckedCreateWithoutFinancialRadiographyInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFinancialRadiographyInput
     connect?: UserWhereUniqueInput
   }
 
@@ -29248,14 +29217,14 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type UserUpdateOneWithoutFinancialRadiographiesNestedInput = {
-    create?: XOR<UserCreateWithoutFinancialRadiographiesInput, UserUncheckedCreateWithoutFinancialRadiographiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutFinancialRadiographiesInput
-    upsert?: UserUpsertWithoutFinancialRadiographiesInput
+  export type UserUpdateOneWithoutFinancialRadiographyNestedInput = {
+    create?: XOR<UserCreateWithoutFinancialRadiographyInput, UserUncheckedCreateWithoutFinancialRadiographyInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFinancialRadiographyInput
+    upsert?: UserUpsertWithoutFinancialRadiographyInput
     disconnect?: UserWhereInput | boolean
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFinancialRadiographiesInput, UserUpdateWithoutFinancialRadiographiesInput>, UserUncheckedUpdateWithoutFinancialRadiographiesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFinancialRadiographyInput, UserUpdateWithoutFinancialRadiographyInput>, UserUncheckedUpdateWithoutFinancialRadiographyInput>
   }
 
   export type UserCreateNestedOneWithoutInvestmentPortfolioInput = {
@@ -29278,10 +29247,16 @@ export namespace Prisma {
     connect?: InvestmentWhereUniqueInput | InvestmentWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput = {
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type UserUpdateOneWithoutInvestmentPortfolioNestedInput = {
     create?: XOR<UserCreateWithoutInvestmentPortfolioInput, UserUncheckedCreateWithoutInvestmentPortfolioInput>
     connectOrCreate?: UserCreateOrConnectWithoutInvestmentPortfolioInput
     upsert?: UserUpsertWithoutInvestmentPortfolioInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInvestmentPortfolioInput, UserUpdateWithoutInvestmentPortfolioInput>, UserUncheckedUpdateWithoutInvestmentPortfolioInput>
   }
@@ -29876,10 +29851,6 @@ export namespace Prisma {
     connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type StockUpdateManyWithoutDividendNestedInput = {
     create?: XOR<StockCreateWithoutDividendInput, StockUncheckedCreateWithoutDividendInput> | StockCreateWithoutDividendInput[] | StockUncheckedCreateWithoutDividendInput[]
     connectOrCreate?: StockCreateOrConnectWithoutDividendInput | StockCreateOrConnectWithoutDividendInput[]
@@ -29978,13 +29949,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumUserRoleNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel> | null
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumUserRoleNullableFilter<$PrismaModel> | $Enums.UserRole | null
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -30055,16 +30019,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumUserRoleNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel> | null
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumUserRoleNullableWithAggregatesFilter<$PrismaModel> | $Enums.UserRole | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumUserRoleNullableFilter<$PrismaModel>
-    _max?: NestedEnumUserRoleNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -30141,6 +30095,31 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -30297,31 +30276,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type CommentCreateWithoutUserInput = {
     id?: string
     content: string
@@ -30348,72 +30302,6 @@ export namespace Prisma {
   export type CommentCreateManyUserInputEnvelope = {
     data: CommentCreateManyUserInput | CommentCreateManyUserInput[]
     skipDuplicates?: boolean
-  }
-
-  export type FinancialRadiographyCreateWithoutUserInput = {
-    id?: string
-    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: Decimal | DecimalJsLike | number | string | null
-    debts?: Decimal | DecimalJsLike | number | string | null
-    savings?: Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type FinancialRadiographyUncheckedCreateWithoutUserInput = {
-    id?: string
-    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: Decimal | DecimalJsLike | number | string | null
-    debts?: Decimal | DecimalJsLike | number | string | null
-    savings?: Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type FinancialRadiographyCreateOrConnectWithoutUserInput = {
-    where: FinancialRadiographyWhereUniqueInput
-    create: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-  }
-
-  export type ProfileCreateWithoutUserInput = {
-    id?: string
-    riskTolerance?: string | null
-    investmentHorizon?: string | null
-    financialSkills?: string | null
-    hasInvestedBefore?: string | null
-    financialGoal?: string | null
-    mainGoal?: string | null
-    monthlyInvestment?: string | null
-    financialInstrument?: string | null
-    investmentMethod?: string | null
-    investmentCategories?: string | null
-    mainIncomeSource?: string | null
-    financialNewsSource?: string | null
-    years?: string | null
-    investingDuration?: string | null
-    savingsOrInvestmentReason?: string | null
-  }
-
-  export type ProfileUncheckedCreateWithoutUserInput = {
-    id?: string
-    riskTolerance?: string | null
-    investmentHorizon?: string | null
-    financialSkills?: string | null
-    hasInvestedBefore?: string | null
-    financialGoal?: string | null
-    mainGoal?: string | null
-    monthlyInvestment?: string | null
-    financialInstrument?: string | null
-    investmentMethod?: string | null
-    investmentCategories?: string | null
-    mainIncomeSource?: string | null
-    financialNewsSource?: string | null
-    years?: string | null
-    investingDuration?: string | null
-    savingsOrInvestmentReason?: string | null
-  }
-
-  export type ProfileCreateOrConnectWithoutUserInput = {
-    where: ProfileWhereUniqueInput
-    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
   }
 
   export type SupportCreateWithoutUserInput = {
@@ -30508,15 +30396,15 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateWithoutUserInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
+    createdAt?: Date | string | null
     investments?: InvestmentCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateWithoutUserInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
+    createdAt?: Date | string | null
     investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
   }
 
@@ -30528,6 +30416,72 @@ export namespace Prisma {
   export type InvestmentPortfolioCreateManyUserInputEnvelope = {
     data: InvestmentPortfolioCreateManyUserInput | InvestmentPortfolioCreateManyUserInput[]
     skipDuplicates?: boolean
+  }
+
+  export type FinancialRadiograpCreateWithoutUserInput = {
+    id?: string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type FinancialRadiograpUncheckedCreateWithoutUserInput = {
+    id?: string
+    monthlyIncome?: Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: Decimal | DecimalJsLike | number | string | null
+    debts?: Decimal | DecimalJsLike | number | string | null
+    savings?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type FinancialRadiograpCreateOrConnectWithoutUserInput = {
+    where: FinancialRadiograpWhereUniqueInput
+    create: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProfileCreateWithoutUserInput = {
+    id?: string
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
+    savingsOrInvestmentReason?: string | null
+  }
+
+  export type ProfileUncheckedCreateWithoutUserInput = {
+    id?: string
+    riskTolerance?: string | null
+    investmentHorizon?: string | null
+    financialSkills?: string | null
+    hasInvestedBefore?: string | null
+    financialGoal?: string | null
+    mainGoal?: string | null
+    monthlyInvestment?: string | null
+    financialInstrument?: string | null
+    investmentMethod?: string | null
+    investmentCategories?: string | null
+    mainIncomeSource?: string | null
+    financialNewsSource?: string | null
+    years?: string | null
+    investingDuration?: string | null
+    savingsOrInvestmentReason?: string | null
+  }
+
+  export type ProfileCreateOrConnectWithoutUserInput = {
+    where: ProfileWhereUniqueInput
+    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -30557,84 +30511,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringNullableFilter<"Comment"> | string | null
     newsId?: StringNullableFilter<"Comment"> | string | null
-  }
-
-  export type FinancialRadiographyUpsertWithoutUserInput = {
-    update: XOR<FinancialRadiographyUpdateWithoutUserInput, FinancialRadiographyUncheckedUpdateWithoutUserInput>
-    create: XOR<FinancialRadiographyCreateWithoutUserInput, FinancialRadiographyUncheckedCreateWithoutUserInput>
-    where?: FinancialRadiographyWhereInput
-  }
-
-  export type FinancialRadiographyUpdateToOneWithWhereWithoutUserInput = {
-    where?: FinancialRadiographyWhereInput
-    data: XOR<FinancialRadiographyUpdateWithoutUserInput, FinancialRadiographyUncheckedUpdateWithoutUserInput>
-  }
-
-  export type FinancialRadiographyUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type FinancialRadiographyUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type ProfileUpsertWithoutUserInput = {
-    update: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
-    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
-    where?: ProfileWhereInput
-  }
-
-  export type ProfileUpdateToOneWithWhereWithoutUserInput = {
-    where?: ProfileWhereInput
-    data: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ProfileUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
-    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
-    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
-    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
-    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
-    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
-    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
-    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
-    years?: NullableStringFieldUpdateOperationsInput | string | null
-    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
-    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ProfileUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
-    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
-    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
-    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
-    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
-    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
-    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
-    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
-    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
-    years?: NullableStringFieldUpdateOperationsInput | string | null
-    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
-    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SupportUpsertWithWhereUniqueWithoutUserInput = {
@@ -30747,9 +30623,87 @@ export namespace Prisma {
     OR?: InvestmentPortfolioScalarWhereInput[]
     NOT?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
     id?: StringFilter<"InvestmentPortfolio"> | string
-    userId?: StringFilter<"InvestmentPortfolio"> | string
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+    userId?: StringNullableFilter<"InvestmentPortfolio"> | string | null
+    name?: StringNullableFilter<"InvestmentPortfolio"> | string | null
+    createdAt?: DateTimeNullableFilter<"InvestmentPortfolio"> | Date | string | null
+  }
+
+  export type FinancialRadiograpUpsertWithoutUserInput = {
+    update: XOR<FinancialRadiograpUpdateWithoutUserInput, FinancialRadiograpUncheckedUpdateWithoutUserInput>
+    create: XOR<FinancialRadiograpCreateWithoutUserInput, FinancialRadiograpUncheckedCreateWithoutUserInput>
+    where?: FinancialRadiograpWhereInput
+  }
+
+  export type FinancialRadiograpUpdateToOneWithWhereWithoutUserInput = {
+    where?: FinancialRadiograpWhereInput
+    data: XOR<FinancialRadiograpUpdateWithoutUserInput, FinancialRadiograpUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FinancialRadiograpUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type FinancialRadiograpUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthlyIncome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    monthlyExpenses?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savingCapacity?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    debts?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    savings?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type ProfileUpsertWithoutUserInput = {
+    update: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
+    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    where?: ProfileWhereInput
+  }
+
+  export type ProfileUpdateToOneWithWhereWithoutUserInput = {
+    where?: ProfileWhereInput
+    data: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProfileUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ProfileUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    riskTolerance?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentHorizon?: NullableStringFieldUpdateOperationsInput | string | null
+    financialSkills?: NullableStringFieldUpdateOperationsInput | string | null
+    hasInvestedBefore?: NullableStringFieldUpdateOperationsInput | string | null
+    financialGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    mainGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyInvestment?: NullableStringFieldUpdateOperationsInput | string | null
+    financialInstrument?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    investmentCategories?: NullableStringFieldUpdateOperationsInput | string | null
+    mainIncomeSource?: NullableStringFieldUpdateOperationsInput | string | null
+    financialNewsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    years?: NullableStringFieldUpdateOperationsInput | string | null
+    investingDuration?: NullableStringFieldUpdateOperationsInput | string | null
+    savingsOrInvestmentReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateWithoutTargetInput = {
@@ -30759,16 +30713,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTargetInput = {
@@ -30778,16 +30731,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTargetInput = {
@@ -30813,16 +30765,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTargetInput = {
@@ -30832,108 +30783,103 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type UserCreateWithoutFinancialRadiographiesInput = {
+  export type UserCreateWithoutFinancialRadiographyInput = {
     id?: string
     email: string
     firstName?: string | null
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutFinancialRadiographiesInput = {
+  export type UserUncheckedCreateWithoutFinancialRadiographyInput = {
     id?: string
     email: string
     firstName?: string | null
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutFinancialRadiographiesInput = {
+  export type UserCreateOrConnectWithoutFinancialRadiographyInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutFinancialRadiographiesInput, UserUncheckedCreateWithoutFinancialRadiographiesInput>
+    create: XOR<UserCreateWithoutFinancialRadiographyInput, UserUncheckedCreateWithoutFinancialRadiographyInput>
   }
 
-  export type UserUpsertWithoutFinancialRadiographiesInput = {
-    update: XOR<UserUpdateWithoutFinancialRadiographiesInput, UserUncheckedUpdateWithoutFinancialRadiographiesInput>
-    create: XOR<UserCreateWithoutFinancialRadiographiesInput, UserUncheckedCreateWithoutFinancialRadiographiesInput>
+  export type UserUpsertWithoutFinancialRadiographyInput = {
+    update: XOR<UserUpdateWithoutFinancialRadiographyInput, UserUncheckedUpdateWithoutFinancialRadiographyInput>
+    create: XOR<UserCreateWithoutFinancialRadiographyInput, UserUncheckedCreateWithoutFinancialRadiographyInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutFinancialRadiographiesInput = {
+  export type UserUpdateToOneWithWhereWithoutFinancialRadiographyInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutFinancialRadiographiesInput, UserUncheckedUpdateWithoutFinancialRadiographiesInput>
+    data: XOR<UserUpdateWithoutFinancialRadiographyInput, UserUncheckedUpdateWithoutFinancialRadiographyInput>
   }
 
-  export type UserUpdateWithoutFinancialRadiographiesInput = {
+  export type UserUpdateWithoutFinancialRadiographyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutFinancialRadiographiesInput = {
+  export type UserUncheckedUpdateWithoutFinancialRadiographyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutInvestmentPortfolioInput = {
@@ -30943,16 +30889,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInvestmentPortfolioInput = {
@@ -30962,16 +30907,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInvestmentPortfolioInput = {
@@ -31023,16 +30967,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInvestmentPortfolioInput = {
@@ -31042,16 +30985,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type InvestmentUpsertWithWhereUniqueWithoutPortfolioInput = {
@@ -31122,16 +31064,16 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateWithoutInvestmentsInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutInvestmentPortfolioInput
+    name?: string | null
+    createdAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvestmentPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput = {
     id?: string
-    userId: string
-    name: string
-    createdAt?: Date | string
+    userId?: string | null
+    name?: string | null
+    createdAt?: Date | string | null
   }
 
   export type InvestmentPortfolioCreateOrConnectWithoutInvestmentsInput = {
@@ -31223,16 +31165,16 @@ export namespace Prisma {
 
   export type InvestmentPortfolioUpdateWithoutInvestmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvestmentPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type FinancialInstrumentUpsertWithoutInvestmentsInput = {
@@ -31386,16 +31328,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -31405,16 +31346,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -31471,16 +31411,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -31490,16 +31429,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type WalletTransactionCreateWithoutWalletInput = {
@@ -31537,16 +31475,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWalletInput = {
@@ -31556,16 +31493,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWalletInput = {
@@ -31620,16 +31556,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWalletInput = {
@@ -31639,16 +31574,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type walletCreateWithoutTransactionsInput = {
@@ -31710,16 +31644,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSupportInput = {
@@ -31729,16 +31662,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSupportInput = {
@@ -31764,16 +31696,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSupportInput = {
@@ -31783,16 +31714,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProfileInput = {
@@ -31802,16 +31732,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -31821,16 +31750,15 @@ export namespace Prisma {
     lastName?: string | null
     password: string
     avatarUrl?: string | null
-    role?: $Enums.UserRole | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isEmailVerified?: boolean
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    financialRadiographies?: FinancialRadiographyUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
     investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    financialRadiography?: FinancialRadiograpUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -31856,16 +31784,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -31875,16 +31802,15 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableEnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    financialRadiographies?: FinancialRadiographyUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
     investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    financialRadiography?: FinancialRadiograpUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type DividendCreateWithoutStockInput = {
@@ -32522,8 +32448,8 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateManyUserInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
+    createdAt?: Date | string | null
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -32644,22 +32570,22 @@ export namespace Prisma {
 
   export type InvestmentPortfolioUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvestmentCreateManyPortfolioInput = {

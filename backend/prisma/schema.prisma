@@ -24,8 +24,8 @@ model User {
   wallet               wallet[]
   target               Target[]
   investmentPortfolio  InvestmentPortfolio[]
-  FinancialRadiography FinancialRadiography?
-  Profile              Profile?
+  financialRadiography FinancialRadiograp?
+  profile              Profile?
 }
 
 model Target {
@@ -42,7 +42,7 @@ model Target {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model FinancialRadiography {
+model FinancialRadiograp {
   id              String   @id @default(cuid())
   monthlyIncome   Decimal? @db.Decimal(10, 2)
   monthlyExpenses Decimal? @db.Decimal(10, 2)
@@ -54,11 +54,11 @@ model FinancialRadiography {
 }
 
 model InvestmentPortfolio {
-  id          String       @id @default(cuid())
-  userId      String
-  name        String
-  createdAt   DateTime     @default(now()) @map("fecha_creacion")
-  user        User         @relation(fields: [userId], references: [id])
+  id          String      @id @default(cuid())
+  userId      String?  @unique
+  name        String?
+  createdAt   DateTime?     @default(now()) @map("fecha_creacion")
+  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
   investments Investment[]
 }
 

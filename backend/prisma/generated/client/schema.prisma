@@ -10,23 +10,22 @@ datasource db {
 }
 
 model User {
-  id                     String                @id @unique @default(cuid())
-  email                  String                @unique
-  firstName              String?
-  lastName               String?
-  password               String
-  avatarUrl              String?
-  role                   UserRole?             @default(USER)
-  createdAt              DateTime              @default(now())
-  updatedAt              DateTime              @updatedAt
-  isEmailVerified        Boolean               @default(false)
-  comment                Comment[]
-  financialRadiographies FinancialRadiography?
-  profile                Profile?
-  Support                Support[]
-  wallet                 wallet[]
-  target                 Target[]
-  investmentPortfolio    InvestmentPortfolio[]
+  id                   String                @id @unique @default(cuid())
+  email                String                @unique
+  firstName            String?
+  lastName             String?
+  password             String
+  avatarUrl            String?
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  isEmailVerified      Boolean               @default(false)
+  comment              Comment[]
+  Support              Support[]
+  wallet               wallet[]
+  target               Target[]
+  investmentPortfolio  InvestmentPortfolio[]
+  financialRadiography FinancialRadiograp?
+  profile              Profile?
 }
 
 model Target {
@@ -43,7 +42,7 @@ model Target {
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model FinancialRadiography {
+model FinancialRadiograp {
   id              String   @id @default(cuid())
   monthlyIncome   Decimal? @db.Decimal(10, 2)
   monthlyExpenses Decimal? @db.Decimal(10, 2)
@@ -56,10 +55,10 @@ model FinancialRadiography {
 
 model InvestmentPortfolio {
   id          String       @id @default(cuid())
-  userId      String
-  name        String
-  createdAt   DateTime     @default(now()) @map("fecha_creacion")
-  user        User         @relation(fields: [userId], references: [id])
+  userId      String?      @unique
+  name        String?
+  createdAt   DateTime?    @default(now()) @map("fecha_creacion")
+  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
   investments Investment[]
 }
 

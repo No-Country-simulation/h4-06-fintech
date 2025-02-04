@@ -124,7 +124,6 @@ exports.Prisma.UserScalarFieldEnum = {
   lastName: 'lastName',
   password: 'password',
   avatarUrl: 'avatarUrl',
-  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   isEmailVerified: 'isEmailVerified'
@@ -143,7 +142,7 @@ exports.Prisma.TargetScalarFieldEnum = {
   userId: 'userId'
 };
 
-exports.Prisma.FinancialRadiographyScalarFieldEnum = {
+exports.Prisma.FinancialRadiograpScalarFieldEnum = {
   id: 'id',
   monthlyIncome: 'monthlyIncome',
   monthlyExpenses: 'monthlyExpenses',
@@ -330,12 +329,6 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.UserRole = exports.$Enums.UserRole = {
-  USER: 'USER',
-  ADMIN: 'ADMIN',
-  MODERATOR: 'MODERATOR'
-};
-
 exports.CurrencyType = exports.$Enums.CurrencyType = {
   PESOS: 'PESOS',
   DOLLARS: 'DOLLARS'
@@ -347,6 +340,12 @@ exports.TransactionType = exports.$Enums.TransactionType = {
   TRANSFER: 'TRANSFER'
 };
 
+exports.UserRole = exports.$Enums.UserRole = {
+  USER: 'USER',
+  ADMIN: 'ADMIN',
+  MODERATOR: 'MODERATOR'
+};
+
 exports.Status = exports.$Enums.Status = {
   open: 'open',
   inProgress: 'inProgress',
@@ -356,7 +355,7 @@ exports.Status = exports.$Enums.Status = {
 exports.Prisma.ModelName = {
   User: 'User',
   Target: 'Target',
-  FinancialRadiography: 'FinancialRadiography',
+  FinancialRadiograp: 'FinancialRadiograp',
   InvestmentPortfolio: 'InvestmentPortfolio',
   Investment: 'Investment',
   FinancialInstrument: 'FinancialInstrument',
