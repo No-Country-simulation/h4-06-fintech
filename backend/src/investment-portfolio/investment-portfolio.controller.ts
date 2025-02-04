@@ -21,15 +21,15 @@ export class InvestmentPortfolioController {
   ) {}
 
   @Post()
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   create(@Body() createInvestmentPortfolioDto: CreateInvestmentPortfolioDto) {
     return this.investmentPortfolioService.create(createInvestmentPortfolioDto);
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   findAll() {
     return this.investmentPortfolioService.findAll();
   }

@@ -12,6 +12,7 @@ import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Investment } from '../investment-portfolio/dto/create-investment-portfolio.dto';
 
 export const roundOfHashing = 10;
 
@@ -27,23 +28,22 @@ export class UsersService {
     const user = await this.prismaService.user.findFirst({
       where: { email },
     });
-    if (user) {
-      throw new BadRequestException(
-        'El correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.',
-      );
-    }
     return user;
   }
 
   async create(createUserDto: CreateUserDto) {
-    await this.findByEmail(createUserDto.email);
+    createUserDto.email.toLowerCase();
+    const user = await this.findByEmail(createUserDto.email);
+    if (user) {
+      throw new HttpException('User already exists', HttpStatus.CONFLICT);
+    }
     try {
       const hashedPassword = await bcrypt.hash(
         createUserDto.password,
         roundOfHashing,
       );
 
-      const { email, profile, financialRadiographies, ...rest } = createUserDto;
+      const { email, profile, financialRadiographies, investmentPortfolio, ...rest } = createUserDto;
       rest.password = hashedPassword;
 
       const user = await this.prismaService.user.create({
@@ -56,7 +56,10 @@ export class UsersService {
           financialRadiographies: {
             create: financialRadiographies,
           },
-        },
+          investmentPortfolio: {
+            create: investmentPortfolio,
+          }
+        }
       });
 
       await this.prismaService.wallet.create({
@@ -73,6 +76,7 @@ export class UsersService {
           wallet: true,
           profile: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
         },
       });
 
@@ -98,6 +102,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
         },
       });
       return findAll;
@@ -119,6 +124,7 @@ export class UsersService {
           comment: true,
           financialRadiographies: true,
           target: true,
+          investmentPortfolio: true,
         },
       });
       if (!findOne) {
@@ -141,7 +147,7 @@ export class UsersService {
         );
       }
 
-      const { profile, financialRadiographies, ...rest } = updateUserDto;
+      const { profile, financialRadiographies, investmentPortfolio, ...rest } = updateUserDto;
 
       const updateData: any = {
         ...rest,
@@ -152,6 +158,15 @@ export class UsersService {
           upsert: {
             create: profile,
             update: profile,
+          },
+        };
+      }
+
+      if (investmentPortfolio) {
+        updateData.investmentPortfolio = {
+          upsert: {
+            create: investmentPortfolio,
+            update: investmentPortfolio,
           },
         };
       }
@@ -173,6 +188,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
         },
       });
 
@@ -208,14 +224,17 @@ export class UsersService {
   }
 
   async confirmEmail(token: string) {
-    const payload: JwtPayload = this.jwtService.verify(token, {
-      secret: process.env.JWT_SECRET,
-    });
+    let payload: JwtPayload;
+    try {
+      payload = this.jwtService.verify(token, {
+        secret: process.env.JWT_SECRET,
+      });
+    } catch (error) {
+      throw new BadRequestException('Token inválido o expirado.');
+    }
 
     const user = await this.prismaService.user.findUnique({
-      where: {
-        id: payload.id,
-      },
+      where: { id: payload.id },
     });
 
     if (!user) {
@@ -223,19 +242,15 @@ export class UsersService {
     }
 
     if (user.isEmailVerified) {
-      throw new BadRequestException('Esta cuenta ya esta verificada');
+      throw new BadRequestException('Esta cuenta ya está verificada.');
     }
 
     await this.prismaService.user.update({
-      where: {
-        id: user.id,
-      },
-      data: {
-        isEmailVerified: true,
-      },
+      where: { id: user.id },
+      data: { isEmailVerified: true },
     });
 
-    return user;
+    return { message: 'Cuenta verificada con éxito', user };
   }
 
   generateAccessToken(user: User): string {

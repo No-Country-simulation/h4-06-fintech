@@ -8,7 +8,7 @@ import {
   Post,
   Res,
   UseGuards,
-} from '@nestjs/common';
+ HttpException, HttpStatus } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -27,8 +27,8 @@ export class UsersController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   findAll() {
     return this.usersService.findAll();
   }
@@ -53,27 +53,28 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }
-
   @Get('confirm/:token')
   async confirm(
     @Param('token') token: string,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const user = await this.usersService.confirmEmail(token);
+    try {
+      const user = await this.usersService.confirmEmail(token);
+      const accessToken = this.usersService.generateAccessToken(user.user);
 
-    // Generate access token and set it to response
-    const accessToken = this.usersService.generateAccessToken(user);
-
-    console.log('TOKEN DESDE EL BACK');
-    console.log({ accessToken });
-
-    // 1 - En vez de setear la cookie desde el backend, mandamos la cookie como parte
-    // de la url, una vez llega al middleware, se lee el token y se lo setea el front.
-
-    const url = `${process.env.FRONTEND_URL}/onboarding?token=${accessToken}`;
-    // Redirect to the frontend onboarding page with the access token in the header
-    console.log({ url });
-
-    return res.redirect(307, url);
+      // Setear el token en una cookie segura
+      res.cookie('access_token', accessToken, {
+        httpOnly: true, // Evita que el frontend acceda al token
+        secure: process.env.NODE_ENV === 'production', // Solo en HTTPS en producción
+        sameSite: 'strict',
+        maxAge: 1000 * 60 * 60 * 24, // 1 día de duración
+      });
+  
+      return res.redirect(303, `${process.env.FRONTEND_URL}/onboarding?token=${accessToken}`);
+    } catch (error) {
+      console.error('Error confirming email:', error);
+      throw new HttpException('Invalid or expired token', HttpStatus.BAD_REQUEST);
+    }
   }
+  
 }

@@ -6,16 +6,31 @@ import { UpdateInvestmentDto } from './dto/update-investment.dto';
 @Injectable()
 export class InvestmentService {
   constructor(private readonly prismaService: PrismaService) {}
-  async create(createInvestmentDto: CreateInvestmentDto) {
+  async create(data: CreateInvestmentDto) {
     try {
       const investment = await this.prismaService.investment.create({
-        data: createInvestmentDto,
+        data: {
+          portfolioId: data.portfolioId,
+          financialInstrumentId: data.financialInstrumentId,
+          stockSymbol: data.stockSymbol,
+          amountInvested: data.amountInvested,
+          dateInvestment: data.dateInvestment instanceof Date ? data.dateInvestment : new Date(data.dateInvestment),
+        },
+        include: {
+          stock: {
+            include: {
+              price: true,
+            }
+          },
+
+        }
       });
       return {
         message: 'Investment created successfully',
         data: investment,
       };
     } catch (error) {
+      console.log(error);
       throw new HttpException(
         'Error creating investment',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -40,6 +55,13 @@ export class InvestmentService {
         where: {
           id,
         },
+        include: { 
+          stock: {
+            include: {
+              price: true,
+            }
+          }
+         },
       });
       return {
         message: 'Investment found',

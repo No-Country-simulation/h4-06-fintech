@@ -58,8 +58,9 @@ export class AuthController {
   async googleCallback(@Req() req, @Res() res) {
     const googleUser = req.user;
     
+    
     const authResponse = await this.authService.validateGoogleUser(googleUser);
 
-    res.redirect(`http://localhost:4000?token=${authResponse.accessToken}`);
+    res.redirect(`${process.env.FRONTEND_URL}?token=${authResponse.accessToken}`);
   }
 }
