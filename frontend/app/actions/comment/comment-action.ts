@@ -44,8 +44,10 @@ export async function commentAction(
   try {
     await backend.community.commentApi.create({
       content: result.data.content,
-      dateComment: "2025-02-04T19:14:01.131Z",
       newsId: result.data.newsId,
+      // TODO - Sacar esta fecha hardcodeada, esto lo tienen que hacer
+      // desde el backend
+      dateComment: "2025-02-04T19:14:01.131Z",
     });
 
     revalidatePath(`/community/news/${result.data.newsId}`, "page")
