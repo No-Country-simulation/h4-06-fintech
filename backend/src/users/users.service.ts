@@ -53,7 +53,7 @@ export class UsersService {
           profile: {
             create: profile,
           },
-          financialRadiography: {
+          financialRadiographies: {
             create: financialRadiograp,
           },
           investmentPortfolio: {
@@ -75,7 +75,7 @@ export class UsersService {
         include: {
           wallet: true,
           profile: true,
-          financialRadiography: true,
+          financialRadiographies: true,
           investmentPortfolio: true,
         },
       });
@@ -124,7 +124,7 @@ export class UsersService {
           profile: true,
           wallet: true,
           comment: true,
-          financialRadiography: true,
+          financialRadiographies: true,
           target: true,
           customization: true,
         },
