@@ -1,0 +1,284 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./generated/client"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String                @id @unique @default(cuid())
+  email                  String                @unique
+  firstName              String?
+  lastName               String?
+  password               String
+  avatarUrl              String?
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  isEmailVerified        Boolean               @default(false)
+  comment                Comment[]
+  financialRadiographies FinancialRadiograp?
+  profile                Profile?
+  customization          Customization?
+  Support                Support[]
+  wallet                 wallet[]
+  target                 Target[]
+  investmentPortfolio    InvestmentPortfolio[]
+}
+
+model Target {
+  id         String   @id @default(cuid())
+  name       String
+  progress   Decimal  @default(0.0)
+  amount     Decimal
+  isActive   Boolean  @default(true)
+  category   String
+  dateTarget DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FinancialRadiograp {
+  id              String   @id @default(cuid())
+  monthlyIncome   Decimal? @db.Decimal(10, 2)
+  monthlyExpenses Decimal? @db.Decimal(10, 2)
+  savingCapacity  Decimal? @db.Decimal(10, 2)
+  debts           Decimal? @db.Decimal(10, 2)
+  savings         Decimal? @db.Decimal(10, 2)
+  userId          String?  @unique
+  user            User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model InvestmentPortfolio {
+  id          String       @id @default(cuid())
+  userId      String
+  name        String
+  createdAt   DateTime     @default(now()) @map("fecha_creacion")
+  user        User         @relation(fields: [userId], references: [id])
+  investments Investment[]
+}
+
+model Investment {
+  id                    String               @id @default(cuid())
+  amountInvested        Int
+  dateInvestment        DateTime
+  portfolioId           String
+  financialInstrumentId String?
+  stockSymbol           String?
+  stock                 Stock?               @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  portfolio             InvestmentPortfolio? @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  FinancialInstrument   FinancialInstrument? @relation(fields: [financialInstrumentId], references: [id])
+}
+
+model FinancialInstrument {
+  id          String       @id @default(cuid())
+  name        String
+  type        String
+  category    String
+  performance Float
+  levelRisk   Int
+  deadline    Int
+  currency    CurrencyType
+  Investments Investment[]
+}
+
+model News {
+  id        String    @id @default(cuid())
+  title     String
+  content   String
+  source    String
+  dateNews  DateTime
+  category  String
+  createdAt DateTime  @default(now())
+  comment   Comment[]
+}
+
+model Comment {
+  id          String   @id @default(cuid())
+  content     String
+  dateComment DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String?
+  newsId      String?
+  news        News?    @relation(fields: [newsId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model wallet {
+  id             String              @id @default(cuid())
+  userId         String
+  balancePesos   Int
+  balanceDollars Int
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  transactions   WalletTransaction[]
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WalletTransaction {
+  id          String          @id @default(cuid())
+  walletId    String
+  type        TransactionType
+  amount      Float
+  currency    CurrencyType
+  description String?
+  createdAt   DateTime        @default(now())
+  wallet      wallet          @relation(fields: [walletId], references: [id], onDelete: Cascade)
+}
+
+model Administrador {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  password String
+  role     UserRole @default(ADMIN)
+  name     String
+}
+
+model Support {
+  id        String   @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  status    Status   @default(open)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Profile {
+  id                        String  @id @default(cuid())
+  userId                    String  @unique
+  riskTolerance             String?
+  investmentHorizon         String?
+  financialSkills           String?
+  hasInvestedBefore         String?
+  financialGoal             String?
+  mainGoal                  String?
+  monthlyInvestment         String?
+  financialInstrument       String?
+  investmentMethod          String?
+  investmentCategories      String?
+  mainIncomeSource          String?
+  financialNewsSource       String?
+  years                     String?
+  investingDuration         String?
+  savingsOrInvestmentReason String?
+  user                      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Customization {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  categories     String
+  strategy       String
+  method         String
+  newsSource     String
+  instrument     String
+  age            Int
+  investingYears Int
+  goal           String
+  monthlyAmount  Int
+  incomeSource   String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Stock {
+  symbol     String       @unique
+  name       String
+  typeDisp   String
+  currency   String
+  market     String
+  marketCap  Int
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  id         Int          @id @default(autoincrement())
+  priceId    Int
+  volumeId   Int
+  week52Id   Int
+  dividendId Int
+  earningsId Int
+  dividend   Dividend     @relation(fields: [dividendId], references: [id])
+  earnings   Earnings     @relation(fields: [earningsId], references: [id])
+  price      Price        @relation(fields: [priceId], references: [id])
+  volume     Volume       @relation(fields: [volumeId], references: [id])
+  week52     Week52       @relation(fields: [week52Id], references: [id])
+  Investment Investment[]
+}
+
+model Price {
+  current          Float?
+  changePercent    Float?
+  open             Float?
+  dayLow           Float?
+  dayHigh          Float?
+  previousClose    Float?
+  postMarketPrice  Float?
+  postMarketChange Float?
+  id               Int     @id @default(autoincrement())
+  Stock            Stock[]
+}
+
+model Volume {
+  current        Int?
+  average3Months Int?
+  average10Days  Int?
+  id             Int     @id @default(autoincrement())
+  Stock          Stock[]
+}
+
+model Week52 {
+  high           Float?
+  low            Float?
+  changeFromHigh Float?
+  changeFromLow  Float?
+  id             Int     @id @default(autoincrement())
+  Stock          Stock[]
+}
+
+model Dividend {
+  rate  Float?
+  yield Float?
+  date  DateTime?
+  id    Int       @id @default(autoincrement())
+  Stock Stock[]
+}
+
+model Earnings {
+  nextDate            DateTime?
+  epsTrailing12Months Float?
+  epsForward          Float?
+  peRatio             Float?
+  id                  Int       @id @default(autoincrement())
+  Stock               Stock[]
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+}
+
+enum CurrencyType {
+  PESOS
+  DOLLARS
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum Status {
+  open
+  inProgress
+  closed
+}
