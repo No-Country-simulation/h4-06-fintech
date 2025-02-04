@@ -1,25 +1,33 @@
 import { useState, useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
-// import envs from 'config/envs';
 
 interface Message {
   sender: 'user' | 'bot';
   text: string;
 }
-// const BASE_URL = `${envs.BACKEND_URL}/chatbot/message`;
+const BASE_URL = 'http://localhost:3000';
+console.log({ BASE_URL });
 
-const socket: Socket = io('http://localhost:3000/chatbot/message', {
+const socket: Socket = io(BASE_URL, {
   transports: ['websocket'],
   autoConnect: true,
   withCredentials: true,
 });
 
 
+
+socket.on('connect_error', (error) => {
+  console.error('Socket Connection Error:', error);
+});
+
+
 export const useChat = () => {
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
+
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [isTyping, setIsTyping] = useState(false); 
+
 
   useEffect(() => {
     setIsConnected(socket.connected);
