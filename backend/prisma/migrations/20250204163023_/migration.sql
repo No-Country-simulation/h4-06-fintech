@@ -18,7 +18,6 @@ CREATE TABLE "User" (
     "lastName" TEXT,
     "password" TEXT NOT NULL,
     "avatarUrl" TEXT,
-    "role" "UserRole" DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "isEmailVerified" BOOLEAN NOT NULL DEFAULT false,
@@ -190,6 +189,26 @@ CREATE TABLE "Profile" (
 );
 
 -- CreateTable
+CREATE TABLE "Customization" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "categories" TEXT NOT NULL,
+    "strategy" TEXT NOT NULL,
+    "method" TEXT NOT NULL,
+    "newsSource" TEXT NOT NULL,
+    "instrument" TEXT NOT NULL,
+    "age" INTEGER NOT NULL,
+    "investingYears" INTEGER NOT NULL,
+    "goal" TEXT NOT NULL,
+    "monthlyAmount" INTEGER NOT NULL,
+    "incomeSource" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Customization_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Stock" (
     "symbol" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -282,6 +301,9 @@ CREATE UNIQUE INDEX "Administrador_email_key" ON "Administrador"("email");
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Customization_userId_key" ON "Customization"("userId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Stock_symbol_key" ON "Stock"("symbol");
 
 -- AddForeignKey
@@ -319,6 +341,9 @@ ALTER TABLE "Support" ADD CONSTRAINT "Support_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Customization" ADD CONSTRAINT "Customization_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Stock" ADD CONSTRAINT "Stock_dividendId_fkey" FOREIGN KEY ("dividendId") REFERENCES "Dividend"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
