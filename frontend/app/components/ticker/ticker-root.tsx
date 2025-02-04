@@ -9,12 +9,15 @@ interface RootProps extends PropsWithChildren {
   isUp?: boolean;
 }
 
-export function Root({ image, name, isUp, children }: RootProps) {
+export function Root({ image, name, isUp, symbol, children }: RootProps) {
   return (
-    <section className='flex items-center justify-between rounded-md bg-primary/10 p-2 transition-colors hover:bg-primary/10'>
-      <section className='flex items-center gap-4'>
+    <section data-isup={isUp} className='group flex items-center justify-between rounded-md  p-2 transition-colors hover:bg-primary/10 shadow-md'>
+      <section className='flex items-center gap-3 w-full max-w-[600px]'>
         <TickerImage src={image} />
-        <p className='text-lg font-medium'>{name}</p>
+        <section className='flex flex-col'>
+          <p className='text-lg font-bold'>{symbol}</p>
+          <p className='text-sm font-light'>{name}</p>
+        </section>
         {isUp !== undefined && <TickerEvolutionicon isUp={isUp} />}
       </section>
       {children}

@@ -12,7 +12,7 @@ export function TickersList({ tickers }: Props) {
   const filteredTickers = useFilteredTickers(tickers);
 
   return (
-    <ul className='flex flex-col gap-2 divide-y'>
+    <ul className='flex flex-col gap-2'>
       {filteredTickers.map((ticker) => (
         <TickerItem
           ticker={ticker}
