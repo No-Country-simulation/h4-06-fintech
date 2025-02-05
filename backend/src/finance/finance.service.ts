@@ -1,19 +1,25 @@
-import {
-  Injectable, HttpException,
-  HttpStatus,
-} from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import YahooFinance from 'yahoo-finance2';
 import { StockDTO } from './dto/finance.dto';
 
 @Injectable()
 export class FinanceService {
+  private readonly logger = new Logger(FinanceService.name);
+
   constructor(private readonly prisma: PrismaService) {}
 
   // Función para obtener y guardar datos desde Yahoo Finance
   async fetchAndSaveStockData(ticker: string) {
     try {
       const data = await YahooFinance.quote(ticker);
+
+      if (!data) {
+        throw new HttpException(
+          `No se encontraron datos para el ticker ${ticker}`,
+          HttpStatus.NOT_FOUND,
+        );
+      }
 
       const stockData: StockDTO = {
         symbol: data.symbol,
@@ -48,7 +54,9 @@ export class FinanceService {
           date: data.dividendDate ? new Date(data.dividendDate) : null,
         },
         earnings: {
-          nextDate: data.earningsTimestamp ? new Date(data.earningsTimestamp) : null,
+          nextDate: data.earningsTimestamp
+            ? new Date(data.earningsTimestamp)
+            : null,
           epsTrailing12Months: data.epsCurrentYear ?? 0,
           epsForward: data.epsForward ?? 0,
           peRatio: data.trailingPE ?? 0,
@@ -92,8 +100,14 @@ export class FinanceService {
           earnings: true,
         },
       });
-    } catch (error) {
-      throw new HttpException('Error al obtener los datos de Yahoo Finance', HttpStatus.INTERNAL_SERVER_ERROR);
+    } catch (error: unknown) {
+      this.logger.error(`Error en fetchAndSaveStockData: ${error}`);
+      throw new HttpException(
+        error instanceof Error
+          ? `Error al obtener los datos de Yahoo Finance: ${error.message}`
+          : 'Error desconocido al obtener los datos de Yahoo Finance',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -112,19 +126,37 @@ export class FinanceService {
       });
 
       if (!stock || !isFromDB) {
-        console.log(`Obteniendo datos de Yahoo Finance para ${ticker}...`);
+        this.logger.log(`Obteniendo datos de Yahoo Finance para ${ticker}...`);
         stock = await this.fetchAndSaveStockData(ticker);
       }
 
       return stock;
-    } catch (error) {
-      throw new HttpException('Error al obtener los datos de la acción', HttpStatus.INTERNAL_SERVER_ERROR);
+    } catch (error: unknown) {
+      this.logger.error(`Error en getStockData: ${error}`);
+      throw new HttpException(
+        error instanceof Error
+          ? `Error al obtener los datos de la acción: ${error.message}`
+          : 'Error desconocido al obtener los datos de la acción',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
   // Obtiene múltiples acciones a la vez
   async getInstruments(tickers: string[], isFromDB: boolean) {
-    return Promise.all(tickers.map(ticker => this.getStockData(ticker, isFromDB)));
+    try {
+      return await Promise.all(
+        tickers.map((ticker) => this.getStockData(ticker, isFromDB)),
+      );
+    } catch (error: unknown) {
+      this.logger.error(`Error en getInstruments: ${error}`);
+      throw new HttpException(
+        error instanceof Error
+          ? `Error al obtener múltiples acciones: ${error.message}`
+          : 'Error desconocido al obtener múltiples acciones',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   // Obtiene datos históricos
@@ -137,12 +169,27 @@ export class FinanceService {
         period1.setMonth(period1.getMonth() - 1);
       }
 
-      return await YahooFinance.historical(ticker, {
+      const historicalData = await YahooFinance.historical(ticker, {
         period1: period1.toISOString(),
         period2: period2.toISOString(),
       });
-    } catch (error) {
-      throw new HttpException('Error al obtener los datos históricos', HttpStatus.INTERNAL_SERVER_ERROR);
+
+      if (!historicalData || historicalData.length === 0) {
+        throw new HttpException(
+          `No se encontraron datos históricos para el ticker ${ticker}`,
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
+      return historicalData;
+    } catch (error: unknown) {
+      this.logger.error(`Error en getHistoricalData: ${error}`);
+      throw new HttpException(
+        error instanceof Error
+          ? `Error al obtener los datos históricos: ${error.message}`
+          : 'Error desconocido al obtener los datos históricos',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }

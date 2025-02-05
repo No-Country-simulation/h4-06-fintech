@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateCustomizationDto } from './dto/create-customization.dto';
 import { UpdateCustomizationDto } from './dto/update-customization.dto';
-import { PrismaService } from '@/src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class CustomizationService {

@@ -7,10 +7,11 @@ interface Props {
 export function TickerEvolutionicon({ isUp }: Props) {
   return (
     <Image
+      className='hidden md:block'
       alt='stock evolution'
       src={isUp ? '/svg/is-up.svg' : '/svg/is-down.svg'}
-      height={24}
-      width={24}
+      height={28}
+      width={156}
     />
   );
 }

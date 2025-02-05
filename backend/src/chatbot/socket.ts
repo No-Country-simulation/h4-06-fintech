@@ -1,6 +1,6 @@
 import { Server } from 'socket.io';
 import { Server as HttpServer } from 'http';
-import { ChatbotService } from '../chatbot/chatbot.service'; // Asegúrate de importar tu servicio
+import { ChatbotService } from '../chatbot/chatbot.service';
 import { AIService } from '../config/ai.config';
 
 const aiService = new AIService();
@@ -18,7 +18,7 @@ export const configureSocket = (server: HttpServer) => {
     console.log('Nuevo cliente conectado', socket.id);
 
     // Emitir mensaje de bienvenida cuando el cliente se conecta
-    socket.emit('welcome', '¡Bienvenido a Pro Manage!');
+    socket.emit('welcome', '¡Bienvenido a IUPI!');
 
     // Manejar mensajes entrantes del cliente
     socket.on('message', async (msg) => {

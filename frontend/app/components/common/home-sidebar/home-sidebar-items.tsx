@@ -42,7 +42,7 @@ export const items = [
   },
   {
     title: 'Comunidad',
-    url: '#',
+    url: '/community',
     icon: CommunityIcon,
   },
 ];

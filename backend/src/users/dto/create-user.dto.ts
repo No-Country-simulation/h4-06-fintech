@@ -11,7 +11,7 @@ import {
 } from 'class-validator';
 import { CreateFinancialRadiographyDto } from '../../FinancialRadiographies/FinancialRadiographies.dto';
 import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto';
-import { CreateInvestmentPortfolioDto } from '@/src/investment-portfolio/dto/create-investment-portfolio.dto';
+import { CreateInvestmentPortfolioDto } from '../../investment-portfolio/dto/create-investment-portfolio.dto';
 
 export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
 export class InvestmentPortfolio extends OmitType(
