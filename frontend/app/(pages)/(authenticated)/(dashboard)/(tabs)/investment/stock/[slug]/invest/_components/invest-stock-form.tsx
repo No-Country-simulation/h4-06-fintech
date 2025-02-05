@@ -69,7 +69,12 @@ export default function InvestStockForm({ portfolioId }: Props) {
         placeholder='$500'
       />
       <section className='flex items-center justify-between gap-2 rounded-lg bg-primary/20 p-4'>
-        <label htmlFor='moneda'>Moneda</label>
+        <label
+          className='text-xl font-medium'
+          htmlFor='moneda'
+        >
+          Moneda
+        </label>
         <Select name={`moneda`}>
           <SelectTrigger className='w-full md:max-w-[415px]'>
             <SelectValue placeholder='Selecciona una opción' />
@@ -99,9 +104,14 @@ interface AuxInputProps extends ComponentProps<'input'> {
 export function AuxInput({ name, label, ...props }: AuxInputProps) {
   return (
     <section className='flex items-center justify-between gap-2 rounded-lg bg-primary/20 p-4'>
-      <label htmlFor={name}>{label}</label>
+      <label
+        className='text-xl font-medium'
+        htmlFor={name}
+      >
+        {label}
+      </label>
       <input
-        className='rounded-md bg-secondary p-2'
+        className='w-full rounded-md bg-secondary p-2 md:max-w-[415px]'
         name={name}
         type='text'
         {...props}

@@ -6,7 +6,10 @@ export default async function InvestStockPage() {
   const { investmentPortfolio } = await backend.authApi.getProfile();
 
   return (
-    <PageHeader title='Comprar'>
+    <PageHeader
+      title='Comprar'
+      className='mt-12'
+    >
       <InvestStockForm portfolioId={investmentPortfolio.id} />
     </PageHeader>
   );

@@ -1,16 +1,15 @@
 import { formatMoney } from '@/lib/money-formatter';
 import { StockEvolution } from '../../_components/stock-evolution';
 import { calcularCambio } from '@/lib/calcular-cambios';
-import { backend } from '@api';
 
 interface Props {
+  amountInvested: number;
   currentPrice: number;
   symbol: string;
 }
 
-export async function InvestEvolution({ currentPrice, symbol }: Props) {
-  const { amountInvested, totalAssets } =
-    await backend.investment.stockApi.getDetails({ symbol });
+export async function InvestEvolution({ currentPrice, amountInvested }: Props) {
+  const totalAssets = amountInvested / currentPrice;
 
   const marketValue = totalAssets * currentPrice;
 
@@ -20,7 +19,7 @@ export async function InvestEvolution({ currentPrice, symbol }: Props) {
     <section className='flex flex-col gap-3'>
       <StockEvolution
         text='Activos totales'
-        value={totalAssets}
+        value={totalAssets.toFixed(2)}
       />
       <StockEvolution
         text='Valor del mercado'

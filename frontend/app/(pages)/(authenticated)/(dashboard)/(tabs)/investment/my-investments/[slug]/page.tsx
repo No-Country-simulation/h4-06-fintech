@@ -4,6 +4,7 @@ import { backend } from '@api';
 import { CardInformation } from '../../stock/[slug]/_components/card-information';
 import ComparativeTab from '../../stock/[slug]/_components/tabs/comparative-tab/comparative-tab';
 import { InvestEvolution } from './_components/invest-evolution';
+import { getPriceInfo } from '@/lib/get-price-info';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -12,19 +13,31 @@ interface Props {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
 
-  const ticker = await backend.investment.stockApi.getByTicker({
-    ticker: slug,
+  const {
+    data: { stock, amountInvested },
+  } = await backend.investment.stockApi.getInvest({ id: slug });
+
+  const { changePercent, isUp } = getPriceInfo({
+    current: stock.price.current,
+    previousClose: stock.price.dayLow,
   });
 
   return (
     <PageHeader title='Mis inversiones'>
       <CardInformation
-        slug={slug}
-        info={ticker}
+        slug={stock.symbol}
+        info={{
+          changePercent: changePercent,
+          currentPrice: stock.price.current,
+          isUp,
+          name: stock.name,
+          previousClose: stock.price.dayLow,
+        }}
       />
       <ComparativeTab />
       <InvestEvolution
-        currentPrice={ticker.price.current}
+        amountInvested={amountInvested}
+        currentPrice={stock.price.current}
         symbol={slug}
       />
       <footer className='mt-12 flex items-center justify-end gap-12'>

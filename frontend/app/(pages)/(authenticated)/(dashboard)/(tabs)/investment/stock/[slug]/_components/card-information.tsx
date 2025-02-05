@@ -1,19 +1,20 @@
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
-import { GetByTickerResponse } from 'client-api/backend/modules/investment/stock/interface/getByTicker';
 import Image from 'next/image';
 import { formatMoney } from '@/lib/money-formatter';
 import { card } from './card-item';
 
-export function CardInformation({
-  info,
-  slug,
-}: {
-  info: GetByTickerResponse;
-  slug: string;
-}) {
-  const isPositiveChange = info.price.changePercent > 0;
+type Info = {
+  currentPrice: number;
+  changePercent: string;
+  previousClose: number;
+  name: string;
+  isUp: boolean;
+};
+
+export function CardInformation({ info, slug }: { info: Info; slug: string }) {
   const information = card.find((item) => item.id === slug);
+
   return (
     <Card className='flex flex-row gap-8 bg-[#64CFF6]/50 p-10'>
       <div className='flex items-center justify-between gap-2'>
@@ -26,7 +27,7 @@ export function CardInformation({
           />
         </div>
         <section>
-          <p className='font-bold'>{info.symbol}</p>
+          <p className='font-bold'>{slug}</p>
           <p className='text-sm'>{info.name}</p>
         </section>
       </div>
@@ -36,16 +37,14 @@ export function CardInformation({
             variant='header'
             className='text-[40px]/[60px]'
           >
-            {formatMoney(info.price.current)}
+            {formatMoney(info.currentPrice)}
           </Text>
           <p
             className={
-              isPositiveChange
-                ? 'text-[#04914F]'
-                : 'text-[#FF0000]' + ' mt-2 text-xl'
+              info.isUp ? 'text-[#04914F]' : 'text-[#FF0000]' + ' mt-2 text-xl'
             }
           >
-            {info.price.changePercent.toFixed(2)}%
+            {info.changePercent}%
           </p>
           <span className='mt-2 font-poppins-light text-muted-foreground'>
             Hoy
@@ -53,7 +52,7 @@ export function CardInformation({
         </section>
         <section className='flex gap-1'>
           <p className='text-2xl text-[#06040480]'>
-            {formatMoney(info.price.previousClose)}
+            {formatMoney(info.previousClose)}
           </p>
           <p className='min-w-fit text-xl font-light'>Cierre anterior</p>
         </section>
