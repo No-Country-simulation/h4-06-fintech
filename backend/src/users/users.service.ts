@@ -57,14 +57,9 @@ export class UsersService {
             create: financialRadiograp,
           },
           investmentPortfolio: {
-            create: Array.isArray(investmentPortfolio) 
-              ? investmentPortfolio.map((portfolio) => ({
-                  ...portfolio, 
-                  userId: user.id,        
-                }))
-              : [],            
-          },
-          
+            create: investmentPortfolio,
+            
+          }
         }
       });
 
@@ -111,6 +106,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
       return findAll;
@@ -133,6 +129,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
       if (!findOne) {
@@ -198,6 +195,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
 

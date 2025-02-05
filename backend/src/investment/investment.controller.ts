@@ -18,8 +18,8 @@ export class InvestmentController {
   constructor(private readonly investmentService: InvestmentService) {}
 
   @Post()
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   create(@Body() createInvestmentDto: CreateInvestmentDto) {
     return this.investmentService.create(createInvestmentDto);
   }
