@@ -3,6 +3,8 @@
 import { useFilteredTickers } from '@/hooks/use-filtered-tickers';
 import { Ticker } from 'client-api/backend/modules/investment/stock/interface/getTickers';
 import { TickerItem } from './ticker-item';
+import { MList } from '@/components/motion/motion-list';
+import { MItem } from '@/components/motion/motion-item';
 
 interface Props {
   tickers: Ticker[];
@@ -12,13 +14,14 @@ export function TickersList({ tickers }: Props) {
   const filteredTickers = useFilteredTickers(tickers);
 
   return (
-    <ul className='flex flex-col gap-2'>
+    <MList className='flex flex-col gap-2'>
       {filteredTickers.map((ticker) => (
-        <TickerItem
-          ticker={ticker}
-          key={ticker.symbol}
-        />
+        <MItem key={ticker.symbol}>
+          <TickerItem
+            ticker={ticker}
+          />
+        </MItem>
       ))}
-    </ul>
+    </MList>
   );
 }
