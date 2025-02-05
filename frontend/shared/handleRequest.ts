@@ -28,6 +28,8 @@ export async function handleRequest<E extends Error, ApiResponse>({
 
     if (!response.ok) {
       const errorResponse: APIErrorResponse = await response.json();
+      console.log(errorResponse);
+
       if (errorResponse.statusCode >= 500) {
         console.log({ errorResponse });
 

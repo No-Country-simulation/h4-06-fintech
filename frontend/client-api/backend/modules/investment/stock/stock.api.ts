@@ -11,7 +11,7 @@ import { handleRequest } from 'shared/handleRequest';
 import { StockApi } from './interface/api.interface';
 import { tickers } from './tickers';
 
-const BASE_URL = `${envs.BACKEND_URL}/finance/stock`;
+const BASE_URL = `${envs.BACKEND_URL}/finance/stocks`;
 
 const stockApi: StockApi = {
   async getByTicker({ ticker }) {
