@@ -2,7 +2,7 @@ import {
   HORIZONTE_TEMPORAL_OPTIONS,
   NIVEL_DE_RIESGO_OPTIONS,
   RENDIMIENTO_ESPERADO_OPTIONS,
-} from '@/(pages)/(authenticated)/(tabs)/investment/stock/_data/filters-options';
+} from '@/(pages)/(authenticated)/(dashboard)/(tabs)/investment/stock/_data/filters-options';
 import { getRandomOption } from '@/lib/get-random-option';
 import envs from 'config/envs';
 import { authRequest } from 'shared/authRequest';
@@ -26,12 +26,27 @@ const stockApi: StockApi = {
     // TODO - Usar un endpoint para obtener todos los tickers
     // de momento devuelvo un array estatico
 
-    return tickers.map((ticker) => ({
-      ...ticker,
-      riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
-      timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
-      expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
-    }));
+    return new Promise((resolve) =>
+      setTimeout(
+        () =>
+          resolve(
+            tickers.map((ticker) => ({
+              ...ticker,
+              riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
+              timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
+              expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
+            })),
+          ),
+        1000,
+      ),
+    );
+
+    // return tickers.map((ticker) => ({
+    //   ...ticker,
+    //   riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
+    //   timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
+    //   expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
+    // }));
   },
   async getDetails({ symbol }) {
     console.log({ symbol });

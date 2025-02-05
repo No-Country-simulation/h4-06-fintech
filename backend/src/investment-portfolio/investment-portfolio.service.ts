@@ -8,14 +8,70 @@ export class InvestmentPortfolioService {
   constructor(private readonly prismaService: PrismaService) {}
   async create(createInvestmentPortfolioDto: CreateInvestmentPortfolioDto) {
     try {
+      const { userId, investment, ...rest } = createInvestmentPortfolioDto;
+
+      // Validar que userId no sea null o undefined
+      if (!userId) {
+        throw new HttpException('User ID is required', HttpStatus.BAD_REQUEST);
+      }
+
+      // Buscar si el usuario ya tiene un portfolio
+      const existingPortfolio =
+        await this.prismaService.investmentPortfolio.findFirst({
+          where: { userId },
+        });
+
+      if (existingPortfolio) {
+        throw new HttpException(
+          'User already has a portfolio',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      // Asegurar que investment sea un array o inicializarlo vacío
+      const investmentsArray = Array.isArray(investment) ? investment : [];
+
+      // Crear el portfolio con inversiones
       const investmentPortfolio =
         await this.prismaService.investmentPortfolio.create({
-          data: createInvestmentPortfolioDto,
+          data: {
+            ...rest,
+            userId,
+            investments: {
+              create: investmentsArray,
+            },
+          },
+          include: {
+            investments: {
+              include: {
+                stock:{
+                  include: {
+                    price: true,
+                  }
+                }
+              }
+            },
+            
+          },
         });
-      return investmentPortfolio;
+
+      return {
+        message: 'Portfolio created successfully',
+        data: investmentPortfolio,
+      };
     } catch (error) {
+      console.error('Error creating portfolio:', error); // 👈 Imprime el error real en consola
+
+      // Capturar errores específicos de Prisma
+      if (error.code === 'P2002') {
+        throw new HttpException(
+          'User already has a portfolio',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
       throw new HttpException(
-        'Internal server error',
+        error.message || 'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
@@ -25,7 +81,7 @@ export class InvestmentPortfolioService {
     try {
       return await this.prismaService.investmentPortfolio.findMany({
         include: {
-          investment: true,
+          investments: true,
         },
       });
     } catch (error) {
@@ -42,7 +98,7 @@ export class InvestmentPortfolioService {
         await this.prismaService.investmentPortfolio.findUnique({
           where: { id },
           include: {
-            investment: true,
+            investments: true,
           },
         });
       return investmentPortfolio;

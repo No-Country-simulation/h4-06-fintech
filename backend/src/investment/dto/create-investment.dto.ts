@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateInvestmentDto {
   @ApiProperty()
@@ -7,10 +7,9 @@ export class CreateInvestmentDto {
   @IsNumber()
   amountInvested: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  performance: string;
+  financialInstrumentId?: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -26,4 +25,6 @@ export class CreateInvestmentDto {
   @IsOptional({ message: 'Stock symbol is optional' })
   @IsString()
   stockSymbol: string;
+
+  
 }

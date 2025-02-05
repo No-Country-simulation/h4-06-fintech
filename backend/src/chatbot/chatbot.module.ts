@@ -6,7 +6,7 @@ import { ChatbotGateway } from './chatbot.gateway';
 
 @Module({
   controllers: [ChatbotController],
-  providers: [ChatbotService, AIService, ChatbotGateway], // Registra ambos como proveedores
-  exports: [ChatbotService], // Exporta el servicio si es necesario en otros módulos
+  providers: [ChatbotService, AIService, ChatbotGateway],
+  exports: [ChatbotService],
 })
 export class ChatbotModule {}

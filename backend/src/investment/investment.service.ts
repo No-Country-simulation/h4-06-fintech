@@ -6,18 +6,58 @@ import { UpdateInvestmentDto } from './dto/update-investment.dto';
 @Injectable()
 export class InvestmentService {
   constructor(private readonly prismaService: PrismaService) {}
-  async create(createInvestmentDto: CreateInvestmentDto) {
+  async create(data: CreateInvestmentDto) {
     try {
+
+      const portfolioExists = await this.prismaService.investmentPortfolio.findUnique({
+        where: { id: data.portfolioId },
+      });
+      if (!portfolioExists) {
+        
+        throw new HttpException(
+          'Investment portfolio does not exist',
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
       const investment = await this.prismaService.investment.create({
-        data: createInvestmentDto,
+        data: {
+          portfolioId: data.portfolioId,
+          financialInstrumentId: data.financialInstrumentId,
+          stockSymbol: data.stockSymbol,
+          amountInvested: data.amountInvested,
+          dateInvestment: data.dateInvestment instanceof Date ? data.dateInvestment : new Date(data.dateInvestment),
+        },
+        include: {
+          stock: {
+            select: {
+              symbol: true,
+              name: true,
+              typeDisp: true,
+              marketCap: true,
+              price: {
+                select: {
+                  current: true,
+                  dayHigh: true,
+                  dayLow: true,
+                }
+              }
+            }
+          }
+        }
       });
       return {
         message: 'Investment created successfully',
         data: investment,
       };
     } catch (error) {
+      console.error('🔥 Error creating investment:', error);
+
+      if (error instanceof HttpException) {
+        throw error;
+      }
       throw new HttpException(
-        'Error creating investment',
+        `Error creating investment: ${error.message}`,
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
@@ -37,9 +77,30 @@ export class InvestmentService {
   async findOne(id: string) {
     try {
       const findOne = await this.prismaService.investment.findUnique({
-        where: {
-          id,
-        },
+        where: { id },
+        select: {
+          amountInvested: true,
+          dateInvestment: true,
+          financialInstrumentId: true,
+          id: true,
+          portfolioId: true,
+          stockSymbol: true,
+          stock: {
+            select: {
+              symbol: true,
+              name: true,
+              typeDisp: true,
+              marketCap: true,
+              price: {
+                select: {
+                  current: true,
+                  dayHigh: true,
+                  dayLow: true,
+                }
+              }
+            }
+          }
+        }
       });
       return {
         message: 'Investment found',
