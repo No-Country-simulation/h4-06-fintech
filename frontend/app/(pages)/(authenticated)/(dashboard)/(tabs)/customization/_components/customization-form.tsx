@@ -56,11 +56,11 @@ export function CustomizationForm() {
         {questions.map((question) => (
           <section
             key={question.id}
-            className='flex items-center justify-between rounded-md bg-primary/10 p-2'
+            className='flex flex-col justify-between gap-2 rounded-md bg-primary/10 p-2 md:flex-row md:items-center'
           >
             <p className='text-lg font-medium'>{question.question}</p>
             <Select name={`question_${question.id}`}>
-              <SelectTrigger className='w-full max-w-[415px] '>
+              <SelectTrigger className='w-full md:max-w-[415px]'>
                 <SelectValue placeholder='Selecciona una opción' />
               </SelectTrigger>
               <SelectContent>
