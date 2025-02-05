@@ -155,8 +155,7 @@ exports.Prisma.FinancialRadiograpScalarFieldEnum = {
 exports.Prisma.InvestmentPortfolioScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  name: 'name',
-  createdAt: 'createdAt'
+  name: 'name'
 };
 
 exports.Prisma.InvestmentScalarFieldEnum = {

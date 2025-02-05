@@ -6608,21 +6608,18 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     name: string | null
-    createdAt: Date | null
   }
 
   export type InvestmentPortfolioMaxAggregateOutputType = {
     id: string | null
     userId: string | null
     name: string | null
-    createdAt: Date | null
   }
 
   export type InvestmentPortfolioCountAggregateOutputType = {
     id: number
     userId: number
     name: number
-    createdAt: number
     _all: number
   }
 
@@ -6631,21 +6628,18 @@ export namespace Prisma {
     id?: true
     userId?: true
     name?: true
-    createdAt?: true
   }
 
   export type InvestmentPortfolioMaxAggregateInputType = {
     id?: true
     userId?: true
     name?: true
-    createdAt?: true
   }
 
   export type InvestmentPortfolioCountAggregateInputType = {
     id?: true
     userId?: true
     name?: true
-    createdAt?: true
     _all?: true
   }
 
@@ -6724,8 +6718,7 @@ export namespace Prisma {
   export type InvestmentPortfolioGroupByOutputType = {
     id: string
     userId: string
-    name: string
-    createdAt: Date
+    name: string | null
     _count: InvestmentPortfolioCountAggregateOutputType | null
     _min: InvestmentPortfolioMinAggregateOutputType | null
     _max: InvestmentPortfolioMaxAggregateOutputType | null
@@ -6749,7 +6742,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     name?: boolean
-    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
     _count?: boolean | InvestmentPortfolioCountOutputTypeDefaultArgs<ExtArgs>
@@ -6759,7 +6751,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     name?: boolean
-    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
@@ -6767,7 +6758,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     name?: boolean
-    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["investmentPortfolio"]>
 
@@ -6775,10 +6765,9 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     name?: boolean
-    createdAt?: boolean
   }
 
-  export type InvestmentPortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "createdAt", ExtArgs["result"]["investmentPortfolio"]>
+  export type InvestmentPortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name", ExtArgs["result"]["investmentPortfolio"]>
   export type InvestmentPortfolioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     investments?: boolean | InvestmentPortfolio$investmentsArgs<ExtArgs>
@@ -6800,8 +6789,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      name: string
-      createdAt: Date
+      name: string | null
     }, ExtArgs["result"]["investmentPortfolio"]>
     composites: {}
   }
@@ -7230,7 +7218,6 @@ export namespace Prisma {
     readonly id: FieldRef<"InvestmentPortfolio", 'String'>
     readonly userId: FieldRef<"InvestmentPortfolio", 'String'>
     readonly name: FieldRef<"InvestmentPortfolio", 'String'>
-    readonly createdAt: FieldRef<"InvestmentPortfolio", 'DateTime'>
   }
     
 
@@ -17667,14 +17654,10 @@ export namespace Prisma {
   }
 
   export type CustomizationAvgAggregateOutputType = {
-    age: number | null
-    investingYears: number | null
     monthlyAmount: number | null
   }
 
   export type CustomizationSumAggregateOutputType = {
-    age: number | null
-    investingYears: number | null
     monthlyAmount: number | null
   }
 
@@ -17686,8 +17669,8 @@ export namespace Prisma {
     method: string | null
     newsSource: string | null
     instrument: string | null
-    age: number | null
-    investingYears: number | null
+    age: string | null
+    investingYears: string | null
     goal: string | null
     monthlyAmount: number | null
     incomeSource: string | null
@@ -17703,8 +17686,8 @@ export namespace Prisma {
     method: string | null
     newsSource: string | null
     instrument: string | null
-    age: number | null
-    investingYears: number | null
+    age: string | null
+    investingYears: string | null
     goal: string | null
     monthlyAmount: number | null
     incomeSource: string | null
@@ -17732,14 +17715,10 @@ export namespace Prisma {
 
 
   export type CustomizationAvgAggregateInputType = {
-    age?: true
-    investingYears?: true
     monthlyAmount?: true
   }
 
   export type CustomizationSumAggregateInputType = {
-    age?: true
-    investingYears?: true
     monthlyAmount?: true
   }
 
@@ -17884,16 +17863,16 @@ export namespace Prisma {
   export type CustomizationGroupByOutputType = {
     id: string
     userId: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories: string | null
+    strategy: string | null
+    method: string | null
+    newsSource: string | null
+    instrument: string | null
+    age: string | null
+    investingYears: string | null
+    goal: string | null
+    monthlyAmount: number | null
+    incomeSource: string | null
     createdAt: Date
     updatedAt: Date
     _count: CustomizationCountAggregateOutputType | null
@@ -18007,16 +17986,16 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      categories: string
-      strategy: string
-      method: string
-      newsSource: string
-      instrument: string
-      age: number
-      investingYears: number
-      goal: string
-      monthlyAmount: number
-      incomeSource: string
+      categories: string | null
+      strategy: string | null
+      method: string | null
+      newsSource: string | null
+      instrument: string | null
+      age: string | null
+      investingYears: string | null
+      goal: string | null
+      monthlyAmount: number | null
+      incomeSource: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["customization"]>
@@ -18450,8 +18429,8 @@ export namespace Prisma {
     readonly method: FieldRef<"Customization", 'String'>
     readonly newsSource: FieldRef<"Customization", 'String'>
     readonly instrument: FieldRef<"Customization", 'String'>
-    readonly age: FieldRef<"Customization", 'Int'>
-    readonly investingYears: FieldRef<"Customization", 'Int'>
+    readonly age: FieldRef<"Customization", 'String'>
+    readonly investingYears: FieldRef<"Customization", 'String'>
     readonly goal: FieldRef<"Customization", 'String'>
     readonly monthlyAmount: FieldRef<"Customization", 'Int'>
     readonly incomeSource: FieldRef<"Customization", 'String'>
@@ -25769,8 +25748,7 @@ export namespace Prisma {
   export const InvestmentPortfolioScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    name: 'name',
-    createdAt: 'createdAt'
+    name: 'name'
   };
 
   export type InvestmentPortfolioScalarFieldEnum = (typeof InvestmentPortfolioScalarFieldEnum)[keyof typeof InvestmentPortfolioScalarFieldEnum]
@@ -26413,8 +26391,7 @@ export namespace Prisma {
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     id?: StringFilter<"InvestmentPortfolio"> | string
     userId?: StringFilter<"InvestmentPortfolio"> | string
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+    name?: StringNullableFilter<"InvestmentPortfolio"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     investments?: InvestmentListRelationFilter
   }
@@ -26422,8 +26399,7 @@ export namespace Prisma {
   export type InvestmentPortfolioOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    name?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     investments?: InvestmentOrderByRelationAggregateInput
   }
@@ -26434,8 +26410,7 @@ export namespace Prisma {
     AND?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+    name?: StringNullableFilter<"InvestmentPortfolio"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     investments?: InvestmentListRelationFilter
   }, "id" | "userId">
@@ -26443,8 +26418,7 @@ export namespace Prisma {
   export type InvestmentPortfolioOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    name?: SortOrderInput | SortOrder
     _count?: InvestmentPortfolioCountOrderByAggregateInput
     _max?: InvestmentPortfolioMaxOrderByAggregateInput
     _min?: InvestmentPortfolioMinOrderByAggregateInput
@@ -26456,8 +26430,7 @@ export namespace Prisma {
     NOT?: InvestmentPortfolioScalarWhereWithAggregatesInput | InvestmentPortfolioScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
     userId?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    name?: StringWithAggregatesFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"InvestmentPortfolio"> | Date | string
+    name?: StringNullableWithAggregatesFilter<"InvestmentPortfolio"> | string | null
   }
 
   export type InvestmentWhereInput = {
@@ -27103,16 +27076,16 @@ export namespace Prisma {
     NOT?: CustomizationWhereInput | CustomizationWhereInput[]
     id?: StringFilter<"Customization"> | string
     userId?: StringFilter<"Customization"> | string
-    categories?: StringFilter<"Customization"> | string
-    strategy?: StringFilter<"Customization"> | string
-    method?: StringFilter<"Customization"> | string
-    newsSource?: StringFilter<"Customization"> | string
-    instrument?: StringFilter<"Customization"> | string
-    age?: IntFilter<"Customization"> | number
-    investingYears?: IntFilter<"Customization"> | number
-    goal?: StringFilter<"Customization"> | string
-    monthlyAmount?: IntFilter<"Customization"> | number
-    incomeSource?: StringFilter<"Customization"> | string
+    categories?: StringNullableFilter<"Customization"> | string | null
+    strategy?: StringNullableFilter<"Customization"> | string | null
+    method?: StringNullableFilter<"Customization"> | string | null
+    newsSource?: StringNullableFilter<"Customization"> | string | null
+    instrument?: StringNullableFilter<"Customization"> | string | null
+    age?: StringNullableFilter<"Customization"> | string | null
+    investingYears?: StringNullableFilter<"Customization"> | string | null
+    goal?: StringNullableFilter<"Customization"> | string | null
+    monthlyAmount?: IntNullableFilter<"Customization"> | number | null
+    incomeSource?: StringNullableFilter<"Customization"> | string | null
     createdAt?: DateTimeFilter<"Customization"> | Date | string
     updatedAt?: DateTimeFilter<"Customization"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -27121,16 +27094,16 @@ export namespace Prisma {
   export type CustomizationOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    categories?: SortOrder
-    strategy?: SortOrder
-    method?: SortOrder
-    newsSource?: SortOrder
-    instrument?: SortOrder
-    age?: SortOrder
-    investingYears?: SortOrder
-    goal?: SortOrder
-    monthlyAmount?: SortOrder
-    incomeSource?: SortOrder
+    categories?: SortOrderInput | SortOrder
+    strategy?: SortOrderInput | SortOrder
+    method?: SortOrderInput | SortOrder
+    newsSource?: SortOrderInput | SortOrder
+    instrument?: SortOrderInput | SortOrder
+    age?: SortOrderInput | SortOrder
+    investingYears?: SortOrderInput | SortOrder
+    goal?: SortOrderInput | SortOrder
+    monthlyAmount?: SortOrderInput | SortOrder
+    incomeSource?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -27142,16 +27115,16 @@ export namespace Prisma {
     AND?: CustomizationWhereInput | CustomizationWhereInput[]
     OR?: CustomizationWhereInput[]
     NOT?: CustomizationWhereInput | CustomizationWhereInput[]
-    categories?: StringFilter<"Customization"> | string
-    strategy?: StringFilter<"Customization"> | string
-    method?: StringFilter<"Customization"> | string
-    newsSource?: StringFilter<"Customization"> | string
-    instrument?: StringFilter<"Customization"> | string
-    age?: IntFilter<"Customization"> | number
-    investingYears?: IntFilter<"Customization"> | number
-    goal?: StringFilter<"Customization"> | string
-    monthlyAmount?: IntFilter<"Customization"> | number
-    incomeSource?: StringFilter<"Customization"> | string
+    categories?: StringNullableFilter<"Customization"> | string | null
+    strategy?: StringNullableFilter<"Customization"> | string | null
+    method?: StringNullableFilter<"Customization"> | string | null
+    newsSource?: StringNullableFilter<"Customization"> | string | null
+    instrument?: StringNullableFilter<"Customization"> | string | null
+    age?: StringNullableFilter<"Customization"> | string | null
+    investingYears?: StringNullableFilter<"Customization"> | string | null
+    goal?: StringNullableFilter<"Customization"> | string | null
+    monthlyAmount?: IntNullableFilter<"Customization"> | number | null
+    incomeSource?: StringNullableFilter<"Customization"> | string | null
     createdAt?: DateTimeFilter<"Customization"> | Date | string
     updatedAt?: DateTimeFilter<"Customization"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -27160,16 +27133,16 @@ export namespace Prisma {
   export type CustomizationOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    categories?: SortOrder
-    strategy?: SortOrder
-    method?: SortOrder
-    newsSource?: SortOrder
-    instrument?: SortOrder
-    age?: SortOrder
-    investingYears?: SortOrder
-    goal?: SortOrder
-    monthlyAmount?: SortOrder
-    incomeSource?: SortOrder
+    categories?: SortOrderInput | SortOrder
+    strategy?: SortOrderInput | SortOrder
+    method?: SortOrderInput | SortOrder
+    newsSource?: SortOrderInput | SortOrder
+    instrument?: SortOrderInput | SortOrder
+    age?: SortOrderInput | SortOrder
+    investingYears?: SortOrderInput | SortOrder
+    goal?: SortOrderInput | SortOrder
+    monthlyAmount?: SortOrderInput | SortOrder
+    incomeSource?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CustomizationCountOrderByAggregateInput
@@ -27185,16 +27158,16 @@ export namespace Prisma {
     NOT?: CustomizationScalarWhereWithAggregatesInput | CustomizationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Customization"> | string
     userId?: StringWithAggregatesFilter<"Customization"> | string
-    categories?: StringWithAggregatesFilter<"Customization"> | string
-    strategy?: StringWithAggregatesFilter<"Customization"> | string
-    method?: StringWithAggregatesFilter<"Customization"> | string
-    newsSource?: StringWithAggregatesFilter<"Customization"> | string
-    instrument?: StringWithAggregatesFilter<"Customization"> | string
-    age?: IntWithAggregatesFilter<"Customization"> | number
-    investingYears?: IntWithAggregatesFilter<"Customization"> | number
-    goal?: StringWithAggregatesFilter<"Customization"> | string
-    monthlyAmount?: IntWithAggregatesFilter<"Customization"> | number
-    incomeSource?: StringWithAggregatesFilter<"Customization"> | string
+    categories?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    strategy?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    method?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    newsSource?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    instrument?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    age?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    investingYears?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    goal?: StringNullableWithAggregatesFilter<"Customization"> | string | null
+    monthlyAmount?: IntNullableWithAggregatesFilter<"Customization"> | number | null
+    incomeSource?: StringNullableWithAggregatesFilter<"Customization"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Customization"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Customization"> | Date | string
   }
@@ -27888,8 +27861,7 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
     user: UserCreateNestedOneWithoutInvestmentPortfolioInput
     investments?: InvestmentCreateNestedManyWithoutPortfolioInput
   }
@@ -27897,15 +27869,13 @@ export namespace Prisma {
   export type InvestmentPortfolioUncheckedCreateInput = {
     id?: string
     userId: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
     investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
     investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
@@ -27913,29 +27883,25 @@ export namespace Prisma {
   export type InvestmentPortfolioUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioCreateManyInput = {
     id?: string
     userId: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
   }
 
   export type InvestmentPortfolioUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvestmentPortfolioUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvestmentCreateInput = {
@@ -28622,16 +28588,16 @@ export namespace Prisma {
 
   export type CustomizationCreateInput = {
     id?: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories?: string | null
+    strategy?: string | null
+    method?: string | null
+    newsSource?: string | null
+    instrument?: string | null
+    age?: string | null
+    investingYears?: string | null
+    goal?: string | null
+    monthlyAmount?: number | null
+    incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCustomizationInput
@@ -28640,32 +28606,32 @@ export namespace Prisma {
   export type CustomizationUncheckedCreateInput = {
     id?: string
     userId: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories?: string | null
+    strategy?: string | null
+    method?: string | null
+    newsSource?: string | null
+    instrument?: string | null
+    age?: string | null
+    investingYears?: string | null
+    goal?: string | null
+    monthlyAmount?: number | null
+    incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CustomizationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCustomizationNestedInput
@@ -28674,16 +28640,16 @@ export namespace Prisma {
   export type CustomizationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28691,32 +28657,32 @@ export namespace Prisma {
   export type CustomizationCreateManyInput = {
     id?: string
     userId: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories?: string | null
+    strategy?: string | null
+    method?: string | null
+    newsSource?: string | null
+    instrument?: string | null
+    age?: string | null
+    investingYears?: string | null
+    goal?: string | null
+    monthlyAmount?: number | null
+    incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CustomizationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28724,16 +28690,16 @@ export namespace Prisma {
   export type CustomizationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29530,21 +29496,18 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type InvestmentPortfolioMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type InvestmentPortfolioMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -30028,6 +29991,17 @@ export namespace Prisma {
     savingsOrInvestmentReason?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type CustomizationCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -30046,8 +30020,6 @@ export namespace Prisma {
   }
 
   export type CustomizationAvgOrderByAggregateInput = {
-    age?: SortOrder
-    investingYears?: SortOrder
     monthlyAmount?: SortOrder
   }
 
@@ -30086,9 +30058,23 @@ export namespace Prisma {
   }
 
   export type CustomizationSumOrderByAggregateInput = {
-    age?: SortOrder
-    investingYears?: SortOrder
     monthlyAmount?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DividendScalarRelationFilter = {
@@ -30284,17 +30270,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type VolumeCountOrderByAggregateInput = {
     current?: SortOrder
     average3Months?: SortOrder
@@ -30328,22 +30303,6 @@ export namespace Prisma {
     average3Months?: SortOrder
     average10Days?: SortOrder
     id?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type Week52CountOrderByAggregateInput = {
@@ -31196,6 +31155,14 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateOneRequiredWithoutCustomizationNestedInput = {
     create?: XOR<UserCreateWithoutCustomizationInput, UserUncheckedCreateWithoutCustomizationInput>
     connectOrCreate?: UserCreateOrConnectWithoutCustomizationInput
@@ -31378,14 +31345,6 @@ export namespace Prisma {
     connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
     createMany?: StockCreateManyVolumeInputEnvelope
     connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type StockUpdateManyWithoutVolumeNestedInput = {
@@ -31833,6 +31792,22 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -31858,22 +31833,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -31997,32 +31956,32 @@ export namespace Prisma {
 
   export type CustomizationCreateWithoutUserInput = {
     id?: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories?: string | null
+    strategy?: string | null
+    method?: string | null
+    newsSource?: string | null
+    instrument?: string | null
+    age?: string | null
+    investingYears?: string | null
+    goal?: string | null
+    monthlyAmount?: number | null
+    incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CustomizationUncheckedCreateWithoutUserInput = {
     id?: string
-    categories: string
-    strategy: string
-    method: string
-    newsSource: string
-    instrument: string
-    age: number
-    investingYears: number
-    goal: string
-    monthlyAmount: number
-    incomeSource: string
+    categories?: string | null
+    strategy?: string | null
+    method?: string | null
+    newsSource?: string | null
+    instrument?: string | null
+    age?: string | null
+    investingYears?: string | null
+    goal?: string | null
+    monthlyAmount?: number | null
+    incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -32124,15 +32083,13 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateWithoutUserInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
     investments?: InvestmentCreateNestedManyWithoutPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateWithoutUserInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
     investments?: InvestmentUncheckedCreateNestedManyWithoutPortfolioInput
   }
 
@@ -32261,32 +32218,32 @@ export namespace Prisma {
 
   export type CustomizationUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CustomizationUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    categories?: StringFieldUpdateOperationsInput | string
-    strategy?: StringFieldUpdateOperationsInput | string
-    method?: StringFieldUpdateOperationsInput | string
-    newsSource?: StringFieldUpdateOperationsInput | string
-    instrument?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    investingYears?: IntFieldUpdateOperationsInput | number
-    goal?: StringFieldUpdateOperationsInput | string
-    monthlyAmount?: IntFieldUpdateOperationsInput | number
-    incomeSource?: StringFieldUpdateOperationsInput | string
+    categories?: NullableStringFieldUpdateOperationsInput | string | null
+    strategy?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    newsSource?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableStringFieldUpdateOperationsInput | string | null
+    investingYears?: NullableStringFieldUpdateOperationsInput | string | null
+    goal?: NullableStringFieldUpdateOperationsInput | string | null
+    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32393,15 +32350,13 @@ export namespace Prisma {
 
   export type InvestmentPortfolioUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
@@ -32775,16 +32730,14 @@ export namespace Prisma {
 
   export type InvestmentPortfolioCreateWithoutInvestmentsInput = {
     id?: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
     user: UserCreateNestedOneWithoutInvestmentPortfolioInput
   }
 
   export type InvestmentPortfolioUncheckedCreateWithoutInvestmentsInput = {
     id?: string
     userId: string
-    name: string
-    createdAt?: Date | string
+    name?: string | null
   }
 
   export type InvestmentPortfolioCreateOrConnectWithoutInvestmentsInput = {
@@ -32876,16 +32829,14 @@ export namespace Prisma {
 
   export type InvestmentPortfolioUpdateWithoutInvestmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutInvestmentPortfolioNestedInput
   }
 
   export type InvestmentPortfolioUncheckedUpdateWithoutInvestmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FinancialInstrumentUpsertWithoutInvestmentsInput = {
