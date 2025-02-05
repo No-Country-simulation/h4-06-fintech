@@ -7,8 +7,7 @@ interface Message {
   sender: 'user' | 'bot';
   text: string;
 }
-const BASE_URL = 'http://localhost:3000';
-console.log({ BASE_URL });
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const socket: Socket = io(BASE_URL, {
   transports: ['websocket'],
