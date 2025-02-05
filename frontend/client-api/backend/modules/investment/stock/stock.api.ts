@@ -56,6 +56,24 @@ const stockApi: StockApi = {
       resolve({ totalAssets: 0.5, amountInvested: 200 }),
     );
   },
+  async invest(params) {
+    const url = `/investment`;
+
+    const payload = JSON.stringify(params);
+
+    const options: RequestInit = {
+      method: 'POST',
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
+  },
 };
 
 export { stockApi };
