@@ -57,9 +57,8 @@ export class UsersService {
             create: financialRadiograp,
           },
           investmentPortfolio: {
-            create: investmentPortfolio,
-            
-          }
+            create: {name: "newPortfolio",}, 
+          },
         }
       });
 
