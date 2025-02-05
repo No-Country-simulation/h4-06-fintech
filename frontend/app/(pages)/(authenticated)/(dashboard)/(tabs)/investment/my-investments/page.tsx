@@ -1,6 +1,8 @@
 import { PageHeader } from '@/components/common/page/page-header';
 import { backend } from '@api';
 import { MyInvestmentItem } from './_components/my-investment-item';
+import { MItem } from '@/components/motion/motion-item';
+import { MList } from '@/components/motion/motion-list';
 
 export default async function MyInvestmentsPage() {
   const tickers = await (
@@ -9,14 +11,15 @@ export default async function MyInvestmentsPage() {
 
   return (
     <PageHeader title='Mis inversiones'>
-      <section className='flex flex-col gap-3'>
+      <MList className='flex flex-col gap-3'>
         {tickers.map((ticker) => (
-          <MyInvestmentItem
-            ticker={ticker}
-            key={ticker.symbol}
-          />
+          <MItem key={ticker.symbol}>
+            <MyInvestmentItem
+              ticker={ticker}
+            />
+          </MItem>
         ))}
-      </section>
+      </MList>
     </PageHeader>
   );
 }

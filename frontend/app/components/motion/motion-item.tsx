@@ -9,10 +9,12 @@ const variants: Variants = {
   visible: {
     y: 0,
     opacity: 1,
+    filter: "blur(0px)"
   },
   hidden: {
     y: 100,
     opacity: 0,
+    filter: "blur(5px)"
   }
 }
 

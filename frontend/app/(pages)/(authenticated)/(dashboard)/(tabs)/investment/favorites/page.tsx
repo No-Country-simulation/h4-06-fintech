@@ -1,10 +1,9 @@
 import { PageHeader } from '@/components/common/page/page-header';
-import { Ticker } from '@/components/ticker/ticker';
-import { Button } from '@/components/ui/button';
 import { EmptySection } from '@/components/ui/empty-section';
 import { backend } from '@api';
-import Image from 'next/image';
-import Link from 'next/link';
+import { FavoriteItem } from './favorite-item';
+import { MItem } from '@/components/motion/motion-item';
+import { MList } from '@/components/motion/motion-list';
 
 export default async function FavoritePage() {
   const tickers = await (
@@ -13,32 +12,12 @@ export default async function FavoritePage() {
 
   return (
     <PageHeader title='Favoritos'>
-      <section className='flex flex-col gap-3'>
+      <MList className='flex flex-col gap-3'>
         {tickers.length ? (
           tickers.map((ticker) => (
-            <Ticker.Root
-              key={ticker.symbol}
-              image={ticker.image}
-              name={ticker.companyName}
-              symbol={ticker.symbol}
-            >
-              <Ticker.Content>
-                <Button className='rounded-lg bg-[#004AAD] w-fit px-6 py-2 shadow-none transition-colors hover:bg-secondary'>
-                  <Image
-                    src='/svg/heart-2.svg'
-                    alt='favorite icon'
-                    width={24}
-                    height={24}
-                  />
-                </Button>
-                <Link
-                  className='rounded-md bg-secondary/50 px-10 py-2 text-center font-medium transition-colors hover:bg-secondary'
-                  href={`/investment/my-investments/${ticker.symbol}`}
-                >
-                  Ver más
-                </Link>
-              </Ticker.Content>
-            </Ticker.Root>
+            <MItem key={ticker.symbol}>
+              <FavoriteItem ticker={ticker} />
+            </MItem>
           ))
         ) : (
           <EmptySection
@@ -47,7 +26,7 @@ export default async function FavoritePage() {
             subtitle='Para añadir un elemento a la lista haz clic en el botón de Favoritos. '
           />
         )}
-      </section>
+      </MList>
     </PageHeader>
   );
 }
