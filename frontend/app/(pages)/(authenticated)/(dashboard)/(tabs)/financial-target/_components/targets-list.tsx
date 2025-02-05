@@ -1,11 +1,16 @@
-import { FinancialTarget } from 'client-api/backend/modules/financial-target/interface/getOne';
+import { backend } from '@api';
 import { TargetItem } from './target-item';
+import { TargetsEmpty } from './targets-empty';
 
-interface Props {
-  targets: FinancialTarget[];
-}
+export async function TargetsList() {
+  // await new Promise((resolve) => setTimeout(() => resolve(true), 2000));
 
-export async function TargetsList({ targets }: Props) {
+  const { target: targets } = await backend.authApi.getProfile();
+
+  if (!targets.length) {
+    return <TargetsEmpty />;
+  }
+
   return (
     <ul className='flex flex-col gap-2'>
       {targets.map((target) => (
