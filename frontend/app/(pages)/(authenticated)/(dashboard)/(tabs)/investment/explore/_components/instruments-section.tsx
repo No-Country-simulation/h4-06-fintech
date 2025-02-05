@@ -30,7 +30,7 @@ export function InstrumentsSection() {
       {LINKS.map((link) => (
         <Link
           key={link.href}
-          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
+          className='w-full transition-opacity hover:opacity-50 md:max-w-[320px]'
           href={link.href}
         >
           <FinancialTargetCard icon={link.icon}>

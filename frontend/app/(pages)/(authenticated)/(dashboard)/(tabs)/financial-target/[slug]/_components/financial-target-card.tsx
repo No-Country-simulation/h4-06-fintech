@@ -6,7 +6,7 @@ type Props = PropsWithChildren & IconCircleProps;
 
 export function FinancialTargetCard({ children, icon, color }: Props) {
   return (
-    <Card className='h-[120px] w-full max-w-[320px] flex-row items-center bg-secondary transition-colors group-hover:bg-secondary/50'>
+    <Card className='h-[120px] w-full flex-row items-center bg-secondary transition-colors group-hover:bg-secondary/50 md:max-w-[320px]'>
       <IconCircle
         icon={icon}
         color={color}

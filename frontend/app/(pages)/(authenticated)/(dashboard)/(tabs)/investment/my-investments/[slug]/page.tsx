@@ -5,6 +5,7 @@ import { CardInformation } from '../../stock/[slug]/_components/card-information
 import ComparativeTab from '../../stock/[slug]/_components/tabs/comparative-tab/comparative-tab';
 import { InvestEvolution } from './_components/invest-evolution';
 import { getPriceInfo } from '@/lib/get-price-info';
+import Link from 'next/link';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -47,12 +48,14 @@ export default async function Page({ params }: Props) {
         >
           Vender
         </Button>
-        <Button
-          className='w-full max-w-[220px] rounded-xl text-lg'
-          variant='secondary'
-        >
-          Invertir más
-        </Button>
+        <Link href={`/investment/stock/${stock.symbol}/invest`}>
+          <Button
+            className='w-full max-w-[220px] rounded-xl text-lg'
+            variant='secondary'
+          >
+            Invertir más
+          </Button>
+        </Link>
       </footer>
     </PageHeader>
   );

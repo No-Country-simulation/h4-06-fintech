@@ -8,9 +8,9 @@ export default function InvestmentPage() {
       <header>
         <Text variant='header'>Inversiones</Text>
       </header>
-      <section className='flex flex-wrap justify-between'>
+      <section className='flex flex-wrap justify-between gap-4'>
         <Link
-          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
+          className='w-full transition-opacity hover:opacity-50 md:max-w-[320px]'
           href='/investment/explore'
         >
           <FinancialTargetCard icon='/svg/glass.svg'>
@@ -18,7 +18,7 @@ export default function InvestmentPage() {
           </FinancialTargetCard>
         </Link>
         <Link
-          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
+          className='w-full transition-opacity hover:opacity-50 md:max-w-[320px]'
           href='/investment/my-investments'
         >
           <FinancialTargetCard icon='/svg/chart.svg'>
@@ -27,7 +27,7 @@ export default function InvestmentPage() {
         </Link>
 
         <Link
-          className='w-full max-w-[320px] transition-opacity hover:opacity-50'
+          className='w-full transition-opacity hover:opacity-50 md:max-w-[320px]'
           href='/investment/favorites'
         >
           <FinancialTargetCard icon='/svg/heart.svg'>
