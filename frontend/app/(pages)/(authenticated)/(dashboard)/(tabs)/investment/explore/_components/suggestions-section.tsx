@@ -1,14 +1,13 @@
 import { Card } from '@/components/ui/card';
-import { Text } from '@/components/ui/text';
 import Link from 'next/link';
 
 const LINKS = [
   {
-    value: 'Tendencias del mercado',
+    value: 'Tendencias',
     href: '/investment/trends',
   },
   {
-    value: 'En base a tu perfil',
+    value: 'Según tu perfil',
     href: '/investment/recommended',
   },
   {
@@ -19,30 +18,22 @@ const LINKS = [
 
 export function SuggestionsSection() {
   return (
-    <section className='flex flex-col gap-11 rounded-[20px] bg-primary/70 px-6 py-8'>
+    <section className='flex flex-col gap-11 rounded-[20px]'>
       <header className='flex flex-col gap-2'>
-        <Text
-          variant='header'
-          className='text-background'
-        >
-          Sugerencias iUPi
-        </Text>
-        <Text
-          variant='detail'
-          className='text-background'
-        >
+        <p className='text-2xl font-semibold'>¡Sugerencias iUPi!</p>
+        <p className='font-normal'>
           Explora nuestras recomendaciones personalizadas para que puedas
           invertir con seguridad
-        </Text>
+        </p>
       </header>
-      <section className='flex flex-wrap justify-center gap-5'>
+      <section className='flex flex-wrap justify-between gap-5'>
         {LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className='group'
+            className='group w-full max-w-[290px]'
           >
-            <Card className='h-[110px] w-full max-w-[290px] items-center justify-center border-none bg-primary/80 transition-colors group-hover:bg-primary/50'>
+            <Card className='h-[110px] items-center justify-center border-none bg-primary transition-colors group-hover:bg-primary/50'>
               <p className='text-xl font-medium text-background'>
                 {link.value}
               </p>
