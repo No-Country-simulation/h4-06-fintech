@@ -5,7 +5,7 @@ export default async function ComunidadPage() {
   return (
     <PageHeader
       title='Comunidad'
-      subtitle='Conectate y mantenete informado con las últimas novedades del mercado'
+      subtitle='¡Conecta y mantenete informado de las últimas novedades del mercado!'
     >
       <NewsSection />
     </PageHeader>

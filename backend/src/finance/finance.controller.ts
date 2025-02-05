@@ -34,6 +34,8 @@ export class FinanceController {
   })
   @Get('stocks/:ticker')
   async getStockData(@Param('ticker') ticker: string): Promise<StockDTO> {
+    console.log('HOLAA');
+
     return this.financeService.getStockData(ticker, false);
   }
 
