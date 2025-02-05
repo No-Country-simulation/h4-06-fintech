@@ -5,7 +5,19 @@ import { MItem } from '@/components/motion/motion-item';
 import { MList } from '@/components/motion/motion-list';
 
 export default async function MyInvestmentsPage() {
-  const tickers = (await backend.investment.stockApi.getTickers()).slice(0, 5);
+  const { investmentPortfolio } = await backend.authApi.getProfile();
+  const { investments } = await backend.investment.portfolioApi.get({
+    id: investmentPortfolio.id,
+  });
+
+  console.log({ investments });
+
+  const tickers = (await backend.investment.stockApi.getTickers()).filter(
+    (ticker) =>
+      investments.some(
+        (investment) => investment.stockSymbol === ticker.symbol,
+      ),
+  );
 
   return (
     <PageHeader title='Mis inversiones'>

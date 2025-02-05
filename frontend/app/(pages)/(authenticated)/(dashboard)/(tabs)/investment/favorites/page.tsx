@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components/common/page/page-header';
 import { EmptySection } from '@/components/ui/empty-section';
 import { backend } from '@api';
-import { FavoriteItem } from './favorite-item';
+import { FavoriteItem } from './_components/favorite-item';
 import { MItem } from '@/components/motion/motion-item';
 import { MList } from '@/components/motion/motion-list';
 

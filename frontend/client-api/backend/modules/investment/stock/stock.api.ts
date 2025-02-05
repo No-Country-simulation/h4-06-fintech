@@ -67,6 +67,14 @@ const stockApi: StockApi = {
       ErrorClass: AuthError,
     });
   },
+  getInvest(params) {
+    const url = `${envs.BACKEND_URL}/investment/${params.id}`;
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url),
+      ErrorClass: AuthError,
+    });
+  },
 };
 
 export { stockApi };
