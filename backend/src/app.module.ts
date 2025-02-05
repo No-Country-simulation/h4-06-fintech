@@ -16,6 +16,7 @@ import { InvestmentPortfolioModule } from './investment-portfolio/investment-por
 import { InvestmentModule } from './investment/investment.module';
 import { ChatbotModule } from './chatbot/chatbot.module';
 import { CustomizationModule } from './customization/customization.module';
+import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { CustomizationModule } from './customization/customization.module';
     InvestmentModule,
     ChatbotModule,
     CustomizationModule,
+    SupabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

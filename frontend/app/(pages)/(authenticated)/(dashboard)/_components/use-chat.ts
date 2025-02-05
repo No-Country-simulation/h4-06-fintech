@@ -1,85 +1,102 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { io, Socket } from 'socket.io-client';
+import { createClient } from '@supabase/supabase-js';
+import { sendChatMessage } from '@/actions/chatbot/chat-action';
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  throw new Error('Supabase environment variables are not configured');
+}
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 interface Message {
   sender: 'user' | 'bot';
   text: string;
 }
-const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-const socket: Socket = io(BASE_URL, {
-  transports: ['websocket'],
-  autoConnect: true,
-  withCredentials: true,
-});
-
-// socket.on('connect_error', (error) => {
-//   console.error('Socket Connection Error:', error);
-// });
 
 export const useChat = () => {
-  const [message, setMessage] = useState<string>('');
+  const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
-
-  const [isConnected, setIsConnected] = useState(socket.connected);
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    setIsConnected(socket.connected);
-
-    function onConnect() {
-      console.log('Socket Connected with ID:', socket.id);
-      setIsConnected(true);
-    }
-
-    function onDisconnect() {
-      console.log('Socket Disconnected');
-      setIsConnected(false);
-    }
-
-    function onWelcomeMessage(message: string) {
-      console.log('Welcome message received:', message);
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { sender: 'bot', text: message }]);
-    }
-
-    function onBotResponse(message: string) {
-      console.log('Bot response received:', message);
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { sender: 'bot', text: message }]);
-    }
-
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-    socket.on('welcome', onWelcomeMessage);
-    socket.on('response', onBotResponse);
+    console.log('Setting up Supabase real-time subscription...');
+    
+    const channel = supabase
+      .channel('chat_messages')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat_messages'
+        },
+        (payload) => {
+          console.log('Received new message:', payload);
+          if (payload.new.role === 'assistant') {
+            const newMessage: Message = {
+              sender: 'bot',
+              text: payload.new.content
+            };
+            setMessages((prev) => [...prev, newMessage]);
+            setIsTyping(false);
+          }
+        }
+      )
+      .subscribe();
 
     return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-      socket.off('welcome', onWelcomeMessage);
-      socket.off('response', onBotResponse);
+      console.log('Cleaning up Supabase subscription');
+      supabase.removeChannel(channel);
     };
   }, []);
 
-  const sendMessage = () => {
-    if (message.trim() && socket.connected) {
-      console.log('Sending message:', message);
-      socket.emit('message', message);
-      setMessages((prev) => [...prev, { sender: 'user', text: message }]);
-      setMessage('');
+  const handleSendMessage = async () => {
+    if (inputMessage.trim()) {
       setIsTyping(true);
+      const messageToSend = inputMessage.trim();
+      setInputMessage('');
+      
+      try {
+        // Add error monitoring
+        try {
+          const userMessage: Message = {
+            sender: 'user',
+            text: messageToSend
+          };
+          setMessages(prev => [...prev, userMessage]);
+          
+          const result = await sendChatMessage(messageToSend);
+          
+          if (!result.success) {
+            throw new Error(`Failed to send message: ${result.error}`);
+          }
+        } catch (error) {
+          // Log to your error monitoring service
+          console.error('Chat Error:', error);
+          throw error;
+        }
+      } catch (error) {
+        console.error('Error sending message:', error);
+        const errorMessage: Message = {
+          sender: 'bot',
+          text: 'Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.'
+        };
+        setMessages(prev => [...prev, errorMessage]);
+        setIsTyping(false);
+      }
     }
   };
 
   return {
-    message,
-    setMessage,
+    message: inputMessage,
+    setMessage: setInputMessage,
     messages,
-    sendMessage,
-    isConnected,
-    isTyping,
+    sendMessage: handleSendMessage,
+    isTyping
   };
 };

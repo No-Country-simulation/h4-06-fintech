@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 
 const ChatBox = ({ toggleChat }: { toggleChat: () => void }) => {
-  const { message, setMessage, messages, sendMessage, isConnected, isTyping } =
+  const { message, setMessage, messages, sendMessage, isTyping } =
     useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -34,33 +34,6 @@ const ChatBox = ({ toggleChat }: { toggleChat: () => void }) => {
     <section className='fixed bottom-20 right-4 flex h-[500px] w-96 flex-col rounded-lg bg-white shadow-lg'>
       <ChatHeader toggleChat={toggleChat} />
 
-      {/* Only show reconnecting message when actually disconnected */}
-      {!isConnected && (
-        <div className='bg-yellow-100 p-2 text-center text-sm text-yellow-800'>
-          <span className='flex items-center justify-center gap-2'>
-            <svg
-              className='h-4 w-4 animate-spin'
-              viewBox='0 0 24 24'
-            >
-              <circle
-                className='opacity-25'
-                cx='12'
-                cy='12'
-                r='10'
-                stroke='currentColor'
-                strokeWidth='4'
-                fill='none'
-              />
-              <path
-                className='opacity-75'
-                fill='currentColor'
-                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-              />
-            </svg>
-            Reconectando...
-          </span>
-        </div>
-      )}
 
       <div className='flex-1 overflow-y-auto p-4'>
         <div className='flex flex-col space-y-4'>
