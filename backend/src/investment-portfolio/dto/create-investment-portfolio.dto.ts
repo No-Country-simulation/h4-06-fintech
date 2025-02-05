@@ -1,4 +1,5 @@
-import { ApiProperty, OmitType} from '@nestjs/swagger';
+import { CreateInvestmentDto } from '../../investment/dto/create-investment.dto';
+import { ApiProperty, OmitType } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   IsEmail,
@@ -9,12 +10,10 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import { CreateInvestmentDto } from '@/src/investment/dto/create-investment.dto';
 
-export class Investment extends OmitType(
-  CreateInvestmentDto,
-  ['portfolioId'],
-) {}
+export class Investment extends OmitType(CreateInvestmentDto, [
+  'portfolioId',
+]) {}
 
 export class CreateInvestmentPortfolioDto {
   @ApiProperty()
