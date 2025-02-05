@@ -3,6 +3,7 @@ import { backend } from '@api';
 import { MyInvestmentItem } from './_components/my-investment-item';
 import { MItem } from '@/components/motion/motion-item';
 import { MList } from '@/components/motion/motion-list';
+import { EmptySection } from '@/components/ui/empty-section';
 
 export default async function MyInvestmentsPage() {
   const { investmentPortfolio } = await backend.authApi.getProfile();
@@ -25,13 +26,21 @@ export default async function MyInvestmentsPage() {
 
   return (
     <PageHeader title='Mis inversiones'>
-      <MList className='flex flex-col gap-3'>
-        {tickers.map((ticker) => (
-          <MItem key={ticker?.symbol}>
-            <MyInvestmentItem ticker={ticker!} />
-          </MItem>
-        ))}
-      </MList>
+      {tickers.length ? (
+        <MList className='flex flex-col gap-3'>
+          {tickers.map((ticker) => (
+            <MItem key={ticker!.symbol}>
+              <MyInvestmentItem ticker={ticker!} />
+            </MItem>
+          ))}
+        </MList>
+      ) : (
+        <EmptySection
+          icon='/svg/acciones.svg'
+          header='No tenes ninguna inversión por el momento'
+          subtitle=''
+        />
+      )}
     </PageHeader>
   );
 }

@@ -173,7 +173,7 @@ model Profile {
 
 model Customization {
   id             String   @id @default(cuid())
-  userId         String?  @unique
+  userId         String  @unique
   categories     String?
   strategy       String?
   method         String?
@@ -184,7 +184,7 @@ model Customization {
   goal           String?
   monthlyAmount  Int?
   incomeSource   String?
-  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

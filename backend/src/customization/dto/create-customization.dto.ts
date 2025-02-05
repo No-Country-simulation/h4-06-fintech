@@ -28,11 +28,11 @@ export class CreateCustomizationDto {
 
   @ApiProperty()
   @IsInt()
-  age: number;
+  age: string;
 
   @ApiProperty()
   @IsInt()
-  investingYears: number;
+  investingYears: string;
 
   @ApiProperty()
   @IsString()
