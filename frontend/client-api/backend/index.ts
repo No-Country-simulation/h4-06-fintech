@@ -8,6 +8,7 @@ import { walletApi } from './modules/wallet/wallet.api';
 import { newsApi } from './modules/community/news/news.api';
 import { commentApi } from './modules/community/comment/comment.api';
 import { customizationApi } from './modules/customization/customization';
+import { chatbotApi } from './modules/chatbot/chatbot-api';
 
 export const backend = {
   isActive,
@@ -15,6 +16,7 @@ export const backend = {
   financialTargetApi,
   customizationApi,
   walletApi,
+  chatbotApi,
   investment: {
     stockApi,
   },
