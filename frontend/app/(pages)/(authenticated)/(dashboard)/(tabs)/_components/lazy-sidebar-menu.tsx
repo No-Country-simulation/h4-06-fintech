@@ -1,11 +1,11 @@
 'use client';
 
-import { Link } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react'; // ✅ Correct import
 import { createPortal } from 'react-dom';
 import { LINKS } from '../_data/header-links';
 import { forwardRef } from 'react';
 import { useHasMounted } from '@/hooks/use-hasmounted';
+import Link from 'next/link';
 
 interface Props {
   showMenu: boolean;

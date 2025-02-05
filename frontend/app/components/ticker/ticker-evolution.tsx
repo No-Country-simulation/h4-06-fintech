@@ -5,14 +5,11 @@ interface Props {
   evolutionAmount: string;
 }
 
-export function TickerEvolution({
-  evolutionAmount,
-  isUp = false,
-}: Props) {
+export function TickerEvolution({ evolutionAmount, isUp = false }: Props) {
   return (
     <div
       data-isup={isUp}
-      className='flex items-center gap-2 rounded-lg  border-red-600  text-red-600 group-data-[isup=true]:border-green-700 group-data-[isup=true]:text-green-700'
+      className='hidden items-center gap-2 rounded-lg border-red-600 text-red-600 group-data-[isup=true]:border-green-700 group-data-[isup=true]:text-green-700 sm:flex'
     >
       <p className='text-xl font-medium'>
         {isUp && '+'}

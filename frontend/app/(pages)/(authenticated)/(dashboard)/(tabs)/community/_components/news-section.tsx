@@ -1,9 +1,20 @@
+import { EmptySection } from '@/components/ui/empty-section';
 import { getDifferenceDays } from '@/lib/get-difference-day';
 import { backend } from '@api';
 import Link from 'next/link';
 
 export async function NewsSection() {
   const news = await backend.community.newsApi.getAll();
+
+  if (!news.length) {
+    return (
+      <EmptySection
+        header='No se encontraron noticias'
+        icon='/svg/glass.svg'
+        subtitle=''
+      />
+    );
+  }
 
   return (
     <section className='flex flex-col divide-y divide-foreground'>

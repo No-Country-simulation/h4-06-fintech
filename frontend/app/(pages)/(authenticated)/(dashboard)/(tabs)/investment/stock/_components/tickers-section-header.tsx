@@ -33,8 +33,8 @@ export function TickersSectionHeader() {
   };
 
   return (
-    <header className='flex items-center justify-between rounded-md bg-primary/10 p-4'>
-      <section className='flex flex-col items-center gap-2'>
+    <header className='flex flex-col items-center justify-between gap-4 rounded-md bg-primary/10 p-4 sm:flex-row'>
+      <section className='flex flex-row flex-wrap items-center gap-2 sm:flex-col'>
         <section className='flex gap-2'>
           <Image
             src='/svg/customize.svg'
@@ -46,7 +46,7 @@ export function TickersSectionHeader() {
         </section>
         <p className='text-center font-light'>¡Personaliza tu búsqueda!</p>
       </section>
-      <section className='flex flex-wrap items-center justify-end gap-4'>
+      <section className='flex w-full flex-col flex-wrap items-center gap-4 sm:w-fit sm:flex-row'>
         <Button
           variant='secondary'
           onClick={() => setFilters(null)}

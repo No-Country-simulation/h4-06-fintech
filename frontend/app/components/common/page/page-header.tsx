@@ -8,10 +8,10 @@ interface Props extends PropsWithChildren {
 
 export function PageHeader({ children, title, subtitle }: Props) {
   return (
-    <section className='flex flex-col gap-20'>
+    <section className='flex flex-col gap-12 md:gap-20'>
       <header className='flex flex-col gap-4'>
         <Text variant='header'>{title}</Text>
-        {subtitle && <Text className='max-w-[900px]'>{subtitle}</Text>}
+        {subtitle && <p className='prose max-w-[900px]'>{subtitle}</p>}
       </header>
       {children}
     </section>

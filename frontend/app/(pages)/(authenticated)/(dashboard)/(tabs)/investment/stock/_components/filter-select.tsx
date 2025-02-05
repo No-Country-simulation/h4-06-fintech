@@ -34,7 +34,7 @@ export function FilterSelect({
       onValueChange={(value) => onChange(queryKey, value)}
       value={value ?? ''}
     >
-      <SelectTrigger className='w-[180px] border-foreground'>
+      <SelectTrigger className='w-full border-foreground sm:w-[180px]'>
         <SelectValue placeholder={label} />
       </SelectTrigger>
       <SelectContent>

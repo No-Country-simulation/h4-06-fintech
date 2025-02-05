@@ -58,6 +58,7 @@ export class UsersService {
           },
           investmentPortfolio: {
             create: investmentPortfolio,
+            
           }
         }
       });
@@ -105,6 +106,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
       return findAll;
@@ -127,6 +129,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
       if (!findOne) {
@@ -192,6 +195,7 @@ export class UsersService {
           financialRadiographies: true,
           target: true,
           customization: true,
+          investmentPortfolio: true,
         },
       });
 

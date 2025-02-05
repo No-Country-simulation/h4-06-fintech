@@ -2655,7 +2655,6 @@ export namespace Prisma {
     Support: number
     wallet: number
     target: number
-    investmentPortfolio: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2663,7 +2662,6 @@ export namespace Prisma {
     Support?: boolean | UserCountOutputTypeCountSupportArgs
     wallet?: boolean | UserCountOutputTypeCountWalletArgs
     target?: boolean | UserCountOutputTypeCountTargetArgs
-    investmentPortfolio?: boolean | UserCountOutputTypeCountInvestmentPortfolioArgs
   }
 
   // Custom InputTypes
@@ -2703,13 +2701,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTargetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TargetWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountInvestmentPortfolioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvestmentPortfolioWhereInput
   }
 
 
@@ -3295,7 +3286,7 @@ export namespace Prisma {
       Support: Prisma.$SupportPayload<ExtArgs>[]
       wallet: Prisma.$walletPayload<ExtArgs>[]
       target: Prisma.$TargetPayload<ExtArgs>[]
-      investmentPortfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs>[]
+      investmentPortfolio: Prisma.$InvestmentPortfolioPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3708,7 +3699,7 @@ export namespace Prisma {
     Support<T extends User$SupportArgs<ExtArgs> = {}>(args?: Subset<T, User$SupportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     wallet<T extends User$walletArgs<ExtArgs> = {}>(args?: Subset<T, User$walletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$walletPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     target<T extends User$targetArgs<ExtArgs> = {}>(args?: Subset<T, User$targetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TargetPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    investmentPortfolio<T extends User$investmentPortfolioArgs<ExtArgs> = {}>(args?: Subset<T, User$investmentPortfolioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    investmentPortfolio<T extends User$investmentPortfolioArgs<ExtArgs> = {}>(args?: Subset<T, User$investmentPortfolioArgs<ExtArgs>>): Prisma__InvestmentPortfolioClient<$Result.GetResult<Prisma.$InvestmentPortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4292,11 +4283,6 @@ export namespace Prisma {
      */
     include?: InvestmentPortfolioInclude<ExtArgs> | null
     where?: InvestmentPortfolioWhereInput
-    orderBy?: InvestmentPortfolioOrderByWithRelationInput | InvestmentPortfolioOrderByWithRelationInput[]
-    cursor?: InvestmentPortfolioWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InvestmentPortfolioScalarFieldEnum | InvestmentPortfolioScalarFieldEnum[]
   }
 
   /**
@@ -26196,7 +26182,7 @@ export namespace Prisma {
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
-    investmentPortfolio?: InvestmentPortfolioListRelationFilter
+    investmentPortfolio?: XOR<InvestmentPortfolioNullableScalarRelationFilter, InvestmentPortfolioWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -26216,7 +26202,7 @@ export namespace Prisma {
     Support?: SupportOrderByRelationAggregateInput
     wallet?: walletOrderByRelationAggregateInput
     target?: TargetOrderByRelationAggregateInput
-    investmentPortfolio?: InvestmentPortfolioOrderByRelationAggregateInput
+    investmentPortfolio?: InvestmentPortfolioOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -26239,7 +26225,7 @@ export namespace Prisma {
     Support?: SupportListRelationFilter
     wallet?: WalletListRelationFilter
     target?: TargetListRelationFilter
-    investmentPortfolio?: InvestmentPortfolioListRelationFilter
+    investmentPortfolio?: XOR<InvestmentPortfolioNullableScalarRelationFilter, InvestmentPortfolioWhereInput> | null
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -26444,15 +26430,15 @@ export namespace Prisma {
 
   export type InvestmentPortfolioWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId?: string
     AND?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
     OR?: InvestmentPortfolioWhereInput[]
     NOT?: InvestmentPortfolioWhereInput | InvestmentPortfolioWhereInput[]
-    userId?: StringFilter<"InvestmentPortfolio"> | string
     name?: StringFilter<"InvestmentPortfolio"> | string
     createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     investments?: InvestmentListRelationFilter
-  }, "id">
+  }, "id" | "userId">
 
   export type InvestmentPortfolioOrderByWithAggregationInput = {
     id?: SortOrder
@@ -27642,7 +27628,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -27662,7 +27648,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -27682,7 +27668,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -27702,7 +27688,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -29251,10 +29237,9 @@ export namespace Prisma {
     none?: TargetWhereInput
   }
 
-  export type InvestmentPortfolioListRelationFilter = {
-    every?: InvestmentPortfolioWhereInput
-    some?: InvestmentPortfolioWhereInput
-    none?: InvestmentPortfolioWhereInput
+  export type InvestmentPortfolioNullableScalarRelationFilter = {
+    is?: InvestmentPortfolioWhereInput | null
+    isNot?: InvestmentPortfolioWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -29275,10 +29260,6 @@ export namespace Prisma {
   }
 
   export type TargetOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type InvestmentPortfolioOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -29580,11 +29561,6 @@ export namespace Prisma {
   export type StockNullableScalarRelationFilter = {
     is?: StockWhereInput | null
     isNot?: StockWhereInput | null
-  }
-
-  export type InvestmentPortfolioNullableScalarRelationFilter = {
-    is?: InvestmentPortfolioWhereInput | null
-    isNot?: InvestmentPortfolioWhereInput | null
   }
 
   export type FinancialInstrumentNullableScalarRelationFilter = {
@@ -30552,11 +30528,10 @@ export namespace Prisma {
     connect?: TargetWhereUniqueInput | TargetWhereUniqueInput[]
   }
 
-  export type InvestmentPortfolioCreateNestedManyWithoutUserInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
-    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
-    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+  export type InvestmentPortfolioCreateNestedOneWithoutUserInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput
+    connect?: InvestmentPortfolioWhereUniqueInput
   }
 
   export type CommentUncheckedCreateNestedManyWithoutUserInput = {
@@ -30605,11 +30580,10 @@ export namespace Prisma {
     connect?: TargetWhereUniqueInput | TargetWhereUniqueInput[]
   }
 
-  export type InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
-    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
-    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
+  export type InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput
+    connect?: InvestmentPortfolioWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -30714,18 +30688,14 @@ export namespace Prisma {
     deleteMany?: TargetScalarWhereInput | TargetScalarWhereInput[]
   }
 
-  export type InvestmentPortfolioUpdateManyWithoutUserNestedInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
-    upsert?: InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
-    set?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    disconnect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    delete?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    update?: InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: InvestmentPortfolioUpdateManyWithWhereWithoutUserInput | InvestmentPortfolioUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+  export type InvestmentPortfolioUpdateOneWithoutUserNestedInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput
+    upsert?: InvestmentPortfolioUpsertWithoutUserInput
+    disconnect?: InvestmentPortfolioWhereInput | boolean
+    delete?: InvestmentPortfolioWhereInput | boolean
+    connect?: InvestmentPortfolioWhereUniqueInput
+    update?: XOR<XOR<InvestmentPortfolioUpdateToOneWithWhereWithoutUserInput, InvestmentPortfolioUpdateWithoutUserInput>, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
   }
 
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -30814,18 +30784,14 @@ export namespace Prisma {
     deleteMany?: TargetScalarWhereInput | TargetScalarWhereInput[]
   }
 
-  export type InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput> | InvestmentPortfolioCreateWithoutUserInput[] | InvestmentPortfolioUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput | InvestmentPortfolioCreateOrConnectWithoutUserInput[]
-    upsert?: InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: InvestmentPortfolioCreateManyUserInputEnvelope
-    set?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    disconnect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    delete?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    connect?: InvestmentPortfolioWhereUniqueInput | InvestmentPortfolioWhereUniqueInput[]
-    update?: InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput | InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: InvestmentPortfolioUpdateManyWithWhereWithoutUserInput | InvestmentPortfolioUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
+  export type InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+    connectOrCreate?: InvestmentPortfolioCreateOrConnectWithoutUserInput
+    upsert?: InvestmentPortfolioUpsertWithoutUserInput
+    disconnect?: InvestmentPortfolioWhereInput | boolean
+    delete?: InvestmentPortfolioWhereInput | boolean
+    connect?: InvestmentPortfolioWhereUniqueInput
+    update?: XOR<XOR<InvestmentPortfolioUpdateToOneWithWhereWithoutUserInput, InvestmentPortfolioUpdateWithoutUserInput>, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutTargetInput = {
@@ -32175,11 +32141,6 @@ export namespace Prisma {
     create: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
   }
 
-  export type InvestmentPortfolioCreateManyUserInputEnvelope = {
-    data: InvestmentPortfolioCreateManyUserInput | InvestmentPortfolioCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
     where: CommentWhereUniqueInput
     update: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
@@ -32419,30 +32380,29 @@ export namespace Prisma {
     userId?: StringFilter<"Target"> | string
   }
 
-  export type InvestmentPortfolioUpsertWithWhereUniqueWithoutUserInput = {
-    where: InvestmentPortfolioWhereUniqueInput
+  export type InvestmentPortfolioUpsertWithoutUserInput = {
     update: XOR<InvestmentPortfolioUpdateWithoutUserInput, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
     create: XOR<InvestmentPortfolioCreateWithoutUserInput, InvestmentPortfolioUncheckedCreateWithoutUserInput>
+    where?: InvestmentPortfolioWhereInput
   }
 
-  export type InvestmentPortfolioUpdateWithWhereUniqueWithoutUserInput = {
-    where: InvestmentPortfolioWhereUniqueInput
+  export type InvestmentPortfolioUpdateToOneWithWhereWithoutUserInput = {
+    where?: InvestmentPortfolioWhereInput
     data: XOR<InvestmentPortfolioUpdateWithoutUserInput, InvestmentPortfolioUncheckedUpdateWithoutUserInput>
   }
 
-  export type InvestmentPortfolioUpdateManyWithWhereWithoutUserInput = {
-    where: InvestmentPortfolioScalarWhereInput
-    data: XOR<InvestmentPortfolioUpdateManyMutationInput, InvestmentPortfolioUncheckedUpdateManyWithoutUserInput>
+  export type InvestmentPortfolioUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
   }
 
-  export type InvestmentPortfolioScalarWhereInput = {
-    AND?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
-    OR?: InvestmentPortfolioScalarWhereInput[]
-    NOT?: InvestmentPortfolioScalarWhereInput | InvestmentPortfolioScalarWhereInput[]
-    id?: StringFilter<"InvestmentPortfolio"> | string
-    userId?: StringFilter<"InvestmentPortfolio"> | string
-    name?: StringFilter<"InvestmentPortfolio"> | string
-    createdAt?: DateTimeFilter<"InvestmentPortfolio"> | Date | string
+  export type InvestmentPortfolioUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
   }
 
   export type UserCreateWithoutTargetInput = {
@@ -32461,7 +32421,7 @@ export namespace Prisma {
     customization?: CustomizationCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTargetInput = {
@@ -32480,7 +32440,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTargetInput = {
@@ -32515,7 +32475,7 @@ export namespace Prisma {
     customization?: CustomizationUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTargetInput = {
@@ -32534,7 +32494,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutFinancialRadiographiesInput = {
@@ -32553,7 +32513,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFinancialRadiographiesInput = {
@@ -32572,7 +32532,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFinancialRadiographiesInput = {
@@ -32607,7 +32567,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFinancialRadiographiesInput = {
@@ -32626,7 +32586,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutInvestmentPortfolioInput = {
@@ -33088,7 +33048,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -33107,7 +33067,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -33173,7 +33133,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -33192,7 +33152,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type WalletTransactionCreateWithoutWalletInput = {
@@ -33239,7 +33199,7 @@ export namespace Prisma {
     customization?: CustomizationCreateNestedOneWithoutUserInput
     Support?: SupportCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWalletInput = {
@@ -33258,7 +33218,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedCreateNestedOneWithoutUserInput
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWalletInput = {
@@ -33322,7 +33282,7 @@ export namespace Prisma {
     customization?: CustomizationUpdateOneWithoutUserNestedInput
     Support?: SupportUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWalletInput = {
@@ -33341,7 +33301,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedUpdateOneWithoutUserNestedInput
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type walletCreateWithoutTransactionsInput = {
@@ -33412,7 +33372,7 @@ export namespace Prisma {
     customization?: CustomizationCreateNestedOneWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSupportInput = {
@@ -33431,7 +33391,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedCreateNestedOneWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSupportInput = {
@@ -33466,7 +33426,7 @@ export namespace Prisma {
     customization?: CustomizationUpdateOneWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSupportInput = {
@@ -33485,7 +33445,7 @@ export namespace Prisma {
     customization?: CustomizationUncheckedUpdateOneWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProfileInput = {
@@ -33504,7 +33464,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -33523,7 +33483,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -33558,7 +33518,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -33577,7 +33537,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutCustomizationInput = {
@@ -33596,7 +33556,7 @@ export namespace Prisma {
     Support?: SupportCreateNestedManyWithoutUserInput
     wallet?: walletCreateNestedManyWithoutUserInput
     target?: TargetCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCustomizationInput = {
@@ -33615,7 +33575,7 @@ export namespace Prisma {
     Support?: SupportUncheckedCreateNestedManyWithoutUserInput
     wallet?: walletUncheckedCreateNestedManyWithoutUserInput
     target?: TargetUncheckedCreateNestedManyWithoutUserInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedManyWithoutUserInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCustomizationInput = {
@@ -33650,7 +33610,7 @@ export namespace Prisma {
     Support?: SupportUpdateManyWithoutUserNestedInput
     wallet?: walletUpdateManyWithoutUserNestedInput
     target?: TargetUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCustomizationInput = {
@@ -33669,7 +33629,7 @@ export namespace Prisma {
     Support?: SupportUncheckedUpdateManyWithoutUserNestedInput
     wallet?: walletUncheckedUpdateManyWithoutUserNestedInput
     target?: TargetUncheckedUpdateManyWithoutUserNestedInput
-    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateManyWithoutUserNestedInput
+    investmentPortfolio?: InvestmentPortfolioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type DividendCreateWithoutStockInput = {
@@ -34305,12 +34265,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type InvestmentPortfolioCreateManyUserInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-  }
-
   export type CommentUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -34425,26 +34379,6 @@ export namespace Prisma {
     dateTarget?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type InvestmentPortfolioUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    investments?: InvestmentUpdateManyWithoutPortfolioNestedInput
-  }
-
-  export type InvestmentPortfolioUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    investments?: InvestmentUncheckedUpdateManyWithoutPortfolioNestedInput
-  }
-
-  export type InvestmentPortfolioUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvestmentCreateManyPortfolioInput = {
