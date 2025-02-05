@@ -5,8 +5,11 @@ import './home.css';
 import { GraphComponent } from './_components/graph/graph';
 import { Text } from '@/components/ui/text';
 
-export default function page() {
+
+export default  function page() {
+
   return (
+
     <section className='flex h-full flex-col w-full max-w-[1200px] mx-auto p-4'>
       <Text variant='title' >¡Hola!</Text>
       <Text variant='small'>Estas son las novedades el día de hoy</Text>

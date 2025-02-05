@@ -7,11 +7,13 @@ import { stockApi } from './modules/investment/stock/stock.api';
 import { walletApi } from './modules/wallet/wallet.api';
 import { newsApi } from './modules/community/news/news.api';
 import { commentApi } from './modules/community/comment/comment.api';
+import { customizationApi } from './modules/customization/customization';
 
 export const backend = {
   isActive,
   authApi,
   financialTargetApi,
+  customizationApi,
   walletApi,
   investment: {
     stockApi,
@@ -20,6 +22,7 @@ export const backend = {
     newsApi,
     commentApi
   }
+
 };
 
 // Exporta un objecto que tiene mas objectos con funciones, para usarlos seria algo asi
