@@ -10,15 +10,15 @@ datasource db {
 }
 
 model User {
-  id                     String              @id @unique @default(cuid())
-  email                  String              @unique
+  id                     String               @id @unique @default(cuid())
+  email                  String               @unique
   firstName              String?
   lastName               String?
   password               String
   avatarUrl              String?
-  createdAt              DateTime            @default(now())
-  updatedAt              DateTime            @updatedAt
-  isEmailVerified        Boolean             @default(false)
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
+  isEmailVerified        Boolean              @default(false)
   comment                Comment[]
   financialRadiographies FinancialRadiograp?
   profile                Profile?
@@ -26,7 +26,7 @@ model User {
   Support                Support[]
   wallet                 wallet[]
   target                 Target[]
-  investmentPortfolio    InvestmentPortfolio? 
+  investmentPortfolio    InvestmentPortfolio?
 }
 
 model Target {
@@ -174,18 +174,18 @@ model Profile {
 
 model Customization {
   id             String   @id @default(cuid())
-  userId         String   @unique
-  categories     String
-  strategy       String
-  method         String
-  newsSource     String
-  instrument     String
-  age            Int
-  investingYears Int
-  goal           String
-  monthlyAmount  Int
-  incomeSource   String
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String?  @unique
+  categories     String?
+  strategy       String?
+  method         String?
+  newsSource     String?
+  instrument     String?
+  age            String?
+  investingYears String?
+  goal           String?
+  monthlyAmount  Int?
+  incomeSource   String?
+  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
