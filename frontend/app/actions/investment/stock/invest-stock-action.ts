@@ -30,6 +30,10 @@ export async function investStockAction(
   const portfolioId = formData.get('portfolioId');
   const data = { amountInvested, stockSymbol, portfolioId };
 
+  console.log({
+    data,
+  });
+
   const result = investStockSchema.safeParse(data);
 
   if (!result.success) {
@@ -44,6 +48,7 @@ export async function investStockAction(
       amountInvested: result.data.amountInvested,
       portfolioId: result.data.portfolioId,
       stockSymbol: result.data.stockSymbol,
+      dateInvestment: '2025-02-05T17:04:29.353Z',
     });
 
     return { success: true };

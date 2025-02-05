@@ -40,13 +40,6 @@ const stockApi: StockApi = {
         1000,
       ),
     );
-
-    // return tickers.map((ticker) => ({
-    //   ...ticker,
-    //   riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
-    //   timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
-    //   expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
-    // }));
   },
   async getDetails({ symbol }) {
     console.log({ symbol });
@@ -57,7 +50,7 @@ const stockApi: StockApi = {
     );
   },
   async invest(params) {
-    const url = `/investment`;
+    const url = `${envs.BACKEND_URL}/investment`;
 
     const payload = JSON.stringify(params);
 
