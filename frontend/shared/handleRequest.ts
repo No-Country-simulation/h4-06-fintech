@@ -1,3 +1,4 @@
+import { isDynamicServerError } from 'next/dist/client/components/hooks-server-context';
 import { APIErrorResponse } from '../client-api/backend/interface/generic-response';
 import { InternalError } from './errors';
 
@@ -38,6 +39,11 @@ export async function handleRequest<E extends Error, ApiResponse>({
     return await response.json();
   } catch (error) {
     console.log(error);
+
+    // Arregla error al hacer el build
+    if (isDynamicServerError(error)) {
+      throw error;
+    }
 
     if (error instanceof ErrorClass) {
       throw error;

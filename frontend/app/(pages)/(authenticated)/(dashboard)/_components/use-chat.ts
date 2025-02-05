@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
 
@@ -14,20 +16,16 @@ const socket: Socket = io(BASE_URL, {
   withCredentials: true,
 });
 
-
-
 // socket.on('connect_error', (error) => {
 //   console.error('Socket Connection Error:', error);
 // });
-
 
 export const useChat = () => {
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
 
   const [isConnected, setIsConnected] = useState(socket.connected);
-  const [isTyping, setIsTyping] = useState(false); 
-
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     setIsConnected(socket.connected);
@@ -45,13 +43,13 @@ export const useChat = () => {
     function onWelcomeMessage(message: string) {
       console.log('Welcome message received:', message);
       setIsTyping(false);
-      setMessages(prev => [...prev, { sender: 'bot', text: message }]);
+      setMessages((prev) => [...prev, { sender: 'bot', text: message }]);
     }
 
     function onBotResponse(message: string) {
       console.log('Bot response received:', message);
       setIsTyping(false);
-      setMessages(prev => [...prev, { sender: 'bot', text: message }]);
+      setMessages((prev) => [...prev, { sender: 'bot', text: message }]);
     }
 
     socket.on('connect', onConnect);
@@ -71,9 +69,9 @@ export const useChat = () => {
     if (message.trim() && socket.connected) {
       console.log('Sending message:', message);
       socket.emit('message', message);
-      setMessages(prev => [...prev, { sender: 'user', text: message }]);
+      setMessages((prev) => [...prev, { sender: 'user', text: message }]);
       setMessage('');
-      setIsTyping(true); 
+      setIsTyping(true);
     }
   };
 
@@ -83,6 +81,6 @@ export const useChat = () => {
     messages,
     sendMessage,
     isConnected,
-    isTyping
+    isTyping,
   };
 };

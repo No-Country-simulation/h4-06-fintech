@@ -26,12 +26,27 @@ const stockApi: StockApi = {
     // TODO - Usar un endpoint para obtener todos los tickers
     // de momento devuelvo un array estatico
 
-    return tickers.map((ticker) => ({
-      ...ticker,
-      riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
-      timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
-      expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
-    }));
+    return new Promise((resolve) =>
+      setTimeout(
+        () =>
+          resolve(
+            tickers.map((ticker) => ({
+              ...ticker,
+              riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
+              timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
+              expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
+            })),
+          ),
+        1000,
+      ),
+    );
+
+    // return tickers.map((ticker) => ({
+    //   ...ticker,
+    //   riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
+    //   timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
+    //   expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
+    // }));
   },
   async getDetails({ symbol }) {
     console.log({ symbol });
