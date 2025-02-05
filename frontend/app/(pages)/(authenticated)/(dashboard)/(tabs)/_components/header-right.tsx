@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function HeaderRight() {
   return (
-    <section className='flex items-center gap-8'>
+    <section className='sm:flex hidden items-center gap-8'>
       <section className='flex gap-6'>
         <Image
           alt='Moon icon'

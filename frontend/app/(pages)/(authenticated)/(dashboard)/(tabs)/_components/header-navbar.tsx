@@ -1,40 +1,14 @@
 'use client';
 
-import { HomeIcon } from '@/components/icons/home-icon';
-import { InvestmentIcon } from '@/components/icons/investment-icon';
-import { SettingIcon } from '@/components/icons/setting-icon';
-import { WalletIcon } from '@/components/icons/wallet-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const LINKS = [
-  {
-    href: '/home',
-    value: 'Dashboard',
-    icon: <HomeIcon />,
-  },
-  {
-    href: '/investment',
-    value: 'Inversiones',
-    icon: <InvestmentIcon />,
-  },
-  {
-    href: '/wallet',
-    value: 'Billetera',
-    icon: <WalletIcon />,
-  },
-  {
-    href: '/setting',
-    value: 'Configuración',
-    icon: <SettingIcon />,
-  },
-];
+import { LINKS } from '../_data/header-links';
 
 export function HeaderNavbar() {
   const pathname = usePathname();
 
   return (
-    <section className='flex items-center gap-6'>
+    <section className='items-center gap-6 sm:flex hidden'>
       {LINKS.map((link) => (
         <Link
           data-active={pathname.includes(link.href)}
