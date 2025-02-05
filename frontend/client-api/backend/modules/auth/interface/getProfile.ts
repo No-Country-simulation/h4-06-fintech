@@ -17,6 +17,7 @@ export interface GetProfileResponse {
   // TODO - Arreglar los tipos para estos dos campos
   comment: unknown[];
   financialRadiographies: unknown[];
+  investmentPortfolio: InvestmentPortfolio;
 }
 
 export interface Wallet {
@@ -26,4 +27,11 @@ export interface Wallet {
   balanceDollars: number;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface InvestmentPortfolio {
+  id: string;
+  userId: string;
+  name: string;
+  createdAt: Date;
 }
