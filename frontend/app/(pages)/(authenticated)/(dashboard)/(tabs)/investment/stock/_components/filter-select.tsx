@@ -9,8 +9,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-import { parseAsString, useQueryStates } from 'nuqs';
-
 type FilterKeys = 'riskLevel' | 'timeHorizon' | 'expectedReturn';
 
 interface Props {
@@ -20,32 +18,21 @@ interface Props {
   }[];
   queryKey: FilterKeys;
   label: string;
+  value: string;
+  onChange: (queryKey: FilterKeys, value: string) => void;
 }
 
-export function FilterSelect({ options, queryKey, label }: Props) {
-  const [filter, setFilters] = useQueryStates(
-    {
-      riskLevel: parseAsString,
-      timeHorizon: parseAsString,
-      expectedReturn: parseAsString,
-    },
-    {
-      history: 'push',
-    },
-  );
-
-  const handleChange = (value: string) => {
-    setFilters((prevState) => {
-      const newState = { ...prevState };
-      newState[queryKey] = value;
-      return newState;
-    });
-  };
-
+export function FilterSelect({
+  options,
+  queryKey,
+  label,
+  onChange,
+  value,
+}: Props) {
   return (
     <Select
-      onValueChange={handleChange}
-      value={filter[queryKey] ?? ''}
+      onValueChange={(value) => onChange(queryKey, value)}
+      value={value ?? ''}
     >
       <SelectTrigger className='w-[180px] border-foreground'>
         <SelectValue placeholder={label} />

@@ -35,7 +35,7 @@ export default function ExplorePage() {
             key={link.href}
             href={link.href}
           >
-            <Card className='h-[110px] items-center justify-center bg-secondary text-center'>
+            <Card className='min-h-[110px] items-center justify-center bg-secondary text-center'>
               <p className='px-4 text-xl font-medium'>{link.value}</p>
             </Card>
           </Link>

@@ -42,7 +42,7 @@ export function SuggestionsSection() {
             href={link.href}
             className='group'
           >
-            <Card className='h-[110px] w-[290px] items-center justify-center border-none bg-primary/80 transition-colors group-hover:bg-primary/50'>
+            <Card className='h-[110px] w-full max-w-[290px] items-center justify-center border-none bg-primary/80 transition-colors group-hover:bg-primary/50'>
               <p className='text-xl font-medium text-background'>
                 {link.value}
               </p>
