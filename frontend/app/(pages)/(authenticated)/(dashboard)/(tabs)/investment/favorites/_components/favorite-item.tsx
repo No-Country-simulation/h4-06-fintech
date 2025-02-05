@@ -1,11 +1,11 @@
-import { Ticker } from "@/components/ticker/ticker";
-import { Button } from "@/components/ui/button";
-import { type Ticker as TickerType } from "client-api/backend/modules/investment/stock/interface/getTickers";
-import Image from "next/image";
-import Link from "next/link";
+import { Ticker } from '@/components/ticker/ticker';
+import { Button } from '@/components/ui/button';
+import { type Ticker as TickerType } from 'client-api/backend/modules/investment/stock/interface/getTickers';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
-  ticker: TickerType
+  ticker: TickerType;
 }
 
 export function FavoriteItem({ ticker }: Props) {
@@ -17,7 +17,7 @@ export function FavoriteItem({ ticker }: Props) {
       symbol={ticker.symbol}
     >
       <Ticker.Content>
-        <Button className='rounded-lg bg-[#004AAD] w-fit px-6 py-2 shadow-none transition-colors hover:bg-secondary'>
+        <Button className='w-fit rounded-lg bg-[#004AAD] px-6 py-2 shadow-none transition-colors hover:bg-secondary'>
           <Image
             src='/svg/heart-2.svg'
             alt='favorite icon'
@@ -26,12 +26,12 @@ export function FavoriteItem({ ticker }: Props) {
           />
         </Button>
         <Link
-          className='rounded-md bg-secondary/50 px-10 py-2 text-center font-medium transition-colors hover:bg-secondary'
+          className='min-w-fit rounded-md bg-secondary/50 px-10 py-2 text-center font-medium transition-colors hover:bg-secondary'
           href={`/investment/my-investments/${ticker.symbol}`}
         >
           Ver más
         </Link>
       </Ticker.Content>
     </Ticker.Root>
-  )
+  );
 }

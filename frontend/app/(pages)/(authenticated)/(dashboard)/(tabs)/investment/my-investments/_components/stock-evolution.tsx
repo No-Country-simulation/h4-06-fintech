@@ -8,8 +8,8 @@ export function StockEvolution({ value, text, isUp }: AuxProps) {
   const style =
     isUp !== undefined
       ? isUp
-        ? 'bg-green-300 text-green-700'
-        : 'bg-red-400 text-red-700'
+        ? 'text-green-500 font-bold'
+        : 'text-red-500 font-bold'
       : 'bg-secondary';
 
   return (

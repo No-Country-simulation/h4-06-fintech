@@ -18,12 +18,10 @@ export class Investment extends OmitType(CreateInvestmentDto, [
 export class CreateInvestmentPortfolioDto {
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
   name: string;
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
   userId: string;
 
   @ApiProperty({ type: Investment })

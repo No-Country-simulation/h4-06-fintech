@@ -57,8 +57,7 @@ model FinancialRadiograp {
 model InvestmentPortfolio {
   id          String       @id @default(cuid())
   userId      String       @unique
-  name        String
-  createdAt   DateTime     @default(now()) @map("fecha_creacion")
+  name        String?
   user        User         @relation(fields: [userId], references: [id])
   investments Investment[]
 }

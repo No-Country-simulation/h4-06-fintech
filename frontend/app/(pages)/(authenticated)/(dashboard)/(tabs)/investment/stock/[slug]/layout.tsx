@@ -19,7 +19,13 @@ export default async function StockLayout({
     <section className='relative'>
       <GoBack />
       <CardInformation
-        info={response}
+        info={{
+          currentPrice: response.price.current,
+          changePercent: String(response.price.changePercent.toFixed(2)),
+          name: response.name,
+          previousClose: response.price.previousClose,
+          isUp: response.price.current > response.price.previousClose,
+        }}
         slug={slug}
       />
       <Carousel info={response} />

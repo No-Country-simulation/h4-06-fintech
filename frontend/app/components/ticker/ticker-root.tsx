@@ -15,7 +15,7 @@ export function Root({ image, name, isUp, symbol, children }: RootProps) {
       data-isup={isUp}
       className='group flex items-center justify-between rounded-md p-2 shadow-md transition-colors hover:bg-primary/10'
     >
-      <section className='flex w-full max-w-[600px] items-center gap-3'>
+      <section className='flex max-w-[600px] items-center gap-3'>
         <TickerImage src={image} />
         <section className='flex flex-col'>
           <p className='text-lg font-bold'>{symbol}</p>

@@ -1,74 +1,65 @@
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
-import { GetByTickerResponse } from 'client-api/backend/modules/investment/stock/interface/getByTicker';
 import Image from 'next/image';
 import { formatMoney } from '@/lib/money-formatter';
 import { card } from './card-item';
 
-export function CardInformation({
-  info,
-  slug,
-}: {
-  info: GetByTickerResponse;
-  slug: string;
-}) {
-  const isPositiveChange = info.price.changePercent > 0;
+type Info = {
+  currentPrice: number;
+  changePercent: string;
+  previousClose: number;
+  name: string;
+  isUp: boolean;
+};
+
+export function CardInformation({ info, slug }: { info: Info; slug: string }) {
   const information = card.find((item) => item.id === slug);
+
   return (
-    <Card className=' bg-muted'>
-      <div className='flex flex-row gap-4 p-10' >
-      <div className='flex flex-col gap-4 max-w-[100px] '>
-        <div className='w-[84px] h-[84px] rounded-lg bg-black flex items-center justify-center'>
+    <Card className='flex flex-row gap-8 bg-[#64CFF6]/50 p-10'>
+      <div className='flex items-center justify-between gap-2'>
+        <div className='flex aspect-square h-[80px] w-[80px] items-center justify-center rounded-[20px] bg-black p-4'>
           <Image
             src={information?.image || ''}
             alt={info.name}
             width={64}
             height={64}
-            
-        />
+          />
         </div>
-        <Text>{info.name}</Text>
+        <section>
+          <p className='font-bold'>{slug}</p>
+          <p className='text-sm'>{info.name}</p>
+        </section>
       </div>
-      <Image
-        src={isPositiveChange ? '/svg/is-up.svg' : '/svg/is-down.svg'}
-        alt='arrow up'
-        width={39}
-        height={19}
-        className='ml-10'
-      />
-      <div className='flex flex-col justify-start gap-y-2'>
-        <Text
-          variant='header'
-          className='text-[40px]/[60px]'
-        >
-          {formatMoney(info.price.current)}
-        </Text>
-
-        <Text className='font-poppins-light text-2xl/9'>
-          <span
-            className={isPositiveChange ? 'text-[#04914F]' : 'text-[#FF0000]'}
+      <div className='flex flex-col justify-center gap-y-2'>
+        <section className='flex gap-1'>
+          <Text
+            variant='header'
+            className='text-[40px]/[60px]'
           >
-            {isPositiveChange ? '+' : ''}
-            {formatMoney(info.price.current - info.price.previousClose)} (
-            {isPositiveChange ? '+' : ''}
-            {info.price.changePercent.toFixed(2)}%)
-          </span>{' '}
-          <span className='font-poppins-light text-xl/[30px] text-muted-foreground'>
+            {formatMoney(info.currentPrice)}
+          </Text>
+          <p
+            className={
+              info.isUp ? 'text-[#04914F]' : 'text-[#FF0000]' + ' mt-2 text-xl'
+            }
+          >
+            {info.changePercent}%
+          </p>
+          <span className='mt-2 font-poppins-light text-muted-foreground'>
             Hoy
           </span>
-        </Text>
-
-        <Text className='font-poppins-regular text-2xl/9 text-[#06040480]'>
-          {formatMoney(info.price.previousClose)}
-          <span className='ml-2 font-poppins-light text-xl/[30px] text-muted-foreground'>
-            cierre dia anterior
-          </span>
-        </Text>
+        </section>
+        <section className='flex gap-1'>
+          <p className='text-2xl text-[#06040480]'>
+            {formatMoney(info.previousClose)}
+          </p>
+          <p className='min-w-fit text-xl font-light'>Cierre anterior</p>
+        </section>
       </div>
       <Text className='ml-40 max-w-[300px] text-center font-poppins-light text-2xl/9 leading-10'>
         {information?.description}
       </Text>
-      </div>
     </Card>
   );
 }

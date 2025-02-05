@@ -4,11 +4,14 @@ import { Ticker as TickerType } from 'client-api/backend/modules/investment/stoc
 import Link from 'next/link';
 
 interface Props {
-  ticker: TickerType;
+  ticker: TickerType & { investmentId: string };
 }
 
 export function MyInvestmentItem({ ticker }: Props) {
-  const { changePercent, isUp } = getPriceInfo({ current: ticker.price.current, previousClose: ticker.price.previousClose })
+  const { changePercent, isUp } = getPriceInfo({
+    current: ticker.price.current,
+    previousClose: ticker.price.previousClose,
+  });
 
   return (
     <Ticker.Root
@@ -25,7 +28,7 @@ export function MyInvestmentItem({ ticker }: Props) {
         />
         <Link
           className='rounded-md bg-secondary/50 px-10 py-2 text-center font-medium transition-colors hover:bg-secondary'
-          href={`/investment/my-investments/${ticker.symbol}`}
+          href={`/investment/my-investments/${ticker.investmentId}`}
         >
           Ver
         </Link>

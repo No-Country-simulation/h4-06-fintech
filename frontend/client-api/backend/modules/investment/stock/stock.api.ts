@@ -40,13 +40,6 @@ const stockApi: StockApi = {
         1000,
       ),
     );
-
-    // return tickers.map((ticker) => ({
-    //   ...ticker,
-    //   riskLevel: getRandomOption(NIVEL_DE_RIESGO_OPTIONS),
-    //   timeHorizon: getRandomOption(HORIZONTE_TEMPORAL_OPTIONS),
-    //   expectedReturn: getRandomOption(RENDIMIENTO_ESPERADO_OPTIONS),
-    // }));
   },
   async getDetails({ symbol }) {
     console.log({ symbol });
@@ -55,6 +48,32 @@ const stockApi: StockApi = {
     return new Promise(async (resolve) =>
       resolve({ totalAssets: 0.5, amountInvested: 200 }),
     );
+  },
+  async invest(params) {
+    const url = `${envs.BACKEND_URL}/investment`;
+
+    const payload = JSON.stringify(params);
+
+    const options: RequestInit = {
+      method: 'POST',
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url, options),
+      ErrorClass: AuthError,
+    });
+  },
+  getInvest(params) {
+    const url = `${envs.BACKEND_URL}/investment/${params.id}`;
+
+    return handleRequest({
+      fetcherFn: () => authRequest(url),
+      ErrorClass: AuthError,
+    });
   },
 };
 
