@@ -1,5 +1,7 @@
 import { PageHeader } from '@/components/common/page/page-header';
 import { NewsSection } from './_components/news-section';
+import { Suspense } from 'react';
+import { SkeletonList } from '@/components/ui/skeleton-list';
 
 export default async function ComunidadPage() {
   return (
@@ -7,7 +9,9 @@ export default async function ComunidadPage() {
       title='Comunidad'
       subtitle='¡Conecta y mantenete informado de las últimas novedades del mercado!'
     >
-      <NewsSection />
+      <Suspense fallback={<SkeletonList />}>
+        <NewsSection />
+      </Suspense>
     </PageHeader>
   );
 }

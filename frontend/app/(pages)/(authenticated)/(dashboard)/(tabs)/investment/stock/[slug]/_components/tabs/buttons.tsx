@@ -30,7 +30,7 @@ export function StockTabs() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  
+
   const currentTab = searchParams.get('tab') || 'historical';
 
   const handleTabChange = (tabId: string) => {
@@ -40,17 +40,17 @@ export function StockTabs() {
   };
 
   return (
-      <div className="flex flex-row gap-2 mt-4 w-full justify-center max-w-7xl mx-auto">
-        {TABS.map((tab) => (
-          <Button
+    <div className='mt-4 flex w-full flex-wrap justify-between gap-2'>
+      {TABS.map((tab) => (
+        <Button
           key={tab.id}
-          type="button"
+          type='button'
           onClick={() => handleTabChange(tab.id)}
           className={cn(
-            'px-4 py-2 rounded-lg text-sm w-full max-w-[244px] h-10 ',
+            'h-10 w-full rounded-lg px-4 py-2 text-xs sm:max-w-[200px]',
             currentTab === tab.id
               ? 'bg-[#004AAD80] text-foreground hover:bg-[#004AAD80]'
-              : 'bg-[#004AAD4D] text-foreground hover:bg-[#004AAD40]'
+              : 'bg-[#004AAD4D] text-foreground hover:bg-[#004AAD40]',
           )}
         >
           {tab.label}
@@ -58,4 +58,4 @@ export function StockTabs() {
       ))}
     </div>
   );
-} 
+}
