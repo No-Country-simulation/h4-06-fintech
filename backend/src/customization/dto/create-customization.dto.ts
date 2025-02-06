@@ -1,48 +1,46 @@
-import { IsInt, IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateCustomizationDto {
-  @ApiProperty()
-  @IsString()
-  userId: string;
 
   @ApiProperty()
   @IsString()
-  categories: string;
+  categories?: string;
 
   @ApiProperty()
   @IsString()
-  strategy: string;
+  strategy?: string;
 
   @ApiProperty()
   @IsString()
-  method: string;
+  method?: string;
 
   @ApiProperty()
   @IsString()
-  newsSource: string;
+  newsSource?: string;
 
   @ApiProperty()
   @IsString()
-  instrument: string;
-
-  @ApiProperty()
-  @IsInt()
-  age: string;
-
-  @ApiProperty()
-  @IsInt()
-  investingYears: string;
+  instrument?: string;
 
   @ApiProperty()
   @IsString()
-  goal: string;
-
-  @ApiProperty()
-  @IsNumber()
-  monthlyAmount: string;
+  age?: string;
 
   @ApiProperty()
   @IsString()
-  incomeSource: string;
+  investingYears?: string;
+
+  @ApiProperty()
+  @IsString()
+  goal?: string;
+
+  @ApiProperty()
+  @IsString()
+  monthlyAmount?: string;
+
+  @ApiProperty()
+  @IsString()
+  incomeSource?: string;
+
 }

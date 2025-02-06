@@ -86,14 +86,15 @@ model FinancialInstrument {
 }
 
 model News {
-  id        String    @id @default(cuid())
-  title     String
-  content   String
-  source    String
-  dateNews  DateTime
-  category  String
-  createdAt DateTime  @default(now())
-  comment   Comment[]
+  id          String    @id @default(cuid())
+  title       String
+  content     String
+  source      String
+  dateNews    DateTime
+  bannerImage String
+  category    String
+  createdAt   DateTime  @default(now())
+  comment     Comment[]
 }
 
 model Comment {

@@ -46,7 +46,8 @@ export class NewsService {
             content: news.summary,
             source: news.source,
             dateNews: formatDate(news.time_published),
-            category: news.topic || "Uncategorized",
+            category: news.topics.topic || "Uncategorized",
+            bannerImage: news.banner_image
           },
           include: {
             comment: {

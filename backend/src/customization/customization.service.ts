@@ -7,91 +7,121 @@ import { PrismaService } from '../prisma/prisma.service';
 export class CustomizationService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(createCustomizationDto: CreateCustomizationDto) {
+  async create(createCustomizationDto: CreateCustomizationDto, req: any) {
     try {
-      const createdCustomization =
-        await this.prismaService.customization.create({
+      const userId = req.user.id;
+
+      // Check if user already has a customization
+      const existingCustomization = await this.prismaService.customization.findUnique({
+        where: { userId },
+      });
+
+      if (existingCustomization) {
+        // If exists, update it instead of creating new
+        const updated = await this.prismaService.customization.update({
+          where: { userId },
           data: createCustomizationDto,
         });
+
+        return {
+          message: 'Customization updated successfully',
+          data: updated,
+        };
+      }
+
+      // If doesn't exist, create new
+      const createdCustomization = await this.prismaService.customization.create({
+        data: {
+          userId,
+          ...createCustomizationDto,
+        },
+      });
+
       return {
         message: 'Customization created successfully',
         data: createdCustomization,
       };
     } catch (error) {
+      console.error('Error in customization:', error);
       throw new HttpException(
-        'Internal Server Error',
+        'Error processing customization',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
 
-  async findAll() {
-    try {
-      return await this.prismaService.customization.findMany();
-    } catch (error) {
-      throw new HttpException(
-        'Internal Server Error',
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
-    }
-  }
-
-  async findOne(id: string) {
+  async findAll(req: any) {
+    const userId = req.user.id;
     try {
       const customization = await this.prismaService.customization.findUnique({
-        where: {
-          id,
-        },
+        where: { userId },
       });
       return customization;
     } catch (error) {
       throw new HttpException(
-        'Customization not found',
+        'Error finding customization',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
 
-  async update(id: string, updateCustomizationDto: UpdateCustomizationDto) {
-    await this.findOne(id);
+  async findOne(req: any) {
+    const userId = req.user.id;
     try {
-      const updatedCustomization =
-        await this.prismaService.customization.update({
-          where: {
-            id,
-          },
-          data: {
-            ...updateCustomizationDto,
-          },
-        });
+      const customization = await this.prismaService.customization.findUnique({
+        where: { userId },
+      });
+      
+      if (!customization) {
+        throw new HttpException('Customization not found', HttpStatus.NOT_FOUND);
+      }
+      
+      return customization;
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException(
+        'Error finding customization',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async update(updateCustomizationDto: UpdateCustomizationDto, req: any) {
+    const userId = req.user.id;
+    try {
+      const updatedCustomization = await this.prismaService.customization.update({
+        where: { userId },
+        data: updateCustomizationDto,
+      });
+      
       return {
         message: 'Customization updated successfully',
         data: updatedCustomization,
       };
     } catch (error) {
       throw new HttpException(
-        'Internal Server Error',
+        'Error updating customization',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
 
-  async remove(id: string) {
-    await this.findOne(id);
+  async remove(req: any) {
+    const userId = req.user.id;
     try {
-      const remove = await this.prismaService.customization.delete({
-        where: {
-          id,
-        },
+      const removed = await this.prismaService.customization.delete({
+        where: { userId },
       });
 
       return {
         message: 'Customization removed successfully',
-        data: remove,
+        data: removed,
       };
     } catch (error) {
       throw new HttpException(
-        'Internal Server Error',
+        'Error removing customization',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
