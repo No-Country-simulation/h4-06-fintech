@@ -84,16 +84,16 @@ export default function FinancialTargetForm() {
           placeholder='6 meses'
         />
       </section>
-      <footer className='mx-auto flex w-fit flex-wrap items-center justify-center gap-4'>
+      <footer className='flex flex-wrap justify-center gap-4'>
         <Button
           onClick={handleReset}
-          variant='outline'
           size='custom'
-          className='border-red-500 text-red-500 hover:bg-red-100'
+          variant='destructive'
         >
           Deshacer
         </Button>
         <SubmitButton
+          variant='terciary'
           data-pw='submit-button'
           label='Continuar'
           pending={pending}

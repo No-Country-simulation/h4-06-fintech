@@ -1,3 +1,4 @@
+import { logout } from '@/actions/logout/logout-action';
 import { PageHeader } from '@/components/common/page/page-header';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -39,20 +40,25 @@ export default function SettingPage() {
           </Link>
         ))}
       </section>
-      <footer className='flex justify-center gap-4'>
+      <footer className='flex flex-wrap justify-center gap-4'>
         <Button
-          className='rounded-[20px] border border-red-500 text-red-500'
+          className='rounded-[20px] border bg-red-100 text-red-500'
           variant='ghost'
           size='custom'
         >
           Eliminar cuenta
         </Button>
-        <Button
-          variant='secondary'
-          size='custom'
+        <form
+          action={logout}
+          className='w-full md:max-w-[350px]'
         >
-          Cerrar sesión
-        </Button>
+          <Button
+            variant='terciary'
+            size='custom'
+          >
+            Cerrar sesión
+          </Button>
+        </form>
       </footer>
     </PageHeader>
   );
