@@ -15,6 +15,8 @@ import { TargetModule } from './target/target.module';
 import { InvestmentPortfolioModule } from './investment-portfolio/investment-portfolio.module';
 import { InvestmentModule } from './investment/investment.module';
 import { ChatbotModule } from './chatbot/chatbot.module';
+import { CustomizationModule } from './customization/customization.module';
+import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
   imports: [
@@ -34,6 +36,8 @@ import { ChatbotModule } from './chatbot/chatbot.module';
     InvestmentPortfolioModule,
     InvestmentModule,
     ChatbotModule,
+    CustomizationModule,
+    SupabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

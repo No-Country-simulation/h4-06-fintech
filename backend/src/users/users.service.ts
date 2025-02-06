@@ -12,6 +12,7 @@ import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto, InvestmentPortfolio } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Investment } from '../investment-portfolio/dto/create-investment-portfolio.dto';
 
 export const roundOfHashing = 10;
 
@@ -56,9 +57,9 @@ export class UsersService {
             create: financialRadiographies,
           },
           investmentPortfolio: {
-            create: investmentPortfolio,
-          }
-        },
+            create: {name: "newPortfolio",}, 
+          },
+        }
       });
 
       await this.prismaService.wallet.create({
@@ -86,6 +87,7 @@ export class UsersService {
 
       return userWithWallet;
     } catch (error) {
+      console.log(error)
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -101,6 +103,9 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
+          investmentPortfolio: true,
         },
       });
       return findAll;
@@ -123,6 +128,7 @@ export class UsersService {
           financialRadiographies: true,
           investmentPortfolio: true,
           target: true,
+          customization: true,
         },
       });
       if (!findOne) {
@@ -160,6 +166,15 @@ export class UsersService {
         };
       }
 
+      if (investmentPortfolio) {
+        updateData.investmentPortfolio = {
+          upsert: {
+            create: investmentPortfolio,
+            update: investmentPortfolio,
+          },
+        };
+      }
+
       if (financialRadiographies) {
         updateData.financialRadiographies = {
           upsert: {
@@ -186,6 +201,8 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          target: true,
+          customization: true,
           investmentPortfolio: true,
         },
       });

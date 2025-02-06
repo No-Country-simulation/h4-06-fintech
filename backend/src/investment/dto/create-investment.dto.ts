@@ -25,4 +25,6 @@ export class CreateInvestmentDto {
   @IsOptional({ message: 'Stock symbol is optional' })
   @IsString()
   stockSymbol: string;
+
+  
 }

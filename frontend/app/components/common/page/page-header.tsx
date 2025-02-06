@@ -1,17 +1,27 @@
 import { Text } from '@/components/ui/text';
-import { PropsWithChildren } from 'react';
+import { cn } from '@/lib/utils';
+import { ComponentProps } from 'react';
 
-interface Props extends PropsWithChildren {
+interface Props extends ComponentProps<'section'> {
   title: string;
   subtitle?: string;
 }
 
-export function PageHeader({ children, title, subtitle }: Props) {
+export function PageHeader({
+  children,
+  title,
+  subtitle,
+  className,
+  ...props
+}: Props) {
   return (
-    <section className='flex flex-col gap-20'>
+    <section
+      className={cn('flex flex-col gap-12 md:gap-20', className)}
+      {...props}
+    >
       <header className='flex flex-col gap-4'>
         <Text variant='header'>{title}</Text>
-        {subtitle && <Text className='max-w-[900px]'>{subtitle}</Text>}
+        {subtitle && <p className='prose max-w-[900px]'>{subtitle}</p>}
       </header>
       {children}
     </section>
