@@ -62,7 +62,12 @@
   {
     "id": 6,
     "question": "¿Cuántos años tenés?",
-    "options": ["Menos de 25", "25 a 35", "36 a 55", "ETFs", "56 o más"]
+    "options": [
+      "Menos de 25",
+      "25 a 35",
+      "36 a 55",
+      "56 o más"
+    ]
   },
   {
     "id": 7,
@@ -100,6 +105,12 @@
   {
     "id": 10,
     "question": "¿Cuál es tu fuente de ingresos principal?",
-    "options": ["Empleado", "Emprendedor", "Inversionista", "Jubilado", "Otro"]
+    "options": [
+      "Empleado",
+      "Emprendedor",
+      "Inversionista",
+      "Jubilado",
+      "Otro"
+    ]
   }
 ]
