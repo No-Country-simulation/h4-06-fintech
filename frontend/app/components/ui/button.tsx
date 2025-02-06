@@ -11,13 +11,15 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-blue-600 text-primary-foreground hover:bg-blue-600/90',
         destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
+          'bg-red-100 text-red-500 transition-colors hover:bg-red-50',
         outline:
           'border border-foreground bg-background shadow-md shadow-foreground/25 hover:bg-accent hover:text-accent-foreground w-full rounded-[20px]',
         secondary:
           'bg-primary/50 text-secondary-foreground shadow-sm hover:bg-primary/80 rounded-[20px]',
         ghost: 'hover:opacity-50 transition-opacity',
         link: 'text-primary underline-offset-4 hover:underline',
+        terciary:
+          'bg-primary/10 text-primary hover:opacity-50 transition-opacity rounded-[20px]',
       },
       size: {
         default: 'h-9 px-4 py-2',
@@ -26,7 +28,7 @@ const buttonVariants = cva(
         icon: 'h-9 w-9',
         full: 'w-full py-3 px-10 text-2xl',
         medium: 'h-9 px-10 py-2',
-        custom: 'h-[65px] w-full max-w-[350px] px-12 py-4 text-2xl',
+        custom: 'h-[65px] w-full md:max-w-[350px] px-24 py-4 text-2xl',
       },
     },
     defaultVariants: {

@@ -5,13 +5,14 @@ import Link from 'next/link';
 
 export default function StartPage() {
   return (
-    <section className='mx-auto grid max-w-screen-xl grid-cols-2 gap-20 px-12 py-20'>
-      <section className='flex flex-col justify-between gap-8'>
-        <h2 className='text-pretty py-16 font-poppins-semibold text-3xl font-semibold leading-10'>
+    <section className='mx-auto md:grid md:max-w-screen-xl md:grid-cols-2 gap-20 px-8 py-20'>
+      <section className='flex flex-col justify-center items-center gap-8 md:justify-between'>
+        <h2 className='text-pretty text-center py-16 font-poppins-semibold text-3xl font-semibold leading-10'>
+
           Conoce tu perfil financiero único y ¡Alcanzá tus objetivos con iUPi!
         </h2>
         <section className='flex flex-col items-center justify-center gap-2'>
-          <section className='flex w-full flex-col gap-10'>
+          <section className='flex w-full max-w-[300px]  flex-col gap-10 md:max-w-full'>
             <AuthProviderButton provider='Google' />
             <AuthProviderButton provider='Apple' />
           </section>
@@ -23,6 +24,7 @@ export default function StartPage() {
             <Button
               variant='secondary'
               size='full'
+              className='w-full max-w-[300px] md:max-w-full text-lg md:text-2xl'
             >
               Continuar con email
             </Button>
@@ -44,7 +46,7 @@ export default function StartPage() {
           </p>
         </footer>
       </section>
-      <section className='relative overflow-hidden rounded-xl'>
+      <section className='hidden md:relative md:overflow-hidden md:rounded-xl md:block'>
         <Image
           fill
           className='object-cover'

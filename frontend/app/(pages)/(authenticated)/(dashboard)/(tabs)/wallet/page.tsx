@@ -1,8 +1,8 @@
 import { PageHeader } from '@/components/common/page/page-header';
 import { Card } from '@/components/ui/card';
-import { formatMoney } from '@/lib/money-formatter';
 import { backend } from '@api';
 import Link from 'next/link';
+import { CurrencyCard } from './_components/currency-card';
 
 export default async function WalletPage() {
   const { wallet } = await backend.authApi.getProfile();
@@ -11,28 +11,26 @@ export default async function WalletPage() {
 
   return (
     <PageHeader title='Billetera'>
-      <section className='flex gap-4'>
-        <section className='grid flex-1 grid-cols-2 gap-4'>
-          <Card variant='secondary'>
-            <p className='text-lg'>Tu dinero ARS</p>
-            <p className='text-xl font-semibold'>
-              {formatMoney(firstWallet.balancePesos)}
-            </p>
-          </Card>
-          <Card variant='secondary'>
-            <p className='text-lg'>Tu dinero USD</p>
-            <p className='text-xl font-semibold'>
-              {formatMoney(firstWallet.balanceDollars)}
-            </p>
-          </Card>
+      <section className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+        <section className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+          <CurrencyCard
+            amount={firstWallet.balancePesos}
+            type='ARS'
+          />
+          <CurrencyCard
+            amount={firstWallet.balanceDollars}
+            type='USD'
+          />
         </section>
-        <section className='flex flex-1 gap-4'>
+        <section className='flex flex-wrap gap-4'>
           <Link
             href='/wallet/add-funds'
             className='flex-1'
           >
             <Card variant='secondary'>
-              <p className='text-center text-xl font-medium'>Ingresar Dinero</p>
+              <p className='min-w-fit text-center text-xl font-medium'>
+                Ingresar Dinero
+              </p>
             </Card>
           </Link>
           <Link

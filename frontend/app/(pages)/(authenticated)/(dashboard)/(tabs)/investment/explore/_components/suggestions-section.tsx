@@ -33,8 +33,11 @@ export function SuggestionsSection() {
             href={link.href}
             className='group w-full md:max-w-[290px]'
           >
-            <Card className='h-[110px] items-center justify-center border-none bg-primary transition-colors group-hover:bg-primary/50'>
-              <p className='text-xl font-medium text-background'>
+            <Card className='h-[110px] flex-row items-center justify-center border-none bg-primary transition-colors group-hover:bg-primary/50'>
+              <div className='flex aspect-square items-center justify-center rounded-full bg-background p-2'>
+                <p className='font-xl font-bold text-primary'>iUpi</p>
+              </div>
+              <p className='text-center text-xl font-medium text-background'>
                 {link.value}
               </p>
             </Card>

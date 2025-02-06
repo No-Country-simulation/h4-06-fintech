@@ -1,6 +1,5 @@
 'use client';
 import { Stock } from 'client-api/backend/modules/investment/stock/interface/getByTicker';
-import { Text } from '@/components/ui/text';
 import {
   Carousel as CarouselRoot,
   CarouselContent,
@@ -49,34 +48,29 @@ export function Carousel({ info }: { info: Stock }) {
     <CarouselRoot className='mt-4 w-full rounded-lg bg-muted p-2'>
       <CarouselContent>
         {allMetrics.map((metrics, slideIndex) => (
-          <CarouselItem key={slideIndex}>
-            <div className='grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4'>
-              {metrics.map((metric, index) => (
-                <div
-                  key={metric.label}
-                  className='flex flex-1 items-center justify-center gap-1'
-                >
-                  <div className='flex min-w-[120px] flex-row items-center justify-center gap-x-2'>
-                    <p className='text-base font-medium lg:text-xl'>
-                      {metric.label}
-                    </p>
-                    <div className='flex items-center gap-2'>
-                      <Text
-                        className={`${getBgColor(slideIndex)} rounded p-2 font-poppins-medium`}
-                        variant='detail'
-                      >
-                        {typeof metric.value === 'number'
-                          ? `$${metric.value.toFixed(2)}`
-                          : metric.value}
-                      </Text>
-                    </div>
-                  </div>
-                  {index < metrics.length - 1 && (
-                    <div className='h-8 w-px bg-gray-200' />
-                  )}
+          <CarouselItem
+            key={slideIndex}
+            className='grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4'
+          >
+            {metrics.map((metric) => (
+              <div
+                key={metric.label}
+                className='flex flex-1 items-center justify-center gap-1'
+              >
+                <div className='flex min-w-[120px] flex-row items-center justify-center gap-x-2'>
+                  <p className='min-w-fit text-base font-medium lg:text-xl'>
+                    {metric.label}
+                  </p>
+                  <p
+                    className={`${getBgColor(slideIndex)} min-w-fit rounded p-2 font-medium`}
+                  >
+                    {typeof metric.value === 'number'
+                      ? `$${metric.value.toFixed(2)}`
+                      : metric.value}
+                  </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </CarouselItem>
         ))}
       </CarouselContent>

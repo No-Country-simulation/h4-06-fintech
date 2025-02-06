@@ -25,8 +25,8 @@ export const customizationApi = {
       ErrorClass: AuthError,
     });
   },
-  async update({ id, data }: { id: string; data: Customization }) {
-    const baseUrl = `${url}/${id}`;
+  async update(data: Customization) {
+    const baseUrl = url;
     const payload = JSON.stringify(data);
 
 

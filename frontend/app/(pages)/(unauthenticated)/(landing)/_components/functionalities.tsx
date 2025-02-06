@@ -8,12 +8,14 @@ const items = [
 
 export function Functionalities() {
   return (
-    <section className='mx-auto flex max-w-screen-xl flex-col gap-6 p-6'>
+    <section className='mx-auto flex max-w-screen-xl flex-col gap-6 p-6 mt-20 md:mt-0'>
       <h5 className='text-lg font-semibold'>Con iUPi, los usuarios pueden</h5>
-      <ul className='grid grid-cols-3 gap-4'>
+      <ul className='grid grid-cols-1 gap-4 md:grid-cols-3'>
         {items.map((item) => (
+
           <li
             className='rounded-lg border p-4 text-primary/80 shadow-md'
+
             key={item}
           >
             {item}

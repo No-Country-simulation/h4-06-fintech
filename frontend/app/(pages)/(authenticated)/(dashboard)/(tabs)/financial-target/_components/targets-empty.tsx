@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CarIcon } from './car-icon';
+import { PlusCircleIcon } from 'lucide-react';
 
 export function TargetsEmpty() {
   return (
@@ -21,9 +22,10 @@ export function TargetsEmpty() {
       <footer>
         <Link href='/financial-target/create'>
           <Button
-            variant='outline'
-            size='custom'
+            variant='terciary'
+            className='rounded-lg'
           >
+            <PlusCircleIcon />
             Añadir nuevo objetivo
           </Button>
         </Link>
