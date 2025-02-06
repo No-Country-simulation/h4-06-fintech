@@ -36,18 +36,21 @@ export function WelcomeOnboarding() {
 			</p>
 			<div className="flex flex-row gap-x-16 w-full justify-center mt-20">
 				<Button
-					className="w-full h-[65px] max-w-[360px] rounded-lg text-2xl/9 font-poppins-medium"
+					className="w-full h-[65px] max-w-[360px] rounded-xl text-2xl/9 font-poppins-medium border-none hover:bg-gray-200"
 					variant={"outline"}
 					onClick={() => router.push("/home")}
 				>
+
 					Omitir
 				</Button>
 				<Button
-					className="w-full h-[65px] max-w-[360px] rounded-lg text-2xl/9 font-poppins-medium"
+					className="w-full h-[65px] max-w-[360px] bg-[#D8E0F2] rounded-xl text-2xl/9 font-poppins-medium text-primary hover:bg-[#D8E0F2]/80"
 					variant={"secondary"}
 					onClick={() => router.push("/onboarding/1")}
 				>
-					Empezar
+
+
+					Continuar
 				</Button>
 			</div>
 		</section>

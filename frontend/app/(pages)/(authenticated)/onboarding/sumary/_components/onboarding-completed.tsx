@@ -26,9 +26,11 @@ export default function OnboardingCompleted() {
           <Button
             variant='outline'
             size='custom'
+            className='border-none hover:bg-gray-100'
             onClick={() => router.push(`/onboarding/sumary/1?${searchParams}`)}
           >
             Resumen
+
           </Button>
         </Card>
         <Card className='flex h-[323px] w-full max-w-[447px] flex-col items-center justify-around bg-[#D8E0F2]'>
@@ -39,16 +41,21 @@ export default function OnboardingCompleted() {
           <Button
             variant='outline'
             size='custom'
+            className='border-none hover:bg-gray-100'
+            onClick={() => router.push(`/onboarding/sumary/1?${searchParams}`)}
           >
             Mi Perfil
           </Button>
+
+
         </Card>
       </div>
       <Button
-        className='mt-20 h-[65px] w-full max-w-[360px] rounded-lg font-poppins-medium text-2xl/[30px] text-foreground'
+        className='mt-20 h-[65px] bg-[#D8E0F2] hover:bg-[#D8E0F2]/80 w-full max-w-[360px] rounded-xl font-poppins-medium text-2xl/[30px] text-primary'
         variant='secondary'
         onClick={() => router.push('/home')}
       >
+
         Comenzar
       </Button>
     </div>

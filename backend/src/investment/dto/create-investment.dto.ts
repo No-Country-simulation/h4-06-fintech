@@ -12,11 +12,6 @@ export class CreateInvestmentDto {
   financialInstrumentId?: string;
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  dateInvestment: Date;
-
-  @ApiProperty()
   @IsNotEmpty({ message: 'Investment portfolio id is required' })
   @IsString({ message: 'Investment portfolio id must be a string' })
   portfolioId: string;

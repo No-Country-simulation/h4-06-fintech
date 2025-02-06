@@ -13,14 +13,6 @@ export class FinanceService {
   async fetchAndSaveStockData(ticker: string) {
     try {
       const data = await YahooFinance.quote(ticker);
-
-      if (!data) {
-        throw new HttpException(
-          `No se encontraron datos para el ticker ${ticker}`,
-          HttpStatus.NOT_FOUND,
-        );
-      }
-
       const stockData: StockDTO = {
         symbol: data.symbol,
         name: data.shortName,

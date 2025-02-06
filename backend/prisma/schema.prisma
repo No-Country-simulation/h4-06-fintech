@@ -65,7 +65,6 @@ model InvestmentPortfolio {
 model Investment {
   id                    String               @id @default(cuid())
   amountInvested        Int
-  dateInvestment        DateTime
   portfolioId           String
   financialInstrumentId String?
   stockSymbol           String?

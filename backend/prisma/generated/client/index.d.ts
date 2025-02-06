@@ -7667,7 +7667,6 @@ export namespace Prisma {
   export type InvestmentMinAggregateOutputType = {
     id: string | null
     amountInvested: number | null
-    dateInvestment: Date | null
     portfolioId: string | null
     financialInstrumentId: string | null
     stockSymbol: string | null
@@ -7676,7 +7675,6 @@ export namespace Prisma {
   export type InvestmentMaxAggregateOutputType = {
     id: string | null
     amountInvested: number | null
-    dateInvestment: Date | null
     portfolioId: string | null
     financialInstrumentId: string | null
     stockSymbol: string | null
@@ -7685,7 +7683,6 @@ export namespace Prisma {
   export type InvestmentCountAggregateOutputType = {
     id: number
     amountInvested: number
-    dateInvestment: number
     portfolioId: number
     financialInstrumentId: number
     stockSymbol: number
@@ -7704,7 +7701,6 @@ export namespace Prisma {
   export type InvestmentMinAggregateInputType = {
     id?: true
     amountInvested?: true
-    dateInvestment?: true
     portfolioId?: true
     financialInstrumentId?: true
     stockSymbol?: true
@@ -7713,7 +7709,6 @@ export namespace Prisma {
   export type InvestmentMaxAggregateInputType = {
     id?: true
     amountInvested?: true
-    dateInvestment?: true
     portfolioId?: true
     financialInstrumentId?: true
     stockSymbol?: true
@@ -7722,7 +7717,6 @@ export namespace Prisma {
   export type InvestmentCountAggregateInputType = {
     id?: true
     amountInvested?: true
-    dateInvestment?: true
     portfolioId?: true
     financialInstrumentId?: true
     stockSymbol?: true
@@ -7818,7 +7812,6 @@ export namespace Prisma {
   export type InvestmentGroupByOutputType = {
     id: string
     amountInvested: number
-    dateInvestment: Date
     portfolioId: string
     financialInstrumentId: string | null
     stockSymbol: string | null
@@ -7846,7 +7839,6 @@ export namespace Prisma {
   export type InvestmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amountInvested?: boolean
-    dateInvestment?: boolean
     portfolioId?: boolean
     financialInstrumentId?: boolean
     stockSymbol?: boolean
@@ -7858,7 +7850,6 @@ export namespace Prisma {
   export type InvestmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amountInvested?: boolean
-    dateInvestment?: boolean
     portfolioId?: boolean
     financialInstrumentId?: boolean
     stockSymbol?: boolean
@@ -7870,7 +7861,6 @@ export namespace Prisma {
   export type InvestmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amountInvested?: boolean
-    dateInvestment?: boolean
     portfolioId?: boolean
     financialInstrumentId?: boolean
     stockSymbol?: boolean
@@ -7882,13 +7872,12 @@ export namespace Prisma {
   export type InvestmentSelectScalar = {
     id?: boolean
     amountInvested?: boolean
-    dateInvestment?: boolean
     portfolioId?: boolean
     financialInstrumentId?: boolean
     stockSymbol?: boolean
   }
 
-  export type InvestmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amountInvested" | "dateInvestment" | "portfolioId" | "financialInstrumentId" | "stockSymbol", ExtArgs["result"]["investment"]>
+  export type InvestmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amountInvested" | "portfolioId" | "financialInstrumentId" | "stockSymbol", ExtArgs["result"]["investment"]>
   export type InvestmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stock?: boolean | Investment$stockArgs<ExtArgs>
     portfolio?: boolean | Investment$portfolioArgs<ExtArgs>
@@ -7915,7 +7904,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       amountInvested: number
-      dateInvestment: Date
       portfolioId: string
       financialInstrumentId: string | null
       stockSymbol: string | null
@@ -8347,7 +8335,6 @@ export namespace Prisma {
   interface InvestmentFieldRefs {
     readonly id: FieldRef<"Investment", 'String'>
     readonly amountInvested: FieldRef<"Investment", 'Int'>
-    readonly dateInvestment: FieldRef<"Investment", 'DateTime'>
     readonly portfolioId: FieldRef<"Investment", 'String'>
     readonly financialInstrumentId: FieldRef<"Investment", 'String'>
     readonly stockSymbol: FieldRef<"Investment", 'String'>
@@ -25757,7 +25744,6 @@ export namespace Prisma {
   export const InvestmentScalarFieldEnum: {
     id: 'id',
     amountInvested: 'amountInvested',
-    dateInvestment: 'dateInvestment',
     portfolioId: 'portfolioId',
     financialInstrumentId: 'financialInstrumentId',
     stockSymbol: 'stockSymbol'
@@ -26439,7 +26425,6 @@ export namespace Prisma {
     NOT?: InvestmentWhereInput | InvestmentWhereInput[]
     id?: StringFilter<"Investment"> | string
     amountInvested?: IntFilter<"Investment"> | number
-    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
     portfolioId?: StringFilter<"Investment"> | string
     financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
     stockSymbol?: StringNullableFilter<"Investment"> | string | null
@@ -26451,7 +26436,6 @@ export namespace Prisma {
   export type InvestmentOrderByWithRelationInput = {
     id?: SortOrder
     amountInvested?: SortOrder
-    dateInvestment?: SortOrder
     portfolioId?: SortOrder
     financialInstrumentId?: SortOrderInput | SortOrder
     stockSymbol?: SortOrderInput | SortOrder
@@ -26466,7 +26450,6 @@ export namespace Prisma {
     OR?: InvestmentWhereInput[]
     NOT?: InvestmentWhereInput | InvestmentWhereInput[]
     amountInvested?: IntFilter<"Investment"> | number
-    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
     portfolioId?: StringFilter<"Investment"> | string
     financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
     stockSymbol?: StringNullableFilter<"Investment"> | string | null
@@ -26478,7 +26461,6 @@ export namespace Prisma {
   export type InvestmentOrderByWithAggregationInput = {
     id?: SortOrder
     amountInvested?: SortOrder
-    dateInvestment?: SortOrder
     portfolioId?: SortOrder
     financialInstrumentId?: SortOrderInput | SortOrder
     stockSymbol?: SortOrderInput | SortOrder
@@ -26495,7 +26477,6 @@ export namespace Prisma {
     NOT?: InvestmentScalarWhereWithAggregatesInput | InvestmentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Investment"> | string
     amountInvested?: IntWithAggregatesFilter<"Investment"> | number
-    dateInvestment?: DateTimeWithAggregatesFilter<"Investment"> | Date | string
     portfolioId?: StringWithAggregatesFilter<"Investment"> | string
     financialInstrumentId?: StringNullableWithAggregatesFilter<"Investment"> | string | null
     stockSymbol?: StringNullableWithAggregatesFilter<"Investment"> | string | null
@@ -27907,7 +27888,6 @@ export namespace Prisma {
   export type InvestmentCreateInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     stock?: StockCreateNestedOneWithoutInvestmentInput
     portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
     FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
@@ -27916,7 +27896,6 @@ export namespace Prisma {
   export type InvestmentUncheckedCreateInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     financialInstrumentId?: string | null
     stockSymbol?: string | null
@@ -27925,7 +27904,6 @@ export namespace Prisma {
   export type InvestmentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     stock?: StockUpdateOneWithoutInvestmentNestedInput
     portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
     FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
@@ -27934,7 +27912,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27943,7 +27920,6 @@ export namespace Prisma {
   export type InvestmentCreateManyInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     financialInstrumentId?: string | null
     stockSymbol?: string | null
@@ -27952,13 +27928,11 @@ export namespace Prisma {
   export type InvestmentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvestmentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29534,7 +29508,6 @@ export namespace Prisma {
   export type InvestmentCountOrderByAggregateInput = {
     id?: SortOrder
     amountInvested?: SortOrder
-    dateInvestment?: SortOrder
     portfolioId?: SortOrder
     financialInstrumentId?: SortOrder
     stockSymbol?: SortOrder
@@ -29547,7 +29520,6 @@ export namespace Prisma {
   export type InvestmentMaxOrderByAggregateInput = {
     id?: SortOrder
     amountInvested?: SortOrder
-    dateInvestment?: SortOrder
     portfolioId?: SortOrder
     financialInstrumentId?: SortOrder
     stockSymbol?: SortOrder
@@ -29556,7 +29528,6 @@ export namespace Prisma {
   export type InvestmentMinOrderByAggregateInput = {
     id?: SortOrder
     amountInvested?: SortOrder
-    dateInvestment?: SortOrder
     portfolioId?: SortOrder
     financialInstrumentId?: SortOrder
     stockSymbol?: SortOrder
@@ -32590,7 +32561,6 @@ export namespace Prisma {
   export type InvestmentCreateWithoutPortfolioInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     stock?: StockCreateNestedOneWithoutInvestmentInput
     FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
   }
@@ -32598,7 +32568,6 @@ export namespace Prisma {
   export type InvestmentUncheckedCreateWithoutPortfolioInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     financialInstrumentId?: string | null
     stockSymbol?: string | null
   }
@@ -32684,7 +32653,6 @@ export namespace Prisma {
     NOT?: InvestmentScalarWhereInput | InvestmentScalarWhereInput[]
     id?: StringFilter<"Investment"> | string
     amountInvested?: IntFilter<"Investment"> | number
-    dateInvestment?: DateTimeFilter<"Investment"> | Date | string
     portfolioId?: StringFilter<"Investment"> | string
     financialInstrumentId?: StringNullableFilter<"Investment"> | string | null
     stockSymbol?: StringNullableFilter<"Investment"> | string | null
@@ -32875,7 +32843,6 @@ export namespace Prisma {
   export type InvestmentCreateWithoutFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     stock?: StockCreateNestedOneWithoutInvestmentInput
     portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
   }
@@ -32883,7 +32850,6 @@ export namespace Prisma {
   export type InvestmentUncheckedCreateWithoutFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     stockSymbol?: string | null
   }
@@ -33690,7 +33656,6 @@ export namespace Prisma {
   export type InvestmentCreateWithoutStockInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolio?: InvestmentPortfolioCreateNestedOneWithoutInvestmentsInput
     FinancialInstrument?: FinancialInstrumentCreateNestedOneWithoutInvestmentsInput
   }
@@ -33698,7 +33663,6 @@ export namespace Prisma {
   export type InvestmentUncheckedCreateWithoutStockInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     financialInstrumentId?: string | null
   }
@@ -34335,7 +34299,6 @@ export namespace Prisma {
   export type InvestmentCreateManyPortfolioInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     financialInstrumentId?: string | null
     stockSymbol?: string | null
   }
@@ -34343,7 +34306,6 @@ export namespace Prisma {
   export type InvestmentUpdateWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     stock?: StockUpdateOneWithoutInvestmentNestedInput
     FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
   }
@@ -34351,7 +34313,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -34359,7 +34320,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateManyWithoutPortfolioInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -34367,7 +34327,6 @@ export namespace Prisma {
   export type InvestmentCreateManyFinancialInstrumentInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     stockSymbol?: string | null
   }
@@ -34375,7 +34334,6 @@ export namespace Prisma {
   export type InvestmentUpdateWithoutFinancialInstrumentInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     stock?: StockUpdateOneWithoutInvestmentNestedInput
     portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
   }
@@ -34383,7 +34341,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateWithoutFinancialInstrumentInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -34391,7 +34348,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateManyWithoutFinancialInstrumentInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     stockSymbol?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -34471,7 +34427,6 @@ export namespace Prisma {
   export type InvestmentCreateManyStockInput = {
     id?: string
     amountInvested: number
-    dateInvestment: Date | string
     portfolioId: string
     financialInstrumentId?: string | null
   }
@@ -34479,7 +34434,6 @@ export namespace Prisma {
   export type InvestmentUpdateWithoutStockInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolio?: InvestmentPortfolioUpdateOneWithoutInvestmentsNestedInput
     FinancialInstrument?: FinancialInstrumentUpdateOneWithoutInvestmentsNestedInput
   }
@@ -34487,7 +34441,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateWithoutStockInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -34495,7 +34448,6 @@ export namespace Prisma {
   export type InvestmentUncheckedUpdateManyWithoutStockInput = {
     id?: StringFieldUpdateOperationsInput | string
     amountInvested?: IntFieldUpdateOperationsInput | number
-    dateInvestment?: DateTimeFieldUpdateOperationsInput | Date | string
     portfolioId?: StringFieldUpdateOperationsInput | string
     financialInstrumentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
