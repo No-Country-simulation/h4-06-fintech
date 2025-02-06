@@ -14,7 +14,7 @@ export class FinanceService {
   async fetchAndSaveStockData(ticker: string) {
     try {
       const data = await YahooFinance.quote(ticker);
-
+console.log(data)
       const stockData: StockDTO = {
         symbol: data.symbol,
         name: data.shortName,

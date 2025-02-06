@@ -10,7 +10,7 @@ import { JwtPayload } from 'src/auth/strategy/jwt.strategy';
 import { User } from '../../prisma/generated/client';
 import { LoginMailsService } from '../login-mails/login-mails.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, InvestmentPortfolio } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 export const roundOfHashing = 10;
@@ -42,7 +42,7 @@ export class UsersService {
         roundOfHashing,
       );
 
-      const { email, profile, financialRadiographies, ...rest } = createUserDto;
+      const { email, profile, financialRadiographies, investmentPortfolio, ...rest } = createUserDto;
       rest.password = hashedPassword;
 
       const user = await this.prismaService.user.create({
@@ -55,6 +55,9 @@ export class UsersService {
           financialRadiographies: {
             create: financialRadiographies,
           },
+          investmentPortfolio: {
+            create: investmentPortfolio,
+          }
         },
       });
 
@@ -72,6 +75,7 @@ export class UsersService {
           wallet: true,
           profile: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
         },
       });
 
@@ -117,6 +121,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
           target: true,
         },
       });
@@ -140,7 +145,7 @@ export class UsersService {
         );
       }
 
-      const { profile, financialRadiographies, ...rest } = updateUserDto;
+      const { profile, financialRadiographies, investmentPortfolio, ...rest } = updateUserDto;
 
       const updateData: any = {
         ...rest,
@@ -164,6 +169,15 @@ export class UsersService {
         };
       }
 
+      if (investmentPortfolio) {
+        updateData.investmentPortfolio = {
+          upsert: {
+            create: investmentPortfolio,
+            update: investmentPortfolio,
+          },
+        };
+      }
+
       const update = await this.prismaService.user.update({
         where: { id },
         data: updateData,
@@ -172,6 +186,7 @@ export class UsersService {
           wallet: true,
           comment: true,
           financialRadiographies: true,
+          investmentPortfolio: true,
         },
       });
 
