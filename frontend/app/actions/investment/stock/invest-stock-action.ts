@@ -48,7 +48,6 @@ export async function investStockAction(
       amountInvested: result.data.amountInvested,
       portfolioId: result.data.portfolioId,
       stockSymbol: result.data.stockSymbol,
-      dateInvestment: '2025-02-05T17:04:29.353Z',
     });
 
     return { success: true };
