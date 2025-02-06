@@ -22,7 +22,10 @@ export async function FinancialTarget({ id }: Props) {
   );
 
   return (
-    <section className='relative flex h-full flex-col gap-12'>
+    <section
+      data-isactive={target.isActive}
+      className='group/root relative flex h-full flex-col gap-12'
+    >
       <header className='flex items-center justify-between gap-4'>
         <Text variant='header'>{target?.name}</Text>
         <NotificationBell />
@@ -79,10 +82,7 @@ export async function FinancialTarget({ id }: Props) {
             </section>
           </Card>
         </section>
-        <FooterButtons
-          id={id}
-          isActive={target.isActive}
-        />
+        <FooterButtons id={id} />
       </section>
     </section>
   );

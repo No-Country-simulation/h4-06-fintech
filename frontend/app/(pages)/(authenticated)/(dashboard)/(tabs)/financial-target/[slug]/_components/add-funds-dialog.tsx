@@ -12,12 +12,12 @@ import { FinancialTargetCard } from './financial-target-card';
 import { useState } from 'react';
 
 export function AddFundsDialog() {
-  const [_, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <Dialog
-      onOpenChange={() => setOpen(!_)}
-      open={_}
+      onOpenChange={() => setOpen(!open)}
+      open={open}
     >
       <DialogTrigger>
         <FinancialTargetCard
