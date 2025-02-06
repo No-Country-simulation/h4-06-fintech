@@ -14,11 +14,11 @@ import { CreateProfileDto } from '../../profile-user/dto/create-profile-user.dto
 import { CreateInvestmentPortfolioDto } from '../../investment-portfolio/dto/create-investment-portfolio.dto';
 
 export class Profile extends OmitType(CreateProfileDto, ['userId']) {}
-export class InvestmentPortfolio extends OmitType(
+export class  InvestmentPortfolio extends OmitType(
   CreateInvestmentPortfolioDto,
   ['userId'],
 ) {}
-export class FinancialRadiograp extends OmitType(
+export class FinancialRadiographies extends OmitType(
   CreateFinancialRadiographyDto,
   ['userId'],
 ) {}
@@ -52,10 +52,10 @@ export class CreateUserDto {
   })
   password: string;
 
-  @ApiProperty({ type: FinancialRadiograp })
+  @ApiProperty({ type: FinancialRadiographies })
   @ValidateNested({ each: true })
-  @Type(() => FinancialRadiograp)
-  financialRadiograp?: FinancialRadiograp;
+  @Type(() => FinancialRadiographies)
+  financialRadiographies?: FinancialRadiographies;
 
   @ApiProperty({ type: InvestmentPortfolio })
   @ValidateNested({ each: true })

@@ -161,7 +161,6 @@ exports.Prisma.InvestmentPortfolioScalarFieldEnum = {
 exports.Prisma.InvestmentScalarFieldEnum = {
   id: 'id',
   amountInvested: 'amountInvested',
-  dateInvestment: 'dateInvestment',
   portfolioId: 'portfolioId',
   financialInstrumentId: 'financialInstrumentId',
   stockSymbol: 'stockSymbol'

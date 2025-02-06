@@ -46,23 +46,20 @@ export function Carousel({ info }: { info: Stock }) {
   };
 
   return (
-    <CarouselRoot className='mx-auto mt-4 w-full max-w-7xl rounded-lg bg-muted p-2'>
+    <CarouselRoot className='mt-4 w-full rounded-lg bg-muted p-2'>
       <CarouselContent>
         {allMetrics.map((metrics, slideIndex) => (
           <CarouselItem key={slideIndex}>
-            <div className='flex gap-1'>
+            <div className='grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4'>
               {metrics.map((metric, index) => (
                 <div
                   key={metric.label}
                   className='flex flex-1 items-center justify-center gap-1'
                 >
                   <div className='flex min-w-[120px] flex-row items-center justify-center gap-x-2'>
-                    <Text
-                      variant='title'
-                      className='font-poppins-medium text-2xl/9'
-                    >
+                    <p className='text-base font-medium lg:text-xl'>
                       {metric.label}
-                    </Text>
+                    </p>
                     <div className='flex items-center gap-2'>
                       <Text
                         className={`${getBgColor(slideIndex)} rounded p-2 font-poppins-medium`}

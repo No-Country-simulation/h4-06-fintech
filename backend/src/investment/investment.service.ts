@@ -8,12 +8,11 @@ export class InvestmentService {
   constructor(private readonly prismaService: PrismaService) {}
   async create(data: CreateInvestmentDto) {
     try {
-
-      const portfolioExists = await this.prismaService.investmentPortfolio.findUnique({
-        where: { id: data.portfolioId },
-      });
+      const portfolioExists =
+        await this.prismaService.investmentPortfolio.findUnique({
+          where: { id: data.portfolioId },
+        });
       if (!portfolioExists) {
-        
         throw new HttpException(
           'Investment portfolio does not exist',
           HttpStatus.NOT_FOUND,
@@ -26,7 +25,6 @@ export class InvestmentService {
           financialInstrumentId: data.financialInstrumentId,
           stockSymbol: data.stockSymbol,
           amountInvested: data.amountInvested,
-          dateInvestment: data.dateInvestment instanceof Date ? data.dateInvestment : new Date(data.dateInvestment),
         },
         include: {
           stock: {
@@ -40,11 +38,11 @@ export class InvestmentService {
                   current: true,
                   dayHigh: true,
                   dayLow: true,
-                }
-              }
-            }
-          }
-        }
+                },
+              },
+            },
+          },
+        },
       });
       return {
         message: 'Investment created successfully',
@@ -80,7 +78,6 @@ export class InvestmentService {
         where: { id },
         select: {
           amountInvested: true,
-          dateInvestment: true,
           financialInstrumentId: true,
           id: true,
           portfolioId: true,
@@ -96,11 +93,11 @@ export class InvestmentService {
                   current: true,
                   dayHigh: true,
                   dayLow: true,
-                }
-              }
-            }
-          }
-        }
+                },
+              },
+            },
+          },
+        },
       });
       return {
         message: 'Investment found',
@@ -116,16 +113,25 @@ export class InvestmentService {
 
   async update(id: string, updateInvestmentDto: UpdateInvestmentDto) {
     await this.findOne(id);
+
     try {
+      const amountToAdd = updateInvestmentDto.amountInvested
+        ? Number(updateInvestmentDto.amountInvested)
+        : 0;
+
       const updateInvestment = await this.prismaService.investment.update({
         where: { id },
-        data: updateInvestmentDto,
+        data: {
+          amountInvested: { increment: amountToAdd },
+        },
       });
+
       return {
         message: 'Investment updated successfully',
         data: updateInvestment,
       };
     } catch (error) {
+      console.error('Error updating investment:', error);
       throw new HttpException(
         'Error updating investment',
         HttpStatus.INTERNAL_SERVER_ERROR,

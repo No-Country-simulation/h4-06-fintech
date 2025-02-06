@@ -8,7 +8,8 @@ const textStyles = cva('', {
       title: 'font-bold text-xl tracking-wide capitalize',
       detail: 'font-semibold text-sm',
       small: 'text-xs font-extralight',
-      header: 'text-2xl font-poppins-semibold font-semibold',
+      header:
+        'text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-poppins-semibold font-semibold',
     },
   },
   defaultVariants: {
