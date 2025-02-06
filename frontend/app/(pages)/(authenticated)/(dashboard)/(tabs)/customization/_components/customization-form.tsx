@@ -31,14 +31,10 @@ const initialState = {
   actionErrorMessage: '',
 };
 
-export type CustomizationFormProps = {
-  data: {
-    [key: string]: string;
-  };
-};
 
-export function CustomizationForm({ data }: CustomizationFormProps) {
-  console.log({ data });
+
+export function CustomizationForm() {
+  
   const [state, action, pending] = useActionState(
     customizationAction,
 
@@ -50,30 +46,9 @@ export function CustomizationForm({ data }: CustomizationFormProps) {
       toast('Preferencias guardadadas correctamente 🎉');
     }
 
-    if (state.actionErrorMessage) {
-      toast.error(state.actionErrorMessage);
-    }
   }, [state]);
 
-const getDefaultValue = (questionId: number) => {
-    if (!data) return undefined;
 
-    const mapping: { [key: number]: keyof typeof data } = {
-      1: 'categories',
-      2: 'strategy',
-      3: 'method',
-      4: 'newsSource',
-      5: 'instrument',
-      6: 'age',
-      7: 'investingYears',
-      8: 'goal',
-      9: 'monthlyAmount',
-      10: 'incomeSource',
-    };
-
-    const value = data[mapping[questionId]];
-    return value && value.trim() !== '' ? value : undefined;
-  };
   return (
     <section>
       <form
@@ -86,7 +61,7 @@ const getDefaultValue = (questionId: number) => {
             className='flex flex-col justify-between gap-2 rounded-md bg-primary/10 p-2 md:flex-row md:items-center'
           >
             <p className='text-lg font-medium'>{question.question}</p>
-            <Select name={`question_${question.id}`} defaultValue={getDefaultValue(question.id)}>
+            <Select name={`question_${question.id}`}>
               <SelectTrigger className='w-full md:max-w-[415px]'>
                 <SelectValue placeholder='Selecciona una opción' />
 

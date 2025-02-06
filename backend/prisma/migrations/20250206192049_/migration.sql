@@ -95,6 +95,7 @@ CREATE TABLE "News" (
     "content" TEXT NOT NULL,
     "source" TEXT NOT NULL,
     "dateNews" TIMESTAMP(3) NOT NULL,
+    "bannerImage" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
