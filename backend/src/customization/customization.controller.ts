@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Request
 } from '@nestjs/common';
 import { CustomizationService } from './customization.service';
 import { CreateCustomizationDto } from './dto/create-customization.dto';
@@ -22,38 +23,31 @@ export class CustomizationController {
   @Post()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  create(@Body() createCustomizationDto: CreateCustomizationDto) {
-    return this.customizationService.create(createCustomizationDto);
+  create(@Request() req, @Body() createCustomizationDto: CreateCustomizationDto) {
+    return this.customizationService.create(createCustomizationDto, req);
   }
 
   @Get()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  findAll() {
-    return this.customizationService.findAll();
+  findOne(@Request() req) {
+    return this.customizationService.findOne(req);
   }
 
-  @Get(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
-  findOne(@Param('id') id: string) {
-    return this.customizationService.findOne(id);
-  }
-
-  @Patch(':id')
+  @Patch()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   update(
-    @Param('id') id: string,
     @Body() updateCustomizationDto: UpdateCustomizationDto,
+    @Request() req,
   ) {
-    return this.customizationService.update(id, updateCustomizationDto);
+    return this.customizationService.update(updateCustomizationDto, req);
   }
 
-  @Delete(':id')
+  @Delete()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  remove(@Param('id') id: string) {
-    return this.customizationService.remove(id);
+  remove(@Request() req) {
+    return this.customizationService.remove(req);
   }
 }

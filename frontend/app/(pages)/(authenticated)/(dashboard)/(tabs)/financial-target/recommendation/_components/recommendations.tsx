@@ -8,12 +8,13 @@ import { RecommendationCard } from './recommendation-card';
 import { createFinancialTargetAction } from '@/actions/financial-target/create-action';
 import { useTargetUrl } from '@/hooks/use-target-url';
 import { generateMonthOptions } from '@/lib/generate-month-recommendation';
-import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Recommendations() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const { amount, durationMonths, name } = useTargetUrl();
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -42,6 +43,10 @@ export default function Recommendations() {
     durationMonths: durationMonths!.toString(),
   }).toString();
 
+  const handleGoBack = () => {
+    router.replace(`/financial-target/create?${query}`);
+  };
+
   return (
     <section className='flex flex-col gap-[72px]'>
       <header>
@@ -59,7 +64,7 @@ export default function Recommendations() {
                   setSelectedCard(selectedCard === meses ? null : meses);
                 }}
                 data-active={selectedCard === meses}
-                className='rounded-xl data-[active=true]:outline data-[active=true]:outline-primary'
+                className='rounded-xl transition-transform hover:-translate-y-1 data-[active=true]:outline data-[active=true]:outline-primary'
                 key={meses}
               >
                 <RecommendationCard
@@ -74,19 +79,19 @@ export default function Recommendations() {
             <span className='italic'>Crear nuevo objetivo</span> para confirmar
           </p>
         </section>
-        <footer className='mx-auto flex w-fit flex-wrap justify-center gap-6'>
-          <Link href={`/financial-target/create?${query}`}>
-            <Button
-              variant='outline'
-              size='custom'
-            >
-              Atrás
-            </Button>
-          </Link>
+        <footer className='flex flex-wrap justify-center gap-6'>
+          <Button
+            onClick={handleGoBack}
+            className='border-border'
+            variant='outline'
+            size='custom'
+          >
+            Atrás
+          </Button>
           <Button
             disabled={isLoading}
             onClick={handleCreateTarget}
-            variant='secondary'
+            variant='terciary'
             size='custom'
           >
             Crear nuevo objetivo

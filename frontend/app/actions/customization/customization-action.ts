@@ -1,5 +1,6 @@
 'use server';
-// import { backend } from "@api";
+import { backend } from "@api";
+import { revalidatePath } from "next/cache";
 
 export type CustomizationState = {
   message?: {
@@ -14,47 +15,42 @@ export async function customizationAction(
   formData: FormData,
 ): Promise<CustomizationState> {
   const data = {
-    categories: formData.get(`question_1`),
-    strategy: formData.get(`question_2`),
-    method: formData.get(`question_3`),
-    newsSource: formData.get(`question_4`),
-    instrument: formData.get(`question_5`),
-    age: formData.get(`question_6`),
-    investingYears: formData.get(`question_7`),
-    goal: formData.get(`question_8`),
-    monthlyAmount: formData.get(`question_9`),
-    incomeSource: formData.get(`question_10`),
+    categories: formData.get(`question_1`)?.toString() || '',
+    strategy: formData.get(`question_2`)?.toString() || '',
+    method: formData.get(`question_3`)?.toString() || '',
+    newsSource: formData.get(`question_4`)?.toString() || '',
+    instrument: formData.get(`question_5`)?.toString() || '',
+    age: formData.get(`question_6`)?.toString() || '',
+    investingYears: formData.get(`question_7`)?.toString() || '',
+    goal: formData.get(`question_8`)?.toString() || '',
+    monthlyAmount: formData.get(`question_9`)?.toString() || '',
+    incomeSource: formData.get(`question_10`)?.toString() || '',
   };
 
   console.log({ data });
 
-  // try {
-  //   // First try to get existing customization data
-  //   const existingData = await backend.customizationApi.getOne();
-  //   const user = await backend.authApi.getProfile();
-  //   console.log({ user });
-    
+  try {
+    // First try to get existing customization data
+    const existingData = await backend.customizationApi.getOne();
+    console.log({ existingData });
 
-  //   if (existingData) {
-  //     // If exists, update it
-  //     await backend.customizationApi.update({
-  //       id: user.id,
-  //       data: data
-  //     });
+    if (existingData) {
+      // If exists, update it
+      const response = await backend.customizationApi.update(data);
+      console.log({ response });
+    } else {
+      // If doesn't exist, create new
+      const response = await backend.customizationApi.create(data);
+      console.log({ response });
+    }
+    revalidatePath('/customization');
 
-
-  //   } else {
-  //     // If doesn't exist, create new
-  //       await backend.customizationApi.create(data);
-  //   }
-
-  //   return { success: true };
-  // } catch (error) {
-  //   console.error(error);
-  //   return { 
-  //     success: false,
-  //     actionErrorMessage: 'Error saving customization data'
-  //   };
-  // }
-  return { success: true };
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { 
+      success: false,
+      actionErrorMessage: 'Error saving customization data'
+    };
+  }
 }

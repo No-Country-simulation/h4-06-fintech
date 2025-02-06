@@ -21,7 +21,7 @@ const HelpButtonWithIcon = () => {
         >
           <div className='animate-bounce'>
             <span className='text-md poppins-bold rounded-lg bg-primary/80 p-3 text-white'>
-              Necesitas ayuda?
+              ¿Necesitas ayuda?
             </span>
           </div>
         </div>

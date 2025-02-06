@@ -9,6 +9,7 @@ import {
   SelectGroup,
   SelectItem,
 } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { ComponentProps, useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
@@ -101,7 +102,7 @@ interface AuxInputProps extends ComponentProps<'input'> {
   label: string;
 }
 
-export function AuxInput({ name, label, ...props }: AuxInputProps) {
+export function AuxInput({ name, label, className, ...props }: AuxInputProps) {
   return (
     <section className='flex items-center justify-between gap-2 rounded-lg bg-primary/20 p-4'>
       <label
@@ -111,7 +112,10 @@ export function AuxInput({ name, label, ...props }: AuxInputProps) {
         {label}
       </label>
       <input
-        className='w-full rounded-md bg-secondary p-2 md:max-w-[415px]'
+        className={cn(
+          'w-full rounded-md bg-secondary p-2 md:max-w-[415px]',
+          className,
+        )}
         name={name}
         type='text'
         {...props}

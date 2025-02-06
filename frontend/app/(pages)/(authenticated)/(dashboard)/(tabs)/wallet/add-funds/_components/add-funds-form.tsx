@@ -2,13 +2,11 @@
 
 import { addFundsWalletAction } from '@/actions/wallet/add-funds-action';
 import SubmitButton from '@/components/button/submit-button';
-import Input from '@/components/input/input';
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -16,6 +14,7 @@ import { Wallet } from 'client-api/backend/modules/auth/interface/getProfile';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { AuxInput } from '../../../investment/stock/[slug]/invest/_components/invest-stock-form';
 
 const initialState = {
   message: {
@@ -65,54 +64,48 @@ export default function AddFundsForm({ wallets }: Props) {
         action={action}
         className='flex flex-col gap-8'
       >
-        <Input
+        <AuxInput
+          className='w-[280px]'
           label='Cantidad a ingresar'
-          data-pw='amount'
           name='amount'
-          type='number'
-          error={state.message?.amount?.[0]}
           placeholder='$9999'
+          type='number'
         />
-        <Select name='walletId'>
-          <SelectTrigger className='w-[280px]'>
-            <SelectValue placeholder='Selecciona la billetera' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Wallet</SelectLabel>
-              {wallets.map((w) => (
-                <SelectItem
-                  key={w.id}
-                  value={w.id}
-                >
-                  {w.balanceDollars}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select name='currency'>
-          <SelectTrigger className='w-[280px]'>
-            <SelectValue placeholder='Selecciona un tipo de moneda' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Moneda</SelectLabel>
-              {currency.map((c) => (
-                <SelectItem
-                  key={c.text}
-                  value={c.value}
-                >
-                  {c.text}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <section className='flex items-center justify-between gap-2 rounded-lg bg-primary/20 p-4'>
+          <label
+            className='text-xl font-medium'
+            htmlFor='currency'
+          >
+            Selecciona un tipo de moneda
+          </label>
+          <Select name='currency'>
+            <SelectTrigger className='w-[280px]'>
+              <SelectValue placeholder='Moneda' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {currency.map((c) => (
+                  <SelectItem
+                    key={c.text}
+                    value={c.value}
+                  >
+                    {c.text}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </section>
+        <input
+          hidden
+          name='walletId'
+          defaultValue={wallets[0].id}
+        />
         <SubmitButton
+          variant='terciary'
           data-pw='submit-button'
           label='Agregar fondos'
-          className='mt-10'
+          className='self-end'
           pending={pending}
         />
       </form>
