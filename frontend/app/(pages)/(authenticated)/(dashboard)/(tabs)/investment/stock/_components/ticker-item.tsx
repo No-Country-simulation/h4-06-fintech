@@ -8,13 +8,24 @@ interface Props {
 }
 
 export function TickerItem({ ticker }: Props) {
-  const { changeAmount, changePercent, isUp } = getPriceInfo({ current: ticker.price.current, previousClose: ticker.price.previousClose })
+  const { changeAmount, changePercent, isUp } = getPriceInfo({
+    current: ticker.price.current,
+    previousClose: ticker.price.previousClose,
+  });
 
   return (
     <Link href={`/investment/stock/${ticker.symbol}`}>
-      <Ticker.Root image={ticker.image} name={ticker.companyName} symbol={ticker.symbol} isUp={isUp}>
+      <Ticker.Root
+        image={ticker.image}
+        name={ticker.companyName}
+        symbol={ticker.symbol}
+        isUp={isUp}
+      >
         <Ticker.Content>
-          <Ticker.Price price={ticker.price.current} changePercentage={changePercent} />
+          <Ticker.Price
+            price={ticker.price.current}
+            changePercentage={changePercent}
+          />
           <Ticker.Evolution evolutionAmount={changeAmount} />
         </Ticker.Content>
       </Ticker.Root>

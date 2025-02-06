@@ -30,12 +30,11 @@ export default function OnboardingCompleted() {
             onClick={() => router.push(`/onboarding/sumary/1?${searchParams}`)}
           >
             Resumen
-
           </Button>
         </Card>
         <Card className='flex h-[323px] w-full max-w-[447px] flex-col items-center justify-around bg-[#D8E0F2]'>
           <h2 className='text-center font-poppins-regular text-[25px]/[37.5px] text-foreground'>
-            Si querés revisar tus respuestas, haz click en el botón{' '}
+            Para conocer más sobre tu perfil financiero, haz clic en el botón{' '}
             <span className='font-poppins-medium text-3xl/5'>Mi Perfil</span>
           </h2>
           <Button
@@ -46,16 +45,13 @@ export default function OnboardingCompleted() {
           >
             Mi Perfil
           </Button>
-
-
         </Card>
       </div>
       <Button
-        className='mt-20 h-[65px] bg-[#D8E0F2] hover:bg-[#D8E0F2]/80 w-full max-w-[360px] rounded-xl font-poppins-medium text-2xl/[30px] text-primary'
+        className='mt-20 h-[65px] w-full max-w-[360px] rounded-xl bg-[#D8E0F2] font-poppins-medium text-2xl/[30px] text-primary hover:bg-[#D8E0F2]/80'
         variant='secondary'
         onClick={() => router.push('/home')}
       >
-
         Comenzar
       </Button>
     </div>

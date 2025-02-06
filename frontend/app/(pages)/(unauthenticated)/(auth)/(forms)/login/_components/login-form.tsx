@@ -53,7 +53,7 @@ export default function LoginForm() {
       <SubmitButton
         data-pw='submit-button'
         label='Iniciar sesión'
-        className='mt-10'
+        className='mx-auto mt-10'
         pending={pending}
       />
     </form>

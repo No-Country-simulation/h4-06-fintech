@@ -11,7 +11,7 @@ interface Props {
 export async function InvestEvolution({ currentPrice, amountInvested }: Props) {
   const totalAssets = amountInvested / currentPrice;
 
-  const marketValue = totalAssets * currentPrice;
+  // const marketValue = totalAssets * currentPrice;
 
   const cambios = calcularCambio(amountInvested, currentPrice, totalAssets);
 
@@ -23,12 +23,12 @@ export async function InvestEvolution({ currentPrice, amountInvested }: Props) {
       />
       <StockEvolution
         text='Valor del mercado'
-        value={formatMoney(marketValue)}
-      />
-      <StockEvolution
-        text='Costo promedio'
         value={formatMoney(currentPrice)}
       />
+      {/* <StockEvolution
+        text='Costo promedio'
+        value={formatMoney(currentPrice)}
+      /> */}
       <StockEvolution
         text='Monto invertido'
         value={formatMoney(amountInvested)}

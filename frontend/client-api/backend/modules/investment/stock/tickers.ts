@@ -4,8 +4,8 @@ export const tickers = [
     symbol: 'MSFT',
     image: '/svg/brands/microsoft.svg',
     price: {
-      current: 334.2,
-      previousClose: 320.2,
+      current: 415.9,
+      previousClose: 413.29,
     },
   },
   {
@@ -13,8 +13,8 @@ export const tickers = [
     symbol: 'AAPL',
     image: '/svg/brands/apple.svg',
     price: {
-      current: 174.4,
-      previousClose: 180.2,
+      current: 232.03,
+      previousClose: 232.47,
     },
   },
   {
@@ -22,8 +22,8 @@ export const tickers = [
     symbol: 'NVDA',
     image: '/svg/brands/nvidia.svg',
     price: {
-      current: 489.4,
-      previousClose: 500.2,
+      current: 128.09,
+      previousClose: 124.83,
     },
   },
   {
@@ -31,8 +31,8 @@ export const tickers = [
     symbol: 'AMZN',
     image: '/svg/brands/amazon.svg',
     price: {
-      current: 147.4,
-      previousClose: 142.2,
+      current: 237.86,
+      previousClose: 236.17,
     },
   },
   {
@@ -40,8 +40,8 @@ export const tickers = [
     symbol: 'GOOG',
     image: '/svg/brands/alphabet.svg',
     price: {
-      current: 134.4,
-      previousClose: 129.2,
+      current: 193.32,
+      previousClose: 193.3,
     },
   },
   {
@@ -49,8 +49,8 @@ export const tickers = [
     symbol: 'TSLA',
     image: '/svg/brands/tesla.svg',
     price: {
-      current: 239.2,
-      previousClose: 250.1,
+      current: 371.97,
+      previousClose: 378.17,
     },
   },
   {
@@ -58,17 +58,8 @@ export const tickers = [
     symbol: 'META',
     image: '/svg/brands/meta.svg',
     price: {
-      current: 312.7,
-      previousClose: 305.4,
-    },
-  },
-  {
-    companyName: 'Berkshire Hathaway Inc. Class B Common Stock',
-    symbol: 'BRK.B',
-    image: '/svg/brands/bh.png',
-    price: {
-      current: 351.2,
-      previousClose: 340.3,
+      current: 712.26,
+      previousClose: 704.87,
     },
   },
   {
@@ -76,8 +67,8 @@ export const tickers = [
     symbol: 'JNJ',
     image: '/svg/brands/jyj.png',
     price: {
-      current: 157.4,
-      previousClose: 160.8,
+      current: 153.93,
+      previousClose: 154.69,
     },
   },
   {
@@ -85,8 +76,8 @@ export const tickers = [
     symbol: 'JPM',
     image: '/svg/brands/chase.png',
     price: {
-      current: 176.8,
-      previousClose: 172.6,
+      current: 273.71,
+      previousClose: 270.43,
     },
   },
   {
@@ -94,8 +85,8 @@ export const tickers = [
     symbol: 'V',
     image: '/svg/brands/visa.svg',
     price: {
-      current: 234.1,
-      previousClose: 229.3,
+      current: 347.32,
+      previousClose: 349.44,
     },
   },
   {
@@ -103,8 +94,8 @@ export const tickers = [
     symbol: 'PG',
     image: '/svg/brands/pyg.png',
     price: {
-      current: 153.5,
-      previousClose: 150.9,
+      current: 168.63,
+      previousClose: 169.01,
     },
   },
   {
@@ -112,8 +103,8 @@ export const tickers = [
     symbol: 'UNH',
     image: '/svg/brands/united.png',
     price: {
-      current: 503.4,
-      previousClose: 495.2,
+      current: 527.71,
+      previousClose: 539.81,
     },
   },
   {
@@ -121,8 +112,8 @@ export const tickers = [
     symbol: 'XOM',
     image: '/svg/brands/xx.png',
     price: {
-      current: 110.3,
-      previousClose: 107.9,
+      current: 108.55,
+      previousClose: 109.88,
     },
   },
   {
@@ -130,8 +121,8 @@ export const tickers = [
     symbol: 'WMT',
     image: '/svg/brands/walmart.svg',
     price: {
-      current: 163.1,
-      previousClose: 160.7,
+      current: 102.45,
+      previousClose: 102.46,
     },
   },
   {
@@ -139,8 +130,8 @@ export const tickers = [
     symbol: 'MA',
     image: '/svg/brands/mastercard.svg',
     price: {
-      current: 419.2,
-      previousClose: 405.8,
+      current: 566.74,
+      previousClose: 566.29,
     },
   },
   {
@@ -148,8 +139,8 @@ export const tickers = [
     symbol: 'DIS',
     image: '/svg/brands/disney.svg',
     price: {
-      current: 92.4,
-      previousClose: 95.1,
+      current: 110.89,
+      previousClose: 110.54,
     },
   },
   {
@@ -157,8 +148,8 @@ export const tickers = [
     symbol: 'PFE',
     image: '/svg/brands/pfizer.png',
     price: {
-      current: 34.7,
-      previousClose: 35.2,
+      current: 25.98,
+      previousClose: 26.44,
     },
   },
   {
@@ -166,8 +157,8 @@ export const tickers = [
     symbol: 'NFLX',
     image: '/svg/brands/netflix.svg',
     price: {
-      current: 430.6,
-      previousClose: 440.8,
+      current: 1007.43,
+      previousClose: 1011.11,
     },
   },
   {
@@ -175,8 +166,8 @@ export const tickers = [
     symbol: 'KO',
     image: '/svg/brands/cocacola.svg',
     price: {
-      current: 59.2,
-      previousClose: 58.5,
+      current: 63.16,
+      previousClose: 63.12,
     },
   },
 ];
