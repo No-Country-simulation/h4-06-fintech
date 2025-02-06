@@ -87,6 +87,20 @@
   }
 }
 
+/* Remove scroll when menu is opened */
 html:has(#hamburguer-menu) {
   overflow-y: hidden;
+}
+
+/* Remove arrows on input type number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
