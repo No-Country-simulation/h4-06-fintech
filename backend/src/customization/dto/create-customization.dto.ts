@@ -40,7 +40,7 @@ export class CreateCustomizationDto {
 
   @ApiProperty()
   @IsNumber()
-  monthlyAmount: number;
+  monthlyAmount: string;
 
   @ApiProperty()
   @IsString()

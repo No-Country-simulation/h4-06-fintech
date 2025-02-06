@@ -17634,18 +17634,8 @@ export namespace Prisma {
 
   export type AggregateCustomization = {
     _count: CustomizationCountAggregateOutputType | null
-    _avg: CustomizationAvgAggregateOutputType | null
-    _sum: CustomizationSumAggregateOutputType | null
     _min: CustomizationMinAggregateOutputType | null
     _max: CustomizationMaxAggregateOutputType | null
-  }
-
-  export type CustomizationAvgAggregateOutputType = {
-    monthlyAmount: number | null
-  }
-
-  export type CustomizationSumAggregateOutputType = {
-    monthlyAmount: number | null
   }
 
   export type CustomizationMinAggregateOutputType = {
@@ -17659,7 +17649,7 @@ export namespace Prisma {
     age: string | null
     investingYears: string | null
     goal: string | null
-    monthlyAmount: number | null
+    monthlyAmount: string | null
     incomeSource: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17676,7 +17666,7 @@ export namespace Prisma {
     age: string | null
     investingYears: string | null
     goal: string | null
-    monthlyAmount: number | null
+    monthlyAmount: string | null
     incomeSource: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17700,14 +17690,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type CustomizationAvgAggregateInputType = {
-    monthlyAmount?: true
-  }
-
-  export type CustomizationSumAggregateInputType = {
-    monthlyAmount?: true
-  }
 
   export type CustomizationMinAggregateInputType = {
     id?: true
@@ -17799,18 +17781,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: CustomizationAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CustomizationSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: CustomizationMinAggregateInputType
@@ -17841,8 +17811,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CustomizationCountAggregateInputType | true
-    _avg?: CustomizationAvgAggregateInputType
-    _sum?: CustomizationSumAggregateInputType
     _min?: CustomizationMinAggregateInputType
     _max?: CustomizationMaxAggregateInputType
   }
@@ -17858,13 +17826,11 @@ export namespace Prisma {
     age: string | null
     investingYears: string | null
     goal: string | null
-    monthlyAmount: number | null
+    monthlyAmount: string | null
     incomeSource: string | null
     createdAt: Date
     updatedAt: Date
     _count: CustomizationCountAggregateOutputType | null
-    _avg: CustomizationAvgAggregateOutputType | null
-    _sum: CustomizationSumAggregateOutputType | null
     _min: CustomizationMinAggregateOutputType | null
     _max: CustomizationMaxAggregateOutputType | null
   }
@@ -17981,7 +17947,7 @@ export namespace Prisma {
       age: string | null
       investingYears: string | null
       goal: string | null
-      monthlyAmount: number | null
+      monthlyAmount: string | null
       incomeSource: string | null
       createdAt: Date
       updatedAt: Date
@@ -18419,7 +18385,7 @@ export namespace Prisma {
     readonly age: FieldRef<"Customization", 'String'>
     readonly investingYears: FieldRef<"Customization", 'String'>
     readonly goal: FieldRef<"Customization", 'String'>
-    readonly monthlyAmount: FieldRef<"Customization", 'Int'>
+    readonly monthlyAmount: FieldRef<"Customization", 'String'>
     readonly incomeSource: FieldRef<"Customization", 'String'>
     readonly createdAt: FieldRef<"Customization", 'DateTime'>
     readonly updatedAt: FieldRef<"Customization", 'DateTime'>
@@ -27065,7 +27031,7 @@ export namespace Prisma {
     age?: StringNullableFilter<"Customization"> | string | null
     investingYears?: StringNullableFilter<"Customization"> | string | null
     goal?: StringNullableFilter<"Customization"> | string | null
-    monthlyAmount?: IntNullableFilter<"Customization"> | number | null
+    monthlyAmount?: StringNullableFilter<"Customization"> | string | null
     incomeSource?: StringNullableFilter<"Customization"> | string | null
     createdAt?: DateTimeFilter<"Customization"> | Date | string
     updatedAt?: DateTimeFilter<"Customization"> | Date | string
@@ -27104,7 +27070,7 @@ export namespace Prisma {
     age?: StringNullableFilter<"Customization"> | string | null
     investingYears?: StringNullableFilter<"Customization"> | string | null
     goal?: StringNullableFilter<"Customization"> | string | null
-    monthlyAmount?: IntNullableFilter<"Customization"> | number | null
+    monthlyAmount?: StringNullableFilter<"Customization"> | string | null
     incomeSource?: StringNullableFilter<"Customization"> | string | null
     createdAt?: DateTimeFilter<"Customization"> | Date | string
     updatedAt?: DateTimeFilter<"Customization"> | Date | string
@@ -27127,10 +27093,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CustomizationCountOrderByAggregateInput
-    _avg?: CustomizationAvgOrderByAggregateInput
     _max?: CustomizationMaxOrderByAggregateInput
     _min?: CustomizationMinOrderByAggregateInput
-    _sum?: CustomizationSumOrderByAggregateInput
   }
 
   export type CustomizationScalarWhereWithAggregatesInput = {
@@ -27147,7 +27111,7 @@ export namespace Prisma {
     age?: StringNullableWithAggregatesFilter<"Customization"> | string | null
     investingYears?: StringNullableWithAggregatesFilter<"Customization"> | string | null
     goal?: StringNullableWithAggregatesFilter<"Customization"> | string | null
-    monthlyAmount?: IntNullableWithAggregatesFilter<"Customization"> | number | null
+    monthlyAmount?: StringNullableWithAggregatesFilter<"Customization"> | string | null
     incomeSource?: StringNullableWithAggregatesFilter<"Customization"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Customization"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Customization"> | Date | string
@@ -28570,7 +28534,7 @@ export namespace Prisma {
     age?: string | null
     investingYears?: string | null
     goal?: string | null
-    monthlyAmount?: number | null
+    monthlyAmount?: string | null
     incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28588,7 +28552,7 @@ export namespace Prisma {
     age?: string | null
     investingYears?: string | null
     goal?: string | null
-    monthlyAmount?: number | null
+    monthlyAmount?: string | null
     incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28604,7 +28568,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28622,7 +28586,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28639,7 +28603,7 @@ export namespace Prisma {
     age?: string | null
     investingYears?: string | null
     goal?: string | null
-    monthlyAmount?: number | null
+    monthlyAmount?: string | null
     incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28655,7 +28619,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28672,7 +28636,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29962,17 +29926,6 @@ export namespace Prisma {
     savingsOrInvestmentReason?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type CustomizationCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -29988,10 +29941,6 @@ export namespace Prisma {
     incomeSource?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type CustomizationAvgOrderByAggregateInput = {
-    monthlyAmount?: SortOrder
   }
 
   export type CustomizationMaxOrderByAggregateInput = {
@@ -30026,26 +29975,6 @@ export namespace Prisma {
     incomeSource?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type CustomizationSumOrderByAggregateInput = {
-    monthlyAmount?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DividendScalarRelationFilter = {
@@ -30241,6 +30170,17 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type VolumeCountOrderByAggregateInput = {
     current?: SortOrder
     average3Months?: SortOrder
@@ -30274,6 +30214,22 @@ export namespace Prisma {
     average3Months?: SortOrder
     average10Days?: SortOrder
     id?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type Week52CountOrderByAggregateInput = {
@@ -31126,14 +31082,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type UserUpdateOneRequiredWithoutCustomizationNestedInput = {
     create?: XOR<UserCreateWithoutCustomizationInput, UserUncheckedCreateWithoutCustomizationInput>
     connectOrCreate?: UserCreateOrConnectWithoutCustomizationInput
@@ -31316,6 +31264,14 @@ export namespace Prisma {
     connectOrCreate?: StockCreateOrConnectWithoutVolumeInput | StockCreateOrConnectWithoutVolumeInput[]
     createMany?: StockCreateManyVolumeInputEnvelope
     connect?: StockWhereUniqueInput | StockWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type StockUpdateManyWithoutVolumeNestedInput = {
@@ -31763,22 +31719,6 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -31804,6 +31744,22 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -31935,7 +31891,7 @@ export namespace Prisma {
     age?: string | null
     investingYears?: string | null
     goal?: string | null
-    monthlyAmount?: number | null
+    monthlyAmount?: string | null
     incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31951,7 +31907,7 @@ export namespace Prisma {
     age?: string | null
     investingYears?: string | null
     goal?: string | null
-    monthlyAmount?: number | null
+    monthlyAmount?: string | null
     incomeSource?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32197,7 +32153,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32213,7 +32169,7 @@ export namespace Prisma {
     age?: NullableStringFieldUpdateOperationsInput | string | null
     investingYears?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: NullableStringFieldUpdateOperationsInput | string | null
-    monthlyAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    monthlyAmount?: NullableStringFieldUpdateOperationsInput | string | null
     incomeSource?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
