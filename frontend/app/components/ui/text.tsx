@@ -9,7 +9,7 @@ const textStyles = cva('', {
       detail: 'font-semibold text-sm',
       small: 'text-xs font-extralight',
       header:
-        'text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-poppins-semibold font-semibold',
+        'text-xl sm:text-2xl md:text-3xl font-poppins-semibold font-semibold',
     },
   },
   defaultVariants: {
