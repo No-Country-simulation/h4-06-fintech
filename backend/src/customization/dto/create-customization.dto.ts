@@ -27,11 +27,11 @@ export class CreateCustomizationDto {
   instrument: string;
 
   @ApiProperty()
-  @IsInt()
+  @IsString()
   age: string;
 
   @ApiProperty()
-  @IsInt()
+  @IsString()
   investingYears: string;
 
   @ApiProperty()
@@ -39,7 +39,7 @@ export class CreateCustomizationDto {
   goal: string;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   monthlyAmount: string;
 
   @ApiProperty()
