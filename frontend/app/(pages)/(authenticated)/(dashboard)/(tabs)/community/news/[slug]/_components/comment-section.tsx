@@ -14,7 +14,7 @@ export function CommentSection({ comments }: Props) {
   return (
     <section className='flex flex-col gap-8'>
       <header className='flex flex-col'>
-        <p>{comments.length} comentarios</p>
+        <p>{newComments.length} comentarios</p>
       </header>
       <CommentForm />
       <ul className='flex flex-col gap-8'>
