@@ -114,6 +114,8 @@ export class InvestmentService {
   async update(id: string, updateInvestmentDto: UpdateInvestmentDto) {
     await this.findOne(id);
 
+    
+
     try {
       const amountToAdd = updateInvestmentDto.amountInvested
         ? Number(updateInvestmentDto.amountInvested)
