@@ -34,7 +34,7 @@ export function AddFundsForm({ closeDialog }: Props) {
     if (state.actionErrorMessage) {
       toast.error(state.actionErrorMessage);
     }
-  }, [state, closeDialog]);
+  }, [state]);
 
   return (
     <form
