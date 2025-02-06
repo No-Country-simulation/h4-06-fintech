@@ -1,12 +1,24 @@
-import { Card } from '@/components/ui/card';
-import { PropsWithChildren } from 'react';
+import { Card, CardProps } from '@/components/ui/card';
 import { IconCircle, IconCircleProps } from './icon-circle';
+import { cn } from '@/lib/utils';
 
-type Props = PropsWithChildren & IconCircleProps;
+type Props = CardProps & IconCircleProps;
 
-export function FinancialTargetCard({ children, icon, color }: Props) {
+export function FinancialTargetCard({
+  children,
+  icon,
+  color,
+  className,
+  ...props
+}: Props) {
   return (
-    <Card className='h-[120px] w-full flex-row items-center bg-secondary transition-colors group-hover:bg-secondary/50 md:max-w-[320px]'>
+    <Card
+      className={cn(
+        'h-[120px] w-full flex-row items-center bg-secondary transition-colors group-hover:bg-secondary/50 md:max-w-[320px]',
+        className,
+      )}
+      {...props}
+    >
       <IconCircle
         icon={icon}
         color={color}

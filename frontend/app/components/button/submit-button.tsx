@@ -1,7 +1,6 @@
-import { Button } from '../ui/button';
+import { Button, ButtonProps } from '../ui/button';
 
-interface SubmitButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface SubmitButtonProps extends ButtonProps {
   label: string;
   pending: boolean;
 }
@@ -10,17 +9,16 @@ export default function SubmitButton({
   label,
   pending,
   className,
+  variant,
   ...props
 }: SubmitButtonProps) {
-  const baseStyles = 'mx-auto';
-
   return (
     <Button
-      variant='secondary'
+      variant={variant ?? 'secondary'}
       size='custom'
       type='submit'
       disabled={pending}
-      className={`${baseStyles} ${className}`}
+      className={`${className}`}
       {...props}
     >
       {pending ? 'Submitting...' : label}

@@ -1,4 +1,3 @@
-import { toggleStatusAction } from '@/actions/financial-target/toggle-status-action';
 import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { getLimitDate } from '@/lib/dates';
@@ -8,6 +7,7 @@ import { backend } from '@api';
 import { FinancialTargetCard } from './financial-target-card';
 import { IconCircle } from './icon-circle';
 import { NotificationBell } from './notification-bell';
+import { FooterButtons } from './footer-buttons';
 
 interface Props {
   id: string;
@@ -22,7 +22,10 @@ export async function FinancialTarget({ id }: Props) {
   );
 
   return (
-    <section className='relative flex h-full flex-col gap-12'>
+    <section
+      data-isactive={target.isActive}
+      className='group/root relative flex h-full flex-col gap-12'
+    >
       <header className='flex items-center justify-between gap-4'>
         <Text variant='header'>{target?.name}</Text>
         <NotificationBell />
@@ -79,40 +82,7 @@ export async function FinancialTarget({ id }: Props) {
             </section>
           </Card>
         </section>
-        <footer className='flex flex-wrap justify-between'>
-          <form
-            action={toggleStatusAction}
-            className='w-full max-w-[320px]'
-          >
-            <input
-              defaultValue={id}
-              name='id'
-              hidden
-            />
-            <button className='w-full max-w-[320px]'>
-              <FinancialTargetCard
-                icon='/svg/warning-circle.svg'
-                color='red'
-              >
-                <p className='text-xl font-medium'>
-                  {target.isActive ? 'Pausar objetivo' : 'Activar objectivo'}
-                </p>
-              </FinancialTargetCard>
-            </button>
-          </form>
-          <FinancialTargetCard
-            icon='/svg/wallet.svg'
-            color='green'
-          >
-            <p className='text-xl font-medium'>Ingresar dinero</p>
-          </FinancialTargetCard>
-          <FinancialTargetCard
-            icon='/svg/money-circle.svg'
-            color='yellow'
-          >
-            <p className='text-xl font-medium'>Cambiar plan</p>
-          </FinancialTargetCard>
-        </footer>
+        <FooterButtons id={id} />
       </section>
     </section>
   );

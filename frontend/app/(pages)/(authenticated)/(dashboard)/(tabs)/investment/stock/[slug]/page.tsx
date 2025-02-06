@@ -36,9 +36,7 @@ export default async function StockPage({ params, searchParams }: Props) {
       <Carousel info={response} />
       <section className='flex flex-col gap-4'>
         <StockTabs />
-        <section className='grid'>
-          <TabContent tab={tab} />
-        </section>
+        <TabContent tab={tab} />
         <Buttons />
       </section>
     </section>

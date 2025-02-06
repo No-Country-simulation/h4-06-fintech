@@ -19,7 +19,7 @@ export default function SuccessPage() {
       <footer>
         <Link href='/financial-target'>
           <Button
-            variant='outline'
+            variant='terciary'
             size='custom'
           >
             Inicio
