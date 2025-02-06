@@ -33,15 +33,15 @@ export class InvestmentController {
   }
 
   @Get(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   findOne(@Param('id') id: string) {
     return this.investmentService.findOne(id);
   }
 
   @Patch(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   update(
     @Param('id') id: string,
     @Body() updateInvestmentDto: UpdateInvestmentDto,
