@@ -1,11 +1,11 @@
-export type GetOneResponse = News
+export type GetOneResponse = News;
 
 export type GetOneParams = {
   id: string;
-}
+};
 
 export interface News {
-  id: string;
+  id: number;
   title: string;
   content: string;
   source: string;
