@@ -19,10 +19,6 @@ import {ApiBearerAuth, ApiTags} from '@nestjs/swagger';
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}
 
-  @Get()
-  async getNewsSentiment() {
-    return this.newsService.getNewsSentiment();
-  }
 
   @Post()
   // @UseGuards(JwtAuthGuard)
@@ -39,15 +35,15 @@ export class NewsController {
   }
   
   @Get(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   findOne(@Param('id') id: string) {
     return this.newsService.findOne(id);
   }
   
   @Patch(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
   update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
     return this.newsService.update(id, updateNewsDto);
   }

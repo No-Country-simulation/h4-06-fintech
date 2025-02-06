@@ -48,6 +48,13 @@ export class NewsService {
             dateNews: formatDate(news.time_published),
             category: news.topic || "Uncategorized",
           },
+          include: {
+            comment: {
+              include: {
+                user: true,
+              },
+            },
+          }
         })
       );
   
@@ -64,19 +71,28 @@ export class NewsService {
   
   async findAll() {
     try {
-      return await this.prismaService.news.findMany({
-        include: {
-          comment: true,
-          
-        },
-      });
+      const data =  await this.prismaService.news.findMany(
+        {
+          include: {
+            comment: {
+              include: {
+                user: true,
+              },
+            },
+          },
+        }
+      )
+      return data;
+
     } catch (error) {
+      console.error('Error retrieving news:', error);
       throw new HttpException(
-        'Internal server error',
+        'Internal server error: Unable to fetch news data',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
+  
   
   async findOne(id: string) {
     try {
