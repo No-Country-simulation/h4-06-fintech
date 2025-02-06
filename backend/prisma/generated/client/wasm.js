@@ -183,6 +183,7 @@ exports.Prisma.NewsScalarFieldEnum = {
   content: 'content',
   source: 'source',
   dateNews: 'dateNews',
+  bannerImage: 'bannerImage',
   category: 'category',
   createdAt: 'createdAt'
 };
