@@ -11,7 +11,10 @@ export function InvestmentButton() {
   const id = path.split('/')[3];
 
   return (
-    <Link href={`/investment/stock/${id}/invest`}>
+    <Link
+      href={`/investment/stock/${id}/invest`}
+      className='w-full max-w-[218px]'
+    >
       <Button
         type='button'
         className='h-[43px] w-full max-w-[218px] rounded-lg bg-[#E9EDF6] focus:bg-[#004AAD33]'
