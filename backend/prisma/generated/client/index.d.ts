@@ -9952,6 +9952,7 @@ export namespace Prisma {
     content: string | null
     source: string | null
     dateNews: Date | null
+    bannerImage: string | null
     category: string | null
     createdAt: Date | null
   }
@@ -9962,6 +9963,7 @@ export namespace Prisma {
     content: string | null
     source: string | null
     dateNews: Date | null
+    bannerImage: string | null
     category: string | null
     createdAt: Date | null
   }
@@ -9972,6 +9974,7 @@ export namespace Prisma {
     content: number
     source: number
     dateNews: number
+    bannerImage: number
     category: number
     createdAt: number
     _all: number
@@ -9984,6 +9987,7 @@ export namespace Prisma {
     content?: true
     source?: true
     dateNews?: true
+    bannerImage?: true
     category?: true
     createdAt?: true
   }
@@ -9994,6 +9998,7 @@ export namespace Prisma {
     content?: true
     source?: true
     dateNews?: true
+    bannerImage?: true
     category?: true
     createdAt?: true
   }
@@ -10004,6 +10009,7 @@ export namespace Prisma {
     content?: true
     source?: true
     dateNews?: true
+    bannerImage?: true
     category?: true
     createdAt?: true
     _all?: true
@@ -10087,6 +10093,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date
+    bannerImage: string | null
     category: string
     createdAt: Date
     _count: NewsCountAggregateOutputType | null
@@ -10114,6 +10121,7 @@ export namespace Prisma {
     content?: boolean
     source?: boolean
     dateNews?: boolean
+    bannerImage?: boolean
     category?: boolean
     createdAt?: boolean
     comment?: boolean | News$commentArgs<ExtArgs>
@@ -10126,6 +10134,7 @@ export namespace Prisma {
     content?: boolean
     source?: boolean
     dateNews?: boolean
+    bannerImage?: boolean
     category?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["news"]>
@@ -10136,6 +10145,7 @@ export namespace Prisma {
     content?: boolean
     source?: boolean
     dateNews?: boolean
+    bannerImage?: boolean
     category?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["news"]>
@@ -10146,11 +10156,12 @@ export namespace Prisma {
     content?: boolean
     source?: boolean
     dateNews?: boolean
+    bannerImage?: boolean
     category?: boolean
     createdAt?: boolean
   }
 
-  export type NewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "source" | "dateNews" | "category" | "createdAt", ExtArgs["result"]["news"]>
+  export type NewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "source" | "dateNews" | "bannerImage" | "category" | "createdAt", ExtArgs["result"]["news"]>
   export type NewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     comment?: boolean | News$commentArgs<ExtArgs>
     _count?: boolean | NewsCountOutputTypeDefaultArgs<ExtArgs>
@@ -10169,6 +10180,7 @@ export namespace Prisma {
       content: string
       source: string
       dateNews: Date
+      bannerImage: string | null
       category: string
       createdAt: Date
     }, ExtArgs["result"]["news"]>
@@ -10600,6 +10612,7 @@ export namespace Prisma {
     readonly content: FieldRef<"News", 'String'>
     readonly source: FieldRef<"News", 'String'>
     readonly dateNews: FieldRef<"News", 'DateTime'>
+    readonly bannerImage: FieldRef<"News", 'String'>
     readonly category: FieldRef<"News", 'String'>
     readonly createdAt: FieldRef<"News", 'DateTime'>
   }
@@ -25738,6 +25751,7 @@ export namespace Prisma {
     content: 'content',
     source: 'source',
     dateNews: 'dateNews',
+    bannerImage: 'bannerImage',
     category: 'category',
     createdAt: 'createdAt'
   };
@@ -26529,6 +26543,7 @@ export namespace Prisma {
     content?: StringFilter<"News"> | string
     source?: StringFilter<"News"> | string
     dateNews?: DateTimeFilter<"News"> | Date | string
+    bannerImage?: StringNullableFilter<"News"> | string | null
     category?: StringFilter<"News"> | string
     createdAt?: DateTimeFilter<"News"> | Date | string
     comment?: CommentListRelationFilter
@@ -26540,6 +26555,7 @@ export namespace Prisma {
     content?: SortOrder
     source?: SortOrder
     dateNews?: SortOrder
+    bannerImage?: SortOrderInput | SortOrder
     category?: SortOrder
     createdAt?: SortOrder
     comment?: CommentOrderByRelationAggregateInput
@@ -26554,6 +26570,7 @@ export namespace Prisma {
     content?: StringFilter<"News"> | string
     source?: StringFilter<"News"> | string
     dateNews?: DateTimeFilter<"News"> | Date | string
+    bannerImage?: StringNullableFilter<"News"> | string | null
     category?: StringFilter<"News"> | string
     createdAt?: DateTimeFilter<"News"> | Date | string
     comment?: CommentListRelationFilter
@@ -26565,6 +26582,7 @@ export namespace Prisma {
     content?: SortOrder
     source?: SortOrder
     dateNews?: SortOrder
+    bannerImage?: SortOrderInput | SortOrder
     category?: SortOrder
     createdAt?: SortOrder
     _count?: NewsCountOrderByAggregateInput
@@ -26581,6 +26599,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"News"> | string
     source?: StringWithAggregatesFilter<"News"> | string
     dateNews?: DateTimeWithAggregatesFilter<"News"> | Date | string
+    bannerImage?: StringNullableWithAggregatesFilter<"News"> | string | null
     category?: StringWithAggregatesFilter<"News"> | string
     createdAt?: DateTimeWithAggregatesFilter<"News"> | Date | string
   }
@@ -27989,6 +28008,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date | string
+    bannerImage?: string | null
     category: string
     createdAt?: Date | string
     comment?: CommentCreateNestedManyWithoutNewsInput
@@ -28000,6 +28020,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date | string
+    bannerImage?: string | null
     category: string
     createdAt?: Date | string
     comment?: CommentUncheckedCreateNestedManyWithoutNewsInput
@@ -28011,6 +28032,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comment?: CommentUpdateManyWithoutNewsNestedInput
@@ -28022,6 +28044,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comment?: CommentUncheckedUpdateManyWithoutNewsNestedInput
@@ -28033,6 +28056,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date | string
+    bannerImage?: string | null
     category: string
     createdAt?: Date | string
   }
@@ -28043,6 +28067,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28053,6 +28078,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29612,6 +29638,7 @@ export namespace Prisma {
     content?: SortOrder
     source?: SortOrder
     dateNews?: SortOrder
+    bannerImage?: SortOrder
     category?: SortOrder
     createdAt?: SortOrder
   }
@@ -29622,6 +29649,7 @@ export namespace Prisma {
     content?: SortOrder
     source?: SortOrder
     dateNews?: SortOrder
+    bannerImage?: SortOrder
     category?: SortOrder
     createdAt?: SortOrder
   }
@@ -29632,6 +29660,7 @@ export namespace Prisma {
     content?: SortOrder
     source?: SortOrder
     dateNews?: SortOrder
+    bannerImage?: SortOrder
     category?: SortOrder
     createdAt?: SortOrder
   }
@@ -32886,6 +32915,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date | string
+    bannerImage?: string | null
     category: string
     createdAt?: Date | string
   }
@@ -32896,6 +32926,7 @@ export namespace Prisma {
     content: string
     source: string
     dateNews: Date | string
+    bannerImage?: string | null
     category: string
     createdAt?: Date | string
   }
@@ -32965,6 +32996,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32975,6 +33007,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     dateNews?: DateTimeFieldUpdateOperationsInput | Date | string
+    bannerImage?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
