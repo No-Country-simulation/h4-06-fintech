@@ -24,38 +24,38 @@ export class NewsController {
     return this.newsService.getNewsSentiment();
   }
 
-  // @Post()
+  @Post()
   // @UseGuards(JwtAuthGuard)
   // @ApiBearerAuth()
-  // create(@Body() createNewsDto: CreateNewsDto) {
-  //   return this.newsService.create(createNewsDto);
-  // }
-  //
-  // @Get()
+  create( createNewsDto: CreateNewsDto) {
+    return this.newsService.create(createNewsDto);
+  }
+  
+  @Get()
   // @UseGuards(JwtAuthGuard)
   // @ApiBearerAuth()
-  // findAll() {
-  //   return this.newsService.findAll();
-  // }
-  //
-  // @Get(':id')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // findOne(@Param('id') id: string) {
-  //   return this.newsService.findOne(id);
-  // }
-  //
-  // @Patch(':id')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
-  //   return this.newsService.update(id, updateNewsDto);
-  // }
-  //
-  // @Delete(':id')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // remove(@Param('id') id: string) {
-  //   return this.newsService.remove(id);
-  // }
+  findAll() {
+    return this.newsService.findAll();
+  }
+  
+  @Get(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  findOne(@Param('id') id: string) {
+    return this.newsService.findOne(id);
+  }
+  
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
+    return this.newsService.update(id, updateNewsDto);
+  }
+  
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  remove(@Param('id') id: string) {
+    return this.newsService.remove(id);
+  }
 }
