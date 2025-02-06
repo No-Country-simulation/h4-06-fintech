@@ -16,7 +16,7 @@ export function AuthProviderButton({ provider }: Props) {
     <a href={envs.BACKEND_URL + redirectLink}>
       <Button
         variant={'outline'}
-        className='relative flex h-auto w-full gap-4 hover:bg-input'
+        className='relative text-lg md:text-2xl flex h-auto w-full gap-4 hover:bg-input'
         size='full'
       >
         <Image

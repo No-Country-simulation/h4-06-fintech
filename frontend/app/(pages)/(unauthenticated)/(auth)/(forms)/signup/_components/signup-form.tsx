@@ -57,7 +57,7 @@ export default function SignUpForm() {
         data-pw='submit-button'
         id='signup-button'
         label='Crear cuenta'
-        className='mt-10'
+        className='mx-auto mt-10'
         pending={pending}
       />
     </form>
