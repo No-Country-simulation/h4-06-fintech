@@ -19,7 +19,7 @@ export function AddFundsDialog() {
       onOpenChange={() => setOpen(!open)}
       open={open}
     >
-      <DialogTrigger>
+      <DialogTrigger className='w-full md:max-w-[320px]'>
         <FinancialTargetCard
           className='transition-opacity hover:opacity-50'
           icon='/svg/money-circle.svg'

@@ -9,14 +9,14 @@ export function ToggleStatusForm({ id }: Props) {
   return (
     <form
       action={toggleStatusAction}
-      className='w-full max-w-[320px]'
+      className='w-full md:max-w-[320px]'
     >
       <input
         defaultValue={id}
         name='id'
         hidden
       />
-      <button className='w-full max-w-[320px] transition-opacity hover:opacity-50'>
+      <button className='w-full transition-opacity hover:opacity-50 md:max-w-[320px]'>
         <FinancialTargetCard
           icon='/svg/warning-circle.svg'
           color='red'
